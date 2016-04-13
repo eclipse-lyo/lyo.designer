@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated toolchain -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="toolchain.presentation.ToolchainModelWizardID"
+            name="%_UI_ToolchainModelWizard_label"
+            class="toolchain.presentation.ToolchainModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ToolchainModelFile.gif">
+         <description>%_UI_ToolchainModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated toolchain -->
+      <editor
+            id="toolchain.presentation.ToolchainEditorID"
+            name="%_UI_ToolchainEditor_label"
+            icon="icons/full/obj16/ToolchainModelFile.gif"
+            extensions="toolchain"
+            class="toolchain.presentation.ToolchainEditor"
+            contributorClass="toolchain.presentation.ToolchainActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

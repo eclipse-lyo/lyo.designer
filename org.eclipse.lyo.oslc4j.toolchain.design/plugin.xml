@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension-point id="oslc" name="oslc" schema="schema/oslc.exsd"/>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="ToolChainModel.design.Activator"
+               id="ToolChainModel.design"
+	       name="ToolChainModel">
+     <product
+           name="Tool Chain Modeling">
+     </product>
+    </component>
+  </extension>
+</plugin>

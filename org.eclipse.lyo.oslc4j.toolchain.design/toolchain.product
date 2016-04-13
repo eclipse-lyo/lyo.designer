@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product id="OSLCToolChainModel.design.oslc" useFeatures="false" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+   </launcherArgs>
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+      <plugin id="org.eclipse.lyo.oslc4j.adaptormodel"/>
+      <plugin id="org.eclipse.lyo.oslc4j.adaptormodel.edit"/>
+      <plugin id="org.eclipse.lyo.oslc4j.adaptormodel.editor"/>
+      <plugin id="org.eclipse.lyo.oslc4j.toolchain.design"/>
+   </plugins>
+
+
+</product>
