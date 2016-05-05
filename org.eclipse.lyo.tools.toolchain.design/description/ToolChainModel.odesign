@@ -27,7 +27,7 @@
         </edgeMappings>
         <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" semanticElements="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType))->select(p : ResourceProperty | p.range->includes(view.targetNode.oclAsType(DNodeList).target.oclAsType(Resource)))/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType)).range /]">
           <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[view.semanticElements.oclAsType(ResourceProperty).name/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -71,7 +71,7 @@
               <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[(if (self.eContainer(DomainSpecification) = view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) then '' else self.eContainer(DomainSpecification).namespacePrefix.name  + ':' endif) + name + ': ' + valueType + (if (Sequence{ResourcePropertyOccurs::oneOrMany, ResourcePropertyOccurs::zeroOrMany}->includes(occurs)) then ' []' else '' endif)/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
             <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="5" arcHeight="2" labelSize="9" showIcon="false" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png" roundedCorner="true">
@@ -98,6 +98,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.DomainSpecification" referenceName="domainSpecifications">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Domain' + container.oclAsType(Toolchain).specification.domainSpecifications->size() /]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="namespaceURI" valueExpression="['http://your.organisation.domain/'+ newNamespacePrefix.name +'#'/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="namespacePrefix" valueExpression="[newNamespacePrefix /]"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -273,19 +274,26 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.AdaptorInterface" referenceName="adaptorInterfaces" variableName="adaptorInterface">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Adaptor Interface' + container.oclAsType(Toolchain).adaptorInterfaces->size() /]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['AdaptorInterface' + container.oclAsType(Toolchain).adaptorInterfaces->size() /]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="javaClassBaseNamespace" valueExpression="['my.package.namespace'/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="javaFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/'/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="jspFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/WebContent'/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="javascriptFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/WebContent'/]"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ServiceProviderCatalog" referenceName="serviceProviderCatalog">
                   <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['Service Provider Catalog'/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="description" valueExpression="['Service Provider Catalog'/]"/>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ServiceProvider" referenceName="serviceProviders">
                     <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['Service Provider'/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="description" valueExpression="['Service Provider'/]"/>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Service" referenceName="services">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['Service'/]"/>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.BasicCapability" referenceName="basicCapabilities"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.GenericRequiredAdaptor" referenceName="requiredAdaptors">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['GenericRequiredAdaptor'/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/services/catalog/singleton'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -535,6 +543,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ServiceProvider" referenceName="serviceProviders">
                   <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['Service Provider '+container.serviceProviders->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="description" valueExpression="[instance.title/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -544,9 +553,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Service" referenceName="services">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['Service '+container.services->size()/]"/>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Service" referenceName="services"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -557,6 +564,8 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.CreationFactory" referenceName="creationFactories">
                   <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['CreationFactory'+container.creationFactories->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="label" valueExpression="[instance.title/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="creationURI" valueExpression="['create'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -568,6 +577,8 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.QueryCapability" referenceName="queryCapabilities">
                   <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['QueryCapability'+container.queryCapabilities->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="label" valueExpression="[instance.title/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="queryBaseURI" valueExpression="['query'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -579,6 +590,8 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Dialog" referenceName="selectionDialogs">
                   <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['SelectionDialog'+container.selectionDialogs->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="label" valueExpression="[instance.title/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="dialogURI" valueExpression="['selector'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -590,6 +603,8 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Dialog" referenceName="creationDialogs">
                   <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['CreationDialog'+container.creationDialogs->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="label" valueExpression="[instance.title/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="dialogURI" valueExpression="['creator'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
