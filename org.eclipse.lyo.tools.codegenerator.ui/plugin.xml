@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.*"
+            id="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.contribution.IFile">
+         <menu id="org.eclipse.acceleo.module.menu" label="Acceleo Model Code Generator" path="additionsAcceleo">
+               <groupMarker name="acceleo"/> 
+         </menu>
+         <action
+               class="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"
+               enablesFor="+"
+               id="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"
+               icon="icons/default.gif"
+               label="Generate Java Code from Model"
+               menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
+      </objectContribution>
+   </extension>
+</plugin>

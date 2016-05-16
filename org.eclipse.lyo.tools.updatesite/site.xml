@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="web/site.xsl"?>
+<site>
+   <feature url="features/org.eclipse.lyo.tools.codegenerator.feature_1.0.0.201605181758.jar" id="org.eclipse.lyo.tools.codegenerator.feature" version="1.0.0.201605181758">
+      <category name="org.eclipse.lyo.tools.category"/>
+   </feature>
+   <category-def name="org.eclipse.lyo.tools.category" label="Eclipse Lyo Tools"/>
+</site>
