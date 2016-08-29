@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.eclipse.lyo.tools.codegenerator.feature_1.0.0.201607061516.jar" id="org.eclipse.lyo.tools.codegenerator.feature" version="1.0.0.201607061516">
+   <feature url="features/org.eclipse.lyo.tools.codegenerator.feature_1.0.0.qualifier.jar" id="org.eclipse.lyo.tools.codegenerator.feature" version="1.0.0.qualifier">
+      <category name="org.eclipse.lyo.tools.category"/>
+   </feature>
+   <feature url="features/org.eclipse.lyo.tools.toolchain.feature_1.0.0.qualifier.jar" id="org.eclipse.lyo.tools.toolchain.feature" version="1.0.0.qualifier">
       <category name="org.eclipse.lyo.tools.category"/>
    </feature>
    <category-def name="org.eclipse.lyo.tools.category" label="Eclipse Lyo Tools"/>

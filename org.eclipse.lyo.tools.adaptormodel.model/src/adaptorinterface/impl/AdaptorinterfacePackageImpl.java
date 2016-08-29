@@ -343,6 +343,42 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getAdaptorInterface_RequiredAdaptors() {
 		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(3);
 	}
@@ -381,42 +417,6 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	public EAttribute getAdaptorInterface_BackendCodeTemplate_createResource() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**

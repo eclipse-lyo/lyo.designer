@@ -1439,6 +1439,50 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getAdaptorInterface_BackendCodeTemplate_classImports();
 
 	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backend Code Template class Methods</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerInitialize <em>Backend Code Template servlet Listener Initialize</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backend Code Template servlet Listener Initialize</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerInitialize()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerDestroy <em>Backend Code Template servlet Listener Destroy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backend Code Template servlet Listener Destroy</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerDestroy()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getServiceProviders <em>Backend Code Template get Service Providers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backend Code Template get Service Providers</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getServiceProviders()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link adaptorinterface.AdaptorInterface#getRequiredAdaptors <em>Required Adaptors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1492,50 +1536,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAdaptorInterface_BackendCodeTemplate_createResource();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Backend Code Template class Methods</em>'.
-	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods()
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 */
-	EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerInitialize <em>Backend Code Template servlet Listener Initialize</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Backend Code Template servlet Listener Initialize</em>'.
-	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerInitialize()
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 */
-	EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerDestroy <em>Backend Code Template servlet Listener Destroy</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Backend Code Template servlet Listener Destroy</em>'.
-	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerDestroy()
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 */
-	EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getServiceProviders <em>Backend Code Template get Service Providers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Backend Code Template get Service Providers</em>'.
-	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getServiceProviders()
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 */
-	EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders();
 
 	/**
 	 * Returns the meta object for class '{@link adaptorinterface.Specification <em>Specification</em>}'.
@@ -2560,6 +2560,38 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_classImports();
 
 		/**
+		 * The meta object literal for the '<em><b>Backend Code Template class Methods</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_classMethods();
+
+		/**
+		 * The meta object literal for the '<em><b>Backend Code Template servlet Listener Initialize</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize();
+
+		/**
+		 * The meta object literal for the '<em><b>Backend Code Template servlet Listener Destroy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy();
+
+		/**
+		 * The meta object literal for the '<em><b>Backend Code Template get Service Providers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_getServiceProviders();
+
+		/**
 		 * The meta object literal for the '<em><b>Required Adaptors</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2598,38 +2630,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_createResource();
-
-		/**
-		 * The meta object literal for the '<em><b>Backend Code Template class Methods</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_classMethods();
-
-		/**
-		 * The meta object literal for the '<em><b>Backend Code Template servlet Listener Initialize</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize();
-
-		/**
-		 * The meta object literal for the '<em><b>Backend Code Template servlet Listener Destroy</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy();
-
-		/**
-		 * The meta object literal for the '<em><b>Backend Code Template get Service Providers</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_getServiceProviders();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.SpecificationImpl <em>Specification</em>}' class.

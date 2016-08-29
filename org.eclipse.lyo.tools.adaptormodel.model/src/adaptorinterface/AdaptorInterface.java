@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link adaptorinterface.AdaptorInterface#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getServiceProviderCatalog <em>Service Provider Catalog</em>}</li>
@@ -33,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_searchResources <em>Backend Code Template search Resources</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_createResource <em>Backend Code Template create Resource</em>}</li>
  * </ul>
+ * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface()
  * @model
@@ -248,6 +248,110 @@ public interface AdaptorInterface extends EObject {
 	void setBackendCodeTemplate_classImports(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Backend Code Template class Methods</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Backend Code Template class Methods</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Backend Code Template class Methods</em>' attribute.
+	 * @see #setBackendCodeTemplate_classMethods(String)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_BackendCodeTemplate_classMethods()
+	 * @model
+	 * @generated
+	 */
+	String getBackendCodeTemplate_classMethods();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Backend Code Template class Methods</em>' attribute.
+	 * @see #getBackendCodeTemplate_classMethods()
+	 * @generated
+	 */
+	void setBackendCodeTemplate_classMethods(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Backend Code Template servlet Listener Initialize</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Backend Code Template servlet Listener Initialize</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Backend Code Template servlet Listener Initialize</em>' attribute.
+	 * @see #setBackendCodeTemplate_servletListenerInitialize(String)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize()
+	 * @model
+	 * @generated
+	 */
+	String getBackendCodeTemplate_servletListenerInitialize();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerInitialize <em>Backend Code Template servlet Listener Initialize</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Backend Code Template servlet Listener Initialize</em>' attribute.
+	 * @see #getBackendCodeTemplate_servletListenerInitialize()
+	 * @generated
+	 */
+	void setBackendCodeTemplate_servletListenerInitialize(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Backend Code Template servlet Listener Destroy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Backend Code Template servlet Listener Destroy</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Backend Code Template servlet Listener Destroy</em>' attribute.
+	 * @see #setBackendCodeTemplate_servletListenerDestroy(String)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy()
+	 * @model
+	 * @generated
+	 */
+	String getBackendCodeTemplate_servletListenerDestroy();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerDestroy <em>Backend Code Template servlet Listener Destroy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Backend Code Template servlet Listener Destroy</em>' attribute.
+	 * @see #getBackendCodeTemplate_servletListenerDestroy()
+	 * @generated
+	 */
+	void setBackendCodeTemplate_servletListenerDestroy(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Backend Code Template get Service Providers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Backend Code Template get Service Providers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Backend Code Template get Service Providers</em>' attribute.
+	 * @see #setBackendCodeTemplate_getServiceProviders(String)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_BackendCodeTemplate_getServiceProviders()
+	 * @model
+	 * @generated
+	 */
+	String getBackendCodeTemplate_getServiceProviders();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getServiceProviders <em>Backend Code Template get Service Providers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Backend Code Template get Service Providers</em>' attribute.
+	 * @see #getBackendCodeTemplate_getServiceProviders()
+	 * @generated
+	 */
+	void setBackendCodeTemplate_getServiceProviders(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Required Adaptors</b></em>' containment reference list.
 	 * The list contents are of type {@link adaptorinterface.RequiredAdaptor}.
 	 * <!-- begin-user-doc -->
@@ -366,109 +470,5 @@ public interface AdaptorInterface extends EObject {
 	 * @generated
 	 */
 	void setBackendCodeTemplate_createResource(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Backend Code Template class Methods</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Backend Code Template class Methods</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Backend Code Template class Methods</em>' attribute.
-	 * @see #setBackendCodeTemplate_classMethods(String)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_BackendCodeTemplate_classMethods()
-	 * @model
-	 * @generated
-	 */
-	String getBackendCodeTemplate_classMethods();
-
-	/**
-	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Backend Code Template class Methods</em>' attribute.
-	 * @see #getBackendCodeTemplate_classMethods()
-	 * @generated
-	 */
-	void setBackendCodeTemplate_classMethods(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Backend Code Template servlet Listener Initialize</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Backend Code Template servlet Listener Initialize</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Backend Code Template servlet Listener Initialize</em>' attribute.
-	 * @see #setBackendCodeTemplate_servletListenerInitialize(String)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize()
-	 * @model
-	 * @generated
-	 */
-	String getBackendCodeTemplate_servletListenerInitialize();
-
-	/**
-	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerInitialize <em>Backend Code Template servlet Listener Initialize</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Backend Code Template servlet Listener Initialize</em>' attribute.
-	 * @see #getBackendCodeTemplate_servletListenerInitialize()
-	 * @generated
-	 */
-	void setBackendCodeTemplate_servletListenerInitialize(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Backend Code Template servlet Listener Destroy</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Backend Code Template servlet Listener Destroy</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Backend Code Template servlet Listener Destroy</em>' attribute.
-	 * @see #setBackendCodeTemplate_servletListenerDestroy(String)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy()
-	 * @model
-	 * @generated
-	 */
-	String getBackendCodeTemplate_servletListenerDestroy();
-
-	/**
-	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerDestroy <em>Backend Code Template servlet Listener Destroy</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Backend Code Template servlet Listener Destroy</em>' attribute.
-	 * @see #getBackendCodeTemplate_servletListenerDestroy()
-	 * @generated
-	 */
-	void setBackendCodeTemplate_servletListenerDestroy(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Backend Code Template get Service Providers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Backend Code Template get Service Providers</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Backend Code Template get Service Providers</em>' attribute.
-	 * @see #setBackendCodeTemplate_getServiceProviders(String)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_BackendCodeTemplate_getServiceProviders()
-	 * @model
-	 * @generated
-	 */
-	String getBackendCodeTemplate_getServiceProviders();
-
-	/**
-	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getServiceProviders <em>Backend Code Template get Service Providers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Backend Code Template get Service Providers</em>' attribute.
-	 * @see #getBackendCodeTemplate_getServiceProviders()
-	 * @generated
-	 */
-	void setBackendCodeTemplate_getServiceProviders(String value);
 
 } // AdaptorInterface

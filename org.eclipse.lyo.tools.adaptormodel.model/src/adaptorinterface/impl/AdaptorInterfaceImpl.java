@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getServiceProviderCatalog <em>Service Provider Catalog</em>}</li>
@@ -50,6 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_searchResources <em>Backend Code Template search Resources</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_createResource <em>Backend Code Template create Resource</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -600,6 +600,90 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getBackendCodeTemplate_classMethods() {
+		return backendCodeTemplate_classMethods;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackendCodeTemplate_classMethods(String newBackendCodeTemplate_classMethods) {
+		String oldBackendCodeTemplate_classMethods = backendCodeTemplate_classMethods;
+		backendCodeTemplate_classMethods = newBackendCodeTemplate_classMethods;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS, oldBackendCodeTemplate_classMethods, backendCodeTemplate_classMethods));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBackendCodeTemplate_servletListenerInitialize() {
+		return backendCodeTemplate_servletListenerInitialize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackendCodeTemplate_servletListenerInitialize(String newBackendCodeTemplate_servletListenerInitialize) {
+		String oldBackendCodeTemplate_servletListenerInitialize = backendCodeTemplate_servletListenerInitialize;
+		backendCodeTemplate_servletListenerInitialize = newBackendCodeTemplate_servletListenerInitialize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE, oldBackendCodeTemplate_servletListenerInitialize, backendCodeTemplate_servletListenerInitialize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBackendCodeTemplate_servletListenerDestroy() {
+		return backendCodeTemplate_servletListenerDestroy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackendCodeTemplate_servletListenerDestroy(String newBackendCodeTemplate_servletListenerDestroy) {
+		String oldBackendCodeTemplate_servletListenerDestroy = backendCodeTemplate_servletListenerDestroy;
+		backendCodeTemplate_servletListenerDestroy = newBackendCodeTemplate_servletListenerDestroy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY, oldBackendCodeTemplate_servletListenerDestroy, backendCodeTemplate_servletListenerDestroy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBackendCodeTemplate_getServiceProviders() {
+		return backendCodeTemplate_getServiceProviders;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackendCodeTemplate_getServiceProviders(String newBackendCodeTemplate_getServiceProviders) {
+		String oldBackendCodeTemplate_getServiceProviders = backendCodeTemplate_getServiceProviders;
+		backendCodeTemplate_getServiceProviders = newBackendCodeTemplate_getServiceProviders;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS, oldBackendCodeTemplate_getServiceProviders, backendCodeTemplate_getServiceProviders));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<RequiredAdaptor> getRequiredAdaptors() {
 		if (requiredAdaptors == null) {
 			requiredAdaptors = new EObjectContainmentEList<RequiredAdaptor>(RequiredAdaptor.class, this, AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS);
@@ -689,90 +773,6 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 		backendCodeTemplate_createResource = newBackendCodeTemplate_createResource;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE, oldBackendCodeTemplate_createResource, backendCodeTemplate_createResource));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getBackendCodeTemplate_classMethods() {
-		return backendCodeTemplate_classMethods;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBackendCodeTemplate_classMethods(String newBackendCodeTemplate_classMethods) {
-		String oldBackendCodeTemplate_classMethods = backendCodeTemplate_classMethods;
-		backendCodeTemplate_classMethods = newBackendCodeTemplate_classMethods;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS, oldBackendCodeTemplate_classMethods, backendCodeTemplate_classMethods));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getBackendCodeTemplate_servletListenerInitialize() {
-		return backendCodeTemplate_servletListenerInitialize;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBackendCodeTemplate_servletListenerInitialize(String newBackendCodeTemplate_servletListenerInitialize) {
-		String oldBackendCodeTemplate_servletListenerInitialize = backendCodeTemplate_servletListenerInitialize;
-		backendCodeTemplate_servletListenerInitialize = newBackendCodeTemplate_servletListenerInitialize;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE, oldBackendCodeTemplate_servletListenerInitialize, backendCodeTemplate_servletListenerInitialize));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getBackendCodeTemplate_servletListenerDestroy() {
-		return backendCodeTemplate_servletListenerDestroy;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBackendCodeTemplate_servletListenerDestroy(String newBackendCodeTemplate_servletListenerDestroy) {
-		String oldBackendCodeTemplate_servletListenerDestroy = backendCodeTemplate_servletListenerDestroy;
-		backendCodeTemplate_servletListenerDestroy = newBackendCodeTemplate_servletListenerDestroy;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY, oldBackendCodeTemplate_servletListenerDestroy, backendCodeTemplate_servletListenerDestroy));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getBackendCodeTemplate_getServiceProviders() {
-		return backendCodeTemplate_getServiceProviders;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBackendCodeTemplate_getServiceProviders(String newBackendCodeTemplate_getServiceProviders) {
-		String oldBackendCodeTemplate_getServiceProviders = backendCodeTemplate_getServiceProviders;
-		backendCodeTemplate_getServiceProviders = newBackendCodeTemplate_getServiceProviders;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS, oldBackendCodeTemplate_getServiceProviders, backendCodeTemplate_getServiceProviders));
 	}
 
 	/**
