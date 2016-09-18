@@ -25,13 +25,13 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.QueryCapabilityImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.QueryCapabilityImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link adaptorinterface.impl.QueryCapabilityImpl#getQueryBaseURI <em>Query Base URI</em>}</li>
  *   <li>{@link adaptorinterface.impl.QueryCapabilityImpl#getResourceTypes <em>Resource Types</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

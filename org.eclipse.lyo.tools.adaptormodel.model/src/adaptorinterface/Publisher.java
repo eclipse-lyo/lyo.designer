@@ -11,13 +11,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.Publisher#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.Publisher#getLabel <em>Label</em>}</li>
  *   <li>{@link adaptorinterface.Publisher#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link adaptorinterface.Publisher#getIcon <em>Icon</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getPublisher()
  * @model

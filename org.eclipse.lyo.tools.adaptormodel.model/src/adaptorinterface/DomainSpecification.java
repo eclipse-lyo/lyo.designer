@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.DomainSpecification#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getNamespaceURI <em>Namespace URI</em>}</li>
@@ -20,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.DomainSpecification#getResources <em>Resources</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getResourceProperties <em>Resource Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification()
  * @model

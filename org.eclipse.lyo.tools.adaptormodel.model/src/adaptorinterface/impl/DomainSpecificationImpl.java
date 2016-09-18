@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getNamespaceURI <em>Namespace URI</em>}</li>
@@ -37,7 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getResourceProperties <em>Resource Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

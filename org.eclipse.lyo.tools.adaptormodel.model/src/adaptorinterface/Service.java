@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.Service#getDomainSpecification <em>Domain Specification</em>}</li>
  *   <li>{@link adaptorinterface.Service#getServiceNamespace <em>Service Namespace</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.Service#getCreationDialogs <em>Creation Dialogs</em>}</li>
  *   <li>{@link adaptorinterface.Service#getBasicCapabilities <em>Basic Capabilities</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getService()
  * @model

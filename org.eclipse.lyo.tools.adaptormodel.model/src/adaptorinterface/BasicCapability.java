@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.BasicCapability#getInstanceID <em>Instance ID</em>}</li>
  *   <li>{@link adaptorinterface.BasicCapability#getResourceTypes <em>Resource Types</em>}</li>
@@ -20,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.BasicCapability#isDelete <em>Delete</em>}</li>
  *   <li>{@link adaptorinterface.BasicCapability#isUpdate <em>Update</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability()
  * @model

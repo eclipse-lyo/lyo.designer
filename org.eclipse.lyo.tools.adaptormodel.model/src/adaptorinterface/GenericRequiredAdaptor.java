@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.GenericRequiredAdaptor#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.GenericRequiredAdaptor#getServicedResources <em>Serviced Resources</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getGenericRequiredAdaptor()
  * @model

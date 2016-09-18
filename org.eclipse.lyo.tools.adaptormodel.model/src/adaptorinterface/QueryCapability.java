@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.QueryCapability#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.QueryCapability#getLabel <em>Label</em>}</li>
  *   <li>{@link adaptorinterface.QueryCapability#getQueryBaseURI <em>Query Base URI</em>}</li>
  *   <li>{@link adaptorinterface.QueryCapability#getResourceTypes <em>Resource Types</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getQueryCapability()
  * @model

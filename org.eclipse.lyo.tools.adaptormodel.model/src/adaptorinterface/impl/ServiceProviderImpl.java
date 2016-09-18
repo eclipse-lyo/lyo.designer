@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.ServiceProviderImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceProviderImpl#getDescription <em>Description</em>}</li>
@@ -37,7 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.ServiceProviderImpl#getServiceNamespace <em>Service Namespace</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceProviderImpl#getInstanceID <em>Instance ID</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

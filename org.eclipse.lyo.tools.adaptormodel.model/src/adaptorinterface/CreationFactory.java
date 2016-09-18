@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.CreationFactory#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.CreationFactory#getLabel <em>Label</em>}</li>
  *   <li>{@link adaptorinterface.CreationFactory#getCreationURI <em>Creation URI</em>}</li>
  *   <li>{@link adaptorinterface.CreationFactory#getResourceTypes <em>Resource Types</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getCreationFactory()
  * @model

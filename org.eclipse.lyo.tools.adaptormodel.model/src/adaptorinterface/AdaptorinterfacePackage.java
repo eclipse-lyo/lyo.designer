@@ -68,31 +68,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int ADAPTOR_INTERFACE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Service Provider Catalog</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG = 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__NAME = 1;
+	int ADAPTOR_INTERFACE__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Java Class Base Namespace</b></em>' attribute.
+	 * The feature id for the '<em><b>Service Provider Catalog</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE = 2;
+	int ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG = 1;
 
 	/**
 	 * The feature id for the '<em><b>Specification</b></em>' containment reference.
@@ -101,34 +92,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__SPECIFICATION = 3;
-
-	/**
-	 * The feature id for the '<em><b>Java Files Base Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH = 4;
-
-	/**
-	 * The feature id for the '<em><b>Jsp Files Base Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH = 5;
-
-	/**
-	 * The feature id for the '<em><b>Javascript Files Base Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = 6;
+	int ADAPTOR_INTERFACE__SPECIFICATION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Required Adaptors</b></em>' containment reference list.
@@ -137,16 +101,88 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__REQUIRED_ADAPTORS = 7;
+	int ADAPTOR_INTERFACE__REQUIRED_ADAPTORS = 3;
 
 	/**
-	 * The feature id for the '<em><b>Backend Code Template get Resources</b></em>' attribute.
+	 * The feature id for the '<em><b>Java Class Base Namespace</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES = 8;
+	int ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Java Files Base Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH = 5;
+
+	/**
+	 * The feature id for the '<em><b>Jsp Files Base Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH = 6;
+
+	/**
+	 * The feature id for the '<em><b>Javascript Files Base Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = 7;
+
+	/**
+	 * The feature id for the '<em><b>Backend Code Template class Imports</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS = 8;
+
+	/**
+	 * The feature id for the '<em><b>Backend Code Template class Methods</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS = 9;
+
+	/**
+	 * The feature id for the '<em><b>Backend Code Template servlet Listener Initialize</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Backend Code Template servlet Listener Destroy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY = 11;
+
+	/**
+	 * The feature id for the '<em><b>Backend Code Template get Service Providers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS = 12;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template get Resource</b></em>' attribute.
@@ -155,7 +191,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE = 9;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Backend Code Template get Resources</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES = 14;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template search Resources</b></em>' attribute.
@@ -164,7 +209,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES = 10;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES = 15;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template create Resource</b></em>' attribute.
@@ -173,7 +218,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = 11;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = 16;
 
 	/**
 	 * The number of structural features of the '<em>Adaptor Interface</em>' class.
@@ -182,7 +227,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE_FEATURE_COUNT = 12;
+	int ADAPTOR_INTERFACE_FEATURE_COUNT = 17;
 
 	/**
 	 * The number of operations of the '<em>Adaptor Interface</em>' class.
@@ -1383,6 +1428,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getAdaptorInterface_JavascriptFilesBasePath();
 
 	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classImports <em>Backend Code Template class Imports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backend Code Template class Imports</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classImports()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_BackendCodeTemplate_classImports();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link adaptorinterface.AdaptorInterface#getRequiredAdaptors <em>Required Adaptors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1436,6 +1492,50 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAdaptorInterface_BackendCodeTemplate_createResource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backend Code Template class Methods</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerInitialize <em>Backend Code Template servlet Listener Initialize</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backend Code Template servlet Listener Initialize</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerInitialize()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerDestroy <em>Backend Code Template servlet Listener Destroy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backend Code Template servlet Listener Destroy</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerDestroy()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getServiceProviders <em>Backend Code Template get Service Providers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backend Code Template get Service Providers</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getServiceProviders()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders();
 
 	/**
 	 * Returns the meta object for class '{@link adaptorinterface.Specification <em>Specification</em>}'.
@@ -2452,6 +2552,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = eINSTANCE.getAdaptorInterface_JavascriptFilesBasePath();
 
 		/**
+		 * The meta object literal for the '<em><b>Backend Code Template class Imports</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_classImports();
+
+		/**
 		 * The meta object literal for the '<em><b>Required Adaptors</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2490,6 +2598,38 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_createResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Backend Code Template class Methods</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_classMethods();
+
+		/**
+		 * The meta object literal for the '<em><b>Backend Code Template servlet Listener Initialize</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize();
+
+		/**
+		 * The meta object literal for the '<em><b>Backend Code Template servlet Listener Destroy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy();
+
+		/**
+		 * The meta object literal for the '<em><b>Backend Code Template get Service Providers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_getServiceProviders();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.SpecificationImpl <em>Specification</em>}' class.

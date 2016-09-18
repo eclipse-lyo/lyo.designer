@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.DialogImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.DialogImpl#getLabel <em>Label</em>}</li>
@@ -33,7 +34,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link adaptorinterface.impl.DialogImpl#getHintHeight <em>Hint Height</em>}</li>
  *   <li>{@link adaptorinterface.impl.DialogImpl#getResourceTypes <em>Resource Types</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

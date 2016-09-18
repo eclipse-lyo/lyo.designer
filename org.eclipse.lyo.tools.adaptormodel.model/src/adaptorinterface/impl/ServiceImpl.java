@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getDomainSpecification <em>Domain Specification</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getServiceNamespace <em>Service Namespace</em>}</li>
@@ -42,7 +43,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getCreationDialogs <em>Creation Dialogs</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getBasicCapabilities <em>Basic Capabilities</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

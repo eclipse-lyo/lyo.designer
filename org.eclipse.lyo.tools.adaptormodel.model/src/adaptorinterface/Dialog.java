@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.Dialog#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.Dialog#getLabel <em>Label</em>}</li>
@@ -21,7 +22,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.Dialog#getHintHeight <em>Hint Height</em>}</li>
  *   <li>{@link adaptorinterface.Dialog#getResourceTypes <em>Resource Types</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getDialog()
  * @model

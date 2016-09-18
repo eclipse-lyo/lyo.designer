@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.BasicCapabilityImpl#getInstanceID <em>Instance ID</em>}</li>
  *   <li>{@link adaptorinterface.impl.BasicCapabilityImpl#getResourceTypes <em>Resource Types</em>}</li>
@@ -32,7 +33,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link adaptorinterface.impl.BasicCapabilityImpl#isDelete <em>Delete</em>}</li>
  *   <li>{@link adaptorinterface.impl.BasicCapabilityImpl#isUpdate <em>Update</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

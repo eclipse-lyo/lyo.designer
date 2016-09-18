@@ -25,13 +25,13 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.CreationFactoryImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.CreationFactoryImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link adaptorinterface.impl.CreationFactoryImpl#getCreationURI <em>Creation URI</em>}</li>
  *   <li>{@link adaptorinterface.impl.CreationFactoryImpl#getResourceTypes <em>Resource Types</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

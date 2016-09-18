@@ -30,35 +30,30 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getServiceProviderCatalog <em>Service Provider Catalog</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getName <em>Name</em>}</li>
- *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavaClassBaseNamespace <em>Java Class Base Namespace</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getServiceProviderCatalog <em>Service Provider Catalog</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getSpecification <em>Specification</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getRequiredAdaptors <em>Required Adaptors</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavaClassBaseNamespace <em>Java Class Base Namespace</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavaFilesBasePath <em>Java Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJspFilesBasePath <em>Jsp Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavascriptFilesBasePath <em>Javascript Files Base Path</em>}</li>
- *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getRequiredAdaptors <em>Required Adaptors</em>}</li>
- *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_getResources <em>Backend Code Template get Resources</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_classImports <em>Backend Code Template class Imports</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_servletListenerInitialize <em>Backend Code Template servlet Listener Initialize</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_servletListenerDestroy <em>Backend Code Template servlet Listener Destroy</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_getServiceProviders <em>Backend Code Template get Service Providers</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_getResource <em>Backend Code Template get Resource</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_getResources <em>Backend Code Template get Resources</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_searchResources <em>Backend Code Template search Resources</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_createResource <em>Backend Code Template create Resource</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implements AdaptorInterface {
-	/**
-	 * The cached value of the '{@link #getServiceProviderCatalog() <em>Service Provider Catalog</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getServiceProviderCatalog()
-	 * @generated
-	 * @ordered
-	 */
-	protected ServiceProviderCatalog serviceProviderCatalog;
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -80,6 +75,36 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getServiceProviderCatalog() <em>Service Provider Catalog</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getServiceProviderCatalog()
+	 * @generated
+	 * @ordered
+	 */
+	protected ServiceProviderCatalog serviceProviderCatalog;
+
+	/**
+	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecification()
+	 * @generated
+	 * @ordered
+	 */
+	protected Specification specification;
+
+	/**
+	 * The cached value of the '{@link #getRequiredAdaptors() <em>Required Adaptors</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRequiredAdaptors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<RequiredAdaptor> requiredAdaptors;
+
+	/**
 	 * The default value of the '{@link #getJavaClassBaseNamespace() <em>Java Class Base Namespace</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -98,16 +123,6 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String javaClassBaseNamespace = JAVA_CLASS_BASE_NAMESPACE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSpecification()
-	 * @generated
-	 * @ordered
-	 */
-	protected Specification specification;
 
 	/**
 	 * The default value of the '{@link #getJavaFilesBasePath() <em>Java Files Base Path</em>}' attribute.
@@ -170,34 +185,104 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	protected String javascriptFilesBasePath = JAVASCRIPT_FILES_BASE_PATH_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRequiredAdaptors() <em>Required Adaptors</em>}' containment reference list.
+	 * The default value of the '{@link #getBackendCodeTemplate_classImports() <em>Backend Code Template class Imports</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequiredAdaptors()
+	 * @see #getBackendCodeTemplate_classImports()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RequiredAdaptor> requiredAdaptors;
+	protected static final String BACKEND_CODE_TEMPLATE_CLASS_IMPORTS_EDEFAULT = null;
 
 	/**
-	 * The default value of the '{@link #getBackendCodeTemplate_getResources() <em>Backend Code Template get Resources</em>}' attribute.
+	 * The cached value of the '{@link #getBackendCodeTemplate_classImports() <em>Backend Code Template class Imports</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBackendCodeTemplate_getResources()
+	 * @see #getBackendCodeTemplate_classImports()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT = null;
+	protected String backendCodeTemplate_classImports = BACKEND_CODE_TEMPLATE_CLASS_IMPORTS_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getBackendCodeTemplate_getResources() <em>Backend Code Template get Resources</em>}' attribute.
+	 * The default value of the '{@link #getBackendCodeTemplate_classMethods() <em>Backend Code Template class Methods</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBackendCodeTemplate_getResources()
+	 * @see #getBackendCodeTemplate_classMethods()
 	 * @generated
 	 * @ordered
 	 */
-	protected String backendCodeTemplate_getResources = BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT;
+	protected static final String BACKEND_CODE_TEMPLATE_CLASS_METHODS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBackendCodeTemplate_classMethods() <em>Backend Code Template class Methods</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackendCodeTemplate_classMethods()
+	 * @generated
+	 * @ordered
+	 */
+	protected String backendCodeTemplate_classMethods = BACKEND_CODE_TEMPLATE_CLASS_METHODS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBackendCodeTemplate_servletListenerInitialize() <em>Backend Code Template servlet Listener Initialize</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackendCodeTemplate_servletListenerInitialize()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBackendCodeTemplate_servletListenerInitialize() <em>Backend Code Template servlet Listener Initialize</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackendCodeTemplate_servletListenerInitialize()
+	 * @generated
+	 * @ordered
+	 */
+	protected String backendCodeTemplate_servletListenerInitialize = BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBackendCodeTemplate_servletListenerDestroy() <em>Backend Code Template servlet Listener Destroy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackendCodeTemplate_servletListenerDestroy()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBackendCodeTemplate_servletListenerDestroy() <em>Backend Code Template servlet Listener Destroy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackendCodeTemplate_servletListenerDestroy()
+	 * @generated
+	 * @ordered
+	 */
+	protected String backendCodeTemplate_servletListenerDestroy = BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBackendCodeTemplate_getServiceProviders() <em>Backend Code Template get Service Providers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackendCodeTemplate_getServiceProviders()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBackendCodeTemplate_getServiceProviders() <em>Backend Code Template get Service Providers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackendCodeTemplate_getServiceProviders()
+	 * @generated
+	 * @ordered
+	 */
+	protected String backendCodeTemplate_getServiceProviders = BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getBackendCodeTemplate_getResource() <em>Backend Code Template get Resource</em>}' attribute.
@@ -218,6 +303,26 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String backendCodeTemplate_getResource = BACKEND_CODE_TEMPLATE_GET_RESOURCE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBackendCodeTemplate_getResources() <em>Backend Code Template get Resources</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackendCodeTemplate_getResources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBackendCodeTemplate_getResources() <em>Backend Code Template get Resources</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackendCodeTemplate_getResources()
+	 * @generated
+	 * @ordered
+	 */
+	protected String backendCodeTemplate_getResources = BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getBackendCodeTemplate_searchResources() <em>Backend Code Template search Resources</em>}' attribute.
@@ -474,6 +579,27 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getBackendCodeTemplate_classImports() {
+		return backendCodeTemplate_classImports;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackendCodeTemplate_classImports(String newBackendCodeTemplate_classImports) {
+		String oldBackendCodeTemplate_classImports = backendCodeTemplate_classImports;
+		backendCodeTemplate_classImports = newBackendCodeTemplate_classImports;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS, oldBackendCodeTemplate_classImports, backendCodeTemplate_classImports));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<RequiredAdaptor> getRequiredAdaptors() {
 		if (requiredAdaptors == null) {
 			requiredAdaptors = new EObjectContainmentEList<RequiredAdaptor>(RequiredAdaptor.class, this, AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS);
@@ -570,6 +696,90 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getBackendCodeTemplate_classMethods() {
+		return backendCodeTemplate_classMethods;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackendCodeTemplate_classMethods(String newBackendCodeTemplate_classMethods) {
+		String oldBackendCodeTemplate_classMethods = backendCodeTemplate_classMethods;
+		backendCodeTemplate_classMethods = newBackendCodeTemplate_classMethods;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS, oldBackendCodeTemplate_classMethods, backendCodeTemplate_classMethods));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBackendCodeTemplate_servletListenerInitialize() {
+		return backendCodeTemplate_servletListenerInitialize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackendCodeTemplate_servletListenerInitialize(String newBackendCodeTemplate_servletListenerInitialize) {
+		String oldBackendCodeTemplate_servletListenerInitialize = backendCodeTemplate_servletListenerInitialize;
+		backendCodeTemplate_servletListenerInitialize = newBackendCodeTemplate_servletListenerInitialize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE, oldBackendCodeTemplate_servletListenerInitialize, backendCodeTemplate_servletListenerInitialize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBackendCodeTemplate_servletListenerDestroy() {
+		return backendCodeTemplate_servletListenerDestroy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackendCodeTemplate_servletListenerDestroy(String newBackendCodeTemplate_servletListenerDestroy) {
+		String oldBackendCodeTemplate_servletListenerDestroy = backendCodeTemplate_servletListenerDestroy;
+		backendCodeTemplate_servletListenerDestroy = newBackendCodeTemplate_servletListenerDestroy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY, oldBackendCodeTemplate_servletListenerDestroy, backendCodeTemplate_servletListenerDestroy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBackendCodeTemplate_getServiceProviders() {
+		return backendCodeTemplate_getServiceProviders;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackendCodeTemplate_getServiceProviders(String newBackendCodeTemplate_getServiceProviders) {
+		String oldBackendCodeTemplate_getServiceProviders = backendCodeTemplate_getServiceProviders;
+		backendCodeTemplate_getServiceProviders = newBackendCodeTemplate_getServiceProviders;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS, oldBackendCodeTemplate_getServiceProviders, backendCodeTemplate_getServiceProviders));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -591,26 +801,36 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
-				return getServiceProviderCatalog();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__NAME:
 				return getName();
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
-				return getJavaClassBaseNamespace();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
+				return getServiceProviderCatalog();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				return getSpecification();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
+				return getRequiredAdaptors();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
+				return getJavaClassBaseNamespace();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH:
 				return getJavaFilesBasePath();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH:
 				return getJspFilesBasePath();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				return getJavascriptFilesBasePath();
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
-				return getRequiredAdaptors();
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES:
-				return getBackendCodeTemplate_getResources();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
+				return getBackendCodeTemplate_classImports();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS:
+				return getBackendCodeTemplate_classMethods();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE:
+				return getBackendCodeTemplate_servletListenerInitialize();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY:
+				return getBackendCodeTemplate_servletListenerDestroy();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS:
+				return getBackendCodeTemplate_getServiceProviders();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE:
 				return getBackendCodeTemplate_getResource();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES:
+				return getBackendCodeTemplate_getResources();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES:
 				return getBackendCodeTemplate_searchResources();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE:
@@ -628,17 +848,21 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
-				setServiceProviderCatalog((ServiceProviderCatalog)newValue);
-				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__NAME:
 				setName((String)newValue);
 				return;
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
-				setJavaClassBaseNamespace((String)newValue);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
+				setServiceProviderCatalog((ServiceProviderCatalog)newValue);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				setSpecification((Specification)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
+				getRequiredAdaptors().clear();
+				getRequiredAdaptors().addAll((Collection<? extends RequiredAdaptor>)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
+				setJavaClassBaseNamespace((String)newValue);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH:
 				setJavaFilesBasePath((String)newValue);
@@ -649,15 +873,26 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				setJavascriptFilesBasePath((String)newValue);
 				return;
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
-				getRequiredAdaptors().clear();
-				getRequiredAdaptors().addAll((Collection<? extends RequiredAdaptor>)newValue);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
+				setBackendCodeTemplate_classImports((String)newValue);
 				return;
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES:
-				setBackendCodeTemplate_getResources((String)newValue);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS:
+				setBackendCodeTemplate_classMethods((String)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE:
+				setBackendCodeTemplate_servletListenerInitialize((String)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY:
+				setBackendCodeTemplate_servletListenerDestroy((String)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS:
+				setBackendCodeTemplate_getServiceProviders((String)newValue);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE:
 				setBackendCodeTemplate_getResource((String)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES:
+				setBackendCodeTemplate_getResources((String)newValue);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES:
 				setBackendCodeTemplate_searchResources((String)newValue);
@@ -677,17 +912,20 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
-				setServiceProviderCatalog((ServiceProviderCatalog)null);
-				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
-				setJavaClassBaseNamespace(JAVA_CLASS_BASE_NAMESPACE_EDEFAULT);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
+				setServiceProviderCatalog((ServiceProviderCatalog)null);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				setSpecification((Specification)null);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
+				getRequiredAdaptors().clear();
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
+				setJavaClassBaseNamespace(JAVA_CLASS_BASE_NAMESPACE_EDEFAULT);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH:
 				setJavaFilesBasePath(JAVA_FILES_BASE_PATH_EDEFAULT);
@@ -698,14 +936,26 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				setJavascriptFilesBasePath(JAVASCRIPT_FILES_BASE_PATH_EDEFAULT);
 				return;
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
-				getRequiredAdaptors().clear();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
+				setBackendCodeTemplate_classImports(BACKEND_CODE_TEMPLATE_CLASS_IMPORTS_EDEFAULT);
 				return;
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES:
-				setBackendCodeTemplate_getResources(BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS:
+				setBackendCodeTemplate_classMethods(BACKEND_CODE_TEMPLATE_CLASS_METHODS_EDEFAULT);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE:
+				setBackendCodeTemplate_servletListenerInitialize(BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE_EDEFAULT);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY:
+				setBackendCodeTemplate_servletListenerDestroy(BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY_EDEFAULT);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS:
+				setBackendCodeTemplate_getServiceProviders(BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS_EDEFAULT);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE:
 				setBackendCodeTemplate_getResource(BACKEND_CODE_TEMPLATE_GET_RESOURCE_EDEFAULT);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES:
+				setBackendCodeTemplate_getResources(BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES:
 				setBackendCodeTemplate_searchResources(BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES_EDEFAULT);
@@ -725,26 +975,36 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
-				return serviceProviderCatalog != null;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
-				return JAVA_CLASS_BASE_NAMESPACE_EDEFAULT == null ? javaClassBaseNamespace != null : !JAVA_CLASS_BASE_NAMESPACE_EDEFAULT.equals(javaClassBaseNamespace);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
+				return serviceProviderCatalog != null;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				return specification != null;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
+				return requiredAdaptors != null && !requiredAdaptors.isEmpty();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
+				return JAVA_CLASS_BASE_NAMESPACE_EDEFAULT == null ? javaClassBaseNamespace != null : !JAVA_CLASS_BASE_NAMESPACE_EDEFAULT.equals(javaClassBaseNamespace);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH:
 				return JAVA_FILES_BASE_PATH_EDEFAULT == null ? javaFilesBasePath != null : !JAVA_FILES_BASE_PATH_EDEFAULT.equals(javaFilesBasePath);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH:
 				return JSP_FILES_BASE_PATH_EDEFAULT == null ? jspFilesBasePath != null : !JSP_FILES_BASE_PATH_EDEFAULT.equals(jspFilesBasePath);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				return JAVASCRIPT_FILES_BASE_PATH_EDEFAULT == null ? javascriptFilesBasePath != null : !JAVASCRIPT_FILES_BASE_PATH_EDEFAULT.equals(javascriptFilesBasePath);
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
-				return requiredAdaptors != null && !requiredAdaptors.isEmpty();
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES:
-				return BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT == null ? backendCodeTemplate_getResources != null : !BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT.equals(backendCodeTemplate_getResources);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
+				return BACKEND_CODE_TEMPLATE_CLASS_IMPORTS_EDEFAULT == null ? backendCodeTemplate_classImports != null : !BACKEND_CODE_TEMPLATE_CLASS_IMPORTS_EDEFAULT.equals(backendCodeTemplate_classImports);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS:
+				return BACKEND_CODE_TEMPLATE_CLASS_METHODS_EDEFAULT == null ? backendCodeTemplate_classMethods != null : !BACKEND_CODE_TEMPLATE_CLASS_METHODS_EDEFAULT.equals(backendCodeTemplate_classMethods);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE:
+				return BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE_EDEFAULT == null ? backendCodeTemplate_servletListenerInitialize != null : !BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE_EDEFAULT.equals(backendCodeTemplate_servletListenerInitialize);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY:
+				return BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY_EDEFAULT == null ? backendCodeTemplate_servletListenerDestroy != null : !BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY_EDEFAULT.equals(backendCodeTemplate_servletListenerDestroy);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS:
+				return BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS_EDEFAULT == null ? backendCodeTemplate_getServiceProviders != null : !BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS_EDEFAULT.equals(backendCodeTemplate_getServiceProviders);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE:
 				return BACKEND_CODE_TEMPLATE_GET_RESOURCE_EDEFAULT == null ? backendCodeTemplate_getResource != null : !BACKEND_CODE_TEMPLATE_GET_RESOURCE_EDEFAULT.equals(backendCodeTemplate_getResource);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES:
+				return BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT == null ? backendCodeTemplate_getResources != null : !BACKEND_CODE_TEMPLATE_GET_RESOURCES_EDEFAULT.equals(backendCodeTemplate_getResources);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES:
 				return BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES_EDEFAULT == null ? backendCodeTemplate_searchResources != null : !BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES_EDEFAULT.equals(backendCodeTemplate_searchResources);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE:
@@ -773,10 +1033,20 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 		result.append(jspFilesBasePath);
 		result.append(", javascriptFilesBasePath: ");
 		result.append(javascriptFilesBasePath);
-		result.append(", backendCodeTemplate_getResources: ");
-		result.append(backendCodeTemplate_getResources);
+		result.append(", backendCodeTemplate_classImports: ");
+		result.append(backendCodeTemplate_classImports);
+		result.append(", backendCodeTemplate_classMethods: ");
+		result.append(backendCodeTemplate_classMethods);
+		result.append(", backendCodeTemplate_servletListenerInitialize: ");
+		result.append(backendCodeTemplate_servletListenerInitialize);
+		result.append(", backendCodeTemplate_servletListenerDestroy: ");
+		result.append(backendCodeTemplate_servletListenerDestroy);
+		result.append(", backendCodeTemplate_getServiceProviders: ");
+		result.append(backendCodeTemplate_getServiceProviders);
 		result.append(", backendCodeTemplate_getResource: ");
 		result.append(backendCodeTemplate_getResource);
+		result.append(", backendCodeTemplate_getResources: ");
+		result.append(backendCodeTemplate_getResources);
 		result.append(", backendCodeTemplate_searchResources: ");
 		result.append(backendCodeTemplate_searchResources);
 		result.append(", backendCodeTemplate_createResource: ");

@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.ServiceProviderCatalog#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.ServiceProviderCatalog#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.ServiceProviderCatalog#getPublisher <em>Publisher</em>}</li>
  *   <li>{@link adaptorinterface.ServiceProviderCatalog#getServiceProviders <em>Service Providers</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getServiceProviderCatalog()
  * @model

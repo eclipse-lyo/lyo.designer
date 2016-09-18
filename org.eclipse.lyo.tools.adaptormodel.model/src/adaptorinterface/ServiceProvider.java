@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.ServiceProvider#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.ServiceProvider#getDescription <em>Description</em>}</li>
@@ -21,7 +22,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.ServiceProvider#getServiceNamespace <em>Service Namespace</em>}</li>
  *   <li>{@link adaptorinterface.ServiceProvider#getInstanceID <em>Instance ID</em>}</li>
  * </ul>
- * </p>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getServiceProvider()
  * @model

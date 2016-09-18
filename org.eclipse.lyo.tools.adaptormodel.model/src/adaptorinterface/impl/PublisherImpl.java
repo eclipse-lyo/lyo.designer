@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.PublisherImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.PublisherImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link adaptorinterface.impl.PublisherImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link adaptorinterface.impl.PublisherImpl#getIcon <em>Icon</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

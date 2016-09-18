@@ -29,13 +29,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.ServiceProviderCatalogImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceProviderCatalogImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceProviderCatalogImpl#getPublisher <em>Publisher</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceProviderCatalogImpl#getServiceProviders <em>Service Providers</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
