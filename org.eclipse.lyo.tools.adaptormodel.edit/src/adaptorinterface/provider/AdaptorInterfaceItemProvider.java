@@ -302,19 +302,19 @@ public class AdaptorInterfaceItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Backend Code Template class Imports feature.
+	 * This adds a property descriptor for the Backend Code Template get Resource feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBackendCodeTemplate_classImportsPropertyDescriptor(Object object) {
+	protected void addBackendCodeTemplate_getResourcePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AdaptorInterface_backendCodeTemplate_classImports_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_backendCodeTemplate_classImports_feature", "_UI_AdaptorInterface_type"),
-				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS,
+				 getString("_UI_AdaptorInterface_backendCodeTemplate_getResource_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_backendCodeTemplate_getResource_feature", "_UI_AdaptorInterface_type"),
+				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE,
 				 true,
 				 false,
 				 false,
@@ -337,28 +337,6 @@ public class AdaptorInterfaceItemProvider
 				 getString("_UI_AdaptorInterface_backendCodeTemplate_getResources_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_backendCodeTemplate_getResources_feature", "_UI_AdaptorInterface_type"),
 				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Backend Code Template get Resource feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBackendCodeTemplate_getResourcePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AdaptorInterface_backendCodeTemplate_getResource_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_backendCodeTemplate_getResource_feature", "_UI_AdaptorInterface_type"),
-				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE,
 				 true,
 				 false,
 				 false,
@@ -403,94 +381,6 @@ public class AdaptorInterfaceItemProvider
 				 getString("_UI_AdaptorInterface_backendCodeTemplate_createResource_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_backendCodeTemplate_createResource_feature", "_UI_AdaptorInterface_type"),
 				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Backend Code Template class Methods feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBackendCodeTemplate_classMethodsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AdaptorInterface_backendCodeTemplate_classMethods_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_backendCodeTemplate_classMethods_feature", "_UI_AdaptorInterface_type"),
-				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Backend Code Template servlet Listener Initialize feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBackendCodeTemplate_servletListenerInitializePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AdaptorInterface_backendCodeTemplate_servletListenerInitialize_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_backendCodeTemplate_servletListenerInitialize_feature", "_UI_AdaptorInterface_type"),
-				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Backend Code Template servlet Listener Destroy feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBackendCodeTemplate_servletListenerDestroyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AdaptorInterface_backendCodeTemplate_servletListenerDestroy_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_backendCodeTemplate_servletListenerDestroy_feature", "_UI_AdaptorInterface_type"),
-				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Backend Code Template get Service Providers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBackendCodeTemplate_getServiceProvidersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AdaptorInterface_backendCodeTemplate_getServiceProviders_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_backendCodeTemplate_getServiceProviders_feature", "_UI_AdaptorInterface_type"),
-				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS,
 				 true,
 				 false,
 				 false,
