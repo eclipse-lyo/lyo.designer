@@ -289,9 +289,9 @@
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.AdaptorInterface" referenceName="adaptorInterfaces" variableName="adaptorInterface">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['AdaptorInterface' + container.oclAsType(Toolchain).adaptorInterfaces->size() /]"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="javaClassBaseNamespace" valueExpression="['my.package.namespace'/]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="javaFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/'/]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="jspFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/WebContent'/]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="javascriptFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/WebContent'/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="javaFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/java/'/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="jspFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/webapp/'/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="javascriptFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/webapp/'/]"/>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ServiceProviderCatalog" referenceName="serviceProviderCatalog">
                   <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['Service Provider Catalog'/]"/>
