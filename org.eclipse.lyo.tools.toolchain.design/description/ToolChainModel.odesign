@@ -288,7 +288,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.AdaptorInterface" referenceName="adaptorInterfaces" variableName="adaptorInterface">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['AdaptorInterface' + container.oclAsType(Toolchain).adaptorInterfaces->size() /]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="javaClassBaseNamespace" valueExpression="['my.package.namespace'/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="javaClassBaseNamespace" valueExpression="['your.basepackage.name'/]"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="javaFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/java/'/]"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="jspFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/webapp/'/]"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="javascriptFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/webapp/'/]"/>
