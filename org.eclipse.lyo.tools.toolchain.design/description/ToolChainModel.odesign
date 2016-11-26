@@ -283,7 +283,9 @@
         </containerMappings>
         <toolSections name="Operations">
           <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Toolchain.CreateAdaptorInterface" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconNewAdaptor.png">
-            <variable name="container"/>
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="domainSpecification" candidatesExpression="[container.oclAsType(Toolchain).specification.domainSpecifications/]" message="Select the domain that is implemented by the services of this adaptor. (If no domains are available, first define domains in the SpecificationDiagram view)"/>
+            </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.AdaptorInterface" referenceName="adaptorInterfaces" variableName="adaptorInterface">
@@ -301,6 +303,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="description" valueExpression="['Service Provider'/]"/>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Service" referenceName="services">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.BasicCapability" referenceName="basicCapabilities"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="domainSpecification" valueExpression="[domainSpecification/]"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -562,11 +565,15 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.CreateService" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']">
-            <variable name="container"/>
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="domainSpecification" candidatesExpression="[container.oclAsType(ServiceProvider).eContainer(Toolchain).specification.domainSpecifications/]" message="Select the domain that is implemented by this service. (If no domains are available, first define domains in the SpecificationDiagram view)"/>
+            </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Service" referenceName="services"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Service" referenceName="services">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="domainSpecification" valueExpression="[domainSpecification/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
