@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="ToolchainModel" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="ToolchainModel" version="10.1.3.201511131800">
   <ownedViewpoints name="ToolchainViewpoint">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SpecificationDiagram" initialisation="true" domainClass="toolchain.Toolchain">
-      <diagramInitialisation>
-        <firstModelOperations xsi:type="tool:If" conditionExpression="[self.specification.oclIsUndefined()/]">
-          <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
-        </firstModelOperations>
-      </diagramInitialisation>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]">
+      <diagramInitialisation/>
       <defaultLayer name="Default">
         <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" semanticElements="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType))->select(p : ResourceProperty | p.range->includes(view.targetNode.oclAsType(DNodeList).target.oclAsType(Resource)))/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType)).range /]">
           <style sizeComputationExpression="2">
@@ -30,11 +26,19 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Specification.DomainSpecification" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DirectEditName']" semanticCandidatesExpression="[specification.domainSpecifications/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.MoveResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.MoveProperty']">
+        <containerMappings name="Specification.DomainSpecification" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteDomainSpecification']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DirectEditName']" createElements="false" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.MoveResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.MoveProperty']">
           <subContainerMappings name="Specification.DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteResource']" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.RelatePropertyToResource']" childrenPresentation="List">
-            <subNodeMappings name="Specification.DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.resourceProperties->select(p : ResourceProperty | not Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))/]" domainClass="adaptorinterface.ResourceProperty">
+            <subNodeMappings name="Specification.DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.resourceProperties->select(p : ResourceProperty | (not Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))._or((Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))._and(p.range->size() = 0)))/]" domainClass="adaptorinterface.ResourceProperty">
               <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[(if (self.eContainer(DomainSpecification) = view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) then '' else self.eContainer(DomainSpecification).namespacePrefix.name  + ':' endif) + name + ': ' + valueType + (if (Sequence{ResourcePropertyOccurs::oneOrMany, ResourcePropertyOccurs::zeroOrMany}->includes(occurs)) then ' []' else '' endif)/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Specification.DomainSpecification.Resource.ReferenceProperty" semanticCandidatesExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))->select(p : ResourceProperty | (diagram.containers->select(c : DDiagramElementContainer | (c.actualMapping.name = 'Specification.DomainSpecification.Resource')._and(c.visible))).target->includesAll(p.range)._not())/]" domainClass="adaptorinterface.ResourceProperty">
+              <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[(if (self.eContainer(DomainSpecification) = view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) then '' else self.eContainer(DomainSpecification).namespacePrefix.name  + ':' endif) + name + ': ' + (if (range->size() = 0) then 'Resource' else range->first().name + (if (range->size() > 1) then '++' else '' endif) endif) + (if (Sequence{ResourcePropertyOccurs::oneOrMany, ResourcePropertyOccurs::zeroOrMany}->includes(occurs)) then ' []' else '' endif)/]" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -86,155 +90,178 @@
           </style>
         </containerMappings>
         <toolSections name="Operations">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Specification.CreateDomainSpecification" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconAdaptor.png">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.DropDomainSpecification" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(Toolchain).specification/]">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.NamespacePrefix" referenceName="domainPrefixes" variableName="newNamespacePrefix">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['nsp' + container.oclAsType(Toolchain).specification.domainPrefixes->size() /]"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.DomainSpecification" referenceName="domainSpecifications">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Domain' + container.oclAsType(Toolchain).specification.domainSpecifications->size() /]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="namespaceURI" valueExpression="['http://your.organisation.domain/'+ newNamespacePrefix.name +'#'/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="namespacePrefix" valueExpression="[newNamespacePrefix /]"/>
-                </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" containerViewExpression="var:newContainerView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Specification.CreateResource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Resource" referenceName="resources">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Resource' + container.resources->size()/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Specification.CreateLiteralProperty" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Property' + container.resourceProperties->size()/]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::String /]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Specification.CreateReferenceProperty" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateDomainSpecification" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconAdaptor.png">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="specs" computationExpression="[if (container.eClass().name = 'Toolchain') then container.eGet('specification') else self endif/]"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::Resource /]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['relatesTo' + propertyRange.name.toUpperFirst()/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[specs.oclAsType(Specification)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.NamespacePrefix" referenceName="domainPrefixes" variableName="newNamespacePrefix">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['nsp' + specs.domainPrefixes->size() /]"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.DomainSpecification" referenceName="domainSpecifications">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Domain' + specs.domainSpecifications->size() /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespaceURI" valueExpression="['http://your.organisation.domain/'+ newNamespacePrefix.name +'#'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespacePrefix" valueExpression="[newNamespacePrefix /]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Specification.CreateLocalReferenceProperty" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Resource" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Resource' + container.resources->size()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralProperty" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Property' + container.resourceProperties->size()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::String /]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferenceProperty" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::LocalResource /]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['relatesTo' + instance.range.name.toUpperFirst()/]"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::Resource /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['relatesTo' + propertyRange.name.toUpperFirst()/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Specification.CreateResourceToProperty" precondition="[preTarget.oclIsTypeOf(ResourceProperty)/]" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@edgeMappings[name='Specification.ResourceToReferenceProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@edgeMappings[name='Specification.ResourceToLocalReferenceProperty']" connectionStartPrecondition="[preSource.oclIsTypeOf(Resource)/]">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferenceProperty" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::LocalResource /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['relatesTo' + instance.range.name.toUpperFirst()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Specification.CreateResourceToProperty" precondition="[preTarget.oclIsTypeOf(ResourceProperty)/]" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@edgeMappings[name='Specification.ResourceToReferenceProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@edgeMappings[name='Specification.ResourceToLocalReferenceProperty']" connectionStartPrecondition="[preSource.oclIsTypeOf(Resource)/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source/]">
-                <subModelOperations xsi:type="tool:SetValue" featureName="resourceProperties" valueExpression="[target/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[target/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Specification.MoveProperty" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveProperty" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="resourceProperties" valueExpression="[element /]"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[element /]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Specification.MoveResource" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveResource" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="resources" valueExpression="[element /]"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="resources" valueExpression="[element /]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Specification.RelatePropertyToResource" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']/@subNodeMappings[name='Specification.DomainSpecification.Resource.LiteralProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.RelatePropertyToResource" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']/@subNodeMappings[name='Specification.DomainSpecification.Resource.LiteralProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="resourceProperties" valueExpression="[element/]"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[element/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Specification.DirectEditName">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Specification.DirectEditName">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Specification.DeleteResourceToLiteralProperty">
-            <element name="element"/>
-            <elementView name="elementView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="aResourceProperty" computationExpression="[elementView.oclAsType(DEdge).targetNode.oclAsType(DNode).target/]"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="aResource" computationExpression="[element/]"/>
-            </elementView>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Specification.DeleteResourceToReferenceProperty">
-            <element name="element"/>
-            <elementView name="elementView">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="aResourceProperty" candidatesExpression="[elementView.oclAsType(DEdge).semanticElements/]" message="Select the ResourceProperty to delete"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="aResource" computationExpression="[element/]"/>
-            </elementView>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Specification.DeleteResourceLiteralPropertySubnode">
-            <element name="element"/>
-            <elementView name="elementView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="aResourceProperty" computationExpression="[element/]"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="aResource" computationExpression="[elementView.eContainer().oclAsType(DNodeList).target.oclAsType(Resource)/]"/>
-            </elementView>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[aResource/]">
-                <subModelOperations xsi:type="tool:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Specification.DeleteResource">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteDomainSpecification">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:RemoveElement"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[elementView/]">
+                <subModelOperations xsi:type="tool_1:DeleteView"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Specification.DeletePropertiesList" precondition="false">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResourceToLiteralProperty">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResourceProperty" computationExpression="[elementView.oclAsType(DEdge).targetNode.oclAsType(DNode).target/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResource" computationExpression="[element/]"/>
+            </elementView>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResourceToReferenceProperty">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="aResourceProperty" candidatesExpression="[elementView.oclAsType(DEdge).semanticElements/]" message="Select the ResourceProperty to delete"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResource" computationExpression="[element/]"/>
+            </elementView>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResourceLiteralPropertySubnode">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResourceProperty" computationExpression="[element/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResource" computationExpression="[elementView.eContainer().oclAsType(DNodeList).target.oclAsType(Resource)/]"/>
+            </elementView>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[aResource/]">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResource">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeletePropertiesList" precondition="false">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -244,6 +271,11 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ToolchainDiagram" initialisation="true" domainClass="toolchain.Toolchain">
+      <diagramInitialisation>
+        <firstModelOperations xsi:type="tool_1:If" conditionExpression="[self.specification.oclIsUndefined()/]">
+          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
+        </firstModelOperations>
+      </diagramInitialisation>
       <defaultLayer name="Default">
         <edgeMappings name="Toolchain.ManagedResourceToConsumedResource" preconditionExpression="[not (sourceView.eContainer() = targetView.eContainer())/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ManagedResource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ConsumedResource']" targetFinderExpression="[self/]">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
@@ -261,7 +293,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Toolchain.AdaptorInterface" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DeleteAdaptorInterface']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.EditAdaptorInterfaceName']" semanticCandidatesExpression="feature:adaptorInterfaces" doubleClickDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.NavigateInsideAdaptorInterface']" domainClass="adaptorinterface.AdaptorInterface" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DropManagedResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DropConsumedResource']">
+        <containerMappings name="Toolchain.AdaptorInterface" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DeleteAdaptorInterface']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.EditAdaptorInterfaceName']" semanticCandidatesExpression="feature:adaptorInterfaces" doubleClickDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.NavigateInsideAdaptorInterface']" domainClass="adaptorinterface.AdaptorInterface" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DropManagedResource']">
           <borderedNodeMappings name="Toolchain.AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)/]" domainClass="adaptorinterface.Resource">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="9" showIcon="false" sizeComputationExpression="0.1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -282,150 +314,131 @@
           </style>
         </containerMappings>
         <toolSections name="Operations">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Toolchain.CreateAdaptorInterface" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconNewAdaptor.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Toolchain.CreateAdaptorInterface" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconNewAdaptor.png">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="domainSpecification" candidatesExpression="[container.oclAsType(Toolchain).specification.domainSpecifications/]" message="Select the domain that is implemented by the services of this adaptor. (If no domains are available, first define domains in the SpecificationDiagram view)"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="domainSpecification" candidatesExpression="[container.oclAsType(Toolchain).specification.domainSpecifications/]" message="Select the domain that is implemented by the services of this adaptor. (If no domains are available, first define domains in the SpecificationDiagram view)"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.AdaptorInterface" referenceName="adaptorInterfaces" variableName="adaptorInterface">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['AdaptorInterface' + container.oclAsType(Toolchain).adaptorInterfaces->size() /]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="javaClassBaseNamespace" valueExpression="['your.basepackage.name'/]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="javaFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/java/'/]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="jspFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/webapp/'/]"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="javascriptFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/webapp/'/]"/>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ServiceProviderCatalog" referenceName="serviceProviderCatalog">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['Service Provider Catalog'/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="description" valueExpression="['Service Provider Catalog'/]"/>
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ServiceProvider" referenceName="serviceProviders">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['Service Provider'/]"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="description" valueExpression="['Service Provider'/]"/>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Service" referenceName="services">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.BasicCapability" referenceName="basicCapabilities"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="domainSpecification" valueExpression="[domainSpecification/]"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.AdaptorInterface" referenceName="adaptorInterfaces" variableName="adaptorInterface">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['AdaptorInterface' + container.oclAsType(Toolchain).adaptorInterfaces->size() /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="javaClassBaseNamespace" valueExpression="['your.basepackage.name'/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="javaFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/java/'/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="jspFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/webapp/'/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="javascriptFilesBasePath" valueExpression="['../' + adaptorInterface.name.toLowerFirst() + '/src/main/webapp/'/]"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ServiceProviderCatalog" referenceName="serviceProviderCatalog">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['Service Provider Catalog'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="['Service Provider Catalog'/]"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ServiceProvider" referenceName="serviceProviders">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['Service Provider'/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="['Service Provider'/]"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Service" referenceName="services">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.BasicCapability" referenceName="basicCapabilities"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="domainSpecification" valueExpression="[domainSpecification/]"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.GenericRequiredAdaptor" referenceName="requiredAdaptors">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['GenericRequiredAdaptor'/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/services/catalog/singleton'/]"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GenericRequiredAdaptor" referenceName="requiredAdaptors">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['GenericRequiredAdaptor'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/services/catalog/singleton'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Toolchain.AddManagedResource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddManagedResource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="managedResource" candidatesExpression="[container.oclAsType(AdaptorInterface).eContainer(Toolchain).specification.domainSpecifications.resources/]" multiple="true" message="Select the Resouce"/>
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="managingServiceCapability" candidatesExpression="[container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationFactories->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" message="Select a Service Capability"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[container.oclAsType(AdaptorInterface).eContainer(Toolchain).specification.domainSpecifications.resources/]" multiple="true" message="Select the Resouce"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managingServiceCapability" candidatesExpression="[container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationFactories->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" message="Select a Service Capability"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[managingServiceCapability/]">
-                <subModelOperations xsi:type="tool:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[managingServiceCapability/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Toolchain.DropManagedResource" forceRefresh="true" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ManagedResource']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Toolchain.DropManagedResource" forceRefresh="true" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ManagedResource']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="managingServiceCapability" candidatesExpression="[newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationFactories->union(newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" message="Select a Service Capability"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managingServiceCapability" candidatesExpression="[newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationFactories->union(newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(newSemanticContainer.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" message="Select a Service Capability"/>
             </newContainer>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[managingServiceCapability/]">
-                <subModelOperations xsi:type="tool:SetValue" featureName="resourceTypes" valueExpression="[element/]"/>
-                <subModelOperations xsi:type="tool:For" expression="[oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.creationFactories->union(oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" iteratorName="oldCapability">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[oldCapability/]">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[oldCapability.resourceTypes->includes(element)/]">
-                      <subModelOperations xsi:type="tool:Unset" featureName="resourceTypes" elementExpression="[element/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[managingServiceCapability/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[element/]"/>
+                <subModelOperations xsi:type="tool_1:For" expression="[oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.creationFactories->union(oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(oldSemanticContainer.serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" iteratorName="oldCapability">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[oldCapability/]">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[oldCapability.resourceTypes->includes(element)/]">
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="resourceTypes" elementExpression="[element/]"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Toolchain.AddConsumedResource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddConsumedResource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="consumedResource" candidatesExpression="[container.oclAsType(AdaptorInterface).eContainer(Toolchain).specification.domainSpecifications.resources/]" multiple="true" message="Select the Resouce"/>
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="requiredAdaptor" candidatesExpression="[container.oclAsType(AdaptorInterface).requiredAdaptors/]" message="Select the RequiredAdaptor"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[container.oclAsType(AdaptorInterface).eContainer(Toolchain).specification.domainSpecifications.resources/]" multiple="true" message="Select the Resouce"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="requiredAdaptor" candidatesExpression="[container.oclAsType(AdaptorInterface).requiredAdaptors/]" message="Select the RequiredAdaptor"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[requiredAdaptor/]">
-                <subModelOperations xsi:type="tool:SetValue" featureName="servicedResources" valueExpression="[consumedResource/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[requiredAdaptor/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="servicedResources" valueExpression="[consumedResource/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Toolchain.DropConsumedResource" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ConsumedResource']" dragSource="BOTH">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="requiredAdaptor" candidatesExpression="[newSemanticContainer.oclAsType(AdaptorInterface).requiredAdaptors/]" message="Select the RequiredAdaptor"/>
-            </newContainer>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[requiredAdaptor/]">
-                <subModelOperations xsi:type="tool:SetValue" featureName="servicedResources" valueExpression="[element/]">
-                  <subModelOperations xsi:type="tool:For" expression="[oldSemanticContainer.requiredAdaptors.oclAsType(GenericRequiredAdaptor)/]" iteratorName="oldRequiredAdaptor">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="oldRequiredAdaptor">
-                      <subModelOperations xsi:type="tool:Unset" featureName="servicedResources" elementExpression="[element/]"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Toolchain.EditAdaptorInterfaceName">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Toolchain.EditAdaptorInterfaceName">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Toolchain.NavigateInsideAdaptorInterface" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Toolchain.NavigateInsideAdaptorInterface" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']"/>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Toolchain.DeleteManagedResource">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Toolchain.DeleteManagedResource">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="containingAdaptorInterface" computationExpression="[containerView.oclAsType(DNodeContainer).target.oclAsType(AdaptorInterface)/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="containingAdaptorInterface" computationExpression="[containerView.oclAsType(DNodeContainer).target.oclAsType(AdaptorInterface)/]"/>
             </containerView>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:For" expression="[containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.creationFactories->union(containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" iteratorName="capability">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[capability/]">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="[capability.resourceTypes->includes(element)/]">
-                    <subModelOperations xsi:type="tool:Unset" featureName="resourceTypes" elementExpression="[element/]"/>
+              <firstModelOperations xsi:type="tool_1:For" expression="[containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.creationFactories->union(containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(containingAdaptorInterface.serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" iteratorName="capability">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[capability/]">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[capability.resourceTypes->includes(element)/]">
+                    <subModelOperations xsi:type="tool_1:Unset" featureName="resourceTypes" elementExpression="[element/]"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Toolchain.DeleteConsumedResource">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Toolchain.DeleteConsumedResource">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="containingAdaptorInterface" computationExpression="[containerView.oclAsType(DNodeContainer).target.oclAsType(AdaptorInterface)/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="containingAdaptorInterface" computationExpression="[containerView.oclAsType(DNodeContainer).target.oclAsType(AdaptorInterface)/]"/>
             </containerView>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:For" expression="[containingAdaptorInterface.requiredAdaptors.oclAsType(GenericRequiredAdaptor)/]" iteratorName="requiredAdaptor">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="requiredAdaptor">
-                  <subModelOperations xsi:type="tool:Unset" featureName="servicedResources" elementExpression="[element/]"/>
+              <firstModelOperations xsi:type="tool_1:For" expression="[containingAdaptorInterface.requiredAdaptors.oclAsType(GenericRequiredAdaptor)/]" iteratorName="requiredAdaptor">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="requiredAdaptor">
+                  <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Toolchain.DeleteAdaptorInterface">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Toolchain.DeleteAdaptorInterface">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:RemoveElement"/>
+              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -552,135 +565,135 @@
           </style>
         </containerMappings>
         <toolSections name="Tool">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.CreateServiceProvider" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateServiceProvider" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.ServiceProvider" referenceName="serviceProviders">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['Service Provider '+container.serviceProviders->size()/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="description" valueExpression="[instance.title/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ServiceProvider" referenceName="serviceProviders">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['Service Provider '+container.serviceProviders->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="[instance.title/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.CreateService" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateService" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="domainSpecification" candidatesExpression="[container.oclAsType(ServiceProvider).eContainer(Toolchain).specification.domainSpecifications/]" message="Select the domain that is implemented by this service. (If no domains are available, first define domains in the SpecificationDiagram view)"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="domainSpecification" candidatesExpression="[container.oclAsType(ServiceProvider).eContainer(Toolchain).specification.domainSpecifications/]" message="Select the domain that is implemented by this service. (If no domains are available, first define domains in the SpecificationDiagram view)"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Service" referenceName="services">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="domainSpecification" valueExpression="[domainSpecification/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Service" referenceName="services">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="domainSpecification" valueExpression="[domainSpecification/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.CreateCreationFactory" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateCreationFactory" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.CreationFactory" referenceName="creationFactories">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['CreationFactory'+container.creationFactories->size()/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="label" valueExpression="[instance.title/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="creationURI" valueExpression="['create'/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.CreationFactory" referenceName="creationFactories">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['CreationFactory'+container.creationFactories->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="[instance.title/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="creationURI" valueExpression="['create'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.CreateQueryCapability" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateQueryCapability" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.QueryCapability" referenceName="queryCapabilities">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['QueryCapability'+container.queryCapabilities->size()/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="label" valueExpression="[instance.title/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="queryBaseURI" valueExpression="['query'/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.QueryCapability" referenceName="queryCapabilities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['QueryCapability'+container.queryCapabilities->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="[instance.title/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="queryBaseURI" valueExpression="['query'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.CreateSelectionDialog" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateSelectionDialog" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Dialog" referenceName="selectionDialogs">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['SelectionDialog'+container.selectionDialogs->size()/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="label" valueExpression="[instance.title/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="dialogURI" valueExpression="['selector'/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Dialog" referenceName="selectionDialogs">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['SelectionDialog'+container.selectionDialogs->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="[instance.title/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="dialogURI" valueExpression="['selector'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.CreateCreationDialog" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateCreationDialog" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.Dialog" referenceName="creationDialogs">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['CreationDialog'+container.creationDialogs->size()/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="label" valueExpression="[instance.title/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="dialogURI" valueExpression="['creator'/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Dialog" referenceName="creationDialogs">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['CreationDialog'+container.creationDialogs->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="[instance.title/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="dialogURI" valueExpression="['creator'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.CreateBasicCapability" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateBasicCapability" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="adaptorinterface.BasicCapability" referenceName="basicCapabilities">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="['BasicCapability'+container.basicCapabilities->size()/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.BasicCapability" referenceName="basicCapabilities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['BasicCapability'+container.basicCapabilities->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.AddManagedResource" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddManagedResource" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="managedResource" candidatesExpression="[container.eContainer(Toolchain).specification.domainSpecifications.resources/]" childrenExpression="Select the Resouce"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[container.eContainer(Toolchain).specification.domainSpecifications.resources/]" childrenExpression="Select the Resouce"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="AdaptorInterface.AddConsumedResource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']/@subNodeMappings[name='AdaptorInterface.GenericRequiredAdaptor.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddConsumedResource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']/@subNodeMappings[name='AdaptorInterface.GenericRequiredAdaptor.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="consumedResource" candidatesExpression="[container.eContainer(Toolchain).specification.domainSpecifications.resources/]" childrenExpression="Select the Resouce"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[container.eContainer(Toolchain).specification.domainSpecifications.resources/]" childrenExpression="Select the Resouce"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:SetValue" featureName="servicedResources" valueExpression="[consumedResource/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="servicedResources" valueExpression="[consumedResource/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="AdaptorInterface.DeleteManagedResource">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteManagedResource">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:For" expression="[elementView.oclAsType(DNode).incomingEdges.sourceNode.oclAsType(DNode).target/]" iteratorName="capability">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[capability/]">
-                  <subModelOperations xsi:type="tool:Unset" featureName="resourceTypes" elementExpression="[element/]"/>
+              <firstModelOperations xsi:type="tool_1:For" expression="[elementView.oclAsType(DNode).incomingEdges.sourceNode.oclAsType(DNode).target/]" iteratorName="capability">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[capability/]">
+                  <subModelOperations xsi:type="tool_1:Unset" featureName="resourceTypes" elementExpression="[element/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="AdaptorInterface.DeleteConsumedResource">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteConsumedResource">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(DNodeContainer).target/]">
-                <subModelOperations xsi:type="tool:Unset" featureName="servicedResources" elementExpression="[element/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.oclAsType(DNodeContainer).target/]">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

@@ -28,7 +28,7 @@
             id="adaptorinterface.presentation.AdaptorinterfaceEditorID"
             name="%_UI_AdaptorinterfaceEditor_label"
             icon="icons/full/obj16/AdaptorinterfaceModelFile.gif"
-            extensions="adaptorinterface"
+            extensions="xml,adaptorinterface,ai"
             class="adaptorinterface.presentation.AdaptorinterfaceEditor"
             contributorClass="adaptorinterface.presentation.AdaptorinterfaceActionBarContributor">
       </editor>

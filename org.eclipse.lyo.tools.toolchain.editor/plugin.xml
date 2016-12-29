@@ -28,7 +28,7 @@
             id="toolchain.presentation.ToolchainEditorID"
             name="%_UI_ToolchainEditor_label"
             icon="icons/full/obj16/ToolchainModelFile.gif"
-            extensions="toolchain"
+            extensions="xml,toolchain,tc"
             class="toolchain.presentation.ToolchainEditor"
             contributorClass="toolchain.presentation.ToolchainActionBarContributor">
       </editor>
