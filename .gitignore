@@ -3,6 +3,7 @@
 # exceptions: .project, .launch
 ###############################
 
+.DS_Store
 .metadata
 bin/
 tmp/
