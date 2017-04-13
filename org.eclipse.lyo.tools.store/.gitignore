@@ -1,25 +1,32 @@
-/target/
-###############################
-# Eclipse
-# exceptions: .project, .launch
-###############################
+/src/test/resources/triplestore.properties
 
-.DS_Store
+# IDEA
+/*.iml
+/.idea/
+
+# JAVA
+**/.mtj.tmp/
+
+*.war
+*.ear
+
+hs_err_pid*
+
+# Eclipse
 .metadata
-bin/
-tmp/
+**/bin/
+**/tmp/
 *.tmp
 *.bak
 *.swp
 *~.nib
 local.properties
-.settings/
+**/.settings/
 .loadpath
 .recommenders
 
 # External tool builders
-.externalToolBuilders/
-
+**/.externalToolBuilders/
 
 # PyDev specific (Python IDE for Eclipse)
 *.pydevproject
@@ -49,4 +56,20 @@ local.properties
 .springBeans
 
 # Code Recommenders
-.recommenders/
+**/.recommenders/
+
+
+#########################
+# MAVEN
+#########################
+
+**/overlays/
+**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+**/.mvn/timing.properties
