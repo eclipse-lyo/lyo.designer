@@ -116,49 +116,40 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
 
     static
     {
-        try
-        {
-            RESOURCE_CLASSES.addAll(JenaProvidersRegistry.getProviders());
-            RESOURCE_CLASSES.addAll(Json4JProvidersRegistry.getProviders());
-            [for (aService: Service | anAdaptorInterface.serviceProviders().services)]
-            RESOURCE_CLASSES.add([javaClassName(aService)/].class);
-            [/for]
-            RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
-            RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
+        RESOURCE_CLASSES.addAll(JenaProvidersRegistry.getProviders());
+        RESOURCE_CLASSES.addAll(Json4JProvidersRegistry.getProviders());
+        [for (aService: Service | anAdaptorInterface.serviceProviders().services)]
+        RESOURCE_CLASSES.add([javaClassName(aService)/].class);
+        [/for]
 
-            // Catalog resources
-            [if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined())]
-            RESOURCE_CLASSES.add([javaClassNameForService(anAdaptorInterface.serviceProviderCatalog) /].class);
-            [/if]
-            [for (aServiceProvider: ServiceProvider | anAdaptorInterface.serviceProviders()->sortedBy(x: ServiceProvider | javaClassFullNameForService(x)))]
-            RESOURCE_CLASSES.add([javaClassNameForService(aServiceProvider)/].class);
-            [/for]
-            RESOURCE_CLASSES.add([javaClassNameForResourceShapeService(anAdaptorInterface)/].class);
+        // Catalog resources
+        [if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined())]
+        RESOURCE_CLASSES.add([javaClassNameForService(anAdaptorInterface.serviceProviderCatalog) /].class);
+        [/if]
+        [for (aServiceProvider: ServiceProvider | anAdaptorInterface.serviceProviders()->sortedBy(x: ServiceProvider | javaClassFullNameForService(x)))]
+        RESOURCE_CLASSES.add([javaClassNameForService(aServiceProvider)/].class);
+        [/for]
+        RESOURCE_CLASSES.add([javaClassNameForResourceShapeService(anAdaptorInterface)/].class);
 
-            // [protected ('Custom Resource Classes')]
-            // [/protected]
+        // [protected ('Custom Resource Classes')]
+        // [/protected]
 
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_ALLOWED_VALUES,           AllowedValues.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_COMPACT,                  Compact.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_CREATION_FACTORY,         CreationFactory.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_DIALOG,                   Dialog.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_ERROR,                    Error.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_EXTENDED_ERROR,           ExtendedError.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_OAUTH_CONFIGURATION,      OAuthConfiguration.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_PREFIX_DEFINITION,        PrefixDefinition.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_PREVIEW,                  Preview.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_PROPERTY,                 Property.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_PUBLISHER,                Publisher.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_QUERY_CAPABILITY,         QueryCapability.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_RESOURCE_SHAPE,           ResourceShape.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_SERVICE,                  Service.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_SERVICE_PROVIDER,         ServiceProvider.class);
-            RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_SERVICE_PROVIDER_CATALOG, ServiceProviderCatalog.class);
-        } catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-            System.err.println("[javaClassNameForAdaptorApplication(anAdaptorInterface) /] failed to initialize");
-        }
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_ALLOWED_VALUES,           AllowedValues.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_COMPACT,                  Compact.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_CREATION_FACTORY,         CreationFactory.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_DIALOG,                   Dialog.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_ERROR,                    Error.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_EXTENDED_ERROR,           ExtendedError.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_OAUTH_CONFIGURATION,      OAuthConfiguration.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_PREFIX_DEFINITION,        PrefixDefinition.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_PREVIEW,                  Preview.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_PROPERTY,                 Property.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_PUBLISHER,                Publisher.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_QUERY_CAPABILITY,         QueryCapability.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_RESOURCE_SHAPE,           ResourceShape.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_SERVICE,                  Service.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_SERVICE_PROVIDER,         ServiceProvider.class);
+        RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_SERVICE_PROVIDER_CATALOG, ServiceProviderCatalog.class);
 
         [for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name))]
         RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource) /], [javaClassName(aResource)/].class);
