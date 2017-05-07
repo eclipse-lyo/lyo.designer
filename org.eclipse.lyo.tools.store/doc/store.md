@@ -25,7 +25,7 @@ in order to graphically model the business objects to be exposed, as well as the
 services of the OSLC Server component. From such a model, the classes and
 services can be generated.
 
-![](architecture.png)
+![](lyo_store-architecture.png)
 
 ## Getting started
 
@@ -41,6 +41,20 @@ Add the following dependency:
   <artifactId>lyo-store</artifactId>
   <version>2.2.0-SNAPSHOT</version>
 </dependency>
+```
+
+**NOTE!** If you are using the older versions of Lyo (2.1.2 and lower), Maven might decide to use an incompatible version of Jena. In order to prevent this, enforce the Jena version used by `lyo-store` by adding the following tag to the `pom.xml`:
+
+```xml
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-core</artifactId>
+            <version>2.13.0</version>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
 ```
 
 Now you are all set to start using the library. If you encounter any API

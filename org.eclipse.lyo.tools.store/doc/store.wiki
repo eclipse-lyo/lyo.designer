@@ -1,6 +1,6 @@
 = Lyo Store =
 
-''Lyo Store'' is a library that provides a simple interface for working with a *triplestore via Java objects representing OSLC Resources.
+''Lyo Store'' is a library that provides a simple interface for working with a triplestore via Java objects representing OSLC Resources.
 
 == Introduction ==
 
@@ -10,11 +10,11 @@ An OSLC Server interacts with Lyo Store using on instances of OSLC4J-annotated c
 
 So naturally, all components of this architecture need to share the common set of OSLC4J-annotated classes. To facilitate this effort, the adaptor developer can take advantage of the [https://wiki.eclipse.org/Lyo/ToolchainModellingAndCodeGenerationWorkshop OSLC Lyo Modelling tool] in order to graphically model the business objects to be exposed, as well as the services of the OSLC Server component. From such a model, the classes and services can be generated.
 
-[[File:architecture.png|frame|none]]
+[[File:lyo_store-architecture.png|center|800px]]
 
 == Getting started ==
 
-Lyo uses Maven as a primary choice for the build system. Make sure your POM file includes Eclipse Maven repositories (see [https://wiki.eclipse.org/Lyo/LyoOSLC4J#Using_in_Maven OSLC4J instructions] wiki page).
+Lyo uses Maven as a primary choice for the build system. Make sure your POM file includes Eclipse Maven repositories (see the [https://wiki.eclipse.org/Lyo/LyoOSLC4J#Using_in_Maven OSLC4J instructions]).
 
 Add the following dependency:
 
@@ -23,6 +23,20 @@ Add the following dependency:
   <artifactId>lyo-store</artifactId>
   <version>2.2.0-SNAPSHOT</version>
 </dependency></source>
+<p></p>
+'''NOTE!''' If you are using the older versions of Lyo (2.1.2 and lower), Maven might decide to use an incompatible version of Jena. In order to prevent this, enforce the Jena version used by <code>lyo-store</code> by adding the following tag to the <code>pom.xml</code>:
+
+<source lang="xml"><dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-core</artifactId>
+            <version>2.13.0</version>
+        </dependency>
+    </dependencies>
+</dependencyManagement></source>
+<p></p>
+
 Now you are all set to start using the library. If you encounter any API questions along the way, consult the [http://assume.gitlab.io/jena-cache/apidocs/overview-summary.html Javadoc] or ask a question on the [https://www.eclipse.org/forums/index.php/f/228/ Lyo forum].
 
 == Using Lyo Store ==
@@ -35,6 +49,8 @@ Assuming you have initialised an array of resource class instances in variable <
 } catch (StoreAccessException e) {
     logger.error("Error executing a query on a triplestore");
 }</source>
+<p></p>
+
 In order to retrieve the resources of type <code>Requirement</code> from the triplestore in batches of 200:
 
 <source lang="java">if (store.namedGraphExists(GRAPH_NAME)) {
@@ -53,10 +69,13 @@ In order to retrieve the resources of type <code>Requirement</code> from the tri
         logger.error("Error unmarshalling the RDF from triplestore into Requirement class instances");
     }
 }</source>
+<p></p>
+
+See [http://assume.gitlab.io/jena-cache/apidocs/org/eclipse/lyo/tools/store/Store.html Store javadoc] for all available methods.
+
 == Links ==
 
 * '''[http://assume.gitlab.io/jena-cache/apidocs/overview-summary.html Lyo Store Javadoc]'''
 * [https://bugs.eclipse.org/bugs/enter_bug.cgi?product=Lyo&component=Tools File a new Lyo Tools bug]
 * [https://www.eclipse.org/forums/index.php/f/228/ Ask a question on Eclipse Lyo forum]
 * '''[https://wiki.eclipse.org/Lyo#Contributing_to_Lyo Contribute to Eclipse Lyo!]'''
-
