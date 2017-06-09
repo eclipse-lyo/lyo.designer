@@ -20,4 +20,40 @@
     <modules>
         <module>org.eclipse.lyo.tools.store</module>
     </modules>
+
+        <licenses>
+        <license>
+            <name>Eclipse Public License 1.0</name>
+            <url>https://www.eclipse.org/legal/epl-v10.html</url>
+        </license>
+    </licenses>
+
+    <distributionManagement>
+        <repository>
+            <id>lyo-releases</id>
+            <name>lyo-releases repository</name>
+            <url>https://repo.eclipse.org/content/repositories/lyo-releases/
+            </url>
+        </repository>
+        <snapshotRepository>
+            <id>lyo-snapshots</id>
+            <name>lyo-snapshots repository</name>
+            <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>lyo-releases</id>
+            <name>lyo-releases repository</name>
+            <url>https://repo.eclipse.org/content/repositories/lyo-releases/
+            </url>
+        </repository>
+        <repository>
+            <id>lyo-snapshots</id>
+            <name>lyo-snapshots repository</name>
+            <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/
+            </url>
+        </repository>
+    </repositories>
 </project>
