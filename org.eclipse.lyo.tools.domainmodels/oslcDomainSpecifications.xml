@@ -23,8 +23,11 @@
     <resourceProperties name="value" occurs="zeroOrOne" valueType="XMLLiteral"/>
   </domainSpecifications>
   <domainSpecifications name="RDFS" namespaceURI="http://www.w3.org/2000/01/rdf-schema#" namespacePrefix="//@domainPrefixes.3">
+    <resources name="Class" resourceProperties="//@domainSpecifications.3/@resourceProperties.3"/>
     <resourceProperties name="member" valueType="Resource" range="//@domainSpecifications.1/@resources.0" description="OSLC domains might define a number of member or contains relationships between resources. The rdfs:member property is suitable for use when only one such relationship needs to be defined, or when no additional semantics need to be implied by the property name "/>
     <resourceProperties name="contains" occurs="zeroOrMany" valueType="Resource"/>
+    <resourceProperties name="label" occurs="zeroOrOne" valueType="XMLLiteral" description="May be used to provide a human-readable version of a resource's name."/>
+    <resourceProperties name="subClassOf" valueType="Resource" range="//@domainSpecifications.3/@resources.0" description="used to state that all the instances of one class are instances of another"/>
   </domainSpecifications>
   <domainSpecifications name="OSLC" namespaceURI="http://open-services.net/ns/core#" namespacePrefix="//@domainPrefixes.4">
     <resources name="ServiceProvider"/>
