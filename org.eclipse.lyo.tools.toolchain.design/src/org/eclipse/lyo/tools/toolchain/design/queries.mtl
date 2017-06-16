@@ -1,0 +1,43 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2017 Jad El-khoury.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Jad El-khoury        - Migrating complex queries into mtl files.
+ *     
+ *******************************************************************************/
+/]
+
+[module queries('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0')/]
+
+[query public visibleResources(diagram : DDiagram) : Sequence(Resource) = 
+(diagram.containers->select(c : DDiagramElementContainer | 
+    (c.actualMapping.name = 'Specification.DomainSpecification.Resource')._and(c.visible))).target.oclAsType(Resource)
+/]
+
+[query public invisibleParentResources(aResource : Resource, diagram : DDiagram) : OrderedSet(Resource) = 
+aResource.extends->select(parent : Resource | not(visibleResources(diagram)->includes(parent)))
+/]
+
+[comment If at least one parent resource is not visible in the diagram, show textually the parent resources.
+Show at least the first invisible parent resource./]
+[query public labelInDomainSpecification(aResource : Resource, diagram : DDiagram) : String = 
+aResource.name + 
+    (if (aResource.invisibleParentResources(diagram)->size() = 0) 
+    then 
+        ''
+    else 
+        (lineSeparator() + 'extends: ' + aResource.invisibleParentResources(diagram)->first().name) 
+        + (if (aResource.invisibleParentResources(diagram)->size() > 1) then ' & ...' else '' endif) 
+    endif)
+/]
