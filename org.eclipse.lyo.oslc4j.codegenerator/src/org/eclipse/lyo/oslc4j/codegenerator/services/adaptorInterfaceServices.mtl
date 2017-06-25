@@ -112,6 +112,23 @@ javaClassBaseNamespace(anAdaptorInterface).concat('.resources')
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat('package-info').concat('.java')
 /]
 
+[comment Services for ClientOnlyMainApplication /]
+[query public javaClassPackageNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassBaseNamespace(anAdaptorInterface)
+/]
+
+[query public javaClassNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
+'OslcMainApplication'
+/]
+
+[query public javaClassFullNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForClientOnlyMainApplication(anAdaptorInterface).concat('.').concat(javaClassNameForClientOnlyMainApplication(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForClientOnlyMainApplication(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForClientOnlyMainApplication(anAdaptorInterface)).concat('.java')
+/]
+
 [comment Services for AdaptorApplication /]
 [query public javaClassPackageNameForAdaptorApplication(anAdaptorInterface : AdaptorInterface) : String = 
 javaClassBaseNamespace(anAdaptorInterface).concat('.servlet')
