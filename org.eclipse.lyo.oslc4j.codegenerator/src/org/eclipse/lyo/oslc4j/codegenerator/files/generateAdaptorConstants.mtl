@@ -89,6 +89,7 @@ public interface [javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /]
     [/for]
 
     public static final String HDR_OSLC_VERSION = "OSLC-Core-Version";
+    public static final String OSLC_VERSION_V2 = "2.0";
 
 }
 

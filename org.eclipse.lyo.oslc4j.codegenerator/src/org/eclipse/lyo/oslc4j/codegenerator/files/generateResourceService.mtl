@@ -294,7 +294,7 @@ public class [javaClassName(aService) /]
         try {
             [creationMethodResourceType(aCreationFactory)/] newResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[creationMethodName(aCreationFactory)/](httpServletRequest, aResource[commaSeparate(creationMethodParameterList(aCreationFactory), true, false)/]);
             httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aCreationFactory.resourceTypes)/](newResource));
-            return Response.created(newResource.getAbout()).entity(aResource).build();
+            return Response.created(newResource.getAbout()).entity(newResource).header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
         } catch (Exception e) {
             e.printStackTrace();
             throw new WebApplicationException(e);
@@ -434,6 +434,7 @@ public class [javaClassName(aService) /]
         if (a[javaName(aResource, true)/] != null) {
             // [protected (getResourceMethodName(aBasicCapability, aResource, true))]
             // [/protected]
+            httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
             return a[javaName(aResource, true)/];
         }
 
@@ -483,7 +484,7 @@ public class [javaClassName(aService) /]
             // [/protected]
             boolean deleted = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[deleteResourceMethodName(aBasicCapability, aResource)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aBasicCapability), true, false)/]);
             if (deleted)
-                return Response.ok().build();
+                return Response.ok().header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
             else
                 throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
         }
@@ -516,7 +517,7 @@ public class [javaClassName(aService) /]
                     // [/protected]
                     final [updateResourceMethodResourceType(aBasicCapability, aResource)/] updatedResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[updateResourceMethodName(aBasicCapability, aResource)/](httpServletRequest, aResource[commaSeparate(instanceMethodParameterList(aResource, aBasicCapability), true, false)/]);
                     httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](updatedResource));
-                    return Response.ok().build();
+                    return Response.ok().header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
                 }
                 else {
                     throw new WebApplicationException(Status.PRECONDITION_FAILED);
