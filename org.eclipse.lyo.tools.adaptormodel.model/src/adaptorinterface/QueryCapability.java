@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.QueryCapability#getLabel <em>Label</em>}</li>
  *   <li>{@link adaptorinterface.QueryCapability#getQueryBaseURI <em>Query Base URI</em>}</li>
  *   <li>{@link adaptorinterface.QueryCapability#getResourceTypes <em>Resource Types</em>}</li>
+ *   <li>{@link adaptorinterface.QueryCapability#getUsages <em>Usages</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getQueryCapability()
@@ -119,5 +120,21 @@ public interface QueryCapability extends EObject {
 	 * @generated
 	 */
 	EList<Resource> getResourceTypes();
+
+	/**
+	 * Returns the value of the '<em><b>Usages</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Usages</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Usages</em>' attribute list.
+	 * @see adaptorinterface.AdaptorinterfacePackage#getQueryCapability_Usages()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getUsages();
 
 } // QueryCapability

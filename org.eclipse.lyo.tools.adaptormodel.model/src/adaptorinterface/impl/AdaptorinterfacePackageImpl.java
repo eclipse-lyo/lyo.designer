@@ -703,6 +703,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getService_Usages() {
+		return (EAttribute)serviceEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getResource() {
 		return resourceEClass;
 	}
@@ -883,6 +892,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCreationFactory_Usages() {
+		return (EAttribute)creationFactoryEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getQueryCapability() {
 		return queryCapabilityEClass;
 	}
@@ -921,6 +939,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	public EReference getQueryCapability_ResourceTypes() {
 		return (EReference)queryCapabilityEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getQueryCapability_Usages() {
+		return (EAttribute)queryCapabilityEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1038,6 +1065,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	public EReference getDialog_ResourceTypes() {
 		return (EReference)dialogEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDialog_Usages() {
+		return (EAttribute)dialogEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1276,6 +1312,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEReference(serviceEClass, SERVICE__SELECTION_DIALOGS);
 		createEReference(serviceEClass, SERVICE__CREATION_DIALOGS);
 		createEReference(serviceEClass, SERVICE__BASIC_CAPABILITIES);
+		createEAttribute(serviceEClass, SERVICE__USAGES);
 
 		resourceEClass = createEClass(RESOURCE);
 		createEAttribute(resourceEClass, RESOURCE__NAME);
@@ -1299,12 +1336,14 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(creationFactoryEClass, CREATION_FACTORY__LABEL);
 		createEAttribute(creationFactoryEClass, CREATION_FACTORY__CREATION_URI);
 		createEReference(creationFactoryEClass, CREATION_FACTORY__RESOURCE_TYPES);
+		createEAttribute(creationFactoryEClass, CREATION_FACTORY__USAGES);
 
 		queryCapabilityEClass = createEClass(QUERY_CAPABILITY);
 		createEAttribute(queryCapabilityEClass, QUERY_CAPABILITY__TITLE);
 		createEAttribute(queryCapabilityEClass, QUERY_CAPABILITY__LABEL);
 		createEAttribute(queryCapabilityEClass, QUERY_CAPABILITY__QUERY_BASE_URI);
 		createEReference(queryCapabilityEClass, QUERY_CAPABILITY__RESOURCE_TYPES);
+		createEAttribute(queryCapabilityEClass, QUERY_CAPABILITY__USAGES);
 
 		basicCapabilityEClass = createEClass(BASIC_CAPABILITY);
 		createEAttribute(basicCapabilityEClass, BASIC_CAPABILITY__INSTANCE_ID);
@@ -1320,6 +1359,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(dialogEClass, DIALOG__HINT_WIDTH);
 		createEAttribute(dialogEClass, DIALOG__HINT_HEIGHT);
 		createEReference(dialogEClass, DIALOG__RESOURCE_TYPES);
+		createEAttribute(dialogEClass, DIALOG__USAGES);
 
 		publisherEClass = createEClass(PUBLISHER);
 		createEAttribute(publisherEClass, PUBLISHER__TITLE);
@@ -1432,6 +1472,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEReference(getService_SelectionDialogs(), this.getDialog(), null, "selectionDialogs", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getService_CreationDialogs(), this.getDialog(), null, "creationDialogs", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getService_BasicCapabilities(), this.getBasicCapability(), null, "basicCapabilities", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getService_Usages(), ecorePackage.getEString(), "usages", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceEClass, Resource.class, "Resource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getResource_Name(), ecorePackage.getEString(), "name", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1455,12 +1496,14 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getCreationFactory_Label(), ecorePackage.getEString(), "label", null, 0, 1, CreationFactory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCreationFactory_CreationURI(), ecorePackage.getEString(), "creationURI", null, 1, 1, CreationFactory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCreationFactory_ResourceTypes(), this.getResource(), null, "resourceTypes", null, 0, -1, CreationFactory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCreationFactory_Usages(), ecorePackage.getEString(), "usages", null, 0, -1, CreationFactory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(queryCapabilityEClass, QueryCapability.class, "QueryCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getQueryCapability_Title(), ecorePackage.getEString(), "title", null, 1, 1, QueryCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQueryCapability_Label(), ecorePackage.getEString(), "label", null, 0, 1, QueryCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQueryCapability_QueryBaseURI(), ecorePackage.getEString(), "queryBaseURI", null, 1, 1, QueryCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getQueryCapability_ResourceTypes(), this.getResource(), null, "resourceTypes", null, 0, -1, QueryCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQueryCapability_Usages(), ecorePackage.getEString(), "usages", null, 0, -1, QueryCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(basicCapabilityEClass, BasicCapability.class, "BasicCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBasicCapability_InstanceID(), ecorePackage.getEString(), "instanceID", null, 0, 1, BasicCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1476,6 +1519,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getDialog_HintWidth(), ecorePackage.getEShort(), "hintWidth", null, 0, 1, Dialog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDialog_HintHeight(), ecorePackage.getEShort(), "hintHeight", null, 0, 1, Dialog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDialog_ResourceTypes(), this.getResource(), null, "resourceTypes", null, 0, -1, Dialog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDialog_Usages(), ecorePackage.getEString(), "usages", null, 0, -1, Dialog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(publisherEClass, Publisher.class, "Publisher", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPublisher_Title(), ecorePackage.getEString(), "title", null, 1, 1, Publisher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

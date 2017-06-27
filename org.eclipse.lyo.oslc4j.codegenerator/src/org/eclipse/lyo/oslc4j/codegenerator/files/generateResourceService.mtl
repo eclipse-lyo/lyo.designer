@@ -144,7 +144,7 @@ public class [javaClassName(aService) /]
         label = "[aQueryCapability.label /]",
         resourceShape = OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourcePathConstantName(aQueryCapability.resourceTypes->first()) /],
         resourceTypes = {[for (aResource: Resource | aQueryCapability.resourceTypes) separator(', ') ][javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourceTypeConstantName(aResource) /][/for]},
-        usages = {OslcConstants.OSLC_USAGE_DEFAULT}
+        usages = {[for (usage: String | aQueryCapability.usages) separator(', ') ]"[usage/]"[/for]}
     )
     @GET
     [JAXRSPathAnnotation(aQueryCapability.URISegment())/]
@@ -224,7 +224,7 @@ public class [javaClassName(aService) /]
          hintWidth = "[aSelectionDialog.hintWidth /]px",
          hintHeight = "[aSelectionDialog.hintHeight /]px",
          resourceTypes = {[for (aResource: Resource | aSelectionDialog.resourceTypes) separator(', ') ][javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourceTypeConstantName(aResource) /][/for]},
-         usages = {OslcConstants.OSLC_USAGE_DEFAULT}
+         usages = {[for (usage: String | aSelectionDialog.usages) separator(', ') ]"[usage/]"[/for]}
     )
     @GET
     [JAXRSPathAnnotation(aSelectionDialog.URISegment(true)) /]
@@ -280,7 +280,7 @@ public class [javaClassName(aService) /]
          label = "[aCreationFactory.label /]",
          resourceShapes = {[for (aResource: Resource | aCreationFactory.resourceTypes) separator(', ') ]OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].[resourcePathConstantName(aResource)/][/for]},
          resourceTypes = {[for (aResource: Resource | aCreationFactory.resourceTypes) separator(', ') ][javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourceTypeConstantName(aResource) /][/for]},
-         usages = {OslcConstants.OSLC_USAGE_DEFAULT}
+         usages = {[for (usage: String | aCreationFactory.usages) separator(', ') ]"[usage/]"[/for]}
     )
     @POST
     [JAXRSPathAnnotation(aCreationFactory.URISegment()) /]
@@ -341,7 +341,7 @@ public class [javaClassName(aService) /]
          hintWidth = "[aCreationDialog.hintWidth /]px",
          hintHeight = "[aCreationDialog.hintHeight /]px",
          resourceTypes = {[for (aResource: Resource | aCreationDialog.resourceTypes) separator(', ') ][javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourceTypeConstantName(aResource) /][/for]},
-         usages = {OslcConstants.OSLC_USAGE_DEFAULT}
+         usages = {[for (usage: String | aCreationDialog.usages) separator(', ') ]"[usage/]"[/for]}
     )
     @POST
     [JAXRSPathAnnotation(aCreationDialog.URISegment(false)) /]

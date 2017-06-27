@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.Dialog#getHintWidth <em>Hint Width</em>}</li>
  *   <li>{@link adaptorinterface.Dialog#getHintHeight <em>Hint Height</em>}</li>
  *   <li>{@link adaptorinterface.Dialog#getResourceTypes <em>Resource Types</em>}</li>
+ *   <li>{@link adaptorinterface.Dialog#getUsages <em>Usages</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getDialog()
@@ -173,5 +174,21 @@ public interface Dialog extends EObject {
 	 * @generated
 	 */
 	EList<Resource> getResourceTypes();
+
+	/**
+	 * Returns the value of the '<em><b>Usages</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Usages</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Usages</em>' attribute list.
+	 * @see adaptorinterface.AdaptorinterfacePackage#getDialog_Usages()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getUsages();
 
 } // Dialog

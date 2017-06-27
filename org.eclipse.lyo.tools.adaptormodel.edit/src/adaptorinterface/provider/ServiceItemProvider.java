@@ -66,6 +66,7 @@ public class ServiceItemProvider
 
 			addDomainSpecificationPropertyDescriptor(object);
 			addServiceNamespacePropertyDescriptor(object);
+			addUsagesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -106,6 +107,28 @@ public class ServiceItemProvider
 				 getString("_UI_Service_serviceNamespace_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Service_serviceNamespace_feature", "_UI_Service_type"),
 				 AdaptorinterfacePackage.Literals.SERVICE__SERVICE_NAMESPACE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Usages feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUsagesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Service_usages_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Service_usages_feature", "_UI_Service_type"),
+				 AdaptorinterfacePackage.Literals.SERVICE__USAGES,
 				 true,
 				 false,
 				 false,
@@ -188,6 +211,7 @@ public class ServiceItemProvider
 
 		switch (notification.getFeatureID(Service.class)) {
 			case AdaptorinterfacePackage.SERVICE__SERVICE_NAMESPACE:
+			case AdaptorinterfacePackage.SERVICE__USAGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AdaptorinterfacePackage.SERVICE__CREATION_FACTORIES:

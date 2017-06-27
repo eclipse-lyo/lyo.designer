@@ -118,6 +118,10 @@ endif)
 )
 /]
 
+[query public javaSimpleStringFromUri(uriString: String, toUpperFirst : Boolean) : String = 
+javaString(uriString.tokenize('/\\#')->last(), toUpperFirst)
+/]
+
 [query public javaConstantString (aString : String) : String = 
 concatenate(
 	aString.replaceAll('\\W+', '_').tokenize('_')->sep('_').oclAsType(String)

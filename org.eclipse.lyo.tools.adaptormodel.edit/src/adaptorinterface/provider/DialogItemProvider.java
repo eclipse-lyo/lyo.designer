@@ -66,6 +66,7 @@ public class DialogItemProvider
 			addHintWidthPropertyDescriptor(object);
 			addHintHeightPropertyDescriptor(object);
 			addResourceTypesPropertyDescriptor(object);
+			addUsagesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -203,6 +204,28 @@ public class DialogItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Usages feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUsagesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Dialog_usages_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_usages_feature", "_UI_Dialog_type"),
+				 AdaptorinterfacePackage.Literals.DIALOG__USAGES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Dialog.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -245,6 +268,7 @@ public class DialogItemProvider
 			case AdaptorinterfacePackage.DIALOG__DIALOG_URI:
 			case AdaptorinterfacePackage.DIALOG__HINT_WIDTH:
 			case AdaptorinterfacePackage.DIALOG__HINT_HEIGHT:
+			case AdaptorinterfacePackage.DIALOG__USAGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.CreationFactory#getLabel <em>Label</em>}</li>
  *   <li>{@link adaptorinterface.CreationFactory#getCreationURI <em>Creation URI</em>}</li>
  *   <li>{@link adaptorinterface.CreationFactory#getResourceTypes <em>Resource Types</em>}</li>
+ *   <li>{@link adaptorinterface.CreationFactory#getUsages <em>Usages</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getCreationFactory()
@@ -119,5 +120,21 @@ public interface CreationFactory extends EObject {
 	 * @generated
 	 */
 	EList<Resource> getResourceTypes();
+
+	/**
+	 * Returns the value of the '<em><b>Usages</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Usages</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Usages</em>' attribute list.
+	 * @see adaptorinterface.AdaptorinterfacePackage#getCreationFactory_Usages()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getUsages();
 
 } // CreationFactory

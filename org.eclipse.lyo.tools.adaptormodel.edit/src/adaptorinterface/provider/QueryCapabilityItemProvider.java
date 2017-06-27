@@ -64,6 +64,7 @@ public class QueryCapabilityItemProvider
 			addLabelPropertyDescriptor(object);
 			addQueryBaseURIPropertyDescriptor(object);
 			addResourceTypesPropertyDescriptor(object);
+			addUsagesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -157,6 +158,28 @@ public class QueryCapabilityItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Usages feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUsagesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_QueryCapability_usages_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_QueryCapability_usages_feature", "_UI_QueryCapability_type"),
+				 AdaptorinterfacePackage.Literals.QUERY_CAPABILITY__USAGES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns QueryCapability.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -197,6 +220,7 @@ public class QueryCapabilityItemProvider
 			case AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE:
 			case AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL:
 			case AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI:
+			case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

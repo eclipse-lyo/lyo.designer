@@ -64,6 +64,7 @@ public class CreationFactoryItemProvider
 			addLabelPropertyDescriptor(object);
 			addCreationURIPropertyDescriptor(object);
 			addResourceTypesPropertyDescriptor(object);
+			addUsagesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -157,6 +158,28 @@ public class CreationFactoryItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Usages feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUsagesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CreationFactory_usages_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CreationFactory_usages_feature", "_UI_CreationFactory_type"),
+				 AdaptorinterfacePackage.Literals.CREATION_FACTORY__USAGES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns CreationFactory.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -197,6 +220,7 @@ public class CreationFactoryItemProvider
 			case AdaptorinterfacePackage.CREATION_FACTORY__TITLE:
 			case AdaptorinterfacePackage.CREATION_FACTORY__LABEL:
 			case AdaptorinterfacePackage.CREATION_FACTORY__CREATION_URI:
+			case AdaptorinterfacePackage.CREATION_FACTORY__USAGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

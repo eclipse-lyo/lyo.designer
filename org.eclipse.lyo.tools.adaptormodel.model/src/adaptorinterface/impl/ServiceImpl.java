@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -42,6 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getSelectionDialogs <em>Selection Dialogs</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getCreationDialogs <em>Creation Dialogs</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getBasicCapabilities <em>Basic Capabilities</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ServiceImpl#getUsages <em>Usages</em>}</li>
  * </ul>
  *
  * @generated
@@ -126,6 +128,16 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * @ordered
 	 */
 	protected EList<BasicCapability> basicCapabilities;
+
+	/**
+	 * The cached value of the '{@link #getUsages() <em>Usages</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUsages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> usages;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -270,6 +282,18 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getUsages() {
+		if (usages == null) {
+			usages = new EDataTypeUniqueEList<String>(String.class, this, AdaptorinterfacePackage.SERVICE__USAGES);
+		}
+		return usages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -310,6 +334,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 				return getCreationDialogs();
 			case AdaptorinterfacePackage.SERVICE__BASIC_CAPABILITIES:
 				return getBasicCapabilities();
+			case AdaptorinterfacePackage.SERVICE__USAGES:
+				return getUsages();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -349,6 +375,10 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 				getBasicCapabilities().clear();
 				getBasicCapabilities().addAll((Collection<? extends BasicCapability>)newValue);
 				return;
+			case AdaptorinterfacePackage.SERVICE__USAGES:
+				getUsages().clear();
+				getUsages().addAll((Collection<? extends String>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -382,6 +412,9 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 			case AdaptorinterfacePackage.SERVICE__BASIC_CAPABILITIES:
 				getBasicCapabilities().clear();
 				return;
+			case AdaptorinterfacePackage.SERVICE__USAGES:
+				getUsages().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -408,6 +441,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 				return creationDialogs != null && !creationDialogs.isEmpty();
 			case AdaptorinterfacePackage.SERVICE__BASIC_CAPABILITIES:
 				return basicCapabilities != null && !basicCapabilities.isEmpty();
+			case AdaptorinterfacePackage.SERVICE__USAGES:
+				return usages != null && !usages.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -424,6 +459,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (serviceNamespace: ");
 		result.append(serviceNamespace);
+		result.append(", usages: ");
+		result.append(usages);
 		result.append(')');
 		return result.toString();
 	}

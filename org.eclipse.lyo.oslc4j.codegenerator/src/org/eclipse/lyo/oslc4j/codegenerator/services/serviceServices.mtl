@@ -53,8 +53,14 @@ javaClassBaseNamespace(containingAdaptorInterface(aService)).concat('.services')
 /]
 
 [query public javaClassName(aService: Service) : String = 
-(concatenate(servicedResources(aService)->sortedBy(name).javaName(true)->sep('', 'And', '').oclAsType(String))).toUpperFirst()
-.concat('Service')
+(if (aService.usages->size() = 0) then
+    javaName(containingServiceProvider(aService), true)
+    .concat('Service')
+    .concat(containingServiceProvider(aService).services->indexOf(aService).toString())
+else
+    javaSimpleStringFromUri(aService.usages->first(), true)
+    .concat('Service')
+endif)
 /]
 
 [query public javaClassFullName(aService: Service) : String = 

@@ -614,13 +614,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SERVICE__BASIC_CAPABILITIES = 6;
 
 	/**
+	 * The feature id for the '<em><b>Usages</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__USAGES = 7;
+
+	/**
 	 * The number of structural features of the '<em>Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_FEATURE_COUNT = 7;
+	int SERVICE_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Service</em>' class.
@@ -851,13 +860,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int CREATION_FACTORY__RESOURCE_TYPES = 3;
 
 	/**
+	 * The feature id for the '<em><b>Usages</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATION_FACTORY__USAGES = 4;
+
+	/**
 	 * The number of structural features of the '<em>Creation Factory</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CREATION_FACTORY_FEATURE_COUNT = 4;
+	int CREATION_FACTORY_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Creation Factory</em>' class.
@@ -915,13 +933,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int QUERY_CAPABILITY__RESOURCE_TYPES = 3;
 
 	/**
+	 * The feature id for the '<em><b>Usages</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_CAPABILITY__USAGES = 4;
+
+	/**
 	 * The number of structural features of the '<em>Query Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_CAPABILITY_FEATURE_COUNT = 4;
+	int QUERY_CAPABILITY_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Query Capability</em>' class.
@@ -1070,13 +1097,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int DIALOG__RESOURCE_TYPES = 5;
 
 	/**
+	 * The feature id for the '<em><b>Usages</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIALOG__USAGES = 6;
+
+	/**
 	 * The number of structural features of the '<em>Dialog</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIALOG_FEATURE_COUNT = 6;
+	int DIALOG_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Dialog</em>' class.
@@ -1873,6 +1909,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getService_BasicCapabilities();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link adaptorinterface.Service#getUsages <em>Usages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Usages</em>'.
+	 * @see adaptorinterface.Service#getUsages()
+	 * @see #getService()
+	 * @generated
+	 */
+	EAttribute getService_Usages();
+
+	/**
 	 * Returns the meta object for class '{@link adaptorinterface.Resource <em>Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2090,6 +2137,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getCreationFactory_ResourceTypes();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link adaptorinterface.CreationFactory#getUsages <em>Usages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Usages</em>'.
+	 * @see adaptorinterface.CreationFactory#getUsages()
+	 * @see #getCreationFactory()
+	 * @generated
+	 */
+	EAttribute getCreationFactory_Usages();
+
+	/**
 	 * Returns the meta object for class '{@link adaptorinterface.QueryCapability <em>Query Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2142,6 +2200,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getQueryCapability_ResourceTypes();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link adaptorinterface.QueryCapability#getUsages <em>Usages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Usages</em>'.
+	 * @see adaptorinterface.QueryCapability#getUsages()
+	 * @see #getQueryCapability()
+	 * @generated
+	 */
+	EAttribute getQueryCapability_Usages();
 
 	/**
 	 * Returns the meta object for class '{@link adaptorinterface.BasicCapability <em>Basic Capability</em>}'.
@@ -2283,6 +2352,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDialog_ResourceTypes();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link adaptorinterface.Dialog#getUsages <em>Usages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Usages</em>'.
+	 * @see adaptorinterface.Dialog#getUsages()
+	 * @see #getDialog()
+	 * @generated
+	 */
+	EAttribute getDialog_Usages();
 
 	/**
 	 * Returns the meta object for class '{@link adaptorinterface.Publisher <em>Publisher</em>}'.
@@ -2892,6 +2972,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference SERVICE__BASIC_CAPABILITIES = eINSTANCE.getService_BasicCapabilities();
 
 		/**
+		 * The meta object literal for the '<em><b>Usages</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE__USAGES = eINSTANCE.getService_Usages();
+
+		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.ResourceImpl <em>Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3058,6 +3146,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference CREATION_FACTORY__RESOURCE_TYPES = eINSTANCE.getCreationFactory_ResourceTypes();
 
 		/**
+		 * The meta object literal for the '<em><b>Usages</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CREATION_FACTORY__USAGES = eINSTANCE.getCreationFactory_Usages();
+
+		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.QueryCapabilityImpl <em>Query Capability</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3098,6 +3194,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference QUERY_CAPABILITY__RESOURCE_TYPES = eINSTANCE.getQueryCapability_ResourceTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Usages</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUERY_CAPABILITY__USAGES = eINSTANCE.getQueryCapability_Usages();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.BasicCapabilityImpl <em>Basic Capability</em>}' class.
@@ -3206,6 +3310,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference DIALOG__RESOURCE_TYPES = eINSTANCE.getDialog_ResourceTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Usages</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIALOG__USAGES = eINSTANCE.getDialog_Usages();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.PublisherImpl <em>Publisher</em>}' class.

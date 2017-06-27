@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link adaptorinterface.impl.QueryCapabilityImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link adaptorinterface.impl.QueryCapabilityImpl#getQueryBaseURI <em>Query Base URI</em>}</li>
  *   <li>{@link adaptorinterface.impl.QueryCapabilityImpl#getResourceTypes <em>Resource Types</em>}</li>
+ *   <li>{@link adaptorinterface.impl.QueryCapabilityImpl#getUsages <em>Usages</em>}</li>
  * </ul>
  *
  * @generated
@@ -105,6 +107,16 @@ public class QueryCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected EList<Resource> resourceTypes;
+
+	/**
+	 * The cached value of the '{@link #getUsages() <em>Usages</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUsages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> usages;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,6 +217,18 @@ public class QueryCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getUsages() {
+		if (usages == null) {
+			usages = new EDataTypeUniqueEList<String>(String.class, this, AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES);
+		}
+		return usages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -216,6 +240,8 @@ public class QueryCapabilityImpl extends MinimalEObjectImpl.Container implements
 				return getQueryBaseURI();
 			case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
 				return getResourceTypes();
+			case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
+				return getUsages();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -242,6 +268,10 @@ public class QueryCapabilityImpl extends MinimalEObjectImpl.Container implements
 				getResourceTypes().clear();
 				getResourceTypes().addAll((Collection<? extends Resource>)newValue);
 				return;
+			case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
+				getUsages().clear();
+				getUsages().addAll((Collection<? extends String>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -266,6 +296,9 @@ public class QueryCapabilityImpl extends MinimalEObjectImpl.Container implements
 			case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
 				getResourceTypes().clear();
 				return;
+			case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
+				getUsages().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -286,6 +319,8 @@ public class QueryCapabilityImpl extends MinimalEObjectImpl.Container implements
 				return QUERY_BASE_URI_EDEFAULT == null ? queryBaseURI != null : !QUERY_BASE_URI_EDEFAULT.equals(queryBaseURI);
 			case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
 				return resourceTypes != null && !resourceTypes.isEmpty();
+			case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
+				return usages != null && !usages.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -306,6 +341,8 @@ public class QueryCapabilityImpl extends MinimalEObjectImpl.Container implements
 		result.append(label);
 		result.append(", queryBaseURI: ");
 		result.append(queryBaseURI);
+		result.append(", usages: ");
+		result.append(usages);
 		result.append(')');
 		return result.toString();
 	}

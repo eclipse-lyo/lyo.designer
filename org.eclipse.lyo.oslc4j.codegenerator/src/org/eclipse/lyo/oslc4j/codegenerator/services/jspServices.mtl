@@ -25,8 +25,16 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 
+[query private resourceCollectionJspSimpleFileName(aQueryCapability: QueryCapability) : String = 
+(if (aQueryCapability.usages->size() = 0) then
+    concatenate(aQueryCapability.resourceTypes.javaName(true)->sep('', 'sAnd', 's').oclAsType(String)).toLower()
+else
+    javaSimpleStringFromUri(aQueryCapability.usages->first(), true)
+endif)
+.concat('collection').concat('.jsp')
+/]
 [query public resourceCollectionJspRelativeFileName(aQueryCapability: QueryCapability) : String = 
-jspFilesWebappPath(containingAdaptorInterface(aQueryCapability)).concatenatePaths(concatenate(aQueryCapability.resourceTypes.javaName(true)->sep('', 'sAnd', 's').oclAsType(String))).concat('collection').concat('.jsp').toLower()
+jspFilesWebappPath(containingAdaptorInterface(aQueryCapability)).concatenatePaths(resourceCollectionJspSimpleFileName(aQueryCapability)).toLower()
 /]
 [query public resourceCollectionJspFullFileName(aQueryCapability: QueryCapability) : String = 
 jspFilesBasePath(containingAdaptorInterface(aQueryCapability)).concatenatePaths(resourceCollectionJspRelativeFileName(aQueryCapability))
@@ -39,15 +47,31 @@ jspFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)
 jspFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceJspRelativeFileName(aResource, anAdaptorInterface))
 /]
 
+[query private resourceCreatorJspSimpleFileName(aCreationDialog: Dialog) : String =
+(if (aCreationDialog.usages->size() = 0) then
+    concatenate(aCreationDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String)).toLower()
+else
+    javaSimpleStringFromUri(aCreationDialog.usages->first(), true)
+endif)
+.concat('creator').concat('.jsp')
+/]
 [query public resourceCreatorJspRelativeFileName(aCreationDialog: Dialog) : String = 
-jspFilesWebappPath(containingAdaptorInterface(aCreationDialog)).concatenatePaths(concatenate(aCreationDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String))).concat('creator').concat('.jsp').toLower()
+jspFilesWebappPath(containingAdaptorInterface(aCreationDialog)).concatenatePaths(resourceCreatorJspSimpleFileName(aCreationDialog)).toLower()
 /]
 [query public resourceCreatorJspFullFileName(aCreationDialog: Dialog) : String = 
 jspFilesBasePath(containingAdaptorInterface(aCreationDialog)).concatenatePaths(resourceCreatorJspRelativeFileName(aCreationDialog))
 /]
 
+[query private resourceSelectorJspSimpleFileName(aSelectionDialog: Dialog) : String = 
+(if (aSelectionDialog.usages->size() = 0) then
+    concatenate(aSelectionDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String)).toLower()
+else
+    javaSimpleStringFromUri(aSelectionDialog.usages->first(), true)
+endif)
+.concat('selector').concat('.jsp')
+/]
 [query public resourceSelectorJspRelativeFileName(aSelectionDialog: Dialog) : String = 
-jspFilesWebappPath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(concatenate(aSelectionDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String))).concat('selector').concat('.jsp').toLower()
+jspFilesWebappPath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorJspSimpleFileName(aSelectionDialog)).toLower()
 /]
 [query public resourceSelectorJspFullFileName(aSelectionDialog: Dialog) : String = 
 jspFilesBasePath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorJspRelativeFileName(aSelectionDialog))
@@ -75,8 +99,16 @@ jspFilesWebappPath(anAdaptorInterface).concatenatePaths('resourceShape').concat(
 jspFilesBasePath(anAdaptorInterface).concatenatePaths(resourceShapeJspRelativeFileName(anAdaptorInterface))
 /]
 
+[query private resourceSelectorResultsJspSimpleFileName(aSelectionDialog: Dialog) : String = 
+(if (aSelectionDialog.usages->size() = 0) then
+    concatenate(aSelectionDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String)).toLower()
+else
+    javaSimpleStringFromUri(aSelectionDialog.usages->first(), true)
+endif)
+.concat('selectorResults').concat('.jsp')
+/]
 [query public resourceSelectorResultsJspRelativeFileName(aSelectionDialog: Dialog) : String = 
-jspFilesWebappPath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(concatenate(aSelectionDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String))).concat('selectorResults').concat('.jsp').toLower()
+jspFilesWebappPath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorResultsJspSimpleFileName(aSelectionDialog)).toLower()
 /]
 [query public resourceSelectorResultsJspFullFileName(aSelectionDialog: Dialog) : String = 
 jspFilesBasePath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorResultsJspRelativeFileName(aSelectionDialog))
