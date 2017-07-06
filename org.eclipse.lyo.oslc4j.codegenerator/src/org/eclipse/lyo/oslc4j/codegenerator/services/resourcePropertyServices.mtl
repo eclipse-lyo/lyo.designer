@@ -25,13 +25,8 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 
-
-[query public javaName(aProperty: ResourceProperty) : String = 
-javaString(aProperty.name)
-/]
-
 [query public javaName(aProperty: ResourceProperty, toUpperFirst : Boolean) : String = 
-javaString(aProperty.name, toUpperFirst)
+javaString(aProperty.name, aProperty.definingDomainSpecification().namespacePrefix.name, toUpperFirst)
 /]
 
 [comment TODO: "URI" should actually not be a valueType since it is not OSLC-standard. However, this is one way to allow user to specify a URI as a type.

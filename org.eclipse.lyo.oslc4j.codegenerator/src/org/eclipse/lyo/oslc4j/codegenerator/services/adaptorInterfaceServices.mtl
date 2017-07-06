@@ -34,7 +34,7 @@ obj.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
 /]
 
 [query public javaName(anAdaptorInterface : AdaptorInterface, toUpperFirst : Boolean) : String = 
-javaString(anAdaptorInterface.name, toUpperFirst)
+javaString(anAdaptorInterface.name, 'oslc', toUpperFirst)
 /]
 
 [query public serviceProviders(anAdaptorInterface : AdaptorInterface) : Sequence(ServiceProvider) = 

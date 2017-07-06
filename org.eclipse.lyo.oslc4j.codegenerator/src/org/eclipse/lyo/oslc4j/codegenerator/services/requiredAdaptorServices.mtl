@@ -30,7 +30,7 @@ javaClassBaseNamespace(anAdaptorInterface).concat('.clients')
 
 [query public javaClassNameForClient(aRequiredAdaptor : RequiredAdaptor) : String = 
 if (aRequiredAdaptor.oclIsTypeOf(GenericRequiredAdaptor)) then
-	javaString(aRequiredAdaptor.oclAsType(GenericRequiredAdaptor).name, true).concat('Client')
+	javaString(aRequiredAdaptor.oclAsType(GenericRequiredAdaptor).name, 'oslc', true).concat('Client')
 else
 	javaName(aRequiredAdaptor.oclAsType(ModelledRequiredAdaptor).adaptorInterface, true).concat('Client')
 endif

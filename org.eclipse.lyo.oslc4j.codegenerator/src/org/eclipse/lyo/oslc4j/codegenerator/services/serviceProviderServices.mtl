@@ -44,7 +44,7 @@ let name : String =
 	    'ServiceProvider'
 	else
 		(if (not aServiceProvider.serviceNamespace.oclIsUndefined())._and(not aServiceProvider.serviceNamespace.equalsIgnoreCase('')) then
-		    javaString(aServiceProvider.serviceNamespace, true).concat('ServiceProvider')
+		    javaString(aServiceProvider.serviceNamespace, 'oslc', true).concat('ServiceProvider')
 		else
 			'ServiceProvider'
 			.concat(containingAdaptorInterface(aServiceProvider).serviceProviderCatalog.serviceProviders->indexOf(aServiceProvider).toString())

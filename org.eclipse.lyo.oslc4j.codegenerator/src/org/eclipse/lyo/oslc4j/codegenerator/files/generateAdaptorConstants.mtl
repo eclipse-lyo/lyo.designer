@@ -38,9 +38,9 @@ public static String [domainSpecificationNamespacePrefixConstantName(aDomainSpec
 
 
 [template public generateResourceConstants(aResource : Resource)]
-public static String [resourceConstantName(aResource)/] = "[aResource.javaName()/]";
+public static String [resourceConstantName(aResource)/] = "[aResource.javaName(true)/]";
 public static String [resourcePathConstantName(aResource)/] = "[aResource.javaName(false)/]";
-public static String [resourceTypeConstantName(aResource)/] = [domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification())/] + "[aResource.javaName()/]";
+public static String [resourceTypeConstantName(aResource)/] = [domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification())/] + "[aResource.javaName(false)/]";
 [/template]
 
 [template public generateAdaptorConstants(anAdaptorInterface : AdaptorInterface)]
