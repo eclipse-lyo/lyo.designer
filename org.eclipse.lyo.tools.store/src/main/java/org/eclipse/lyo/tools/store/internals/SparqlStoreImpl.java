@@ -244,7 +244,14 @@ public class SparqlStoreImpl implements Store {
             final URI resourceUri, final Class<T> clazz)
             throws NoSuchElementException, StoreAccessException, ModelUnmarshallingException {
         final Model model = getJenaModelForSubject(namedGraphUri, resourceUri);
-        return getResourcesFromModel(model, clazz).get(0);
+        final List<T> modelResources = getResourcesFromModel(model, clazz);
+        if (modelResources == null || modelResources.isEmpty()) {
+            throw new NoSuchElementException(
+                    "Empty Jena model for the subject " + resourceUri + ". Use resourceExists(g," +
+                            "r) method to check for resource existence before calling this method" +
+                            ".");
+        }
+        return modelResources.get(0);
     }
 
     @Override
