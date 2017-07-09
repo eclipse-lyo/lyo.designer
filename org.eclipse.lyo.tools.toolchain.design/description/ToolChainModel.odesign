@@ -275,6 +275,18 @@
             <containerView name="containerView"/>
             <initialOperation/>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Specification.DomainSpecificationMenu" label="OSLC" precondition="[self.oclIsTypeOf(DomainSpecification)/]">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.DomainSpecificationMenu.SetPrefix" label="Set Domain Prefix" precondition="[self.oclIsTypeOf(DomainSpecification)/]">
+              <view name="views">
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="domainSpecification" computationExpression="[views->any(true).oclAsType(DNodeContainer).target/]"/>
+              </view>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[domainSpecification.namespacePrefix/]">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[let userInput : String = self.promptForString('Enter the domain namespace prefix', 'Enter the domain namespace prefix', self.name) in (if (userInput = null) then name else userInput endif) /]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -709,5 +721,6 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::queries"/>
+    <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::DialogInputServices"/>
   </ownedViewpoints>
 </description:Group>

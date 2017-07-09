@@ -1,0 +1,11 @@
+[comment encoding = Cp1252 /]
+[module DialogInputServices('http://www.eclipse.org/emf/2002/Ecore')/]
+
+[query public DialogInputServices(anOclAny: OclAny) : OclVoid
+	= invoke('org.eclipse.lyo.tools.toolchain.design.DialogInputServices', 'DialogInputServices()', Sequence{})
+/]
+
+[query public promptForString(arg0 : EObject, arg1 : String, arg2 : String, arg3 : String) : String
+	= invoke('org.eclipse.lyo.tools.toolchain.design.DialogInputServices', 'promptForString(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.String, java.lang.String)', Sequence{arg0, arg1, arg2, arg3})
+/]
+
