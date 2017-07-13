@@ -20,6 +20,8 @@
 
 [module domainSpecificationServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+
 [query public definingDomainSpecification(aProperty: ResourceProperty) : DomainSpecification =
 aProperty.eContainer(DomainSpecification)
 /]
@@ -28,3 +30,53 @@ aProperty.eContainer(DomainSpecification)
 aResource.eContainer(DomainSpecification)
 /]
 
+[query public javaFullFilesPath(aSpecification: Specification, anAdaptorInterface : AdaptorInterface) : String = 
+(if (aSpecification.generationSetting.oclIsUndefined())._or(aSpecification.generationSetting.javaFilesPath.isNullOrEmpty()) then 
+    javaFilesBasePath(anAdaptorInterface)
+else
+    aSpecification.generationSetting.javaFilesPath
+endif)
+/]
+
+[query public javaPackageName(aSpecification: Specification, anAdaptorInterface : AdaptorInterface) : String = 
+(if (aSpecification.generationSetting.oclIsUndefined())._or(aSpecification.generationSetting.javaClassPackageName.isNullOrEmpty()) then 
+    javaClassBaseNamespace(anAdaptorInterface).concat('.resources')
+else
+    aSpecification.generationSetting.javaClassPackageName
+endif)
+/]
+
+[query public javaFullFilesPath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface) : String = 
+(if (aDomainSpecification.generationSetting.oclIsUndefined())._or(aDomainSpecification.generationSetting.javaFilesPath.isNullOrEmpty()) then 
+    javaFullFilesPath(aDomainSpecification.eContainer(Specification), anAdaptorInterface)
+else
+    aDomainSpecification.generationSetting.javaFilesPath
+endif)
+/]
+
+[query public javaPackageName(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface) : String = 
+(if (aDomainSpecification.generationSetting.oclIsUndefined())._or(aDomainSpecification.generationSetting.javaClassPackageName.isNullOrEmpty()) then 
+    javaPackageName(aDomainSpecification.eContainer(Specification), anAdaptorInterface)
+else
+    aDomainSpecification.generationSetting.javaClassPackageName
+endif)
+/]
+
+[query public javaInterfacePackageNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface) : String = 
+javaPackageName(aDomainSpecification, anAdaptorInterface)
+/]
+
+[query public javaInterfaceNameForConstants(aDomainSpecification: DomainSpecification) : String =
+javaString(aDomainSpecification.namespacePrefix.name, 'oslc', true).concat('Constants')
+/]
+
+[query public javaInterfaceFullNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface) : String = 
+javaInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface).concat('.').concat(javaInterfaceNameForConstants(aDomainSpecification))
+/]
+
+[query public javaInterfaceFullFileNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface) : String = 
+    javaFullFilesPath(aDomainSpecification, anAdaptorInterface)
+    .concatenatePaths(javaInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface).substituteAll('.', '/'))
+    .concatenatePaths(javaInterfaceNameForConstants(aDomainSpecification))
+    .concat('.java')
+/]

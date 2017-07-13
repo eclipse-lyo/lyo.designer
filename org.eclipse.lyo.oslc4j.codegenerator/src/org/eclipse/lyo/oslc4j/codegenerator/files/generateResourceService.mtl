@@ -108,6 +108,7 @@ import org.eclipse.lyo.oslc4j.core.model.AbstractResource;
 
 import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
 import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
+[for (aDomainSpecification: DomainSpecification | (aService.servicedResources().definingDomainSpecification()->union(Set{aService.domainSpecification}))->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface) /];[/for]
 import [javaClassFullNameForSingleton(anAdaptorInterface.serviceProviderCatalog) /];
 [for (aResource: Resource | aService.relevantResources()->sortedBy(name))]
 import [javaClassFullName(aResource, anAdaptorInterface) /];
@@ -118,7 +119,7 @@ import [javaClassFullName(aResource, anAdaptorInterface) /];
 
 // [protected ('pre_class_code')]
 // [/protected]
-@OslcService([javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[domainSpecificationConstantName(aService.domainSpecification) /])
+@OslcService([javaInterfaceNameForConstants(aService.domainSpecification)/].[domainSpecificationConstantName(aService.domainSpecification)/])
 [JAXRSPathAnnotation(aService.serviceBaseURI()) /]
 public class [javaClassName(aService) /]
 {
@@ -142,8 +143,8 @@ public class [javaClassName(aService) /]
     (
         title = "[aQueryCapability.title /]",
         label = "[aQueryCapability.label /]",
-        resourceShape = OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourcePathConstantName(aQueryCapability.resourceTypes->first()) /],
-        resourceTypes = {[for (aResource: Resource | aQueryCapability.resourceTypes) separator(', ') ][javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourceTypeConstantName(aResource) /][/for]},
+        resourceShape = OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForConstants(aQueryCapability.resourceTypes->first().definingDomainSpecification())/].[resourcePathConstantName(aQueryCapability.resourceTypes->first()) /],
+        resourceTypes = {[for (aResource: Resource | aQueryCapability.resourceTypes) separator(', ') ][javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource) /][/for]},
         usages = {[for (usage: String | aQueryCapability.usages) separator(', ') ]"[usage/]"[/for]}
     )
     @GET
@@ -223,7 +224,7 @@ public class [javaClassName(aService) /]
          uri = "[aSelectionDialog.URI(true)/]",
          hintWidth = "[aSelectionDialog.hintWidth /]px",
          hintHeight = "[aSelectionDialog.hintHeight /]px",
-         resourceTypes = {[for (aResource: Resource | aSelectionDialog.resourceTypes) separator(', ') ][javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourceTypeConstantName(aResource) /][/for]},
+         resourceTypes = {[for (aResource: Resource | aSelectionDialog.resourceTypes) separator(', ') ][javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource) /][/for]},
          usages = {[for (usage: String | aSelectionDialog.usages) separator(', ') ]"[usage/]"[/for]}
     )
     @GET
@@ -278,8 +279,8 @@ public class [javaClassName(aService) /]
     (
          title = "[aCreationFactory.title /]",
          label = "[aCreationFactory.label /]",
-         resourceShapes = {[for (aResource: Resource | aCreationFactory.resourceTypes) separator(', ') ]OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].[resourcePathConstantName(aResource)/][/for]},
-         resourceTypes = {[for (aResource: Resource | aCreationFactory.resourceTypes) separator(', ') ][javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourceTypeConstantName(aResource) /][/for]},
+         resourceShapes = {[for (aResource: Resource | aCreationFactory.resourceTypes) separator(', ') ]OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/][/for]},
+         resourceTypes = {[for (aResource: Resource | aCreationFactory.resourceTypes) separator(', ') ][javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource) /][/for]},
          usages = {[for (usage: String | aCreationFactory.usages) separator(', ') ]"[usage/]"[/for]}
     )
     @POST
@@ -340,7 +341,7 @@ public class [javaClassName(aService) /]
          uri = "[aCreationDialog.URI(false)/]",
          hintWidth = "[aCreationDialog.hintWidth /]px",
          hintHeight = "[aCreationDialog.hintHeight /]px",
-         resourceTypes = {[for (aResource: Resource | aCreationDialog.resourceTypes) separator(', ') ][javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /].[resourceTypeConstantName(aResource) /][/for]},
+         resourceTypes = {[for (aResource: Resource | aCreationDialog.resourceTypes) separator(', ') ][javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource) /][/for]},
          usages = {[for (usage: String | aCreationDialog.usages) separator(', ') ]"[usage/]"[/for]}
     )
     @POST

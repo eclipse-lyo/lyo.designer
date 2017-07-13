@@ -136,7 +136,7 @@ javaName(aResource, false)
 /]
 
 [query public javaClassPackageName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface).concat('.resources')
+javaPackageName(aResource.definingDomainSpecification(), anAdaptorInterface)
 /]
 
 [query public javaClassName(aResource: Resource) : String = 
@@ -147,12 +147,15 @@ javaName(aResource, true)
 javaClassPackageName(aResource, anAdaptorInterface).concat('.').concat(javaClassName(aResource))
 /]
 
-[query public javaClassFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
-javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageName(aResource, anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassName(aResource)).concat('.java')
+[query public javaClassFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
+    javaFullFilesPath(aResource.definingDomainSpecification(), anAdaptorInterface)
+    .concatenatePaths(javaClassPackageName(aResource, anAdaptorInterface).substituteAll('.', '/'))
+    .concatenatePaths(javaClassName(aResource))
+    .concat('.java')
 /]
 
 [query public javaInterfacePackageName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface).concat('.resources')
+javaClassPackageName(aResource, anAdaptorInterface)
 /]
 
 [query public javaInterfaceName(aResource: Resource) : String = 
@@ -164,6 +167,9 @@ javaInterfacePackageName(aResource, anAdaptorInterface).concat('.').concat(javaI
 /]
 
 [query public javaInterfaceFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
-javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaInterfacePackageName(aResource, anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaInterfaceName(aResource)).concat('.java')
+    javaFullFilesPath(aResource.definingDomainSpecification(), anAdaptorInterface)
+    .concatenatePaths(javaInterfacePackageName(aResource, anAdaptorInterface).substituteAll('.', '/'))
+    .concatenatePaths(javaInterfaceName(aResource))
+    .concat('.java')
 /]
 

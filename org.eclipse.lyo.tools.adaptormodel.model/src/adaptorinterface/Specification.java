@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link adaptorinterface.Specification#getDomainSpecifications <em>Domain Specifications</em>}</li>
  *   <li>{@link adaptorinterface.Specification#getDomainPrefixes <em>Domain Prefixes</em>}</li>
+ *   <li>{@link adaptorinterface.Specification#getGenerationSetting <em>Generation Setting</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getSpecification()
@@ -55,5 +56,31 @@ public interface Specification extends EObject {
 	 * @generated
 	 */
 	EList<NamespacePrefix> getDomainPrefixes();
+
+	/**
+	 * Returns the value of the '<em><b>Generation Setting</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Generation Setting</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Generation Setting</em>' containment reference.
+	 * @see #setGenerationSetting(GenerationSetting)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_GenerationSetting()
+	 * @model containment="true"
+	 * @generated
+	 */
+	GenerationSetting getGenerationSetting();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.Specification#getGenerationSetting <em>Generation Setting</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Generation Setting</em>' containment reference.
+	 * @see #getGenerationSetting()
+	 * @generated
+	 */
+	void setGenerationSetting(GenerationSetting value);
 
 } // Specification

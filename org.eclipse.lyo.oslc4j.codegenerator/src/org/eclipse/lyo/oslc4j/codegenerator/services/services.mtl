@@ -179,4 +179,7 @@ endif)
     concatenate(aStringSequence->sep(separatorString).oclAsType(String))
 /]
 
+[query public isNullOrEmpty (aString : String) : Boolean =
+(aString.oclIsUndefined())._or(aString.trim().equalsIgnoreCase(''))
+/]
 

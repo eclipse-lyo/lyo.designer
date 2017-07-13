@@ -145,7 +145,8 @@ import org.eclipse.lyo.oslc4j.core.model.ValueType;
 import org.eclipse.lyo.oslc4j.core.model.ResourceShape;
 import org.eclipse.lyo.oslc4j.core.model.ResourceShapeFactory;
 
-import [javaInterfaceFullNameForAdaptorConstants(contextAdaptorInterface) /];
+import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), contextAdaptorInterface)/];
+[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface) /];[/for]
 [for (aProperty: ResourceProperty | allProperties(aResource)->sortedBy(name))]
 [if(Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString())) ]
 [for (r: Resource | aProperty.range)]
@@ -166,9 +167,9 @@ import [javaClassFullName(r, contextAdaptorInterface) /];
 [template public generateClassAnnotations(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
 // [protected ('classAnnotations')]
 // [/protected]
-@OslcNamespace([javaInterfaceNameForAdaptorConstants(contextAdaptorInterface) /].[domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification()) /])
-@OslcName([javaInterfaceNameForAdaptorConstants(contextAdaptorInterface) /].[resourceConstantName(aResource) /])
-@OslcResourceShape(title = "[aResource.name /] Resource Shape", describes = [javaInterfaceNameForAdaptorConstants(contextAdaptorInterface) /].[resourceTypeConstantName(aResource) /])
+@OslcNamespace([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification()) /])
+@OslcName([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceConstantName(aResource) /])
+@OslcResourceShape(title = "[aResource.name /] Resource Shape", describes = [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource) /])
 [/template]
 
 [template public generateClassDeclaration(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
@@ -217,6 +218,10 @@ public [javaClassName(aResource) /](final URI about)
 [for (aBasicCapability: BasicCapability | basicCapabilities(contextAdaptorInterface, aResource))]
 [let methodSuffix: String = (if (basicCapabilities(contextAdaptorInterface, aResource)->size() = 1) then '' else basicCapabilities(contextAdaptorInterface, aResource)->indexOf(aBasicCapability).toString() endif)]
 [if (basicCapabilities(contextAdaptorInterface, aResource)->indexOf(aBasicCapability) = 1)]
+/**
+* @deprecated Use the methods in class {@link [javaClassFullNameForResourcesFactory(contextAdaptorInterface)/]} instead.
+*/
+@Deprecated
 public [javaClassName(aResource)/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/])
        throws URISyntaxException
 {
@@ -226,6 +231,10 @@ public [javaClassName(aResource)/]([commaSeparate(aResource.instanceMethodSignat
 }
 [/if]
 
+/**
+* @deprecated Use the methods in class {@link [javaClassFullNameForResourcesFactory(contextAdaptorInterface)/]} instead.
+*/
+@Deprecated
 public static URI constructURI[methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/])
 {
     String basePath = OSLC4JUtils.getServletURI();
@@ -239,11 +248,19 @@ public static URI constructURI[methodSuffix/]([commaSeparate(aResource.instanceM
     return builder.path(instanceURI).buildFromMap(pathParameters);
 }
 
+/**
+* @deprecated Use the methods in class {@link [javaClassFullNameForResourcesFactory(contextAdaptorInterface)/]} instead.
+*/
+@Deprecated
 public static Link constructLink[methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, true)/] final String label)
 {
     return new Link(constructURI[methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aBasicCapability), false, false)/]), label);
 }
 
+/**
+* @deprecated Use the methods in class {@link [javaClassFullNameForResourcesFactory(contextAdaptorInterface)/]} instead.
+*/
+@Deprecated
 public static Link constructLink[methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/])
 {
     return new Link(constructURI[methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aBasicCapability), false, false)/]));
@@ -256,7 +273,7 @@ public static Link constructLink[methodSuffix/]([commaSeparate(aResource.instanc
 public static ResourceShape createResourceShape() throws OslcCoreApplicationException, URISyntaxException {
     return ResourceShapeFactory.createResourceShape(OSLC4JUtils.getServletURI(),
     OslcConstants.PATH_RESOURCE_SHAPES,
-    [javaInterfaceNameForAdaptorConstants(contextAdaptorInterface) /].[resourcePathConstantName(aResource)/],
+    [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/],
     [javaClassName(aResource) /].class);
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="ToolchainModel" version="11.1.1.201610211630">
   <ownedViewpoints name="ToolchainViewpoint">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]" enablePopupBars="true">
       <diagramInitialisation/>
       <defaultLayer name="Default">
         <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" semanticElements="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType))->select(p : ResourceProperty | p.range->includes(view.targetNode.oclAsType(DNodeList).target.oclAsType(Resource)))/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType)).range /]">
@@ -34,7 +34,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Specification.DomainSpecification" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteDomainSpecification']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DirectEditName']" createElements="false" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.MoveResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.MoveProperty']">
+        <containerMappings name="Specification.DomainSpecification" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteDomainSpecification']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DirectEditName']" createElements="false" semanticElements="[Set{self, self.generationSetting}/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.MoveResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.MoveProperty']">
           <subContainerMappings name="Specification.DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteResource']" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.RelatePropertyToResource']" childrenPresentation="List">
             <subNodeMappings name="Specification.DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Specification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.resourceProperties->select(p : ResourceProperty | (not Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))._or((Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))._and(p.range->size() = 0)))/]" domainClass="adaptorinterface.ResourceProperty">
               <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[(if (self.eContainer(DomainSpecification) = view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) then '' else self.eContainer(DomainSpecification).namespacePrefix.name  + ':' endif) + name + ': ' + valueType + (if (Sequence{ResourcePropertyOccurs::oneOrMany, ResourcePropertyOccurs::zeroOrMany}->includes(occurs)) then ' []' else '' endif)/]" labelAlignment="LEFT" resizeKind="NSEW">
@@ -275,14 +275,40 @@
             <containerView name="containerView"/>
             <initialOperation/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="Specification.DomainSpecificationMenu" label="OSLC" precondition="[self.oclIsTypeOf(DomainSpecification)/]">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="SpecificationDiagram.Menu" label="OSLC Lyo Designer">
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.DomainSpecificationMenu.SetPrefix" label="Set Domain Prefix" precondition="[self.oclIsTypeOf(DomainSpecification)/]">
-              <view name="views">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="domainSpecification" computationExpression="[views->any(true).oclAsType(DNodeContainer).target/]"/>
-              </view>
+              <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[domainSpecification.namespacePrefix/]">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.namespacePrefix/]">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[let userInput : String = self.promptForString('Enter the domain namespace prefix', 'Enter the domain namespace prefix', self.name) in (if (userInput = null) then name else userInput endif) /]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.DomainSpecificationMenu.SetJavaGenerationSettings" label="Set Java Generation Settings" precondition="[self.oclIsTypeOf(DomainSpecification)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.generationSetting.oclIsUndefined()/]">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="GenerationSetting" referenceName="generationSetting" variableName="generationSetting"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.generationSetting/]">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="javaFilesPath" valueExpression="[self.eContainer(DomainSpecification).oclAsType(DomainSpecification).promptForJavaFilesPath()/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="javaClassPackageName" valueExpression="[self.eContainer(DomainSpecification).oclAsType(DomainSpecification).promptForJavaClassPackageName()/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.SpecificationMenu.SetJavaGenerationSettings" label="Set Java Generation Settings" precondition="[self.oclIsTypeOf(Specification)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.generationSetting.oclIsUndefined()/]">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="GenerationSetting" referenceName="generationSetting" variableName="generationSetting"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.generationSetting/]">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="javaFilesPath" valueExpression="[self.eContainer(Specification).oclAsType(Specification).promptForJavaFilesPath()/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="javaClassPackageName" valueExpression="[self.eContainer(Specification).oclAsType(Specification).promptForJavaClassPackageName()/]"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>

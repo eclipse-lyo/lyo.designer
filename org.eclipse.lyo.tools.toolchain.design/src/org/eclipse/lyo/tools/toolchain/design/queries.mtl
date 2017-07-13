@@ -14,22 +14,75 @@
  * Contributors:
  *
  *     Jad El-khoury        - Migrating complex queries into mtl files.
- *     
+ *
  *******************************************************************************/
 /]
 
 [module queries('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
 
+[import org::eclipse::lyo::tools::toolchain::design::DialogInputServices/]
+
 [comment If at least one parent resource is not visible in the diagram, show textually the parent resources.
 Show at least the first invisible parent resource./]
-[query public labelInDomainSpecification(aResource : Resource, visibleResources : Sequence(Resource)) : String = 
-let invisibleParentResources : OrderedSet(Resource) = aResource.extends->select(parent : Resource | not(visibleResources->includes(parent))) in 
-aResource.name + 
-    (if (invisibleParentResources->size() = 0) 
-    then 
+[query public labelInDomainSpecification(aResource : Resource, visibleResources : Sequence(Resource)) : String =
+let invisibleParentResources : OrderedSet(Resource) = aResource.extends->select(parent : Resource | not(visibleResources->includes(parent))) in
+aResource.name +
+    (if (invisibleParentResources->size() = 0)
+    then
         ''
-    else 
-        (lineSeparator() + 'extends: ' + invisibleParentResources->first().name) + 
-        (if (invisibleParentResources->size() > 1) then ' & ...' else '' endif) 
+    else
+        (lineSeparator() + 'extends: ' + invisibleParentResources->first().name) +
+        (if (invisibleParentResources->size() > 1) then ' & ...' else '' endif)
     endif)
+/]
+
+[comment specificationDiagram/]
+[comment assume that the generationSetting property exists/]
+[query public promptForJavaFilesPath(aDomainSpecification : DomainSpecification) : String = 
+let userInput : String = aDomainSpecification.promptForString('Enter relative file path',
+                        'For the resources of this domain specification, enter the relative file path for their corresponding java classes.' +
+                            lineSeparator() +
+                            'This path will override any setting on the whole Specification, and/or a specific adaptor', 
+                        aDomainSpecification.generationSetting.javaFilesPath) in
+    (if (userInput = null) then 
+        aDomainSpecification.generationSetting.javaFilesPath 
+    else 
+        userInput 
+    endif) 
+/]
+[query public promptForJavaClassPackageName(aDomainSpecification : DomainSpecification) : String = 
+let userInput : String = aDomainSpecification.promptForString('Enter the java package name',
+                        'For the resources of this domain specification, enter the package name for their corresponding java classes.' +
+                            lineSeparator() +
+                            'This package name will override any setting on the whole Specification, and/or a specific adaptor.', 
+                        aDomainSpecification.generationSetting.javaClassPackageName) in
+    (if (userInput = null) then 
+        aDomainSpecification.generationSetting.javaClassPackageName 
+    else 
+        userInput 
+    endif) 
+/]
+[query public promptForJavaFilesPath(aSpecification : Specification) : String = 
+let userInput : String = aSpecification.promptForString('Enter relative file path',
+                        'For the resources of this specification, enter the relative file path for their corresponding java classes.' +
+                            lineSeparator() +
+                            'This path will override any setting on a specific adaptor', 
+                        aSpecification.generationSetting.javaFilesPath) in
+    (if (userInput = null) then 
+        aSpecification.generationSetting.javaFilesPath 
+    else 
+        userInput 
+    endif) 
+/]
+[query public promptForJavaClassPackageName(aSpecification : Specification) : String = 
+let userInput : String = aSpecification.promptForString('Enter the java package name',
+                        'For the resources of this specification, enter the package name for their corresponding java classes.' +
+                            lineSeparator() +
+                            'This package name will override any setting on a specific adaptor.', 
+                        aSpecification.generationSetting.javaClassPackageName) in
+    (if (userInput = null) then 
+        aSpecification.generationSetting.javaClassPackageName 
+    else 
+        userInput 
+    endif) 
 /]

@@ -97,7 +97,8 @@ import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
 import org.eclipse.lyo.oslc4j.core.model.Representation;
 import org.eclipse.lyo.oslc4j.core.model.ValueType;
 
-import [javaInterfaceFullNameForAdaptorConstants(contextAdaptorInterface) /];
+import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), contextAdaptorInterface)/];
+[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface) /];[/for]
 [for (aProperty: ResourceProperty | allProperties(aResource)->sortedBy(name))]
 [if(Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString())) ]
 [for (r: Resource | aProperty.range)]
@@ -109,9 +110,9 @@ import [javaInterfaceFullName(r, contextAdaptorInterface) /];
 // [protected ('imports')]
 // [/protected]
 
-@OslcNamespace([javaInterfaceNameForAdaptorConstants(contextAdaptorInterface) /].[domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification()) /])
-@OslcName([javaInterfaceNameForAdaptorConstants(contextAdaptorInterface) /].[resourceConstantName(aResource) /])
-@OslcResourceShape(title = "[aResource.name /] Resource Shape", describes = [javaInterfaceNameForAdaptorConstants(contextAdaptorInterface) /].[resourceTypeConstantName(aResource) /])
+@OslcNamespace([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification()) /])
+@OslcName([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceConstantName(aResource) /])
+@OslcResourceShape(title = "[aResource.name /] Resource Shape", describes = [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource) /])
 public interface [javaInterfaceName(aResource) /]
 {
 

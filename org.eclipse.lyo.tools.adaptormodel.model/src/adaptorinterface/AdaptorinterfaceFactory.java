@@ -166,6 +166,15 @@ public interface AdaptorinterfaceFactory extends EFactory {
 	ModelledRequiredAdaptor createModelledRequiredAdaptor();
 
 	/**
+	 * Returns a new object of class '<em>Generation Setting</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generation Setting</em>'.
+	 * @generated
+	 */
+	GenerationSetting createGenerationSetting();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

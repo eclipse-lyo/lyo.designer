@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.DomainSpecification#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getResources <em>Resources</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getResourceProperties <em>Resource Properties</em>}</li>
+ *   <li>{@link adaptorinterface.DomainSpecification#getGenerationSetting <em>Generation Setting</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification()
@@ -136,5 +137,31 @@ public interface DomainSpecification extends EObject {
 	 * @generated
 	 */
 	EList<ResourceProperty> getResourceProperties();
+
+	/**
+	 * Returns the value of the '<em><b>Generation Setting</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Generation Setting</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Generation Setting</em>' containment reference.
+	 * @see #setGenerationSetting(GenerationSetting)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_GenerationSetting()
+	 * @model containment="true"
+	 * @generated
+	 */
+	GenerationSetting getGenerationSetting();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.DomainSpecification#getGenerationSetting <em>Generation Setting</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Generation Setting</em>' containment reference.
+	 * @see #getGenerationSetting()
+	 * @generated
+	 */
+	void setGenerationSetting(GenerationSetting value);
 
 } // DomainSpecification

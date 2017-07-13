@@ -41,7 +41,7 @@ not (Sequence{'URI'}->includes(aProperty.valueType.toString()))
 /]
 
 [query public propertyDefinitionAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String = 
-'@OslcPropertyDefinition('.concat(javaInterfaceNameForAdaptorConstants(anAdaptorInterface)).concat('.').concat(domainSpecificationNamespaceConstantName(aProperty.definingDomainSpecification())) . concat(' + "').concat(javaName(aProperty, false)).concat('")')
+'@OslcPropertyDefinition('.concat(javaInterfaceNameForConstants(aProperty.definingDomainSpecification())).concat('.').concat(domainSpecificationNamespaceConstantName(aProperty.definingDomainSpecification())) . concat(' + "').concat(javaName(aProperty, false)).concat('")')
 /]
 
 [query public descriptionAnnotation(aProperty: ResourceProperty) : String = 
@@ -108,7 +108,7 @@ endif)
 [query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String = 
 (if (aProperty.range->size() > 0) then
 	'@OslcRange({'
-		.concat(concatenate(aProperty.range->collect(aRange : Resource | javaInterfaceNameForAdaptorConstants(anAdaptorInterface).concat('.').concat(resourceTypeConstantName(aRange))), ', '))
+		.concat(concatenate(aProperty.range->collect(aRange : Resource | javaInterfaceNameForConstants(aRange.definingDomainSpecification()).concat('.').concat(resourceTypeConstantName(aRange))), ', '))
 		.concat('})')
 else
 	''

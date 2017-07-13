@@ -267,13 +267,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SPECIFICATION__DOMAIN_PREFIXES = 1;
 
 	/**
+	 * The feature id for the '<em><b>Generation Setting</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__GENERATION_SETTING = 2;
+
+	/**
 	 * The number of structural features of the '<em>Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFICATION_FEATURE_COUNT = 2;
+	int SPECIFICATION_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Specification</em>' class.
@@ -340,13 +349,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES = 4;
 
 	/**
+	 * The feature id for the '<em><b>Generation Setting</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFICATION__GENERATION_SETTING = 5;
+
+	/**
 	 * The number of structural features of the '<em>Domain Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_SPECIFICATION_FEATURE_COUNT = 5;
+	int DOMAIN_SPECIFICATION_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Domain Specification</em>' class.
@@ -1326,6 +1344,52 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int MODELLED_REQUIRED_ADAPTOR_OPERATION_COUNT = REQUIRED_ADAPTOR_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.GenerationSettingImpl <em>Generation Setting</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.GenerationSettingImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGenerationSetting()
+	 * @generated
+	 */
+	int GENERATION_SETTING = 17;
+
+	/**
+	 * The feature id for the '<em><b>Java Class Package Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Java Files Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATION_SETTING__JAVA_FILES_PATH = 1;
+
+	/**
+	 * The number of structural features of the '<em>Generation Setting</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATION_SETTING_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Generation Setting</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATION_SETTING_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1333,7 +1397,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyOccurs()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_OCCURS = 17;
+	int RESOURCE_PROPERTY_OCCURS = 18;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyValueType <em>Resource Property Value Type</em>}' enum.
@@ -1343,7 +1407,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyValueType()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_VALUE_TYPE = 18;
+	int RESOURCE_PROPERTY_VALUE_TYPE = 19;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyRepresentation <em>Resource Property Representation</em>}' enum.
@@ -1353,7 +1417,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRepresentation()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_REPRESENTATION = 19;
+	int RESOURCE_PROPERTY_REPRESENTATION = 20;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyIsMemberProperty <em>Resource Property Is Member Property</em>}' enum.
@@ -1363,7 +1427,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyIsMemberProperty()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 20;
+	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 21;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -1373,7 +1437,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
 	 * @generated
 	 */
-	int RESOURCE_SERVICE_NAMESPACE = 21;
+	int RESOURCE_SERVICE_NAMESPACE = 22;
 
 
 	/**
@@ -1606,6 +1670,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getSpecification_DomainPrefixes();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.Specification#getGenerationSetting <em>Generation Setting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Generation Setting</em>'.
+	 * @see adaptorinterface.Specification#getGenerationSetting()
+	 * @see #getSpecification()
+	 * @generated
+	 */
+	EReference getSpecification_GenerationSetting();
+
+	/**
 	 * Returns the meta object for class '{@link adaptorinterface.DomainSpecification <em>Domain Specification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1669,6 +1744,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDomainSpecification_ResourceProperties();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.DomainSpecification#getGenerationSetting <em>Generation Setting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Generation Setting</em>'.
+	 * @see adaptorinterface.DomainSpecification#getGenerationSetting()
+	 * @see #getDomainSpecification()
+	 * @generated
+	 */
+	EReference getDomainSpecification_GenerationSetting();
 
 	/**
 	 * Returns the meta object for class '{@link adaptorinterface.NamespacePrefix <em>Namespace Prefix</em>}'.
@@ -2493,6 +2579,38 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getModelledRequiredAdaptor_AdaptorInterface();
 
 	/**
+	 * Returns the meta object for class '{@link adaptorinterface.GenerationSetting <em>Generation Setting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Generation Setting</em>'.
+	 * @see adaptorinterface.GenerationSetting
+	 * @generated
+	 */
+	EClass getGenerationSetting();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.GenerationSetting#getJavaClassPackageName <em>Java Class Package Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Java Class Package Name</em>'.
+	 * @see adaptorinterface.GenerationSetting#getJavaClassPackageName()
+	 * @see #getGenerationSetting()
+	 * @generated
+	 */
+	EAttribute getGenerationSetting_JavaClassPackageName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.GenerationSetting#getJavaFilesPath <em>Java Files Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Java Files Path</em>'.
+	 * @see adaptorinterface.GenerationSetting#getJavaFilesPath()
+	 * @see #getGenerationSetting()
+	 * @generated
+	 */
+	EAttribute getGenerationSetting_JavaFilesPath();
+
+	/**
 	 * Returns the meta object for enum '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2738,6 +2856,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference SPECIFICATION__DOMAIN_PREFIXES = eINSTANCE.getSpecification_DomainPrefixes();
 
 		/**
+		 * The meta object literal for the '<em><b>Generation Setting</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFICATION__GENERATION_SETTING = eINSTANCE.getSpecification_GenerationSetting();
+
+		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.DomainSpecificationImpl <em>Domain Specification</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2786,6 +2912,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES = eINSTANCE.getDomainSpecification_ResourceProperties();
+
+		/**
+		 * The meta object literal for the '<em><b>Generation Setting</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SPECIFICATION__GENERATION_SETTING = eINSTANCE.getDomainSpecification_GenerationSetting();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.NamespacePrefixImpl <em>Namespace Prefix</em>}' class.
@@ -3422,6 +3556,32 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE = eINSTANCE.getModelledRequiredAdaptor_AdaptorInterface();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.GenerationSettingImpl <em>Generation Setting</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.GenerationSettingImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGenerationSetting()
+		 * @generated
+		 */
+		EClass GENERATION_SETTING = eINSTANCE.getGenerationSetting();
+
+		/**
+		 * The meta object literal for the '<em><b>Java Class Package Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME = eINSTANCE.getGenerationSetting_JavaClassPackageName();
+
+		/**
+		 * The meta object literal for the '<em><b>Java Files Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERATION_SETTING__JAVA_FILES_PATH = eINSTANCE.getGenerationSetting_JavaFilesPath();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.

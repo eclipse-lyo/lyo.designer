@@ -150,6 +150,7 @@ public class DomainSpecificationItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCES);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES);
+			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__GENERATION_SETTING);
 		}
 		return childrenFeatures;
 	}
@@ -211,6 +212,7 @@ public class DomainSpecificationItemProvider
 				return;
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCES:
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES:
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -237,6 +239,11 @@ public class DomainSpecificationItemProvider
 			(createChildParameter
 				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES,
 				 AdaptorinterfaceFactory.eINSTANCE.createResourceProperty()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__GENERATION_SETTING,
+				 AdaptorinterfaceFactory.eINSTANCE.createGenerationSetting()));
 	}
 
 	/**

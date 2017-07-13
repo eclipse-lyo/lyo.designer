@@ -42,6 +42,8 @@
         eType="#//DomainSpecification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainPrefixes" upperBound="-1"
         eType="#//NamespacePrefix" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generationSetting" eType="#//GenerationSetting"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -53,6 +55,8 @@
         eType="#//Resource" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceProperties" upperBound="-1"
         eType="#//ResourceProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generationSetting" eType="#//GenerationSetting"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamespacePrefix">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -211,5 +215,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="ModelledRequiredAdaptor" eSuperTypes="#//RequiredAdaptor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="adaptorInterface" lowerBound="1"
         eType="#//AdaptorInterface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GenerationSetting">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaClassPackageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaFilesPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

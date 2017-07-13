@@ -9,6 +9,7 @@ import adaptorinterface.BasicCapability;
 import adaptorinterface.CreationFactory;
 import adaptorinterface.Dialog;
 import adaptorinterface.DomainSpecification;
+import adaptorinterface.GenerationSetting;
 import adaptorinterface.GenericRequiredAdaptor;
 import adaptorinterface.ModelledRequiredAdaptor;
 import adaptorinterface.NamespacePrefix;
@@ -160,6 +161,13 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	private EClass modelledRequiredAdaptorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass generationSettingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -451,6 +459,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSpecification_GenerationSetting() {
+		return (EReference)specificationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDomainSpecification() {
 		return domainSpecificationEClass;
 	}
@@ -498,6 +515,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	public EReference getDomainSpecification_ResourceProperties() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSpecification_GenerationSetting() {
+		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1189,6 +1215,33 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGenerationSetting() {
+		return generationSettingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenerationSetting_JavaClassPackageName() {
+		return (EAttribute)generationSettingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenerationSetting_JavaFilesPath() {
+		return (EAttribute)generationSettingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getResourcePropertyOccurs() {
 		return resourcePropertyOccursEEnum;
 	}
@@ -1279,6 +1332,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		specificationEClass = createEClass(SPECIFICATION);
 		createEReference(specificationEClass, SPECIFICATION__DOMAIN_SPECIFICATIONS);
 		createEReference(specificationEClass, SPECIFICATION__DOMAIN_PREFIXES);
+		createEReference(specificationEClass, SPECIFICATION__GENERATION_SETTING);
 
 		domainSpecificationEClass = createEClass(DOMAIN_SPECIFICATION);
 		createEAttribute(domainSpecificationEClass, DOMAIN_SPECIFICATION__NAME);
@@ -1286,6 +1340,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__NAMESPACE_PREFIX);
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__RESOURCES);
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES);
+		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__GENERATION_SETTING);
 
 		namespacePrefixEClass = createEClass(NAMESPACE_PREFIX);
 		createEAttribute(namespacePrefixEClass, NAMESPACE_PREFIX__NAME);
@@ -1377,6 +1432,10 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		modelledRequiredAdaptorEClass = createEClass(MODELLED_REQUIRED_ADAPTOR);
 		createEReference(modelledRequiredAdaptorEClass, MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE);
 
+		generationSettingEClass = createEClass(GENERATION_SETTING);
+		createEAttribute(generationSettingEClass, GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME);
+		createEAttribute(generationSettingEClass, GENERATION_SETTING__JAVA_FILES_PATH);
+
 		// Create enums
 		resourcePropertyOccursEEnum = createEEnum(RESOURCE_PROPERTY_OCCURS);
 		resourcePropertyValueTypeEEnum = createEEnum(RESOURCE_PROPERTY_VALUE_TYPE);
@@ -1439,6 +1498,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEClass(specificationEClass, Specification.class, "Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSpecification_DomainSpecifications(), this.getDomainSpecification(), null, "domainSpecifications", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpecification_DomainPrefixes(), this.getNamespacePrefix(), null, "domainPrefixes", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecification_GenerationSetting(), this.getGenerationSetting(), null, "generationSetting", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(domainSpecificationEClass, DomainSpecification.class, "DomainSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDomainSpecification_Name(), ecorePackage.getEString(), "name", null, 1, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1446,6 +1506,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEReference(getDomainSpecification_NamespacePrefix(), this.getNamespacePrefix(), null, "namespacePrefix", null, 1, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_Resources(), this.getResource(), null, "resources", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_ResourceProperties(), this.getResourceProperty(), null, "resourceProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSpecification_GenerationSetting(), this.getGenerationSetting(), null, "generationSetting", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namespacePrefixEClass, NamespacePrefix.class, "NamespacePrefix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamespacePrefix_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamespacePrefix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1536,6 +1597,10 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 		initEClass(modelledRequiredAdaptorEClass, ModelledRequiredAdaptor.class, "ModelledRequiredAdaptor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelledRequiredAdaptor_AdaptorInterface(), this.getAdaptorInterface(), null, "adaptorInterface", null, 1, 1, ModelledRequiredAdaptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(generationSettingEClass, GenerationSetting.class, "GenerationSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGenerationSetting_JavaClassPackageName(), ecorePackage.getEString(), "javaClassPackageName", null, 0, 1, GenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenerationSetting_JavaFilesPath(), ecorePackage.getEString(), "javaFilesPath", null, 0, 1, GenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(resourcePropertyOccursEEnum, ResourcePropertyOccurs.class, "ResourcePropertyOccurs");

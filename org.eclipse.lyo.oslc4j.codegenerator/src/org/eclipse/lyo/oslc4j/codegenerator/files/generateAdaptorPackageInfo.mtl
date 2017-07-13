@@ -25,6 +25,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
@@ -60,7 +61,7 @@
     @OslcNamespaceDefinition(prefix = OslcConstants.OSLC_DATA_NAMESPACE_PREFIX,           namespaceURI = OslcConstants.OSLC_DATA_NAMESPACE),
     @OslcNamespaceDefinition(prefix = OslcConstants.RDF_NAMESPACE_PREFIX,                 namespaceURI = OslcConstants.RDF_NAMESPACE),
     @OslcNamespaceDefinition(prefix = OslcConstants.RDFS_NAMESPACE_PREFIX,                namespaceURI = OslcConstants.RDFS_NAMESPACE),
-[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(','.concat(lineSeparator()))]    @OslcNamespaceDefinition(prefix = [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].[domainSpecificationNamespacePrefixConstantName(aDomainSpecification) /], namespaceURI = [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].[domainSpecificationNamespaceConstantName(aDomainSpecification) /])[/for]
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(','.concat(lineSeparator()))]    @OslcNamespaceDefinition(prefix = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespacePrefixConstantName(aDomainSpecification) /], namespaceURI = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespaceConstantName(aDomainSpecification) /])[/for]
 })
 package [javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface) /];
 
@@ -68,7 +69,7 @@ import org.eclipse.lyo.oslc4j.core.annotation.OslcNamespaceDefinition;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcSchema;
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
 
-import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface) /];[/for]
 
 [/file]
 [/template]

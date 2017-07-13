@@ -136,6 +136,10 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 				return createModelledRequiredAdaptorAdapter();
 			}
 			@Override
+			public Adapter caseGenerationSetting(GenerationSetting object) {
+				return createGenerationSettingAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -390,6 +394,20 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelledRequiredAdaptorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.GenerationSetting <em>Generation Setting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.GenerationSetting
+	 * @generated
+	 */
+	public Adapter createGenerationSettingAdapter() {
 		return null;
 	}
 

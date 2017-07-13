@@ -3,9 +3,8 @@
 package adaptorinterface.provider;
 
 
-import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.AdaptorinterfacePackage;
-import adaptorinterface.Specification;
+import adaptorinterface.GenerationSetting;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,24 +14,24 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link adaptorinterface.Specification} object.
+ * This is the item provider adapter for a {@link adaptorinterface.GenerationSetting} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SpecificationItemProvider 
+public class GenerationSettingItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -46,7 +45,7 @@ public class SpecificationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SpecificationItemProvider(AdapterFactory adapterFactory) {
+	public GenerationSettingItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,51 +60,65 @@ public class SpecificationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addJavaClassPackageNamePropertyDescriptor(object);
+			addJavaFilesPathPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Java Class Package Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__DOMAIN_SPECIFICATIONS);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__DOMAIN_PREFIXES);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__GENERATION_SETTING);
-		}
-		return childrenFeatures;
+	protected void addJavaClassPackageNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GenerationSetting_javaClassPackageName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_GenerationSetting_javaClassPackageName_feature", "_UI_GenerationSetting_type"),
+				 AdaptorinterfacePackage.Literals.GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Java Files Path feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addJavaFilesPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GenerationSetting_javaFilesPath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_GenerationSetting_javaFilesPath_feature", "_UI_GenerationSetting_type"),
+				 AdaptorinterfacePackage.Literals.GENERATION_SETTING__JAVA_FILES_PATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns Specification.gif.
+	 * This returns GenerationSetting.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Specification"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenerationSetting"));
 	}
 
 	/**
@@ -116,7 +129,10 @@ public class SpecificationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Specification_type");
+		String label = ((GenerationSetting)object).getJavaClassPackageName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_GenerationSetting_type") :
+			getString("_UI_GenerationSetting_type") + " " + label;
 	}
 	
 
@@ -131,11 +147,10 @@ public class SpecificationItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Specification.class)) {
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
-			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(GenerationSetting.class)) {
+			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME:
+			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_FILES_PATH:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -151,21 +166,6 @@ public class SpecificationItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AdaptorinterfacePackage.Literals.SPECIFICATION__DOMAIN_SPECIFICATIONS,
-				 AdaptorinterfaceFactory.eINSTANCE.createDomainSpecification()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AdaptorinterfacePackage.Literals.SPECIFICATION__DOMAIN_PREFIXES,
-				 AdaptorinterfaceFactory.eINSTANCE.createNamespacePrefix()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AdaptorinterfacePackage.Literals.SPECIFICATION__GENERATION_SETTING,
-				 AdaptorinterfaceFactory.eINSTANCE.createGenerationSetting()));
 	}
 
 	/**

@@ -440,6 +440,29 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.GenerationSetting} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GenerationSettingItemProvider generationSettingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.GenerationSetting}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGenerationSettingAdapter() {
+		if (generationSettingItemProvider == null) {
+			generationSettingItemProvider = new GenerationSettingItemProvider(this);
+		}
+
+		return generationSettingItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -554,6 +577,7 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 		if (publisherItemProvider != null) publisherItemProvider.dispose();
 		if (genericRequiredAdaptorItemProvider != null) genericRequiredAdaptorItemProvider.dispose();
 		if (modelledRequiredAdaptorItemProvider != null) modelledRequiredAdaptorItemProvider.dispose();
+		if (generationSettingItemProvider != null) generationSettingItemProvider.dispose();
 	}
 
 }

@@ -31,6 +31,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 
 [template public generateAdaptorServiceProviderFactory(aServiceProvider: ServiceProvider)]
 [file (javaClassFullFileNameForFactory(aServiceProvider), false, 'UTF-8')]
@@ -74,7 +75,7 @@ import org.eclipse.lyo.oslc4j.core.model.Publisher;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderFactory;
 
-import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface) /];[/for]
 [for (aService: Service | aServiceProvider.services) separator(lineSeparator())]import [javaClassFullName(aService) /];[/for]
 
 // [protected ('imports')]
@@ -113,7 +114,7 @@ public class [javaClassNameForFactory(aServiceProvider) /]
             new PrefixDefinition(OslcConstants.RDF_NAMESPACE_PREFIX, new URI(OslcConstants.RDF_NAMESPACE)),
             new PrefixDefinition(OslcConstants.RDFS_NAMESPACE_PREFIX, new URI(OslcConstants.RDFS_NAMESPACE)),
             [for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(aServiceProvider)->sortedBy(name)) separator(','.concat(lineSeparator()))]
-            new PrefixDefinition([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].[domainSpecificationNamespacePrefixConstantName(aDomainSpecification) /], new URI([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].[domainSpecificationNamespaceConstantName(aDomainSpecification) /]))
+            new PrefixDefinition([javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespacePrefixConstantName(aDomainSpecification) /], new URI([javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespaceConstantName(aDomainSpecification) /]))
             [/for]
         };
 

@@ -73,6 +73,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 			case AdaptorinterfacePackage.PUBLISHER: return createPublisher();
 			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR: return createGenericRequiredAdaptor();
 			case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR: return createModelledRequiredAdaptor();
+			case AdaptorinterfacePackage.GENERATION_SETTING: return createGenerationSetting();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -282,6 +283,16 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	public ModelledRequiredAdaptor createModelledRequiredAdaptor() {
 		ModelledRequiredAdaptorImpl modelledRequiredAdaptor = new ModelledRequiredAdaptorImpl();
 		return modelledRequiredAdaptor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GenerationSetting createGenerationSetting() {
+		GenerationSettingImpl generationSetting = new GenerationSettingImpl();
+		return generationSetting;
 	}
 
 	/**

@@ -4,6 +4,7 @@ package adaptorinterface.impl;
 
 import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.DomainSpecification;
+import adaptorinterface.GenerationSetting;
 import adaptorinterface.NamespacePrefix;
 import adaptorinterface.Resource;
 import adaptorinterface.ResourceProperty;
@@ -37,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getResourceProperties <em>Resource Properties</em>}</li>
+ *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getGenerationSetting <em>Generation Setting</em>}</li>
  * </ul>
  *
  * @generated
@@ -111,6 +113,16 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected EList<ResourceProperty> resourceProperties;
+
+	/**
+	 * The cached value of the '{@link #getGenerationSetting() <em>Generation Setting</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGenerationSetting()
+	 * @generated
+	 * @ordered
+	 */
+	protected GenerationSetting generationSetting;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -240,6 +252,49 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GenerationSetting getGenerationSetting() {
+		return generationSetting;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetGenerationSetting(GenerationSetting newGenerationSetting, NotificationChain msgs) {
+		GenerationSetting oldGenerationSetting = generationSetting;
+		generationSetting = newGenerationSetting;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING, oldGenerationSetting, newGenerationSetting);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGenerationSetting(GenerationSetting newGenerationSetting) {
+		if (newGenerationSetting != generationSetting) {
+			NotificationChain msgs = null;
+			if (generationSetting != null)
+				msgs = ((InternalEObject)generationSetting).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING, null, msgs);
+			if (newGenerationSetting != null)
+				msgs = ((InternalEObject)newGenerationSetting).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING, null, msgs);
+			msgs = basicSetGenerationSetting(newGenerationSetting, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING, newGenerationSetting, newGenerationSetting));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -247,6 +302,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES:
 				return ((InternalEList<?>)getResourceProperties()).basicRemove(otherEnd, msgs);
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
+				return basicSetGenerationSetting(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -270,6 +327,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return getResources();
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES:
 				return getResourceProperties();
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
+				return getGenerationSetting();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -300,6 +359,9 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				getResourceProperties().clear();
 				getResourceProperties().addAll((Collection<? extends ResourceProperty>)newValue);
 				return;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
+				setGenerationSetting((GenerationSetting)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -327,6 +389,9 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES:
 				getResourceProperties().clear();
 				return;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
+				setGenerationSetting((GenerationSetting)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -349,6 +414,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return resources != null && !resources.isEmpty();
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES:
 				return resourceProperties != null && !resourceProperties.isEmpty();
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
+				return generationSetting != null;
 		}
 		return super.eIsSet(featureID);
 	}

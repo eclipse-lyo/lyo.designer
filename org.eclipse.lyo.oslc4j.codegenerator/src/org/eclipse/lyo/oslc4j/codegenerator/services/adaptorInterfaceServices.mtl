@@ -30,7 +30,11 @@
 This method should be able to work even for objects that come from a differnet emf file than that containing the AdaptorInterface. 
 You should also question any other use of "eContainer" in this whole project /]
 [query public containingAdaptorInterface(obj : OclAny) : AdaptorInterface =
-obj.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
+(if (not obj.eContainer(AdaptorInterface).oclIsUndefined()) then
+    obj.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
+else
+    null
+endif)
 /]
 
 [query public javaName(anAdaptorInterface : AdaptorInterface, toUpperFirst : Boolean) : String = 
@@ -161,6 +165,23 @@ javaClassPackageNameForAdaptorServletListener(anAdaptorInterface).concat('.').co
 
 [query public javaClassFullFileNameForAdaptorServletListener(anAdaptorInterface : AdaptorInterface) : String = 
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorServletListener(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForAdaptorServletListener(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for ResourcesFactory /]
+[query public javaClassPackageNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassBaseNamespace(anAdaptorInterface)
+/]
+
+[query public javaClassNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaName(anAdaptorInterface, true).concat('ResourcesFactory')
+/]
+
+[query public javaClassFullNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForResourcesFactory(anAdaptorInterface).concat('.').concat(javaClassNameForResourcesFactory(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForResourcesFactory(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForResourcesFactory(anAdaptorInterface)).concat('.java')
 /]
 
 [comment Services for AdaptorManager /]
