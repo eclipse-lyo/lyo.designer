@@ -18,9 +18,10 @@
  *     Chris Peters         - initial API and implementation
  *     Gianluca Bernardini  - initial API and implementation
  *     Michael Fiedler      - adapted for Bugzilla service provider
- *     Jad El-khoury        - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
+ *     Jad El-khoury        - initial implementation of code generator (422448)
  *     Matthieu Helleboid   - initialize each service provider separately
  *     Anass Radouani       - initialize each service provider separately
+ *     Andrew Berezovskyi   - Minor changes for Bootstrap template (519699)
  *******************************************************************************/
 /]
 
@@ -51,7 +52,7 @@
  *     Chris Peters         - initial API and implementation
  *     Gianluca Bernardini  - initial API and implementation
  *     Michael Fiedler      - adapted for Bugzilla service provider
- *     Jad El-khoury        - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
+ *     Jad El-khoury        - initial implementation of code generator (422448)
  *     Matthieu Helleboid   - initialize each service provider separately
  *     Anass Radouani       - initialize each service provider separately
  *
@@ -105,24 +106,28 @@ import [javaClassFullName(aServiceProvider) /];
  */
 public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
 {
-    private static final ServiceProviderCatalog             serviceProviderCatalog;
-    [comment TODO: We here assume that 1 single serviceProvider type is specified in the SPCatalog.
-    In the metamodel, a SPCatalog  can have 1+ serviceProvider types.
-    For example, one SP type maps to the products. Another SP type maps to "something-else".
-    In this case, each such SP type would need to define its name. (for example "ProductServiceProvider")
-    In this case, loop through the SP types, and create a variable for each. You will also need to loop through and create the functions below for each such SP type.
-    Alternatively, define serviceProviders as some Dictionary, where the key is the SP name, and the value is the SortedMap below/]
+    private static final ServiceProviderCatalog serviceProviderCatalog;
+    [comment TODO: We here assume that 1 single
+    serviceProvider type is specified in the SPCatalog. In the metamodel, a
+    SPCatalog  can have 1+ serviceProvider types. For example, one SP type maps
+    to the products. Another SP type maps to "something-else". In this case,
+    each such SP type would need to define its name. (for example
+    "ProductServiceProvider") In this case, loop through the SP types, and
+    create a variable for each. You will also need to loop through and create
+    the functions below for each such SP type. Alternatively, define
+    serviceProviders as some Dictionary, where the key is the SP name, and the
+    value is the SortedMap below/]
     private static final SortedMap<String, ServiceProvider> serviceProviders = new TreeMap<String, ServiceProvider>();
 
-    static
-    {
+    static {
         serviceProviderCatalog = new ServiceProviderCatalog();
         URI catalogUri = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/catalog/singleton").build();
         serviceProviderCatalog.setAbout(catalogUri);
         serviceProviderCatalog.setTitle("[aServiceProviderCatalog.title /]");
         serviceProviderCatalog.setDescription("[aServiceProviderCatalog.description /]");
         [if (not aServiceProviderCatalog.publisher.oclIsUndefined())]
-        serviceProviderCatalog.setPublisher(new Publisher("[aServiceProviderCatalog.publisher.title /]", "[aServiceProviderCatalog.publisher.identifier /]"));
+        serviceProviderCatalog.setPublisher(new Publisher("[aServiceProviderCatalog.publisher.title /]",
+            "[aServiceProviderCatalog.publisher.identifier /]"));
         serviceProviderCatalog.getPublisher().setIcon(new URI("[aServiceProviderCatalog.publisher.icon /]"));
         [/if]
     }
@@ -257,7 +262,8 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
     {
         synchronized(serviceProviders)
         {
-            final ServiceProvider deregisteredServiceProvider = serviceProviders.remove([aServiceProvider.javaName(false)/]Identifier([aServiceProvider.instanceMethodParameterList()/]));
+            final ServiceProvider deregisteredServiceProvider =
+                serviceProviders.remove([aServiceProvider.javaName(false)/]Identifier([aServiceProvider.instanceMethodParameterList()/]));
 
             if (deregisteredServiceProvider != null)
             {
@@ -319,11 +325,15 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
             [javaClassName(aServiceProvider) /] [ '[' ']' /] [javaClassName(aServiceProvider).toLowerFirst()/]s = [javaClassNameForAdaptorManager(containingAdaptorInterface(aServiceProviderCatalog)) /].get[aServiceProvider.javaClassName()/]s(httpServletRequest);
             //Register each service provider
             for ([javaClassName(aServiceProvider) /] serviceProviderInfo : [javaClassName(aServiceProvider).toLowerFirst()/]s) {
-                String identifier = [aServiceProvider.javaName(false)/]Identifier([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for]);
-                if (! serviceProviders.containsKey(identifier)) {
+                String identifier = [aServiceProvider.javaName(false)/]Identifier([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')
+                    ]serviceProviderInfo.[instanceCompositeID /][/for]);
+                if (!serviceProviders.containsKey(identifier)) {
                     String serviceProviderName = serviceProviderInfo.name;
-                    String title = "[aServiceProvider.title.concat(': ') /]" + serviceProviderName + "(" + identifier + ")";
-                    String description = "[aServiceProvider.description.concat(': ') /]" + serviceProviderName + "(" + identifier + ")";
+                    String title = String.format("Service Provider '%s'", serviceProviderName);
+                    String description = String.format("%s (id: %s; kind: %s)",
+                        "[aServiceProvider.description /]",
+                        identifier,
+                        "[aServiceProvider.title /]");
                     [if (aServiceProvider.publisher.oclIsUndefined())]
                     Publisher publisher = null;
                     [else]

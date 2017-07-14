@@ -1,0 +1,34 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2017 Frédéric Loiret.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *   Frédéric Loiret - Switch the template to Bootstrap (519699)
+ *
+ *******************************************************************************/
+/]
+
+[module generateCssAndJsFiles('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateBootstrapMinCss/]
+[import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateJqueryMinJs/]
+[import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateBootstrapMinJs/]
+[import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateStickyFooterNavbarCss/]
+
+[template public generateCssAndJsFiles(anAdaptorInterface : AdaptorInterface)]
+[anAdaptorInterface.generateBootstrapMinCss() /]
+[anAdaptorInterface.generateJqueryMinJs() /]
+[anAdaptorInterface.generateBootstrapMinJs() /]
+[anAdaptorInterface.generateStickyFooterNavbarCss() /]
+[/template]

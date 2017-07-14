@@ -13,9 +13,10 @@
  *
  * Contributors:
  *
- *     Jad El-khoury        - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
+ *     Jad El-khoury        - initial implementation of code generator (422448)
  *     Matthieu Helleboid   - Support for multiple Service Providers.
  *     Anass Radouani       - Support for multiple Service Providers.
+ *     Frédéric Loiret      - Switch the template to Bootstrap (519699)
  *******************************************************************************/
 /]
 
@@ -42,6 +43,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResourceService/]
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateLicenseFiles/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateCssAndJsFiles/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateResourceCollectionJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateFilteredResourceCollectionJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateGetResourceJsp/]
@@ -71,6 +73,8 @@
 [anAdaptorInterface.generateAdaptorManager() /]
 [anAdaptorInterface.serviceProviderCatalog.generateServiceProviderCatalogService() /]
 [anAdaptorInterface.serviceProviderCatalog.generateServiceProviderCatalogSingleton() /]
+
+[anAdaptorInterface.generateCssAndJsFiles() /]
 [anAdaptorInterface.serviceProviderCatalog.generateServiceProviderCatalogHTML() /]
 [anAdaptorInterface.generateIndexJsp() /]
 [anAdaptorInterface.generateDelegatedUIJavaScripts() /]

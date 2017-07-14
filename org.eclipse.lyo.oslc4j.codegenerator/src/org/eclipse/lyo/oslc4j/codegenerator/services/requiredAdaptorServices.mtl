@@ -14,7 +14,7 @@
  * Contributors:
  *
  *     Jad El-khoury        - initial implementation of queries for handling of client code.
- *     
+ *
  *******************************************************************************/
 /]
 
@@ -24,22 +24,22 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 
-[query public javaClassPackageNameForClient(aRequiredAdaptor : RequiredAdaptor, anAdaptorInterface : AdaptorInterface) : String = 
+[query public javaClassPackageNameForClient(aRequiredAdaptor : RequiredAdaptor, anAdaptorInterface : AdaptorInterface) : String =
 javaClassBaseNamespace(anAdaptorInterface).concat('.clients')
 /]
 
-[query public javaClassNameForClient(aRequiredAdaptor : RequiredAdaptor) : String = 
+[query public javaClassNameForClient(aRequiredAdaptor : RequiredAdaptor) : String =
 if (aRequiredAdaptor.oclIsTypeOf(GenericRequiredAdaptor)) then
-	javaString(aRequiredAdaptor.oclAsType(GenericRequiredAdaptor).name, 'oslc', true).concat('Client')
+    javaString(aRequiredAdaptor.oclAsType(GenericRequiredAdaptor).name, 'oslc', true).concat('Client')
 else
-	javaName(aRequiredAdaptor.oclAsType(ModelledRequiredAdaptor).adaptorInterface, true).concat('Client')
+    javaName(aRequiredAdaptor.oclAsType(ModelledRequiredAdaptor).adaptorInterface, true).concat('Client')
 endif
 /]
 
-[query public javaClassFullNameForClient(aRequiredAdaptor : RequiredAdaptor, anAdaptorInterface : AdaptorInterface) : String = 
+[query public javaClassFullNameForClient(aRequiredAdaptor : RequiredAdaptor, anAdaptorInterface : AdaptorInterface) : String =
 javaClassPackageNameForClient(aRequiredAdaptor, anAdaptorInterface).concat('.').concat(javaClassNameForClient(aRequiredAdaptor))
 /]
 
-[query public javaClassFullFileNameForClient(aRequiredAdaptor : RequiredAdaptor, anAdaptorInterface : AdaptorInterface) : String = 
+[query public javaClassFullFileNameForClient(aRequiredAdaptor : RequiredAdaptor, anAdaptorInterface : AdaptorInterface) : String =
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForClient(aRequiredAdaptor, anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForClient(aRequiredAdaptor)).concat('.java')
 /]

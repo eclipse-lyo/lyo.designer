@@ -14,7 +14,7 @@
  * Contributors:
  *
  *     Jad El-khoury        - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
- *     
+ *
  *******************************************************************************/
 /]
 
@@ -25,7 +25,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 
-[query private resourceCollectionJspSimpleFileName(aQueryCapability: QueryCapability) : String = 
+[query private resourceCollectionJspSimpleFileName(aQueryCapability: QueryCapability) : String =
 (if (aQueryCapability.usages->size() = 0) then
     concatenate(aQueryCapability.resourceTypes.javaName(true)->sep('', 'sAnd', 's').oclAsType(String)).toLower()
 else
@@ -33,17 +33,17 @@ else
 endif)
 .concat('collection').concat('.jsp')
 /]
-[query public resourceCollectionJspRelativeFileName(aQueryCapability: QueryCapability) : String = 
+[query public resourceCollectionJspRelativeFileName(aQueryCapability: QueryCapability) : String =
 jspFilesWebappPath(containingAdaptorInterface(aQueryCapability)).concatenatePaths(resourceCollectionJspSimpleFileName(aQueryCapability)).toLower()
 /]
-[query public resourceCollectionJspFullFileName(aQueryCapability: QueryCapability) : String = 
+[query public resourceCollectionJspFullFileName(aQueryCapability: QueryCapability) : String =
 jspFilesBasePath(containingAdaptorInterface(aQueryCapability)).concatenatePaths(resourceCollectionJspRelativeFileName(aQueryCapability))
 /]
 
-[query public getResourceJspRelativeFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
+[query public getResourceJspRelativeFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
 jspFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)).concat('.jsp').toLower()
 /]
-[query public getResourceJspFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
+[query public getResourceJspFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
 jspFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceJspRelativeFileName(aResource, anAdaptorInterface))
 /]
 
@@ -55,14 +55,14 @@ else
 endif)
 .concat('creator').concat('.jsp')
 /]
-[query public resourceCreatorJspRelativeFileName(aCreationDialog: Dialog) : String = 
+[query public resourceCreatorJspRelativeFileName(aCreationDialog: Dialog) : String =
 jspFilesWebappPath(containingAdaptorInterface(aCreationDialog)).concatenatePaths(resourceCreatorJspSimpleFileName(aCreationDialog)).toLower()
 /]
-[query public resourceCreatorJspFullFileName(aCreationDialog: Dialog) : String = 
+[query public resourceCreatorJspFullFileName(aCreationDialog: Dialog) : String =
 jspFilesBasePath(containingAdaptorInterface(aCreationDialog)).concatenatePaths(resourceCreatorJspRelativeFileName(aCreationDialog))
 /]
 
-[query private resourceSelectorJspSimpleFileName(aSelectionDialog: Dialog) : String = 
+[query private resourceSelectorJspSimpleFileName(aSelectionDialog: Dialog) : String =
 (if (aSelectionDialog.usages->size() = 0) then
     concatenate(aSelectionDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String)).toLower()
 else
@@ -70,36 +70,36 @@ else
 endif)
 .concat('selector').concat('.jsp')
 /]
-[query public resourceSelectorJspRelativeFileName(aSelectionDialog: Dialog) : String = 
+[query public resourceSelectorJspRelativeFileName(aSelectionDialog: Dialog) : String =
 jspFilesWebappPath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorJspSimpleFileName(aSelectionDialog)).toLower()
 /]
-[query public resourceSelectorJspFullFileName(aSelectionDialog: Dialog) : String = 
+[query public resourceSelectorJspFullFileName(aSelectionDialog: Dialog) : String =
 jspFilesBasePath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorJspRelativeFileName(aSelectionDialog))
 /]
 
-[query public resourceSelectorClientJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String = 
+[query public resourceSelectorClientJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
 jspFilesWebappPath(anAdaptorInterface).concatenatePaths('selectionDialogSampleClient').concat('.jsp').toLower()
 /]
-[query public resourceSelectorClientJspFullFileName(anAdaptorInterface : AdaptorInterface) : String = 
+[query public resourceSelectorClientJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
 jspFilesBasePath(anAdaptorInterface).concatenatePaths(resourceSelectorClientJspRelativeFileName(anAdaptorInterface))
 /]
 
-[query public resourceCreatorClientJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String = 
+[query public resourceCreatorClientJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
 jspFilesWebappPath(anAdaptorInterface).concatenatePaths('creationDialogSampleClient').concat('.jsp').toLower()
 /]
-[query public resourceCreatorClientJspFullFileName(anAdaptorInterface : AdaptorInterface) : String = 
+[query public resourceCreatorClientJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
 jspFilesBasePath(anAdaptorInterface).concatenatePaths(resourceCreatorClientJspRelativeFileName(anAdaptorInterface))
 /]
 
-[query public resourceShapeJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String = 
+[query public resourceShapeJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
 jspFilesWebappPath(anAdaptorInterface).concatenatePaths('resourceShape').concat('.jsp').toLower()
 /]
 
-[query public resourceShapeJspFullFileName(anAdaptorInterface : AdaptorInterface) : String = 
+[query public resourceShapeJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
 jspFilesBasePath(anAdaptorInterface).concatenatePaths(resourceShapeJspRelativeFileName(anAdaptorInterface))
 /]
 
-[query private resourceSelectorResultsJspSimpleFileName(aSelectionDialog: Dialog) : String = 
+[query private resourceSelectorResultsJspSimpleFileName(aSelectionDialog: Dialog) : String =
 (if (aSelectionDialog.usages->size() = 0) then
     concatenate(aSelectionDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String)).toLower()
 else
@@ -107,31 +107,31 @@ else
 endif)
 .concat('selectorResults').concat('.jsp')
 /]
-[query public resourceSelectorResultsJspRelativeFileName(aSelectionDialog: Dialog) : String = 
+[query public resourceSelectorResultsJspRelativeFileName(aSelectionDialog: Dialog) : String =
 jspFilesWebappPath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorResultsJspSimpleFileName(aSelectionDialog)).toLower()
 /]
-[query public resourceSelectorResultsJspFullFileName(aSelectionDialog: Dialog) : String = 
+[query public resourceSelectorResultsJspFullFileName(aSelectionDialog: Dialog) : String =
 jspFilesBasePath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorResultsJspRelativeFileName(aSelectionDialog))
 /]
 
-[query public serviceProviderCatalogJspRelativeFileName(aServiceProviderCatalog : ServiceProviderCatalog) : String = 
+[query public serviceProviderCatalogJspRelativeFileName(aServiceProviderCatalog : ServiceProviderCatalog) : String =
 jspFilesWebappPath(containingAdaptorInterface(aServiceProviderCatalog)).concatenatePaths('serviceProviderCatalog').concat('.jsp').toLower()
 /]
-[query public serviceProviderCatalogJspFullFileName(aServiceProviderCatalog : ServiceProviderCatalog) : String = 
+[query public serviceProviderCatalogJspFullFileName(aServiceProviderCatalog : ServiceProviderCatalog) : String =
 jspFilesBasePath(containingAdaptorInterface(aServiceProviderCatalog)).concatenatePaths(serviceProviderCatalogJspRelativeFileName(aServiceProviderCatalog))
 /]
 
-[query public serviceProviderJspRelativeFileName(aServiceProvider : ServiceProvider) : String = 
+[query public serviceProviderJspRelativeFileName(aServiceProvider : ServiceProvider) : String =
 jspFilesWebappPath(containingAdaptorInterface(aServiceProvider)).concatenatePaths(aServiceProvider.javaName(false)).concat('.jsp').toLower()
 /]
-[query public serviceProviderJspFullFileName(aServiceProvider : ServiceProvider) : String = 
+[query public serviceProviderJspFullFileName(aServiceProvider : ServiceProvider) : String =
 jspFilesBasePath(containingAdaptorInterface(aServiceProvider)).concatenatePaths(serviceProviderJspRelativeFileName(aServiceProvider))
 /]
 
 [comment TODO: I need to work out how to properly set hte javascript path. This is hard-coded :-)/]
-[query public delegatedUIJavaScriptsRelativeFileName(anAdaptorInterface : AdaptorInterface) : String = 
+[query public delegatedUIJavaScriptsRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
 'delegatedUI'.concat('.js')
 /]
-[query public delegatedUIJavaScriptsFullFileName(anAdaptorInterface : AdaptorInterface) : String = 
+[query public delegatedUIJavaScriptsFullFileName(anAdaptorInterface : AdaptorInterface) : String =
 javascriptFilesBasePath(anAdaptorInterface).concatenatePaths(delegatedUIJavaScriptsRelativeFileName(anAdaptorInterface))
 /]

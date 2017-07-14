@@ -2,6 +2,19 @@
 /target/
 
 # Eclipse
-.settings/
-.project
-.classpath
+/.project
+/.classpath
+/.settings/
+
+# Intellij
+
+/.idea/
+/*.iml
+
+# OS
+.DS_Store
+*.tmp
+*.bak
+*.swp
+*~.nib
+*~

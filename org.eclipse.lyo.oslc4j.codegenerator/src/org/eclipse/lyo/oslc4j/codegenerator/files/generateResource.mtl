@@ -13,15 +13,16 @@
  *
  * Contributors:
  *
- *     Russell Boykin       - initial API and implementation
- *     Alberto Giammaria    - initial API and implementation
- *     Chris Peters         - initial API and implementation
- *     Gianluca Bernardini  - initial API and implementation
- *	   Sam Padgett	       - initial API and implementation
- *     Michael Fiedler     - adapted for OSLC4J
- *     Jad El-khoury        - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
- *     Matthieu Helleboid   - Support for multiple Service Providers.
- *     Anass Radouani       - Support for multiple Service Providers.
+ *     Russell Boykin       -  initial API and implementation
+ *     Alberto Giammaria    -  initial API and implementation
+ *     Chris Peters         -  initial API and implementation
+ *     Gianluca Bernardini  -  initial API and implementation
+ *     Sam Padgett          -  initial API and implementation
+ *     Michael Fiedler      -  adapted for OSLC4J
+ *     Jad El-khoury        -  initial implementation of code generator (422448)
+ *     Matthieu Helleboid   -  Support for multiple Service Providers.
+ *     Anass Radouani       -  Support for multiple Service Providers.
+ *     Frédéric Loiret      -  Minor changes for Bootstrap template (519699)
  *******************************************************************************/
 /]
 
@@ -87,9 +88,9 @@ static public String [propertyToHtmlForCreationMethodName(aProperty, aResource, 
  *     Alberto Giammaria    - initial API and implementation
  *     Chris Peters         - initial API and implementation
  *     Gianluca Bernardini  - initial API and implementation
- *	   Sam Padgett          - initial API and implementation
+ *       Sam Padgett          - initial API and implementation
  *     Michael Fiedler      - adapted for OSLC4J
- *     Jad El-khoury        - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
+ *     Jad El-khoury        - initial implementation of code generator (422448)
  *     Matthieu Helleboid   - Support for multiple Service Providers.
  *     Anass Radouani       - Support for multiple Service Providers.
  *
@@ -255,7 +256,7 @@ public static Link constructLink[methodSuffix/]([commaSeparate(aResource.instanc
 public static ResourceShape createResourceShape() throws OslcCoreApplicationException, URISyntaxException {
     return ResourceShapeFactory.createResourceShape(OSLC4JUtils.getServletURI(),
     OslcConstants.PATH_RESOURCE_SHAPES,
-    [javaInterfaceNameForAdaptorConstants(contextAdaptorInterface) /].[resourcePathConstantName(aResource)/],  
+    [javaInterfaceNameForAdaptorConstants(contextAdaptorInterface) /].[resourcePathConstantName(aResource)/],
     [javaClassName(aResource) /].class);
 }
 
@@ -418,11 +419,6 @@ public String [javaAttributeName(aProperty, aResource) /]ToHtml()
 {
     String s = "";
 
-    // [protected (javaAttributeName(aProperty, aResource).concat('toHtml_init'))]
-    // [/protected]
-
-    s = s + "<label for=\"[aProperty.name/]\"><strong>[aProperty.name/]</strong>: </LABEL>";
-
     // [protected (javaAttributeName(aProperty, aResource).concat('toHtml_mid'))]
     // [/protected]
 
@@ -440,10 +436,10 @@ public String [javaAttributeName(aProperty, aResource) /]ToHtml()
         s = s + "</ul>";
         [else]
         if ([javaAttributeName(aProperty, aResource)/] == null) {
-            s= s + "<em>null</em>";
+            s = s + "<em>null</em>";
         }
         else {
-            s= s + [javaAttributeName(aProperty, aResource)/].toString();
+            s = s + [javaAttributeName(aProperty, aResource)/].toString();
         }
         [/if]
     [comment a property with valueType of resource or LocalResource can return either a Class directly referring to a Resource, or Link.
@@ -465,7 +461,7 @@ public String [javaAttributeName(aProperty, aResource) /]ToHtml()
                 s= s + "<em>null</em>";
             }
             else {
-                s = s + next.getValue().toString();
+                s = s + "<a href=\"" + next.getValue().toString() + "\">" + next.getValue().toString() + "</a>";
             }
                 [/if]
             [else]
