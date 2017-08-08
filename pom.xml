@@ -1,58 +1,36 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eclipse.lyo.tools</groupId>
+	<artifactId>tools-root</artifactId>
+	<version>2.3.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>org.eclipse.lyo.tools</groupId>
+		<artifactId>tools-parent</artifactId>
+		<version>2.3.0-SNAPSHOT</version>
+		<relativePath>./org.eclipse.lyo.tools.parent</relativePath>
+	</parent>
 
-    <groupId>org.eclipse.lyo.tools</groupId>
-    <artifactId>parent</artifactId>
-    <version>2.2.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>Lyo Tools Parent</name>
+	<modules>
+		<module>org.eclipse.lyo.oslc4j.adaptormodel</module>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+		<module>org.eclipse.lyo.tools.adaptormodel.edit</module>
+		<module>org.eclipse.lyo.tools.adaptormodel.editor</module>
+		<module>org.eclipse.lyo.tools.adaptormodel.model</module>
 
-    <modules>
-        <!-- <module>org.eclipse.lyo.tools.store</module> -->
-    </modules>
+		<module>org.eclipse.lyo.tools.codegenerator.feature</module>
 
-        <licenses>
-        <license>
-            <name>Eclipse Public License 1.0</name>
-            <url>https://www.eclipse.org/legal/epl-v10.html</url>
-        </license>
-    </licenses>
+		<module>org.eclipse.lyo.oslc4j.codegenerator</module>
+		<module>org.eclipse.lyo.tools.codegenerator.ui</module>
 
-    <distributionManagement>
-        <repository>
-            <id>repo.eclipse.org</id>
-            <name>Eclipse Lyo Releases</name>
-            <url>https://repo.eclipse.org/content/repositories/lyo-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>repo.eclipse.org</id>
-            <name>Eclipse Lyo Snapshots</name>
-            <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+		<module>org.eclipse.lyo.tools.toolchain.feature</module>
 
-    <repositories>
-        <repository>
-            <id>lyo-releases</id>
-            <name>lyo-releases repository</name>
-            <url>https://repo.eclipse.org/content/repositories/lyo-releases/
-            </url>
-        </repository>
-        <repository>
-            <id>lyo-snapshots</id>
-            <name>lyo-snapshots repository</name>
-            <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/
-            </url>
-        </repository>
-    </repositories>
+		<module>org.eclipse.lyo.tools.toolchain.design</module>
+		<module>org.eclipse.lyo.tools.toolchain.edit</module>
+		<module>org.eclipse.lyo.tools.toolchain.editor</module>
+		<module>org.eclipse.lyo.tools.toolchain.model</module>
+
+		<module>org.eclipse.lyo.tools.updatesite</module>
+	</modules>
 </project>

@@ -3,3 +3,4 @@ tasks/generate.xml
 !.project
 !.classpath
 !.settings/
+/target/
