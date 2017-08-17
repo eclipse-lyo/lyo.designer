@@ -122,9 +122,6 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
             [for (aService: Service | anAdaptorInterface.serviceProviders().services)]
             RESOURCE_CLASSES.add([javaClassName(aService)/].class);
             [/for]
-            [for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name))]
-            RESOURCE_CLASSES.add([javaClassName(aResource)/].class);
-            [/for]
             RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
             RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
 
