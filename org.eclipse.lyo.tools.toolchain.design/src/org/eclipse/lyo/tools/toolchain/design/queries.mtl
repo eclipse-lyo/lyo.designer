@@ -18,26 +18,18 @@
  *******************************************************************************/
 /]
 
-[module queries('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0')/]
-
-[query public visibleResources(diagram : DDiagram) : Sequence(Resource) = 
-(diagram.containers->select(c : DDiagramElementContainer | 
-    (c.actualMapping.name = 'Specification.DomainSpecification.Resource')._and(c.visible))).target.oclAsType(Resource)
-/]
-
-[query public invisibleParentResources(aResource : Resource, diagram : DDiagram) : OrderedSet(Resource) = 
-aResource.extends->select(parent : Resource | not(visibleResources(diagram)->includes(parent)))
-/]
+[module queries('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
 
 [comment If at least one parent resource is not visible in the diagram, show textually the parent resources.
 Show at least the first invisible parent resource./]
-[query public labelInDomainSpecification(aResource : Resource, diagram : DDiagram) : String = 
+[query public labelInDomainSpecification(aResource : Resource, visibleResources : Sequence(Resource)) : String = 
+let invisibleParentResources : OrderedSet(Resource) = aResource.extends->select(parent : Resource | not(visibleResources->includes(parent))) in 
 aResource.name + 
-    (if (aResource.invisibleParentResources(diagram)->size() = 0) 
+    (if (invisibleParentResources->size() = 0) 
     then 
         ''
     else 
-        (lineSeparator() + 'extends: ' + aResource.invisibleParentResources(diagram)->first().name) 
-        + (if (aResource.invisibleParentResources(diagram)->size() > 1) then ' & ...' else '' endif) 
+        (lineSeparator() + 'extends: ' + invisibleParentResources->first().name) + 
+        (if (invisibleParentResources->size() > 1) then ' & ...' else '' endif) 
     endif)
 /]

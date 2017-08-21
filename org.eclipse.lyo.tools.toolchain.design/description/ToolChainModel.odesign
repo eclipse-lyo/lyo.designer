@@ -51,7 +51,7 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="15" arcHeight="15" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.labelInDomainSpecification(diagram)/]" roundedCorner="true">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="15" arcHeight="15" borderSizeComputationExpression="1" showIcon="false" labelExpression="[let visibleResources : Sequence(Resource) = (diagram.containers->select(c : DDiagramElementContainer | (c.actualMapping.name = 'Specification.DomainSpecification.Resource')._and(c.visible))).target.oclAsType(Resource) in  self.labelInDomainSpecification(visibleResources)/]" roundedCorner="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
