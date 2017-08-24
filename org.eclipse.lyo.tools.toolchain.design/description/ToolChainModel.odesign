@@ -461,6 +461,14 @@
               <firstModelOperations xsi:type="tool_1:RemoveElement"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="ToolchainDiagram.AdaptorInterface.Menu" label="OSLC Lyo Designer" precondition="[self.oclIsTypeOf(AdaptorInterface)/]">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="ToolchainDiagram.AdaptorInterface.Menu.Generate" label="Generate Java Code" precondition="[self.oclIsTypeOf(AdaptorInterface)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.generateAdaptorInterface()/]"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -722,5 +730,6 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::queries"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::DialogInputServices"/>
+    <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::GeneratorServices"/>
   </ownedViewpoints>
 </description:Group>
