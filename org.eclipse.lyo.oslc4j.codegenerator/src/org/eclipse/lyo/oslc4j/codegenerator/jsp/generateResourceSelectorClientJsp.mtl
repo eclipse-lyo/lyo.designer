@@ -115,12 +115,18 @@
 <script type="text/javascript">
   $(function () {
     function handleMessage(message) {
-      var results = JSON.parse(message);
-      var firstResult = {
-        label: results['['/]"oslc:results"[']'/]['['/]0[']'/]['['/]"oslc:label"[']'/],
-        uri: results['['/]"oslc:results"[']'/]['['/]0[']'/]['['/]"rdf:resource"[']'/]
-      };
-      handleOslcSelection(firstResult);
+            var resultsUl = document.querySelector('#results ul')
+            while(resultsUl.hasChildNodes()) {
+              resultsUl.removeChild(resultsUl.lastChild)
+            }
+      var results = JSON.parse(message)['['/]"oslc:results"];
+      for (var item in results) {
+          var aResult = {
+            label: results['['/]item]['['/]"oslc:label"],
+            uri: results['['/]item]['['/]"rdf:resource"]
+          }
+          handleOslcSelection(aResult);
+      }
     }
 
     function handleOslcSelection(resource) {
