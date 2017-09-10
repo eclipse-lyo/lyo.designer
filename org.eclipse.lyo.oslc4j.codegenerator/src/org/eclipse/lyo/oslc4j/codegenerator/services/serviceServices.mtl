@@ -291,6 +291,14 @@ JAXRSPathParameters(aResource.instanceURI(aBasicCapability))
 	.concat((if forRDF then '' else 'AsHtml' endif))
 /]
 
+[query public getResourceCompactMethodName(aBasicCapability: BasicCapability, aResource: Resource) : String = 
+getResourceMethodName(aBasicCapability, aResource, true).concat('Compact')
+/]
+
+[query public getResourceSmallPreviewMethodName(aBasicCapability: BasicCapability, aResource: Resource) : String = 
+getResourceMethodName(aBasicCapability, aResource, false).concat('SmallPreview')
+/]
+
 [query public deleteResourceMethodName(aBasicCapability: BasicCapability, aResource: Resource) : String = 
 'delete'.concat(javaName(aResource, true))
 /]

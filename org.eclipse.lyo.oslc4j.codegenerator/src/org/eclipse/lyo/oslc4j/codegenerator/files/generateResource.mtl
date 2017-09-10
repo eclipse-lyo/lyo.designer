@@ -325,7 +325,7 @@ public String toHtml(boolean asLocalResource)
         // [/protected]
     }
     else {
-        result = "<a href=\"" + getAbout() + "\">" + toString() + "</a>";
+        result = "<a href=\"" + getAbout() + "\" class=\"oslc-resource-link\">" + toString() + "</a>";
     }
 
     // [protected ('toHtml_finalize')]

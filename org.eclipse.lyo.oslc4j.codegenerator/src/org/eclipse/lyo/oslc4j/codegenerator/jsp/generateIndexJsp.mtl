@@ -62,29 +62,29 @@ To revert to the default generated content, delete all content in this file, and
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-          crossorigin="anonymous">
     <title>Adaptor home</title>
-    <style type="text/css">
-        .container {
-            margin-top: 5em;
-        }
-    </style>
+
+    <link href="<c:url value="/static/css/bootstrap-4.0.0-beta.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
+
+    <script src="<c:url value="/static/js/jquery-3.2.1.min.js"/>"></script>
+    <script src="<c:url value="/static/js/bootstrap-4.0.0-beta.min.js"/>"></script>
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <p>
-            <%URI catalogUri = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/catalog/singleton").build();%>
-                There is no content on the homepage. Please see the available
-                Service Providers in the <a
-                    href="<%=catalogUri%>">Service
-                Provider Catalog</a>.
-            </p>
-        </div>
+
+    <div class="jumbotron">
+        <h1 class="display-3">Adaptor home!</h1>
+        <p class="lead">This is a homepage of the <em>[anAdaptorInterface.name/]</em> that was generated using
+            Eclipse Lyo Toolchain Designer.</p>
+        <hr class="my-4">
+        <p>In order to begin exploring it, start from the Service Provider Catalog to see the
+            available Service Providers
+            .</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="<%= UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/catalog/singleton").build() %>" role="button">Service Provider
+                Catalog</a>
+        </p>
     </div>
 </div>
 </body>

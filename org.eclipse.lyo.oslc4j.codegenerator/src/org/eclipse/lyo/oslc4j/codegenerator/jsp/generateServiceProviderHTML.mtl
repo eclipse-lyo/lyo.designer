@@ -86,8 +86,12 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= serviceProvider.getTitle() %></title>
-    <link href="<c:url value="/static/css/bootstrap.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/static/css/sticky-footer-navbar.css"/>" rel="stylesheet">
+    <link href="<c:url value="/static/css/bootstrap-4.0.0-beta.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
+
+    <script src="<c:url value="/static/js/jquery-3.2.1.min.js"/>"></script>
+    <script src="<c:url value="/static/js/popper-1.11.0.min.js"/>"></script>
+    <script src="<c:url value="/static/js/bootstrap-4.0.0-beta.min.js"/>"></script>
     <%--
     [protected ('(RECOMMENDED) headStuff')]
     --%>
@@ -96,21 +100,13 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     --%>
 </head>
 <body>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-default navbar-fixed-top">
+
+  <nav class="navbar sticky-top navbar-light bg-light">
     <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="<c:url value="/services/catalog/singleton"/>">[containingAdaptorInterface(aServiceProvider).name /]</a>
-      </div>
+      <a class="navbar-brand" href="<c:url value="/services/catalog/singleton"/>">[containingAdaptorInterface(aServiceProvider).name/]</a>
     </div>
   </nav>
-  <!-- Begin page content -->
+
   <div class="container">
     <div class="page-header">
       <%--
@@ -119,7 +115,7 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
       <%--
       [/protected]
       --%>
-      <h2><%= serviceProvider.getTitle() %></h2>
+      <h1><%= serviceProvider.getTitle() %></h1>
       <p><%= serviceProvider.getDescription() %></p>
 
 
@@ -141,10 +137,10 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     [/protected]
     --%>
     <%for (int serviceIndex = 0; serviceIndex < services.length; serviceIndex++) {%>
-    <h3>Service</h3>
+    <h2>Service &#35;<%=serviceIndex%></h2>
     <% Dialog['[]'/] selectionDialogs = services['[serviceIndex]'/].getSelectionDialogs();%>
     <% if(selectionDialogs.length > 0) {%>
-    <h4>Resource Selector Dialog(s)</h4>
+    <h4>Resource Selector Dialogs</h4>
     <%}%>
     <%
         for (int selectionDialogIndex = 0; selectionDialogIndex < selectionDialogs.length; selectionDialogIndex++) {
@@ -157,7 +153,7 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     <%}%>
     <% Dialog['[]'/] creationDialogs = services['[serviceIndex]'/].getCreationDialogs(); %>
     <% if(creationDialogs.length > 0) {%>
-    <h4>Resource Creator Dialog(s)</h4>
+    <h4>Resource Creator Dialogs</h4>
     <%}%>
     <%
         for (int creationDialogIndex = 0; creationDialogIndex < creationDialogs.length; creationDialogIndex++) {
@@ -170,7 +166,7 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     <%}%>
     <% CreationFactory['[]'/] creationFactories = services['[serviceIndex]'/].getCreationFactories(); %>
     <% if(creationFactories.length > 0) {%>
-    <h4>Resource Creation Factory(s)</h4>
+    <h4>Resource Creation Factories</h4>
     <%}%>
     <%
         for (int creationFactoryIndex = 0; creationFactoryIndex < creationFactories.length; creationFactoryIndex++) {
@@ -180,7 +176,7 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     <%}%>
     <% QueryCapability['[]'/] queryCapabilities= services['[serviceIndex]'/].getQueryCapabilities(); %>
     <% if(queryCapabilities.length > 0) {%>
-    <h4>Resource Query Capability(s)</h4>
+    <h4>Resource Query Capabilities</h4>
     <%}%>
     <%
         for (int queryCapabilityIndex = 0; queryCapabilityIndex < queryCapabilities.length; queryCapabilityIndex++) {
@@ -189,9 +185,8 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     %>
     <p><a href="<%= queryCapability %>"><%= qc.getTitle() %> (<code><%= qc.getQueryBase() %></code>)</a></p>
     <%}%>
-    <% if(creationFactories.length > 0 || queryCapabilities.length > 0) {%>
+    <% if(creationFactories.length > 0) {%>
     <h4>Creation Resource Shapes</h4>
-    <%}%>
     <%
         for (int creationFactoryIndex = 0; creationFactoryIndex < creationFactories.length; creationFactoryIndex++) {
             URI['[]'/] creationShapes = creationFactories['[creationFactoryIndex]'/].getResourceShapes();
@@ -199,6 +194,8 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     %>
     <p><a href="<%= creationShape %>"><%= creationShape %></a></p>
     <%}%>
+    <%}%>
+    <% if(queryCapabilities.length > 0) {%>
     <h4>Query Resource Shapes</h4>
     <%
         for (int queryCapabilityIndex = 0; queryCapabilityIndex < queryCapabilities.length; queryCapabilityIndex++) {
@@ -206,6 +203,11 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     %>
     <p><a href="<%= queryShape %>"><%= queryShape %></a></p>
     <%}%>
+    <%}%>
+
+    <c:if test="<%=serviceIndex + 1 < services.length%>">
+      <hr>
+    </c:if>
     <%}%>
   </div>
   <footer class="footer">

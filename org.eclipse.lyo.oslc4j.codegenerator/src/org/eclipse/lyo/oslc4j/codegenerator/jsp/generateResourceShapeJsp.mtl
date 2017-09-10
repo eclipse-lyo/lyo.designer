@@ -25,6 +25,7 @@
 
 [template public generateResourceShapeJsp(anAdaptorInterface: AdaptorInterface)]
 [file (resourceShapeJspFullFileName(anAdaptorInterface), false, 'UTF-8')]
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%--
  Copyright (c) 2017 KTH Royal Institute of Technology.
@@ -73,18 +74,34 @@ End of user code
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
         <title><%= aResourceShape.getTitle() %></title>
-        <style type="text/css">
-            .container {
-                margin-top: 5em;
-            }
 
-        </style>
+        <link href="<c:url value="/static/css/bootstrap-4.0.0-beta.min.css"/>" rel="stylesheet">
+        <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
+
+        <script src="<c:url value="/static/js/jquery-3.2.1.min.js"/>"></script>
+        <script src="<c:url value="/static/js/popper-1.11.0.min.js"/>"></script>
+        <script src="<c:url value="/static/js/bootstrap-4.0.0-beta.min.js"/>"></script>
+        <script src="<c:url value="/static/js/preview.js"/>"></script>
+
+        <%--
+      Start of user code (RECOMMENDED) headStuff
+      --%>
+        <%--
+      End of user code
+      --%>
+
     </head>
     <body>
+
+    <nav class="navbar sticky-top navbar-light bg-light">
         <div class="container">
+            <a class="navbar-brand" href="<c:url value="/services/catalog/singleton"/>">[anAdaptorInterface.name/]</a>
+        </div>
+    </nav>
+
+
+    <div class="container">
             <div class="row">
                 <div class="col-md-12" id="page-index">
                     <h1>Shape "<%=aResourceShape.getTitle()%>"</h1>
@@ -175,7 +192,14 @@ End of user code
                 </table>
             </div>
         </div>
-        <div id="footer"></div>
+    </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">
+                    OSLC Adaptor was generated using <a href="http://eclipse.org/lyo">Eclipse Lyo</a> 2.3.0-SNAPSHOT.
+                </p>
+            </div>
+        </footer>
     </body>
 </html>
 [/file]
