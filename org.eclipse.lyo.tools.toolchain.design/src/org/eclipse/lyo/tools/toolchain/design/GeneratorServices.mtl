@@ -28,3 +28,6 @@
     = invoke('org.eclipse.lyo.tools.toolchain.design.GeneratorServices', 'generateAdaptorInterface(org.eclipse.emf.ecore.EObject)', Sequence{arg0})
 /]
 
+[query public generateSpecification(arg0 : EObject) : EObject
+    = invoke('org.eclipse.lyo.tools.toolchain.design.GeneratorServices', 'generateSpecification(org.eclipse.emf.ecore.EObject)', Sequence{arg0})
+/]

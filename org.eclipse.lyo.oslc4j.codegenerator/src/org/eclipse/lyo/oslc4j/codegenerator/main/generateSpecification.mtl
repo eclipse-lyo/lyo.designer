@@ -1,0 +1,53 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2017 Jad El-khoury.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Jad El-khoury        - initial implementation of specification generation
+ *******************************************************************************/
+/]
+
+[module generateSpecification('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateDomainSpecificationConstants/]
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateResource/]
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateResourceInterface/]
+[import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateLicenseFiles/]
+
+[query public canGenerate(aSpecification : Specification) : Boolean = 
+not(
+aSpecification.generationSetting.oclIsUndefined()
+ or(aSpecification.generationSetting.javaFilesPath.isNullOrEmpty())
+ or(aSpecification.generationSetting.javaClassPackageName.isNullOrEmpty())
+)
+/]
+
+[template public generateSpecification(aSpecification : Specification)]
+[comment @main/]
+[if (canGenerate(aSpecification))]
+    [aSpecification.generateLicenseFiles() /] 
+    [for (aDomainSpecification: DomainSpecification | aSpecification.domainSpecifications)]
+        [aDomainSpecification.generateDomainSpecificationConstants(null)/]
+    [/for]
+    
+    [for (aResource: Resource | aSpecification.domainSpecifications.resources)]
+        [aResource.generateResource(null) /]
+        [aResource.generateResourceInterface(null, null) /]
+    [/for]
+[/if]
+[/template]

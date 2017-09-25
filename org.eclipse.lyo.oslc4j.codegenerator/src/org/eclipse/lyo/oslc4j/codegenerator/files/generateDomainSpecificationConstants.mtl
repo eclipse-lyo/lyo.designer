@@ -77,7 +77,7 @@ public interface [javaInterfaceNameForConstants(aDomainSpecification) /]
     public static String [domainSpecificationNamespaceConstantName(aDomainSpecification)/] = "[aDomainSpecification.namespaceURI/]";
     public static String [domainSpecificationNamespacePrefixConstantName(aDomainSpecification)/] = "[aDomainSpecification.namespacePrefix.name/]";
 
-    [for (aResource: Resource | relevantResources(anAdaptorInterface)->intersection(aDomainSpecification.resources)->sortedBy(name))]
+    [for (aResource: Resource | aDomainSpecification.resources->sortedBy(name))]
     [generateResourceConstants(aResource) /]
     [/for]
 }

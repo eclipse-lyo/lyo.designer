@@ -32,7 +32,11 @@ aResource.eContainer(DomainSpecification)
 
 [query public javaFullFilesPath(aSpecification: Specification, anAdaptorInterface : AdaptorInterface) : String = 
 (if (aSpecification.generationSetting.oclIsUndefined())._or(aSpecification.generationSetting.javaFilesPath.isNullOrEmpty()) then 
-    javaFilesBasePath(anAdaptorInterface)
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        'src'
+    else
+        javaFilesBasePath(anAdaptorInterface)
+    endif)
 else
     aSpecification.generationSetting.javaFilesPath
 endif)
@@ -40,7 +44,11 @@ endif)
 
 [query public javaPackageName(aSpecification: Specification, anAdaptorInterface : AdaptorInterface) : String = 
 (if (aSpecification.generationSetting.oclIsUndefined())._or(aSpecification.generationSetting.javaClassPackageName.isNullOrEmpty()) then 
-    javaClassBaseNamespace(anAdaptorInterface).concat('.resources')
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        'resources'
+    else
+        javaClassBaseNamespace(anAdaptorInterface).concat('.resources')
+    endif)
 else
     aSpecification.generationSetting.javaClassPackageName
 endif)

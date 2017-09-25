@@ -312,6 +312,21 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.SpecificationMenu.GenerateSpecification" label="Generate Specification Java Code" precondition="[self.oclIsTypeOf(Specification)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool_1:Switch">
+                    <cases conditionExpression="[self.generationSetting.oclIsUndefined() or self.generationSetting.javaFilesPath.oclIsUndefined() or self.generationSetting.javaClassPackageName.oclIsUndefined() or self.generationSetting.javaFilesPath.trim().equalsIgnoreCase('') or self.generationSetting.javaClassPackageName.trim().equalsIgnoreCase('')/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('Generation Settings are missing', 'The specification generation settings are missing. Right click and select the &quot;Set Java Generation Settings&quot; command')/]"/>
+                    </cases>
+                    <default>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.generateSpecification()/]"/>
+                    </default>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
           </ownedTools>
         </toolSections>
       </defaultLayer>

@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import ToolChainModel.design.Activator;
 import org.eclipse.lyo.oslc4j.codegenerator.main.Generate;
+import org.eclipse.lyo.oslc4j.codegenerator.main.GenerateSpecification;
 import org.eclipse.lyo.tools.toolchain.design.DialogInputServices;
 
 public class GeneratorServices {
@@ -52,6 +53,51 @@ public class GeneratorServices {
         Path rootPath = new Path(resolvedRootUri.toFileString());
 
         return rootPath.removeLastSegments(1).toOSString();
+    }
+
+    private String identifyGenerationPath(EObject self) {
+
+        final String PROPERTIES_FILE_NAME = "generator.properties";
+        final String GENERATION_PATH_PROPERTY = "generationPath";
+
+        DialogInputServices dialogInputServices = new DialogInputServices();
+
+        String folderPath = getFolderPath(self);
+        String propertiesFilePath = folderPath + File.separator + PROPERTIES_FILE_NAME;
+        String generationPath = null;
+        try {
+            Properties props = new Properties();
+            File propertiesFile = new File(propertiesFilePath);
+            if(propertiesFile.exists() && !propertiesFile.isDirectory()) {
+                props.load(new FileInputStream(propertiesFile));
+                generationPath = props.getProperty(GENERATION_PATH_PROPERTY);
+            }
+        } catch (IOException e) {
+            IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+            logger.log(status);
+            dialogInputServices.showMessage(self, "Exception!", "an Exception occurred reading the properties file:\""
+                    + propertiesFilePath + "\". Please see the error log.");
+            return null;
+        }
+
+        if (generationPath == null || generationPath.length() == 0) {
+            generationPath = dialogInputServices.promptForFolder(self,
+                    "Enter Generation Base Folder",
+                    "Select the base folder for your generation." + "\n" +
+                    "NOTE: To provide a default path, set a \"" + GENERATION_PATH_PROPERTY + "\" property in a \"" + PROPERTIES_FILE_NAME + "\" file, in the same location as your toolchain model.",
+                    folderPath);
+        }
+
+        if (generationPath == null || generationPath.length() == 0) {
+            return null;
+        }
+
+        File generationPathFile = new File(generationPath);
+        if(!generationPathFile.exists() || !generationPathFile.isDirectory()) {
+            dialogInputServices.showMessage(self, "Exception!", "Generation path " + generationPath + " must be an existing directory.");
+            return null;
+        }
+        return generationPath;
     }
 
     private boolean generateAdaptorInterface(EObject self, String targetFolder) {
@@ -74,44 +120,11 @@ public class GeneratorServices {
 
     public EObject generateAdaptorInterface(EObject self) {
 
-        final String PROPERTIES_FILE_NAME = "generator.properties";
-        final String GENERATION_PATH_PROPERTY = "generationPath";
-
         DialogInputServices dialogInputServices = new DialogInputServices();
 
-        String folderPath = getFolderPath(self);
-        String propertiesFilePath = folderPath + File.separator + PROPERTIES_FILE_NAME;
-        String generationPath = null;
-        try {
-            Properties props = new Properties();
-            File propertiesFile = new File(propertiesFilePath);
-            if(propertiesFile.exists() && !propertiesFile.isDirectory()) {
-                props.load(new FileInputStream(propertiesFile));
-                generationPath = props.getProperty(GENERATION_PATH_PROPERTY);
-            }
-        } catch (IOException e) {
-            IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
-            logger.log(status);
-            dialogInputServices.showMessage(self, "Exception!", "an Exception occurred reading the properties file:\""
-                    + propertiesFilePath + "\". Please see the error log.");
-            return self;
-        }
-
-        if (generationPath == null || generationPath.length() == 0) {
-            generationPath = dialogInputServices.promptForFolder(self,
-                    "Enter Generation Base Folder",
-                    "Select the base folder for your generation." + "\n" +
-                    "NOTE: To provide a default path, set a \"" + GENERATION_PATH_PROPERTY + "\" property in a \"" + PROPERTIES_FILE_NAME + "\" file, in the same location as your toolchain model.",
-                    folderPath);
-        }
-
-        if (generationPath == null || generationPath.length() == 0) {
-            return self;
-        }
-
-        File generationPathFile = new File(generationPath);
-        if(!generationPathFile.exists() || !generationPathFile.isDirectory()) {
-            dialogInputServices.showMessage(self, "Exception!", "Generation path " + generationPath + " must be an existing directory.");
+        String generationPath = identifyGenerationPath(self);
+		
+        if(generationPath == null) {
             return self;
         }
         if (generateAdaptorInterface(self, generationPath)) {
@@ -120,4 +133,37 @@ public class GeneratorServices {
         return self;
     }
 
+    private boolean generateSpecification(EObject self, String targetFolder) {
+        try {
+            File folder = new File(targetFolder);
+            List<String> arguments = new ArrayList<String>();
+
+            GenerateSpecification generator = new GenerateSpecification(self, folder, arguments);
+
+            generator.doGenerate(new BasicMonitor());
+        } catch (IOException e) {
+            IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+            logger.log(status);
+            DialogInputServices dialogInputServices = new DialogInputServices();
+            dialogInputServices.showMessage(self, "Exception!", "an Exception occurred during the generation process. Please see the error log.");
+            return false;
+        }
+        return true;
+    }
+
+    public EObject generateSpecification(EObject self) {
+
+        DialogInputServices dialogInputServices = new DialogInputServices();
+
+        String generationPath = identifyGenerationPath(self);
+        		
+        if(generationPath == null) {
+            return self;
+        }
+        if (generateSpecification(self, generationPath)) {
+            dialogInputServices.showMessage(self, "Generation Success", "Generation completed on \"" + generationPath + "\".");
+        }
+        return self;
+    }
+    
 }

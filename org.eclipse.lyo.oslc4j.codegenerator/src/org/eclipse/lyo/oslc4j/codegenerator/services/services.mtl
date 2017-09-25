@@ -40,21 +40,37 @@ Set{'appendable', 'autocloseable', 'charsequence', 'cloneable', 'comparable', 'i
 /]
 
 [query public javaClassBaseNamespace(anAdaptorInterface : AdaptorInterface) : String =
-anAdaptorInterface.javaClassBaseNamespace
+(if anAdaptorInterface.javaClassBaseNamespace.isNullOrEmpty() then 
+    'org'
+else
+    anAdaptorInterface.javaClassBaseNamespace
+endif)
 /]
 
 [query public javaFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
-anAdaptorInterface.javaFilesBasePath
+(if anAdaptorInterface.javaFilesBasePath.isNullOrEmpty() then 
+    'src'
+else
+    anAdaptorInterface.javaFilesBasePath
+endif)
 /]
 
 [query public jspFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
-anAdaptorInterface.jspFilesBasePath
+(if anAdaptorInterface.jspFilesBasePath.isNullOrEmpty() then 
+    'src'
+else
+    anAdaptorInterface.jspFilesBasePath
+endif)
 /]
 
 [query public javascriptFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
-anAdaptorInterface.javascriptFilesBasePath
-/]
+(if anAdaptorInterface.javascriptFilesBasePath.isNullOrEmpty() then 
+    'src'
+else
+    anAdaptorInterface.javascriptFilesBasePath
+endif)
 
+/]
 
 [query public jspFilesWebappPath(anAdaptorInterface : AdaptorInterface) : String =
 '/'.concat(javaClassBaseNamespace(anAdaptorInterface)).substituteAll('.', '/')

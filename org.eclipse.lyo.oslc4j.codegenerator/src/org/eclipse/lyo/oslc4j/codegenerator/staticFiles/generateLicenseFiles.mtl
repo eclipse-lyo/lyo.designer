@@ -25,8 +25,8 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateEDLV10HTML/]
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateEPLV10HTML/]
 
-[template public generateLicenseFiles(anAdaptorInterface : AdaptorInterface)]
-[anAdaptorInterface.generateNoticeHTML() /]
-[anAdaptorInterface.generateEDLV10HTML() /]
-[anAdaptorInterface.generateEPLV10HTML() /]
+[template public generateLicenseFiles(traceabilityContext : OclAny)]
+[traceabilityContext.generateNoticeHTML() /]
+[traceabilityContext.generateEDLV10HTML() /]
+[traceabilityContext.generateEPLV10HTML() /]
 [/template]
