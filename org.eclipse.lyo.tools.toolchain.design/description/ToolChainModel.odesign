@@ -335,8 +335,13 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ToolchainDiagram" initialisation="true" domainClass="toolchain.Toolchain">
       <diagramInitialisation>
-        <firstModelOperations xsi:type="tool_1:If" conditionExpression="[self.specification.oclIsUndefined()/]">
-          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
+        <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+          <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.specification.oclIsUndefined()/]">
+            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
+          </subModelOperations>
+          <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.vocabularies.oclIsUndefined()/]">
+            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Vocabularies" referenceName="vocabularies"/>
+          </subModelOperations>
         </firstModelOperations>
       </diagramInitialisation>
       <defaultLayer name="Default">
@@ -766,6 +771,179 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.oclAsType(DNodeContainer).target/]">
                 <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.DropVocabulary']" name="VocabularyDiagram" initialisation="true" domainClass="vocabulary.Vocabularies" enablePopupBars="true">
+      <diagramInitialisation/>
+      <defaultLayer name="Default">
+        <edgeMappings name="Vocabularies.Class.SubClassOf" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.DeleteSubClassOf']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetFinderExpression="feature:subClassOf">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Vocabularies.Property.SubPropertyOf" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.DeleteSubPropertyOf']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" targetFinderExpression="feature:subPropertyOf">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Vocabularies.Vocabulary" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabulary.DeleteVocabulary']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.EditVocabularyLabel']" createElements="false" domainClass="vocabulary.Vocabulary">
+          <subContainerMappings name="Vocabularies.Vocabulary.Class" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabulary.DeleteClass']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.EditClassLabel']" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.Class" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:label" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconClass.png" widthComputationExpression="9" heightComputationExpression="6">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="Vocabularies.Vocabulary.Property" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabulary.DeleteProperty']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.EditPropertyLabel']" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.Property" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:label" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconProperty.png" widthComputationExpression="9" heightComputationExpression="6">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[label + ' (' + preferredNamespacePrefix + ')'/]" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/VocabularyIcon.png" widthComputationExpression="40" heightComputationExpression="30">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Operations">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateVocabulary" label="Create Vocabulary" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/VocabularyIcon.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.Vocabulary" referenceName="vocabularies">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="preferredNamespacePrefix" valueExpression="['vocab' + container.vocabularies->size() /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="['Vocabulary' + container.vocabularies->size() /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespaceURI" valueExpression="['http://your.organisation.domain/'+ preferredNamespacePrefix +'#'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateClass" label="Create Class" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconClass.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.Class" referenceName="terms">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="['Class ' + container.terms->select(c | c.eClass().name.equalsIgnoreCase('Class'))->size() /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Class' + container.terms->select(c | c.eClass().name.equalsIgnoreCase('Class'))->size() /]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateProperty" label="Create Property" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconProperty.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.Property" referenceName="terms">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="['Property ' + container.terms->select(c | c.eClass().name.equalsIgnoreCase('Property'))->size() /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Property' + container.terms->select(c | c.eClass().name.equalsIgnoreCase('Property'))->size() /]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Vocabularies.EditVocabularyLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Vocabularies.EditClassLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Vocabularies.EditPropertyLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Vocabularies.CreateSubClassOf" label="SubClassOf" precondition="aql:preTarget->excludes(preSource) and preTarget.subClassOf->excludes(preSource)" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@edgeMappings[name='Vocabularies.Class.SubClassOf']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="subClassOf" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Vocabularies.CreateSubPropertyOf" label="SubPropertyOf" precondition="aql:preTarget->excludes(preSource) and preTarget.subPropertyOf->excludes(preSource)" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@edgeMappings[name='Vocabularies.Property.SubPropertyOf']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="subPropertyOf" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Vocabularies.DropVocabulary" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Vocabulary.DeleteClass">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Vocabulary.DeleteProperty">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Vocabulary.DeleteVocabulary">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Vocabularies.DeleteSubClassOf">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Unset" featureName="subClassOf" elementExpression="aql:elementView.targetNode.target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Vocabularies.DeleteSubPropertyOf">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Unset" featureName="subPropertyOf" elementExpression="aql:elementView.targetNode.target"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

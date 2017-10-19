@@ -31,6 +31,10 @@
 		<module>org.eclipse.lyo.tools.toolchain.editor</module>
 		<module>org.eclipse.lyo.tools.toolchain.model</module>
 
+		<module>org.eclipse.lyo.tools.vocabulary.editor</module>
+		<module>org.eclipse.lyo.tools.vocabulary.model</module>
+		<module>org.eclipse.lyo.tools.vocabulary.model.edit</module>
+
 		<module>org.eclipse.lyo.tools.updatesite</module>
 	</modules>
 </project>

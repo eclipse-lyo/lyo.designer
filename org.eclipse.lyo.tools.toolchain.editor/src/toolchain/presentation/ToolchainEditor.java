@@ -159,6 +159,7 @@ import toolchain.provider.ToolchainItemProviderAdapterFactory;
 import adaptorinterface.provider.AdaptorinterfaceItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import vocabulary.provider.VocabularyItemProviderAdapterFactory;
 
 
 /**
@@ -705,6 +706,7 @@ public class ToolchainEditor
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ToolchainItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new AdaptorinterfaceItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new VocabularyItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

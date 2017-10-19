@@ -7,6 +7,7 @@ import adaptorinterface.provider.AdaptorInterfaceEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import vocabulary.provider.VocabularyEditPlugin;
 
 /**
  * This is the central singleton for the Toolchain edit plugin.
@@ -41,6 +42,7 @@ public final class ToolchainEditPlugin extends EMFPlugin {
 		super
 		  (new ResourceLocator [] {
 		     AdaptorInterfaceEditPlugin.INSTANCE,
+		     VocabularyEditPlugin.INSTANCE,
 		   });
 	}
 

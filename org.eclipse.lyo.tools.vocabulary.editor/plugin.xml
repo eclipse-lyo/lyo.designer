@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated vocabulary -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="vocabulary.presentation.VocabularyModelWizardID"
+            name="%_UI_VocabularyModelWizard_label"
+            class="vocabulary.presentation.VocabularyModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/VocabularyModelFile.gif">
+         <description>%_UI_VocabularyModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated vocabulary -->
+      <editor
+            id="vocabulary.presentation.VocabularyEditorID"
+            name="%_UI_VocabularyEditor_label"
+            icon="icons/full/obj16/VocabularyModelFile.gif"
+            extensions="vocabulary"
+            class="vocabulary.presentation.VocabularyEditor"
+            contributorClass="vocabulary.presentation.VocabularyActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

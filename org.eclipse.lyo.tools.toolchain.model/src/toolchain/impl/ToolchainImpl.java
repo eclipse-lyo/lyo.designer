@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import toolchain.Toolchain;
 import toolchain.ToolchainPackage;
+import vocabulary.Vocabularies;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +31,13 @@ import toolchain.ToolchainPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link toolchain.impl.ToolchainImpl#getName <em>Name</em>}</li>
  *   <li>{@link toolchain.impl.ToolchainImpl#getAdaptorInterfaces <em>Adaptor Interfaces</em>}</li>
  *   <li>{@link toolchain.impl.ToolchainImpl#getSpecification <em>Specification</em>}</li>
+ *   <li>{@link toolchain.impl.ToolchainImpl#getVocabularies <em>Vocabularies</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -79,6 +81,16 @@ public class ToolchainImpl extends MinimalEObjectImpl.Container implements Toolc
 	 * @ordered
 	 */
 	protected Specification specification;
+
+	/**
+	 * The cached value of the '{@link #getVocabularies() <em>Vocabularies</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVocabularies()
+	 * @generated
+	 * @ordered
+	 */
+	protected Vocabularies vocabularies;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,6 +192,49 @@ public class ToolchainImpl extends MinimalEObjectImpl.Container implements Toolc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Vocabularies getVocabularies() {
+		return vocabularies;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetVocabularies(Vocabularies newVocabularies, NotificationChain msgs) {
+		Vocabularies oldVocabularies = vocabularies;
+		vocabularies = newVocabularies;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__VOCABULARIES, oldVocabularies, newVocabularies);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVocabularies(Vocabularies newVocabularies) {
+		if (newVocabularies != vocabularies) {
+			NotificationChain msgs = null;
+			if (vocabularies != null)
+				msgs = ((InternalEObject)vocabularies).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__VOCABULARIES, null, msgs);
+			if (newVocabularies != null)
+				msgs = ((InternalEObject)newVocabularies).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__VOCABULARIES, null, msgs);
+			msgs = basicSetVocabularies(newVocabularies, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__VOCABULARIES, newVocabularies, newVocabularies));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -187,6 +242,8 @@ public class ToolchainImpl extends MinimalEObjectImpl.Container implements Toolc
 				return ((InternalEList<?>)getAdaptorInterfaces()).basicRemove(otherEnd, msgs);
 			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
 				return basicSetSpecification(null, msgs);
+			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+				return basicSetVocabularies(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -205,6 +262,8 @@ public class ToolchainImpl extends MinimalEObjectImpl.Container implements Toolc
 				return getAdaptorInterfaces();
 			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
 				return getSpecification();
+			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+				return getVocabularies();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -228,6 +287,9 @@ public class ToolchainImpl extends MinimalEObjectImpl.Container implements Toolc
 			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
 				setSpecification((Specification)newValue);
 				return;
+			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+				setVocabularies((Vocabularies)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -249,6 +311,9 @@ public class ToolchainImpl extends MinimalEObjectImpl.Container implements Toolc
 			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
 				setSpecification((Specification)null);
 				return;
+			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+				setVocabularies((Vocabularies)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -267,6 +332,8 @@ public class ToolchainImpl extends MinimalEObjectImpl.Container implements Toolc
 				return adaptorInterfaces != null && !adaptorInterfaces.isEmpty();
 			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
 				return specification != null;
+			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+				return vocabularies != null;
 		}
 		return super.eIsSet(featureID);
 	}

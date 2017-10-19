@@ -94,13 +94,22 @@ public interface ToolchainPackage extends EPackage {
 	int TOOLCHAIN__SPECIFICATION = 2;
 
 	/**
+	 * The feature id for the '<em><b>Vocabularies</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOLCHAIN__VOCABULARIES = 3;
+
+	/**
 	 * The number of structural features of the '<em>Toolchain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOOLCHAIN_FEATURE_COUNT = 3;
+	int TOOLCHAIN_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Toolchain</em>' class.
@@ -154,6 +163,17 @@ public interface ToolchainPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getToolchain_Specification();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link toolchain.Toolchain#getVocabularies <em>Vocabularies</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Vocabularies</em>'.
+	 * @see toolchain.Toolchain#getVocabularies()
+	 * @see #getToolchain()
+	 * @generated
+	 */
+	EReference getToolchain_Vocabularies();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -211,6 +231,14 @@ public interface ToolchainPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TOOLCHAIN__SPECIFICATION = eINSTANCE.getToolchain_Specification();
+
+		/**
+		 * The meta object literal for the '<em><b>Vocabularies</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOOLCHAIN__VOCABULARIES = eINSTANCE.getToolchain_Vocabularies();
 
 	}
 

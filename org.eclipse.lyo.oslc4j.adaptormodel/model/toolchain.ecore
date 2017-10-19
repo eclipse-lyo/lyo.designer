@@ -8,5 +8,7 @@
         eType="ecore:EClass adaptorInterface.ecore#//AdaptorInterface" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specification" lowerBound="1"
         eType="ecore:EClass adaptorInterface.ecore#//Specification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vocabularies" lowerBound="1"
+        eType="ecore:EClass vocabulary.ecore#//Vocabularies" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

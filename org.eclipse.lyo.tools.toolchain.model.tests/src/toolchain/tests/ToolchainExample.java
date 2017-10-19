@@ -59,7 +59,7 @@ public class ToolchainExample {
 		if (args.length == 0) {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
-				Resource resource = resourceSet.createResource(URI.createURI("http:///My.xml"));
+				Resource resource = resourceSet.createResource(URI.createURI("http:///My.toolchain"));
 				Toolchain root = ToolchainFactory.eINSTANCE.createToolchain();
 				resource.getContents().add(root);
 				resource.save(System.out, null);

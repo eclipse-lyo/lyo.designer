@@ -8,6 +8,7 @@ import adaptorinterface.Specification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import vocabulary.Vocabularies;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,12 +17,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link toolchain.Toolchain#getName <em>Name</em>}</li>
  *   <li>{@link toolchain.Toolchain#getAdaptorInterfaces <em>Adaptor Interfaces</em>}</li>
  *   <li>{@link toolchain.Toolchain#getSpecification <em>Specification</em>}</li>
+ *   <li>{@link toolchain.Toolchain#getVocabularies <em>Vocabularies</em>}</li>
  * </ul>
- * </p>
  *
  * @see toolchain.ToolchainPackage#getToolchain()
  * @model
@@ -96,5 +98,31 @@ public interface Toolchain extends EObject {
 	 * @generated
 	 */
 	void setSpecification(Specification value);
+
+	/**
+	 * Returns the value of the '<em><b>Vocabularies</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Vocabularies</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Vocabularies</em>' containment reference.
+	 * @see #setVocabularies(Vocabularies)
+	 * @see toolchain.ToolchainPackage#getToolchain_Vocabularies()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Vocabularies getVocabularies();
+
+	/**
+	 * Sets the value of the '{@link toolchain.Toolchain#getVocabularies <em>Vocabularies</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Vocabularies</em>' containment reference.
+	 * @see #getVocabularies()
+	 * @generated
+	 */
+	void setVocabularies(Vocabularies value);
 
 } // Toolchain

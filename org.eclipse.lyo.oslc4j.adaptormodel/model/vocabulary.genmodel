@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.lyo.tools.vocabulary.model/src" editDirectory="/org.eclipse.lyo.tools.vocabulary.model.edit/src"
+    editorDirectory="/org.eclipse.lyo.tools.vocabulary.editor/src" modelPluginID="org.eclipse.lyo.tools.vocabulary.model"
+    modelName="Vocabulary" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="org.eclipse.lyo.tools.vocabulary.model.edit" editorPluginID="org.eclipse.lyo.tools.vocabulary.editor"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>vocabulary.ecore</foreignModel>
+  <genPackages prefix="Vocabulary" disposableProviderFactory="true" ecorePackage="vocabulary.ecore#/">
+    <genClasses ecoreClass="vocabulary.ecore#//Vocabularies">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabularies/vocabularies"/>
+    </genClasses>
+    <genClasses ecoreClass="vocabulary.ecore#//Vocabulary">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/namespaceURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/preferredNamespacePrefix"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabulary/terms"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="vocabulary.ecore#//Term">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/seeAlso"/>
+    </genClasses>
+    <genClasses ecoreClass="vocabulary.ecore#//Class">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Class/subClassOf"/>
+    </genClasses>
+    <genClasses ecoreClass="vocabulary.ecore#//Property">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Property/subPropertyOf"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

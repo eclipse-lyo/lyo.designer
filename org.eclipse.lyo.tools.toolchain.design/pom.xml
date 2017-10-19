@@ -9,7 +9,7 @@
 	<!-- ###################################################################################################### -->
 	<!-- ###################################################################################################### -->
 
-	<!-- The maven integration will be improved so keep an eye on the Acceleo 
+	<!-- The maven integration will be improved so keep an eye on the Acceleo
 		wiki: http://wiki.eclipse.org/Acceleo/Maven -->
 
 	<!-- ###################################################################################################### -->
@@ -46,6 +46,11 @@
 		<dependency>
 			<groupId>org.eclipse.lyo.tools</groupId>
 			<artifactId>org.eclipse.lyo.tools.toolchain.model</artifactId>
+			<version>2.3.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.lyo.tools</groupId>
+			<artifactId>org.eclipse.lyo.tools.vocabulary.model</artifactId>
 			<version>2.3.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -88,15 +93,17 @@
 						<jars>
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.adaptormodel.model/target/org.eclipse.lyo.tools.adaptormodel.model-2.3.0-SNAPSHOT.jar</jar>
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.toolchain.model/target/org.eclipse.lyo.tools.toolchain.model-2.3.0-SNAPSHOT.jar</jar>
+							<jar>${project.basedir}/../org.eclipse.lyo.tools.vocabulary.model/target/org.eclipse.lyo.tools.vocabulary.model-2.3.0-SNAPSHOT.jar</jar>
 						</jars>
 					</acceleoProject>
 					<packagesToRegister>
-						<!-- Please add the name of the Java class of the packages that are 
-							needed for the compilation of your module. For an UML generator, use the 
+						<!-- Please add the name of the Java class of the packages that are
+							needed for the compilation of your module. For an UML generator, use the
 							following code -->
 						<!-- For more information, please visit http://wiki.eclipse.org/Acceleo/Maven -->
 						<packageToRegister>adaptorinterface.AdaptorinterfacePackage</packageToRegister>
 						<packageToRegister>toolchain.ToolchainPackage</packageToRegister>
+						<packageToRegister>vocabulary.VocabularyPackage</packageToRegister>
 						<!-- <packageToRegister>org.eclipse.sirius.diagram.DiagramPackage</packageToRegister> -->
 					</packagesToRegister>
 				</configuration>

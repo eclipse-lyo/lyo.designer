@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import toolchain.Toolchain;
 import toolchain.ToolchainPackage;
+import vocabulary.VocabularyFactory;
 
 /**
  * This is the item provider adapter for a {@link toolchain.Toolchain} object.
@@ -105,6 +106,7 @@ public class ToolchainItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ToolchainPackage.Literals.TOOLCHAIN__ADAPTOR_INTERFACES);
 			childrenFeatures.add(ToolchainPackage.Literals.TOOLCHAIN__SPECIFICATION);
+			childrenFeatures.add(ToolchainPackage.Literals.TOOLCHAIN__VOCABULARIES);
 		}
 		return childrenFeatures;
 	}
@@ -165,6 +167,7 @@ public class ToolchainItemProvider
 				return;
 			case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
 			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
+			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -191,6 +194,11 @@ public class ToolchainItemProvider
 			(createChildParameter
 				(ToolchainPackage.Literals.TOOLCHAIN__SPECIFICATION,
 				 AdaptorinterfaceFactory.eINSTANCE.createSpecification()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToolchainPackage.Literals.TOOLCHAIN__VOCABULARIES,
+				 VocabularyFactory.eINSTANCE.createVocabularies()));
 	}
 
 	/**

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import toolchain.Toolchain;
 import toolchain.ToolchainFactory;
 import toolchain.ToolchainPackage;
+import vocabulary.VocabularyPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -77,6 +78,7 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 
 		// Initialize simple dependencies
 		AdaptorinterfacePackage.eINSTANCE.eClass();
+		VocabularyPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theToolchainPackage.createPackageContents();
@@ -134,6 +136,15 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getToolchain_Vocabularies() {
+		return (EReference)toolchainEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ToolchainFactory getToolchainFactory() {
 		return (ToolchainFactory)getEFactoryInstance();
 	}
@@ -161,6 +172,7 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 		createEAttribute(toolchainEClass, TOOLCHAIN__NAME);
 		createEReference(toolchainEClass, TOOLCHAIN__ADAPTOR_INTERFACES);
 		createEReference(toolchainEClass, TOOLCHAIN__SPECIFICATION);
+		createEReference(toolchainEClass, TOOLCHAIN__VOCABULARIES);
 	}
 
 	/**
@@ -188,6 +200,7 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 
 		// Obtain other dependent packages
 		AdaptorinterfacePackage theAdaptorinterfacePackage = (AdaptorinterfacePackage)EPackage.Registry.INSTANCE.getEPackage(AdaptorinterfacePackage.eNS_URI);
+		VocabularyPackage theVocabularyPackage = (VocabularyPackage)EPackage.Registry.INSTANCE.getEPackage(VocabularyPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -200,6 +213,7 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 		initEAttribute(getToolchain_Name(), ecorePackage.getEString(), "name", "New ToolChain", 0, 1, Toolchain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getToolchain_AdaptorInterfaces(), theAdaptorinterfacePackage.getAdaptorInterface(), null, "adaptorInterfaces", null, 0, -1, Toolchain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getToolchain_Specification(), theAdaptorinterfacePackage.getSpecification(), null, "specification", null, 1, 1, Toolchain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getToolchain_Vocabularies(), theVocabularyPackage.getVocabularies(), null, "vocabularies", null, 1, 1, Toolchain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
