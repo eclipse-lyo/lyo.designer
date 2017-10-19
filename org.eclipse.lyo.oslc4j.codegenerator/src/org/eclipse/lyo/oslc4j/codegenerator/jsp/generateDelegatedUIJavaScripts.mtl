@@ -112,15 +112,17 @@ function select() {
   var list = document.getElementById("results");
   if( list.length>0 && list.selectedIndex >= 0 ) { // something is selected
     var oslcResponse = 'oslc-response:{ "oslc:results": ['['/]'
-    for (var item = 0; item < list.selectedOptions.length; item++) {
-      var option = list.selectedOptions.item(item);
-      oslcResponse +=  '{"oslc:label": "' + option.text + '", "rdf:resource": "' + option.value + '"}'
-      if (item < list.selectedOptions.length-1) oslcResponse += ', '
+    for (var item = 0; item < list.options.length; item++) {
+      var option = list.options['['/]item[']'/];
+      if (option.selected) {
+        oslcResponse +=  '{"oslc:label": "' + option.text + '", "rdf:resource": "' + option.value + '"}, '
+      }
     }    
-    oslcResponse += ' ] }'
+    oslcResponse = oslcResponse.substr(0, oslcResponse.length-2) + '[']'/]}'
     sendResponse(oslcResponse);
   }
 }
+
 
 function sendResponse(oslcResponse) {
   if (window.location.hash == '#oslc-core-windowName-1.0') {
