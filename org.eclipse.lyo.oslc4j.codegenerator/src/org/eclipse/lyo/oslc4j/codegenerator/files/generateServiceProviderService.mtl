@@ -116,7 +116,7 @@ public class [javaClassNameForService(aServiceProvider) /]
     )
     @GET
     [JAXRSPathAnnotation(aServiceProvider.collectionURISegment()) /]
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})
+    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
     public ServiceProvider[ '[' /][ ']' /] getServiceProviders()
     {
         httpServletResponse.addHeader("Oslc-Core-Version","2.0");
@@ -131,7 +131,7 @@ public class [javaClassNameForService(aServiceProvider) /]
      */
     @GET
     [JAXRSPathAnnotation(aServiceProvider.instanceURISegment()) /]
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})
+    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
     public ServiceProvider getServiceProvider([commaSeparate(aServiceProvider.instanceJAXRSMethodSignature(), false, false)/])
     {
         httpServletResponse.addHeader("Oslc-Core-Version","2.0");

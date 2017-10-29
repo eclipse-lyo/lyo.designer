@@ -152,7 +152,7 @@ public class [javaClassName(aService) /]
     )
     @GET
     [JAXRSPathAnnotation(aQueryCapability.URISegment())/]
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})
+    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
     public [queryMethodReturnType(aQueryCapability, true)/] [queryMethodName(aQueryCapability, true)/](
                                                     [commaSeparate(queryMethodSignature(aQueryCapability, true), false, true) /]
                                                      @QueryParam("oslc.where") final String where,
@@ -288,8 +288,8 @@ public class [javaClassName(aService) /]
     )
     @POST
     [JAXRSPathAnnotation(aCreationFactory.URISegment()) /]
-    @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})
+    @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
+    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
     public [creationMethodReturnType(aCreationFactory)/] [creationMethodName(aCreationFactory)/](
             [commaSeparate(creationMethodSignature(aCreationFactory, true), false, true)/]
             final [creationMethodResourceType(aCreationFactory)/] aResource
@@ -425,7 +425,7 @@ public class [javaClassName(aService) /]
     [for (aResource: Resource | aBasicCapability.resourceTypes)]
     @GET
     [JAXRSPathAnnotation(aResource.instanceURISegment(aBasicCapability))/]
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})
+    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
     public [getResourceMethodReturnType(aBasicCapability, aResource, true)/] [getResourceMethodName(aBasicCapability, aResource, true)/](
                 [commaSeparate(instanceMethodSignature(aResource, aBasicCapability, true), false, false)/]
         ) throws IOException, ServletException, URISyntaxException
@@ -571,7 +571,7 @@ public class [javaClassName(aService) /]
     [for (aResource: Resource | aBasicCapability.resourceTypes)]
     @PUT
     [JAXRSPathAnnotation(aResource.instanceURISegment(aBasicCapability))/]
-    @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})
+    @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
     public [updateResourceMethodReturnType(aBasicCapability, aResource)/] [updateResourceMethodName(aBasicCapability, aResource)/](
             @HeaderParam("If-Match") final String eTagHeader,
             [commaSeparate(instanceMethodSignature(aResource, aBasicCapability, true), false, true)/]
