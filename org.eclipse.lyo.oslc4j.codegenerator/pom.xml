@@ -20,12 +20,12 @@
 	<parent>
 		<groupId>org.eclipse.lyo.tools</groupId>
 		<artifactId>tools-parent</artifactId>
-		<version>2.3.0-SNAPSHOT</version>
+		<version>2.3.0.M1</version>
 		<relativePath>../org.eclipse.lyo.tools.parent</relativePath>
 	</parent>
 
 	<artifactId>org.eclipse.lyo.oslc4j.codegenerator</artifactId>
-	<version>2.3.0-SNAPSHOT</version> <!-- This version should match the version of your project in the MANIFEST.MF -->
+	<version>2.3.0.M1</version> <!-- This version should match the version of your project in the MANIFEST.MF -->
 	<packaging>eclipse-plugin</packaging>
 
 	<properties>
@@ -36,12 +36,12 @@
 		<dependency>
 			<groupId>org.eclipse.lyo.tools</groupId>
 			<artifactId>org.eclipse.lyo.oslc4j.adaptormodel</artifactId>
-			<version>2.3.0-SNAPSHOT</version>
+			<version>2.3.0.M1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.lyo.tools</groupId>
 			<artifactId>org.eclipse.lyo.tools.adaptormodel.model</artifactId>
-			<version>2.3.0-SNAPSHOT</version>
+			<version>2.3.0.M1</version>
 		</dependency>
 
 
@@ -88,7 +88,7 @@
 							<!-- <jar>p2.eclipse-plugin:org.eclipse.lyo.tools.adaptormodel.model</jar> -->
 							<!-- <jar>org.eclipse.lyo.tools.adaptormodel.model</jar> -->
                             <!-- <jar>org.eclipse.lyo.tools:org.eclipse.lyo.tools.adaptormodel.model</jar> -->
-							<jar>${project.basedir}/../org.eclipse.lyo.tools.adaptormodel.model/target/org.eclipse.lyo.tools.adaptormodel.model-2.3.0-SNAPSHOT.jar</jar>
+							<jar>${project.basedir}/../org.eclipse.lyo.tools.adaptormodel.model/target/org.eclipse.lyo.tools.adaptormodel.model-2.3.0.M1.jar</jar>
 							<!-- <jar>C:\Users\jad\git\org.eclipse.lyo.tools\org.eclipse.lyo.tools.adaptormodel.model\target\org.eclipse.lyo.tools.adaptormodel.model-2.2.0-SNAPSHOT.jar</jar> -->
 						</jars>
 					</acceleoProject>
