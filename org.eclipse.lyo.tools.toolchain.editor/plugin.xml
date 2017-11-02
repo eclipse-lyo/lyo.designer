@@ -9,13 +9,13 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated toolchain -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            id="org.eclipse.lyo.wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
             id="toolchain.presentation.ToolchainModelWizardID"
             name="%_UI_ToolchainModelWizard_label"
             class="toolchain.presentation.ToolchainModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.eclipse.lyo.wizard.category.ID"
             icon="icons/full/obj16/ToolchainModelFile.gif">
          <description>%_UI_ToolchainModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
