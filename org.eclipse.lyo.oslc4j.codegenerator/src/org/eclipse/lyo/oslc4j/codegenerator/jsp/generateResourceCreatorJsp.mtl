@@ -55,7 +55,7 @@
 <%@page import="org.eclipse.lyo.oslc4j.core.model.ServiceProvider"%>
 <%@page import="java.util.List" %>
 [for (aResource: Resource | aCreationDialog.resourceTypes)]
-<%@page import="[javaClassFullName(aResource, anAdaptorInterface) /]"%>
+<%@page import="[javaClassFullName(aResource, anAdaptorInterface, null) /]"%>
 [/for]
 <%@page import="org.eclipse.lyo.oslc4j.core.OSLC4JUtils"%>
 <%@page import="javax.ws.rs.core.UriBuilder"%>

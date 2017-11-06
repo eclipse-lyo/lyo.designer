@@ -93,8 +93,8 @@ import [javaClassFullNameForService(aServiceProvider)/];
 [/for]
 import [javaClassFullNameForResourceShapeService(anAdaptorInterface) /];
 
-[for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaClassFullName(aResource, anAdaptorInterface) /];[/for]
-[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface) /];[/for]
+[for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaClassFullName(aResource, anAdaptorInterface, null) /];[/for]
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];[/for]
 [for (aService: Service | anAdaptorInterface.serviceProviders().services) separator(lineSeparator())]import [javaClassFullName(aService) /];[/for]
 
 // [protected ('imports')]

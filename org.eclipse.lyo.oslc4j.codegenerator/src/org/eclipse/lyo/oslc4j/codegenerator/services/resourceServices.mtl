@@ -135,40 +135,40 @@ javaString(aResource.name, aResource.definingDomainSpecification().namespacePref
 javaName(aResource, false)
 /]
 
-[query public javaClassPackageName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
-javaPackageName(aResource.definingDomainSpecification(), anAdaptorInterface)
+[query public javaClassPackageName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaPackageName(aResource.definingDomainSpecification(), anAdaptorInterface, defaultJavaPackageName)
 /]
 
 [query public javaClassName(aResource: Resource) : String = 
 javaName(aResource, true)
 /]
 
-[query public javaClassFullName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
-javaClassPackageName(aResource, anAdaptorInterface).concat('.').concat(javaClassName(aResource))
+[query public javaClassFullName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaClassPackageName(aResource, anAdaptorInterface, defaultJavaPackageName).concat('.').concat(javaClassName(aResource))
 /]
 
-[query public javaClassFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
-    javaFullFilesPath(aResource.definingDomainSpecification(), anAdaptorInterface)
-    .concatenatePaths(javaClassPackageName(aResource, anAdaptorInterface).substituteAll('.', '/'))
+[query public javaClassFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String =
+    javaFullFilesPath(aResource.definingDomainSpecification(), anAdaptorInterface, defaultJavaFullFilesPath)
+    .concatenatePaths(javaClassPackageName(aResource, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
     .concatenatePaths(javaClassName(aResource))
     .concat('.java')
 /]
 
-[query public javaInterfacePackageName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
-javaClassPackageName(aResource, anAdaptorInterface)
+[query public javaInterfacePackageName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaClassPackageName(aResource, anAdaptorInterface, defaultJavaPackageName)
 /]
 
 [query public javaInterfaceName(aResource: Resource) : String = 
 'I'.concat(javaName(aResource, true))
 /]
 
-[query public javaInterfaceFullName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
-javaInterfacePackageName(aResource, anAdaptorInterface).concat('.').concat(javaInterfaceName(aResource))
+[query public javaInterfaceFullName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaInterfacePackageName(aResource, anAdaptorInterface, defaultJavaPackageName).concat('.').concat(javaInterfaceName(aResource))
 /]
 
-[query public javaInterfaceFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String = 
-    javaFullFilesPath(aResource.definingDomainSpecification(), anAdaptorInterface)
-    .concatenatePaths(javaInterfacePackageName(aResource, anAdaptorInterface).substituteAll('.', '/'))
+[query public javaInterfaceFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String = 
+    javaFullFilesPath(aResource.definingDomainSpecification(), anAdaptorInterface, defaultJavaFullFilesPath)
+    .concatenatePaths(javaInterfacePackageName(aResource, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
     .concatenatePaths(javaInterfaceName(aResource))
     .concat('.java')
 /]

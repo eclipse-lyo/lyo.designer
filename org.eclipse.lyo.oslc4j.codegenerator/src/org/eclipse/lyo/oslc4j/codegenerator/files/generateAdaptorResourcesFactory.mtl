@@ -35,7 +35,7 @@ import javax.ws.rs.core.UriBuilder;
 import org.eclipse.lyo.oslc4j.core.model.Link;
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 [for (aResource: Resource | relevantResources(anAdaptorInterface))]
-import [javaClassFullName(aResource, anAdaptorInterface) /];
+import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
 
 // [protected ('imports')]

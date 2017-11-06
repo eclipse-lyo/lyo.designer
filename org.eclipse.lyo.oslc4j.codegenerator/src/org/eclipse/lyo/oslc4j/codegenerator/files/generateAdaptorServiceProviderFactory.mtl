@@ -75,7 +75,7 @@ import org.eclipse.lyo.oslc4j.core.model.Publisher;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderFactory;
 
-[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface) /];[/for]
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];[/for]
 [for (aService: Service | aServiceProvider.services) separator(lineSeparator())]import [javaClassFullName(aService) /];[/for]
 
 // [protected ('imports')]

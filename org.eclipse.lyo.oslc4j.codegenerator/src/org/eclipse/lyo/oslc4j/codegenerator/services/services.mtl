@@ -40,16 +40,24 @@ Set{'appendable', 'autocloseable', 'charsequence', 'cloneable', 'comparable', 'i
 /]
 
 [query public javaClassBaseNamespace(anAdaptorInterface : AdaptorInterface) : String =
+javaClassBaseNamespace(anAdaptorInterface, 'resources')
+/]
+
+[query public javaClassBaseNamespace(anAdaptorInterface : AdaptorInterface, default : String) : String =
 (if anAdaptorInterface.javaClassBaseNamespace.isNullOrEmpty() then 
-    'org'
+    default
 else
     anAdaptorInterface.javaClassBaseNamespace
 endif)
 /]
 
 [query public javaFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+javaFilesBasePath(anAdaptorInterface, 'src')
+/]
+
+[query public javaFilesBasePath(anAdaptorInterface : AdaptorInterface, default : String) : String =
 (if anAdaptorInterface.javaFilesBasePath.isNullOrEmpty() then 
-    'src'
+    default
 else
     anAdaptorInterface.javaFilesBasePath
 endif)

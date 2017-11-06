@@ -92,7 +92,7 @@ import [javaClassFullNameForSingleton(anAdaptorInterface.serviceProviderCatalog)
 import [javaClassFullName(aServiceProvider) /];
 [/for]
 [for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name))]
-import [javaClassFullName(aResource, anAdaptorInterface) /];
+import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
 
 [backendCode(anAdaptorInterface.backendCodeTemplate_classImports)/]
