@@ -71,6 +71,7 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 
 import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.AdaptorinterfacePackage;
+import adaptorinterface.Specification;
 import adaptorinterface.provider.AdaptorInterfaceEditPlugin;
 
 
@@ -182,21 +183,17 @@ public class AdaptorinterfaceModelWizard extends Wizard implements INewWizard {
 	/**
 	 * Returns the names of the types that can be created as the root object.
 	 * <!-- begin-user-doc -->
+	 	<p>
+	 	Changed the method to show only {@link Specification} as the initial object rather than list of 
+	 	all the non abstract classes of the adaptorinterfacePackage.
+	 	<p>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected Collection<String> getInitialObjectNames() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
-			for (EClassifier eClassifier : adaptorinterfacePackage.getEClassifiers()) {
-				if (eClassifier instanceof EClass) {
-					EClass eClass = (EClass)eClassifier;
-					if (!eClass.isAbstract()) {
-						initialObjectNames.add(eClass.getName());
-					}
-				}
-			}
-			Collections.sort(initialObjectNames, CommonPlugin.INSTANCE.getComparator());
+			initialObjectNames.add(adaptorinterfacePackage.getSpecification().getName());
 		}
 		return initialObjectNames;
 	}
