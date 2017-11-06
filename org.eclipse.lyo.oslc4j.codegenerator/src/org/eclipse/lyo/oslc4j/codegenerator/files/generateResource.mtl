@@ -98,11 +98,11 @@ static public String [propertyToHtmlForCreationMethodName(aProperty, aResource, 
  *******************************************************************************/
 [/template]
 
-[template public generatePackageDeclaration(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
-package [javaClassPackageName(aResource, contextAdaptorInterface) /];
+[template public generatePackageDeclaration(aResource : Resource, contextAdaptorInterface : AdaptorInterface, defaultJavaClassPackageName : String)]
+package [javaClassPackageName(aResource, contextAdaptorInterface, defaultJavaClassPackageName) /];
 [/template]
 
-[template public generateImports(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
+[template public generateImports(aResource : Resource, contextAdaptorInterface : AdaptorInterface, defaultJavaClassPackageName : String)]
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -145,12 +145,12 @@ import org.eclipse.lyo.oslc4j.core.model.ValueType;
 import org.eclipse.lyo.oslc4j.core.model.ResourceShape;
 import org.eclipse.lyo.oslc4j.core.model.ResourceShapeFactory;
 
-import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), contextAdaptorInterface)/];
-[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface) /];[/for]
+import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), contextAdaptorInterface, defaultJavaClassPackageName)/];
+[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
 [for (aProperty: ResourceProperty | allProperties(aResource)->sortedBy(name))]
 [if(Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString())) ]
 [for (r: Resource | aProperty.range)]
-import [javaClassFullName(r, contextAdaptorInterface) /];
+import [javaClassFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];
 [/for]
 [/if]
 [/for]
@@ -532,13 +532,13 @@ public String [javaAttributeName(aProperty, aResource) /]ToHtml()
 [/for]
 [/template]
 
-[template public generateResource(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
-[file (javaClassFullFileName(aResource, contextAdaptorInterface), false, 'UTF-8')]
+[template public generateResource(aResource : Resource, contextAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
+[file (javaClassFullFileName(aResource, contextAdaptorInterface, defaultJavaFilesPath, defaultJavaClassPackageName), false, 'UTF-8')]
 [generateClassHeader(aResource, contextAdaptorInterface)/]
 
-[generatePackageDeclaration(aResource, contextAdaptorInterface)/]
+[generatePackageDeclaration(aResource, contextAdaptorInterface, defaultJavaClassPackageName)/]
 
-[generateImports(aResource, contextAdaptorInterface)/]
+[generateImports(aResource, contextAdaptorInterface, defaultJavaClassPackageName)/]
 
 [generatePreClassCode(aResource, contextAdaptorInterface)/]
 

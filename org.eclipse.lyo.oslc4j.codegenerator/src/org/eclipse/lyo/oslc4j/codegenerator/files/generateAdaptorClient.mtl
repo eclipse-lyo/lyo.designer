@@ -54,7 +54,7 @@ import org.eclipse.lyo.client.oslc.OSLCConstants;
 import org.eclipse.lyo.client.oslc.OslcClient;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
 [for (aResource: Resource | servicedResources(aRequiredAdaptor)->sortedBy(name))]
-import [javaClassFullName(aResource, anAdaptorInterface) /];
+import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
 
 // [protected ('imports')]

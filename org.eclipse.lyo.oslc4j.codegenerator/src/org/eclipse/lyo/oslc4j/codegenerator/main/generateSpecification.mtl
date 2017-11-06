@@ -21,6 +21,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 
@@ -37,17 +38,26 @@ aSpecification.generationSetting.oclIsUndefined()
 )
 /]
 
+[query public relevantResources(aSpecification : Specification) : Set(Resource) =
+    (aSpecification.domainSpecifications.resources
+    ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
+/]
+
+[query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
+relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
+/]
+
 [template public generateSpecification(aSpecification : Specification)]
 [comment @main/]
 [if (canGenerate(aSpecification))]
     [aSpecification.generateLicenseFiles() /] 
-    [for (aDomainSpecification: DomainSpecification | aSpecification.domainSpecifications)]
-        [aDomainSpecification.generateDomainSpecificationConstants(null)/]
+    [for (aDomainSpecification: DomainSpecification | aSpecification.relevantDomainSpecifications())]
+        [aDomainSpecification.generateDomainSpecificationConstants(null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName)/]
     [/for]
     
-    [for (aResource: Resource | aSpecification.domainSpecifications.resources)]
-        [aResource.generateResource(null) /]
-        [aResource.generateResourceInterface(null, null) /]
+    [for (aResource: Resource | aSpecification.relevantResources())]
+        [aResource.generateResource(null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName) /]
+        [aResource.generateResourceInterface(null, null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName) /]
     [/for]
 [/if]
 [/template]

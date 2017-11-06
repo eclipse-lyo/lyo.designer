@@ -63,7 +63,7 @@
 <%@page import="org.eclipse.lyo.oslc4j.core.model.AbstractResource"%>
 <%@page import="java.util.List" %>
 [for (aResource: Resource | aQueryCapability.resourceTypes)]
-<%@page import="[javaClassFullName(aResource, anAdaptorInterface) /]"%>
+<%@page import="[javaClassFullName(aResource, anAdaptorInterface, null) /]"%>
 [/for]
 <%--
 [protected ('imports')]

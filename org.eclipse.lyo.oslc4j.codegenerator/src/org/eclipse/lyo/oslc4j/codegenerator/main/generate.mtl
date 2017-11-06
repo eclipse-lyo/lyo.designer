@@ -91,14 +91,14 @@
 
 [template public generateForRelevantDomainSpecifications(anAdaptorInterface : AdaptorInterface)]
 [for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface))]
-    [aDomainSpecification.generateDomainSpecificationConstants(anAdaptorInterface)/]
+    [aDomainSpecification.generateDomainSpecificationConstants(anAdaptorInterface, null, null)/]
 [/for]
 [/template]
 
 [template public generateForRelevantResources(anAdaptorInterface : AdaptorInterface)]
 [for (aResource: Resource | relevantResources(anAdaptorInterface))]
-    [aResource.generateResource(anAdaptorInterface) /]
-    [aResource.generateResourceInterface(anAdaptorInterface, anAdaptorInterface) /]
+    [aResource.generateResource(anAdaptorInterface, null, null) /]
+    [aResource.generateResourceInterface(anAdaptorInterface, anAdaptorInterface, null, null) /]
 [/for]
 [/template]
 
