@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getServiceProviderCatalog <em>Service Provider Catalog</em>}</li>
@@ -49,7 +50,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_searchResources <em>Backend Code Template search Resources</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_createResource <em>Backend Code Template create Resource</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

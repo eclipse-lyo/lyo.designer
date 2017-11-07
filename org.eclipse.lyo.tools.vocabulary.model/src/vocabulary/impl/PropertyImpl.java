@@ -22,6 +22,8 @@ import vocabulary.VocabularyPackage;
  * </p>
  * <ul>
  *   <li>{@link vocabulary.impl.PropertyImpl#getSubPropertyOf <em>Sub Property Of</em>}</li>
+ *   <li>{@link vocabulary.impl.PropertyImpl#getDomain <em>Domain</em>}</li>
+ *   <li>{@link vocabulary.impl.PropertyImpl#getRange <em>Range</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,6 +38,25 @@ public class PropertyImpl extends TermImpl implements Property {
 	 * @ordered
 	 */
 	protected EList<Property> subPropertyOf;
+
+	/**
+	 * The cached value of the '{@link #getDomain() <em>Domain</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDomain()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<vocabulary.Class> domain;
+	/**
+	 * The cached value of the '{@link #getRange() <em>Range</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRange()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<vocabulary.Class> range;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,11 +94,39 @@ public class PropertyImpl extends TermImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<vocabulary.Class> getDomain() {
+		if (domain == null) {
+			domain = new EObjectResolvingEList<vocabulary.Class>(vocabulary.Class.class, this, VocabularyPackage.PROPERTY__DOMAIN);
+		}
+		return domain;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<vocabulary.Class> getRange() {
+		if (range == null) {
+			range = new EObjectResolvingEList<vocabulary.Class>(vocabulary.Class.class, this, VocabularyPackage.PROPERTY__RANGE);
+		}
+		return range;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case VocabularyPackage.PROPERTY__SUB_PROPERTY_OF:
 				return getSubPropertyOf();
+			case VocabularyPackage.PROPERTY__DOMAIN:
+				return getDomain();
+			case VocabularyPackage.PROPERTY__RANGE:
+				return getRange();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -95,6 +144,14 @@ public class PropertyImpl extends TermImpl implements Property {
 				getSubPropertyOf().clear();
 				getSubPropertyOf().addAll((Collection<? extends Property>)newValue);
 				return;
+			case VocabularyPackage.PROPERTY__DOMAIN:
+				getDomain().clear();
+				getDomain().addAll((Collection<? extends vocabulary.Class>)newValue);
+				return;
+			case VocabularyPackage.PROPERTY__RANGE:
+				getRange().clear();
+				getRange().addAll((Collection<? extends vocabulary.Class>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -110,6 +167,12 @@ public class PropertyImpl extends TermImpl implements Property {
 			case VocabularyPackage.PROPERTY__SUB_PROPERTY_OF:
 				getSubPropertyOf().clear();
 				return;
+			case VocabularyPackage.PROPERTY__DOMAIN:
+				getDomain().clear();
+				return;
+			case VocabularyPackage.PROPERTY__RANGE:
+				getRange().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -124,6 +187,10 @@ public class PropertyImpl extends TermImpl implements Property {
 		switch (featureID) {
 			case VocabularyPackage.PROPERTY__SUB_PROPERTY_OF:
 				return subPropertyOf != null && !subPropertyOf.isEmpty();
+			case VocabularyPackage.PROPERTY__DOMAIN:
+				return domain != null && !domain.isEmpty();
+			case VocabularyPackage.PROPERTY__RANGE:
+				return range != null && !range.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

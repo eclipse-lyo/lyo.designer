@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="ToolchainModel" version="11.1.1.201610211630">
   <ownedViewpoints name="ToolchainViewpoint">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]" enablePopupBars="true">
       <diagramInitialisation/>
       <defaultLayer name="Default">
-        <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" semanticElements="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType))->select(p : ResourceProperty | p.range->includes(view.targetNode.oclAsType(DNodeList).target.oclAsType(Resource)))/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType)).range /]">
+        <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" semanticElements="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType))->select(p : ResourceProperty | p.range->includes(view.targetNode.oclAsType(DNodeList).target.oclAsType(Resource)))/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource}->includes(p.valueType)).range /]">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[view.semanticElements.oclAsType(ResourceProperty).name/]">
@@ -15,7 +15,7 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Specification.ResourceToLocalReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" semanticElements="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::LocalResource}->includes(p.valueType))->select(p : ResourceProperty | p.range->includes(view.targetNode.oclAsType(DNodeList).target.oclAsType(Resource)))/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::LocalResource}->includes(p.valueType)).range /]">
+        <edgeMappings name="Specification.ResourceToLocalReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" semanticElements="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::LocalResource}->includes(p.valueType))->select(p : ResourceProperty | p.range->includes(view.targetNode.oclAsType(DNodeList).target.oclAsType(Resource)))/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::LocalResource}->includes(p.valueType)).range /]">
           <style lineStyle="dot" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="['Local: ' + view.semanticElements.oclAsType(ResourceProperty).name/]">
@@ -34,9 +34,9 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Specification.DomainSpecification" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteDomainSpecification']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DirectEditName']" createElements="false" semanticElements="[Set{self, self.generationSetting}/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveProperty']">
-          <subContainerMappings name="Specification.DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResource']" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.RelatePropertyToResource']" childrenPresentation="List">
-            <subNodeMappings name="Specification.DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.resourceProperties->select(p : ResourceProperty | (not Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))._or((Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))._and(p.range->size() = 0)))/]" domainClass="adaptorinterface.ResourceProperty">
+        <containerMappings name="Specification.DomainSpecification" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.DeleteDomainSpecification']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.DirectEditName']" createElements="false" semanticElements="[Set{self, self.generationSetting}/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.MoveResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.MoveProperty']">
+          <subContainerMappings name="Specification.DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.DeleteResource']" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.RelatePropertyToResource']" childrenPresentation="List">
+            <subNodeMappings name="Specification.DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.resourceProperties->select(p : ResourceProperty | (not Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))._or((Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))._and(p.range->size() = 0)))/]" domainClass="adaptorinterface.ResourceProperty">
               <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[(if (self.eContainer(DomainSpecification) = view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) then '' else self.eContainer(DomainSpecification).namespacePrefix.name  + ':' endif) + name + ': ' + valueType + (if (Sequence{ResourcePropertyOccurs::oneOrMany, ResourcePropertyOccurs::zeroOrMany}->includes(occurs)) then ' []' else '' endif)/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -58,7 +58,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="Specification.DomainSpecification.PropertiesList" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeletePropertiesList']" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveProperty']" childrenPresentation="List">
+          <subContainerMappings name="Specification.DomainSpecification.PropertiesList" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.DeletePropertiesList']" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Specification.MoveProperty']" childrenPresentation="List">
             <subNodeMappings name="Specification.DomainSpecification.PropertiesList.Property" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.ResourceProperty">
               <conditionnalStyles predicateExpression="[not Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(self.valueType)/]">
                 <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="[name + ': ' + valueType/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
@@ -162,6 +162,63 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+        <toolSections name="CreateFromVocabulary" label="Create from Vocabulary">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResourceFromVocabulary" label="Resource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="aClass" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).eContainer().eAllContents()->filter(vocabulary::Class)/]" message="Select Class"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Resource" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[aClass.name/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="describes" valueExpression="[aClass/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralPropertyFromVocabulary" label="Literal Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="aProperty" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).eContainer().eAllContents()->filter(vocabulary::Property)/]" message="Select Property"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[aProperty.name/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::String /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[aProperty/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferencePropertyFromVocabulary" label="Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="aProperty" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).eContainer().eAllContents()->filter(vocabulary::Property)/]" message="Select Property"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::Resource /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[aProperty.name/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[aProperty/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferencePropertyFromVocabulary" label="Local Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="aProperty" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).eContainer().eAllContents()->filter(vocabulary::Property)/]" message="Select Property"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::LocalResource /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[aProperty.name/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[aProperty/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
         <toolSections name="Operations">
           <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.DropDomainSpecification" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
@@ -171,17 +228,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" containerViewExpression="var:newContainerView"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Specification.CreateResourceToProperty" label="Link Property to Resource" precondition="[preTarget.oclIsTypeOf(ResourceProperty)/]" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@edgeMappings[name='Specification.ResourceToReferenceProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@edgeMappings[name='Specification.ResourceToLocalReferenceProperty']" connectionStartPrecondition="[preSource.oclIsTypeOf(Resource)/]">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[target/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -780,24 +826,32 @@
       <diagramInitialisation/>
       <defaultLayer name="Default">
         <edgeMappings name="Vocabularies.Class.SubClassOf" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.DeleteSubClassOf']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetFinderExpression="feature:subClassOf">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription>
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="rdfs:subClassOf">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <edgeMappings name="Vocabularies.Property.SubPropertyOf" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.DeleteSubPropertyOf']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" targetFinderExpression="feature:subPropertyOf">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="rdfs:subPropertyOf">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Vocabularies.Class.Type" label="Vocabularies.Class.Type" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.DeleteType']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetFinderExpression="feature:type">
           <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="rdf:type">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <containerMappings name="Vocabularies.Vocabulary" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabulary.DeleteVocabulary']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.EditVocabularyLabel']" createElements="false" domainClass="vocabulary.Vocabulary">
           <subContainerMappings name="Vocabularies.Vocabulary.Class" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabulary.DeleteClass']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.EditClassLabel']" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.Class" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:label" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconClass.png" widthComputationExpression="9" heightComputationExpression="6">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:label" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconClass.png" widthComputationExpression="9" heightComputationExpression="9">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -805,7 +859,21 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="Vocabularies.Vocabulary.Property" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabulary.DeleteProperty']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.EditPropertyLabel']" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.Property" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:label" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconProperty.png" widthComputationExpression="9" heightComputationExpression="6">
+            <subNodeMappings name="Vocabularies.Vocabulary.Property.Domain" semanticCandidatesExpression="feature:domain" domainClass="vocabulary.Class">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="['rdfs:domain  ' + name/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Vocabularies.Vocabulary.Property.Range" semanticCandidatesExpression="feature:range" domainClass="vocabulary.Class">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="['rdfs:range  ' + name/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:label" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconProperty.png" widthComputationExpression="9" heightComputationExpression="9">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -816,7 +884,7 @@
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
         <toolSections name="Vocabularies.Create" label="Create">
@@ -875,7 +943,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Vocabularies.CreateSubClassOf" label="SubClassOf" precondition="aql:preTarget->excludes(preSource) and preTarget.subClassOf->excludes(preSource)" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@edgeMappings[name='Vocabularies.Class.SubClassOf']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Vocabularies.CreateSubClassOf" label="rdfs:subClassOf" precondition="aql:preTarget->excludes(preSource) and preTarget.subClassOf->excludes(preSource)" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@edgeMappings[name='Vocabularies.Class.SubClassOf']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -886,7 +954,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Vocabularies.CreateSubPropertyOf" label="SubPropertyOf" precondition="aql:preTarget->excludes(preSource) and preTarget.subPropertyOf->excludes(preSource)" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@edgeMappings[name='Vocabularies.Property.SubPropertyOf']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Vocabularies.CreateSubPropertyOf" label="rdfs:subPropertyOf" precondition="aql:preTarget->excludes(preSource) and preTarget.subPropertyOf->excludes(preSource)" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@edgeMappings[name='Vocabularies.Property.SubPropertyOf']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -894,6 +962,17 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="subPropertyOf" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Vocabularies.CreateType" label="rdf:type" precondition="aql:preTarget->excludes(preSource) and preTarget.type->excludes(preSource)" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@edgeMappings[name='Vocabularies.Class.Type']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -946,6 +1025,14 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:Unset" featureName="subPropertyOf" elementExpression="aql:elementView.targetNode.target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Vocabularies.DeleteType">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Unset" featureName="type" elementExpression="aql:elementView.targetNode.target"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

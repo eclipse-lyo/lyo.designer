@@ -5,6 +5,7 @@ package adaptorinterface;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import vocabulary.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link adaptorinterface.ResourceProperty#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getName <em>Name</em>}</li>
+ *   <li>{@link adaptorinterface.ResourceProperty#getPropertyDefinition <em>Property Definition</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getOccurs <em>Occurs</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getValueType <em>Value Type</em>}</li>
@@ -83,6 +85,32 @@ public interface ResourceProperty extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Property Definition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Property Definition</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Property Definition</em>' reference.
+	 * @see #setPropertyDefinition(Property)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getResourceProperty_PropertyDefinition()
+	 * @model
+	 * @generated
+	 */
+	Property getPropertyDefinition();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.ResourceProperty#getPropertyDefinition <em>Property Definition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Property Definition</em>' reference.
+	 * @see #getPropertyDefinition()
+	 * @generated
+	 */
+	void setPropertyDefinition(Property value);
 
 	/**
 	 * Returns the value of the '<em><b>Occurs</b></em>' attribute.

@@ -18,11 +18,13 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import vocabulary.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +36,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getPropertyDefinition <em>Property Definition</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getOccurs <em>Occurs</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getValueType <em>Value Type</em>}</li>
@@ -86,6 +89,16 @@ public class ResourcePropertyImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getPropertyDefinition() <em>Property Definition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPropertyDefinition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Property propertyDefinition;
 
 	/**
 	 * The default value of the '{@link #getOccurs() <em>Occurs</em>}' attribute.
@@ -293,6 +306,44 @@ public class ResourcePropertyImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Property getPropertyDefinition() {
+		if (propertyDefinition != null && propertyDefinition.eIsProxy()) {
+			InternalEObject oldPropertyDefinition = (InternalEObject)propertyDefinition;
+			propertyDefinition = (Property)eResolveProxy(oldPropertyDefinition);
+			if (propertyDefinition != oldPropertyDefinition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION, oldPropertyDefinition, propertyDefinition));
+			}
+		}
+		return propertyDefinition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property basicGetPropertyDefinition() {
+		return propertyDefinition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPropertyDefinition(Property newPropertyDefinition) {
+		Property oldPropertyDefinition = propertyDefinition;
+		propertyDefinition = newPropertyDefinition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION, oldPropertyDefinition, propertyDefinition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ResourcePropertyOccurs getOccurs() {
 		return occurs;
 	}
@@ -450,6 +501,9 @@ public class ResourcePropertyImpl extends MinimalEObjectImpl.Container implement
 				return getTitle();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
 				return getName();
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
+				if (resolve) return getPropertyDefinition();
+				return basicGetPropertyDefinition();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:
 				return getOccurs();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__READ_ONLY:
@@ -484,6 +538,9 @@ public class ResourcePropertyImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
 				setName((String)newValue);
+				return;
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
+				setPropertyDefinition((Property)newValue);
 				return;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:
 				setOccurs((ResourcePropertyOccurs)newValue);
@@ -529,6 +586,9 @@ public class ResourcePropertyImpl extends MinimalEObjectImpl.Container implement
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
+				setPropertyDefinition((Property)null);
+				return;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:
 				setOccurs(OCCURS_EDEFAULT);
 				return;
@@ -569,6 +629,8 @@ public class ResourcePropertyImpl extends MinimalEObjectImpl.Container implement
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
+				return propertyDefinition != null;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:
 				return occurs != OCCURS_EDEFAULT;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__READ_ONLY:

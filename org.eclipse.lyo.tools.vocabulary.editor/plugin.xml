@@ -28,7 +28,7 @@
             id="vocabulary.presentation.VocabularyEditorID"
             name="%_UI_VocabularyEditor_label"
             icon="icons/full/obj16/VocabularyModelFile.gif"
-            extensions="vocabulary"
+            extensions="xml"
             class="vocabulary.presentation.VocabularyEditor"
             contributorClass="vocabulary.presentation.VocabularyActionBarContributor">
       </editor>

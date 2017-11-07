@@ -78,7 +78,6 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 
 		// Initialize simple dependencies
 		AdaptorinterfacePackage.eINSTANCE.eClass();
-		VocabularyPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theToolchainPackage.createPackageContents();

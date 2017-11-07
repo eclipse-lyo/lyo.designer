@@ -5,6 +5,7 @@ package adaptorinterface.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import vocabulary.provider.VocabularyEditPlugin;
 
 /**
  * This is the central singleton for the AdaptorInterface edit plugin.
@@ -38,6 +39,7 @@ public final class AdaptorInterfaceEditPlugin extends EMFPlugin {
 	public AdaptorInterfaceEditPlugin() {
 		super
 		  (new ResourceLocator [] {
+		     VocabularyEditPlugin.INSTANCE,
 		   });
 	}
 

@@ -678,13 +678,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__DESCRIBES = 1;
+
+	/**
 	 * The feature id for the '<em><b>Extends</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__EXTENDS = 1;
+	int RESOURCE__EXTENDS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Resource Properties</b></em>' reference list.
@@ -693,7 +702,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__RESOURCE_PROPERTIES = 2;
+	int RESOURCE__RESOURCE_PROPERTIES = 3;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -702,7 +711,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = 3;
+	int RESOURCE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -742,13 +751,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_PROPERTY__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Property Definition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_PROPERTY__PROPERTY_DEFINITION = 2;
+
+	/**
 	 * The feature id for the '<em><b>Occurs</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__OCCURS = 2;
+	int RESOURCE_PROPERTY__OCCURS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Read Only</b></em>' attribute.
@@ -757,7 +775,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__READ_ONLY = 3;
+	int RESOURCE_PROPERTY__READ_ONLY = 4;
 
 	/**
 	 * The feature id for the '<em><b>Value Type</b></em>' attribute.
@@ -766,7 +784,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__VALUE_TYPE = 4;
+	int RESOURCE_PROPERTY__VALUE_TYPE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Representation</b></em>' attribute.
@@ -775,7 +793,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__REPRESENTATION = 5;
+	int RESOURCE_PROPERTY__REPRESENTATION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Range</b></em>' reference list.
@@ -784,7 +802,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__RANGE = 6;
+	int RESOURCE_PROPERTY__RANGE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -793,7 +811,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__DESCRIPTION = 7;
+	int RESOURCE_PROPERTY__DESCRIPTION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Allowed Value</b></em>' attribute list.
@@ -802,7 +820,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__ALLOWED_VALUE = 8;
+	int RESOURCE_PROPERTY__ALLOWED_VALUE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Is Member Property</b></em>' attribute.
@@ -811,7 +829,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = 9;
+	int RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = 10;
 
 	/**
 	 * The number of structural features of the '<em>Resource Property</em>' class.
@@ -820,7 +838,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY_FEATURE_COUNT = 10;
+	int RESOURCE_PROPERTY_FEATURE_COUNT = 11;
 
 	/**
 	 * The number of operations of the '<em>Resource Property</em>' class.
@@ -2049,6 +2067,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getResource_ResourceProperties();
 
 	/**
+	 * Returns the meta object for the reference '{@link adaptorinterface.Resource#getDescribes <em>Describes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Describes</em>'.
+	 * @see adaptorinterface.Resource#getDescribes()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EReference getResource_Describes();
+
+	/**
 	 * Returns the meta object for class '{@link adaptorinterface.ResourceProperty <em>Resource Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2079,6 +2108,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResourceProperty_Name();
+
+	/**
+	 * Returns the meta object for the reference '{@link adaptorinterface.ResourceProperty#getPropertyDefinition <em>Property Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Property Definition</em>'.
+	 * @see adaptorinterface.ResourceProperty#getPropertyDefinition()
+	 * @see #getResourceProperty()
+	 * @generated
+	 */
+	EReference getResourceProperty_PropertyDefinition();
 
 	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.ResourceProperty#getOccurs <em>Occurs</em>}'.
@@ -3148,6 +3188,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference RESOURCE__RESOURCE_PROPERTIES = eINSTANCE.getResource_ResourceProperties();
 
 		/**
+		 * The meta object literal for the '<em><b>Describes</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE__DESCRIBES = eINSTANCE.getResource_Describes();
+
+		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.ResourcePropertyImpl <em>Resource Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3172,6 +3220,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOURCE_PROPERTY__NAME = eINSTANCE.getResourceProperty_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Property Definition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE_PROPERTY__PROPERTY_DEFINITION = eINSTANCE.getResourceProperty_PropertyDefinition();
 
 		/**
 		 * The meta object literal for the '<em><b>Occurs</b></em>' attribute feature.

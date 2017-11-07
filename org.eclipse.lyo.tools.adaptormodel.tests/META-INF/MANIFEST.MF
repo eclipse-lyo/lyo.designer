@@ -10,6 +10,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: adaptorinterface.tests
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.lyo.tools.adaptormodel.model;visibility:=reexport,
+ org.eclipse.lyo.tools.vocabulary.model;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

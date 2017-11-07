@@ -295,13 +295,22 @@ public interface VocabularyPackage extends EPackage {
 	int CLASS__SUB_CLASS_OF = TERM_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__TYPE = TERM_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FEATURE_COUNT = TERM_FEATURE_COUNT + 1;
+	int CLASS_FEATURE_COUNT = TERM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Class</em>' class.
@@ -368,13 +377,31 @@ public interface VocabularyPackage extends EPackage {
 	int PROPERTY__SUB_PROPERTY_OF = TERM_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Domain</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__DOMAIN = TERM_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Range</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__RANGE = TERM_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_FEATURE_COUNT = TERM_FEATURE_COUNT + 1;
+	int PROPERTY_FEATURE_COUNT = TERM_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Property</em>' class.
@@ -559,6 +586,17 @@ public interface VocabularyPackage extends EPackage {
 	EReference getClass_SubClassOf();
 
 	/**
+	 * Returns the meta object for the reference '{@link vocabulary.Class#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type</em>'.
+	 * @see vocabulary.Class#getType()
+	 * @see #getClass_()
+	 * @generated
+	 */
+	EReference getClass_Type();
+
+	/**
 	 * Returns the meta object for class '{@link vocabulary.Property <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -578,6 +616,28 @@ public interface VocabularyPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProperty_SubPropertyOf();
+
+	/**
+	 * Returns the meta object for the reference list '{@link vocabulary.Property#getDomain <em>Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Domain</em>'.
+	 * @see vocabulary.Property#getDomain()
+	 * @see #getProperty()
+	 * @generated
+	 */
+	EReference getProperty_Domain();
+
+	/**
+	 * Returns the meta object for the reference list '{@link vocabulary.Property#getRange <em>Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Range</em>'.
+	 * @see vocabulary.Property#getRange()
+	 * @see #getProperty()
+	 * @generated
+	 */
+	EReference getProperty_Range();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -739,6 +799,14 @@ public interface VocabularyPackage extends EPackage {
 		EReference CLASS__SUB_CLASS_OF = eINSTANCE.getClass_SubClassOf();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS__TYPE = eINSTANCE.getClass_Type();
+
+		/**
 		 * The meta object literal for the '{@link vocabulary.impl.PropertyImpl <em>Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -755,6 +823,22 @@ public interface VocabularyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROPERTY__SUB_PROPERTY_OF = eINSTANCE.getProperty_SubPropertyOf();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__DOMAIN = eINSTANCE.getProperty_Domain();
+
+		/**
+		 * The meta object literal for the '<em><b>Range</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__RANGE = eINSTANCE.getProperty_Range();
 
 	}
 

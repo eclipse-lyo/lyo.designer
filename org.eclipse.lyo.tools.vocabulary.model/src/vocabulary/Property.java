@@ -14,6 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link vocabulary.Property#getSubPropertyOf <em>Sub Property Of</em>}</li>
+ *   <li>{@link vocabulary.Property#getDomain <em>Domain</em>}</li>
+ *   <li>{@link vocabulary.Property#getRange <em>Range</em>}</li>
  * </ul>
  *
  * @see vocabulary.VocabularyPackage#getProperty()
@@ -36,5 +38,37 @@ public interface Property extends Term {
 	 * @generated
 	 */
 	EList<Property> getSubPropertyOf();
+
+	/**
+	 * Returns the value of the '<em><b>Domain</b></em>' reference list.
+	 * The list contents are of type {@link vocabulary.Class}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Domain</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Domain</em>' reference list.
+	 * @see vocabulary.VocabularyPackage#getProperty_Domain()
+	 * @model
+	 * @generated
+	 */
+	EList<vocabulary.Class> getDomain();
+
+	/**
+	 * Returns the value of the '<em><b>Range</b></em>' reference list.
+	 * The list contents are of type {@link vocabulary.Class}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Range</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Range</em>' reference list.
+	 * @see vocabulary.VocabularyPackage#getProperty_Range()
+	 * @model
+	 * @generated
+	 */
+	EList<vocabulary.Class> getRange();
 
 } // Property

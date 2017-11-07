@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourceImpl#getDescribes <em>Describes</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getExtends <em>Extends</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getResourceProperties <em>Resource Properties</em>}</li>
  * </ul>
@@ -54,6 +56,16 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getDescribes() <em>Describes</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescribes()
+	 * @generated
+	 * @ordered
+	 */
+	protected vocabulary.Class describes;
 
 	/**
 	 * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference list.
@@ -144,11 +156,52 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public vocabulary.Class getDescribes() {
+		if (describes != null && describes.eIsProxy()) {
+			InternalEObject oldDescribes = (InternalEObject)describes;
+			describes = (vocabulary.Class)eResolveProxy(oldDescribes);
+			if (describes != oldDescribes) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptorinterfacePackage.RESOURCE__DESCRIBES, oldDescribes, describes));
+			}
+		}
+		return describes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public vocabulary.Class basicGetDescribes() {
+		return describes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDescribes(vocabulary.Class newDescribes) {
+		vocabulary.Class oldDescribes = describes;
+		describes = newDescribes;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE__DESCRIBES, oldDescribes, describes));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AdaptorinterfacePackage.RESOURCE__NAME:
 				return getName();
+			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
+				if (resolve) return getDescribes();
+				return basicGetDescribes();
 			case AdaptorinterfacePackage.RESOURCE__EXTENDS:
 				return getExtends();
 			case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
@@ -168,6 +221,9 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 		switch (featureID) {
 			case AdaptorinterfacePackage.RESOURCE__NAME:
 				setName((String)newValue);
+				return;
+			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
+				setDescribes((vocabulary.Class)newValue);
 				return;
 			case AdaptorinterfacePackage.RESOURCE__EXTENDS:
 				getExtends().clear();
@@ -192,6 +248,9 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 			case AdaptorinterfacePackage.RESOURCE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
+				setDescribes((vocabulary.Class)null);
+				return;
 			case AdaptorinterfacePackage.RESOURCE__EXTENDS:
 				getExtends().clear();
 				return;
@@ -212,6 +271,8 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 		switch (featureID) {
 			case AdaptorinterfacePackage.RESOURCE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
+				return describes != null;
 			case AdaptorinterfacePackage.RESOURCE__EXTENDS:
 				return extends_ != null && !extends_.isEmpty();
 			case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:

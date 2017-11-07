@@ -157,6 +157,7 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import adaptorinterface.provider.AdaptorinterfaceItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import vocabulary.provider.VocabularyItemProviderAdapterFactory;
 
 
 /**
@@ -702,6 +703,7 @@ public class AdaptorinterfaceEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new AdaptorinterfaceItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new VocabularyItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

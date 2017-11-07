@@ -268,6 +268,15 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getClass_Type() {
+		return (EReference)classEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProperty() {
 		return propertyEClass;
 	}
@@ -279,6 +288,24 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
 	 */
 	public EReference getProperty_SubPropertyOf() {
 		return (EReference)propertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProperty_Domain() {
+		return (EReference)propertyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProperty_Range() {
+		return (EReference)propertyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -328,9 +355,12 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
 
 		classEClass = createEClass(CLASS);
 		createEReference(classEClass, CLASS__SUB_CLASS_OF);
+		createEReference(classEClass, CLASS__TYPE);
 
 		propertyEClass = createEClass(PROPERTY);
 		createEReference(propertyEClass, PROPERTY__SUB_PROPERTY_OF);
+		createEReference(propertyEClass, PROPERTY__DOMAIN);
+		createEReference(propertyEClass, PROPERTY__RANGE);
 	}
 
 	/**
@@ -384,9 +414,12 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
 
 		initEClass(classEClass, vocabulary.Class.class, "Class", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getClass_SubClassOf(), this.getClass_(), null, "subClassOf", null, 0, -1, vocabulary.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClass_Type(), this.getClass_(), null, "type", null, 0, 1, vocabulary.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProperty_SubPropertyOf(), this.getProperty(), null, "subPropertyOf", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProperty_Domain(), this.getClass_(), null, "domain", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProperty_Range(), this.getClass_(), null, "range", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

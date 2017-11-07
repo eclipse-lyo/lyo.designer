@@ -44,6 +44,8 @@ public class PropertyItemProvider extends TermItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addSubPropertyOfPropertyDescriptor(object);
+			addDomainPropertyDescriptor(object);
+			addRangePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -62,6 +64,50 @@ public class PropertyItemProvider extends TermItemProvider {
 				 getString("_UI_Property_subPropertyOf_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Property_subPropertyOf_feature", "_UI_Property_type"),
 				 VocabularyPackage.Literals.PROPERTY__SUB_PROPERTY_OF,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Domain feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDomainPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Property_domain_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Property_domain_feature", "_UI_Property_type"),
+				 VocabularyPackage.Literals.PROPERTY__DOMAIN,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Range feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRangePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Property_range_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Property_range_feature", "_UI_Property_type"),
+				 VocabularyPackage.Literals.PROPERTY__RANGE,
 				 true,
 				 false,
 				 true,

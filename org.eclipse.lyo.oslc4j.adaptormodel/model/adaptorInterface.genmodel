@@ -6,8 +6,8 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="/org.eclipse.lyo.tools.adaptormodel.tests/src"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
     editPluginID="org.eclipse.lyo.tools.adaptormodel.edit" editorPluginID="org.eclipse.lyo.tools.adaptormodel.editor"
-    testsPluginID="org.eclipse.lyo.tools.adaptormodel.tests" operationReflection="true"
-    importOrganizing="true">
+    testsPluginID="org.eclipse.lyo.tools.adaptormodel.tests" usedGenPackages="vocabulary.genmodel#//vocabulary"
+    operationReflection="true" importOrganizing="true">
   <foreignModel>adaptorInterface.ecore</foreignModel>
   <genPackages prefix="Adaptorinterface" disposableProviderFactory="true" ecorePackage="adaptorInterface.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="adaptorInterface.ecore#//ResourcePropertyOccurs">
@@ -104,12 +104,14 @@
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//Resource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Resource/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Resource/describes"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Resource/extends"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Resource/resourceProperties"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//ResourceProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ResourceProperty/propertyDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/occurs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/readOnly"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/valueType"/>

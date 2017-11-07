@@ -43,6 +43,7 @@ public class ClassItemProvider extends TermItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addSubClassOfPropertyDescriptor(object);
+			addTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -61,6 +62,28 @@ public class ClassItemProvider extends TermItemProvider {
 				 getString("_UI_Class_subClassOf_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Class_subClassOf_feature", "_UI_Class_type"),
 				 VocabularyPackage.Literals.CLASS__SUB_CLASS_OF,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Class_type_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Class_type_feature", "_UI_Class_type"),
+				 VocabularyPackage.Literals.CLASS__TYPE,
 				 true,
 				 false,
 				 true,

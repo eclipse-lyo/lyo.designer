@@ -61,6 +61,7 @@ public class ResourceItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addDescribesPropertyDescriptor(object);
 			addExtendsPropertyDescriptor(object);
 			addResourcePropertiesPropertyDescriptor(object);
 		}
@@ -125,6 +126,28 @@ public class ResourceItemProvider
 				 getString("_UI_Resource_resourceProperties_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_resourceProperties_feature", "_UI_Resource_type"),
 				 AdaptorinterfacePackage.Literals.RESOURCE__RESOURCE_PROPERTIES,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Describes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescribesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Resource_describes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_describes_feature", "_UI_Resource_type"),
+				 AdaptorinterfacePackage.Literals.RESOURCE__DESCRIBES,
 				 true,
 				 false,
 				 true,
