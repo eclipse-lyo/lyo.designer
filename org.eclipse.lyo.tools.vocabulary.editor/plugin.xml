@@ -9,13 +9,13 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated vocabulary -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            id="org.eclipse.lyo.wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
             id="vocabulary.presentation.VocabularyModelWizardID"
             name="%_UI_VocabularyModelWizard_label"
             class="vocabulary.presentation.VocabularyModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.eclipse.lyo.wizard.category.ID"
             icon="icons/full/obj16/VocabularyModelFile.gif">
          <description>%_UI_VocabularyModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

@@ -776,10 +776,10 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.DropVocabulary']" name="VocabularyDiagram" initialisation="true" domainClass="vocabulary.Vocabularies" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.DropVocabulary']" name="VocabularyDiagram" initialisation="true" domainClass="vocabulary.Vocabularies" enablePopupBars="true">
       <diagramInitialisation/>
       <defaultLayer name="Default">
-        <edgeMappings name="Vocabularies.Class.SubClassOf" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.DeleteSubClassOf']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetFinderExpression="feature:subClassOf">
+        <edgeMappings name="Vocabularies.Class.SubClassOf" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.DeleteSubClassOf']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetFinderExpression="feature:subClassOf">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -787,7 +787,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Vocabularies.Property.SubPropertyOf" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.DeleteSubPropertyOf']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" targetFinderExpression="feature:subPropertyOf">
+        <edgeMappings name="Vocabularies.Property.SubPropertyOf" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.DeleteSubPropertyOf']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" targetFinderExpression="feature:subPropertyOf">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -795,8 +795,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Vocabularies.Vocabulary" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabulary.DeleteVocabulary']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.EditVocabularyLabel']" createElements="false" domainClass="vocabulary.Vocabulary">
-          <subContainerMappings name="Vocabularies.Vocabulary.Class" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabulary.DeleteClass']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.EditClassLabel']" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.Class" childrenPresentation="List">
+        <containerMappings name="Vocabularies.Vocabulary" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabulary.DeleteVocabulary']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.EditVocabularyLabel']" createElements="false" domainClass="vocabulary.Vocabulary">
+          <subContainerMappings name="Vocabularies.Vocabulary.Class" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabulary.DeleteClass']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.EditClassLabel']" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.Class" childrenPresentation="List">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:label" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconClass.png" widthComputationExpression="9" heightComputationExpression="6">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -804,7 +804,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="Vocabularies.Vocabulary.Property" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabulary.DeleteProperty']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Vocabularies.EditPropertyLabel']" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.Property" childrenPresentation="List">
+          <subContainerMappings name="Vocabularies.Vocabulary.Property" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabulary.DeleteProperty']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.EditPropertyLabel']" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.Property" childrenPresentation="List">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:label" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconProperty.png" widthComputationExpression="9" heightComputationExpression="6">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -819,8 +819,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <toolSections name="Operations">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateVocabulary" label="Create Vocabulary" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/VocabularyIcon.png">
+        <toolSections name="Vocabularies.Create" label="Create">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateVocabulary" label="Vocabulary" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/VocabularyIcon.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -833,7 +833,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateClass" label="Create Class" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconClass.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateClass" label="Class" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconClass.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -843,7 +843,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateProperty" label="Create Property" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconProperty.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateProperty" label="Property" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconProperty.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -855,6 +855,8 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+        </toolSections>
+        <toolSections name="Operations">
           <ownedTools xsi:type="tool:DirectEditLabel" name="Vocabularies.EditVocabularyLabel">
             <mask mask="{0}"/>
             <initialOperation>
