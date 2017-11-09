@@ -188,20 +188,11 @@ public class AdaptorinterfaceModelWizard extends Wizard implements INewWizard {
 	 	all the non abstract classes of the adaptorinterfacePackage.
 	 	<p>
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	protected Collection<String> getInitialObjectNames() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
-			for (EClassifier eClassifier : adaptorinterfacePackage.getEClassifiers()) {
-				if (eClassifier instanceof EClass) {
-					EClass eClass = (EClass)eClassifier;
-					if (!eClass.isAbstract()) {
-						initialObjectNames.add(eClass.getName());
-					}
-				}
-			}
-			Collections.sort(initialObjectNames, CommonPlugin.INSTANCE.getComparator());
+			initialObjectNames.add(adaptorinterfacePackage.getSpecification().getName());
 		}
 		return initialObjectNames;
 	}

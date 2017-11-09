@@ -69,6 +69,7 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
+import vocabulary.Vocabularies;
 import vocabulary.VocabularyFactory;
 import vocabulary.VocabularyPackage;
 import vocabulary.provider.VocabularyEditPlugin;
@@ -181,22 +182,15 @@ public class VocabularyModelWizard extends Wizard implements INewWizard {
 
 	/**
 	 * Returns the names of the types that can be created as the root object.
+	 * 	Changed the method to show only {@link Vocabularies} as the initial object rather than list of 
+	 	all the non abstract classes of the vocabularyPackage.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	protected Collection<String> getInitialObjectNames() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
-			for (EClassifier eClassifier : vocabularyPackage.getEClassifiers()) {
-				if (eClassifier instanceof EClass) {
-					EClass eClass = (EClass)eClassifier;
-					if (!eClass.isAbstract()) {
-						initialObjectNames.add(eClass.getName());
-					}
-				}
-			}
-			Collections.sort(initialObjectNames, CommonPlugin.INSTANCE.getComparator());
+			initialObjectNames.add(vocabularyPackage.getVocabularies().getName());
 		}
 		return initialObjectNames;
 	}
