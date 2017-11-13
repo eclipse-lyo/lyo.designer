@@ -16,6 +16,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.acceleo.engine,
  com.google.guava,
  org.eclipse.lyo.oslc4j.codegenerator,
- org.eclipse.swt
+ org.eclipse.swt,
+ org.eclipse.lyo.tools.toolchain.model
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -165,56 +165,68 @@
         <toolSections name="CreateFromVocabulary" label="Create from Vocabulary">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResourceFromVocabulary" label="Resource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="aClass" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).eContainer().eAllContents()->filter(vocabulary::Class)/]" message="Select Class"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="classToBeDescribed" candidatesExpression="[loadedVocabularies->collect(v : Vocabulary | Set{v}->union(v.terms))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v : Vocabulary | v.terms->select(t : Term | t.oclIsTypeOf(Class))->notEmpty() ) /]" childrenExpression="[self.oclAsType(Vocabulary).terms->select (t :  Term | t.oclIsTypeOf(Class))/]" message="Select the rdfs:Class being described"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Resource" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[aClass.name/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="describes" valueExpression="[aClass/]"/>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[classToBeDescribed.oclIsTypeOf(Class)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Resource" referenceName="resources">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[classToBeDescribed.name/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="describes" valueExpression="[classToBeDescribed/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralPropertyFromVocabulary" label="Literal Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="aProperty" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).eContainer().eAllContents()->filter(vocabulary::Property)/]" message="Select Property"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyToBeReferenced" candidatesExpression="[loadedVocabularies->collect(v : Vocabulary | Set{v}->union(v.terms))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v : Vocabulary | v.terms->select(t : Term | t.oclIsTypeOf(Property))->notEmpty() ) /]" childrenExpression="[self.oclAsType(Vocabulary).terms->select (t :  Term | t.oclIsTypeOf(Property))/]" message="Select the rdf:Property being referenced"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[aProperty.name/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::String /]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[aProperty/]"/>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[propertyToBeReferenced.oclIsTypeOf(Property)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[propertyToBeReferenced.name/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::String /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[propertyToBeReferenced/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferencePropertyFromVocabulary" label="Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="aProperty" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).eContainer().eAllContents()->filter(vocabulary::Property)/]" message="Select Property"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyToBeReferenced" candidatesExpression="[loadedVocabularies->collect(v : Vocabulary | Set{v}->union(v.terms))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v : Vocabulary | v.terms->select(t : Term | t.oclIsTypeOf(Property))->notEmpty() ) /]" childrenExpression="[self.oclAsType(Vocabulary).terms->select (t :  Term | t.oclIsTypeOf(Property))/]" message="Select the rdf:Property being referenced"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::Resource /]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[aProperty.name/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[aProperty/]"/>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[propertyToBeReferenced.oclIsTypeOf(Property)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::Resource /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[propertyToBeReferenced.name/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[propertyToBeReferenced/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferencePropertyFromVocabulary" label="Local Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="aProperty" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).eContainer().eAllContents()->filter(vocabulary::Property)/]" message="Select Property"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyToBeReferenced" candidatesExpression="[loadedVocabularies->collect(v : Vocabulary | Set{v}->union(v.terms))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v : Vocabulary | v.terms->select(t : Term | t.oclIsTypeOf(Property))->notEmpty() ) /]" childrenExpression="[self.oclAsType(Vocabulary).terms->select (t :  Term | t.oclIsTypeOf(Property))/]" message="Select the rdf:Property being referenced"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::LocalResource /]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[aProperty.name/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[aProperty/]"/>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[propertyToBeReferenced.oclIsTypeOf(Property)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::LocalResource /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[propertyToBeReferenced.name/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[propertyToBeReferenced/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1041,5 +1053,6 @@
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::queries"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::DialogInputServices"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::GeneratorServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.EmfResourcesLoaderService"/>
   </ownedViewpoints>
 </description:Group>
