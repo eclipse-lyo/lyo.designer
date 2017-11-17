@@ -10,35 +10,31 @@
  *******************************************************************************/
 package org.eclipse.lyo.tools.codegenerator.ui.popupMenus;
 
+import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.lyo.tools.codegenerator.ui.Activator;
 import org.eclipse.lyo.tools.codegenerator.ui.common.GenerateAll;
 import org.eclipse.ui.IActionDelegate;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionDelegate;
+
+import adaptorinterface.AdaptorInterface;
+import adaptorinterface.Specification;
 
 /**
  * Codegenerator code generation.
  */
 public class AcceleoGenerateCodegeneratorAction extends ActionDelegate implements IActionDelegate {
-	
 	/**
 	 * Selected model files.
 	 */
@@ -56,6 +52,40 @@ public class AcceleoGenerateCodegeneratorAction extends ActionDelegate implement
 		}
 	}
 
+	public void generateAdaptorInterface(AdaptorInterface adaptorInterface) {
+		File modelProjectFolder = DialogServices.getModellingProjectBaseFolder(adaptorInterface);
+		File generationPath = DialogServices.getGenerationTargetFolder(modelProjectFolder);
+		if(generationPath == null) {
+		    return;
+		}
+		try {
+			GenerateAll generator = new GenerateAll(adaptorInterface, generationPath, getArguments());
+			generator.doGenerate();
+		} catch (IOException e) {
+		    IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+		    Activator.getDefault().getLog().log(status);
+		    DialogServices.showMessage("Exception!", "an Exception occurred during the generation process. Please see the error log.");
+		}
+	}
+
+
+	public void generateSpecification(Specification specification) {
+		File modelProjectFolder = DialogServices.getModellingProjectBaseFolder(specification);
+		File generationPath = DialogServices.getGenerationTargetFolder(modelProjectFolder);
+		if(generationPath == null) {
+		    return;
+		}
+		try {
+			GenerateAll generator = new GenerateAll(specification, generationPath, getArguments());
+			generator.doGenerate();
+		} catch (IOException e) {
+		    IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+		    Activator.getDefault().getLog().log(status);
+		    DialogServices.showMessage("Exception!", "an Exception occurred during the generation process. Please see the error log.");
+		}
+	}
+
+	
 	/**{@inheritDoc}
 	 *
 	 * @see org.eclipse.ui.actions.ActionDelegate#run(org.eclipse.jface.action.IAction)
@@ -63,38 +93,24 @@ public class AcceleoGenerateCodegeneratorAction extends ActionDelegate implement
 	 */
 	public void run(IAction action) {
 		if (files != null) {
-			IRunnableWithProgress operation = new IRunnableWithProgress() {
-				public void run(IProgressMonitor monitor) {
-					try {
-						Iterator<IFile> filesIt = files.iterator();
-						while (filesIt.hasNext()) {
-							IFile model = (IFile)filesIt.next();
-							URI modelURI = URI.createPlatformResourceURI(model.getFullPath().toString(), true);
-							try {
-								IContainer target = model.getProject();
-								GenerateAll generator = new GenerateAll(modelURI, target, getArguments());
-								generator.doGenerate(monitor);
-							} catch (IOException e) {
-								IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
-								Activator.getDefault().getLog().log(status);
-							} finally {
-								model.getProject().refreshLocal(IResource.DEPTH_INFINITE, monitor);
-							}
-						}
-					} catch (CoreException e) {
-						IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
-						Activator.getDefault().getLog().log(status);
-					}
+			Iterator<IFile> filesIt = files.iterator();
+			while (filesIt.hasNext()) {
+				IFile model = (IFile)filesIt.next();
+				URI modelURI = URI.createPlatformResourceURI(model.getFullPath().toString(), true);
+				
+				File modelProjectFolder = model.getProject().getLocation().toFile();
+				File generationPath = DialogServices.getGenerationTargetFolder(modelProjectFolder);
+				if (generationPath == null) {
+					return;
 				}
-			};
-			try {
-				PlatformUI.getWorkbench().getProgressService().run(true, true, operation);
-			} catch (InvocationTargetException e) {
-				IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
-				Activator.getDefault().getLog().log(status);
-			} catch (InterruptedException e) {
-				IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
-				Activator.getDefault().getLog().log(status);
+				try {
+					GenerateAll generator = new GenerateAll(modelURI, generationPath, getArguments());
+					generator.doGenerate();
+				} catch (IOException e) {
+				    IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+				    Activator.getDefault().getLog().log(status);
+				    DialogServices.showMessage("Exception!", "an Exception occurred during the generation process. Please see the error log.");
+				}
 			}
 		}
 	}

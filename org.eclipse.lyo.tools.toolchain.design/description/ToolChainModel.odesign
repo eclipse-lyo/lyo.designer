@@ -267,7 +267,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('Generation Settings are missing', 'The specification generation settings are missing. Right click and select the &quot;Set Java Generation Settings&quot; command')/]"/>
                     </cases>
                     <default>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.generateSpecification()/]"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:generateSpecification()"/>
                     </default>
                   </subModelOperations>
                 </firstModelOperations>
@@ -577,7 +577,7 @@
             <menuItemDescription xsi:type="tool_1:OperationAction" name="ToolchainDiagram.AdaptorInterface.Menu.Generate" label="Generate Java Code" precondition="[self.oclIsTypeOf(AdaptorInterface)/]">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.generateAdaptorInterface()/]"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:generateAdaptorInterface()"/>
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
@@ -1062,7 +1062,7 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::queries"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::DialogInputServices"/>
-    <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::GeneratorServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.EmfResourcesLoaderService"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"/>
   </ownedViewpoints>
 </description:Group>

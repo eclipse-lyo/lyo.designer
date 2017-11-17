@@ -10,21 +10,35 @@
  *******************************************************************************/
 package org.eclipse.lyo.tools.codegenerator.ui.common;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
 import org.eclipse.emf.common.util.BasicMonitor;
+import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
 import org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil;
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.osgi.framework.Bundle;
+
+import adaptorinterface.AdaptorInterface;
+import adaptorinterface.Specification;
+
+import org.eclipse.lyo.oslc4j.codegenerator.main.Generate;
+import org.eclipse.lyo.oslc4j.codegenerator.main.GenerateSpecification;
+import org.eclipse.lyo.tools.codegenerator.ui.Activator;
+import org.eclipse.lyo.tools.codegenerator.ui.popupMenus.DialogServices;
+import org.eclipse.ui.PlatformUI;
 
 
 /**
@@ -33,19 +47,11 @@ import org.osgi.framework.Bundle;
 public class GenerateAll {
 
 	/**
-	 * The model URI.
-	 */
-	private URI modelURI;
-
-	/**
 	 * The output folder.
 	 */
-	private IContainer targetFolder;
+	private File targetFolder;
 
-	/**
-	 * The other arguments.
-	 */
-	List<? extends Object> arguments;
+	private AbstractAcceleoGenerator generator;
 
 	/**
 	 * Constructor.
@@ -60,12 +66,43 @@ public class GenerateAll {
 	 *             Thrown when the output cannot be saved.
 	 * @generated
 	 */
-	public GenerateAll(URI modelURI, IContainer targetFolder, List<? extends Object> arguments) {
-		this.modelURI = modelURI;
+	public GenerateAll(URI modelURI, File targetFolder, List<? extends Object> arguments) throws IOException {
+		generator = new Generate(modelURI, targetFolder, arguments);
+		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
+				"org.eclipse.lyo.oslc4j.codegenerator",
+				"org.eclipse.lyo.oslc4j.codegenerator.main.Generate",
+				modelURI.toString(),
+				targetFolder.toString(),
+				new ArrayList<String>());
+		generator.setGenerationID(generationID);
 		this.targetFolder = targetFolder;
-		this.arguments = arguments;
 	}
 
+	public GenerateAll(AdaptorInterface adaptorInterface, File targetFolder, List<? extends Object> arguments) throws IOException {
+		generator = new Generate(adaptorInterface, targetFolder, arguments);
+		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
+				"org.eclipse.lyo.oslc4j.codegenerator",
+				"org.eclipse.lyo.oslc4j.codegenerator.main.Generate",
+				adaptorInterface.toString(),
+				targetFolder.toString(),
+				new ArrayList<String>());
+		generator.setGenerationID(generationID);
+		this.targetFolder = targetFolder;
+	}
+
+	public GenerateAll(Specification specification, File targetFolder, List<? extends Object> arguments) throws IOException {
+		generator = new GenerateSpecification(specification, targetFolder, arguments);
+		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
+				"org.eclipse.lyo.oslc4j.codegenerator",
+				"org.eclipse.lyo.oslc4j.codegenerator.main.GenerateSpecification",
+				specification.toString(),
+				targetFolder.toString(),
+				new ArrayList<String>());
+		generator.setGenerationID(generationID);
+		this.targetFolder = targetFolder;
+	}
+
+	
 	/**
 	 * Launches the generation.
 	 *
@@ -75,31 +112,35 @@ public class GenerateAll {
 	 *             Thrown when the output cannot be saved.
 	 * @generated
 	 */
-	public void doGenerate(IProgressMonitor monitor) throws IOException {
-		if (!targetFolder.getLocation().toFile().exists()) {
-			targetFolder.getLocation().toFile().mkdirs();
+	public void doGenerate() throws IOException {
+		if (!targetFolder.exists()) {
+			targetFolder.mkdirs();
 		}
-		
-		// final URI template0 = getTemplateURI("org.eclipse.lyo.oslc4j.codegenerator", new Path("/org/eclipse/lyo/oslc4j/codegenerator/main/generate.emtl"));
-		// org.eclipse.lyo.oslc4j.codegenerator.main.Generate gen0 = new org.eclipse.lyo.oslc4j.codegenerator.main.Generate(modelURI, targetFolder.getLocation().toFile(), arguments) {
-		//	protected URI createTemplateURI(String entry) {
-		//		return template0;
-		//	}
-		//};
-		//gen0.doGenerate(BasicMonitor.toMonitor(monitor));
-		monitor.subTask("Loading...");
-		org.eclipse.lyo.oslc4j.codegenerator.main.Generate gen0 = new org.eclipse.lyo.oslc4j.codegenerator.main.Generate(modelURI, targetFolder.getLocation().toFile(), arguments);
-		monitor.worked(1);
-		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
-				"org.eclipse.lyo.oslc4j.codegenerator",
-				"org.eclipse.lyo.oslc4j.codegenerator.main.Generate",
-				modelURI.toString(),
-				targetFolder.getFullPath().toString(),
-				new ArrayList<String>());
-		gen0.setGenerationID(generationID);
-		gen0.doGenerate(BasicMonitor.toMonitor(monitor));
-			
-		
+
+		IRunnableWithProgress operation = new IRunnableWithProgress() {
+			@Override
+			public void run(IProgressMonitor monitor) {
+				try {					
+					monitor.subTask("Loading...");
+					monitor.worked(1);
+					generator.doGenerate(BasicMonitor.toMonitor(monitor));
+				    DialogServices.showMessage("Generation Success", "Generation completed on \"" + targetFolder.toString() + "\".");
+				} catch (IOException e) {
+				    IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+				    Activator.getDefault().getLog().log(status);
+				    DialogServices.showMessage("Exception!", "an Exception occurred during the generation process. Please see the error log.");
+				}
+				return;
+			}
+		};
+		try {
+			PlatformUI.getWorkbench().getProgressService().run(true, true, operation);
+		} catch (InvocationTargetException | InterruptedException e) {
+			IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+			Activator.getDefault().getLog().log(status);
+		    DialogServices.showMessage("Exception!", "an Exception occurred during the generation process. Please see the error log.");
+		}
+
 	}
 	
 	/**
