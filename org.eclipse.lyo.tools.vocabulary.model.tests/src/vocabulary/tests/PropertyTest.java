@@ -15,56 +15,56 @@ import vocabulary.VocabularyFactory;
  */
 public class PropertyTest extends TermTest {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static void main(String[] args) {
-		TestRunner.run(PropertyTest.class);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public static void main(String[] args) {
+        TestRunner.run(PropertyTest.class);
+    }
 
-	/**
-	 * Constructs a new Property test case with the given name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PropertyTest(String name) {
-		super(name);
-	}
+    /**
+     * Constructs a new Property test case with the given name.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public PropertyTest(String name) {
+        super(name);
+    }
 
-	/**
-	 * Returns the fixture for this Property test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected Property getFixture() {
-		return (Property)fixture;
-	}
+    /**
+     * Returns the fixture for this Property test case.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    protected Property getFixture() {
+        return (Property)fixture;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
-	@Override
-	protected void setUp() throws Exception {
-		setFixture(VocabularyFactory.eINSTANCE.createProperty());
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
+    @Override
+    protected void setUp() throws Exception {
+        setFixture(VocabularyFactory.eINSTANCE.createProperty());
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
-	@Override
-	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
+    @Override
+    protected void tearDown() throws Exception {
+        setFixture(null);
+    }
 
 } //PropertyTest

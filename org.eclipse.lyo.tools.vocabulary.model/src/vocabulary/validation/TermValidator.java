@@ -12,10 +12,10 @@ package vocabulary.validation;
  * This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator=false.
  */
 public interface TermValidator {
-	boolean validate();
+    boolean validate();
 
-	boolean validateName(String value);
-	boolean validateLabel(String value);
-	boolean validateComment(String value);
-	boolean validateSeeAlso(String value);
+    boolean validateName(String value);
+    boolean validateLabel(String value);
+    boolean validateComment(String value);
+    boolean validateSeeAlso(String value);
 }

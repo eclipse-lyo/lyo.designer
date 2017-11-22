@@ -6,7 +6,7 @@ package vocabulary.validation;
 
 import org.eclipse.emf.common.util.EList;
 
-import vocabulary.Term;
+import vocabulary.Property;
 
 /**
  * A sample validator interface for {@link vocabulary.Vocabulary}.
@@ -15,12 +15,13 @@ import vocabulary.Term;
  * This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator=false.
  */
 public interface VocabularyValidator {
-	boolean validate();
+    boolean validate();
 
-	boolean validateNamespaceURI(String value);
-	boolean validateLabel(String value);
-	boolean validateDescription(String value);
-	boolean validateSource(String value);
-	boolean validatePreferredNamespacePrefix(String value);
-	boolean validateTerms(EList<Term> value);
+    boolean validateNamespaceURI(String value);
+    boolean validateLabel(String value);
+    boolean validateDescription(String value);
+    boolean validateSource(String value);
+    boolean validatePreferredNamespacePrefix(String value);
+    boolean validateClasses(EList<vocabulary.Class> value);
+    boolean validateProperties(EList<Property> value);
 }

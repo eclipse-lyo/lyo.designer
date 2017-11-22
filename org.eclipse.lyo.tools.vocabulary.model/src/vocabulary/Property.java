@@ -23,52 +23,52 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Property extends Term {
-	/**
-	 * Returns the value of the '<em><b>Sub Property Of</b></em>' reference list.
-	 * The list contents are of type {@link vocabulary.Property}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sub Property Of</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub Property Of</em>' reference list.
-	 * @see vocabulary.VocabularyPackage#getProperty_SubPropertyOf()
-	 * @model
-	 * @generated
-	 */
-	EList<Property> getSubPropertyOf();
+    /**
+     * Returns the value of the '<em><b>Sub Property Of</b></em>' reference list.
+     * The list contents are of type {@link vocabulary.Property}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Sub Property Of</em>' reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Sub Property Of</em>' reference list.
+     * @see vocabulary.VocabularyPackage#getProperty_SubPropertyOf()
+     * @model
+     * @generated
+     */
+    EList<Property> getSubPropertyOf();
 
-	/**
-	 * Returns the value of the '<em><b>Domain</b></em>' reference list.
-	 * The list contents are of type {@link vocabulary.Class}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Domain</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Domain</em>' reference list.
-	 * @see vocabulary.VocabularyPackage#getProperty_Domain()
-	 * @model
-	 * @generated
-	 */
-	EList<vocabulary.Class> getDomain();
+    /**
+     * Returns the value of the '<em><b>Domain</b></em>' reference list.
+     * The list contents are of type {@link vocabulary.Class}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Domain</em>' reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Domain</em>' reference list.
+     * @see vocabulary.VocabularyPackage#getProperty_Domain()
+     * @model
+     * @generated
+     */
+    EList<vocabulary.Class> getDomain();
 
-	/**
-	 * Returns the value of the '<em><b>Range</b></em>' reference list.
-	 * The list contents are of type {@link vocabulary.Class}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Range</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Range</em>' reference list.
-	 * @see vocabulary.VocabularyPackage#getProperty_Range()
-	 * @model
-	 * @generated
-	 */
-	EList<vocabulary.Class> getRange();
+    /**
+     * Returns the value of the '<em><b>Range</b></em>' reference list.
+     * The list contents are of type {@link vocabulary.Class}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Range</em>' reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Range</em>' reference list.
+     * @see vocabulary.VocabularyPackage#getProperty_Range()
+     * @model
+     * @generated
+     */
+    EList<vocabulary.Class> getRange();
 
 } // Property

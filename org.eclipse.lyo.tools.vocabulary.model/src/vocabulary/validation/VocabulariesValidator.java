@@ -15,7 +15,7 @@ import vocabulary.Vocabulary;
  * This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator=false.
  */
 public interface VocabulariesValidator {
-	boolean validate();
+    boolean validate();
 
-	boolean validateVocabularies(EList<Vocabulary> value);
+    boolean validateVocabularies(EList<Vocabulary> value);
 }

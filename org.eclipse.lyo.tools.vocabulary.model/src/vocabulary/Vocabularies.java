@@ -23,20 +23,20 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Vocabularies extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Vocabularies</b></em>' containment reference list.
-	 * The list contents are of type {@link vocabulary.Vocabulary}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Vocabularies</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Vocabularies</em>' containment reference list.
-	 * @see vocabulary.VocabularyPackage#getVocabularies_Vocabularies()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Vocabulary> getVocabularies();
+    /**
+     * Returns the value of the '<em><b>Vocabularies</b></em>' containment reference list.
+     * The list contents are of type {@link vocabulary.Vocabulary}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Vocabularies</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Vocabularies</em>' containment reference list.
+     * @see vocabulary.VocabularyPackage#getVocabularies_Vocabularies()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Vocabulary> getVocabularies();
 
 } // Vocabularies

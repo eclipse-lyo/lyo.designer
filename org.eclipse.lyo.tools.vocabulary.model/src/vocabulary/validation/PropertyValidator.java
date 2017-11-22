@@ -15,9 +15,13 @@ import vocabulary.Property;
  * This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator=false.
  */
 public interface PropertyValidator {
-	boolean validate();
+    boolean validate();
 
-	boolean validateSubPropertyOf(EList<Property> value);
-	boolean validateDomain(EList<vocabulary.Class> value);
-	boolean validateRange(EList<vocabulary.Class> value);
+    boolean validateName(String value);
+    boolean validateLabel(String value);
+    boolean validateComment(String value);
+    boolean validateSeeAlso(String value);
+    boolean validateSubPropertyOf(EList<Property> value);
+    boolean validateDomain(EList<vocabulary.Class> value);
+    boolean validateRange(EList<vocabulary.Class> value);
 }

@@ -15,32 +15,32 @@ import junit.textui.TestRunner;
  */
 public class VocabularyTests extends TestSuite {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static void main(String[] args) {
-		TestRunner.run(suite());
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public static void main(String[] args) {
+        TestRunner.run(suite());
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static Test suite() {
-		TestSuite suite = new VocabularyTests("vocabulary Tests");
-		return suite;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public static Test suite() {
+        TestSuite suite = new VocabularyTests("vocabulary Tests");
+        return suite;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public VocabularyTests(String name) {
-		super(name);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public VocabularyTests(String name) {
+        super(name);
+    }
 
 } //VocabularyTests

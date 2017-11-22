@@ -14,42 +14,42 @@ import vocabulary.Term;
  */
 public abstract class TermTest extends TestCase {
 
-	/**
-	 * The fixture for this Term test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Term fixture = null;
+    /**
+     * The fixture for this Term test case.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected Term fixture = null;
 
-	/**
-	 * Constructs a new Term test case with the given name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TermTest(String name) {
-		super(name);
-	}
+    /**
+     * Constructs a new Term test case with the given name.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public TermTest(String name) {
+        super(name);
+    }
 
-	/**
-	 * Sets the fixture for this Term test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(Term fixture) {
-		this.fixture = fixture;
-	}
+    /**
+     * Sets the fixture for this Term test case.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void setFixture(Term fixture) {
+        this.fixture = fixture;
+    }
 
-	/**
-	 * Returns the fixture for this Term test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Term getFixture() {
-		return fixture;
-	}
+    /**
+     * Returns the fixture for this Term test case.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected Term getFixture() {
+        return fixture;
+    }
 
 } //TermTest

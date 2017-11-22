@@ -17,7 +17,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/source"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/preferredNamespacePrefix"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabulary/terms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabulary/classes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabulary/properties"/>
     </genClasses>
     <genClasses image="false" ecoreClass="vocabulary.ecore#//Term">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/name"/>

@@ -16,7 +16,8 @@ Package vocabulary <http://org.eclipse.lyo/oslc4j/vocabulary>
     Attribute description : EString<<1..1>>
     Attribute source : EString<<1..1>>
     Attribute preferredNamespacePrefix : EString<<1..1>>
-    Reference terms : Term<<0..*>>
+    Reference classes : Class<<0..*>>
+    Reference properties : Property<<0..*>>
 
   Class Term
     Attribute name : EString<<1..1>>

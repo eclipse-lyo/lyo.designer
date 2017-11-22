@@ -13,8 +13,12 @@ import org.eclipse.emf.common.util.EList;
  * This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator=false.
  */
 public interface ClassValidator {
-	boolean validate();
+    boolean validate();
 
-	boolean validateSubClassOf(EList<vocabulary.Class> value);
-	boolean validateType(vocabulary.Class value);
+    boolean validateName(String value);
+    boolean validateLabel(String value);
+    boolean validateComment(String value);
+    boolean validateSeeAlso(String value);
+    boolean validateSubClassOf(EList<vocabulary.Class> value);
+    boolean validateType(vocabulary.Class value);
 }
