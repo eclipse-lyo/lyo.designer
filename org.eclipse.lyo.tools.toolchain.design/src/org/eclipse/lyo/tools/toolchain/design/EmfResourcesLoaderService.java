@@ -47,10 +47,8 @@ public class EmfResourcesLoaderService {
      *         in the project (session).
      */
     public Collection<DomainSpecification> getLoadedDomainSpecifications(EObject self) {
-        Collection<DomainSpecification> eList = new BasicEList<DomainSpecification>();
-
         Session session = SessionManager.INSTANCE.getSession(self);
-        return getSessionDomainSpecifications(eList, session);
+        return getSessionDomainSpecifications(session);
     }
 
     /**
@@ -66,14 +64,13 @@ public class EmfResourcesLoaderService {
      *         in the project (session).
      */
     public Collection<Vocabulary> getLoadedVocabularies(EObject self) {
-        Collection<Vocabulary> eList = new BasicEList<Vocabulary>();
-
         Session session = SessionManager.INSTANCE.getSession(self);
-        return getSessionVocabularies(eList, session);
+        return getSessionVocabularies(session);
     }
 
-    private Collection<DomainSpecification> getSessionDomainSpecifications(Collection<DomainSpecification> eList,
-            Session session) {
+    private Collection<DomainSpecification> getSessionDomainSpecifications(Session session) {
+        Collection<DomainSpecification> eList = new BasicEList<DomainSpecification>();
+
         Collection<Resource> semanticResources = session.getSemanticResources();
 
         for (Resource semanticResource : semanticResources) {
@@ -101,7 +98,9 @@ public class EmfResourcesLoaderService {
         return specification;
     }
 
-    private Collection<Vocabulary> getSessionVocabularies(Collection<Vocabulary> eList, Session session) {
+    private Collection<Vocabulary> getSessionVocabularies(Session session) {
+        Collection<Vocabulary> eList = new BasicEList<Vocabulary>();
+
         Collection<Resource> semanticResources = session.getSemanticResources();
 
         for (Resource semanticResource : semanticResources) {
