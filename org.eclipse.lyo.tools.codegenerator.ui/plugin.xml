@@ -5,17 +5,25 @@
       <objectContribution
             adaptable="true"
             objectClass="org.eclipse.core.resources.IFile"
-            nameFilter="*.*"
             id="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.contribution.IFile">
-         <menu id="org.eclipse.acceleo.module.menu" label="OSLC Lyo Code Generator" path="additionsAcceleo">
+         <menu id="org.eclipse.acceleo.module.menu" label="OSLC Lyo Designer" path="additionsAcceleo">
                <groupMarker name="acceleo"/> 
          </menu>
+         <visibility>
+             <or>
+                  <objectState name="name" value="*.xml"/>
+                  <objectState name="name" value="*.toolchain"/>
+                  <objectState name="name" value="*.tc"/>
+                  <objectState name="name" value="*.ai"/>
+                  <objectState name="name" value="*.adaptorinterface"/>
+ 		     </or>
+         </visibility>
          <action
                class="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"
                enablesFor="+"
                id="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"
                icon="icons/default.gif"
-               label="Generate complete toolchain (obsolete)"
+               label="Generate Complete Toolchain Java Code"
                menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
       </objectContribution>
    </extension>

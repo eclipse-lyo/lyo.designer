@@ -116,6 +116,51 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResource" label="Resource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Resource" referenceName="resources">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Resource' + container.resources->size()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralProperty" label="Literal Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Property' + container.resourceProperties->size()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::String /]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferenceProperty" label="Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::Resource /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['relatesTo' + propertyRange.name.toUpperFirst()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferenceProperty" label="Local Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::LocalResource /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['relatesTo' + instance.range.name.toUpperFirst()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="Operations">
           <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.DropDomainSpecification" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" dragSource="BOTH">
@@ -276,56 +321,8 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
-      <additionalLayers name="Specification.CreateDefault" label="Default Layer" activeByDefault="true">
-        <toolSections name="Create">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResource" label="Resource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Resource" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Resource' + container.resources->size()/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralProperty" label="Literal Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Property' + container.resourceProperties->size()/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::String /]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferenceProperty" label="Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::Resource /]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['relatesTo' + propertyRange.name.toUpperFirst()/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferenceProperty" label="Local Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::LocalResource /]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['relatesTo' + instance.range.name.toUpperFirst()/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-        </toolSections>
-      </additionalLayers>
-      <additionalLayers name="Specification.CreateFromVocabulary" label="Vocabulary Layer">
+      <additionalLayers name="Specification.CreateFromVocabulary" label="Create from Vocabulary - Operations">
+        <containerMappings documentation="Just an empty container to break the transient nature of this layer (for oxygen)."/>
         <toolSections name="CreateFromVocabulary" label="Create from Vocabulary">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResourceFromVocabulary" label="Resource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
             <variable name="container">
@@ -1034,6 +1031,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Vocabulary.CreateDefault" label="Default Layer" activeByDefault="true">
+        <containerMappings documentation="Just an empty container to break the transient nature of this layer (for oxygen)."/>
         <toolSections name="Vocabularies.CreateTerms" label="Create">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateClass" label="Class" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconClass.png">
             <variable name="container"/>
