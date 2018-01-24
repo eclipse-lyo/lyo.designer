@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.lyo.tools.adaptormodel.edit;singleton:=true
-Bundle-Version: 2.3.0.M2
+Bundle-Version: 2.3.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: adaptorinterface.provider.AdaptorInterfaceEditPlugin$Implementation
 Bundle-Vendor: %providerName

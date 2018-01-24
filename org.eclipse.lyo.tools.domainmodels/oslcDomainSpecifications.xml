@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <oslc4j_ai:Specification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:oslc4j_ai="http://org.eclipse.lyo/oslc4j/adaptorInterface">
-  <domainSpecifications name="Dublin Core" namespaceURI="http://purl.org/dc/terms/#" namespacePrefix="//@domainPrefixes.0">
+  <domainSpecifications name="Dublin Core" namespaceURI="http://purl.org/dc/terms/" namespacePrefix="//@domainPrefixes.0">
     <resourceProperties name="contributor" occurs="zeroOrMany" valueType="Resource" range="//@domainSpecifications.1/@resources.0" description="Contributor or contributors to the resource. It is likely that the target resource will be a foaf:Person but that is not necessarily the case."/>
     <resourceProperties name="creator" occurs="zeroOrMany" valueType="Resource" representation="either" range="//@domainSpecifications.1/@resources.0" description="Creator or creators of the resource. It is likely that the target resource will be a foaf:Person but that is not necessarily the case."/>
     <resourceProperties name="created" occurs="zeroOrOne" valueType="DateTime" description="Timestamp of resource creation"/>

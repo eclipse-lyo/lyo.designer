@@ -75,7 +75,7 @@ javaPackageName(aDomainSpecification, anAdaptorInterface, defaultJavaPackageName
 /]
 
 [query public javaInterfaceNameForConstants(aDomainSpecification: DomainSpecification) : String =
-javaString(aDomainSpecification.namespacePrefix.name, 'oslc', true).concat('Constants')
+javaString(aDomainSpecification.namespacePrefix.name, 'oslc', true).concat('DomainConstants')
 /]
 
 [query public javaInterfaceFullNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
