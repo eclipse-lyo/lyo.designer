@@ -50,7 +50,8 @@
 <%@page import="java.net.URI"%>
 <%--
 [protected ('"indexBody"')]
-TODO: Replace/adjust this default content as necessary.
+--%>
+<%--TODO: Replace/adjust this default content as necessary.
 All manual changes in this "protected" user code area will NOT be overwritten upon subsequent code generations.
 To revert to the default generated content, delete all content in this file, and then re-generate.
 --%>

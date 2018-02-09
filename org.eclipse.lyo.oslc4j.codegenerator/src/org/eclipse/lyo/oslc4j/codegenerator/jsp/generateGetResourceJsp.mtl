@@ -33,7 +33,8 @@
 [template public generateGetResourceJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface)]
 [file (getResourceJspFullFileName(aResource, contextAdaptorInterface), false, 'UTF-8')]
 <%--[protected ('"body"')]
-TODO: Replace/adjust this default content as necessary.
+--%>
+<%--TODO: Replace/adjust this default content as necessary.
 All manual changes in this "protected" user code area will NOT be overwritten upon subsequent code generations.
 To revert to the default generated content, delete all content in this file, and then re-generate.
 --%>
