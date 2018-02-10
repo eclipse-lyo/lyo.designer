@@ -82,6 +82,7 @@ public static Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([
 
 [template public generateAdaptorResourcesFactory(anAdaptorInterface : AdaptorInterface)]
 [file (javaClassFullFileNameForResourcesFactory(anAdaptorInterface), false, 'UTF-8')]
+// [protected ('Copyright')]
 /*******************************************************************************
  * Copyright (c) 2017 Jad El-khoury.
  *
@@ -98,6 +99,7 @@ public static Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([
  *     Jad El-khoury        - initial implementation
  *     
  *******************************************************************************/
+// [/protected]
 
 package [javaClassPackageNameForResourcesFactory(anAdaptorInterface) /];
 

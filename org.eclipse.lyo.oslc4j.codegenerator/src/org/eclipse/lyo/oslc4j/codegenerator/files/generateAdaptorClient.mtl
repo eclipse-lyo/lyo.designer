@@ -30,6 +30,7 @@
 
 [template public generateAdaptorClient(aRequiredAdaptor: RequiredAdaptor, anAdaptorInterface : AdaptorInterface)]
 [file (javaClassFullFileNameForClient(aRequiredAdaptor, anAdaptorInterface), false, 'UTF-8')]
+// [protected ('Copyright')]
 /*******************************************************************************
  * Copyright (c) 2015 Jad El-khoury.
  *
@@ -46,6 +47,7 @@
  *     Jad El-khoury        - initial implementation of client code
  *     
  *******************************************************************************/
+// [/protected]
 
 package [javaClassPackageNameForClient(aRequiredAdaptor, anAdaptorInterface) /];
 
