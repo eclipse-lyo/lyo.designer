@@ -115,7 +115,9 @@ To revert to the default generated content, delete all content in this file, and
     </div>
         <% for ([queryMethodResourceType(aQueryCapability)/] aResource : resources) { %>
         [if (queryMethodResourceType(aQueryCapability) = 'AbstractResource')]
+        <p><a href="<%= aResource.getAbout() %>"><%=aResource.getAbout().toString()%></a><br /></p>
         [else]
+        <p><%= aResource.toHtml() %><br /></p>
         [/if]
         <% } %>
         <% if (nextPageUri != null) { %><a href="<%= nextPageUri %>">Next Page</a><% } %>
