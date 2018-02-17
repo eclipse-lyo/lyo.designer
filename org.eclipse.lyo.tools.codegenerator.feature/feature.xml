@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.lyo.tools.codegenerator.feature"
       label="Lyo Code Generator"
-      version="2.3.0.qualifier"
+      version="2.3.0.M3"
       provider-name="Eclipse Lyo">
 
    <description url="https://www.eclipse.org/lyo/">

@@ -124,7 +124,7 @@ To revert to the default generated content, delete all content in this file, and
       </div>
   <footer class="footer">
       <div class="container">
-          <p class="text-muted">OSLC Adaptor was generated using <a href="http://eclipse.org/lyo">Eclipse Lyo</a> 2.3.0-SNAPSHOT.</p>
+          <p class="text-muted">OSLC Adaptor was generated using <a href="http://eclipse.org/lyo">Eclipse Lyo</a>.</p>
       </div>
   </footer>
 </body>
