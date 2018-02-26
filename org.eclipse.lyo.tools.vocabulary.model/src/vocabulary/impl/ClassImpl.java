@@ -56,7 +56,7 @@ public class ClassImpl extends TermImpl implements vocabulary.Class {
      * <!-- end-user-doc -->
      * @generated
      */
-    protected ClassImpl() {
+    public ClassImpl() {
         super();
     }
 

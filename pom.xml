@@ -38,6 +38,8 @@
 		<module>org.eclipse.lyo.tools.vocabulary.editor</module>
 		<module>org.eclipse.lyo.tools.vocabulary.model</module>
 		<module>org.eclipse.lyo.tools.vocabulary.model.edit</module>
+		
+		<module>org.eclipse.lyo.tools.emf2rdf</module>
 
 		<module>org.eclipse.lyo.tools.updatesite</module>
 	</modules>
