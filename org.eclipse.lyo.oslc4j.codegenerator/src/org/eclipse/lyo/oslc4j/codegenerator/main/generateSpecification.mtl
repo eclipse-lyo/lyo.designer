@@ -17,15 +17,17 @@
  *******************************************************************************/
 /]
 
-[module generateSpecification('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+[module generateSpecification('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateDomainSpecificationConstants/]
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateVocabularyConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResource/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResourceInterface/]
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateLicenseFiles/]
@@ -47,12 +49,22 @@ aSpecification.generationSetting.oclIsUndefined()
 relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
 /]
 
+[query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
+relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
+	relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
+/]
+
 [template public generateSpecification(aSpecification : Specification)]
 [comment @main/]
 [if (canGenerate(aSpecification))]
     [aSpecification.generateLicenseFiles() /] 
     [for (aDomainSpecification: DomainSpecification | aSpecification.relevantDomainSpecifications())]
         [aDomainSpecification.generateDomainSpecificationConstants(null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName)/]
+    [/for]
+
+    [for (aVocabulary: Vocabulary | aSpecification.relevantVocabularies())]
+        [aVocabulary.generateVocabularyConstants(null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName)/]
     [/for]
     
     [for (aResource: Resource | aSpecification.relevantResources())]

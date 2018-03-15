@@ -112,9 +112,9 @@ import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackag
 // [protected ('imports')]
 // [/protected]
 
-@OslcNamespace([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification()) /])
-@OslcName([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceConstantName(aResource) /])
-@OslcResourceShape(title = "[aResource.name /] Resource Shape", describes = [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource) /])
+[namespaceAnnotation(aResource)/]
+[nameAnnotation(aResource)/]
+[resourceShapeAnnotation(aResource)/]
 public interface [javaInterfaceName(aResource) /]
 {
 

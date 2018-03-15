@@ -251,18 +251,6 @@ javaConstantName(aDomainSpecification).concat('_NAMSPACE')
 javaConstantName(aDomainSpecification).concat('_NAMSPACE_PREFIX')
 /]
 
-[query public resourceConstantName(aResource : Resource) : String = 
-aResource.javaName(true).toUpperCase()
-/]
-
-[query public resourcePathConstantName(aResource : Resource) : String = 
-'PATH_'.concat(aResource.javaName(true).toUpperCase())
-/]
-
-[query public resourceTypeConstantName(aResource : Resource) : String = 
-'TYPE_'.concat(aResource.javaName(true).toUpperCase())
-/]
-
 [comment Services for RequiredAdaptor /]
 [query public servicedResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
 if (aRequiredAdaptor.oclIsTypeOf(GenericRequiredAdaptor)) then

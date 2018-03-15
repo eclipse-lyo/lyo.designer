@@ -173,3 +173,49 @@ javaInterfacePackageName(aResource, anAdaptorInterface, defaultJavaPackageName).
     .concat('.java')
 /]
 
+[query public resourceConstantName(aResource : Resource) : String = 
+javaConstantString(aResource.name)
+/]
+
+[query public resourcePathConstantName(aResource : Resource) : String = 
+resourceConstantName(aResource).concat('_PATH')
+/]
+
+[query public resourceTypeNamespaceConstantName(aResource : Resource) : String = 
+resourceConstantName(aResource).concat('_NAMESPACE')
+/]
+
+[query public resourceTypeLocalNameConstantName(aResource : Resource) : String = 
+resourceConstantName(aResource).concat('_LOCALNAME')
+/]
+
+[query public resourceTypeConstantName(aResource : Resource) : String = 
+resourceConstantName(aResource).concat('_TYPE')
+/]
+
+[query public nameAnnotation(aResource : Resource) : String = 
+'@OslcName('
+.concat(javaInterfaceNameForConstants(aResource.definingDomainSpecification()))
+.concat('.')
+.concat(resourceTypeLocalNameConstantName(aResource))
+.concat(')')
+/]
+
+[query public namespaceAnnotation(aResource : Resource) : String = 
+'@OslcNamespace('
+.concat(javaInterfaceNameForConstants(aResource.definingDomainSpecification()))
+.concat('.')
+.concat(resourceTypeNamespaceConstantName(aResource))
+.concat(')')
+/]
+
+[query public resourceShapeAnnotation(aResource : Resource) : String = 
+'@OslcResourceShape(title = "'
+.concat(aResource.name).concat(' ').concat('Resource Shape')
+.concat('", describes = ')
+.concat(javaInterfaceNameForConstants(aResource.definingDomainSpecification()))
+.concat('.')
+.concat(resourceTypeConstantName(aResource))
+.concat(')')
+/]
+

@@ -22,18 +22,36 @@
  *******************************************************************************/
 /]
 
-[module generateDomainSpecificationConstants('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+[module generateDomainSpecificationConstants('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
+
+[query public resourceTypeNamespace(aResource: Resource) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification())
+else
+    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResource.describes.definingVocabulary()))
+endif)
+/]
+
+[query public resourceTypeLocalName(aResource: Resource) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    '"'.concat(aResource.javaName(true)).concat('"')
+else
+	'"'.concat(aResource.describes.javaName(true)).concat('"')
+endif)
+/]
 
 [template public generateResourceConstants(aResource : Resource)]
-public static String [resourceConstantName(aResource)/] = "[aResource.javaName(true)/]";
 public static String [resourcePathConstantName(aResource)/] = "[aResource.javaName(false)/]";
-public static String [resourceTypeConstantName(aResource)/] = [domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification())/] + [resourceConstantName(aResource)/];
+public static String [resourceTypeNamespaceConstantName(aResource)/] = [resourceTypeNamespace(aResource)/]; //namespace of the rdfs:class the resource describes
+public static String [resourceTypeLocalNameConstantName(aResource)/] = [resourceTypeLocalName(aResource)/]; //localName of the rdfs:class the resource describes
+public static String [resourceTypeConstantName(aResource)/] = [resourceTypeNamespaceConstantName(aResource)/] + [resourceTypeLocalNameConstantName(aResource)/]; //fullname of the rdfs:class the resource describes
 [/template]
 
 [template public generateDomainSpecificationConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
@@ -66,6 +84,7 @@ public static String [resourceTypeConstantName(aResource)/] = [domainSpecificati
 package [javaInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultJavaClassPackageName) /];
 
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
+[for (aVocabulary: Vocabulary | relevantVocabularies(aDomainSpecification)->sortedBy(label)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, anAdaptorInterface, defaultJavaClassPackageName) /];[/for]
 
 // [protected ('imports')]
 // [/protected]

@@ -20,12 +20,13 @@
  *******************************************************************************/
 /]
 
-[module generate('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+[module generate('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateServiceProviderCatalogService/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateServiceProviderCatalogSingleton/]
@@ -37,6 +38,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateClientOnlyMainApplication/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorPackageInfo/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateDomainSpecificationConstants/]
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateVocabularyConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateServiceProviderService/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateServiceProviderInfo/]
@@ -92,6 +94,12 @@
 [template public generateForRelevantDomainSpecifications(anAdaptorInterface : AdaptorInterface)]
 [for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface))]
     [aDomainSpecification.generateDomainSpecificationConstants(anAdaptorInterface, null, null)/]
+[/for]
+[/template]
+
+[template public generateForRelevantVocabularies(anAdaptorInterface : AdaptorInterface)]
+[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface))]
+    [aVocabulary.generateVocabularyConstants(anAdaptorInterface, null, null)/]
 [/for]
 [/template]
 
@@ -172,6 +180,7 @@
     [generateClientOnlyMainApplication(anAdaptorInterface)/]
 [/if]
 [generateForRelevantDomainSpecifications(anAdaptorInterface)/]
+[generateForRelevantVocabularies(anAdaptorInterface)/]
 [generateForRelevantResources(anAdaptorInterface)/]
 [generateForRequiredAdaptors(anAdaptorInterface)/]
 [/template]

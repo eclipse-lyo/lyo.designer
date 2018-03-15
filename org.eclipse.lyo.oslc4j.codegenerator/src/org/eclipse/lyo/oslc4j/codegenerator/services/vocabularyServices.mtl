@@ -1,0 +1,117 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2018 Jad El-khoury.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Jad El-khoury        - initial implementation
+ *     
+ *******************************************************************************/
+/]
+
+[module vocabularyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+
+[query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
+aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
+->union(
+	aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
+)->asSet()
+/]
+
+[query public relevantVocabularies(anAdaptorInterface : AdaptorInterface) : Set(Vocabulary) =
+anAdaptorInterface.relevantDomainSpecifications()->collectNested(aDomainSpecification : DomainSpecification | 
+	relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
+/]
+
+[query public definingVocabulary(aProperty: Property) : Vocabulary =
+aProperty.eContainer(Vocabulary)
+/]
+
+[query public definingVocabulary(aClass: Class) : Vocabulary =
+aClass.eContainer(Vocabulary)
+/]
+
+[query public javaFullFilesPath(aVocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (anAdaptorInterface.oclIsUndefined()) then 
+    default
+else
+    javaFilesBasePath(anAdaptorInterface, default)
+endif)
+/]
+
+[query public javaPackageName(aVocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (anAdaptorInterface.oclIsUndefined()) then 
+    default
+else
+    javaClassBaseNamespace(anAdaptorInterface, default).concat('.resources')
+endif)
+/]
+
+[query public javaFullFilesPath(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+javaFullFilesPath(aVocabulary.eContainer(Vocabularies), anAdaptorInterface, default)
+/]
+
+[query public javaPackageName(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+javaPackageName(aVocabulary.eContainer(Vocabularies), anAdaptorInterface, default)
+/]
+
+[query public javaInterfacePackageNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaPackageName(aVocabulary, anAdaptorInterface, defaultJavaPackageName)
+/]
+
+[query public javaInterfaceNameForConstants(aVocabulary: Vocabulary) : String =
+javaString(aVocabulary.preferredNamespacePrefix, 'oslc', true).concat('VocabularyConstants')
+/]
+
+[query public javaInterfaceFullNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaInterfacePackageNameForConstants(aVocabulary, anAdaptorInterface, defaultJavaPackageName).concat('.').concat(javaInterfaceNameForConstants(aVocabulary))
+/]
+
+[query public javaInterfaceFullFileNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String = 
+    javaFullFilesPath(aVocabulary, anAdaptorInterface, defaultJavaFullFilesPath)
+    .concatenatePaths(javaInterfacePackageNameForConstants(aVocabulary, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
+    .concatenatePaths(javaInterfaceNameForConstants(aVocabulary))
+    .concat('.java')
+/]
+
+[query public javaName(aClass: Class, toUpperFirst : Boolean) : String = 
+javaString(aClass.name, aClass.definingVocabulary().preferredNamespacePrefix, toUpperFirst)
+/]
+
+[query public javaName(aProperty: Property, toUpperFirst : Boolean) : String = 
+javaString(aProperty.name, aProperty.definingVocabulary().preferredNamespacePrefix, toUpperFirst)
+/]
+
+[comment Services for VocabularyConstants /]
+[query public javaConstantName(aVocabulary : Vocabulary) : String = 
+javaConstantString(aVocabulary.label)
+/]
+
+[query public vocabularyNamespaceConstantName(aVocabulary : Vocabulary) : String = 
+javaConstantName(aVocabulary).concat('_NAMSPACE')
+/]
+
+[query public vocabularyPreferredNamespacePrefixConstantName(aVocabulary : Vocabulary) : String = 
+javaConstantName(aVocabulary).concat('_NAMSPACE_PREFIX')
+/]
+
+[query public classConstantName(aClass : Class) : String = 
+aClass.javaName(true).toUpperCase()
+/]
+
+[query public classTypeConstantName(aClass : Class) : String = 
+'TYPE_'.concat(aClass.javaName(true).toUpperCase())
+/]

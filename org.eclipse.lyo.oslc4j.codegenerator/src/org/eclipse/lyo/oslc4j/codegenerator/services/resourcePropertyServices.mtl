@@ -24,6 +24,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 
 [query public javaName(aProperty: ResourceProperty, toUpperFirst : Boolean) : String = 
 javaString(aProperty.name, aProperty.definingDomainSpecification().namespacePrefix.name, toUpperFirst)
@@ -36,12 +37,34 @@ But I really want the user to be able to map to java.net.URI, just like they can
 not (Sequence{'URI'}->includes(aProperty.valueType.toString()))
 /]
 
+[query public resourcePropertyDefinitionNamespace(aResourceProperty: ResourceProperty) : String =
+(if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
+    javaInterfaceNameForConstants(aResourceProperty.definingDomainSpecification()).concat('.').concat(domainSpecificationNamespaceConstantName(aResourceProperty.definingDomainSpecification()))
+else
+    javaInterfaceNameForConstants(aResourceProperty.propertyDefinition.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResourceProperty.propertyDefinition.definingVocabulary()))
+endif)
+/]
+
+[query public resourcePropertyDefinitionLocalName(aResourceProperty: ResourceProperty) : String =
+(if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
+    '"'.concat(aResourceProperty.javaName(false)).concat('"')
+else
+	'"'.concat(aResourceProperty.propertyDefinition.javaName(false)).concat('"')
+endif)
+/]
+
 [query public nameAnnotation(aProperty: ResourceProperty) : String = 
-'@OslcName("'.concat(javaName(aProperty, false)). concat('")')
+'@OslcName('
+.concat(resourcePropertyDefinitionLocalName(aProperty))
+.concat(')')
 /]
 
 [query public propertyDefinitionAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String = 
-'@OslcPropertyDefinition('.concat(javaInterfaceNameForConstants(aProperty.definingDomainSpecification())).concat('.').concat(domainSpecificationNamespaceConstantName(aProperty.definingDomainSpecification())) . concat(' + "').concat(javaName(aProperty, false)).concat('")')
+'@OslcPropertyDefinition('
+.concat(resourcePropertyDefinitionNamespace(aProperty))
+.concat(' + ')
+.concat(resourcePropertyDefinitionLocalName(aProperty))
+.concat(')')
 /]
 
 [query public descriptionAnnotation(aProperty: ResourceProperty) : String = 
