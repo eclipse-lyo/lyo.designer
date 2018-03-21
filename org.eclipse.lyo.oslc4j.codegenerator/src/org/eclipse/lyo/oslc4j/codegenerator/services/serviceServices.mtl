@@ -299,6 +299,10 @@ getResourceMethodName(aBasicCapability, aResource, true).concat('Compact')
 getResourceMethodName(aBasicCapability, aResource, false).concat('SmallPreview')
 /]
 
+[query public getResourceLargePreviewMethodName(aBasicCapability: BasicCapability, aResource: Resource) : String = 
+getResourceMethodName(aBasicCapability, aResource, false).concat('LargePreview')
+/]
+
 [query public deleteResourceMethodName(aBasicCapability: BasicCapability, aResource: Resource) : String = 
 'delete'.concat(javaName(aResource, true))
 /]

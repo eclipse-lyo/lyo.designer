@@ -54,6 +54,13 @@ jspFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)
 jspFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceSmallPreviewJspRelativeFileName(aResource, anAdaptorInterface))
 /]
 
+[query public getResourceLargePreviewJspRelativeFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
+jspFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)).concat('largepreview.jsp').toLower()
+/]
+[query public getResourceLargePreviewJspFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
+jspFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceLargePreviewJspRelativeFileName(aResource, anAdaptorInterface))
+/]
+
 [query private resourceCreatorJspSimpleFileName(aCreationDialog: Dialog) : String =
 (if (aCreationDialog.usages->size() = 0) then
     concatenate(aCreationDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String)).toLower()

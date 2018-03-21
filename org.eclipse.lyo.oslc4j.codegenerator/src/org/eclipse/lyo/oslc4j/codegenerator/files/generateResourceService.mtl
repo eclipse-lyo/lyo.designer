@@ -506,12 +506,12 @@ public class [javaClassName(aService) /]
             smallPreview.setDocument(UriBuilder.fromUri(a[javaName(aResource, true)/].getAbout()).path("smallPreview").build());
             compact.setSmallPreview(smallPreview);
 
-            //Use the HTML representation of a change request as the large preview as well
             final Preview largePreview = new Preview();
             largePreview.setHintHeight(largePreviewHintHeight);
             largePreview.setHintWidth(largePreviewHintWidth);
-            largePreview.setDocument(a[javaName(aResource, true)/].getAbout());
+            largePreview.setDocument(UriBuilder.fromUri(a[javaName(aResource, true)/].getAbout()).path("largePreview").build());
             compact.setLargePreview(largePreview);
+
             httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
             return compact;
         }
@@ -536,6 +536,31 @@ public class [javaClassName(aService) /]
             // [/protected]
 
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceSmallPreviewJspRelativeFileName(aResource, anAdaptorInterface) /]");
+            httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
+            rd.forward(httpServletRequest, httpServletResponse);
+        }
+
+        throw new WebApplicationException(Status.NOT_FOUND);
+    }
+
+    @GET
+    [JAXRSPathAnnotation(JAXRSConcatURISegments(aResource.instanceURISegment(aBasicCapability), 'largePreview'))/]
+    @Produces({ MediaType.TEXT_HTML })
+    public void [getResourceLargePreviewMethodName(aBasicCapability, aResource)/](
+        [commaSeparate(instanceMethodSignature(aResource, aBasicCapability, true), false, false)/]
+        ) throws ServletException, IOException, URISyntaxException
+    {
+        // [protected (getResourceLargePreviewMethodName(aBasicCapability, aResource).concat('_init'))]
+        // [/protected]
+
+        final [getResourceMethodResourceType(aBasicCapability, aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aBasicCapability, aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aBasicCapability), true, false)/]);
+
+        if (a[javaName(aResource, true)/] != null) {
+            httpServletRequest.setAttribute("a[javaName(aResource, true)/]", a[javaName(aResource, true)/]);
+            // [protected (getResourceLargePreviewMethodName(aBasicCapability, aResource).concat('_setAttributes'))]
+            // [/protected]
+
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceLargePreviewJspRelativeFileName(aResource, anAdaptorInterface) /]");
             httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
             rd.forward(httpServletRequest, httpServletResponse);
         }
