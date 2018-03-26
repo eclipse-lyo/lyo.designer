@@ -162,7 +162,7 @@ function sendCancelResponse() {
 
 
 function respondWithWindowName(/*string*/ response) {
-   var returnURL = window.name;
+   var returnURL = escapeCSSAttack(window.name);
    window.name = response;
    window.location.href = returnURL;
 
@@ -178,6 +178,24 @@ function respondWithPostMessage(/*string*/ response) {
 
 function cancel(){
   sendCancelResponse();
+}
+
+function escapeCSSAttack(url) {
+    var out = "";
+    for(var i=0; i<url.length; i++) {
+        if(url['[i]'/] === '<') {
+            out += '&amp;lt;';
+        } else if(url['[i]'/] === '>') {
+            out += '&amp;gt;';
+        } else if(url['[i]'/] === "'") {
+            out += '&amp;#39;'; 
+        } else if(url['[i]'/] === '"') {
+            out += '&amp;quot;';                        
+        } else {
+            out += url['[i]'/];
+        }
+    }
+    return out;                    
 }
 [/file]
 [/template]
