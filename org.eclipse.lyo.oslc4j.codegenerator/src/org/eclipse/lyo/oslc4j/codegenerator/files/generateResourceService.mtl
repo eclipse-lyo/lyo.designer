@@ -245,7 +245,7 @@ public class [javaClassName(aService) /]
             // [protected (dialogMethodName(aSelectionDialog, true).concat('_init'))]
             // [/protected]
 
-            httpServletRequest.setAttribute("selectionUri",uriInfo.getAbsolutePath().toString());
+            httpServletRequest.setAttribute("selectionUri",UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(uriInfo.getPath()).build().toString());
             // [protected (dialogMethodName(aSelectionDialog, true).concat('_setAttributes'))]
             // [/protected]
 
@@ -326,7 +326,7 @@ public class [javaClassName(aService) /]
         // [protected (dialogMethodName(aCreationDialog, false))]
         // [/protected]
 
-        httpServletRequest.setAttribute("creatorUri", uriInfo.getAbsolutePath().toString());
+        httpServletRequest.setAttribute("creatorUri", UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(uriInfo.getPath()).build().toString());
         [for (aPathParameter: String | JAXRSPathParameters(aCreationDialog.URI(false)))]
         httpServletRequest.setAttribute("[aPathParameter/]", [aPathParameter/]);
         [/for]
