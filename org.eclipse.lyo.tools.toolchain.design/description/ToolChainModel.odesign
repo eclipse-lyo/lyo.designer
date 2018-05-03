@@ -212,8 +212,24 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[elementView/]">
-                <subModelOperations xsi:type="tool_1:DeleteView"/>
+              <firstModelOperations xsi:type="tool_1:Let" variableName="deleteFromModel" valueExpression="service:deleteFromModel()">
+                <subModelOperations xsi:type="tool_1:Switch">
+                  <cases conditionExpression="[deleteFromModel.oclIsUndefined()/]"/>
+                  <cases conditionExpression="[deleteFromModel/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.namespacePrefix/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                  </cases>
+                  <cases conditionExpression="[not deleteFromModel/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:elementView">
+                      <subModelOperations xsi:type="tool_1:DeleteView"/>
+                    </subModelOperations>
+                  </cases>
+                  <default/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1001,7 +1017,20 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
+              <firstModelOperations xsi:type="tool_1:Let" variableName="deleteFromModel" valueExpression="service:deleteFromModel()">
+                <subModelOperations xsi:type="tool_1:Switch">
+                  <cases conditionExpression="[deleteFromModel.oclIsUndefined()/]"/>
+                  <cases conditionExpression="[deleteFromModel/]">
+                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                  </cases>
+                  <cases conditionExpression="[not deleteFromModel/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:elementView">
+                      <subModelOperations xsi:type="tool_1:DeleteView"/>
+                    </subModelOperations>
+                  </cases>
+                  <default/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Vocabularies.DeleteSubClassOf">
@@ -1062,5 +1091,6 @@
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::DialogInputServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.EmfResourcesLoaderService"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ConfirmDeletionServices"/>
   </ownedViewpoints>
 </description:Group>
