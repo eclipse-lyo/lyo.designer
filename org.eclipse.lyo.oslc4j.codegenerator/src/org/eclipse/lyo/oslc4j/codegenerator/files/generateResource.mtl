@@ -148,6 +148,8 @@ import org.eclipse.lyo.oslc4j.core.model.ResourceShape;
 import org.eclipse.lyo.oslc4j.core.model.ResourceShapeFactory;
 
 import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), contextAdaptorInterface, defaultJavaClassPackageName)/];
+[if (not aResource.directParentResource().oclIsUndefined())]import [javaClassFullName(aResource.directParentResource(), contextAdaptorInterface, defaultJavaClassPackageName) /];[/if]
+[for (r: Resource | aResource.interfaceResources()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
 [for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
 [for (aProperty: ResourceProperty | allProperties(aResource)->sortedBy(name))]
 [if(Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString())) ]
