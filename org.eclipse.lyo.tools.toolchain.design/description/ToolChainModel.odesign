@@ -116,12 +116,12 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResource" label="Resource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResource" label="Resource Shape" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Resource" referenceName="resources">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Resource' + container.resources->size()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['ResourceShape' + container.resources->size()/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -340,7 +340,7 @@
       <additionalLayers name="Specification.CreateFromVocabulary" label="Create from Vocabulary - Operations">
         <containerMappings documentation="Just an empty container to break the transient nature of this layer (for oxygen)."/>
         <toolSections name="CreateFromVocabulary" label="Create from Vocabulary">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResourceFromVocabulary" label="Resource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResourceFromVocabulary" label="Resource Shape" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="classToBeDescribed" candidatesExpression="[loadedVocabularies->collect(v | Set{v}->union(v.oclAsType(vocabulary::Vocabulary).classes))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v | v.oclAsType(vocabulary::Vocabulary).classes->notEmpty() ) /]" childrenExpression="[self.oclAsType(vocabulary::Vocabulary).classes/]" message="Select the rdfs:Class being described"/>
