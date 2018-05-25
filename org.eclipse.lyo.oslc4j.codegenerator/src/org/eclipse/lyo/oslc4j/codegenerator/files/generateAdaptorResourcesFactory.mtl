@@ -34,7 +34,7 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.eclipse.lyo.oslc4j.core.model.Link;
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
-[for (aResource: Resource | relevantResources(anAdaptorInterface))]
+[for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name))]
 import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
 
@@ -116,7 +116,7 @@ public class [javaClassNameForResourcesFactory(anAdaptorInterface) /] {
     // [protected ('class_methods')]
     // [/protected]
 
-    [for (aResource: Resource | servicedResources(anAdaptorInterface))]
+    [for (aResource: Resource | servicedResources(anAdaptorInterface)->sortedBy(name))]
     //methods for [aResource.javaClassName()/] resource
     [aResource.generateFactoryMethods(anAdaptorInterface) /]
 

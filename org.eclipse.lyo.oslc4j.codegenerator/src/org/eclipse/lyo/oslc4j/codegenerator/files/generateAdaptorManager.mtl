@@ -233,7 +233,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
 
     [/for]
 
-    [for (aResource: Resource | servicedResources(anAdaptorInterface))]
+    [for (aResource: Resource | servicedResources(anAdaptorInterface)->sortedBy(name))]
     public static String [getResourceETagMethodName(aResource)/](final [javaClassName(aResource)/] aResource)
     {
         String eTag = null;
