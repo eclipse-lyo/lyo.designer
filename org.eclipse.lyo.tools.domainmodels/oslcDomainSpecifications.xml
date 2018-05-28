@@ -11,6 +11,7 @@
     <resourceProperties title="" name="subject" occurs="zeroOrMany" valueType="String" description="Tag or keyword for a resource. Each occurrence of a dcterms:subject property denotes an additional tag for the resource."/>
     <resourceProperties name="title" valueType="XMLLiteral" description="Title of the resource represented as rich text in XHTML content. SHOULD include only content that is valid inside an XHTML &lt;span> element."/>
     <resourceProperties name="isVersionOf" valueType="Resource" representation="reference" description="The concept resource of which this resource is a version. The subject of this property must be the version resource URI."/>
+    <resourceProperties name="hasPart" occurs="zeroOrMany" valueType="Resource" description="A related resource that is included either physically or logically in the described resource."/>
   </domainSpecifications>
   <domainSpecifications name="FOAF" namespaceURI="http://xmlns.com/foaf/0.1/#" namespacePrefix="//@domainPrefixes.1">
     <resources name="Person" resourceProperties="//@domainSpecifications.1/@resourceProperties.2 //@domainSpecifications.1/@resourceProperties.1 //@domainSpecifications.1/@resourceProperties.0"/>
@@ -28,6 +29,8 @@
     <resourceProperties name="contains" occurs="zeroOrMany" valueType="Resource"/>
     <resourceProperties name="label" occurs="zeroOrOne" valueType="XMLLiteral" description="May be used to provide a human-readable version of a resource's name."/>
     <resourceProperties name="subClassOf" valueType="Resource" range="//@domainSpecifications.3/@resources.0" description="used to state that all the instances of one class are instances of another"/>
+    <resourceProperties name="comment" valueType="XMLLiteral" description="May be used to provide a human-readable description of a resource."/>
+    <resourceProperties name="seeAlso" occurs="zeroOrOne" valueType="URI" description="Used to indicate a resource that might provide additional information about the subject resource."/>
   </domainSpecifications>
   <domainSpecifications name="OSLC" namespaceURI="http://open-services.net/ns/core#" namespacePrefix="//@domainPrefixes.4">
     <resources name="ServiceProvider"/>
@@ -41,8 +44,8 @@
     <resourceProperties name="shortId" valueType="String" description="Shorter form of dcterms:identifier for the resource, such as a number."/>
     <resourceProperties name="discussedBy" occurs="zeroOrOne" valueType="Resource" range="//@domainSpecifications.4/@resources.2" description="A series of notes and comments about this resource."/>
     <resourceProperties name="modifiedBy" valueType="Resource" description="The URI of a resource describing the entity that most recently modified the subject resource. The link target is usually a foaf:Person or foaf:Agent, but could be any type. This is modeled after dcterms:creator, but Dublin Core currently has no equivalent property."/>
-    <resourceProperties name="describes" occurs="zeroOrMany" valueType="Resource" description="This shape describes resources that are of any of these types. Formally, a shape S applies to a resource R if there is a triple R rdf:type T and there is a triple S oslc:describes T. "/>
-    <resourceProperties name="property" occurs="zeroOrMany" valueType="Resource" range="//@domainSpecifications.4/@resources.3" description="The properties that are allowed or required by this shape. "/>
+    <resourceProperties name="describes" occurs="zeroOrMany" valueType="URI" description="This shape describes resources that are of any of these types. Formally, a shape S applies to a resource R if there is a triple R rdf:type T and there is a triple S oslc:describes T. "/>
+    <resourceProperties name="property" occurs="zeroOrMany" valueType="LocalResource" range="//@domainSpecifications.4/@resources.3" description="The properties that are allowed or required by this shape. "/>
     <resourceProperties name="allowedValue" occurs="oneOrMany" valueType="Resource" description="value allowed for a property"/>
     <resourceProperties name="allowedValues" valueType="Resource" range="//@domainSpecifications.4/@resources.4" description="Resource with allowed values for the property being defined. "/>
     <resourceProperties name="defaultValue" occurs="zeroOrOne" valueType="Resource" description="A default value for property, inlined into property definition. "/>
@@ -57,6 +60,7 @@
     <resourceProperties name="representation" occurs="zeroOrOne" valueType="Resource" description="Should be http://open-services.net/ns/core#Reference, http://open-services.net/ns/core#Inline or http://open-services.net/ns/core#Either"/>
     <resourceProperties name="valueType" occurs="zeroOrMany" valueType="Resource" description="See below for list of allowed values for oslc:valueType. If this property is omitted, then the value type is unconstrained."/>
     <resourceProperties name="valueShape" valueType="Resource" range="//@domainSpecifications.4/@resources.1" description="if the value-type is a resource type, then Property MAY provide a shape value to indicate the Resource Shape that applies to the resource."/>
+    <generationSetting javaClassPackageName="org.eclipse.lyo.oslc4j.core.model" javaFilesPath=""/>
   </domainSpecifications>
   <domainSpecifications name="Change Management" namespaceURI="http://open-services.net/ns/cm#" namespacePrefix="//@domainPrefixes.5">
     <resources name="ChangeRequest" resourceProperties="//@domainSpecifications.4/@resourceProperties.2 //@domainSpecifications.0/@resourceProperties.3 //@domainSpecifications.0/@resourceProperties.8 //@domainSpecifications.0/@resourceProperties.4 //@domainSpecifications.0/@resourceProperties.7 //@domainSpecifications.0/@resourceProperties.1 //@domainSpecifications.0/@resourceProperties.0 //@domainSpecifications.0/@resourceProperties.2 //@domainSpecifications.0/@resourceProperties.5 //@domainSpecifications.2/@resourceProperties.0 //@domainSpecifications.4/@resourceProperties.0 //@domainSpecifications.4/@resourceProperties.1 //@domainSpecifications.4/@resourceProperties.4 //@domainSpecifications.5/@resourceProperties.0 //@domainSpecifications.5/@resourceProperties.1 //@domainSpecifications.5/@resourceProperties.2 //@domainSpecifications.5/@resourceProperties.3 //@domainSpecifications.5/@resourceProperties.4 //@domainSpecifications.5/@resourceProperties.5 //@domainSpecifications.5/@resourceProperties.6 //@domainSpecifications.5/@resourceProperties.7 //@domainSpecifications.5/@resourceProperties.8 //@domainSpecifications.5/@resourceProperties.9 //@domainSpecifications.5/@resourceProperties.10 //@domainSpecifications.5/@resourceProperties.11 //@domainSpecifications.5/@resourceProperties.12 //@domainSpecifications.5/@resourceProperties.13 //@domainSpecifications.5/@resourceProperties.14"/>
