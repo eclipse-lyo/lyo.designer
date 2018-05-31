@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Properties;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -107,6 +108,17 @@ public class DialogServices {
 				return null;
 			}
             generationPath = props.getProperty(GENERATION_PATH_PROPERTY);
+
+            if(generationPath != null && !generationPath.isEmpty()) {
+                File file = new File(generationPath);
+                if (!file.isAbsolute()) {
+                    try {
+                         generationPath = new File(modellingProjectBaseFolder, generationPath).getCanonicalPath();
+                    } catch (IOException e) {
+                        showMessage("Exception!", "Generation path " +generationPath+ " is invalid.");
+                    }
+                }
+            }
         }
 
         if (generationPath == null || generationPath.length() == 0) {
