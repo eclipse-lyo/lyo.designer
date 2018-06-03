@@ -46,7 +46,9 @@ aSpecification.generationSetting.oclIsUndefined()
 /]
 
 [query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
-relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
+aSpecification.domainSpecifications->union(
+    relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
+)
 /]
 
 [query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
