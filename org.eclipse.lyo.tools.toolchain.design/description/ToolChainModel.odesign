@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="ToolchainModel" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="ToolchainModel" version="12.0.0.2017041100">
   <ownedViewpoints name="ToolchainViewpoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]" enablePopupBars="true">
       <diagramInitialisation/>
@@ -43,7 +43,7 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Specification.DomainSpecification.Resource.ReferenceProperty" semanticCandidatesExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))->select(p : ResourceProperty | (diagram.containers->select(c : DDiagramElementContainer | (c.actualMapping.name = 'Specification.DomainSpecification.Resource')._and(c.visible))).target->includesAll(p.range)._not())/]" domainClass="adaptorinterface.ResourceProperty">
+            <subNodeMappings name="Specification.DomainSpecification.Resource.ReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceReferencePropertySubnode']" semanticCandidatesExpression="[self.resourceProperties->select(p : ResourceProperty | Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(p.valueType))->select(p : ResourceProperty | (diagram.containers->select(c : DDiagramElementContainer | (c.actualMapping.name = 'Specification.DomainSpecification.Resource')._and(c.visible))).target->includesAll(p.range)._not())/]" domainClass="adaptorinterface.ResourceProperty">
               <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[(if (self.eContainer(DomainSpecification) = view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) then '' else self.eContainer(DomainSpecification).namespacePrefix.name  + ':' endif) + name + ': ' + (if (range->size() = 0) then 'Resource' else range->first().name + (if (range->size() > 1) then '++' else '' endif) endif) + (if (Sequence{ResourcePropertyOccurs::oneOrMany, ResourcePropertyOccurs::zeroOrMany}->includes(occurs)) then ' []' else '' endif)/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                 <labelFormat>italic</labelFormat>
@@ -256,6 +256,19 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResourceLiteralPropertySubnode">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResourceProperty" computationExpression="[element/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResource" computationExpression="[elementView.eContainer().oclAsType(DNodeList).target.oclAsType(Resource)/]"/>
+            </elementView>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[aResource/]">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResourceReferencePropertySubnode">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="aResourceProperty" computationExpression="[element/]"/>
