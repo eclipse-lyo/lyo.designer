@@ -1,0 +1,103 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2018 Jad El-khoury.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Jad El-khoury        - refactorying of query methods for the Domain Specification 
+ *							diagram from the odesign file.
+ *
+ *******************************************************************************/
+/]
+
+[module domainSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0')/]
+
+[query public visibleResources (diagram : DSemanticDiagram) : Sequence(Resource) =
+(diagram.containers->select(c : DDiagramElementContainer | (c.actualMapping.name = 'Specification.DomainSpecification.Resource')._and(c.visible)))
+	.target.oclAsType(Resource)
+/]
+
+[query public isLiteral(aResourceProperty : ResourceProperty) : Boolean =
+not Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(aResourceProperty.valueType)
+/]
+
+[query public literalResourceProperties(aResource : Resource) : Set(ResourceProperty) =
+aResource.resourceProperties->select(p : ResourceProperty | p.isLiteral())
+/]
+
+[query public referenceResourceProperties(aResource : Resource) : Set(ResourceProperty) =
+aResource.resourceProperties->select(p : ResourceProperty | not p.isLiteral())
+/]
+
+[comment We want to list all literal properties. We also want to list reference properties whose range is not set (since they cannot be shown as an arrow, pointing to nowhere) /]
+[query public propertiesAsSubnodes(aResource : Resource) : Set(ResourceProperty) =
+aResource.resourceProperties->select(p : ResourceProperty | 
+		(p.isLiteral())
+		 or ((not p.isLiteral()) and (p.range->size() = 0)))
+/]
+
+[comment We want to list reference properties that have range resources not visible in the diagram (since they cannot be shown as an arrow, pointing to nowhere) /]
+[query public referencePropertiesAsSubnodes(aResource : Resource, diagram : DSemanticDiagram) : Set(ResourceProperty) =
+aResource.referenceResourceProperties()
+	->select(p : ResourceProperty | not visibleResources(diagram)->includesAll(p.range))
+/]
+
+
+[query public labelAsResourceSubnode(aResourceProperty : ResourceProperty, propertyView : DDiagramElement) : String =
+(if (aResourceProperty.eContainer(DomainSpecification) = propertyView.eContainer().oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) 
+	then '' 
+	else aResourceProperty.eContainer(DomainSpecification).namespacePrefix.name  + ':' 
+	endif) 
++ aResourceProperty.labelInDomainSpecification()
+/]
+
+[query public labelInDomainSpecification(aResourceProperty : ResourceProperty) : String =
+	name 
+	+ ': '
+	+ (if (aResourceProperty.isLiteral()) 
+		then valueType 
+		else (if (range->size() = 0) then 'Resource' else range->first().name + (if (range->size() > 1) then '++' else '' endif) endif) 
+		endif)
+	+ (if (Sequence{ResourcePropertyOccurs::oneOrMany, ResourcePropertyOccurs::zeroOrMany}->includes(occurs)) then ' []' else '' endif)
+/]
+
+[query public labelAtArrowCenter(aResourceProperty : ResourceProperty) : String =
+(if (aResourceProperty.valueType = ResourcePropertyValueType::LocalResource) then 'Local: ' else '' endif)
++ aResourceProperty.name
+/]
+
+[query public labelAtArrowEnd(aResourceProperty : ResourceProperty) : String =
+	(if (aResourceProperty.occurs = ResourcePropertyOccurs::exactlyOne) 
+		then '1' 
+	else if (aResourceProperty.occurs = ResourcePropertyOccurs::zeroOrOne) 
+		then '0..1' 
+	else if (aResourceProperty.occurs = ResourcePropertyOccurs::zeroOrMany) 
+		then '0..*' 
+	else if (aResourceProperty.occurs = ResourcePropertyOccurs::oneOrMany) 
+		then '1..*' 
+	else '???' 
+	endif endif endif endif)
+/]
+
+[comment If at least one parent resource is not visible in the diagram, show textually the parent resources.
+Show at least the first invisible parent resource./]
+[query public labelInDomainSpecification(aResource : Resource, diagram : DSemanticDiagram) : String =
+let invisibleParentResources : OrderedSet(Resource) = aResource.extends->select(parent : Resource | not(visibleResources(diagram)->includes(parent))) in
+aResource.name +
+    (if (invisibleParentResources->size() = 0)
+    then
+        ''
+    else
+        (lineSeparator() + 'extends: ' + invisibleParentResources->first().name) +
+        (if (invisibleParentResources->size() > 1) then ' & ...' else '' endif)
+    endif)
+/]
