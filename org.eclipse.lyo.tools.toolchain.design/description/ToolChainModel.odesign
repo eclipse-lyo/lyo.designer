@@ -4,25 +4,25 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]" enablePopupBars="true">
       <diagramInitialisation/>
       <defaultLayer name="Default">
-        <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" semanticElements="[self.referenceResourceProperties()->select(p : ResourceProperty | p.range->includes(view.targetNode.oclAsType(DNodeList).target.oclAsType(Resource)))/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.referenceResourceProperties().range /]">
-          <conditionnalStyles predicateExpression="[view.semanticElements.oclAsType(ResourceProperty).valueType->exists(valueType : ResourcePropertyValueType | valueType = ResourcePropertyValueType::Resource)/]">
+        <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']/@borderedNodeMappings[name='Specification.DomainSpecification.Resource.ReferencePropertyOnBorder']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.range /]">
+          <conditionnalStyles predicateExpression="[self.valueType = ResourcePropertyValueType::Resource/]">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[view.semanticElements.oclAsType(ResourceProperty).labelAtArrowCenter()/]">
+              <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[self.labelAtArrowCenter()/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
-              <endLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[view.semanticElements.oclAsType(ResourceProperty).labelAtArrowEnd()/]">
+              <endLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[self.labelAtArrowEnd()/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[not view.semanticElements.oclAsType(ResourceProperty).valueType->exists(valueType : ResourcePropertyValueType | valueType = ResourcePropertyValueType::Resource)/]">
+          <conditionnalStyles predicateExpression="[not (self.valueType = ResourcePropertyValueType::Resource)/]">
           <style lineStyle="dot" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[view.semanticElements.oclAsType(ResourceProperty).labelAtArrowCenter()/]">
+              <centerLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[self.labelAtArrowCenter()/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
-              <endLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[view.semanticElements.oclAsType(ResourceProperty).labelAtArrowEnd()/]">
+              <endLabelStyleDescription labelSize="9" showIcon="false" labelExpression="[self.labelAtArrowEnd()/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
@@ -38,6 +38,13 @@
         </edgeMappings>
         <containerMappings name="Specification.DomainSpecification" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteDomainSpecification']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DirectEditName']" createElements="false" semanticElements="[Set{self, self.generationSetting}/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveProperty']">
           <subContainerMappings name="Specification.DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResource']" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.RelatePropertyToResource']" childrenPresentation="List">
+            <borderedNodeMappings name="Specification.DomainSpecification.Resource.ReferencePropertyOnBorder" semanticCandidatesExpression="[self.referencePropertiesAsBorderedNodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty">
+              <style xsi:type="style:DotDescription" showIcon="false" labelExpression="" sizeComputationExpression="1" labelPosition="node" strokeSizeComputationExpression="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </borderedNodeMappings>
             <subNodeMappings name="Specification.DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty">
               <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[self.labelAsResourceSubnode(view)/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -45,7 +52,7 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="self.referencePropertiesAsSubnodes(diagram)Specification.DomainSpecification.Resource.ReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceReferencePropertySubnode']" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty">
+            <subNodeMappings name="Specification.DomainSpecification.Resource.ReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceReferencePropertySubnode']" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty">
               <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[self.labelAsResourceSubnode(view)/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                 <labelFormat>italic</labelFormat>

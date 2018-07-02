@@ -51,6 +51,12 @@ aResource.referenceResourceProperties()
 	->select(p : ResourceProperty | not visibleResources(diagram)->includesAll(p.range))
 /]
 
+[comment We want to list reference properties that have range resources that are visible in the diagram (since they are to be shown as an arrow) /]
+[query public referencePropertiesAsBorderedNodes(aResource : Resource, diagram : DSemanticDiagram) : Set(ResourceProperty) =
+aResource.referenceResourceProperties()
+	->select(p : ResourceProperty | visibleResources(diagram)->includesAll(p.range))
+/]
+
 
 [query public labelAsResourceSubnode(aResourceProperty : ResourceProperty, propertyView : DDiagramElement) : String =
 (if (aResourceProperty.eContainer(DomainSpecification) = propertyView.eContainer().oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) 
