@@ -2,6 +2,8 @@ Lyo Designer is an Eclipse plugin that allows one to graphically model (1) the o
 
 Lyo Designer includes a integrated code generator that synthesizes the model into almost-complete OSLC4J-compliant running implementation.
 
+A short [video demonstration of Lyo Designer](https://www.youtube.com/watch?v=tZxPzlSTdeM).
+
 # Installation
 The easiest way to install Lyo Designer is via the update-site
 <http://download.eclipse.org/lyo/p2/stable/>. (This URL is intended to
