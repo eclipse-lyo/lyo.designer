@@ -74,6 +74,9 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR: return createGenericRequiredAdaptor();
 			case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR: return createModelledRequiredAdaptor();
 			case AdaptorinterfacePackage.GENERATION_SETTING: return createGenerationSetting();
+			case AdaptorinterfacePackage.SHACL_SHAPE: return createShaclShape();
+			case AdaptorinterfacePackage.SHAPE_PROPERTY: return createShapeProperty();
+			case AdaptorinterfacePackage.SHACL_PROPERTY: return createShaclProperty();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +100,8 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 				return createResourcePropertyIsMemberPropertyFromString(eDataType, initialValue);
 			case AdaptorinterfacePackage.RESOURCE_SERVICE_NAMESPACE:
 				return createResourceServiceNamespaceFromString(eDataType, initialValue);
+			case AdaptorinterfacePackage.SHACL_PROPERTY_DATA_TYPE:
+				return createShaclPropertyDataTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -120,6 +125,8 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 				return convertResourcePropertyIsMemberPropertyToString(eDataType, instanceValue);
 			case AdaptorinterfacePackage.RESOURCE_SERVICE_NAMESPACE:
 				return convertResourceServiceNamespaceToString(eDataType, instanceValue);
+			case AdaptorinterfacePackage.SHACL_PROPERTY_DATA_TYPE:
+				return convertShaclPropertyDataTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -300,6 +307,36 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ShaclShape createShaclShape() {
+		ShaclShapeImpl shaclShape = new ShaclShapeImpl();
+		return shaclShape;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ShapeProperty createShapeProperty() {
+		ShapePropertyImpl shapeProperty = new ShapePropertyImpl();
+		return shapeProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ShaclProperty createShaclProperty() {
+		ShaclPropertyImpl shaclProperty = new ShaclPropertyImpl();
+		return shaclProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ResourcePropertyOccurs createResourcePropertyOccursFromString(EDataType eDataType, String initialValue) {
 		ResourcePropertyOccurs result = ResourcePropertyOccurs.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -392,6 +429,26 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * @generated
 	 */
 	public String convertResourceServiceNamespaceToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ShaclPropertyDataType createShaclPropertyDataTypeFromString(EDataType eDataType, String initialValue) {
+		ShaclPropertyDataType result = ShaclPropertyDataType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertShaclPropertyDataTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

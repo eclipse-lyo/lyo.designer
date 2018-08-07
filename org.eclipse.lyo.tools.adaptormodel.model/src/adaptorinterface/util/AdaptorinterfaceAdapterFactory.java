@@ -140,6 +140,22 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 				return createGenerationSettingAdapter();
 			}
 			@Override
+			public Adapter caseShape(Shape object) {
+				return createShapeAdapter();
+			}
+			@Override
+			public Adapter caseShaclShape(ShaclShape object) {
+				return createShaclShapeAdapter();
+			}
+			@Override
+			public Adapter caseShapeProperty(ShapeProperty object) {
+				return createShapePropertyAdapter();
+			}
+			@Override
+			public Adapter caseShaclProperty(ShaclProperty object) {
+				return createShaclPropertyAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -408,6 +424,62 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGenerationSettingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.Shape <em>Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.Shape
+	 * @generated
+	 */
+	public Adapter createShapeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.ShaclShape <em>Shacl Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.ShaclShape
+	 * @generated
+	 */
+	public Adapter createShaclShapeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.ShapeProperty <em>Shape Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.ShapeProperty
+	 * @generated
+	 */
+	public Adapter createShapePropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.ShaclProperty <em>Shacl Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.ShaclProperty
+	 * @generated
+	 */
+	public Adapter createShaclPropertyAdapter() {
 		return null;
 	}
 

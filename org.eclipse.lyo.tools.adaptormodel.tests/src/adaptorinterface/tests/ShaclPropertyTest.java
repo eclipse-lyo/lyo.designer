@@ -3,16 +3,17 @@
 package adaptorinterface.tests;
 
 import adaptorinterface.AdaptorinterfaceFactory;
-import adaptorinterface.ResourceProperty;
+import adaptorinterface.ShaclProperty;
+
 import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Resource Property</b></em>'.
+ * A test case for the model object '<em><b>Shacl Property</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResourcePropertyTest extends ShapePropertyTest {
+public class ShaclPropertyTest extends ShapePropertyTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -20,28 +21,28 @@ public class ResourcePropertyTest extends ShapePropertyTest {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(ResourcePropertyTest.class);
+		TestRunner.run(ShaclPropertyTest.class);
 	}
 
 	/**
-	 * Constructs a new Resource Property test case with the given name.
+	 * Constructs a new Shacl Property test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourcePropertyTest(String name) {
+	public ShaclPropertyTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Returns the fixture for this Resource Property test case.
+	 * Returns the fixture for this Shacl Property test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	protected ResourceProperty getFixture() {
-		return (ResourceProperty)fixture;
+	protected ShaclProperty getFixture() {
+		return (ShaclProperty)fixture;
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class ResourcePropertyTest extends ShapePropertyTest {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createResourceProperty());
+		setFixture(AdaptorinterfaceFactory.eINSTANCE.createShaclProperty());
 	}
 
 	/**
@@ -66,4 +67,4 @@ public class ResourcePropertyTest extends ShapePropertyTest {
 		setFixture(null);
 	}
 
-} //ResourcePropertyTest
+} //ShaclPropertyTest

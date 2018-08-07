@@ -57,6 +57,10 @@
         eType="#//ResourceProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="generationSetting" eType="#//GenerationSetting"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shaclShapes" upperBound="-1"
+        eType="#//ShaclShape" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shaclProperties" upperBound="-1"
+        eType="#//ShaclProperty" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamespacePrefix">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -97,7 +101,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="usages" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Resource">
+  <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//Shape">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="describes" eType="ecore:EClass vocabulary.ecore#//Class"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
@@ -105,7 +109,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceProperties" upperBound="-1"
         eType="#//ResourceProperty"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResourceProperty">
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceProperty" eSuperTypes="#//ShapeProperty">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyDefinition" eType="ecore:EClass vocabulary.ecore#//Property"/>
@@ -221,5 +225,37 @@
   <eClassifiers xsi:type="ecore:EClass" name="GenerationSetting">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaClassPackageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaFilesPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Shape" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ShaclShape" eSuperTypes="#//Shape">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetClass" eType="ecore:EClass vocabulary.ecore#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="closed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shaclProperties" upperBound="-1"
+        eType="#//ShaclProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
+        eType="#//ShaclShape"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ShapeProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ShaclProperty" eSuperTypes="#//ShapeProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="ecore:EClass vocabulary.ecore#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataType" eType="#//ShaclPropertyDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" upperBound="-1"
+        eType="#//ShaclShape"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ShaclPropertyDataType">
+    <eLiterals name="Boolean" literal="Boolean"/>
+    <eLiterals name="String" value="1" literal="String"/>
+    <eLiterals name="DateTime" value="2" literal="DateTime"/>
+    <eLiterals name="XMLLiteral" value="3" literal="XMLLiteral"/>
+    <eLiterals name="Resource" value="4" literal="Resource"/>
+    <eLiterals name="URI" value="6" literal="URI"/>
+    <eLiterals name="Double" value="7" literal="Double"/>
+    <eLiterals name="Float" value="8" literal="Float"/>
+    <eLiterals name="Integer" value="9" literal="Integer"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -20,8 +20,6 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import vocabulary.Property;
@@ -49,7 +47,7 @@ import vocabulary.Property;
  *
  * @generated
  */
-public class ResourcePropertyImpl extends MinimalEObjectImpl.Container implements ResourceProperty {
+public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceProperty {
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -3,8 +3,6 @@
 package adaptorinterface;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 import vocabulary.Property;
 
 /**
@@ -33,7 +31,7 @@ import vocabulary.Property;
  * @model
  * @generated
  */
-public interface ResourceProperty extends EObject {
+public interface ResourceProperty extends ShapeProperty {
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->

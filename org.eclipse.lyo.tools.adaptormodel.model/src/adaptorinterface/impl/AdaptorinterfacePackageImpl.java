@@ -26,6 +26,11 @@ import adaptorinterface.ResourceServiceNamespace;
 import adaptorinterface.Service;
 import adaptorinterface.ServiceProvider;
 import adaptorinterface.ServiceProviderCatalog;
+import adaptorinterface.ShaclProperty;
+import adaptorinterface.ShaclPropertyDataType;
+import adaptorinterface.ShaclShape;
+import adaptorinterface.Shape;
+import adaptorinterface.ShapeProperty;
 import adaptorinterface.Specification;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -175,6 +180,34 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass shapeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass shaclShapeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass shapePropertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass shaclPropertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum resourcePropertyOccursEEnum = null;
 
 	/**
@@ -204,6 +237,13 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	private EEnum resourceServiceNamespaceEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum shaclPropertyDataTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -528,6 +568,24 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	public EReference getDomainSpecification_GenerationSetting() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSpecification_ShaclShapes() {
+		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainSpecification_ShaclProperties() {
+		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1264,6 +1322,141 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getShape() {
+		return shapeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getShaclShape() {
+		return shaclShapeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShaclShape_Name() {
+		return (EAttribute)shaclShapeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getShaclShape_TargetClass() {
+		return (EReference)shaclShapeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShaclShape_Closed() {
+		return (EAttribute)shaclShapeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getShaclShape_ShaclProperties() {
+		return (EReference)shaclShapeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getShaclShape_Extends() {
+		return (EReference)shaclShapeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getShapeProperty() {
+		return shapePropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getShaclProperty() {
+		return shaclPropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShaclProperty_Name() {
+		return (EAttribute)shaclPropertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getShaclProperty_Path() {
+		return (EReference)shaclPropertyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShaclProperty_MinCount() {
+		return (EAttribute)shaclPropertyEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShaclProperty_MaxCount() {
+		return (EAttribute)shaclPropertyEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShaclProperty_DataType() {
+		return (EAttribute)shaclPropertyEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getShaclProperty_Class() {
+		return (EReference)shaclPropertyEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getResourcePropertyOccurs() {
 		return resourcePropertyOccursEEnum;
 	}
@@ -1302,6 +1495,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	public EEnum getResourceServiceNamespace() {
 		return resourceServiceNamespaceEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getShaclPropertyDataType() {
+		return shaclPropertyDataTypeEEnum;
 	}
 
 	/**
@@ -1363,6 +1565,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__RESOURCES);
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES);
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__GENERATION_SETTING);
+		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__SHACL_SHAPES);
+		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__SHACL_PROPERTIES);
 
 		namespacePrefixEClass = createEClass(NAMESPACE_PREFIX);
 		createEAttribute(namespacePrefixEClass, NAMESPACE_PREFIX__NAME);
@@ -1460,12 +1664,32 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(generationSettingEClass, GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME);
 		createEAttribute(generationSettingEClass, GENERATION_SETTING__JAVA_FILES_PATH);
 
+		shapeEClass = createEClass(SHAPE);
+
+		shaclShapeEClass = createEClass(SHACL_SHAPE);
+		createEAttribute(shaclShapeEClass, SHACL_SHAPE__NAME);
+		createEReference(shaclShapeEClass, SHACL_SHAPE__TARGET_CLASS);
+		createEAttribute(shaclShapeEClass, SHACL_SHAPE__CLOSED);
+		createEReference(shaclShapeEClass, SHACL_SHAPE__SHACL_PROPERTIES);
+		createEReference(shaclShapeEClass, SHACL_SHAPE__EXTENDS);
+
+		shapePropertyEClass = createEClass(SHAPE_PROPERTY);
+
+		shaclPropertyEClass = createEClass(SHACL_PROPERTY);
+		createEAttribute(shaclPropertyEClass, SHACL_PROPERTY__NAME);
+		createEReference(shaclPropertyEClass, SHACL_PROPERTY__PATH);
+		createEAttribute(shaclPropertyEClass, SHACL_PROPERTY__MIN_COUNT);
+		createEAttribute(shaclPropertyEClass, SHACL_PROPERTY__MAX_COUNT);
+		createEAttribute(shaclPropertyEClass, SHACL_PROPERTY__DATA_TYPE);
+		createEReference(shaclPropertyEClass, SHACL_PROPERTY__CLASS);
+
 		// Create enums
 		resourcePropertyOccursEEnum = createEEnum(RESOURCE_PROPERTY_OCCURS);
 		resourcePropertyValueTypeEEnum = createEEnum(RESOURCE_PROPERTY_VALUE_TYPE);
 		resourcePropertyRepresentationEEnum = createEEnum(RESOURCE_PROPERTY_REPRESENTATION);
 		resourcePropertyIsMemberPropertyEEnum = createEEnum(RESOURCE_PROPERTY_IS_MEMBER_PROPERTY);
 		resourceServiceNamespaceEEnum = createEEnum(RESOURCE_SERVICE_NAMESPACE);
+		shaclPropertyDataTypeEEnum = createEEnum(SHACL_PROPERTY_DATA_TYPE);
 	}
 
 	/**
@@ -1499,8 +1723,12 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		resourceEClass.getESuperTypes().add(this.getShape());
+		resourcePropertyEClass.getESuperTypes().add(this.getShapeProperty());
 		genericRequiredAdaptorEClass.getESuperTypes().add(this.getRequiredAdaptor());
 		modelledRequiredAdaptorEClass.getESuperTypes().add(this.getRequiredAdaptor());
+		shaclShapeEClass.getESuperTypes().add(this.getShape());
+		shaclPropertyEClass.getESuperTypes().add(this.getShapeProperty());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(adaptorInterfaceEClass, AdaptorInterface.class, "AdaptorInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1534,6 +1762,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEReference(getDomainSpecification_Resources(), this.getResource(), null, "resources", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_ResourceProperties(), this.getResourceProperty(), null, "resourceProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_GenerationSetting(), this.getGenerationSetting(), null, "generationSetting", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSpecification_ShaclShapes(), this.getShaclShape(), null, "shaclShapes", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSpecification_ShaclProperties(), this.getShaclProperty(), null, "shaclProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namespacePrefixEClass, NamespacePrefix.class, "NamespacePrefix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamespacePrefix_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamespacePrefix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1631,6 +1861,25 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getGenerationSetting_JavaClassPackageName(), ecorePackage.getEString(), "javaClassPackageName", null, 0, 1, GenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenerationSetting_JavaFilesPath(), ecorePackage.getEString(), "javaFilesPath", null, 0, 1, GenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(shapeEClass, Shape.class, "Shape", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(shaclShapeEClass, ShaclShape.class, "ShaclShape", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getShaclShape_Name(), ecorePackage.getEString(), "name", null, 0, 1, ShaclShape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getShaclShape_TargetClass(), theVocabularyPackage.getClass_(), null, "targetClass", null, 0, 1, ShaclShape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShaclShape_Closed(), ecorePackage.getEBoolean(), "closed", "false", 0, 1, ShaclShape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getShaclShape_ShaclProperties(), this.getShaclProperty(), null, "shaclProperties", null, 0, -1, ShaclShape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getShaclShape_Extends(), this.getShaclShape(), null, "extends", null, 0, -1, ShaclShape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(shapePropertyEClass, ShapeProperty.class, "ShapeProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(shaclPropertyEClass, ShaclProperty.class, "ShaclProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getShaclProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getShaclProperty_Path(), theVocabularyPackage.getProperty(), null, "path", null, 0, 1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShaclProperty_MinCount(), ecorePackage.getEInt(), "minCount", null, 0, 1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShaclProperty_MaxCount(), ecorePackage.getEInt(), "maxCount", null, 0, 1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShaclProperty_DataType(), this.getShaclPropertyDataType(), "dataType", null, 0, 1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getShaclProperty_Class(), this.getShaclShape(), null, "class", null, 0, -1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(resourcePropertyOccursEEnum, ResourcePropertyOccurs.class, "ResourcePropertyOccurs");
 		addEEnumLiteral(resourcePropertyOccursEEnum, ResourcePropertyOccurs.EXACTLY_ONE);
@@ -1664,6 +1913,17 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEEnum(resourceServiceNamespaceEEnum, ResourceServiceNamespace.class, "ResourceServiceNamespace");
 		addEEnumLiteral(resourceServiceNamespaceEEnum, ResourceServiceNamespace.RELATIVE_TO_SERVICE_PROVIDER);
 		addEEnumLiteral(resourceServiceNamespaceEEnum, ResourceServiceNamespace.INDEPENDANT_OF_SERVICE_PROVIDER);
+
+		initEEnum(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.class, "ShaclPropertyDataType");
+		addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.BOOLEAN);
+		addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.STRING);
+		addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.DATE_TIME);
+		addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.XML_LITERAL);
+		addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.RESOURCE);
+		addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.URI);
+		addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.DOUBLE);
+		addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.FLOAT);
+		addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.INTEGER);
 
 		// Create resource
 		createResource(eNS_URI);

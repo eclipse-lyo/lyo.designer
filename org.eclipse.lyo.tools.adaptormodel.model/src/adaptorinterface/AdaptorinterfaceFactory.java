@@ -175,6 +175,33 @@ public interface AdaptorinterfaceFactory extends EFactory {
 	GenerationSetting createGenerationSetting();
 
 	/**
+	 * Returns a new object of class '<em>Shacl Shape</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Shacl Shape</em>'.
+	 * @generated
+	 */
+	ShaclShape createShaclShape();
+
+	/**
+	 * Returns a new object of class '<em>Shape Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Shape Property</em>'.
+	 * @generated
+	 */
+	ShapeProperty createShapeProperty();
+
+	/**
+	 * Returns a new object of class '<em>Shacl Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Shacl Property</em>'.
+	 * @generated
+	 */
+	ShaclProperty createShaclProperty();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
