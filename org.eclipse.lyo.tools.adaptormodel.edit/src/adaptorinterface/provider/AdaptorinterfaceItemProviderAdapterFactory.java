@@ -463,6 +463,75 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.ShaclShape} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ShaclShapeItemProvider shaclShapeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.ShaclShape}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createShaclShapeAdapter() {
+		if (shaclShapeItemProvider == null) {
+			shaclShapeItemProvider = new ShaclShapeItemProvider(this);
+		}
+
+		return shaclShapeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.ShapeProperty} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ShapePropertyItemProvider shapePropertyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.ShapeProperty}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createShapePropertyAdapter() {
+		if (shapePropertyItemProvider == null) {
+			shapePropertyItemProvider = new ShapePropertyItemProvider(this);
+		}
+
+		return shapePropertyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.ShaclProperty} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ShaclPropertyItemProvider shaclPropertyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.ShaclProperty}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createShaclPropertyAdapter() {
+		if (shaclPropertyItemProvider == null) {
+			shaclPropertyItemProvider = new ShaclPropertyItemProvider(this);
+		}
+
+		return shaclPropertyItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -578,6 +647,9 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 		if (genericRequiredAdaptorItemProvider != null) genericRequiredAdaptorItemProvider.dispose();
 		if (modelledRequiredAdaptorItemProvider != null) modelledRequiredAdaptorItemProvider.dispose();
 		if (generationSettingItemProvider != null) generationSettingItemProvider.dispose();
+		if (shaclShapeItemProvider != null) shaclShapeItemProvider.dispose();
+		if (shapePropertyItemProvider != null) shapePropertyItemProvider.dispose();
+		if (shaclPropertyItemProvider != null) shaclPropertyItemProvider.dispose();
 	}
 
 }

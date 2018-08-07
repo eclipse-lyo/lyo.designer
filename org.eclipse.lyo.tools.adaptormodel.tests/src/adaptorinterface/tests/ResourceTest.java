@@ -4,9 +4,6 @@ package adaptorinterface.tests;
 
 import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.Resource;
-
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 /**
@@ -15,15 +12,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResourceTest extends TestCase {
-
-	/**
-	 * The fixture for this Resource test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Resource fixture = null;
+public class ResourceTest extends ShapeTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -45,23 +34,14 @@ public class ResourceTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Resource test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(Resource fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this Resource test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Resource getFixture() {
-		return fixture;
+		return (Resource)fixture;
 	}
 
 	/**

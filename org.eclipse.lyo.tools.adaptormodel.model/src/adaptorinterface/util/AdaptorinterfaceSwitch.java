@@ -111,12 +111,14 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
 			case AdaptorinterfacePackage.RESOURCE: {
 				Resource resource = (Resource)theEObject;
 				T result = caseResource(resource);
+				if (result == null) result = caseShape(resource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY: {
 				ResourceProperty resourceProperty = (ResourceProperty)theEObject;
 				T result = caseResourceProperty(resourceProperty);
+				if (result == null) result = caseShapeProperty(resourceProperty);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -173,6 +175,32 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
 			case AdaptorinterfacePackage.GENERATION_SETTING: {
 				GenerationSetting generationSetting = (GenerationSetting)theEObject;
 				T result = caseGenerationSetting(generationSetting);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.SHAPE: {
+				Shape shape = (Shape)theEObject;
+				T result = caseShape(shape);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.SHACL_SHAPE: {
+				ShaclShape shaclShape = (ShaclShape)theEObject;
+				T result = caseShaclShape(shaclShape);
+				if (result == null) result = caseShape(shaclShape);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.SHAPE_PROPERTY: {
+				ShapeProperty shapeProperty = (ShapeProperty)theEObject;
+				T result = caseShapeProperty(shapeProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.SHACL_PROPERTY: {
+				ShaclProperty shaclProperty = (ShaclProperty)theEObject;
+				T result = caseShaclProperty(shaclProperty);
+				if (result == null) result = caseShapeProperty(shaclProperty);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -447,6 +475,66 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGenerationSetting(GenerationSetting object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Shape</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Shape</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseShape(Shape object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Shacl Shape</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Shacl Shape</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseShaclShape(ShaclShape object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Shape Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Shape Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseShapeProperty(ShapeProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Shacl Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Shacl Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseShaclProperty(ShaclProperty object) {
 		return null;
 	}
 

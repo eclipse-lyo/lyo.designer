@@ -1,0 +1,85 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2018 Yash Khatri.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Yash Khatri        - Query methods for the Shacl Specification
+ *							diagram from the odesign file.
+ *
+ *******************************************************************************/
+/]
+
+[module shaclSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0')/]
+
+[query public visibleShaclShapes (diagram : DSemanticDiagram) : Sequence(ShaclShape) =
+(diagram.containers->select(c : DDiagramElementContainer | (c.actualMapping.name = 'Specification.DomainSpecification.ShaclShape')._and(c.visible)))
+	.target.oclAsType(ShaclShape)
+/]
+
+[query public isLiteral(aShaclProperty : ShaclProperty) : Boolean =
+not Sequence{ShaclPropertyDataType::Resource}->includes(aShaclProperty.dataType)
+/]
+
+[query public literalShaclProperties(aShaclShape : ShaclShape) : Set(ShaclProperty) =
+aShaclShape.shaclProperties->select(p : ShaclProperty | p.isLiteral())
+/]
+
+[query public referenceShaclProperties(aShaclShape : ShaclShape) : Set(ShaclProperty) =
+aShaclShape.shaclProperties->select(p : ShaclProperty | not p.isLiteral())
+/]
+
+[comment We want to list all literal properties. We also want to list reference properties whose range is not set (since they cannot be shown as an arrow, pointing to nowhere) /]
+[query public propertiesAsSubnodes(aShaclShape : ShaclShape) : Set(ShaclProperty) =
+aShaclShape.shaclProperties->select(p : ShaclProperty |
+		(p.isLiteral())
+		 or ((not p.isLiteral()) and (p.class->size() = 0)))
+/]
+
+[comment We want to list reference properties that have range resources not visible in the diagram (since they cannot be shown as an arrow, pointing to nowhere) /]
+[query public referencePropertiesAsSubnodes(aShaclShape : ShaclShape, diagram : DSemanticDiagram) : Set(ShaclProperty) =
+aShaclShape.referenceShaclProperties()
+	->select(p : ShaclProperty | not visibleShaclShapes(diagram)->includesAll(p.class))
+/]
+
+
+[query public labelAsShaclShapeSubnode(aShaclProperty : ShaclProperty, propertyView : DDiagramElement) : String =
+(if (aShaclProperty.eContainer(DomainSpecification) = propertyView.eContainer().oclAsType(DNodeList).target.oclAsType(ShaclShape).eContainer(DomainSpecification))
+	then ''
+	else aShaclProperty.eContainer(DomainSpecification).namespacePrefix.name  + ':'
+	endif)
++ aShaclProperty.labelInDomainSpecification()
+/]
+
+[query public labelInDomainSpecification(aShaclProperty : ShaclProperty) : String =
+	name
+	+ ': '
+	+ (if (aShaclProperty.isLiteral())
+		then dataType
+		else (if (class->size() = 0) then 'ShaclShape' else class->first().name + (if (class->size() > 1) then '++' else '' endif) endif)
+		endif)
+	+ '['
+    +  aShaclProperty.minCount
+    +  '...'
+    +  aShaclProperty.maxCount->collect(maxC : Integer | if(maxC < 0) then '*' else maxC endif)
+    + ']'
+/]
+
+[query public labelAtArrowCenter(aShaclProperty : ShaclProperty) : String =
+ aShaclProperty.name
+/]
+
+[query public labelAtArrowEnd(aShaclProperty : ShaclProperty) : String =
+	aShaclProperty.minCount
+    + '...'
+    + aShaclProperty.maxCount->collect(maxC : Integer | if(maxC < 0) then '*' else maxC endif)
+/]

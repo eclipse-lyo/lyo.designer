@@ -9,6 +9,8 @@ import adaptorinterface.NamespacePrefix;
 import adaptorinterface.Resource;
 import adaptorinterface.ResourceProperty;
 
+import adaptorinterface.ShaclProperty;
+import adaptorinterface.ShaclShape;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -39,6 +41,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getResourceProperties <em>Resource Properties</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getGenerationSetting <em>Generation Setting</em>}</li>
+ *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getShaclShapes <em>Shacl Shapes</em>}</li>
+ *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getShaclProperties <em>Shacl Properties</em>}</li>
  * </ul>
  *
  * @generated
@@ -123,6 +127,26 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected GenerationSetting generationSetting;
+
+	/**
+	 * The cached value of the '{@link #getShaclShapes() <em>Shacl Shapes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShaclShapes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ShaclShape> shaclShapes;
+
+	/**
+	 * The cached value of the '{@link #getShaclProperties() <em>Shacl Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShaclProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ShaclProperty> shaclProperties;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -295,6 +319,30 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ShaclShape> getShaclShapes() {
+		if (shaclShapes == null) {
+			shaclShapes = new EObjectContainmentEList<ShaclShape>(ShaclShape.class, this, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES);
+		}
+		return shaclShapes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ShaclProperty> getShaclProperties() {
+		if (shaclProperties == null) {
+			shaclProperties = new EObjectContainmentEList<ShaclProperty>(ShaclProperty.class, this, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES);
+		}
+		return shaclProperties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -304,6 +352,10 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return ((InternalEList<?>)getResourceProperties()).basicRemove(otherEnd, msgs);
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				return basicSetGenerationSetting(null, msgs);
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
+				return ((InternalEList<?>)getShaclShapes()).basicRemove(otherEnd, msgs);
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
+				return ((InternalEList<?>)getShaclProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -329,6 +381,10 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return getResourceProperties();
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				return getGenerationSetting();
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
+				return getShaclShapes();
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
+				return getShaclProperties();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -362,6 +418,14 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				setGenerationSetting((GenerationSetting)newValue);
 				return;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
+				getShaclShapes().clear();
+				getShaclShapes().addAll((Collection<? extends ShaclShape>)newValue);
+				return;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
+				getShaclProperties().clear();
+				getShaclProperties().addAll((Collection<? extends ShaclProperty>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -392,6 +456,12 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				setGenerationSetting((GenerationSetting)null);
 				return;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
+				getShaclShapes().clear();
+				return;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
+				getShaclProperties().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -416,6 +486,10 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return resourceProperties != null && !resourceProperties.isEmpty();
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				return generationSetting != null;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
+				return shaclShapes != null && !shaclShapes.isEmpty();
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
+				return shaclProperties != null && !shaclProperties.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

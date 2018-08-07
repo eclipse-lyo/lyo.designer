@@ -43,6 +43,17 @@
       <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ResourceServiceNamespace/relativeToServiceProvider"/>
       <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ResourceServiceNamespace/independantOfServiceProvider"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="adaptorInterface.ecore#//ShaclPropertyDataType">
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/Boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/DateTime"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/XMLLiteral"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/Resource"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/URI"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/Double"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/Integer"/>
+    </genEnums>
     <genClasses ecoreClass="adaptorInterface.ecore#//AdaptorInterface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/serviceProviderCatalog"/>
@@ -74,6 +85,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/resources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/resourceProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/generationSetting"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/shaclShapes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/shaclProperties"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//NamespacePrefix">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//NamespacePrefix/name"/>
@@ -170,6 +183,23 @@
     <genClasses ecoreClass="adaptorInterface.ecore#//GenerationSetting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GenerationSetting/javaClassPackageName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GenerationSetting/javaFilesPath"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adaptorInterface.ecore#//Shape"/>
+    <genClasses ecoreClass="adaptorInterface.ecore#//ShaclShape">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ShaclShape/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ShaclShape/targetClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ShaclShape/closed"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ShaclShape/shaclProperties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ShaclShape/extends"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//ShapeProperty"/>
+    <genClasses ecoreClass="adaptorInterface.ecore#//ShaclProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ShaclProperty/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ShaclProperty/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ShaclProperty/minCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ShaclProperty/maxCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ShaclProperty/dataType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ShaclProperty/class"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

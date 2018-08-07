@@ -358,13 +358,31 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int DOMAIN_SPECIFICATION__GENERATION_SETTING = 5;
 
 	/**
+	 * The feature id for the '<em><b>Shacl Shapes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFICATION__SHACL_SHAPES = 6;
+
+	/**
+	 * The feature id for the '<em><b>Shacl Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFICATION__SHACL_PROPERTIES = 7;
+
+	/**
 	 * The number of structural features of the '<em>Domain Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_SPECIFICATION_FEATURE_COUNT = 6;
+	int DOMAIN_SPECIFICATION_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Domain Specification</em>' class.
@@ -659,6 +677,34 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SERVICE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ShapeImpl <em>Shape</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ShapeImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShape()
+	 * @generated
+	 */
+	int SHAPE = 18;
+
+	/**
+	 * The number of structural features of the '<em>Shape</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Shape</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link adaptorinterface.impl.ResourceImpl <em>Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -675,7 +721,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__NAME = 0;
+	int RESOURCE__NAME = SHAPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference.
@@ -684,7 +730,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__DESCRIBES = 1;
+	int RESOURCE__DESCRIBES = SHAPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' reference list.
@@ -693,7 +739,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__EXTENDS = 2;
+	int RESOURCE__EXTENDS = SHAPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Resource Properties</b></em>' reference list.
@@ -702,7 +748,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__RESOURCE_PROPERTIES = 3;
+	int RESOURCE__RESOURCE_PROPERTIES = SHAPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -711,7 +757,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = 4;
+	int RESOURCE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -720,7 +766,35 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_OPERATION_COUNT = 0;
+	int RESOURCE_OPERATION_COUNT = SHAPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ShapePropertyImpl <em>Shape Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ShapePropertyImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShapeProperty()
+	 * @generated
+	 */
+	int SHAPE_PROPERTY = 20;
+
+	/**
+	 * The number of structural features of the '<em>Shape Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_PROPERTY_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Shape Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_PROPERTY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.impl.ResourcePropertyImpl <em>Resource Property</em>}' class.
@@ -739,7 +813,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__TITLE = 0;
+	int RESOURCE_PROPERTY__TITLE = SHAPE_PROPERTY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -748,7 +822,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__NAME = 1;
+	int RESOURCE_PROPERTY__NAME = SHAPE_PROPERTY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Property Definition</b></em>' reference.
@@ -757,7 +831,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__PROPERTY_DEFINITION = 2;
+	int RESOURCE_PROPERTY__PROPERTY_DEFINITION = SHAPE_PROPERTY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Occurs</b></em>' attribute.
@@ -766,7 +840,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__OCCURS = 3;
+	int RESOURCE_PROPERTY__OCCURS = SHAPE_PROPERTY_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Read Only</b></em>' attribute.
@@ -775,7 +849,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__READ_ONLY = 4;
+	int RESOURCE_PROPERTY__READ_ONLY = SHAPE_PROPERTY_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Value Type</b></em>' attribute.
@@ -784,7 +858,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__VALUE_TYPE = 5;
+	int RESOURCE_PROPERTY__VALUE_TYPE = SHAPE_PROPERTY_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Representation</b></em>' attribute.
@@ -793,7 +867,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__REPRESENTATION = 6;
+	int RESOURCE_PROPERTY__REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Range</b></em>' reference list.
@@ -802,7 +876,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__RANGE = 7;
+	int RESOURCE_PROPERTY__RANGE = SHAPE_PROPERTY_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -811,7 +885,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__DESCRIPTION = 8;
+	int RESOURCE_PROPERTY__DESCRIPTION = SHAPE_PROPERTY_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Allowed Value</b></em>' attribute list.
@@ -820,7 +894,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__ALLOWED_VALUE = 9;
+	int RESOURCE_PROPERTY__ALLOWED_VALUE = SHAPE_PROPERTY_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Is Member Property</b></em>' attribute.
@@ -829,7 +903,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = 10;
+	int RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = SHAPE_PROPERTY_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Resource Property</em>' class.
@@ -838,7 +912,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY_FEATURE_COUNT = 11;
+	int RESOURCE_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of operations of the '<em>Resource Property</em>' class.
@@ -847,7 +921,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY_OPERATION_COUNT = 0;
+	int RESOURCE_PROPERTY_OPERATION_COUNT = SHAPE_PROPERTY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.impl.CreationFactoryImpl <em>Creation Factory</em>}' class.
@@ -1408,6 +1482,161 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int GENERATION_SETTING_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ShaclShapeImpl <em>Shacl Shape</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ShaclShapeImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclShape()
+	 * @generated
+	 */
+	int SHACL_SHAPE = 19;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_SHAPE__NAME = SHAPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target Class</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_SHAPE__TARGET_CLASS = SHAPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Closed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_SHAPE__CLOSED = SHAPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Shacl Properties</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_SHAPE__SHACL_PROPERTIES = SHAPE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Extends</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_SHAPE__EXTENDS = SHAPE_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Shacl Shape</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_SHAPE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>Shacl Shape</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_SHAPE_OPERATION_COUNT = SHAPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ShaclPropertyImpl <em>Shacl Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ShaclPropertyImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclProperty()
+	 * @generated
+	 */
+	int SHACL_PROPERTY = 21;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_PROPERTY__NAME = SHAPE_PROPERTY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_PROPERTY__PATH = SHAPE_PROPERTY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Min Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_PROPERTY__MIN_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Max Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_PROPERTY__MAX_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Data Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_PROPERTY__DATA_TYPE = SHAPE_PROPERTY_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Class</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_PROPERTY__CLASS = SHAPE_PROPERTY_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Shacl Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of operations of the '<em>Shacl Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHACL_PROPERTY_OPERATION_COUNT = SHAPE_PROPERTY_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1415,7 +1644,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyOccurs()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_OCCURS = 18;
+	int RESOURCE_PROPERTY_OCCURS = 22;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyValueType <em>Resource Property Value Type</em>}' enum.
@@ -1425,7 +1654,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyValueType()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_VALUE_TYPE = 19;
+	int RESOURCE_PROPERTY_VALUE_TYPE = 23;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyRepresentation <em>Resource Property Representation</em>}' enum.
@@ -1435,7 +1664,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRepresentation()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_REPRESENTATION = 20;
+	int RESOURCE_PROPERTY_REPRESENTATION = 24;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyIsMemberProperty <em>Resource Property Is Member Property</em>}' enum.
@@ -1445,7 +1674,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyIsMemberProperty()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 21;
+	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 25;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -1455,7 +1684,18 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
 	 * @generated
 	 */
-	int RESOURCE_SERVICE_NAMESPACE = 22;
+	int RESOURCE_SERVICE_NAMESPACE = 26;
+
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.ShaclPropertyDataType <em>Shacl Property Data Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.ShaclPropertyDataType
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
+	 * @generated
+	 */
+	int SHACL_PROPERTY_DATA_TYPE = 27;
 
 
 	/**
@@ -1773,6 +2013,28 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDomainSpecification_GenerationSetting();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link adaptorinterface.DomainSpecification#getShaclShapes <em>Shacl Shapes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Shacl Shapes</em>'.
+	 * @see adaptorinterface.DomainSpecification#getShaclShapes()
+	 * @see #getDomainSpecification()
+	 * @generated
+	 */
+	EReference getDomainSpecification_ShaclShapes();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link adaptorinterface.DomainSpecification#getShaclProperties <em>Shacl Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Shacl Properties</em>'.
+	 * @see adaptorinterface.DomainSpecification#getShaclProperties()
+	 * @see #getDomainSpecification()
+	 * @generated
+	 */
+	EReference getDomainSpecification_ShaclProperties();
 
 	/**
 	 * Returns the meta object for class '{@link adaptorinterface.NamespacePrefix <em>Namespace Prefix</em>}'.
@@ -2651,6 +2913,167 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getGenerationSetting_JavaFilesPath();
 
 	/**
+	 * Returns the meta object for class '{@link adaptorinterface.Shape <em>Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Shape</em>'.
+	 * @see adaptorinterface.Shape
+	 * @generated
+	 */
+	EClass getShape();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.ShaclShape <em>Shacl Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Shacl Shape</em>'.
+	 * @see adaptorinterface.ShaclShape
+	 * @generated
+	 */
+	EClass getShaclShape();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ShaclShape#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see adaptorinterface.ShaclShape#getName()
+	 * @see #getShaclShape()
+	 * @generated
+	 */
+	EAttribute getShaclShape_Name();
+
+	/**
+	 * Returns the meta object for the reference '{@link adaptorinterface.ShaclShape#getTargetClass <em>Target Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target Class</em>'.
+	 * @see adaptorinterface.ShaclShape#getTargetClass()
+	 * @see #getShaclShape()
+	 * @generated
+	 */
+	EReference getShaclShape_TargetClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ShaclShape#isClosed <em>Closed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Closed</em>'.
+	 * @see adaptorinterface.ShaclShape#isClosed()
+	 * @see #getShaclShape()
+	 * @generated
+	 */
+	EAttribute getShaclShape_Closed();
+
+	/**
+	 * Returns the meta object for the reference list '{@link adaptorinterface.ShaclShape#getShaclProperties <em>Shacl Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Shacl Properties</em>'.
+	 * @see adaptorinterface.ShaclShape#getShaclProperties()
+	 * @see #getShaclShape()
+	 * @generated
+	 */
+	EReference getShaclShape_ShaclProperties();
+
+	/**
+	 * Returns the meta object for the reference list '{@link adaptorinterface.ShaclShape#getExtends <em>Extends</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Extends</em>'.
+	 * @see adaptorinterface.ShaclShape#getExtends()
+	 * @see #getShaclShape()
+	 * @generated
+	 */
+	EReference getShaclShape_Extends();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.ShapeProperty <em>Shape Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Shape Property</em>'.
+	 * @see adaptorinterface.ShapeProperty
+	 * @generated
+	 */
+	EClass getShapeProperty();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.ShaclProperty <em>Shacl Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Shacl Property</em>'.
+	 * @see adaptorinterface.ShaclProperty
+	 * @generated
+	 */
+	EClass getShaclProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ShaclProperty#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see adaptorinterface.ShaclProperty#getName()
+	 * @see #getShaclProperty()
+	 * @generated
+	 */
+	EAttribute getShaclProperty_Name();
+
+	/**
+	 * Returns the meta object for the reference '{@link adaptorinterface.ShaclProperty#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Path</em>'.
+	 * @see adaptorinterface.ShaclProperty#getPath()
+	 * @see #getShaclProperty()
+	 * @generated
+	 */
+	EReference getShaclProperty_Path();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ShaclProperty#getMinCount <em>Min Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Count</em>'.
+	 * @see adaptorinterface.ShaclProperty#getMinCount()
+	 * @see #getShaclProperty()
+	 * @generated
+	 */
+	EAttribute getShaclProperty_MinCount();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ShaclProperty#getMaxCount <em>Max Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Count</em>'.
+	 * @see adaptorinterface.ShaclProperty#getMaxCount()
+	 * @see #getShaclProperty()
+	 * @generated
+	 */
+	EAttribute getShaclProperty_MaxCount();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ShaclProperty#getDataType <em>Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Data Type</em>'.
+	 * @see adaptorinterface.ShaclProperty#getDataType()
+	 * @see #getShaclProperty()
+	 * @generated
+	 */
+	EAttribute getShaclProperty_DataType();
+
+	/**
+	 * Returns the meta object for the reference list '{@link adaptorinterface.ShaclProperty#getClass_ <em>Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Class</em>'.
+	 * @see adaptorinterface.ShaclProperty#getClass_()
+	 * @see #getShaclProperty()
+	 * @generated
+	 */
+	EReference getShaclProperty_Class();
+
+	/**
 	 * Returns the meta object for enum '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2699,6 +3122,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getResourceServiceNamespace();
+
+	/**
+	 * Returns the meta object for enum '{@link adaptorinterface.ShaclPropertyDataType <em>Shacl Property Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Shacl Property Data Type</em>'.
+	 * @see adaptorinterface.ShaclPropertyDataType
+	 * @generated
+	 */
+	EEnum getShaclPropertyDataType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2960,6 +3393,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOMAIN_SPECIFICATION__GENERATION_SETTING = eINSTANCE.getDomainSpecification_GenerationSetting();
+
+		/**
+		 * The meta object literal for the '<em><b>Shacl Shapes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SPECIFICATION__SHACL_SHAPES = eINSTANCE.getDomainSpecification_ShaclShapes();
+
+		/**
+		 * The meta object literal for the '<em><b>Shacl Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SPECIFICATION__SHACL_PROPERTIES = eINSTANCE.getDomainSpecification_ShaclProperties();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.NamespacePrefixImpl <em>Namespace Prefix</em>}' class.
@@ -3640,6 +4089,134 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute GENERATION_SETTING__JAVA_FILES_PATH = eINSTANCE.getGenerationSetting_JavaFilesPath();
 
 		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.ShapeImpl <em>Shape</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.ShapeImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShape()
+		 * @generated
+		 */
+		EClass SHAPE = eINSTANCE.getShape();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.ShaclShapeImpl <em>Shacl Shape</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.ShaclShapeImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclShape()
+		 * @generated
+		 */
+		EClass SHACL_SHAPE = eINSTANCE.getShaclShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHACL_SHAPE__NAME = eINSTANCE.getShaclShape_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Class</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SHACL_SHAPE__TARGET_CLASS = eINSTANCE.getShaclShape_TargetClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Closed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHACL_SHAPE__CLOSED = eINSTANCE.getShaclShape_Closed();
+
+		/**
+		 * The meta object literal for the '<em><b>Shacl Properties</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SHACL_SHAPE__SHACL_PROPERTIES = eINSTANCE.getShaclShape_ShaclProperties();
+
+		/**
+		 * The meta object literal for the '<em><b>Extends</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SHACL_SHAPE__EXTENDS = eINSTANCE.getShaclShape_Extends();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.ShapePropertyImpl <em>Shape Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.ShapePropertyImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShapeProperty()
+		 * @generated
+		 */
+		EClass SHAPE_PROPERTY = eINSTANCE.getShapeProperty();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.ShaclPropertyImpl <em>Shacl Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.ShaclPropertyImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclProperty()
+		 * @generated
+		 */
+		EClass SHACL_PROPERTY = eINSTANCE.getShaclProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHACL_PROPERTY__NAME = eINSTANCE.getShaclProperty_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SHACL_PROPERTY__PATH = eINSTANCE.getShaclProperty_Path();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHACL_PROPERTY__MIN_COUNT = eINSTANCE.getShaclProperty_MinCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHACL_PROPERTY__MAX_COUNT = eINSTANCE.getShaclProperty_MaxCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHACL_PROPERTY__DATA_TYPE = eINSTANCE.getShaclProperty_DataType();
+
+		/**
+		 * The meta object literal for the '<em><b>Class</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SHACL_PROPERTY__CLASS = eINSTANCE.getShaclProperty_Class();
+
+		/**
 		 * The meta object literal for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3688,6 +4265,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum RESOURCE_SERVICE_NAMESPACE = eINSTANCE.getResourceServiceNamespace();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.ShaclPropertyDataType <em>Shacl Property Data Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.ShaclPropertyDataType
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
+		 * @generated
+		 */
+		EEnum SHACL_PROPERTY_DATA_TYPE = eINSTANCE.getShaclPropertyDataType();
 
 	}
 

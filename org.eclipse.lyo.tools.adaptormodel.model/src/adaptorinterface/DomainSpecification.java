@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.DomainSpecification#getResources <em>Resources</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getResourceProperties <em>Resource Properties</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getGenerationSetting <em>Generation Setting</em>}</li>
+ *   <li>{@link adaptorinterface.DomainSpecification#getShaclShapes <em>Shacl Shapes</em>}</li>
+ *   <li>{@link adaptorinterface.DomainSpecification#getShaclProperties <em>Shacl Properties</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification()
@@ -163,5 +165,37 @@ public interface DomainSpecification extends EObject {
 	 * @generated
 	 */
 	void setGenerationSetting(GenerationSetting value);
+
+	/**
+	 * Returns the value of the '<em><b>Shacl Shapes</b></em>' containment reference list.
+	 * The list contents are of type {@link adaptorinterface.ShaclShape}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Shacl Shapes</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Shacl Shapes</em>' containment reference list.
+	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_ShaclShapes()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ShaclShape> getShaclShapes();
+
+	/**
+	 * Returns the value of the '<em><b>Shacl Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link adaptorinterface.ShaclProperty}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Shacl Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Shacl Properties</em>' containment reference list.
+	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_ShaclProperties()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ShaclProperty> getShaclProperties();
 
 } // DomainSpecification
