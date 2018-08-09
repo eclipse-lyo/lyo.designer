@@ -1,0 +1,162 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2018 Yash Khatri.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Yash Khatri        - Supoprt for Shacl Shapes.
+ *     
+ *******************************************************************************/
+/]
+
+[module shaclPropertyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::shaclShapeServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
+
+[query public javaName(aShaclProperty: ShaclProperty, toUpperFirst : Boolean) : String = 
+javaString(aShaclProperty.name, aShaclProperty.definingDomainSpecification().namespacePrefix.name, toUpperFirst)
+/]
+
+[query public javaAttributeTypeDeclaration(aShaclProperty: ShaclProperty) : String = 
+   (if ((aShaclProperty.oclAsType(ShaclProperty).maxCount < 0) or (aShaclProperty.oclAsType(ShaclProperty).maxCount > 1)) then
+        'HashSet<'
+        else
+            ''
+        endif)
+        .concat(javaAttributeBaseType(aShaclProperty))
+        .concat(
+        (if ((aShaclProperty.oclAsType(ShaclProperty).maxCount < 0) or (aShaclProperty.oclAsType(ShaclProperty).maxCount > 1)) then 
+            '>'
+        else
+            ''
+        endif))
+/]
+
+[query public javaAttributeBaseType(aShaclProperty: ShaclProperty) : String =
+        (if (aShaclProperty.dataType.toString() = 'String') then
+            'String'
+        else
+            if (aShaclProperty.dataType.toString() = 'XMLLiteral') then
+                'String'
+            else
+                if(aShaclProperty.dataType.toString() = 'DateTime') then
+                    'Date'
+                else
+                    if(aShaclProperty.dataType.toString() = 'URI') then
+                        'URI'
+                    else
+                        if(aShaclProperty.dataType.toString() = 'Boolean') then
+                            'Boolean'
+                        else
+                            if(aShaclProperty.dataType.toString() = 'Double') then
+                                'Double'
+                            else
+                                if(aShaclProperty.dataType.toString() = 'Float') then
+                                    'Float'
+                                else
+                                    if(aShaclProperty.dataType.toString() = 'Integer') then
+                                        'Integer'
+                                    else
+                                        if(aShaclProperty.dataType.toString() = 'Resource') then
+                                                'Link'
+                                        else
+                                                ''
+                                                endif
+                                            endif
+                                        endif
+                                    endif
+                                endif
+                            endif
+                        endif
+                    endif
+                endif)
+/]
+
+[query public javaAttributeName(aShaclProperty: ShaclProperty, aShaclShape: ShaclShape) : String = 
+    (if (allShacProperties(aShaclShape)->collect(p : ShaclProperty | javaName(p, false))->count(javaName(aShaclProperty, false)) = 1) then
+        javaName(aShaclProperty, false)
+    else
+        aShaclProperty.definingDomainSpecification().namespacePrefix.name.concat(javaName(aShaclProperty, true))
+    endif)
+/]
+
+[query public javaAttributeTypeNeedsConstruction(aShaclProperty: ShaclProperty) : Boolean = 
+    Sequence{'Resource'}->includes(aShaclProperty.oclAsType(ShaclProperty).dataType.toString())._or(((aShaclProperty.oclAsType(ShaclProperty).maxCount < 0) or (aShaclProperty.oclAsType(ShaclProperty).maxCount > 1)))
+/]
+
+[query public propertyDefinitionAnnotation(aShaclProperty: ShaclProperty, aShaclShape: ShaclShape, anAdaptorInterface: AdaptorInterface) : String = 
+'@OslcPropertyDefinition('
+.concat(shaclPropertyDefinitionNamespace(aShaclProperty))
+.concat(' + ')
+.concat(shaclPropertyDefinitionNamespace(aShaclProperty))
+.concat(')')
+/]
+
+[query public nameAnnotation(aShaclProperty: ShaclProperty) : String = 
+'@OslcName('
+.concat(shaclPropertyDefinitionLocalName(aShaclProperty))
+.concat(')')
+/]
+
+[query public maxCountAnnotation(aShaclProperty: ShaclProperty) : String = 
+(if (not aShaclProperty.maxCount.oclIsUndefined()) and (not (aShaclProperty.maxCount < 0)) then
+    '@ShaclMaxCount('.concat(aShaclProperty.maxCount.toString() ).concat(')')
+else
+    ''
+endif)
+/]
+
+[query public minCountAnnotation(aShaclProperty: ShaclProperty) : String = 
+(if (not aShaclProperty.minCount.oclIsUndefined()) and (not (aShaclProperty.minCount < 1)) then
+    '@ShaclMinCount('.concat(aShaclProperty.minCount.toString() ).concat(')')
+else
+    ''
+endif)
+/]
+
+[query public dataTypeAnnotation(aShaclProperty: ShaclProperty) : String = 
+(if (not aShaclProperty.dataType.oclIsUndefined()) then
+        '@ShaclDataType(DataType.'.concat(aShaclProperty.dataType.toString()).concat(')')
+else
+    ''
+endif)
+/]
+
+[query public classAnnotation(aShaclProperty: ShaclProperty, aShaclShape: ShaclShape, anAdaptorInterface: AdaptorInterface) : String = 
+(if (aShaclProperty.class->size() > 0) then
+    '@ShaclClass({'
+        .concat(concatenate(aShaclProperty.class->collect(aClass : ShaclShape | javaInterfaceNameForConstants(aClass.definingDomainSpecification()).concat('.').concat(shaclShapeTypeConstantName(aClass))), ', '))
+        .concat('})')
+else
+    ''
+endif)
+/]
+
+[query public shaclPropertyDefinitionNamespace(aShaclProperty: ShaclProperty) : String =
+(if (aShaclProperty.path.oclIsUndefined()) then
+    javaInterfaceNameForConstants(aShaclProperty.definingDomainSpecification()).concat('.').concat(domainSpecificationNamespaceConstantName(aShaclProperty.definingDomainSpecification()))
+else
+    javaInterfaceNameForConstants(aShaclProperty.path.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aShaclProperty.path.definingVocabulary()))
+endif)
+/]
+
+[query public shaclPropertyDefinitionLocalName(aShaclProperty: ShaclProperty) : String =
+(if (aShaclProperty.path.oclIsUndefined()) then
+    '"'.concat(aShaclProperty.javaName(false)).concat('"')
+else
+    '"'.concat(aShaclProperty.path.javaName(false)).concat('"')
+endif)
+/]

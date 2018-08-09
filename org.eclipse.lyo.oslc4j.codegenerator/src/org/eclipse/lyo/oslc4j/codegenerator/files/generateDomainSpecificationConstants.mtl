@@ -19,6 +19,7 @@
  *     Gianluca Bernardini  - initial API and implementation
  *     Michael Fiedler      - Bugzilla adpater implementations
  *     Jad El-khoury        - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
+ *     Yash Khatri          - Support for Shacl Shapes.
  *******************************************************************************/
 /]
 
@@ -30,6 +31,8 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::shaclShapeServices/]
+
 
 [query public resourceTypeNamespace(aResource: Resource) : String =
 (if (aResource.describes.oclIsUndefined()) then
@@ -47,11 +50,34 @@ else
 endif)
 /]
 
+[query public shaclShapeTypeNamespace(aShaclShape: ShaclShape) : String =
+(if (aShaclShape.targetClass.oclIsUndefined()) then
+    domainSpecificationNamespaceConstantName(aShaclShape.definingDomainSpecification())
+else
+    null
+endif)
+/]
+
+[query public shaclShapeTypeLocalName(aShaclShape: ShaclShape) : String =
+(if (aShaclShape.targetClass.oclIsUndefined()) then
+    '"'.concat(aShaclShape.javaName(true)).concat('"')
+else
+   null
+endif)
+/]
+
 [template public generateResourceConstants(aResource : Resource)]
 public static String [resourcePathConstantName(aResource)/] = "[aResource.javaName(false)/]";
 public static String [resourceTypeNamespaceConstantName(aResource)/] = [resourceTypeNamespace(aResource)/]; //namespace of the rdfs:class the resource describes
 public static String [resourceTypeLocalNameConstantName(aResource)/] = [resourceTypeLocalName(aResource)/]; //localName of the rdfs:class the resource describes
 public static String [resourceTypeConstantName(aResource)/] = [resourceTypeNamespaceConstantName(aResource)/] + [resourceTypeLocalNameConstantName(aResource)/]; //fullname of the rdfs:class the resource describes
+[/template]
+
+[template public generateShaclShapeConstants(aShaclShape : ShaclShape)]
+public static String [shaclShapePathConstantName(aShaclShape)/] = "[aShaclShape.javaName(false)/]";
+public static String [shaclShapeTypeNamespaceConstantName(aShaclShape)/] = [shaclShapeTypeNamespace(aShaclShape)/]; //namespace of the rdfs:class the resource describes
+public static String [shaclShapeTypeLocalNameConstantName(aShaclShape)/] = [shaclShapeTypeLocalName(aShaclShape)/]; //localName of the rdfs:class the resource describes
+public static String [shaclShapeTypeConstantName(aShaclShape)/] = [shaclShapeTypeNamespaceConstantName(aShaclShape)/] + [shaclShapeTypeLocalNameConstantName(aShaclShape)/]; //fullname of the rdfs:class the resource describes
 [/template]
 
 [template public generateDomainSpecificationConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
@@ -100,6 +126,10 @@ public interface [javaInterfaceNameForConstants(aDomainSpecification) /]
 
     [for (aResource: Resource | aDomainSpecification.resources->sortedBy(name))]
     [generateResourceConstants(aResource) /]
+    [/for]
+
+    [for (aShaclShape: ShaclShape | aDomainSpecification.shaclShapes->sortedBy(name))]
+    [generateShaclShapeConstants(aShaclShape) /]
     [/for]
 }
 [/file]

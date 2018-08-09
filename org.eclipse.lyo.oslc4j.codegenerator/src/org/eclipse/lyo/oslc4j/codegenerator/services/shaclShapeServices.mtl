@@ -1,0 +1,245 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2018 Yash Khatri.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Yash Khatri          - Support for Shacl Shapes.
+ *******************************************************************************/
+/]
+
+[module shaclShapeServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+
+[template public generateShaclShapeImports(aShaclShape : ShaclShape, contextAdaptorInterface : AdaptorInterface)]
+import [javaClassFullNameAnnotation('ShaclMaxCount', contextAdaptorInterface) /];
+import [javaClassFullNameAnnotation('ShaclMinCount', contextAdaptorInterface) /];
+import [javaClassFullNameAnnotation('ShaclDataType', contextAdaptorInterface) /];
+import [javaClassFullNameAnnotation('ShaclClassType', contextAdaptorInterface) /];
+import [javaClassFullNameAnnotation('ShaclClosed', contextAdaptorInterface) /];
+import org.eclipse.lyo.oslc4j.core.annotation.OslcName;
+import org.eclipse.lyo.oslc4j.core.annotation.OslcPropertyDefinition;
+import org.eclipse.lyo.oslc4j.core.annotation.OslcNamespace;
+import org.eclipse.lyo.oslc4j.core.model.AbstractResource;
+import org.eclipse.lyo.oslc4j.core.model.Link;
+[/template]
+
+[query public directParentShaclShape(aShaclShape: ShaclShape) : ShaclShape=
+    (if (aShaclShape.extends->notEmpty()) then 
+        aShaclShape.extends->first()
+    else
+        null
+    endif)
+/]
+
+[query public parentShaclShapes(aShaclShape: ShaclShape) : Set(ShaclShape) =
+    (if (directParentShaclShape(aShaclShape)->notEmpty()) then 
+        directParentShaclShape(aShaclShape)->union(parentShaclShapes(directParentShaclShape(aShaclShape)))
+    else
+        Set{}
+    endif)
+/]
+
+[query public interfaceShaclShapes(aShaclShape: ShaclShape) : OrderedSet(ShaclShape) =
+    ((directInterfaceShaclShapes(aShaclShape)
+    ->union(
+            directInterfaceShaclShapes(aShaclShape)->collectNested(r:ShaclShape| allExtendingShaclShapes(r))->flatten()->asOrderedSet()
+            )
+    ->asOrderedSet())
+    - parentShaclShapes(aShaclShape))
+    ->asOrderedSet()
+/]
+
+[query public allExtendingShaclShapes(aShaclShape: ShaclShape) : OrderedSet(ShaclShape) =
+    aShaclShape.extends
+    ->union(
+            aShaclShape.extends->collectNested(r:ShaclShape| allExtendingShaclShapes(r))->flatten()->asOrderedSet()
+            )
+    ->asOrderedSet()
+/]
+
+[query private directInterfaceShaclShapes(aShaclShape: ShaclShape) : OrderedSet(ShaclShape) =
+    (if (aShaclShape.extends->size() > 1) then 
+        aShaclShape.extends->subOrderedSet(2, aShaclShape.extends->size())
+    else
+        OrderedSet{}
+    endif)
+/]
+
+[query public interfaceConstraints(aShaclShape: ShaclShape) : Sequence(ShaclProperty) =
+    aShaclShape.interfaceShaclShapes().shaclProperties->collect(oclAsType(ShaclProperty))->asSequence()
+/]
+
+[query public allConstraints(aShaclShape: ShaclShape) : Sequence(ShaclProperty) = 
+((aShaclShape.shaclProperties->asSequence())
+    ->union(inheritedConstraints(aShaclShape))
+    ->union(interfaceConstraints(aShaclShape))
+)
+/]
+
+[query public inheritedConstraints(aShaclShape: ShaclShape) : Sequence(ShaclProperty) = 
+    (if (not aShaclShape.directParentShaclShape().oclIsUndefined()) then 
+        (aShaclShape.directParentShaclShape().shaclProperties->asSequence())->union(inheritedConstraints(aShaclShape.directParentShaclShape()))
+    else
+        Sequence{}
+    endif)
+/]
+
+[query public directlyRelatedShaclShapes(aShaclShape: ShaclShape) : Set(ShaclShape) =
+    (aShaclShape.shaclProperties->collect(p : ShaclProperty | p.class))->flatten()->asSet()
+    ->union(
+        aShaclShape.extends
+    )->flatten()->asSet()
+/]
+
+[query private allRelatedShaclShapes(aShaclShape: ShaclShape, alreadyAnalysed : Set(ShaclShape), depth : Integer) : Set(ShaclShape) =
+let drr : Set(ShaclShape) = directlyRelatedShaclShapes(aShaclShape),
+    newAlreadyAnalysed : Set(ShaclShape) = (Set{aShaclShape}->union(drr))->union(alreadyAnalysed),
+    toAnalyse : Set(ShaclShape) =  drr - alreadyAnalysed in 
+
+    (if (depth > 20) then 
+        drr - alreadyAnalysed 
+    else
+        toAnalyse->collect(r : ShaclShape | 
+            allRelatedShaclShapes(r, newAlreadyAnalysed, depth+1)
+            ->union(directlyRelatedShaclShapes(r))
+            ->union(Set{r})
+        )->flatten()->asSet()
+    endif)
+/]
+
+[query public allRelatedShaclShapes(aShaclShape: ShaclShape) : Set(ShaclShape) =
+let arr : Set(ShaclShape) = allRelatedShaclShapes(aShaclShape, Set{}, 1),
+    leftOut : Set(ShaclShape) = arr->collect(r : ShaclShape | directlyRelatedShaclShapes(r) - arr)->flatten()->asSet()
+in
+    arr
+    ->union(leftOut)
+    ->union(leftOut->collect(r : ShaclShape | allRelatedShaclShapes(r, arr->union(Set{r}), 1))->flatten()->asSet())
+/]
+
+[query public allShacProperties(aShaclShape: ShaclShape) : Sequence(ShaclProperty) = 
+((aShaclShape.shaclProperties->asSequence())
+    ->union(inheritedShaclProperties(aShaclShape))
+    ->union(interfaceShaclProperties(aShaclShape))
+)
+/]
+
+[query public inheritedShaclProperties(aShaclShape: ShaclShape) : Sequence(ShaclProperty) = 
+    (if (not aShaclShape.directParentShaclShape().oclIsUndefined()) then 
+        (aShaclShape.directParentShaclShape().shaclProperties->asSequence())->union(inheritedShaclProperties(aShaclShape.directParentShaclShape()))
+    else
+        Sequence{}
+    endif)
+/]
+
+[query public interfaceShaclProperties(aShaclShape: ShaclShape) : Sequence(ShaclProperty) =
+    aShaclShape.interfaceShaclShapes().shaclProperties
+/]
+
+[query public javaName(aShaclShape: ShaclShape, toUpperFirst : Boolean) : String = 
+javaString(aShaclShape.name, aShaclShape.definingDomainSpecification().namespacePrefix.name, toUpperFirst)
+/]
+
+[query public javaInstanceName(aShaclShape: ShaclShape) : String = 
+javaName(aShaclShape, false)
+/]
+
+[query public javaClassPackageName(aShaclShape: ShaclShape, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaPackageName(aShaclShape.definingDomainSpecification(), anAdaptorInterface, defaultJavaPackageName)
+/]
+
+[query public javaClassName(aShaclShape: ShaclShape) : String = 
+javaName(aShaclShape, true)
+/]
+
+[query public javaClassFullName(aShaclShape: ShaclShape, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaClassPackageName(aShaclShape, anAdaptorInterface, defaultJavaPackageName).concat('.').concat(javaClassName(aShaclShape))
+/]
+
+[query public javaClassFullNameAnnotation(annotation: String, anAdaptorInterface : AdaptorInterface) : String = 
+'org.eclipse.lyo.shacl.annotations.'.concat(annotation)
+/]
+
+[query public javaClassFullFileName(aShaclShape: ShaclShape, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String =
+    javaFullFilesPath(aShaclShape.definingDomainSpecification(), anAdaptorInterface, defaultJavaFullFilesPath)
+    .concatenatePaths(javaClassPackageName(aShaclShape, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
+    .concatenatePaths(javaClassName(aShaclShape))
+    .concat('.java')
+/]
+
+[query public javaInterfacePackageName(aShaclShape: ShaclShape, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaClassPackageName(aShaclShape, anAdaptorInterface, defaultJavaPackageName)
+/]
+
+[query public javaInterfaceName(aShaclShape: ShaclShape) : String = 
+'I'.concat(javaName(aShaclShape, true))
+/]
+
+[query public javaInterfaceFullName(aShaclShape: ShaclShape, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
+javaInterfacePackageName(aShaclShape, anAdaptorInterface, defaultJavaPackageName).concat('.').concat(javaInterfaceName(aShaclShape))
+/]
+
+[query public javaInterfaceFullFileName(aShaclShape: ShaclShape, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String = 
+    javaFullFilesPath(aShaclShape.definingDomainSpecification(), anAdaptorInterface, defaultJavaFullFilesPath)
+    .concatenatePaths(javaInterfacePackageName(aShaclShape, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
+    .concatenatePaths(javaInterfaceName(aShaclShape))
+    .concat('.java')
+/]
+
+[query public shaclShapeConstantName(aShaclShape : ShaclShape) : String = 
+javaConstantString(aShaclShape.name)
+/]
+
+[query public shaclShapePathConstantName(aShaclShape : ShaclShape) : String = 
+shaclShapeConstantName(aShaclShape).concat('_PATH')
+/]
+
+[query public shaclShapeTypeNamespaceConstantName(aShaclShape : ShaclShape) : String = 
+shaclShapeConstantName(aShaclShape).concat('_NAMESPACE')
+/]
+
+[query public shaclShapeTypeLocalNameConstantName(aShaclShape : ShaclShape) : String = 
+shaclShapeConstantName(aShaclShape).concat('_LOCALNAME')
+/]
+
+[query public shaclShapeTypeConstantName(aShaclShape : ShaclShape) : String = 
+shaclShapeConstantName(aShaclShape).concat('_TYPE')
+/]
+
+[query public nameAnnotation(aShaclShape : ShaclShape) : String = 
+'@OslcName('
+.concat(javaInterfaceNameForConstants(aShaclShape.definingDomainSpecification()))
+.concat('.')
+.concat(shaclShapeTypeLocalNameConstantName(aShaclShape))
+.concat(')')
+/]
+
+[query public namespaceAnnotation(aShaclShape : ShaclShape) : String = 
+'@OslcNamespace('
+.concat(javaInterfaceNameForConstants(aShaclShape.definingDomainSpecification()))
+.concat('.')
+.concat(shaclShapeTypeNamespaceConstantName(aShaclShape))
+.concat(')')
+/]
+
+[query public shaclShapeAnnotation(aShaclShape : ShaclShape) : String = 
+'@OslcResourceShape(title = "'
+.concat(aShaclShape.name).concat(' ').concat('Shacl Shape')
+.concat('", describes = ')
+.concat(javaInterfaceNameForConstants(aShaclShape.definingDomainSpecification()))
+.concat('.')
+.concat(shaclShapeTypeConstantName(aShaclShape))
+.concat(')')
+/]
+

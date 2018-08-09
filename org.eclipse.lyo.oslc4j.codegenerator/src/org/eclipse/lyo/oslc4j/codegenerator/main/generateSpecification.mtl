@@ -1,7 +1,7 @@
 [comment encoding = UTF-8 /]
 [comment
 /*******************************************************************************
- * Copyright (c) 2017 Jad El-khoury.
+ * Copyright (c) 2018 Jad El-khoury and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -14,6 +14,7 @@
  * Contributors:
  *
  *     Jad El-khoury        - initial implementation of specification generation
+ *     Yash Khatri          - Support for Shacl Shapes.
  *******************************************************************************/
 /]
 
@@ -25,11 +26,14 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::shaclShapeServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateDomainSpecificationConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateVocabularyConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResource/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResourceInterface/]
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateShaclShape/]
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateShaclShapeInterface/]
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateLicenseFiles/]
 
 [query public canGenerate(aSpecification : Specification) : Boolean = 
@@ -45,10 +49,15 @@ aSpecification.generationSetting.oclIsUndefined()
     ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
 /]
 
+[query public relevantShaclShapes(aSpecification : Specification) : Set(ShaclShape) =
+    (aSpecification.domainSpecifications.shaclShapes
+    ->union(aSpecification.domainSpecifications.shaclShapes.allRelatedShaclShapes()))->flatten()->asSet()
+/]
+
 [query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
 aSpecification.domainSpecifications->union(
     relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
-)
+)->union( relevantShaclShapes(aSpecification)->collectNested(aShaclShape : ShaclShape | aShaclShape.definingDomainSpecification())->flatten()->asSet())
 /]
 
 [query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
@@ -72,6 +81,12 @@ relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification
     [for (aResource: Resource | aSpecification.relevantResources())]
         [aResource.generateResource(null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName) /]
         [aResource.generateResourceInterface(null, null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName) /]
+    [/for]
+
+    [for (aShaclShape: ShaclShape | aSpecification.relevantShaclShapes())]
+        [aShaclShape.generateShaclShape(null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName) /]
+        [aShaclShape.generateShaclShapeInterface(null, null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName) /]
+
     [/for]
 [/if]
 [/template]
