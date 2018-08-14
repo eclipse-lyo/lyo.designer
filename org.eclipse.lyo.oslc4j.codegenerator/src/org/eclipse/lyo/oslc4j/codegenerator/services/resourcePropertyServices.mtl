@@ -14,7 +14,7 @@
  * Contributors:
  *
  *     Jad El-khoury        - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
- *     
+ *
  *******************************************************************************/
 /]
 
@@ -26,14 +26,14 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 
-[query public javaName(aProperty: ResourceProperty, toUpperFirst : Boolean) : String = 
+[query public javaName(aProperty: ResourceProperty, toUpperFirst : Boolean) : String =
 javaString(aProperty.name, aProperty.definingDomainSpecification().namespacePrefix.name, toUpperFirst)
 /]
 
 [comment TODO: "URI" should actually not be a valueType since it is not OSLC-standard. However, this is one way to allow user to specify a URI as a type.
-Another approach would be to have a valueType as String, and the Range being set to "URI", hence creating a URI (local) resource? 
+Another approach would be to have a valueType as String, and the Range being set to "URI", hence creating a URI (local) resource?
 But I really want the user to be able to map to java.net.URI, just like they can map to String or Boolean - without having to create a resource for that. /]
-[query public hasOSLCSupportedValueType(aProperty: ResourceProperty) : Boolean = 
+[query public hasOSLCSupportedValueType(aProperty: ResourceProperty) : Boolean =
 not (Sequence{'URI'}->includes(aProperty.valueType.toString()))
 /]
 
@@ -53,13 +53,13 @@ else
 endif)
 /]
 
-[query public nameAnnotation(aProperty: ResourceProperty) : String = 
+[query public nameAnnotation(aProperty: ResourceProperty) : String =
 '@OslcName('
 .concat(resourcePropertyDefinitionLocalName(aProperty))
 .concat(')')
 /]
 
-[query public propertyDefinitionAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String = 
+[query public propertyDefinitionAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
 '@OslcPropertyDefinition('
 .concat(resourcePropertyDefinitionNamespace(aProperty))
 .concat(' + ')
@@ -67,7 +67,7 @@ endif)
 .concat(')')
 /]
 
-[query public descriptionAnnotation(aProperty: ResourceProperty) : String = 
+[query public descriptionAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.description.oclIsUndefined()) then
 	'@OslcDescription("'.concat(aProperty.description).concat('")')
 else
@@ -75,7 +75,7 @@ else
 endif)
 /]
 
-[query public occursAnnotation(aProperty: ResourceProperty) : String = 
+[query public occursAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.occurs.oclIsUndefined()) then
 	if (aProperty.occurs = ResourcePropertyOccurs::exactlyOne) then
 		'@OslcOccurs(Occurs.ExactlyOne)'
@@ -99,7 +99,7 @@ else
 endif)
 /]
 
-[query public valueTypeAnnotation(aProperty: ResourceProperty) : String = 
+[query public valueTypeAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.valueType.oclIsUndefined()) then
 	if (hasOSLCSupportedValueType(aProperty)) then
 		'@OslcValueType(ValueType.'.concat(aProperty.valueType.toString()).concat(')')
@@ -112,7 +112,7 @@ endif)
 /]
 
 [comment  Either not supported by OSLC4J /]
-[query public representationAnnotation(aProperty: ResourceProperty) : String = 
+[query public representationAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.representation.oclIsUndefined()) then
 	if (not aProperty.representation.toString().equalsIgnoreCase('n_a')) then
 		if (not aProperty.representation.toString().equalsIgnoreCase('either')) then
@@ -128,7 +128,7 @@ else
 endif)
 /]
 
-[query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String = 
+[query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
 (if (aProperty.range->size() > 0) then
 	'@OslcRange({'
 		.concat(concatenate(aProperty.range->collect(aRange : Resource | javaInterfaceNameForConstants(aRange.definingDomainSpecification()).concat('.').concat(resourceTypeConstantName(aRange))), ', '))
@@ -138,7 +138,7 @@ else
 endif)
 /]
 
-[query public readOnlyAnnotation(aProperty: ResourceProperty) : String = 
+[query public readOnlyAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.readOnly.oclIsUndefined()) then
 	'@OslcReadOnly('.concat(aProperty.readOnly.toString()).concat(')')
 else
@@ -146,7 +146,7 @@ else
 endif)
 /]
 
-[query public titleAnnotation(aProperty: ResourceProperty) : String = 
+[query public titleAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.title.oclIsUndefined()) then
 	'@OslcTitle("'.concat(aProperty.title).concat('")')
 else
@@ -155,7 +155,7 @@ endif)
 /]
 
 [comment: It is not possible to have a boolean property which the user can leave undefined. Hence, we need to create an enum with a third option of "n_a"./]
-[query public isMemberPropertyAnnotation(aProperty: ResourceProperty) : String = 
+[query public isMemberPropertyAnnotation(aProperty: ResourceProperty) : String =
 if (aProperty.isMemberProperty.toString().equalsIgnoreCase('true')) then
 	'@OslcMemberProperty(true)'
 else
@@ -167,7 +167,7 @@ else
 endif
 /]
 
-[query public allowedValueAnnotation(aProperty: ResourceProperty) : String = 
+[query public allowedValueAnnotation(aProperty: ResourceProperty) : String =
 (if (aProperty.allowedValue->size() > 0) then
 	'@OslcAllowedValue({"'.concat(concatenate((aProperty.allowedValue)->asSequence(), '", "')).concat('"})')
 else
@@ -175,15 +175,15 @@ else
 endif)
 /]
 
-[query public typeURI(aProperty: ResourceProperty) : String = 
+[query public typeURI(aProperty: ResourceProperty) : String =
 aProperty.definingDomainSpecification().namespaceURI.concat('#').concat(javaName(aProperty, false))
 /]
 
-[query public javaAttributeTypeNeedsConstruction(aProperty: ResourceProperty) : Boolean = 
+[query public javaAttributeTypeNeedsConstruction(aProperty: ResourceProperty) : Boolean =
 Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString())._or(Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))
 /]
 
-[query public javaAttributeBaseTypeCastFromString(aProperty: ResourceProperty, variable: String) : String = 
+[query public javaAttributeBaseTypeCastFromString(aProperty: ResourceProperty, variable: String) : String =
 	(if (aProperty.valueType.toString() = 'String') then
 		variable
 	else
@@ -233,7 +233,7 @@ Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString()).
 
 
 [comment TODO: If occurs = 'zeroOrMany', it is not 100% clear when to use Set and when to use ArrayList, or TreeSet./]
-[query public javaAttributeTypeDeclaration(aProperty: ResourceProperty) : String = 
+[query public javaAttributeTypeDeclaration(aProperty: ResourceProperty) : String =
     (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
         'HashSet<'
     else
@@ -241,7 +241,22 @@ Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString()).
     endif)
 	.concat(javaAttributeBaseType(aProperty))
 	.concat(
-    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then 
+    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
+        '>'
+    else
+        ''
+    endif))
+/]
+
+[query public javaAttributeTypeDeclarationIn(aProperty: ResourceProperty) : String =
+    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
+        'Set<'
+    else
+        ''
+    endif)
+	.concat(javaAttributeBaseType(aProperty))
+	.concat(
+    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
         '>'
     else
         ''
@@ -297,7 +312,7 @@ Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString()).
 	endif)
 /]
 
-[query public javaAttributeName(aProperty: ResourceProperty, aResource: Resource) : String = 
+[query public javaAttributeName(aProperty: ResourceProperty, aResource: Resource) : String =
     (if (allProperties(aResource)->collect(p : ResourceProperty | javaName(p, false))->count(javaName(aProperty, false)) = 1) then
         javaName(aProperty, false)
     else
@@ -305,13 +320,13 @@ Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString()).
     endif)
 /]
 
-[query public propertyToHtmlForCreationMethodName(aProperty: ResourceProperty, aResource: Resource, aCreationDialog: Dialog) : String = 
+[query public propertyToHtmlForCreationMethodName(aProperty: ResourceProperty, aResource: Resource, aCreationDialog: Dialog) : String =
 javaAttributeName(aProperty, aResource).concat('ToHtmlForCreation')
 .concat(
-	(if (aCreationDialog.oclIsUndefined()) 
-		then 
-			'' 
-		else 
+	(if (aCreationDialog.oclIsUndefined())
+		then
+			''
+		else
 			creationDialogs(containingAdaptorInterface(aCreationDialog), aResource)->indexOf(aCreationDialog).toString()
 	endif)
 )
