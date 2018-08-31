@@ -78,7 +78,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
-import org.eclipse.lyo.oslc4j.client.ServiceProviderRegistryURIs;
 import org.eclipse.lyo.oslc4j.core.model.Publisher;
 import org.eclipse.lyo.oslc4j.core.model.Service;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
@@ -94,14 +93,13 @@ import [javaClassFullName(aServiceProvider) /];
 // [/protected]
 
 /**
- * This is the OSLC service provider catalog for the Bugzilla adapter.  Service providers are
+ * This is the OSLC service provider catalog for the adapter.  Service providers are
  * not registered with the catalog until a request comes in to access either the catalog or a
  * specific service provider.   This request could be from an external consumer or an internal
  * request triggered by a consumer accessing a change request.
  *
- * The service providers are created and registered in the initServiceProvidersFromProducts()
- * method.  A list of accessible products is retrieved from Bugzilla and a ServiceProvider is
- * created and registered for each using the Bugzilla productId as the identifier.
+ * Information about the desired list of ServiceProviders is retrieved from the Manager.getServiceProviderInfos() method.
+ * A ServiceProvider is created and registered for each entry in that list.
  *
  * The registered service providers are refreshed on each catalog or service provider collection
  * request.
@@ -223,10 +221,6 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
     /**
     * Register a service provider with the OSLC catalog
     *
-    * @param serviceProviderURI
-    * @param serviceProvider
-    * @param productId
-    * @return
     */
     private static ServiceProvider register[aServiceProvider.javaName(true)/]NoSync(final URI serviceProviderURI,
                                                                  final ServiceProvider serviceProvider
@@ -307,14 +301,12 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
     }
 
     /**
-     * Retrieve a list of products from Bugzilla and construct a service provider for each.
-     *
-     * Each product ID is added to the parameter map which will be used during service provider
-     * creation to create unique URI paths for each Bugzilla product.  See @Path definition at
-     * the top of BugzillaChangeRequestService.
-     *
-     * @param httpServletRequest
-     */
+    * Retrieve the set of initial ServiceProviders as returned from the Manager.getServiceProviderInfos() method, and construct a service provider for each.
+    *
+    * Each ServiceProvider ID is added to the parameter map which will be used during service provider
+    * creation to create unique URI paths for each ServiceProvider. 
+    *
+    */
     protected static void initServiceProviders (HttpServletRequest httpServletRequest)
     {
         try {
