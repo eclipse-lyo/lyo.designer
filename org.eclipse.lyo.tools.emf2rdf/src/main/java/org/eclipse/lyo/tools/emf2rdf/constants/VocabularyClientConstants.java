@@ -29,10 +29,6 @@ package org.eclipse.lyo.tools.emf2rdf.constants;
 
 public interface VocabularyClientConstants {
     // Start of user code user constants
-    public static String OAS_DOMAIN = "http://rdf.scania.com/ns/oas#";
-    public static String OAS_NAMSPACE = "http://rdf.scania.com/ns/oas#";
-    public static String OAS_NAMSPACE_PREFIX = "oas";
-
     public static final String TOOLCHAIN_INTERFACE = "Toolchain";
     public static final String VOCABULARIES_INTERFACE = "Vocabularies";
     public static final String SPECIFICATION_INTERFACE = "Specification";
