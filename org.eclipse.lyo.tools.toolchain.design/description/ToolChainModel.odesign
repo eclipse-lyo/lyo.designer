@@ -458,7 +458,7 @@
           </style>
         </containerMappings>
         <toolSections name="Operations">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Toolchain.CreateAdaptorInterface" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconNewAdaptor.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Toolchain.CreateAdaptorInterface" label="Adaptor Interface" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconNewAdaptor.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="domainSpecification" candidatesExpression="[container.oclAsType(Toolchain).specification.domainSpecifications/]" message="Select the domain that is implemented by the services of this adaptor. (If no domains are available, first define domains in the SpecificationDiagram view)"/>
             </variable>
@@ -490,7 +490,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddManagedResource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddManagedResource" label="Managed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[container.oclAsType(AdaptorInterface).eContainer(Toolchain).specification.domainSpecifications.resources/]" multiple="true" message="Select the Resouce"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managingServiceCapability" candidatesExpression="[container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationFactories->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" message="Select a Service Capability"/>
@@ -522,7 +522,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddConsumedResource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddConsumedResource" label="Consumed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[container.oclAsType(AdaptorInterface).eContainer(Toolchain).specification.domainSpecifications.resources/]" multiple="true" message="Select the Resouce"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="requiredAdaptor" candidatesExpression="[container.oclAsType(AdaptorInterface).requiredAdaptors/]" message="Select the RequiredAdaptor"/>
@@ -717,7 +717,7 @@
           </style>
         </containerMappings>
         <toolSections name="Tool">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateServiceProvider" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateServiceProvider" label="Service Provider" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -729,7 +729,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateService" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateService" label="Service" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']">
             <variable name="container">
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="domainSpecification" candidatesExpression="[container.oclAsType(ServiceProvider).eContainer(Toolchain).specification.domainSpecifications/]" message="Select the domain that is implemented by this service. (If no domains are available, first define domains in the SpecificationDiagram view)"/>
             </variable>
@@ -742,7 +742,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateCreationFactory" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateCreationFactory" label="Creation Factory" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -755,7 +755,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateQueryCapability" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateQueryCapability" label="Query Capability" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -768,7 +768,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateSelectionDialog" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateSelectionDialog" label="Selection Dialog" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -781,7 +781,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateCreationDialog" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateCreationDialog" label="Creation Dialog" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -794,7 +794,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateBasicCapability" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateBasicCapability" label="Basic Capability" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -805,7 +805,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddManagedResource" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddManagedResource" label="Managed Resource" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']">
             <variable name="container">
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[container.eContainer(Toolchain).specification.domainSpecifications.resources/]" childrenExpression="Select the Resouce"/>
             </variable>
@@ -816,7 +816,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddConsumedResource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']/@subNodeMappings[name='AdaptorInterface.GenericRequiredAdaptor.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddConsumedResource" label="Consumed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']/@subNodeMappings[name='AdaptorInterface.GenericRequiredAdaptor.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[container.eContainer(Toolchain).specification.domainSpecifications.resources/]" childrenExpression="Select the Resouce"/>
             </variable>
