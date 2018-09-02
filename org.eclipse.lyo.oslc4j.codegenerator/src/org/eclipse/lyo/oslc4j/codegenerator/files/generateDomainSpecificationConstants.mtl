@@ -41,14 +41,14 @@ endif)
 
 [query public resourceTypeLocalName(aResource: Resource) : String =
 (if (aResource.describes.oclIsUndefined()) then
-    '"'.concat(aResource.javaName(true)).concat('"')
+    '"'.concat(aResource.name).concat('"')
 else
-	'"'.concat(aResource.describes.javaName(true)).concat('"')
+	'"'.concat(aResource.describes.name).concat('"')
 endif)
 /]
 
 [template public generateResourceConstants(aResource : Resource)]
-public static String [resourcePathConstantName(aResource)/] = "[aResource.javaName(false)/]";
+public static String [resourcePathConstantName(aResource)/] = "[aResource.name.toLowerFirst()/]";
 public static String [resourceTypeNamespaceConstantName(aResource)/] = [resourceTypeNamespace(aResource)/]; //namespace of the rdfs:class the resource describes
 public static String [resourceTypeLocalNameConstantName(aResource)/] = [resourceTypeLocalName(aResource)/]; //localName of the rdfs:class the resource describes
 public static String [resourceTypeConstantName(aResource)/] = [resourceTypeNamespaceConstantName(aResource)/] + [resourceTypeLocalNameConstantName(aResource)/]; //fullname of the rdfs:class the resource describes
