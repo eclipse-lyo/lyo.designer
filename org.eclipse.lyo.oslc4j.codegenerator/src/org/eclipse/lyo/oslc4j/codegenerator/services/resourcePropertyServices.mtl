@@ -47,9 +47,9 @@ endif)
 
 [query public resourcePropertyDefinitionLocalName(aResourceProperty: ResourceProperty) : String =
 (if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
-    '"'.concat(aResourceProperty.javaName(false)).concat('"')
+    '"'.concat(aResourceProperty.name).concat('"')
 else
-	'"'.concat(aResourceProperty.propertyDefinition.javaName(false)).concat('"')
+	'"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
 endif)
 /]
 
