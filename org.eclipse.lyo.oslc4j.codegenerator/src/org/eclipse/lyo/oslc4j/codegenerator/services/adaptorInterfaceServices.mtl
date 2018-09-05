@@ -23,7 +23,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 
 [comment TODO: we should avoid relying on "eContainer", since objects that come from a composing emf file, will not have the eContainer relationship setup as expected.
@@ -59,20 +58,45 @@ anAdaptorInterface.serviceProviders()->select(aServiceProvider : ServiceProvider
             )->asSet()
 /]
 
+[comment return the set of QueryCapabilities whose managed resources is the same as "resources", without any consideration for order./]
+[query public queryCapabilities(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(QueryCapability) = 
+anAdaptorInterface.serviceProviders().services.queryCapabilities->select(aQueryCapability : QueryCapability | aQueryCapability.resourceTypes->asBag() = resources)
+/]
+
 [query public queryCapabilities(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(QueryCapability) = 
 anAdaptorInterface.serviceProviders().services.queryCapabilities->select(aQueryCapability : QueryCapability | aQueryCapability.resourceTypes->includes(aResource))
+/]
+
+[comment return the set of BasicCapabilities whose managed resources is the same as "resources", without any consideration for order./]
+[query public basicCapabilities(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(BasicCapability) = 
+anAdaptorInterface.serviceProviders().services.basicCapabilities->select(aBasicCapability : BasicCapability | aBasicCapability.resourceTypes->asBag() = resources)
 /]
 
 [query public basicCapabilities(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(BasicCapability) = 
 anAdaptorInterface.serviceProviders().services.basicCapabilities->select(aBasicCapability : BasicCapability | aBasicCapability.resourceTypes->includes(aResource))
 /]
 
+[comment return the set of CreationFactories whose managed resources is the same as "resources", without any consideration for order./]
+[query public creationFactories(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(CreationFactory) = 
+anAdaptorInterface.serviceProviders().services.creationFactories->select(aCreationFactory : CreationFactory | aCreationFactory.resourceTypes->asBag() = resources)
+/]
+
 [query public creationFactories(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(CreationFactory) = 
 anAdaptorInterface.serviceProviders().services.creationFactories->select(aCreationFactory : CreationFactory | aCreationFactory.resourceTypes->includes(aResource))
 /]
 
+[comment return the set of SelectionDialogs whose managed resources is the same as "resources", without any consideration for order./]
+[query public selectionDialogs(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(Dialog) = 
+anAdaptorInterface.serviceProviders().services.selectionDialogs->select(aDialog : Dialog | aDialog.resourceTypes->asBag() = resources)
+/]
+
 [query public selectionDialogs(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(Dialog) = 
 anAdaptorInterface.serviceProviders().services.selectionDialogs->select(aDialog : Dialog | aDialog.resourceTypes->includes(aResource))
+/]
+
+[comment return the set of CreationDialogs whose managed resources is the same as "resources", without any consideration for order./]
+[query public creationDialogs(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(Dialog) = 
+anAdaptorInterface.serviceProviders().services.creationDialogs->select(aDialog : Dialog | aDialog.resourceTypes->asBag() = resources)
 /]
 
 [query public creationDialogs(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(Dialog) = 
