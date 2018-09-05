@@ -403,7 +403,7 @@ public [javaAttributeTypeDeclaration(aProperty) /] [if (aProperty.valueType.toSt
 [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
 // [protected ('setterAnnotation:'.concat(javaAttributeName(aProperty, aResource)))]
 // [/protected]
-public void set[javaAttributeName(aProperty, aResource).toUpperFirst()/](final [javaAttributeTypeDeclaration(aProperty) /] [javaName(aProperty, false)/] )
+public void set[javaAttributeName(aProperty, aResource).toUpperFirst()/](final [javaAttributeTypeDeclarationIn(aProperty) /] [javaName(aProperty, false)/] )
 {
     // [protected ('setterInit:'.concat(javaAttributeName(aProperty, aResource)))]
     // [/protected]
