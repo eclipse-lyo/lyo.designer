@@ -22,6 +22,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 
 [query public containingAdaptorInterface(aService: Service) : AdaptorInterface =
@@ -126,6 +127,13 @@ JAXRSPathParameters(aQueryCapability.URI())
 [query public queryMethodName(aQueryCapability: QueryCapability, forRDF : Boolean) : String = 
 concatenate(aQueryCapability.resourceTypes.javaName(true)->sep('query', 'sAnd', 's').oclAsType(String))
 	.concat((if forRDF then '' else 'AsHtml' endif))
+	.concat(
+		(if (queryCapabilities(aQueryCapability.containingAdaptorInterface(), aQueryCapability.resourceTypes->asBag())->size() > 1) then 
+			 'For'.concat(javaString(aQueryCapability.title, '', true))
+		else 
+			'' 
+		endif)
+	)
 /]
 
 [query public queryMethodResourceType(aQueryCapability: QueryCapability) : String = 
@@ -171,7 +179,13 @@ JAXRSPathParameters(aCreationFactory.URI())
 
 [query public creationMethodName(aCreationFactory: CreationFactory) : String = 
 concatenate(aCreationFactory.resourceTypes.javaName(true)->sep('create', 'And', '').oclAsType(String))
-.concat('')
+.concat(
+	(if (creationFactories(aCreationFactory.containingAdaptorInterface(), aCreationFactory.resourceTypes->asBag())->size() > 1) then 
+		 'For'.concat(javaString(aCreationFactory.title, '', true))
+	else 
+		'' 
+	endif)
+)
 /]
 
 [query public creationMethodResourceType(aCreationFactory: CreationFactory) : String = 
@@ -223,6 +237,15 @@ JAXRSPathParameters(aDialog.URI(selectionDialog))
 [query public dialogMethodName(aDialog: Dialog, selectionDialog : Boolean) : String = 
 concatenate(aDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String))
 	.concat((if selectionDialog then 'Selector' else 'Creator' endif))
+	.concat(
+		(if ((selectionDialog) and (selectionDialogs(aDialog.containingAdaptorInterface(), aDialog.resourceTypes->asBag())->size() > 1))
+			or ((not selectionDialog) and (creationDialogs(aDialog.containingAdaptorInterface(), aDialog.resourceTypes->asBag())->size() > 1))
+ 		then 
+			 'For'.concat(javaString(aDialog.title, '', true))
+		else 
+			'' 
+		endif)
+	)
 /]
 
 [query public dialogMethodResourceType(aDialog: Dialog) : String = 
@@ -247,7 +270,14 @@ methodParameterList(JAXRSPathParameters(aDialog.URI(selectionDialog)))
 
 [query public creationMethodName(aCreationDialog: Dialog) : String = 
 concatenate(aCreationDialog.resourceTypes.javaName(true)->sep('create', 'And', '').oclAsType(String))
-.concat('')
+.concat('FromDialog')
+.concat(
+	(if (creationDialogs(aCreationDialog.containingAdaptorInterface(), aCreationDialog.resourceTypes->asBag())->size() > 1) then 
+		 'For'.concat(javaString(aCreationDialog.title, '', true))
+	else 
+		'' 
+	endif)
+)
 /]
 
 [query public creationMethodResourceType(aCreationDialog: Dialog) : String = 

@@ -177,7 +177,6 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
     [/for]
 
     [for (aCreationDialog: Dialog | aService.creationDialogs)]
-    [if (aService.creationFactories->select(f: CreationFactory | f.resourceTypes = aCreationDialog.resourceTypes)->isEmpty())]
     public static [creationMethodResourceType(aCreationDialog)/] [creationMethodName(aCreationDialog)/](HttpServletRequest httpServletRequest, final [creationMethodResourceType(aCreationDialog)/] aResource[commaSeparate(dialogMethodSignature(aCreationDialog, false, false), true, false)/])
     {
         [creationMethodResourceType(aCreationDialog)/] newResource = null;
@@ -187,7 +186,6 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         // [/protected]
         return newResource;
     }
-    [/if]
     [/for]
 
     [for (aBasicCapability: BasicCapability | aService.basicCapabilities)]
