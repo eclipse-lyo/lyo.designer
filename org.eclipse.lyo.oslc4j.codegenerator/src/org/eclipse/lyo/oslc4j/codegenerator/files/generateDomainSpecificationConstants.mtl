@@ -48,7 +48,7 @@ endif)
 /]
 
 [template public generateResourceConstants(aResource : Resource)]
-public static String [resourcePathConstantName(aResource)/] = "[aResource.name.toLowerFirst()/]";
+public static String [resourcePathConstantName(aResource)/] = "[javaString(aResource.name, '', false)/]";
 public static String [resourceTypeNamespaceConstantName(aResource)/] = [resourceTypeNamespace(aResource)/]; //namespace of the rdfs:class the resource describes
 public static String [resourceTypeLocalNameConstantName(aResource)/] = [resourceTypeLocalName(aResource)/]; //localName of the rdfs:class the resource describes
 public static String [resourceTypeConstantName(aResource)/] = [resourceTypeNamespaceConstantName(aResource)/] + [resourceTypeLocalNameConstantName(aResource)/]; //fullname of the rdfs:class the resource describes
