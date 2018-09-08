@@ -57,8 +57,8 @@ package [javaClassPackageName(aServiceProvider) /];
 // [/protected]
 public class [javaClassName(aServiceProvider) /] {
     public String name;
-    [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(';'.concat(lineSeparator()))]
-    public String [instanceCompositeID /];
+    [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider))]
+    public String [instanceCompositeID/];
     [/for]
 
     // [protected ('class_attributes')]
