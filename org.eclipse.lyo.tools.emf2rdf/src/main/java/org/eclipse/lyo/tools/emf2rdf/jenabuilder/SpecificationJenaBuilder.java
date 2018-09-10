@@ -222,7 +222,7 @@ public class SpecificationJenaBuilder {
         } else {
             describes = domainSpecification.getNamespaceURI() + resource.getName();
         }
-        resourceShape.setDescribes(new URI[] { new URI(describes) });
+        resourceShape.setDescribes(new URI[] { new URI(describes.replaceAll("\\s+","")) });
 
         log.info("instance of ResourceShape for resource \"{}\" created. returning \"{}\" ", resourceShape);
         return resourceShape;
@@ -269,13 +269,26 @@ public class SpecificationJenaBuilder {
             property.setTitle(resourceProperty.getTitle());
         }
 
+        if (null != resourceProperty.getRange() && resourceProperty.getRange().size()!=0) {
+            for(Resource resource : resourceProperty.getRange()) {
+                DomainSpecification ds = (DomainSpecification) resource.eContainer();
+                property.addRange(new URI(ds.getNamespaceURI() + resource.getName()));
+            }
+        }
+
+        property.setReadOnly(resourceProperty.isReadOnly());
+
         for (Iterator<String> allowedValuesIterator = resourceProperty.getAllowedValue()
                 .iterator(); allowedValuesIterator.hasNext();) {
             property.setAllowedValuesRef(new URI(allowedValuesIterator.next()));
         }
 
         if (resourceProperty.getIsMemberProperty() != null) {
-            property.setMemberProperty(resourceProperty.getIsMemberProperty().getValue() == 0 ? false : true);
+            if(resourceProperty.getIsMemberProperty().getValue() == 0) {
+                property.setMemberProperty(false);
+            } else if(resourceProperty.getIsMemberProperty().getValue() == 1) {
+                property.setMemberProperty(true);
+            } 
         }
 
         if (resourceProperty.getOccurs() != null) {
@@ -447,6 +460,12 @@ public class SpecificationJenaBuilder {
 
             if (resourceProperty.getAllowedValue() != null && resourceProperty.getAllowedValue().size() != 0) {
                 shaclProperty.setIn(Arrays.copyOf(resourceProperty.getAllowedValue().toArray(), resourceProperty.getAllowedValue().toArray().length, String[].class));
+            }
+
+            if (resourceProperty.getRange() != null && resourceProperty.getRange().size() != 0) {
+                Resource resource = resourceProperty.getRange().get(0);
+                DomainSpecification ds = (DomainSpecification) resource.eContainer();
+                shaclProperty.setClassType(new URI(ds.getNamespaceURI() + resource.getName()));
             }
         }
 

@@ -45,6 +45,7 @@ public class TripleStoreDetailsPage extends WizardPage {
     private Text passwordText;
     Button requiresAuthenticationButton;
     private Composite container;
+    public boolean enableNext = false;
 
     public TripleStoreDetailsPage() {
         super("TripleStoreDetailsPage");
@@ -95,6 +96,8 @@ public class TripleStoreDetailsPage extends WizardPage {
             @Override
             public void keyReleased(KeyEvent e) {
                 checkIfPageComplete();
+                canFlipToNextPage();
+                getWizard().getContainer().updateButtons();
             }
         });
         sparqlUpdateEndPointText.setLayoutData(gd);
@@ -111,7 +114,8 @@ public class TripleStoreDetailsPage extends WizardPage {
             @Override
             public void keyReleased(KeyEvent e) {
                 checkIfPageComplete();
-                System.out.println(isPageComplete());
+                canFlipToNextPage();
+                getWizard().getContainer().updateButtons();
             }
         });
         namedGraphUriText.setLayoutData(gd);
@@ -128,12 +132,16 @@ public class TripleStoreDetailsPage extends WizardPage {
                     userNameText.setEnabled(true);
 
                     checkIfPageComplete();
+                    canFlipToNextPage();
+                    getWizard().getContainer().updateButtons();
 
                 } else {
                     passwordText.setEnabled(false);
                     userNameText.setEnabled(false);
 
                     checkIfPageComplete();
+                    canFlipToNextPage();
+                    getWizard().getContainer().updateButtons();
                 }
 
             }
@@ -169,6 +177,8 @@ public class TripleStoreDetailsPage extends WizardPage {
             @Override
             public void keyReleased(KeyEvent e) {
                 checkIfPageComplete();
+                canFlipToNextPage();
+                getWizard().getContainer().updateButtons();
 
             }
         });
@@ -181,12 +191,16 @@ public class TripleStoreDetailsPage extends WizardPage {
             @Override
             public void keyReleased(KeyEvent e) {
                 checkIfPageComplete();
+                canFlipToNextPage();
+                getWizard().getContainer().updateButtons();
             }
         });
 
         // required to avoid an error in the system
         setControl(container);
         checkIfPageComplete();
+        canFlipToNextPage();
+        getWizard().getContainer().updateButtons();
     }
 
     public String getSparqlUpdateEndPointText() {
@@ -229,4 +243,14 @@ public class TripleStoreDetailsPage extends WizardPage {
         this.requiresAuthenticationButton = requiresAuthenticationButton;
     }
 
+    @Override
+    public boolean canFlipToNextPage() {
+        return enableNext;
+    }
+    
+    @Override
+    public void setPageComplete(boolean complete) {
+        super.setPageComplete(complete);
+        enableNext = complete;
+    }
 }

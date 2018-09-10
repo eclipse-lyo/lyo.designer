@@ -12,6 +12,7 @@
 
 
 	<artifactId>org.eclipse.lyo.tools.emf2rdf</artifactId>
+	<version>2.4.0.SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 	<!-- https://mvnrepository.com/artifact/org.apache.jena/jena-core -->
 
@@ -38,20 +39,72 @@
 
 	</dependencies>
 
-	<!-- <build> <pluginManagement> <plugins> <plugin> <artifactId>maven-eclipse-plugin</artifactId> 
-		<version>2.10</version> <configuration> <pde>true</pde> </configuration> 
-		</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
-		<version>2.1</version> <executions> <execution> <id>copy-dependencies</id> 
-		<phase>process-sources</phase> <goals> <goal>copy-dependencies</goal> </goals> 
-		<configuration> <outputDirectory>${basedir}</outputDirectory> <overWriteReleases>false</overWriteReleases> 
-		<overWriteSnapshots>false</overWriteSnapshots> <overWriteIfNewer>true</overWriteIfNewer> 
-		</configuration> </execution> </executions> </plugin> <plugin> <artifactId>maven-clean-plugin</artifactId> 
-		<version>2.3</version> <configuration> <filesets> <fileset> <directory>${basedir}</directory> 
-		<includes> <include>*.jar</include> </includes> <followSymlinks>false</followSymlinks> 
-		</fileset> </filesets> </configuration> </plugin> </plugins> </pluginManagement> 
-		</build> <repositories> <repository> <id>lyo-releases</id> <name>Eclipse 
-		Lyo Releases</name> <url>https://repo.eclipse.org/content/repositories/lyo-releases/</url> 
-		<snapshots> <enabled>false</enabled> </snapshots> </repository> <repository> 
-		<id>lyo-snapshots</id> <name>Eclipse Lyo Snapshots</name> <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url> 
-		<releases> <enabled>false</enabled> </releases> </repository> </repositories> -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.10</version>
+					<configuration>
+						<pde>true</pde>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.1</version>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>process-sources</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${basedir}</outputDirectory>
+								<overWriteReleases>false</overWriteReleases>
+								<overWriteSnapshots>false</overWriteSnapshots>
+								<overWriteIfNewer>true</overWriteIfNewer>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.3</version>
+					<configuration>
+						<filesets>
+							<fileset>
+								<directory>${basedir}</directory>
+								<includes>
+									<include>*.jar</include>
+								</includes>
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+						</filesets>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<repositories>
+		<repository>
+			<id>lyo-releases</id>
+			<name>Eclipse 
+		Lyo Releases</name>
+			<url>https://repo.eclipse.org/content/repositories/lyo-releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>lyo-snapshots</id>
+			<name>Eclipse Lyo Snapshots</name>
+			<url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
 </project>

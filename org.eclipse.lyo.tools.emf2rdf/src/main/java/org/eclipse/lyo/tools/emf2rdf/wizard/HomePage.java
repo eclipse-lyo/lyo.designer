@@ -17,6 +17,7 @@
 
 package org.eclipse.lyo.tools.emf2rdf.wizard;
 
+
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.lyo.tools.emf2rdf.constants.ExportConstants;
 import org.eclipse.swt.SWT;
@@ -38,10 +39,13 @@ public class HomePage extends WizardPage {
 
     private Composite container;
 
+    public boolean isfileSelected = false;
+
     public HomePage() {
         super("HomePage");
         setTitle("Select export destination");
         setDescription("Export model to a file or a triple store");
+        
     }
 
     @Override
@@ -57,7 +61,6 @@ public class HomePage extends WizardPage {
         fileButton.setText(ExportConstants.FILE);
         fileButton.setLayoutData(gd);
         fileButton.setFocus();
-        fileButton.setSelection(true);
         fileButton.setToolTipText("Select this to export model to a file.");
 
         Button tripleStoreButton = new Button(container, SWT.RADIO);
@@ -75,9 +78,10 @@ public class HomePage extends WizardPage {
             public void widgetSelected(SelectionEvent arg0) {
                 if (fileButton.getSelection()) {
                     ExportDestinationWizard wizard = (ExportDestinationWizard) getWizard();
-                    enableNext = false;
+                    enableNext = true;
+                    isfileSelected = true;
                     canFlipToNextPage();
-                    setPageComplete(true);
+                    setPageComplete(false);
                     TripleStoreDetailsPage tripleStoreDetailsPage = (TripleStoreDetailsPage) getWizard().getContainer()
                             .getCurrentPage().getNextPage();
                     if (null != tripleStoreDetailsPage) {
@@ -91,6 +95,7 @@ public class HomePage extends WizardPage {
             @Override
             public void widgetDefaultSelected(SelectionEvent arg0) {
                 // TODO Auto-generated method stub
+                System.out.println("MMEE");
 
             }
         });
@@ -103,6 +108,7 @@ public class HomePage extends WizardPage {
 
                     ExportDestinationWizard wizard = (ExportDestinationWizard) getWizard();
                     enableNext = true;
+                    isfileSelected = false;
                     canFlipToNextPage();
                     setPageComplete(false);
                     wizard.getContainer().updateButtons();

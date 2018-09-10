@@ -42,40 +42,4 @@ public interface VocabularyClientConstants {
     public static final String XSD_NAMESPACE_PREFIX = "xsd";
 
     // End of user code
-
-    public static String DUBLIN_CORE_DOMAIN = "http://purl.org/dc/terms/";
-    public static String DUBLIN_CORE_NAMSPACE = "http://purl.org/dc/terms/";
-    public static String DUBLIN_CORE_NAMSPACE_PREFIX = "dcterms";
-    public static String OWL_DOMAIN = "http://www.w3.org/2002/07/owl#";
-    public static String OWL_NAMSPACE = "http://www.w3.org/2002/07/owl#";
-    public static String OWL_NAMSPACE_PREFIX = "owl";
-    public static String RDF_DOMAIN = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-    public static String RDF_NAMSPACE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-    public static String RDF_NAMSPACE_PREFIX = "rdf";
-    public static String RDFS_DOMAIN = "http://www.w3.org/2000/01/rdf-schema#";
-    public static String RDFS_NAMSPACE = "http://www.w3.org/2000/01/rdf-schema#";
-    public static String RDFS_NAMSPACE_PREFIX = "rdfs";
-    public static String VANN_DOMAIN = "http://purl.org/vocab/vann/";
-    public static String VANN_NAMSPACE = "http://purl.org/vocab/vann/";
-    public static String VANN_NAMSPACE_PREFIX = "vann";
-
-    public static String RDFSCLASS = "Class";
-    public static String PATH_RDFSCLASS = "Class";
-    public static String TYPE_RDFSCLASS = RDFS_NAMSPACE + "Class";
-    public static String ONTOLOGY = "Ontology";
-    public static String PATH_ONTOLOGY = "ontology";
-    public static String TYPE_ONTOLOGY = OWL_NAMSPACE + "ontology";
-    public static String PROPERTY = "Property";
-    public static String PATH_PROPERTY = "property";
-    public static String TYPE_PROPERTY = RDF_NAMSPACE + "property";
-    public static String TERM = "Term";
-    public static String PATH_TERM = "term";
-    public static String TYPE_TERM = RDFS_NAMSPACE + "term";
-    public static String VOCABULARIES = "Vocabularies";
-    public static String PATH_VOCABULARIES = "vocabularies";
-    public static String TYPE_VOCABULARIES = OWL_NAMSPACE + "vocabularies";
-
-    public static final String HDR_OSLC_VERSION = "OSLC-Core-Version";
-    public static final String OSLC_VERSION_V2 = "2.0";
-
 }

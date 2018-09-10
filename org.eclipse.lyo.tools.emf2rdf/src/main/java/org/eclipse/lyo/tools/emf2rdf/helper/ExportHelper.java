@@ -78,7 +78,7 @@ public class ExportHelper {
             for(String shapeType : shapeTypes) {
                 outModel = builder.buildJenaModel(specification, shapeType);
                 if(Utils.getExportDestination().equalsIgnoreCase(ExportConstants.FILE)) {
-                    status = Utils.serialiseModelAsTurtle(outModel, Utils.promptForFileName("Select file name for Specification", Utils.getModellingProjectBaseFolder().toString()));
+                    status = Utils.serialiseModelAsTurtle(outModel, Utils.promptForFileName("Select file name for exporting Specification as {ShapeType}".replace("{ShapeType}", shapeType), Utils.getModellingProjectBaseFolder().toString()));
                 } else {
                     List<IResource> oslcResourceList = builder.getOSLCResources(specification, shapeType);
                     IResource[] oslcResources = oslcResourceList.toArray(new IResource[oslcResourceList.size()]);

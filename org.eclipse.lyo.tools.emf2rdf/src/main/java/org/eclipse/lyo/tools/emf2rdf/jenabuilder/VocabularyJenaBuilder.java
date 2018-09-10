@@ -46,11 +46,12 @@ import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
 import org.eclipse.lyo.oslc4j.core.model.IResource;
 import org.eclipse.lyo.oslc4j.core.model.Link;
 import org.eclipse.lyo.oslc4j.provider.jena.JenaModelHelper;
-import org.eclipse.lyo.tools.emf2rdf.constants.VocabularyClientConstants;
 import org.eclipse.lyo.tools.emf2rdf.helper.Utils;
 import org.eclipse.lyo.tools.emf2rdf.resources.Ontology;
 import org.eclipse.lyo.tools.emf2rdf.resources.Property;
+import org.eclipse.lyo.tools.emf2rdf.resources.RdfDomainConstants;
 import org.eclipse.lyo.tools.emf2rdf.resources.RdfsClass;
+import org.eclipse.lyo.tools.emf2rdf.resources.RdfsDomainConstants;
 import org.eclipse.lyo.tools.emf2rdf.resources.Term;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -167,9 +168,9 @@ public class VocabularyJenaBuilder {
     private void removeDuplicateTypeProperty(RdfsClass rdfsClass, Model tempModel) {
 
         org.apache.jena.rdf.model.Property typeProperty = ResourceFactory
-                .createProperty(VocabularyClientConstants.RDF_NAMSPACE + "type");
+                .createProperty(RdfDomainConstants.RDF_NAMSPACE + "type");
         Resource subject = ResourceFactory.createResource(rdfsClass.getAbout().toString());
-        Node node = NodeFactory.createURI(VocabularyClientConstants.TYPE_RDFSCLASS);
+        Node node = NodeFactory.createURI(RdfsDomainConstants.CLASS_TYPE);
         RDFNode typeObject = tempModel.getRDFNode(node);
 
         Statement stat = tempModel.createLiteralStatement(subject, typeProperty, typeObject);

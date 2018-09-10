@@ -33,5 +33,7 @@ public class ExportConstants {
        public static final String GRAPH_NAME = "namedGraphUri";
        public static final String USERNAME = "userName";
        public static final String PASSWORD = "password";
+       public static final String HOME_PAGE = "HomePage";
+       public static final String TRIPLE_STORE_DETAILS_PAGE = "TripleStoreDetailsPage";
        
 }

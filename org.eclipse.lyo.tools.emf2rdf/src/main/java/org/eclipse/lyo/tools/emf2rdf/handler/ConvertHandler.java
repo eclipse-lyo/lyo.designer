@@ -34,6 +34,7 @@ import org.eclipse.lyo.tools.emf2rdf.helper.Status;
 import org.eclipse.lyo.tools.emf2rdf.helper.Utils;
 import org.eclipse.lyo.tools.emf2rdf.loadmodel.EMFModelLoader;
 import org.eclipse.lyo.tools.emf2rdf.wizard.ExportDestinationWizard;
+import org.eclipse.lyo.tools.emf2rdf.wizard.ExportWizardDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.actions.ActionDelegate;
@@ -49,6 +50,7 @@ public class ConvertHandler extends ActionDelegate implements IActionDelegate {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ConvertHandler.class);
     protected List<IFile> files;
+    public static ExportDestinationWizard wizard;
 
  /*
  * This methods are used if we use menu contribution instead of object contribution in plugin.xml.
@@ -143,7 +145,8 @@ public class ConvertHandler extends ActionDelegate implements IActionDelegate {
     public Object promptForAskingExportDestination() {
         LOGGER.info("Prompted User for asking export destination.");
         Utils.populateStoreDetails();
-        WizardDialog wizardDialog = new WizardDialog(Display.getCurrent().getActiveShell(), new ExportDestinationWizard());
+        wizard = new ExportDestinationWizard();
+        WizardDialog wizardDialog = new ExportWizardDialog(Display.getCurrent().getActiveShell(), wizard );
         wizardDialog.setPageSize(140, 140);
         if (wizardDialog.open() == Window.OK) {
             return loadEMFResource();

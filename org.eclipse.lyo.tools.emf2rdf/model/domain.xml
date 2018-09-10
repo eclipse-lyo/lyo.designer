@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oslc4j_ai:Specification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:oslc4j_ai="http://org.eclipse.lyo/oslc4j/adaptorInterface">
+  <domainSpecifications name="Dublin Core" namespaceURI="http://purl.org/dc/terms/#" namespacePrefix="//@domainPrefixes.0">
+    <resourceProperties name="contributor" occurs="zeroOrMany" valueType="Resource" description="Contributor or contributors to the resource. It is likely that the target resource will be a foaf:Person but that is not necessarily the case."/>
+    <resourceProperties name="creator" occurs="zeroOrMany" valueType="Resource" representation="either" description="Creator or creators of the resource. It is likely that the target resource will be a foaf:Person but that is not necessarily the case."/>
+    <resourceProperties name="created" occurs="zeroOrOne" valueType="DateTime" description="Timestamp of resource creation"/>
+    <resourceProperties name="description" occurs="zeroOrOne" valueType="XMLLiteral" description="Descriptive text about resource represented as rich text in XHTML content. SHOULD include only content that is valid and suitable inside an XHTML &lt;div> element."/>
+    <resourceProperties name="identifier" occurs="zeroOrOne" valueType="String" description="A unique identifier for a resource. Typically read-only and assigned by the service provider when a resource is created. Not typically intended for end-user display."/>
+    <resourceProperties name="modified" occurs="zeroOrOne" valueType="DateTime" description="Timestamp of latest resource modification"/>
+    <resourceProperties name="relation" valueType="Resource" description="Relation which identifies a related resource."/>
+    <resourceProperties title="" name="subject" occurs="zeroOrMany" valueType="String" description="Tag or keyword for a resource. Each occurrence of a dcterms:subject property denotes an additional tag for the resource."/>
+    <resourceProperties name="title" valueType="XMLLiteral" description="Title of the resource represented as rich text in XHTML content. SHOULD include only content that is valid inside an XHTML &lt;span> element."/>
+    <resourceProperties name="isVersionOf" valueType="Resource" representation="reference" description="The concept resource of which this resource is a version. The subject of this property must be the version resource URI."/>
+    <resourceProperties name="source" valueType="URI"/>
+  </domainSpecifications>
+  <domainSpecifications name="RDF" namespaceURI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" namespacePrefix="//@domainPrefixes.2">
+    <resources name="Property" extends="//@domainSpecifications.2/@resources.0" resourceProperties="//@domainSpecifications.2/@resourceProperties.7 //@domainSpecifications.2/@resourceProperties.14 //@domainSpecifications.2/@resourceProperties.13"/>
+    <resourceProperties name="type" valueType="Resource" description="The resource type URIs"/>
+    <resourceProperties name="value" occurs="zeroOrOne" valueType="XMLLiteral"/>
+  </domainSpecifications>
+  <domainSpecifications name="RDFS" namespaceURI="http://www.w3.org/2000/01/rdf-schema#" namespacePrefix="//@domainPrefixes.3">
+    <resources name="Term" resourceProperties="//@domainSpecifications.2/@resourceProperties.9 //@domainSpecifications.2/@resourceProperties.2 //@domainSpecifications.2/@resourceProperties.12 //@domainSpecifications.2/@resourceProperties.10 //@domainSpecifications.2/@resourceProperties.11"/>
+    <resources name="Class" extends="//@domainSpecifications.2/@resources.0" resourceProperties="//@domainSpecifications.2/@resourceProperties.6 //@domainSpecifications.1/@resourceProperties.0"/>
+    <resourceProperties name="member" valueType="Resource" description="OSLC domains might define a number of member or contains relationships between resources. The rdfs:member property is suitable for use when only one such relationship needs to be defined, or when no additional semantics need to be implied by the property name "/>
+    <resourceProperties name="contains" occurs="zeroOrMany" valueType="Resource"/>
+    <resourceProperties name="label" occurs="zeroOrOne" valueType="XMLLiteral" description="May be used to provide a human-readable version of a resource's name."/>
+    <resourceProperties name="subClassOf" valueType="Resource" description="used to state that all the instances of one class are instances of another"/>
+    <resourceProperties name="vocabularies" occurs="zeroOrMany" valueType="Resource" range="//@domainSpecifications.4/@resources.1"/>
+    <resourceProperties name="terms" occurs="zeroOrMany" valueType="Resource" range="//@domainSpecifications.2/@resources.0"/>
+    <resourceProperties name="subClassOf" occurs="zeroOrMany" valueType="Resource" range="//@domainSpecifications.2/@resources.1"/>
+    <resourceProperties name="subPropertyOf" occurs="zeroOrMany" valueType="Resource" range="//@domainSpecifications.1/@resources.0"/>
+    <resourceProperties name="namespaceURI" valueType="String"/>
+    <resourceProperties name="name" valueType="String"/>
+    <resourceProperties name="comment" valueType="String"/>
+    <resourceProperties name="seeAlso" valueType="URI"/>
+    <resourceProperties name="isDefinedBy" valueType="URI" range="//@domainSpecifications.2/@resources.1"/>
+    <resourceProperties name="range" occurs="zeroOrMany" valueType="Resource"/>
+    <resourceProperties name="domain" occurs="zeroOrMany" valueType="Resource"/>
+  </domainSpecifications>
+  <domainSpecifications name="VANN" namespaceURI="http://purl.org/vocab/vann/" namespacePrefix="//@domainPrefixes.4">
+    <resourceProperties name="prefix" valueType="String"/>
+  </domainSpecifications>
+  <domainSpecifications name="OWL" namespaceURI="http://www.w3.org/2002/07/owl#" namespacePrefix="//@domainPrefixes.5">
+    <resources name="Vocabularies" resourceProperties="//@domainSpecifications.2/@resourceProperties.4"/>
+    <resources name="Ontology" resourceProperties="//@domainSpecifications.2/@resourceProperties.8 //@domainSpecifications.2/@resourceProperties.2 //@domainSpecifications.0/@resourceProperties.3 //@domainSpecifications.0/@resourceProperties.10 //@domainSpecifications.0/@resourceProperties.8 //@domainSpecifications.3/@resourceProperties.0 //@domainSpecifications.2/@resourceProperties.5"/>
+  </domainSpecifications>
+  <domainPrefixes name="dcterms"/>
+  <domainPrefixes name="foaf"/>
+  <domainPrefixes name="rdf"/>
+  <domainPrefixes name="rdfs"/>
+  <domainPrefixes name="vann"/>
+  <domainPrefixes name="owl"/>
+  <generationSetting javaClassPackageName="org.eclipse.lyo.tools.emf2rdf.resources" javaFilesPath="src/main/java"/>
+</oslc4j_ai:Specification>

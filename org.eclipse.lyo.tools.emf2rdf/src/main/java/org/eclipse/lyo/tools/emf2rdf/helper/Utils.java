@@ -55,6 +55,10 @@ import org.slf4j.LoggerFactory;
  */
 public class Utils {
 
+    private Utils() {
+        //Hidden since this class only provide static methods.
+    }
+    
     static Properties props = new Properties();
     static IFile ifile;
     private static final Logger LOGGER = LoggerFactory.getLogger(Utils.class);
@@ -93,6 +97,11 @@ public class Utils {
             String rdfFormat = getRDFFormat(outputFileName);
             FileOutputStream output = new FileOutputStream(new File(outputFileName));
             outModel.write(output, rdfFormat);
+            try {
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             LOGGER.info("file \"{}\" created.", outputFileName);
             return Status.SUCCESSFUL.toString();
 
