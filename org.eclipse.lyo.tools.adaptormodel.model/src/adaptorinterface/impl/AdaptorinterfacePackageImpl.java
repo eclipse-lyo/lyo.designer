@@ -386,7 +386,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_classImports() {
+	public EAttribute getAdaptorInterface_SwaggerDocumentation() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -395,7 +395,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_classImports() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -404,7 +404,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -413,7 +413,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -422,8 +422,17 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -441,24 +450,6 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResources() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(14);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResource() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_searchResources() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -467,8 +458,26 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_createResource() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResource() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_searchResources() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_createResource() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -1543,6 +1552,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH);
+		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE);
@@ -1740,6 +1750,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getAdaptorInterface_JavaFilesBasePath(), ecorePackage.getEString(), "javaFilesBasePath", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_JspFilesBasePath(), ecorePackage.getEString(), "jspFilesBasePath", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_JavascriptFilesBasePath(), ecorePackage.getEString(), "javascriptFilesBasePath", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAdaptorInterface_SwaggerDocumentation(), ecorePackage.getEBoolean(), "swaggerDocumentation", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_BackendCodeTemplate_classImports(), ecorePackage.getEString(), "backendCodeTemplate_classImports", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_BackendCodeTemplate_classMethods(), ecorePackage.getEString(), "backendCodeTemplate_classMethods", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize(), ecorePackage.getEString(), "backendCodeTemplate_servletListenerInitialize", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

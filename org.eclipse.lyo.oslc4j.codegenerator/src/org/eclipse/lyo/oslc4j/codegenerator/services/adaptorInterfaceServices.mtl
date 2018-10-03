@@ -36,6 +36,14 @@ else
 endif)
 /]
 
+[query public swaggerDocumentationEnabled(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if anAdaptorInterface.swaggerDocumentation.oclIsUndefined() then
+    false
+else
+    anAdaptorInterface.swaggerDocumentation
+endif)
+/]
+
 [query public javaName(anAdaptorInterface : AdaptorInterface, toUpperFirst : Boolean) : String = 
 javaString(anAdaptorInterface.name, 'oslc', toUpperFirst)
 /]

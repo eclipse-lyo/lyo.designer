@@ -132,6 +132,12 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
         RESOURCE_CLASSES.add([javaClassNameForService(aServiceProvider)/].class);
         [/for]
         RESOURCE_CLASSES.add([javaClassNameForResourceShapeService(anAdaptorInterface)/].class);
+        [if (anAdaptorInterface.swaggerDocumentationEnabled())]
+
+        // Swagger resources
+        RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.ApiListingResource.class);
+        RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+        [/if]
 
         // [protected ('Custom Resource Classes')]
         // [/protected]

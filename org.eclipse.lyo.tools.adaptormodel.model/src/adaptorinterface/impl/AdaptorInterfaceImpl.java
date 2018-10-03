@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavaFilesBasePath <em>Java Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJspFilesBasePath <em>Jsp Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavascriptFilesBasePath <em>Javascript Files Base Path</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#isSwaggerDocumentation <em>Swagger Documentation</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_classImports <em>Backend Code Template class Imports</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_servletListenerInitialize <em>Backend Code Template servlet Listener Initialize</em>}</li>
@@ -183,6 +184,26 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String javascriptFilesBasePath = JAVASCRIPT_FILES_BASE_PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isSwaggerDocumentation() <em>Swagger Documentation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSwaggerDocumentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SWAGGER_DOCUMENTATION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isSwaggerDocumentation() <em>Swagger Documentation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSwaggerDocumentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean swaggerDocumentation = SWAGGER_DOCUMENTATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getBackendCodeTemplate_classImports() <em>Backend Code Template class Imports</em>}' attribute.
@@ -579,6 +600,27 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSwaggerDocumentation() {
+		return swaggerDocumentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSwaggerDocumentation(boolean newSwaggerDocumentation) {
+		boolean oldSwaggerDocumentation = swaggerDocumentation;
+		swaggerDocumentation = newSwaggerDocumentation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION, oldSwaggerDocumentation, swaggerDocumentation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getBackendCodeTemplate_classImports() {
 		return backendCodeTemplate_classImports;
 	}
@@ -817,6 +859,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return getJspFilesBasePath();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				return getJavascriptFilesBasePath();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
+				return isSwaggerDocumentation();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
 				return getBackendCodeTemplate_classImports();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS:
@@ -872,6 +916,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				setJavascriptFilesBasePath((String)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
+				setSwaggerDocumentation((Boolean)newValue);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
 				setBackendCodeTemplate_classImports((String)newValue);
@@ -936,6 +983,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				setJavascriptFilesBasePath(JAVASCRIPT_FILES_BASE_PATH_EDEFAULT);
 				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
+				setSwaggerDocumentation(SWAGGER_DOCUMENTATION_EDEFAULT);
+				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
 				setBackendCodeTemplate_classImports(BACKEND_CODE_TEMPLATE_CLASS_IMPORTS_EDEFAULT);
 				return;
@@ -991,6 +1041,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return JSP_FILES_BASE_PATH_EDEFAULT == null ? jspFilesBasePath != null : !JSP_FILES_BASE_PATH_EDEFAULT.equals(jspFilesBasePath);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				return JAVASCRIPT_FILES_BASE_PATH_EDEFAULT == null ? javascriptFilesBasePath != null : !JAVASCRIPT_FILES_BASE_PATH_EDEFAULT.equals(javascriptFilesBasePath);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
+				return swaggerDocumentation != SWAGGER_DOCUMENTATION_EDEFAULT;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
 				return BACKEND_CODE_TEMPLATE_CLASS_IMPORTS_EDEFAULT == null ? backendCodeTemplate_classImports != null : !BACKEND_CODE_TEMPLATE_CLASS_IMPORTS_EDEFAULT.equals(backendCodeTemplate_classImports);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS:
@@ -1033,6 +1085,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 		result.append(jspFilesBasePath);
 		result.append(", javascriptFilesBasePath: ");
 		result.append(javascriptFilesBasePath);
+		result.append(", swaggerDocumentation: ");
+		result.append(swaggerDocumentation);
 		result.append(", backendCodeTemplate_classImports: ");
 		result.append(backendCodeTemplate_classImports);
 		result.append(", backendCodeTemplate_classMethods: ");
