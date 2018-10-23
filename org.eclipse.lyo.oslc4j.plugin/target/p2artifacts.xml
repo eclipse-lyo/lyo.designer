@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='osgi.bundle' id='org.eclipse.lyo.oslc4j.plugin' version='2.4.0.201810232325'>
+    <properties size='5'>
+      <property name='artifact.size' value='17090943'/>
+      <property name='download.size' value='17090943'/>
+      <property name='maven-groupId' value='org.eclipse.lyo.tools'/>
+      <property name='maven-artifactId' value='org.eclipse.lyo.oslc4j.plugin'/>
+      <property name='maven-version' value='2.4.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+</artifacts>

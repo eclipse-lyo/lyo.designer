@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='1'>
+  <unit id='org.eclipse.lyo.oslc4j.plugin' version='2.4.0.201810232325' singleton='false'>
+    <update id='org.eclipse.lyo.oslc4j.plugin' range='[0.0.0,2.4.0.201810232325)' severity='0'/>
+    <properties size='4'>
+      <property name='org.eclipse.equinox.p2.name' value='Plugin'/>
+      <property name='maven-groupId' value='org.eclipse.lyo.tools'/>
+      <property name='maven-artifactId' value='org.eclipse.lyo.oslc4j.plugin'/>
+      <property name='maven-version' value='2.4.0-SNAPSHOT'/>
+    </properties>
+    <provides size='35'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.lyo.oslc4j.plugin' version='2.4.0.201810232325'/>
+      <provided namespace='osgi.bundle' name='org.eclipse.lyo.oslc4j.plugin' version='2.4.0.201810232325'/>
+      <provided namespace='java.package' name='org.apache.commons.codec.binary' version='0.0.0'/>
+      <provided namespace='java.package' name='org.apache.http' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.http.client' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.http.client.methods' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.http.conn' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.http.conn.scheme' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.http.conn.ssl' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.http.entity' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.http.impl.client' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.http.message' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.http.util' version='4.1.0'/>
+      <provided namespace='java.package' name='org.apache.jena.graph' version='0.0.0'/>
+      <provided namespace='java.package' name='org.apache.jena.query' version='0.0.0'/>
+      <provided namespace='java.package' name='org.apache.jena.rdf.model' version='0.0.0'/>
+      <provided namespace='java.package' name='org.apache.jena.riot' version='0.0.0'/>
+      <provided namespace='java.package' name='org.apache.jena.riot.lang' version='0.0.0'/>
+      <provided namespace='java.package' name='org.apache.jena.shared' version='0.0.0'/>
+      <provided namespace='java.package' name='org.apache.jena.update' version='0.0.0'/>
+      <provided namespace='java.package' name='org.apache.jena.util' version='0.0.0'/>
+      <provided namespace='java.package' name='org.apache.jena.vocabulary' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.core.query' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.core.query.impl' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.oslc4j.core' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.oslc4j.core.annotation' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.oslc4j.core.exception' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.oslc4j.core.model' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.oslc4j.provider.jena' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.shacl' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.shacl.annotations' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.store' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.store.internals' version='0.0.0'/>
+      <provided namespace='java.package' name='org.eclipse.lyo.store.internals.query' version='0.0.0'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+    </provides>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='org.eclipse.lyo.oslc4j.plugin' version='2.4.0.201810232325'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: org.eclipse.lyo.oslc4j.plugin&#xA;Bundle-Version: 2.4.0.201810232325&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+</units>
