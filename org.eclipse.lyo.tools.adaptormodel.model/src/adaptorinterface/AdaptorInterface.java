@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.AdaptorInterface#getJavaFilesBasePath <em>Java Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getJspFilesBasePath <em>Jsp Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getJavascriptFilesBasePath <em>Javascript Files Base Path</em>}</li>
+ *   <li>{@link adaptorinterface.AdaptorInterface#isSwaggerDocumentation <em>Swagger Documentation</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classImports <em>Backend Code Template class Imports</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_servletListenerInitialize <em>Backend Code Template servlet Listener Initialize</em>}</li>
@@ -220,6 +221,32 @@ public interface AdaptorInterface extends EObject {
 	 * @generated
 	 */
 	void setJavascriptFilesBasePath(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Swagger Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Swagger Documentation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Swagger Documentation</em>' attribute.
+	 * @see #setSwaggerDocumentation(boolean)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_SwaggerDocumentation()
+	 * @model
+	 * @generated
+	 */
+	boolean isSwaggerDocumentation();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#isSwaggerDocumentation <em>Swagger Documentation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Swagger Documentation</em>' attribute.
+	 * @see #isSwaggerDocumentation()
+	 * @generated
+	 */
+	void setSwaggerDocumentation(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Backend Code Template class Imports</b></em>' attribute.
