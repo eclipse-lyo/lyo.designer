@@ -41,6 +41,7 @@
 [/template]
 
 [template public propertyToHtmlForCreationMethod(aProperty: ResourceProperty, aResource: Resource, aCreationDialog: Dialog, methodSignature: String)]
+@Deprecated
 static public String [propertyToHtmlForCreationMethodName(aProperty, aResource, aCreationDialog)/] (final HttpServletRequest httpServletRequest[commaSeparate(methodSignature, true, false)/])
 {
     String s = "";
@@ -436,6 +437,7 @@ public void set[javaAttributeName(aProperty, aResource).toUpperFirst()/](final [
 [comment TODO: This ToHTML is quite complicated. At the moment, I get expections because some of the properties are null.
 I am getting to many if/else-ses. I think I need to rethink calmely to have a cleaner structure. Good enough for now I hope. /]
 [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+@Deprecated
 public String [javaAttributeName(aProperty, aResource) /]ToHtml()
 {
     String s = "";
