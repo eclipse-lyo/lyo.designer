@@ -320,6 +320,19 @@ Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString()).
     endif)
 /]
 
+[query public javaAttributeGetterMethodName(aProperty: ResourceProperty, aResource: Resource) : String =
+(if (aProperty.valueType.toString() = 'Boolean') then
+    'is'
+else
+    'get'
+endif)
+.concat(javaAttributeName(aProperty, aResource).toUpperFirst())
+/]
+
+[query public javaAttributeSetterMethodName(aProperty: ResourceProperty, aResource: Resource) : String =
+'set'.concat(javaAttributeName(aProperty, aResource).toUpperFirst())
+/]
+
 [query public propertyToHtmlForCreationMethodName(aProperty: ResourceProperty, aResource: Resource, aCreationDialog: Dialog) : String =
 javaAttributeName(aProperty, aResource).concat('ToHtmlForCreation')
 .concat(

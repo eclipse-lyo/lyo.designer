@@ -1,0 +1,177 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2018 Jad El-khoury.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Jad El-khoury        - Migrate toHtml methods from the resource pojos to be embedded in jsp pages.
+ *
+ *******************************************************************************/
+/]
+
+[module resourcePropertyToHtml('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
+
+[query private getterMethodCall(aProperty: ResourceProperty, aResource : Resource, resourceJavaInstanceName: String) : String =
+resourceJavaInstanceName.concat('.').concat(javaAttributeGetterMethodName(aProperty, aResource)).concat('()')
+/]
+
+[template public propertyToHtmlForCreation(aProperty: ResourceProperty)]
+<label for="[aProperty.name/]">[aProperty.name/]: </LABEL>
+<%
+[let valueType : String = aProperty.valueType.toString()]
+[if (Sequence{'String', 'XMLLiteral', 'DateTime', 'URI', 'Double', 'Float', 'Integer'}->includes(valueType))]
+out.write("<input name=\"[javaName(aProperty, false)/]\" type=\"text\" style=\"width: 400px\" id=\"[javaName(aProperty, false)/]\" [if (Sequence{'excatlyOne', 'oneOrMany'}->includes(aProperty.occurs.toString()))]required[/if]>");
+[elseif(valueType = 'Boolean')]
+out.write("<input name=\"[javaName(aProperty, false)/]\" type=\"radio\" value=\"true\">True<input name=\"[javaName(aProperty, false)/]\" type=\"radio\" value=\"false\">False");
+[elseif(Sequence{'Resource', 'LocalResource'}->includes(valueType))]
+[comment TODO: How to deal with properties that are resources? Should then also be created, or should hte user get a list of existing such resources to choose from.
+Latter sounds most reasonable. For now just ignore such properties./]
+[/if]
+[/let]
+%>
+[/template]
+
+[template public propertyToHtml(aProperty: ResourceProperty, aResource : Resource, resourceJavaInstanceName: String, contextAdaptorInterface : AdaptorInterface)]
+[if (Sequence{'Boolean', 'String', 'XMLLiteral', 'DateTime', 'URI', 'Double', 'Float', 'Integer'}->includes(aProperty.valueType.toString()))]
+[if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))]
+[multipleLiteralPropertyToHtml(aProperty, aResource, resourceJavaInstanceName)/]
+[else]
+[singleLiteralPropertyToHtml(aProperty, aResource, resourceJavaInstanceName)/]
+[/if]
+[/if]
+[if(Sequence{'Resource'}->includes(aProperty.valueType.toString()))]
+[if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))]
+[multipleReferencePropertyToHtml(aProperty, aResource, resourceJavaInstanceName, contextAdaptorInterface)/]
+[else]
+[singleReferencePropertyToHtml(aProperty, aResource, resourceJavaInstanceName, contextAdaptorInterface)/]
+[/if]
+[/if]
+[if(Sequence{'LocalResource'}->includes(aProperty.valueType.toString()))]
+[if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))]
+[multipleLocalReferencePropertyToHtml(aProperty, aResource, resourceJavaInstanceName, contextAdaptorInterface)/]
+[else]
+[singleLocalReferencePropertyToHtml(aProperty, aResource, resourceJavaInstanceName, contextAdaptorInterface)/]
+[/if]
+[/if]
+[/template]
+
+[template private singleLiteralPropertyToHtml(aProperty: ResourceProperty, aResource : Resource, resourceJavaInstanceName: String)]
+[comment For these basic valueTypes, one can simply call toString on the attribte /]
+<%
+if ([getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/] == null) {
+    out.write("<em>null</em>");
+}
+else {
+    out.write([getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/].toString());
+}
+%>
+[/template]
+
+[template private multipleLiteralPropertyToHtml(aProperty: ResourceProperty, aResource : Resource, resourceJavaInstanceName: String)]
+[comment For these basic valueTypes, one can simply call toString on the attribte /]
+<ul>
+<%
+Iterator<[javaAttributeBaseType(aProperty) /]> itr = [getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/].iterator();
+while(itr.hasNext()) {
+    out.write("<li>" + itr.next().toString() + "</li>");
+}
+%>
+</ul>
+[/template]
+
+[template private singleReferencePropertyToHtml(aProperty: ResourceProperty, aResource : Resource, resourceJavaInstanceName: String, contextAdaptorInterface : AdaptorInterface)]
+[comment a Resource property would have the Link type/]
+<%
+if (([getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/] == null) || ([getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/].getValue() == null)) {
+    out.write("<em>null</em>");
+}
+else {
+    [if (aProperty.range->size() = 1)]
+    [comment I know that the link points to a particular resource class./]
+    %>
+    <jsp:include page="[resourceToHtmlJspRelativeFileName(aProperty.range->first(), contextAdaptorInterface)/]">
+        <jsp:param name="resourceUri" value="<%=[getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/].getValue()%>"/> 
+        </jsp:include>
+    <%
+    [else]
+    [comment The property has more than 1 range, so we can't tell exactly which of the resource types it may refer to/]
+    out.write("<a href=\"" + [getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/].getValue().toString() + "\" class=\"oslc-resource-link\">" + [getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/].getValue().toString() + "</a>");
+    [/if]
+}
+%>
+[/template]
+
+[template private multipleReferencePropertyToHtml(aProperty: ResourceProperty, aResource : Resource, resourceJavaInstanceName: String, contextAdaptorInterface : AdaptorInterface)]
+[comment a Resource property would have the Link type/]
+<ul>
+<%
+for([javaAttributeBaseType(aProperty) /] next : [getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/]) {
+    if (next.getValue() == null) {
+        out.write("<li>" + "<em>null</em>" + "</li>");
+    }
+    else {
+        [if (aProperty.range->size() = 1)]
+        [comment I know that the link points to a particular resource class./]
+        %>
+        <li>
+        <jsp:include page="[resourceToHtmlJspRelativeFileName(aProperty.range->first(), contextAdaptorInterface)/]">
+            <jsp:param name="resourceUri" value="<%=next.getValue()%>"/> 
+            </jsp:include>
+        </li>
+        <%
+        [else]
+        [comment The property has more than 1 range, so we can't tell exactly which of the resource types it may refer to/]
+        out.write("<li>" + "<a href=\"" + next.getValue().toString() + "\" class=\"oslc-resource-link\">" + next.getValue().toString() + "</a>" + "</li>");
+        [/if]
+    }
+}
+%>
+</ul>
+[/template]
+
+[template private singleLocalReferencePropertyToHtml(aProperty: ResourceProperty, aResource : Resource, resourceJavaInstanceName: String, contextAdaptorInterface : AdaptorInterface)]
+[comment a LocalResource property would return a Class./]
+<%
+if ([getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/] == null) {
+    out.write("<em>null</em>");
+}
+else {
+    %>
+    <jsp:include page="[resourceToHtmlJspRelativeFileName(aProperty.range->first(), contextAdaptorInterface)/]">
+        <jsp:param name="asLocalResource" value="true"/>
+        </jsp:include>
+    <%
+}
+%>
+[/template]
+
+[template private multipleLocalReferencePropertyToHtml(aProperty: ResourceProperty, aResource : Resource, resourceJavaInstanceName: String, contextAdaptorInterface : AdaptorInterface)]
+[comment a LocalResource property would return a Class./]
+<ul>
+<%
+for(Object next : [getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/]) {
+    %>
+    <li> 
+    <jsp:include page="[resourceToHtmlJspRelativeFileName(aProperty.range->first(), contextAdaptorInterface)/]">
+        <jsp:param name="asLocalResource" value="true"/>
+        </jsp:include>
+    </li> 
+    <%
+}
+%>
+</ul>
+[/template]
