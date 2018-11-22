@@ -101,10 +101,11 @@
 							needed for the compilation of your module. For an UML generator, use the
 							following code -->
 						<!-- For more information, please visit http://wiki.eclipse.org/Acceleo/Maven -->
+                        <packageToRegister>org.eclipse.emf.ecore.EcorePackage</packageToRegister>
+                        <packageToRegister>org.eclipse.sirius.diagram.DiagramPackage</packageToRegister>
 						<packageToRegister>adaptorinterface.AdaptorinterfacePackage</packageToRegister>
 						<packageToRegister>toolchain.ToolchainPackage</packageToRegister>
 						<packageToRegister>vocabulary.VocabularyPackage</packageToRegister>
-						<!-- <packageToRegister>org.eclipse.sirius.diagram.DiagramPackage</packageToRegister> -->
 					</packagesToRegister>
 				</configuration>
 			</plugin>
