@@ -36,7 +36,7 @@ import vocabulary.Vocabulary;
 /**
  * @author Yash Khatri
  * @version $version-stub$
- * @since 2.4.0-SNAPSHOT
+ * @since 2.4.0
  */
 
 public class ConfirmDeletionServices {
@@ -53,7 +53,7 @@ public class ConfirmDeletionServices {
      * delete should be deleted from the graphical diagram only or from the
      * underlying model as well.
      * </p>
-     * 
+     *
      * @param self
      *            The EObject that is in question to be deleted.
      * @return boolean true; if the EObject should be deleted from model and from
