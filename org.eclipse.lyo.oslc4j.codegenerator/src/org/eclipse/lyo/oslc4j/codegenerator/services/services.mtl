@@ -207,3 +207,11 @@ endif)
 (aString.oclIsUndefined())._or(aString.trim().equalsIgnoreCase(''))
 /]
 
+[query public annotationConsumesRDF(ai: AdaptorInterface) : String =
+'@Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_JSON_LD, OslcMediaType.TEXT_TURTLE, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON })'
+/]
+
+[query public annotationProducesRDF(ai: AdaptorInterface) : String =
+'@Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_JSON_LD, OslcMediaType.TEXT_TURTLE, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})'
+/]
+

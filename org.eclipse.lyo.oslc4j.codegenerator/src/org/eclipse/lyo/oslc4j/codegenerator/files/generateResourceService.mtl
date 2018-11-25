@@ -60,20 +60,20 @@ import io.swagger.annotations.ApiOperation;
 
 
 [template public swaggerApiOperationAnnotation(aQueryCapability: QueryCapability, anAdaptorInterface: AdaptorInterface)]
-[swaggerApiOperationAnnotation('Query capability', aQueryCapability.resourceTypes, 
-    'OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE + ", " + MediaType.TEXT_HTML', 
+[swaggerApiOperationAnnotation('Query capability', aQueryCapability.resourceTypes,
+    'OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE + ", " + MediaType.TEXT_HTML',
     anAdaptorInterface)/]
 [/template]
 
 [template public swaggerApiOperationAnnotation(aCreationFactory: CreationFactory, anAdaptorInterface: AdaptorInterface)]
-[swaggerApiOperationAnnotation('Creation factory', aCreationFactory.resourceTypes, 
-    'OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE', 
+[swaggerApiOperationAnnotation('Creation factory', aCreationFactory.resourceTypes,
+    'OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE',
     anAdaptorInterface)/]
 [/template]
 
 [template public swaggerApiOperationAnnotation(aBasicCapability: BasicCapability, aResource: Resource, method: String, anAdaptorInterface: AdaptorInterface)]
-[swaggerApiOperationAnnotation(method, Set {aResource}, 
-    'OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE + ", " + MediaType.TEXT_HTML + ", " + OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML', 
+[swaggerApiOperationAnnotation(method, Set {aResource},
+    'OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE + ", " + MediaType.TEXT_HTML + ", " + OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML',
     anAdaptorInterface)/]
 [/template]
 
@@ -201,7 +201,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     )
     @GET
     [JAXRSPathAnnotation(aQueryCapability.URISegment())/]
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
+    [annotationProducesRDF(anAdaptorInterface) /]
     [aQueryCapability.swaggerApiOperationAnnotation(anAdaptorInterface)
     /]public [queryMethodReturnType(aQueryCapability, true)/] [queryMethodName(aQueryCapability, true)/](
                                                     [commaSeparate(queryMethodSignature(aQueryCapability, true), false, true) /]
@@ -339,8 +339,8 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     )
     @POST
     [JAXRSPathAnnotation(aCreationFactory.URISegment()) /]
-    @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
+    [annotationConsumesRDF(anAdaptorInterface) /]
+    [annotationProducesRDF(anAdaptorInterface) /]
     [aCreationFactory.swaggerApiOperationAnnotation(anAdaptorInterface)
     /]public [creationMethodReturnType(aCreationFactory)/] [creationMethodName(aCreationFactory)/](
             [commaSeparate(creationMethodSignature(aCreationFactory, true), false, true)/]
@@ -477,7 +477,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     [for (aResource: Resource | aBasicCapability.resourceTypes)]
     @GET
     [JAXRSPathAnnotation(aResource.instanceURISegment(aBasicCapability))/]
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
+    [annotationProducesRDF(anAdaptorInterface) /]
     [aBasicCapability.swaggerApiOperationAnnotation(aResource, 'GET', anAdaptorInterface)
     /]public [getResourceMethodReturnType(aBasicCapability, aResource, true)/] [getResourceMethodName(aBasicCapability, aResource, true)/](
                 [commaSeparate(instanceMethodSignature(aResource, aBasicCapability, true), false, false)/]
@@ -652,7 +652,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     [for (aResource: Resource | aBasicCapability.resourceTypes)]
     @PUT
     [JAXRSPathAnnotation(aResource.instanceURISegment(aBasicCapability))/]
-    @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON, OslcMediaType.TEXT_TURTLE})
+    [annotationConsumesRDF(anAdaptorInterface) /]
     [aBasicCapability.swaggerApiOperationAnnotation(aResource, 'PUT', anAdaptorInterface)
     /]public [updateResourceMethodReturnType(aBasicCapability, aResource)/] [updateResourceMethodName(aBasicCapability, aResource)/](
             @HeaderParam("If-Match") final String eTagHeader,
