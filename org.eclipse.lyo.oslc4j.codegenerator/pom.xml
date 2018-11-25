@@ -3,20 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-
-	<!-- ###################################################################################################### -->
-	<!-- ###################################################################################################### -->
-	<!-- ###################################################################################################### -->
-	<!-- ###################################################################################################### -->
-
-	<!-- The maven integration will be improved so keep an eye on the Acceleo 
-		wiki: http://wiki.eclipse.org/Acceleo/Maven -->
-
-	<!-- ###################################################################################################### -->
-	<!-- ###################################################################################################### -->
-	<!-- ###################################################################################################### -->
-
-
 	<parent>
 		<groupId>org.eclipse.lyo.tools</groupId>
 		<artifactId>tools-parent</artifactId>
@@ -25,7 +11,6 @@
 	</parent>
 
 	<artifactId>org.eclipse.lyo.oslc4j.codegenerator</artifactId>
-	<version>2.4.0-SNAPSHOT</version> <!-- This version should match the version of your project in the MANIFEST.MF -->
 	<packaging>eclipse-plugin</packaging>
 
 	<properties>
@@ -36,17 +21,17 @@
 		<dependency>
 			<groupId>org.eclipse.lyo.tools</groupId>
 			<artifactId>org.eclipse.lyo.oslc4j.adaptormodel</artifactId>
-			<version>2.4.0-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.lyo.tools</groupId>
 			<artifactId>org.eclipse.lyo.tools.adaptormodel.model</artifactId>
-			<version>2.4.0-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
         <dependency>
             <groupId>org.eclipse.lyo.tools</groupId>
             <artifactId>org.eclipse.lyo.tools.vocabulary.model</artifactId>
-            <version>2.4.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
 
@@ -90,18 +75,11 @@
 							</entry>
 						</entries>
 						<jars>
-							<!-- <jar>p2.eclipse-plugin:org.eclipse.lyo.tools.adaptormodel.model</jar> -->
-							<!-- <jar>org.eclipse.lyo.tools.adaptormodel.model</jar> -->
-                            <!-- <jar>org.eclipse.lyo.tools:org.eclipse.lyo.tools.adaptormodel.model</jar> -->
-							<jar>${project.basedir}/../org.eclipse.lyo.tools.adaptormodel.model/target/org.eclipse.lyo.tools.adaptormodel.model-2.4.0-SNAPSHOT.jar</jar>
-                            <jar>${project.basedir}/../org.eclipse.lyo.tools.vocabulary.model/target/org.eclipse.lyo.tools.vocabulary.model-2.4.0-SNAPSHOT.jar</jar>
-							<!-- <jar>C:\Users\jad\git\org.eclipse.lyo.tools\org.eclipse.lyo.tools.adaptormodel.model\target\org.eclipse.lyo.tools.adaptormodel.model-2.4.0-SNAPSHOT.jar</jar> -->
+							<jar>${project.basedir}/../org.eclipse.lyo.tools.adaptormodel.model/target/org.eclipse.lyo.tools.adaptormodel.model-${project.parent.version}.jar</jar>
+							<jar>${project.basedir}/../org.eclipse.lyo.tools.vocabulary.model/target/org.eclipse.lyo.tools.vocabulary.model-${project.parent.version}.jar</jar>
 						</jars>
 					</acceleoProject>
 					<packagesToRegister>
-						<!-- Please add the name of the Java class of the packages that are 
-							needed for the compilation of your module. For an UML generator, use the 
-							following code -->
 						<!-- For more information, please visit http://wiki.eclipse.org/Acceleo/Maven -->
 						<packageToRegister>adaptorinterface.AdaptorinterfacePackage</packageToRegister>
                         <packageToRegister>vocabulary.VocabularyPackage</packageToRegister>
@@ -110,10 +88,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<!-- <pluginRepositories> -->
-	<!-- <pluginRepository> -->
-	<!-- <id>Eclipse - Acceleo Release</id> -->
-	<!-- <url>https://repo.eclipse.org/content/repositories/acceleo-releases</url> -->
-	<!-- </pluginRepository> -->
-	<!-- </pluginRepositories> -->
 </project>
