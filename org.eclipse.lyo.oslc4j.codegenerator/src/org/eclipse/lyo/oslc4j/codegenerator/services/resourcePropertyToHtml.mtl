@@ -85,9 +85,9 @@ else {
 [comment For these basic valueTypes, one can simply call toString on the attribte /]
 <ul>
 <%
-Iterator<[javaAttributeBaseType(aProperty) /]> itr = [getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/].iterator();
-while(itr.hasNext()) {
-    out.write("<li>" + itr.next().toString() + "</li>");
+Iterator<[javaAttributeBaseType(aProperty) /]> [javaAttributeName(aProperty, aResource)/]Itr = [getterMethodCall(aProperty, aResource, resourceJavaInstanceName)/].iterator();
+while([javaAttributeName(aProperty, aResource)/]Itr.hasNext()) {
+    out.write("<li>" + [javaAttributeName(aProperty, aResource)/]Itr.next().toString() + "</li>");
 }
 %>
 </ul>

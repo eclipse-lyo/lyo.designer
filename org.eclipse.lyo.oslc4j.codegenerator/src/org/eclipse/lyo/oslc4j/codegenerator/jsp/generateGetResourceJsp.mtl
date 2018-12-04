@@ -71,7 +71,11 @@ To revert to the default generated content, delete all content in this file, and
 
 <%@page import="org.eclipse.lyo.oslc4j.core.model.Link" %>
 <%@page import="org.eclipse.lyo.oslc4j.core.model.ServiceProvider"%>
-<%@page import="java.util.List" %>
+<%@page import="java.net.URI"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Iterator"%>
 <%@page import="[javaClassFullName(aResource, contextAdaptorInterface, null) /]"%>
 
 <%@ page contentType="text/html" language="java" pageEncoding="UTF-8" %>
