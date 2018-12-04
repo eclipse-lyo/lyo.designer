@@ -376,4 +376,3 @@ methodSignature(instanceCompositeID(aResource, aBasicCapability), forJAXRSMethod
 [query public instanceMethodParameterList(aResource: Resource, aBasicCapability: BasicCapability) : String =  
 methodParameterList(instanceCompositeID(aResource, aBasicCapability))
 /]
-
