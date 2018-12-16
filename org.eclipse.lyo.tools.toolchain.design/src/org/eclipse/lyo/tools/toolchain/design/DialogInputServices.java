@@ -23,6 +23,8 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
+
 public class DialogInputServices {
 
 	public DialogInputServices() {
@@ -36,7 +38,10 @@ public class DialogInputServices {
 	}
 
 	public String promptForString(EObject self, String title, String message, String initialValue) {
-        InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(), title, message, initialValue, null);
+		
+		ServiceProviderCatalog x = new ServiceProviderCatalog();
+
+		InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(), title, message, initialValue, null);
         if (dlg.open() == Window.OK) {
             return dlg.getValue();
         } else {
