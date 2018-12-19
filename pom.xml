@@ -15,6 +15,9 @@
 	</properties>
 
 	<modules>
+		<module>oslc4j-repackaging-jersey</module>
+		<module>oslc4j-bundle</module>
+
 		<module>org.eclipse.lyo.oslc4j.adaptormodel</module>
 
 		<module>org.eclipse.lyo.tools.adaptormodel.edit</module>
@@ -49,6 +52,16 @@
 		<repository>
 			<id>acceleo</id>
 			<url>https://repo.eclipse.org/content/repositories/acceleo-releases/</url>
+		</repository>
+		<repository>
+		  <id>lyo-releases</id>
+		  <name>lyo-releases repository</name>
+		  <url>https://repo.eclipse.org/content/repositories/lyo-releases/</url>
+		</repository>
+		<repository>
+		  <id>lyo-snapshots</id>
+		  <name>lyo-snapshots repository</name>
+		  <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
 		</repository>
 	</repositories>
 
