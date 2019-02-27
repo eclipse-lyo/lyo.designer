@@ -27,6 +27,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyToHtml/]
 
 [template public generateResourceCreatorJsp(aCreationDialog: Dialog)]
 [file (resourceCreatorJspFullFileName(aCreationDialog), false, 'UTF-8')]
@@ -97,12 +98,16 @@ To revert to the default generated content, delete all content in this file, and
         best possibility to modify the generated stuff. (hiding fields, changing the format, removing fields, etc.)/]
         [for (aProperty: ResourceProperty | (aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))]
           <tr>
-            <td><%= [javaClassName(aResource)/].[propertyToHtmlForCreationMethodName(aProperty, aResource, aCreationDialog)/](request[commaSeparate(dialogMethodParameterList(aCreationDialog, false), true, false)/])%></td>
+            <td>
+            [propertyToHtmlForCreation(aProperty)/]
+            </td>
           </tr>
         [/for]
         [for (aProperty: ResourceProperty | inheritedProperties(aResource))]
           <tr>
-            <td><%= [javaClassName(aResource)/].[propertyToHtmlForCreationMethodName(aProperty, aResource, null)/](request)%></td>
+            <td>
+            [propertyToHtmlForCreation(aProperty)/]
+            </td>
           </tr>
         [/for]
         [/let]

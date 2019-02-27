@@ -50,6 +50,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateCssAndJsFiles/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateResourceCollectionJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateFilteredResourceCollectionJsp/]
+[import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateResourceToHtmlJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateGetResourceJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateGetResourceSmallPreviewJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateGetResourceLargePreviewJsp/]
@@ -108,6 +109,7 @@
 [for (aResource: Resource | relevantResources(anAdaptorInterface))]
     [aResource.generateResource(anAdaptorInterface, null, null) /]
     [aResource.generateResourceInterface(anAdaptorInterface, anAdaptorInterface, null, null) /]
+    [aResource.generateResourceToHtmlJsp(anAdaptorInterface) /]
 [/for]
 [/template]
 

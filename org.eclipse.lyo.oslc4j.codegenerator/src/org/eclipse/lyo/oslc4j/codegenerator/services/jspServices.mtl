@@ -40,6 +40,13 @@ jspFilesWebappPath(containingAdaptorInterface(aQueryCapability)).concatenatePath
 jspFilesBasePath(containingAdaptorInterface(aQueryCapability)).concatenatePaths(resourceCollectionJspRelativeFileName(aQueryCapability))
 /]
 
+[query public resourceToHtmlJspRelativeFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
+jspFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)).concat('ToHtml').concat('.jsp').toLower()
+/]
+[query public resourceToHtmlJspFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
+jspFilesBasePath(anAdaptorInterface).concatenatePaths(resourceToHtmlJspRelativeFileName(aResource, anAdaptorInterface))
+/]
+
 [query public getResourceJspRelativeFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
 jspFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)).concat('.jsp').toLower()
 /]

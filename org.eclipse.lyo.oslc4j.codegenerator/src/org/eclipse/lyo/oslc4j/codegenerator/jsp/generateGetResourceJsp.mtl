@@ -29,6 +29,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyToHtml/]
 
 [template public generateGetResourceJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface)]
 [file (getResourceJspFullFileName(aResource, contextAdaptorInterface), false, 'UTF-8')]
@@ -68,8 +69,13 @@ To revert to the default generated content, delete all content in this file, and
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<%@page import="org.eclipse.lyo.oslc4j.core.model.Link" %>
 <%@page import="org.eclipse.lyo.oslc4j.core.model.ServiceProvider"%>
-<%@page import="java.util.List" %>
+<%@page import="java.net.URI"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Iterator"%>
 <%@page import="[javaClassFullName(aResource, contextAdaptorInterface, null) /]"%>
 
 <%@ page contentType="text/html" language="java" pageEncoding="UTF-8" %>
@@ -83,7 +89,7 @@ To revert to the default generated content, delete all content in this file, and
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title><%= a[javaName(aResource, true)/].toString(true) %></title>
+  <title><%= a[javaName(aResource, true)/].toString() %></title>
 
   <link href="<c:url value="/static/css/bootstrap-4.0.0-beta.min.css"/>" rel="stylesheet">
   <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
@@ -109,7 +115,7 @@ To revert to the default generated content, delete all content in this file, and
     <div class="page-header">
         <h1>[aResource.name /] resource</h1>
         <p class="lead">URI:&nbsp;
-      <a href="<%= a[javaName(aResource, true)/].getAbout() %>"><%= a[javaName(aResource, true)/].getAbout() %></a>
+        <jsp:include page="[resourceToHtmlJspRelativeFileName(aResource, contextAdaptorInterface)/]"></jsp:include>
         </p>
     </div>
         <h2>Properties</h2>
@@ -119,7 +125,9 @@ To revert to the default generated content, delete all content in this file, and
           [for (aProperty: ResourceProperty | propertiesCollection)]
           <dl class="row">
             <dt  class="col-sm-2 text-right">[aProperty.name /]</dt>
-            <dd class="col-sm-9"><%= a[javaName(aResource, true)/].[javaAttributeName(aProperty, aResource) /]ToHtml()%></dd>
+            <dd class="col-sm-9">
+            [propertyToHtml(aProperty, aResource, 'a'.concat(javaName(aResource, true)), contextAdaptorInterface) /]
+            </dd>
           </dl>
           [/for]
           [/for]
