@@ -64,8 +64,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
-import org.eclipse.lyo.oslc4j.application.OslcWinkApplication;
 import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
 import org.eclipse.lyo.oslc4j.core.model.AllowedValues;
 import org.eclipse.lyo.oslc4j.core.model.Compact;
@@ -81,6 +79,7 @@ import org.eclipse.lyo.oslc4j.core.model.Property;
 import org.eclipse.lyo.oslc4j.core.model.Publisher;
 import org.eclipse.lyo.oslc4j.core.model.QueryCapability;
 import org.eclipse.lyo.oslc4j.core.model.ResourceShape;
+import org.eclipse.lyo.oslc4j.core.model.ResourceShapeFactory;
 import org.eclipse.lyo.oslc4j.core.model.Service;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
@@ -105,7 +104,7 @@ import [javaClassFullNameForResourceShapeService(anAdaptorInterface) /];
 // [protected ('pre_class_code')]
 // [/protected]
 
-public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends OslcWinkApplication {
+public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends javax.ws.rs.core.Application {
 
     private static final Set<Class<?>>         RESOURCE_CLASSES                          = new HashSet<Class<?>>();
     private static final Map<String, Class<?>> RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP = new HashMap<String, Class<?>>();
@@ -168,9 +167,15 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
            throws OslcCoreApplicationException,
                   URISyntaxException
     {
-        super(RESOURCE_CLASSES,
-              OslcConstants.PATH_RESOURCE_SHAPES,
-              RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP);
+        final String BASE_URI = "http://localhost/validatingResourceShapes";
+        for (final Map.Entry<String, Class<?>> entry : RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.entrySet()) {
+            ResourceShapeFactory.createResourceShape(BASE_URI, OslcConstants.PATH_RESOURCE_SHAPES, entry.getKey(), entry.getValue());
+        }
+    }
+
+    @Override 
+    public Set<Class<?>> getClasses() { 
+        return RESOURCE_CLASSES; 
     }
 
     public static Map<String, Class<?>> getResourceShapePathToResourceClassMap() {
