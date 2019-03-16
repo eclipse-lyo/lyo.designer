@@ -179,7 +179,7 @@ endif)
 aProperty.definingDomainSpecification().namespaceURI.concat('#').concat(javaName(aProperty, false))
 /]
 
-[query public javaAttributeTypeNeedsConstruction(aProperty: ResourceProperty) : Boolean =
+[query private javaAttributeTypeNeedsConstruction(aProperty: ResourceProperty) : Boolean =
 Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString())._or(Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))
 /]
 
@@ -235,7 +235,7 @@ Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString()).
 [comment TODO: If occurs = 'zeroOrMany', it is not 100% clear when to use Set and when to use ArrayList, or TreeSet./]
 [query public javaAttributeTypeDeclaration(aProperty: ResourceProperty) : String =
     (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
-        'HashSet<'
+        'Set<'
     else
         ''
     endif)
@@ -248,19 +248,12 @@ Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString()).
     endif))
 /]
 
-[query public javaAttributeTypeDeclarationIn(aProperty: ResourceProperty) : String =
-    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
-        'Set<'
+[query public javaAttributeInitialConstruction(aProperty: ResourceProperty) : String =
+    (if (javaAttributeTypeNeedsConstruction(aProperty)) then
+        ' = new '.concat('HashSet<').concat(javaAttributeBaseType(aProperty)).concat('>').concat('()')
     else
         ''
     endif)
-	.concat(javaAttributeBaseType(aProperty))
-	.concat(
-    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
-        '>'
-    else
-        ''
-    endif))
 /]
 
 [comment For Resource properties, we always have a Link type. That is how OSLC4 wants it. /]
