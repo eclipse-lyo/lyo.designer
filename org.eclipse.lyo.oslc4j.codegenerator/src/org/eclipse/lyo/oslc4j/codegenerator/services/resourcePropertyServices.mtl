@@ -180,7 +180,7 @@ aProperty.definingDomainSpecification().namespaceURI.concat('#').concat(javaName
 /]
 
 [query private javaAttributeTypeNeedsConstruction(aProperty: ResourceProperty) : Boolean =
-Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString())._or(Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))
+Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())
 /]
 
 [query public javaAttributeBaseTypeCastFromString(aProperty: ResourceProperty, variable: String) : String =
