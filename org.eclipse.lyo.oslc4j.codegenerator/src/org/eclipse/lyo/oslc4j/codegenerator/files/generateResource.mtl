@@ -187,7 +187,7 @@ public class [javaClassName(aResource) /]
 [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
 // [protected ('attributeAnnotation:'.concat(javaAttributeName(aProperty, aResource)))]
 // [/protected]
-private [javaAttributeTypeDeclaration(aProperty) /] [javaAttributeName(aProperty, aResource)/][if javaAttributeTypeNeedsConstruction(aProperty)] = new [javaAttributeTypeDeclaration(aProperty)/]()[/if];
+private [javaAttributeTypeDeclaration(aProperty) /] [javaAttributeName(aProperty, aResource)/][javaAttributeInitialConstruction(aProperty)/];
 [/for]
 [/template]
 
@@ -406,7 +406,7 @@ public [javaAttributeTypeDeclaration(aProperty) /] [javaAttributeGetterMethodNam
 [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
 // [protected ('setterAnnotation:'.concat(javaAttributeName(aProperty, aResource)))]
 // [/protected]
-public void [javaAttributeSetterMethodName(aProperty, aResource)/](final [javaAttributeTypeDeclarationIn(aProperty) /] [javaName(aProperty, false)/] )
+public void [javaAttributeSetterMethodName(aProperty, aResource)/](final [javaAttributeTypeDeclaration(aProperty) /] [javaName(aProperty, false)/] )
 {
     // [protected ('setterInit:'.concat(javaAttributeName(aProperty, aResource)))]
     // [/protected]

@@ -163,7 +163,7 @@ public interface [javaInterfaceName(aResource) /]
 [/for]
 
 [for (aProperty: ResourceProperty | aResource.resourceProperties)]
-    public void set[javaAttributeName(aProperty, aResource).toUpperFirst()/](final [javaAttributeTypeDeclarationIn(aProperty) /] [javaName(aProperty, false)/] );
+    public void set[javaAttributeName(aProperty, aResource).toUpperFirst()/](final [javaAttributeTypeDeclaration(aProperty) /] [javaName(aProperty, false)/] );
 [/for]
 }
 

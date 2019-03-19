@@ -98,7 +98,7 @@ public class [javaClassNameForClient(aRequiredAdaptor) /]
 [for (aResource: Resource | servicedResources(aRequiredAdaptor)->sortedBy(name)) separator(lineSeparator()) ]
     public static [javaClassName(aResource) /] get[javaName(aResource, true)/](String resourceURI) throws Exception {
         OslcClient client = new OslcClient();
-        ClientResponse response = null;
+        Response response = null;
         [javaClassName(aResource) /] resource = null;
 
         // [protected ('get'.concat(javaName(aResource, true)).concat('_init'))]
@@ -106,7 +106,7 @@ public class [javaClassNameForClient(aRequiredAdaptor) /]
 
         response = client.getResource(resourceURI, OSLCConstants.CT_RDF);
         if (response != null) {
-            resource = response.getEntity([javaClassName(aResource) /].class);
+            resource = response.readEntity([javaClassName(aResource) /].class);
         }
         // [protected ('get'.concat(javaName(aResource, true)).concat('_final'))]
         // [/protected]
