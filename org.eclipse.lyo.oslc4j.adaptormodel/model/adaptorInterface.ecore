@@ -40,9 +40,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Specification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecifications" upperBound="-1"
-        eType="#//DomainSpecification" containment="true"/>
+        eType="#//DomainSpecification" containment="true" eKeys="#//DomainSpecification/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainPrefixes" upperBound="-1"
-        eType="#//NamespacePrefix" containment="true"/>
+        eType="#//NamespacePrefix" containment="true" eKeys="#//NamespacePrefix/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="generationSetting" eType="#//GenerationSetting"
         containment="true"/>
   </eClassifiers>
@@ -53,15 +53,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="namespacePrefix" lowerBound="1"
         eType="#//NamespacePrefix"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
-        eType="#//Resource" containment="true"/>
+        eType="#//Resource" containment="true" eKeys="#//Resource/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceProperties" upperBound="-1"
-        eType="#//ResourceProperty" containment="true"/>
+        eType="#//ResourceProperty" containment="true" eKeys="#//ResourceProperty/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="generationSetting" eType="#//GenerationSetting"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="shaclShapes" upperBound="-1"
-        eType="#//ShaclShape" containment="true"/>
+        eType="#//ShaclShape" containment="true" eKeys="#//ShaclShape/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="shaclProperties" upperBound="-1"
-        eType="#//ShaclProperty" containment="true"/>
+        eType="#//ShaclProperty" containment="true" eKeys="#//ShaclProperty/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamespacePrefix">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

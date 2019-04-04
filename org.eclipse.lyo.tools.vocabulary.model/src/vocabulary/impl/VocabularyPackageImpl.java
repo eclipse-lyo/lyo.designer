@@ -407,6 +407,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         // Initialize classes, features, and operations; add parameters
         initEClass(vocabulariesEClass, Vocabularies.class, "Vocabularies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getVocabularies_Vocabularies(), this.getVocabulary(), null, "vocabularies", null, 0, -1, Vocabularies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        getVocabularies_Vocabularies().getEKeys().add(this.getVocabulary_Label());
 
         initEClass(vocabularyEClass, Vocabulary.class, "Vocabulary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getVocabulary_NamespaceURI(), ecorePackage.getEString(), "namespaceURI", null, 1, 1, Vocabulary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -415,7 +416,9 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         initEAttribute(getVocabulary_Source(), ecorePackage.getEString(), "source", null, 1, 1, Vocabulary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getVocabulary_PreferredNamespacePrefix(), ecorePackage.getEString(), "preferredNamespacePrefix", null, 1, 1, Vocabulary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getVocabulary_Classes(), this.getClass_(), null, "classes", null, 0, -1, Vocabulary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        getVocabulary_Classes().getEKeys().add(this.getTerm_Name());
         initEReference(getVocabulary_Properties(), this.getProperty(), null, "properties", null, 0, -1, Vocabulary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        getVocabulary_Properties().getEKeys().add(this.getTerm_Name());
 
         initEClass(termEClass, Term.class, "Term", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTerm_Name(), ecorePackage.getEString(), "name", null, 1, 1, Term.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

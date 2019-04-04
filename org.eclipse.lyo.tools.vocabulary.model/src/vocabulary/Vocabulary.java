@@ -170,7 +170,7 @@ public interface Vocabulary extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Classes</em>' containment reference list.
      * @see vocabulary.VocabularyPackage#getVocabulary_Classes()
-     * @model containment="true"
+     * @model containment="true" keys="name"
      * @generated
      */
     EList<vocabulary.Class> getClasses();
@@ -186,7 +186,7 @@ public interface Vocabulary extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Properties</em>' containment reference list.
      * @see vocabulary.VocabularyPackage#getVocabulary_Properties()
-     * @model containment="true"
+     * @model containment="true" keys="name"
      * @generated
      */
     EList<Property> getProperties();
