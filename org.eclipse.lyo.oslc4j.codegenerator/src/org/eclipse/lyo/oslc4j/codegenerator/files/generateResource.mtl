@@ -304,7 +304,7 @@ public String toString(boolean asLocalResource)
         // [/protected]
     }
     else {
-        result = getAbout().toString();
+        result = String.valueOf(about);
     }
 
     // [protected ('toString_finalize')]
