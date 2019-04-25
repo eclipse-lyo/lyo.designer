@@ -10,22 +10,11 @@ Lyo Designer includes a integrated code generator that synthesizes the model int
 A short [video demonstration of Lyo Designer](https://www.youtube.com/watch?v=tZxPzlSTdeM).
 
 ## Installation
-The easiest way to install Lyo Designer is via the update-site
-<http://download.eclipse.org/lyo/p2/stable/>. (This URL is intended to
-be accessed via the Eclipse update functionality, and not via a web
-browser.)
 
-1.  Select ***Help \--\> Install New Software\...***
-2.  Set ***Work With:*** to the update site
-    <http://download.eclipse.org/lyo/p2/stable/>
-3.  Select both features (1) ***Lyo Code Generator*** and (2) ***Lyo
-    Toolchain Designer***.
-4.  Proceed with the installation steps.
-
+For complete details, see [Lyo Designer installation guide](http://oslc.github.io/developing-oslc-applications/eclipse_lyo/install-lyo-designer.html).
 
 ## Tutorials and Documentation
 
-* How to [install Lyo Designer](https://github.com/eclipse/lyo.designer/wiki/Installing-Lyo-Designer)
-* How to [use Lyo Designer](https://github.com/eclipse/lyo.designer/wiki/User-Manual-for-Toolchain-Modelling) to model a toolchain and generate an initial code base
-* How to [use Lyo Designer](https://github.com/eclipse/lyo.designer/wiki/User-Manual-for-Domain-Specification-Modelling) to model domain specifications, and generate OSLC4J-annotated Java classes to reflect the defined OSLC Resources. 
+* How to [use Lyo Designer](http://oslc.github.io/developing-oslc-applications/eclipse_lyo/toolchain-modelling-workshop.html) to model a toolchain and generate an initial code base
+* How to [use Lyo Designer](http://oslc.github.io/developing-oslc-applications/eclipse_lyo/domain-specification-modelling-workshop.html) to model domain specifications, and generate OSLC4J-annotated Java classes to reflect the defined OSLC Resources. 
 * [Working with Lyo Designer from source code](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code)
