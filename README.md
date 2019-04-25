@@ -15,6 +15,7 @@ For complete details, see [Lyo Designer installation guide](http://oslc.github.i
 
 ## Tutorials and Documentation
 
-* How to [use Lyo Designer](http://oslc.github.io/developing-oslc-applications/eclipse_lyo/toolchain-modelling-workshop.html) to model a toolchain and generate an initial code base
-* How to [use Lyo Designer](http://oslc.github.io/developing-oslc-applications/eclipse_lyo/domain-specification-modelling-workshop.html) to model domain specifications, and generate OSLC4J-annotated Java classes to reflect the defined OSLC Resources. 
+* How to [model a toolchain with Lyo Designer](http://oslc.github.io/developing-oslc-applications/eclipse_lyo/toolchain-modelling-workshop.html), and generate an initial code base
+* How to [model domain specifications with Lyo Designer](http://oslc.github.io/developing-oslc-applications/eclipse_lyo/domain-specification-modelling-workshop.html), and generate OSLC4J-annotated Java classes to reflect the defined OSLC Resources. 
+* Some [FAQs](https://github.com/eclipse/lyo.designer/wiki/FAQ).
 * [Working with Lyo Designer from source code](https://github.com/eclipse/lyo.designer/wiki/Working-from-Source-Code)
