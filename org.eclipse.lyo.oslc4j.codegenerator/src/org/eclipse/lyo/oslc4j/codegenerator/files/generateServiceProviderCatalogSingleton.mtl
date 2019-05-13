@@ -119,6 +119,8 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
     serviceProviders as some Dictionary, where the key is the SP name, and the
     value is the SortedMap below/]
     private static final SortedMap<String, ServiceProvider> serviceProviders = new TreeMap<String, ServiceProvider>();
+    // [protected ('class_attributes')]
+    // [/protected]
 
     static {
         serviceProviderCatalog = new ServiceProviderCatalog();
@@ -132,6 +134,9 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         serviceProviderCatalog.getPublisher().setIcon(new URI("[aServiceProviderCatalog.publisher.icon /]"));
         [/if]
     }
+
+    // [protected ('class_methods')]
+    // [/protected]
 
     private [javaClassNameForSingleton(aServiceProviderCatalog) /]()
     {
