@@ -1,0 +1,7 @@
+[comment encoding = UTF-8 /]
+[module osgiServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[query public getOSGiBundleVersion(anOclAny: OclAny) : String
+	= invoke('org.eclipse.lyo.oslc4j.codegenerator.services.OsgiServices', 'getOSGiBundleVersion()', Sequence{})
+/]
+
