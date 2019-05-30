@@ -181,7 +181,7 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
 
     private static String [aServiceProvider.javaName(false)/]Identifier([aServiceProvider.instanceMethodSignature() /])
     {
-        String identifier = [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator('+')]"/" + [instanceCompositeID /][/for];
+        String identifier = [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(' + "/" + ')][instanceCompositeID/][/for];
         return identifier;
     }
 
@@ -216,28 +216,11 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
 
     public static ServiceProvider create[aServiceProvider.javaName(true)/](final [javaClassName(aServiceProvider) /] serviceProviderInfo) 
             throws OslcCoreApplicationException, URISyntaxException, IllegalArgumentException {
-        String basePath = OSLC4JUtils.getServletURI();
         String identifier = [aServiceProvider.javaName(false)/]Identifier([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for]);
         if (contains[aServiceProvider.javaName(true)/]([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for])) {
             throw new IllegalArgumentException(String.format("The SP '%s' was already registered", identifier));
         }
-
-        String serviceProviderName = serviceProviderInfo.name;
-        String title = String.format("Service Provider '%s'", serviceProviderName);
-        String description = String.format("%s (id: %s; kind: %s)",
-            "[aServiceProvider.description /]",
-            identifier,
-            "[aServiceProvider.title /]");
-        [if (aServiceProvider.publisher.oclIsUndefined())]
-        Publisher publisher = null;
-        [else]
-        Publisher publisher = new Publisher("[aServiceProvider.publisher.title /]", "[aServiceProvider.publisher.identifier /]");
-        [/if]
-        Map<String, Object> parameterMap = new HashMap<String, Object>();
-        [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(lineSeparator())]
-        parameterMap.put("[instanceCompositeID /]", serviceProviderInfo.[instanceCompositeID /]);
-        [/for]
-        return [javaClassNameForFactory(aServiceProvider) /].createServiceProvider(basePath, title, description, publisher, parameterMap);
+        return [javaClassNameForFactory(aServiceProvider)/].createServiceProvider(serviceProviderInfo);
     }
 
     public static ServiceProvider register[aServiceProvider.javaName(true)/](final HttpServletRequest httpServletRequest,
