@@ -65,9 +65,6 @@ package [javaClassPackageNameForSingleton(aServiceProviderCatalog) /];
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
@@ -79,7 +76,6 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
-import org.eclipse.lyo.oslc4j.core.model.Publisher;
 import org.eclipse.lyo.oslc4j.core.model.Service;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
@@ -165,37 +161,17 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
     }
 
     [for (aServiceProvider: ServiceProvider | aServiceProviderCatalog.serviceProviders)]
-
-    private static URI construct[aServiceProvider.javaName(true)/]URI([aServiceProvider.instanceMethodSignature() /])
-    {
-        String basePath = OSLC4JUtils.getServletURI();
-        Map<String, Object> pathParameters = new HashMap<String, Object>();
-        [for (instanceCompositeID: String | aServiceProvider.instanceCompositeID()) separator(lineSeparator())]
-        pathParameters.put("[instanceCompositeID /]", [instanceCompositeID /]);
-        [/for]
-        String instanceURI = "[aServiceProvider.instanceURI() /]";
-
-        final UriBuilder builder = UriBuilder.fromUri(basePath);
-        return builder.path(instanceURI).buildFromMap(pathParameters);
+    public static boolean contains[aServiceProvider.javaName(true)/](final [javaClassName(aServiceProvider) /] serviceProviderInfo) {
+        return serviceProviders.containsKey([javaClassNameForFactory(aServiceProvider)/].constructIdentifier(serviceProviderInfo));
     }
 
-    private static String [aServiceProvider.javaName(false)/]Identifier([aServiceProvider.instanceMethodSignature() /])
-    {
-        String identifier = [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(' + "/" + ')][instanceCompositeID/][/for];
-        return identifier;
-    }
-
-    public static boolean contains[aServiceProvider.javaName(true)/]([aServiceProvider.instanceMethodSignature() /]) {
-        return serviceProviders.containsKey([aServiceProvider.javaName(false)/]Identifier([aServiceProvider.instanceMethodParameterList()/]));
-    }
-
-    public static ServiceProvider get[aServiceProvider.javaName(true)/](HttpServletRequest httpServletRequest, [aServiceProvider.instanceMethodSignature() /])
+    public static ServiceProvider get[aServiceProvider.javaName(true)/](HttpServletRequest httpServletRequest, [aServiceProvider.instanceMethodSignature()/])
     {
         ServiceProvider serviceProvider;
 
         synchronized(serviceProviders)
         {
-            String identifier = [aServiceProvider.javaName(false)/]Identifier([aServiceProvider.instanceMethodParameterList() /]);
+            String identifier = [javaClassNameForFactory(aServiceProvider)/].constructIdentifier([aServiceProvider.instanceMethodParameterList()/]);
             serviceProvider = serviceProviders.get(identifier);
 
             //One retry refreshing the service providers
@@ -216,24 +192,20 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
 
     public static ServiceProvider create[aServiceProvider.javaName(true)/](final [javaClassName(aServiceProvider) /] serviceProviderInfo) 
             throws OslcCoreApplicationException, URISyntaxException, IllegalArgumentException {
-        String identifier = [aServiceProvider.javaName(false)/]Identifier([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for]);
-        if (contains[aServiceProvider.javaName(true)/]([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for])) {
+        String identifier = [javaClassNameForFactory(aServiceProvider)/].constructIdentifier(serviceProviderInfo);
+        if (contains[aServiceProvider.javaName(true)/](serviceProviderInfo)) {
             throw new IllegalArgumentException(String.format("The SP '%s' was already registered", identifier));
         }
         return [javaClassNameForFactory(aServiceProvider)/].createServiceProvider(serviceProviderInfo);
     }
 
     public static ServiceProvider register[aServiceProvider.javaName(true)/](final HttpServletRequest httpServletRequest,
-                                                          final ServiceProvider serviceProvider,
-                                                          [aServiceProvider.instanceMethodSignature() /])
+                                                          final ServiceProvider serviceProvider)
                                                 throws URISyntaxException
     {
         synchronized(serviceProviders)
         {
-            final URI serviceProviderURI = construct[aServiceProvider.javaName(true)/]URI([aServiceProvider.instanceMethodParameterList() /]);
-            return register[aServiceProvider.javaName(true)/]NoSync(serviceProviderURI,
-                                                 serviceProvider,
-                                                 [aServiceProvider.instanceMethodParameterList() /]);
+            return register[aServiceProvider.javaName(true)/]NoSync(serviceProvider);
         }
     }
 
@@ -241,35 +213,22 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
     * Register a service provider with the OSLC catalog
     *
     */
-    private static ServiceProvider register[aServiceProvider.javaName(true)/]NoSync(final URI serviceProviderURI,
-                                                                 final ServiceProvider serviceProvider
-                                                                 [commaSeparate(aServiceProvider.instanceMethodSignature(), true, false)/])
+    private static ServiceProvider register[aServiceProvider.javaName(true)/]NoSync(final ServiceProvider serviceProvider)
     {
         final SortedSet<URI> serviceProviderDomains = getServiceProviderDomains(serviceProvider);
-
-        String identifier = [aServiceProvider.javaName(false)/]Identifier([aServiceProvider.instanceMethodParameterList()/]);
-        serviceProvider.setAbout(serviceProviderURI);
-        serviceProvider.setIdentifier(identifier);
-        serviceProvider.setCreated(new Date());
-        serviceProvider.setDetails(new URI[ '[' ']' /] {serviceProviderURI});
-
         serviceProviderCatalog.addServiceProvider(serviceProvider);
         serviceProviderCatalog.addDomains(serviceProviderDomains);
-
-        serviceProviders.put(identifier, serviceProvider);
-
+        serviceProviders.put(serviceProvider.getIdentifier(), serviceProvider);
         return serviceProvider;
     }
 
     // This version is for self-registration and thus package-protected
-    static ServiceProvider register[aServiceProvider.javaName(true)/](final ServiceProvider serviceProvider[commaSeparate(aServiceProvider.instanceMethodSignature(), true, false)/])
+    static ServiceProvider register[aServiceProvider.javaName(true)/](final ServiceProvider serviceProvider)
                                             throws URISyntaxException
     {
         synchronized(serviceProviders)
         {
-            final URI serviceProviderURI = construct[aServiceProvider.javaName(true)/]URI([aServiceProvider.instanceMethodParameterList()/]);
-
-            return register[aServiceProvider.javaName(true)/]NoSync(serviceProviderURI, serviceProvider[commaSeparate(aServiceProvider.instanceMethodParameterList(), true, false)/]);
+            return register[aServiceProvider.javaName(true)/]NoSync(serviceProvider);
         }
     }
 
@@ -278,7 +237,7 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         synchronized(serviceProviders)
         {
             final ServiceProvider deregisteredServiceProvider =
-                serviceProviders.remove([aServiceProvider.javaName(false)/]Identifier([aServiceProvider.instanceMethodParameterList()/]));
+                serviceProviders.remove([javaClassNameForFactory(aServiceProvider)/].constructIdentifier([aServiceProvider.instanceMethodParameterList()/]));
 
             if (deregisteredServiceProvider != null)
             {
@@ -336,9 +295,9 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
             [javaClassName(aServiceProvider) /] [ '[' ']' /] [javaClassName(aServiceProvider).toLowerFirst()/]s = [javaClassNameForAdaptorManager(containingAdaptorInterface(aServiceProviderCatalog)) /].get[aServiceProvider.javaClassName()/]s(httpServletRequest);
             //Register each service provider
             for ([javaClassName(aServiceProvider) /] serviceProviderInfo : [javaClassName(aServiceProvider).toLowerFirst()/]s) {
-                if (!contains[aServiceProvider.javaName(true)/]([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for])) {
+                if (!contains[aServiceProvider.javaName(true)/](serviceProviderInfo)) {
                     ServiceProvider aServiceProvider = create[aServiceProvider.javaName(true)/](serviceProviderInfo);
-                    register[aServiceProvider.javaName(true)/](aServiceProvider, [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for]);
+                    register[aServiceProvider.javaName(true)/](aServiceProvider);
                 }
             }
             [/for]
@@ -348,15 +307,6 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         }
     }
 }
-
 [/file]
 [/template]
-
-
-
-
-
-
-
-
 
