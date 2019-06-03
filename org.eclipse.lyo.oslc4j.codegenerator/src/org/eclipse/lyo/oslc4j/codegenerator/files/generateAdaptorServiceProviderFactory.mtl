@@ -48,6 +48,7 @@ import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
 
 import javax.ws.rs.core.UriBuilder;
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
@@ -57,6 +58,9 @@ import org.eclipse.lyo.oslc4j.core.model.PrefixDefinition;
 import org.eclipse.lyo.oslc4j.core.model.Publisher;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderFactory;
+import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+
+import [javaClassFullName(aServiceProvider) /];
 
 [for (aServiceProvider: ServiceProvider | aServiceProviderCatalog.serviceProviders)]
 import [javaClassFullName(aServiceProvider) /];
@@ -80,8 +84,11 @@ public class [javaClassNameForFactory(aServiceProvider) /]
         super();
     }
 
-    public static ServiceProvider create[aServiceProvider.javaName(true)/](final [javaClassName(aServiceProvider) /] serviceProviderInfo)
-    throws OslcCoreApplicationException, URISyntaxException, IllegalArgumentException {
+    public static ServiceProvider createServiceProvider(final [javaClassName(aServiceProvider) /] serviceProviderInfo) 
+            throws OslcCoreApplicationException, URISyntaxException, IllegalArgumentException {
+        // [protected ('init')]
+        // [/protected]
+        
         String basePath = OSLC4JUtils.getServletURI();
         String identifier = [aServiceProvider.javaName(false)/]Identifier([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for]);
 
@@ -98,11 +105,14 @@ public class [javaClassNameForFactory(aServiceProvider) /]
         [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(lineSeparator())]
         parameterMap.put("[instanceCompositeID /]", serviceProviderInfo.[instanceCompositeID /]);
         [/for]
-        return [javaClassNameForFactory(aServiceProvider) /].createServiceProvider(identifier, basePath, title, description, publisher, parameterMap);
+
+        // [protected ('finalize')]
+        // [/protected]
+        return createServiceProvider(identifier, basePath, title, description, publisher, parameterMap);
     }
 
     public static ServiceProvider createServiceProvider(final String identifier, final String baseURI, final String title, final String description, final Publisher publisher, final Map<String,Object> parameterValueMap)
-    throws OslcCoreApplicationException, URISyntaxException
+           throws OslcCoreApplicationException, URISyntaxException
     {
         final ServiceProvider serviceProvider = ServiceProviderFactory.createServiceProvider(baseURI,
                                                     "",

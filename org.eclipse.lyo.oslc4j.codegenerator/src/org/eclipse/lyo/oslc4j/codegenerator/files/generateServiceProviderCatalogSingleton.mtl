@@ -137,7 +137,6 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
     }
 
     [for (aServiceProvider: ServiceProvider | aServiceProviderCatalog.serviceProviders)]
-
     public static boolean contains[aServiceProvider.javaName(true)/]([aServiceProvider.instanceMethodSignature() /]) {
         return serviceProviders.containsKey([aServiceProvider.javaName(false)/]Identifier([aServiceProvider.instanceMethodParameterList()/]));
     }
@@ -292,15 +291,5 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         }
     }
 }
-
 [/file]
 [/template]
-
-
-
-
-
-
-
-
-
