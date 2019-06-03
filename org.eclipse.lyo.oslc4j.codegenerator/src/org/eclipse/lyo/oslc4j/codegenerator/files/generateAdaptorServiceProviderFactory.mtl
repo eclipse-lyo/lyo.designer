@@ -68,6 +68,7 @@ package [javaClassPackageNameForFactory(aServiceProvider) /];
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
+import java.util.HashMap;
 
 import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
@@ -75,6 +76,9 @@ import org.eclipse.lyo.oslc4j.core.model.PrefixDefinition;
 import org.eclipse.lyo.oslc4j.core.model.Publisher;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderFactory;
+import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+
+import [javaClassFullName(aServiceProvider) /];
 
 [for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];[/for]
 [for (aService: Service | aServiceProvider.services) separator(lineSeparator())]import [javaClassFullName(aService) /];[/for]
@@ -92,6 +96,30 @@ public class [javaClassNameForFactory(aServiceProvider) /]
     private [javaClassNameForFactory(aServiceProvider) /]()
     {
         super();
+    }
+
+    public static ServiceProvider createServiceProvider(final [javaClassName(aServiceProvider) /] serviceProviderInfo) 
+            throws OslcCoreApplicationException, URISyntaxException, IllegalArgumentException {
+        // [protected ('init')]
+        // [/protected]
+        String basePath = OSLC4JUtils.getServletURI();
+        String title = String.format("Service Provider '%s'", serviceProviderInfo.name);
+        String description = String.format("%s (id: %s; kind: %s)",
+            "[aServiceProvider.description /]",
+            [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(' + "/" + ')]serviceProviderInfo.[instanceCompositeID/][/for],
+            "[aServiceProvider.title /]");
+        [if (aServiceProvider.publisher.oclIsUndefined())]
+        Publisher publisher = null;
+        [else]
+        Publisher publisher = new Publisher("[aServiceProvider.publisher.title /]", "[aServiceProvider.publisher.identifier /]");
+        [/if]
+        Map<String, Object> parameterMap = new HashMap<String, Object>();
+        [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(lineSeparator())]
+        parameterMap.put("[instanceCompositeID /]", serviceProviderInfo.[instanceCompositeID /]);
+        [/for]
+        // [protected ('finalize')]
+        // [/protected]
+        return createServiceProvider(basePath, title, description, publisher, parameterMap);
     }
 
     public static ServiceProvider createServiceProvider(final String baseURI, final String title, final String description, final Publisher publisher, final Map<String,Object> parameterValueMap)
