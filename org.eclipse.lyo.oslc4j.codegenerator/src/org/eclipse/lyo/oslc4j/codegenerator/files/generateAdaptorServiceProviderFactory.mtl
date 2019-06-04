@@ -67,8 +67,11 @@ package [javaClassPackageNameForFactory(aServiceProvider) /];
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Map;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
+
+import javax.ws.rs.core.UriBuilder;
 
 import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
@@ -98,15 +101,45 @@ public class [javaClassNameForFactory(aServiceProvider) /]
         super();
     }
 
+    public static URI constructURI([aServiceProvider.instanceMethodSignature() /])
+    {
+        String basePath = OSLC4JUtils.getServletURI();
+        Map<String, Object> pathParameters = new HashMap<String, Object>();
+        [for (instanceCompositeID: String | aServiceProvider.instanceCompositeID()) separator(lineSeparator())]
+        pathParameters.put("[instanceCompositeID /]", [instanceCompositeID /]);
+        [/for]
+        String instanceURI = "[aServiceProvider.instanceURI() /]";
+
+        final UriBuilder builder = UriBuilder.fromUri(basePath);
+        return builder.path(instanceURI).buildFromMap(pathParameters);
+    }
+
+    public static URI constructURI(final [javaClassName(aServiceProvider) /] serviceProviderInfo)
+    {
+        return constructURI([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for]);
+    }
+
+    public static String constructIdentifier([aServiceProvider.instanceMethodSignature() /])
+    {
+        return [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(' + "/" + ')][instanceCompositeID/][/for];
+    }
+
+    public static String constructIdentifier(final [javaClassName(aServiceProvider) /] serviceProviderInfo)
+    {
+        return constructIdentifier([for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(', ')]serviceProviderInfo.[instanceCompositeID /][/for]);
+    }
+
     public static ServiceProvider createServiceProvider(final [javaClassName(aServiceProvider) /] serviceProviderInfo) 
             throws OslcCoreApplicationException, URISyntaxException, IllegalArgumentException {
         // [protected ('init')]
         // [/protected]
+        URI serviceProviderURI = constructURI(serviceProviderInfo);
+        String identifier = constructIdentifier(serviceProviderInfo);
         String basePath = OSLC4JUtils.getServletURI();
-        String title = String.format("Service Provider '%s'", serviceProviderInfo.name);
+        String title = serviceProviderInfo.name;
         String description = String.format("%s (id: %s; kind: %s)",
             "[aServiceProvider.description /]",
-            [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(' + "/" + ')]serviceProviderInfo.[instanceCompositeID/][/for],
+            identifier,
             "[aServiceProvider.title /]");
         [if (aServiceProvider.publisher.oclIsUndefined())]
         Publisher publisher = null;
@@ -117,23 +150,14 @@ public class [javaClassNameForFactory(aServiceProvider) /]
         [for (instanceCompositeID: String | instanceCompositeID(aServiceProvider)) separator(lineSeparator())]
         parameterMap.put("[instanceCompositeID /]", serviceProviderInfo.[instanceCompositeID /]);
         [/for]
-        // [protected ('finalize')]
-        // [/protected]
-        return createServiceProvider(basePath, title, description, publisher, parameterMap);
-    }
 
-    public static ServiceProvider createServiceProvider(final String baseURI, final String title, final String description, final Publisher publisher, final Map<String,Object> parameterValueMap)
-           throws OslcCoreApplicationException, URISyntaxException
-    {
-        final ServiceProvider serviceProvider = ServiceProviderFactory.createServiceProvider(baseURI,
+        ServiceProvider serviceProvider = ServiceProviderFactory.createServiceProvider(basePath,
                                                     "",
                                                     title,
                                                     description,
                                                     publisher,
                                                     RESOURCE_CLASSES,
-                                                    parameterValueMap);
-        URI detailsURIs[ '[' ']' /] = {new URI(baseURI)};
-        serviceProvider.setDetails(detailsURIs);
+                                                    parameterMap);
 
         final PrefixDefinition[ '[' ']' /] prefixDefinitions =
         {
@@ -146,9 +170,15 @@ public class [javaClassNameForFactory(aServiceProvider) /]
             new PrefixDefinition([javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespacePrefixConstantName(aDomainSpecification) /], new URI([javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespaceConstantName(aDomainSpecification) /]))
             [/for]
         };
-
         serviceProvider.setPrefixDefinitions(prefixDefinitions);
 
+        serviceProvider.setAbout(serviceProviderURI);
+        serviceProvider.setIdentifier(identifier);
+        serviceProvider.setCreated(new Date());
+        serviceProvider.setDetails(new URI[ '[' ']' /] {serviceProviderURI});
+
+        // [protected ('finalize')]
+        // [/protected]
         return serviceProvider;
     }
 }
