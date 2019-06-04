@@ -168,15 +168,8 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         return containsServiceProvider(serviceProvider.getIdentifier());
     }
 
-    public static ServiceProvider register(final HttpServletRequest httpServletRequest,
-                                                          final ServiceProvider serviceProvider)
-                                                throws URISyntaxException
-    {
-        return register(serviceProvider);
-    }
-
     // This version is for self-registration and thus package-protected
-    static ServiceProvider register(final ServiceProvider serviceProvider)
+    public static ServiceProvider register(final ServiceProvider serviceProvider)
                                             throws URISyntaxException
     {
         if (containsServiceProvider(serviceProvider)) {
@@ -184,6 +177,9 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         }
         synchronized(serviceProviders)
         {
+            if (containsServiceProvider(serviceProvider)) {
+                throw new IllegalArgumentException(String.format("The SP '%s' was already registered", serviceProvider.getIdentifier()));
+            }
             return registerNoSync(serviceProvider);
         }
     }
@@ -200,6 +196,36 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         serviceProviders.put(serviceProvider.getIdentifier(), serviceProvider);
         return serviceProvider;
     }
+
+    public static void deregister(final ServiceProvider serviceProvider)
+    {
+        synchronized(serviceProviders)
+        {
+            final ServiceProvider deregisteredServiceProvider =
+                serviceProviders.remove(serviceProvider.getIdentifier());
+
+            if (deregisteredServiceProvider != null)
+            {
+                final SortedSet<URI> remainingDomains = new TreeSet<URI>();
+
+                for (final ServiceProvider remainingServiceProvider : serviceProviders.values())
+                {
+                    remainingDomains.addAll(getServiceProviderDomains(remainingServiceProvider));
+                }
+
+                final SortedSet<URI> removedServiceProviderDomains = getServiceProviderDomains(deregisteredServiceProvider);
+
+                removedServiceProviderDomains.removeAll(remainingDomains);
+                serviceProviderCatalog.removeDomains(removedServiceProviderDomains);
+                serviceProviderCatalog.removeServiceProvider(deregisteredServiceProvider);
+            }
+            else
+            {
+                throw new WebApplicationException(Status.NOT_FOUND);
+            }
+        }
+    }
+
 
     [for (aServiceProvider: ServiceProvider | aServiceProviderCatalog.serviceProviders)]
     public static ServiceProvider get[aServiceProvider.javaName(true)/](HttpServletRequest httpServletRequest, [aServiceProvider.instanceMethodSignature()/])
@@ -225,35 +251,6 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         }
 
         throw new WebApplicationException(Status.NOT_FOUND);
-    }
-
-    public static void deregister[aServiceProvider.javaName(true)/]([aServiceProvider.instanceMethodSignature()/])
-    {
-        synchronized(serviceProviders)
-        {
-            final ServiceProvider deregisteredServiceProvider =
-                serviceProviders.remove([javaClassNameForFactory(aServiceProvider)/].constructIdentifier([aServiceProvider.instanceMethodParameterList()/]));
-
-            if (deregisteredServiceProvider != null)
-            {
-                final SortedSet<URI> remainingDomains = new TreeSet<URI>();
-
-                for (final ServiceProvider remainingServiceProvider : serviceProviders.values())
-                {
-                    remainingDomains.addAll(getServiceProviderDomains(remainingServiceProvider));
-                }
-
-                final SortedSet<URI> removedServiceProviderDomains = getServiceProviderDomains(deregisteredServiceProvider);
-
-                removedServiceProviderDomains.removeAll(remainingDomains);
-                serviceProviderCatalog.removeDomains(removedServiceProviderDomains);
-                serviceProviderCatalog.removeServiceProvider(deregisteredServiceProvider);
-            }
-            else
-            {
-                throw new WebApplicationException(Status.NOT_FOUND);
-            }
-        }
     }
     [/for]
 
