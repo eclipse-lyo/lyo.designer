@@ -160,11 +160,48 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         }
     }
 
-    [for (aServiceProvider: ServiceProvider | aServiceProviderCatalog.serviceProviders)]
-    public static boolean contains[aServiceProvider.javaName(true)/](final [javaClassName(aServiceProvider) /] serviceProviderInfo) {
-        return serviceProviders.containsKey([javaClassNameForFactory(aServiceProvider)/].constructIdentifier(serviceProviderInfo));
+    public static boolean containsServiceProvider(final String identifier) {
+        return serviceProviders.containsKey(identifier);
     }
 
+    public static boolean containsServiceProvider(final ServiceProvider serviceProvider) {
+        return containsServiceProvider(serviceProvider.getIdentifier());
+    }
+
+    public static ServiceProvider register(final HttpServletRequest httpServletRequest,
+                                                          final ServiceProvider serviceProvider)
+                                                throws URISyntaxException
+    {
+        return register(serviceProvider);
+    }
+
+    // This version is for self-registration and thus package-protected
+    static ServiceProvider register(final ServiceProvider serviceProvider)
+                                            throws URISyntaxException
+    {
+        if (containsServiceProvider(serviceProvider)) {
+            throw new IllegalArgumentException(String.format("The SP '%s' was already registered", serviceProvider.getIdentifier()));
+        }
+        synchronized(serviceProviders)
+        {
+            return registerNoSync(serviceProvider);
+        }
+    }
+
+    /**
+    * Register a service provider with the OSLC catalog
+    *
+    */
+    private static ServiceProvider registerNoSync(final ServiceProvider serviceProvider)
+    {
+        final SortedSet<URI> serviceProviderDomains = getServiceProviderDomains(serviceProvider);
+        serviceProviderCatalog.addServiceProvider(serviceProvider);
+        serviceProviderCatalog.addDomains(serviceProviderDomains);
+        serviceProviders.put(serviceProvider.getIdentifier(), serviceProvider);
+        return serviceProvider;
+    }
+
+    [for (aServiceProvider: ServiceProvider | aServiceProviderCatalog.serviceProviders)]
     public static ServiceProvider get[aServiceProvider.javaName(true)/](HttpServletRequest httpServletRequest, [aServiceProvider.instanceMethodSignature()/])
     {
         ServiceProvider serviceProvider;
@@ -188,48 +225,6 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
         }
 
         throw new WebApplicationException(Status.NOT_FOUND);
-    }
-
-    public static ServiceProvider create[aServiceProvider.javaName(true)/](final [javaClassName(aServiceProvider) /] serviceProviderInfo) 
-            throws OslcCoreApplicationException, URISyntaxException, IllegalArgumentException {
-        String identifier = [javaClassNameForFactory(aServiceProvider)/].constructIdentifier(serviceProviderInfo);
-        if (contains[aServiceProvider.javaName(true)/](serviceProviderInfo)) {
-            throw new IllegalArgumentException(String.format("The SP '%s' was already registered", identifier));
-        }
-        return [javaClassNameForFactory(aServiceProvider)/].createServiceProvider(serviceProviderInfo);
-    }
-
-    public static ServiceProvider register[aServiceProvider.javaName(true)/](final HttpServletRequest httpServletRequest,
-                                                          final ServiceProvider serviceProvider)
-                                                throws URISyntaxException
-    {
-        synchronized(serviceProviders)
-        {
-            return register[aServiceProvider.javaName(true)/]NoSync(serviceProvider);
-        }
-    }
-
-    /**
-    * Register a service provider with the OSLC catalog
-    *
-    */
-    private static ServiceProvider register[aServiceProvider.javaName(true)/]NoSync(final ServiceProvider serviceProvider)
-    {
-        final SortedSet<URI> serviceProviderDomains = getServiceProviderDomains(serviceProvider);
-        serviceProviderCatalog.addServiceProvider(serviceProvider);
-        serviceProviderCatalog.addDomains(serviceProviderDomains);
-        serviceProviders.put(serviceProvider.getIdentifier(), serviceProvider);
-        return serviceProvider;
-    }
-
-    // This version is for self-registration and thus package-protected
-    static ServiceProvider register[aServiceProvider.javaName(true)/](final ServiceProvider serviceProvider)
-                                            throws URISyntaxException
-    {
-        synchronized(serviceProviders)
-        {
-            return register[aServiceProvider.javaName(true)/]NoSync(serviceProvider);
-        }
     }
 
     public static void deregister[aServiceProvider.javaName(true)/]([aServiceProvider.instanceMethodSignature()/])
@@ -295,9 +290,9 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
             [javaClassName(aServiceProvider) /] [ '[' ']' /] [javaClassName(aServiceProvider).toLowerFirst()/]s = [javaClassNameForAdaptorManager(containingAdaptorInterface(aServiceProviderCatalog)) /].get[aServiceProvider.javaClassName()/]s(httpServletRequest);
             //Register each service provider
             for ([javaClassName(aServiceProvider) /] serviceProviderInfo : [javaClassName(aServiceProvider).toLowerFirst()/]s) {
-                if (!contains[aServiceProvider.javaName(true)/](serviceProviderInfo)) {
-                    ServiceProvider aServiceProvider = create[aServiceProvider.javaName(true)/](serviceProviderInfo);
-                    register[aServiceProvider.javaName(true)/](aServiceProvider);
+                if (!containsServiceProvider([javaClassNameForFactory(aServiceProvider)/].constructIdentifier(serviceProviderInfo))) {
+                    ServiceProvider aServiceProvider = [javaClassNameForFactory(aServiceProvider)/].createServiceProvider(serviceProviderInfo);
+                    register(aServiceProvider);
                 }
             }
             [/for]
