@@ -203,7 +203,6 @@ private [javaAttributeTypeDeclaration(aProperty) /] [javaAttributeName(aProperty
 
 [template public generateConstructors(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
 public [javaClassName(aResource) /]()
-       throws URISyntaxException
 {
     super();
 
@@ -212,7 +211,6 @@ public [javaClassName(aResource) /]()
 }
 
 public [javaClassName(aResource) /](final URI about)
-       throws URISyntaxException
 {
     super(about);
 
@@ -228,7 +226,6 @@ public [javaClassName(aResource) /](final URI about)
 */
 @Deprecated
 public [javaClassName(aResource)/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/])
-       throws URISyntaxException
 {
     this (constructURI[methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aBasicCapability), false, false)/]));
     // [protected ('constructor3')]
