@@ -52,8 +52,8 @@
 package [javaClassPackageNameForClient(aRequiredAdaptor, anAdaptorInterface) /];
 
 import javax.ws.rs.core.Response;
-import org.eclipse.lyo.client.oslc.OSLCConstants;
-import org.eclipse.lyo.client.oslc.OslcClient;
+import org.eclipse.lyo.oslc4j.client.OSLCConstants;
+import org.eclipse.lyo.oslc4j.client.OslcClient;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
 [for (aResource: Resource | servicedResources(aRequiredAdaptor)->sortedBy(name))]
 import [javaClassFullName(aResource, anAdaptorInterface, null) /];
