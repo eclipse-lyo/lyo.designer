@@ -34,7 +34,7 @@ public interface Vocabularies extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Vocabularies</em>' containment reference list.
      * @see vocabulary.VocabularyPackage#getVocabularies_Vocabularies()
-     * @model containment="true"
+     * @model containment="true" keys="label"
      * @generated
      */
     EList<Vocabulary> getVocabularies();

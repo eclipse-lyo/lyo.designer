@@ -36,7 +36,7 @@ public interface Specification extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Domain Specifications</em>' containment reference list.
 	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_DomainSpecifications()
-	 * @model containment="true"
+     * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<DomainSpecification> getDomainSpecifications();
@@ -52,7 +52,7 @@ public interface Specification extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Domain Prefixes</em>' containment reference list.
 	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_DomainPrefixes()
-	 * @model containment="true"
+     * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<NamespacePrefix> getDomainPrefixes();
