@@ -64,8 +64,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration;
-import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+import javax.ws.rs.core.UriBuilder;
 
+import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
 
 // [protected ('imports')]
@@ -86,7 +87,7 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
     private static String PROPERTY_BASE = servletContextParameterName("baseurl");
     private static String servletName = "JAX-RS Servlet";
 
-	private static final Logger logger = LoggerFactory.getLogger([javaClassNameForAdaptorServletListener(anAdaptorInterface)/].class);
+    private static final Logger logger = LoggerFactory.getLogger([javaClassNameForAdaptorServletListener(anAdaptorInterface)/].class);
 
     // [protected ('class_attributes')]
     // [/protected]
@@ -99,9 +100,6 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
     public void contextInitialized(final ServletContextEvent servletContextEvent)
     {
         // [protected ('contextInitialized_init')]
-        //TODO: override any of the class constants as desired
-        //DEFAULT_BASE = "http://my.localhost.com:8086";
-        //servletName = "Your_Configured_Servlet_Name";
         // [/protected]
 
         String baseUrl = generateBasePath(servletContextEvent);
@@ -152,8 +150,9 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
     }
 
     private static String generateBasePath(final ServletContextEvent servletContextEvent) {
-        return (getBasePathFromEnvironment().orElseGet(() -> getBasePathFromContext(servletContextEvent).orElseGet(() -> DEFAULT_BASE))) +
-            servletContextEvent.getServletContext().getContextPath();
+        String base = getBasePathFromEnvironment().orElseGet(() -> getBasePathFromContext(servletContextEvent).orElseGet(() -> DEFAULT_BASE));
+        UriBuilder builder = UriBuilder.fromUri(base);
+        return builder.path(servletContextEvent.getServletContext().getContextPath()).build().toString();
     }
 
     private static Optional<String> getBasePathFromEnvironment() {
