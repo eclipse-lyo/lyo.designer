@@ -98,7 +98,7 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
     {
         //These are default values. You can modify any of them early in this method.
         String basePathEnvKey = "LYO_BASE";
-        String basePathContextPropertyKey = servletContextParameterName("baseurl");
+        String basePathContextPropertyKey = String.format("%s.%s", [javaClassNameForAdaptorServletListener(anAdaptorInterface) /].class.getPackage().getName(), "baseurl");
         String fallbackBase = "http://localhost:8080";
         String servletName = "JAX-RS Servlet";
 
@@ -147,10 +147,6 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
 
     // [protected ('class_methods')]
     // [/protected]
-
-    private static String servletContextParameterName(String parameter) {
-        return String.format("%s.%s", [javaClassNameForAdaptorServletListener(anAdaptorInterface) /].class.getPackage().getName(), parameter);
-    }
 
     private static String generateBasePath(final ServletContextEvent servletContextEvent, String basePathEnvKey, String basePathContextPropertyKey, String fallbackBase) {
         String base = getBasePathFromEnvironment(basePathEnvKey).orElseGet(() -> getBasePathFromContext(servletContextEvent, basePathContextPropertyKey).orElseGet(() -> fallbackBase));
