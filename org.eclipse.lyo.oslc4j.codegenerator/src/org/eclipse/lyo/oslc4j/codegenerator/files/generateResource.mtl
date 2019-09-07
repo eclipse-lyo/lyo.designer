@@ -26,7 +26,7 @@
  *******************************************************************************/
 /]
 
-[module generateResource('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+[module generateResource('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
@@ -35,6 +35,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 
 [template public resourcePropertyAsTextInputForCreation(aProperty: ResourceProperty)]
 "<input name=\"[javaName(aProperty, false)/]\" type=\"text\" style=\"width: 400px\" id=\"[javaName(aProperty, false)/]\" [if (Sequence{'excatlyOne', 'oneOrMany'}->includes(aProperty.occurs.toString()))]required[/if]>"
@@ -117,6 +118,11 @@ import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(
 [if (not aResource.directParentResource().oclIsUndefined())]import [javaClassFullName(aResource.directParentResource(), contextAdaptorInterface, defaultJavaClassPackageName) /];[/if]
 [for (r: Resource | aResource.interfaceResources()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
 [for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
+[for (aVocabulary: Vocabulary | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))->asSet()
+        ->select(p: ResourceProperty | not (p.propertyDefinition.oclIsUndefined()))
+        ->collect(p: ResourceProperty | p.propertyDefinition.definingVocabulary())
+        ->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, contextAdaptorInterface, defaultJavaClassPackageName) /];
+[/for]
 [for (aProperty: ResourceProperty | allProperties(aResource)->sortedBy(name))]
 [if(Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString())) ]
 [for (r: Resource | aProperty.range)]
