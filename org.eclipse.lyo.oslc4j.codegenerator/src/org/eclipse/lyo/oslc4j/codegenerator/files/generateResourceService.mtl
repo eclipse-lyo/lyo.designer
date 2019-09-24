@@ -140,6 +140,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.UriBuilder;
 
+import org.apache.wink.json4j.JSONException;
 import org.apache.wink.json4j.JSONObject;
 import org.eclipse.lyo.oslc4j.provider.json4j.JsonHelper;
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
@@ -298,35 +299,27 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
         [commaSeparate(dialogMethodSignature(aSelectionDialog, true, true), true, false)/]
         ) throws ServletException, IOException
     {
-        try {
-            // [protected (dialogMethodName(aSelectionDialog, true).concat('_init'))]
-            // [/protected]
+        // [protected (dialogMethodName(aSelectionDialog, true).concat('_init'))]
+        // [/protected]
 
-            httpServletRequest.setAttribute("selectionUri",UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(uriInfo.getPath()).build().toString());
-            // [protected (dialogMethodName(aSelectionDialog, true).concat('_setAttributes'))]
-            // [/protected]
+        httpServletRequest.setAttribute("selectionUri",UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(uriInfo.getPath()).build().toString());
+        // [protected (dialogMethodName(aSelectionDialog, true).concat('_setAttributes'))]
+        // [/protected]
 
-            if (terms != null ) {
-                httpServletRequest.setAttribute("terms", terms);
-                final List<[dialogMethodResourceType(aSelectionDialog)/]> resources = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[dialogMethodName(aSelectionDialog, true)/](httpServletRequest[commaSeparate(dialogMethodParameterList(aSelectionDialog, true), true, false)/], terms);
-                if (resources!= null) {
-                            httpServletRequest.setAttribute("resources", resources);
-                            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorResultsJspRelativeFileName(aSelectionDialog) /]");
-                            rd.forward(httpServletRequest, httpServletResponse);
-                }
-                //a empty search should return an empty list and not NULL!
-                throw new WebApplicationException(Status.NOT_FOUND);
-
-            } else {
-                try {
-                    RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorJspRelativeFileName(aSelectionDialog) /]");
-                    rd.forward(httpServletRequest, httpServletResponse);
-                } catch (Exception e) {
-                    throw new ServletException(e);
-                }
+        if (terms != null ) {
+            httpServletRequest.setAttribute("terms", terms);
+            final List<[dialogMethodResourceType(aSelectionDialog)/]> resources = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[dialogMethodName(aSelectionDialog, true)/](httpServletRequest[commaSeparate(dialogMethodParameterList(aSelectionDialog, true), true, false)/], terms);
+            if (resources!= null) {
+                        httpServletRequest.setAttribute("resources", resources);
+                        RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorResultsJspRelativeFileName(aSelectionDialog) /]");
+                        rd.forward(httpServletRequest, httpServletResponse);
             }
-        } catch (Exception e) {
-            throw new WebApplicationException(e);
+            //a empty search should return an empty list and not NULL!
+            throw new WebApplicationException(Status.NOT_FOUND);
+
+        } else {
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorJspRelativeFileName(aSelectionDialog) /]");
+            rd.forward(httpServletRequest, httpServletResponse);
         }
     }
 
@@ -356,14 +349,9 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             final [creationMethodResourceType(aCreationFactory)/] aResource
         ) throws IOException, ServletException
     {
-        try {
-            [creationMethodResourceType(aCreationFactory)/] newResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[creationMethodName(aCreationFactory)/](httpServletRequest, aResource[commaSeparate(creationMethodParameterList(aCreationFactory), true, false)/]);
-            httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aCreationFactory.resourceTypes)/](newResource));
-            return Response.created(newResource.getAbout()).entity(newResource).header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new WebApplicationException(e);
-        }
+        [creationMethodResourceType(aCreationFactory)/] newResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[creationMethodName(aCreationFactory)/](httpServletRequest, aResource[commaSeparate(creationMethodParameterList(aCreationFactory), true, false)/]);
+        httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aCreationFactory.resourceTypes)/](newResource));
+        return Response.created(newResource.getAbout()).entity(newResource).header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
     }
 
     [/for]
@@ -414,56 +402,56 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     public [creationMethodReturnType(aCreationDialog)/] [creationMethodName(aCreationDialog)/](
             [commaSeparate(dialogMethodSignature(aCreationDialog, false, true), false, false)/]
         ) {
-        try {
-            [creationMethodResourceType(aCreationDialog)/] newResource = null;
+        [creationMethodResourceType(aCreationDialog)/] newResource = null;
 
-            [if not (aCreationDialog.resourceTypes->size() = 1)]
-            // [protected (creationMethodName(aCreationDialog))]
-            // TODO Implement code to create the new resource. This method seems to be expected to handle more than a single type of resources.
-            // [/protected]
+        [if not (aCreationDialog.resourceTypes->size() = 1)]
+        // [protected (creationMethodName(aCreationDialog))]
+        // TODO Implement code to create the new resource. This method seems to be expected to handle more than a single type of resources.
+        // [/protected]
+        [else]
+        [let aResource : Resource = aCreationDialog.resourceTypes->first()]
+        [javaClassName(aResource) /] aResource = new [javaClassName(aResource) /]();
+
+        String['[]'/] paramValues;
+
+        [comment TODO: Check for valid parameters (1) that the oneOrMore, or oneOrMany are set. (2) things have right format. (3) Allow end_user to also add own checks
+        In the Resource class, automtiacally generate a "propertyValidValue" (similar to propertyAsHtmlForCreation) for each of the properties.
+        There you can add all automatic checks, as well as allow for end-user ones./]
+        [for (propertiesCollection: Collection(ResourceProperty) | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)})]
+        [for (aProperty: ResourceProperty | propertiesCollection)]
+        paramValues = httpServletRequest.getParameterValues("[javaName(aProperty, false)/]");
+        if (paramValues != null) {
+            [if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))]
+                for(int i=0; i<paramValues.length; i++) {
+                    aResource.add[javaAttributeName(aProperty, aResource).toUpperFirst()/]([javaAttributeBaseTypeCastFromString(aProperty, 'paramValues[i]') /]);
+                }
             [else]
-            [let aResource : Resource = aCreationDialog.resourceTypes->first()]
-            [javaClassName(aResource) /] aResource = new [javaClassName(aResource) /]();
+                if (paramValues.length == 1) {
+                    if (paramValues['[0]'/].length() != 0)
+                        aResource.set[javaAttributeName(aProperty, aResource).toUpperFirst() /]([javaAttributeBaseTypeCastFromString(aProperty, 'paramValues[0]') /]);
+                    // else, there is an empty value for that parameter, and hence ignore since the parameter is not actually set.
+                }
 
-            String['[]'/] paramValues;
-
-            [comment TODO: Check for valid parameters (1) that the oneOrMore, or oneOrMany are set. (2) things have right format. (3) Allow end_user to also add own checks
-            In the Resource class, automtiacally generate a "propertyValidValue" (similar to propertyAsHtmlForCreation) for each of the properties.
-            There you can add all automatic checks, as well as allow for end-user ones./]
-            [for (propertiesCollection: Collection(ResourceProperty) | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)})]
-            [for (aProperty: ResourceProperty | propertiesCollection)]
-            paramValues = httpServletRequest.getParameterValues("[javaName(aProperty, false)/]");
-            if (paramValues != null) {
-                [if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))]
-                    for(int i=0; i<paramValues.length; i++) {
-                        aResource.add[javaAttributeName(aProperty, aResource).toUpperFirst()/]([javaAttributeBaseTypeCastFromString(aProperty, 'paramValues[i]') /]);
-                    }
-                [else]
-                    if (paramValues.length == 1) {
-                        if (paramValues['[0]'/].length() != 0)
-                            aResource.set[javaAttributeName(aProperty, aResource).toUpperFirst() /]([javaAttributeBaseTypeCastFromString(aProperty, 'paramValues[0]') /]);
-                        // else, there is an empty value for that parameter, and hence ignore since the parameter is not actually set.
-                    }
-
-                [/if]
-            }
-            [/for]
-            [/for]
-
-            newResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[creationMethodName(aCreationDialog)/](httpServletRequest, aResource[commaSeparate(dialogMethodParameterList(aCreationDialog, false), true, false)/]);
-            [/let]
             [/if]
+        }
+        [/for]
+        [/for]
 
-            if (newResource != null) {
-                httpServletRequest.setAttribute("newResource", newResource);
-                httpServletRequest.setAttribute("newResourceUri", newResource.getAbout().toString());
+        newResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[creationMethodName(aCreationDialog)/](httpServletRequest, aResource[commaSeparate(dialogMethodParameterList(aCreationDialog, false), true, false)/]);
+        [/let]
+        [/if]
 
-                // Send back to the form a small JSON response
-                httpServletResponse.setContentType("application/json");
-                httpServletResponse.setStatus(Status.CREATED.getStatusCode());
-                httpServletResponse.addHeader("Location", newResource.getAbout().toString());
+        if (newResource != null) {
+            httpServletRequest.setAttribute("newResource", newResource);
+            httpServletRequest.setAttribute("newResourceUri", newResource.getAbout().toString());
+
+            // Send back to the form a small JSON response
+            httpServletResponse.setContentType("application/json");
+            httpServletResponse.setStatus(Status.CREATED.getStatusCode());
+            httpServletResponse.addHeader("Location", newResource.getAbout().toString());
+            try {
                 PrintWriter out = httpServletResponse.getWriter();
-
+    
                 JSONObject oslcResponse = new JSONObject();
                 JSONObject newResourceJson = new JSONObject();
                 newResourceJson.put("rdf:resource", newResource.getAbout().toString());
@@ -471,13 +459,12 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
                 newResourceJson.put("oslc:label", newResource.toString());
                 // [/protected]
                 oslcResponse.put("oslc:results", new Object['[]'/]{newResourceJson});
-
+    
                 out.print(oslcResponse.toString());
                 out.close();
+            } catch (IOException | JSONException e) {
+                throw new WebApplicationException(e);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new WebApplicationException(e);
         }
     }
     [/for]
@@ -677,25 +664,18 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
         final [updateResourceMethodResourceType(aBasicCapability, aResource)/] originalResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aBasicCapability, aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aBasicCapability), true, false)/]);
 
         if (originalResource != null) {
-            try {
-                final String originalETag = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](originalResource);
+            final String originalETag = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](originalResource);
 
-                if ((eTagHeader == null) || (originalETag.equals(eTagHeader))) {
-                    // [protected (updateResourceMethodName(aBasicCapability, aResource))]
-                    // [/protected]
-                    final [updateResourceMethodResourceType(aBasicCapability, aResource)/] updatedResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[updateResourceMethodName(aBasicCapability, aResource)/](httpServletRequest, aResource[commaSeparate(instanceMethodParameterList(aResource, aBasicCapability), true, false)/]);
-                    httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](updatedResource));
-                    return Response.ok().header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
-                }
-                else {
-                    throw new WebApplicationException(Status.PRECONDITION_FAILED);
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new WebApplicationException(e);
+            if ((eTagHeader == null) || (originalETag.equals(eTagHeader))) {
+                // [protected (updateResourceMethodName(aBasicCapability, aResource))]
+                // [/protected]
+                final [updateResourceMethodResourceType(aBasicCapability, aResource)/] updatedResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[updateResourceMethodName(aBasicCapability, aResource)/](httpServletRequest, aResource[commaSeparate(instanceMethodParameterList(aResource, aBasicCapability), true, false)/]);
+                httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](updatedResource));
+                return Response.ok().header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
             }
-
+            else {
+                throw new WebApplicationException(Status.PRECONDITION_FAILED);
+            }
         }
         else {
             throw new WebApplicationException(Status.NOT_FOUND);

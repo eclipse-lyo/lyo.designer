@@ -60,7 +60,10 @@
 
 package [javaClassPackageNameForService(aServiceProvider) /];
 
+import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
@@ -150,7 +153,7 @@ public class [javaClassNameForService(aServiceProvider) /]
     @GET
     [JAXRSPathAnnotation(aServiceProvider.instanceURISegment()) /]
     @Produces(MediaType.TEXT_HTML)
-    public void getHtmlServiceProvider([commaSeparate(instanceJAXRSMethodSignature(aServiceProvider), false, false)/])
+    public void getHtmlServiceProvider([commaSeparate(instanceJAXRSMethodSignature(aServiceProvider), false, false)/]) throws ServletException, IOException
     {
         ServiceProvider serviceProvider = [javaClassNameForSingleton(containingServiceProviderCatalog(aServiceProvider)) /].get[aServiceProvider.javaName(true)/](httpServletRequest[commaSeparate(aServiceProvider.instanceMethodParameterList(), true, false)/]);
         Service [ '[' /][ ']' /] services = serviceProvider.getServices();
@@ -161,12 +164,7 @@ public class [javaClassNameForService(aServiceProvider) /]
         // [/protected]
 
         RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[serviceProviderJspRelativeFileName(aServiceProvider) /]");
-        try {
-            rd.forward(httpServletRequest, httpServletResponse);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new WebApplicationException(e);
-        }
+        rd.forward(httpServletRequest, httpServletResponse);
     }
 }
 
