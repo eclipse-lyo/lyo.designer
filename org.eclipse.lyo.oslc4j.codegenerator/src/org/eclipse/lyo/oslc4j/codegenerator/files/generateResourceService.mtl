@@ -135,6 +135,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
@@ -403,8 +404,8 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     @POST
     [JAXRSPathAnnotation(aCreationDialog.URISegment(false)) /]
     @Consumes({ MediaType.APPLICATION_FORM_URLENCODED})
-    public [creationMethodReturnType(aCreationDialog)/] [creationMethodName(aCreationDialog)/](
-            [commaSeparate(dialogMethodSignature(aCreationDialog, false, true), false, false)/]
+    public [creationMethodReturnType(aCreationDialog)/] [creationMethodName(aCreationDialog)/](MultivaluedMap<String, String> formParams
+            [commaSeparate(dialogMethodSignature(aCreationDialog, false, true), true, false)/]
         ) {
         [creationMethodResourceType(aCreationDialog)/] newResource = null;
 
@@ -416,23 +417,23 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
         [let aResource : Resource = aCreationDialog.resourceTypes->first()]
         [javaClassName(aResource) /] aResource = new [javaClassName(aResource) /]();
 
-        String['[]'/] paramValues;
+        List<String> paramValues;
 
         [comment TODO: Check for valid parameters (1) that the oneOrMore, or oneOrMany are set. (2) things have right format. (3) Allow end_user to also add own checks
         In the Resource class, automtiacally generate a "propertyValidValue" (similar to propertyAsHtmlForCreation) for each of the properties.
         There you can add all automatic checks, as well as allow for end-user ones./]
         [for (propertiesCollection: Collection(ResourceProperty) | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)})]
         [for (aProperty: ResourceProperty | propertiesCollection)]
-        paramValues = httpServletRequest.getParameterValues("[javaName(aProperty, false)/]");
+        paramValues = formParams.get("[javaName(aProperty, false)/]");
         if (paramValues != null) {
             [if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))]
-                for(int i=0; i<paramValues.length; i++) {
-                    aResource.add[javaAttributeName(aProperty, aResource).toUpperFirst()/]([javaAttributeBaseTypeCastFromString(aProperty, 'paramValues[i]') /]);
+                for(int i=0; i<paramValues.size(); i++) {
+                    aResource.add[javaAttributeName(aProperty, aResource).toUpperFirst()/]([javaAttributeBaseTypeCastFromString(aProperty, 'paramValues.get(i)') /]);
                 }
             [else]
-                if (paramValues.length == 1) {
-                    if (paramValues['[0]'/].length() != 0)
-                        aResource.set[javaAttributeName(aProperty, aResource).toUpperFirst() /]([javaAttributeBaseTypeCastFromString(aProperty, 'paramValues[0]') /]);
+                if (paramValues.size() == 1) {
+                    if (paramValues.get(0).length() != 0)
+                        aResource.set[javaAttributeName(aProperty, aResource).toUpperFirst() /]([javaAttributeBaseTypeCastFromString(aProperty, 'paramValues.get(0)') /]);
                     // else, there is an empty value for that parameter, and hence ignore since the parameter is not actually set.
                 }
 
