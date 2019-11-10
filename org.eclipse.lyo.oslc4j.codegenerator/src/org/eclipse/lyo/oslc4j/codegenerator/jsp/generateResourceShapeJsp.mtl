@@ -103,11 +103,11 @@ To revert to the default generated content, delete all content in this file, and
 
                     <h2>Describes</h2>
                     <ul>
-                        <%for(URI next : aResourceShape.getDescribes()) {%>
-                            <li>
-                                <a href="<%=next%>">
-                                    <%= next.toString().split("#")['[1]'/]%></a>
-                            </li>
+                        <%for(URI next : aResourceShape.getDescribes()) {
+                            String['[]'/] split = next.toString().split("['[#/]'/]+");
+                            String shortName = (split.length > 1) ? split['[split.length -1]'/] : next.toString();
+                        %>
+                            <li><a href="<%=next%>"><%=shortName%></a></li>
                         <%}%>
                     </ul>
                     <h2>Properties</h2>
@@ -168,9 +168,11 @@ To revert to the default generated content, delete all content in this file, and
                                 <td bgcolor="#ffffff" valign="top">
                                     <%= (property.getRepresentation() == null) ? "n/a" : "<a href=\"" + property.getRepresentation() + "\"> " + property.getRepresentation().toString().split("#")['[1]'/] + "</a>"%></td>
                                 <td bgcolor="#ffffff" valign="top">
-                                    <%for(URI range : property.getRange()) {%>
-                                        <a href="<%=range%>">
-                                            <%= (range.toString().split("#").length < 2) ? range : range.toString().split("#")['[1]'/]%></a>
+                                    <%for(URI range : property.getRange()) {
+                                        String['[]'/] split = range.toString().split("['[#/]'/]+");
+                                        String shortName = (split.length > 1) ? split['[split.length -1]'/] : range.toString();
+                                    %>
+                                        <a href="<%=range%>"><%=shortName%></a>
                                     <%}%>
                                 </td>
                             </td>
