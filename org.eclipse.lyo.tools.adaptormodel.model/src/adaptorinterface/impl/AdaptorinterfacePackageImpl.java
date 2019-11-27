@@ -273,7 +273,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link AdaptorinterfacePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -287,7 +287,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		if (isInited) return (AdaptorinterfacePackage)EPackage.Registry.INSTANCE.getEPackage(AdaptorinterfacePackage.eNS_URI);
 
 		// Obtain or create and register package
-		AdaptorinterfacePackageImpl theAdaptorinterfacePackage = (AdaptorinterfacePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof AdaptorinterfacePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new AdaptorinterfacePackageImpl());
+		Object registeredAdaptorinterfacePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		AdaptorinterfacePackageImpl theAdaptorinterfacePackage = registeredAdaptorinterfacePackage instanceof AdaptorinterfacePackageImpl ? (AdaptorinterfacePackageImpl)registeredAdaptorinterfacePackage : new AdaptorinterfacePackageImpl();
 
 		isInited = true;
 
@@ -303,7 +304,6 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		// Mark meta-data to indicate it can't be changed
 		theAdaptorinterfacePackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(AdaptorinterfacePackage.eNS_URI, theAdaptorinterfacePackage);
 		return theAdaptorinterfacePackage;
@@ -314,6 +314,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAdaptorInterface() {
 		return adaptorInterfaceEClass;
 	}
@@ -323,6 +324,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAdaptorInterface_ServiceProviderCatalog() {
 		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(1);
 	}
@@ -332,6 +334,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAdaptorInterface_Name() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(0);
 	}
@@ -341,6 +344,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAdaptorInterface_JavaClassBaseNamespace() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(4);
 	}
@@ -350,6 +354,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAdaptorInterface_Specification() {
 		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(2);
 	}
@@ -359,6 +364,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAdaptorInterface_JavaFilesBasePath() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(5);
 	}
@@ -368,6 +374,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAdaptorInterface_JspFilesBasePath() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(6);
 	}
@@ -377,6 +384,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAdaptorInterface_JavascriptFilesBasePath() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(7);
 	}
@@ -386,7 +394,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_SwaggerDocumentation() {
+	@Override
+	public EAttribute getAdaptorInterface_DoNotRegenerateJspFiles() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -395,7 +404,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_classImports() {
+	@Override
+	public EAttribute getAdaptorInterface_SwaggerDocumentation() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -404,7 +414,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods() {
+	@Override
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_classImports() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -413,7 +424,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize() {
+	@Override
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -422,7 +434,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy() {
+	@Override
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -431,7 +444,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders() {
+	@Override
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -440,6 +454,17 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getAdaptorInterface_RequiredAdaptors() {
 		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(3);
 	}
@@ -449,25 +474,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResources() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(15);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResource() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(14);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_searchResources() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -476,7 +484,18 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_createResource() {
+	@Override
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResource() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_searchResources() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -485,6 +504,17 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_createResource() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getSpecification() {
 		return specificationEClass;
 	}
@@ -494,6 +524,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSpecification_DomainSpecifications() {
 		return (EReference)specificationEClass.getEStructuralFeatures().get(0);
 	}
@@ -503,6 +534,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSpecification_DomainPrefixes() {
 		return (EReference)specificationEClass.getEStructuralFeatures().get(1);
 	}
@@ -512,6 +544,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSpecification_GenerationSetting() {
 		return (EReference)specificationEClass.getEStructuralFeatures().get(2);
 	}
@@ -521,6 +554,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDomainSpecification() {
 		return domainSpecificationEClass;
 	}
@@ -530,6 +564,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDomainSpecification_Name() {
 		return (EAttribute)domainSpecificationEClass.getEStructuralFeatures().get(0);
 	}
@@ -539,6 +574,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDomainSpecification_NamespaceURI() {
 		return (EAttribute)domainSpecificationEClass.getEStructuralFeatures().get(1);
 	}
@@ -548,6 +584,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDomainSpecification_NamespacePrefix() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(2);
 	}
@@ -557,6 +594,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDomainSpecification_Resources() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(3);
 	}
@@ -566,6 +604,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDomainSpecification_ResourceProperties() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(4);
 	}
@@ -575,6 +614,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDomainSpecification_GenerationSetting() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(5);
 	}
@@ -584,6 +624,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDomainSpecification_ShaclShapes() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(6);
 	}
@@ -593,6 +634,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDomainSpecification_ShaclProperties() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(7);
 	}
@@ -602,6 +644,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNamespacePrefix() {
 		return namespacePrefixEClass;
 	}
@@ -611,6 +654,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNamespacePrefix_Name() {
 		return (EAttribute)namespacePrefixEClass.getEStructuralFeatures().get(0);
 	}
@@ -620,6 +664,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getServiceProviderCatalog() {
 		return serviceProviderCatalogEClass;
 	}
@@ -629,6 +674,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceProviderCatalog_Title() {
 		return (EAttribute)serviceProviderCatalogEClass.getEStructuralFeatures().get(0);
 	}
@@ -638,6 +684,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceProviderCatalog_Description() {
 		return (EAttribute)serviceProviderCatalogEClass.getEStructuralFeatures().get(1);
 	}
@@ -647,6 +694,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getServiceProviderCatalog_Publisher() {
 		return (EReference)serviceProviderCatalogEClass.getEStructuralFeatures().get(2);
 	}
@@ -656,6 +704,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getServiceProviderCatalog_ServiceProviders() {
 		return (EReference)serviceProviderCatalogEClass.getEStructuralFeatures().get(3);
 	}
@@ -665,6 +714,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getServiceProvider() {
 		return serviceProviderEClass;
 	}
@@ -674,6 +724,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceProvider_Title() {
 		return (EAttribute)serviceProviderEClass.getEStructuralFeatures().get(0);
 	}
@@ -683,6 +734,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceProvider_Description() {
 		return (EAttribute)serviceProviderEClass.getEStructuralFeatures().get(1);
 	}
@@ -692,6 +744,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getServiceProvider_Publisher() {
 		return (EReference)serviceProviderEClass.getEStructuralFeatures().get(2);
 	}
@@ -701,6 +754,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getServiceProvider_Services() {
 		return (EReference)serviceProviderEClass.getEStructuralFeatures().get(3);
 	}
@@ -710,6 +764,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceProvider_ServiceNamespace() {
 		return (EAttribute)serviceProviderEClass.getEStructuralFeatures().get(4);
 	}
@@ -719,6 +774,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceProvider_InstanceID() {
 		return (EAttribute)serviceProviderEClass.getEStructuralFeatures().get(5);
 	}
@@ -728,6 +784,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getService() {
 		return serviceEClass;
 	}
@@ -737,6 +794,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getService_DomainSpecification() {
 		return (EReference)serviceEClass.getEStructuralFeatures().get(0);
 	}
@@ -746,6 +804,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getService_ServiceNamespace() {
 		return (EAttribute)serviceEClass.getEStructuralFeatures().get(1);
 	}
@@ -755,6 +814,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getService_CreationFactories() {
 		return (EReference)serviceEClass.getEStructuralFeatures().get(2);
 	}
@@ -764,6 +824,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getService_QueryCapabilities() {
 		return (EReference)serviceEClass.getEStructuralFeatures().get(3);
 	}
@@ -773,6 +834,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getService_SelectionDialogs() {
 		return (EReference)serviceEClass.getEStructuralFeatures().get(4);
 	}
@@ -782,6 +844,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getService_CreationDialogs() {
 		return (EReference)serviceEClass.getEStructuralFeatures().get(5);
 	}
@@ -791,6 +854,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getService_BasicCapabilities() {
 		return (EReference)serviceEClass.getEStructuralFeatures().get(6);
 	}
@@ -800,6 +864,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getService_Usages() {
 		return (EAttribute)serviceEClass.getEStructuralFeatures().get(7);
 	}
@@ -809,6 +874,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getResource() {
 		return resourceEClass;
 	}
@@ -818,6 +884,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResource_Name() {
 		return (EAttribute)resourceEClass.getEStructuralFeatures().get(0);
 	}
@@ -827,6 +894,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getResource_Extends() {
 		return (EReference)resourceEClass.getEStructuralFeatures().get(2);
 	}
@@ -836,6 +904,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getResource_ResourceProperties() {
 		return (EReference)resourceEClass.getEStructuralFeatures().get(3);
 	}
@@ -845,6 +914,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getResource_Describes() {
 		return (EReference)resourceEClass.getEStructuralFeatures().get(1);
 	}
@@ -854,6 +924,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getResourceProperty() {
 		return resourcePropertyEClass;
 	}
@@ -863,6 +934,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceProperty_Title() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(0);
 	}
@@ -872,6 +944,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceProperty_Name() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(1);
 	}
@@ -881,6 +954,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getResourceProperty_PropertyDefinition() {
 		return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(2);
 	}
@@ -890,6 +964,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceProperty_Occurs() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(3);
 	}
@@ -899,6 +974,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceProperty_ReadOnly() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(4);
 	}
@@ -908,6 +984,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceProperty_ValueType() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(5);
 	}
@@ -917,6 +994,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceProperty_Representation() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(6);
 	}
@@ -926,6 +1004,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getResourceProperty_Range() {
 		return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(7);
 	}
@@ -935,6 +1014,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceProperty_Description() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(8);
 	}
@@ -944,6 +1024,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceProperty_AllowedValue() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(9);
 	}
@@ -953,6 +1034,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceProperty_IsMemberProperty() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(10);
 	}
@@ -962,6 +1044,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCreationFactory() {
 		return creationFactoryEClass;
 	}
@@ -971,6 +1054,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCreationFactory_Title() {
 		return (EAttribute)creationFactoryEClass.getEStructuralFeatures().get(0);
 	}
@@ -980,6 +1064,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCreationFactory_Label() {
 		return (EAttribute)creationFactoryEClass.getEStructuralFeatures().get(1);
 	}
@@ -989,6 +1074,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCreationFactory_CreationURI() {
 		return (EAttribute)creationFactoryEClass.getEStructuralFeatures().get(2);
 	}
@@ -998,6 +1084,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCreationFactory_ResourceTypes() {
 		return (EReference)creationFactoryEClass.getEStructuralFeatures().get(3);
 	}
@@ -1007,6 +1094,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCreationFactory_Usages() {
 		return (EAttribute)creationFactoryEClass.getEStructuralFeatures().get(4);
 	}
@@ -1016,6 +1104,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getQueryCapability() {
 		return queryCapabilityEClass;
 	}
@@ -1025,6 +1114,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getQueryCapability_Title() {
 		return (EAttribute)queryCapabilityEClass.getEStructuralFeatures().get(0);
 	}
@@ -1034,6 +1124,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getQueryCapability_Label() {
 		return (EAttribute)queryCapabilityEClass.getEStructuralFeatures().get(1);
 	}
@@ -1043,6 +1134,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getQueryCapability_QueryBaseURI() {
 		return (EAttribute)queryCapabilityEClass.getEStructuralFeatures().get(2);
 	}
@@ -1052,6 +1144,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getQueryCapability_ResourceTypes() {
 		return (EReference)queryCapabilityEClass.getEStructuralFeatures().get(3);
 	}
@@ -1061,6 +1154,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getQueryCapability_Usages() {
 		return (EAttribute)queryCapabilityEClass.getEStructuralFeatures().get(4);
 	}
@@ -1070,6 +1164,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBasicCapability() {
 		return basicCapabilityEClass;
 	}
@@ -1079,6 +1174,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBasicCapability_InstanceID() {
 		return (EAttribute)basicCapabilityEClass.getEStructuralFeatures().get(0);
 	}
@@ -1088,6 +1184,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBasicCapability_ResourceTypes() {
 		return (EReference)basicCapabilityEClass.getEStructuralFeatures().get(1);
 	}
@@ -1097,6 +1194,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBasicCapability_Read() {
 		return (EAttribute)basicCapabilityEClass.getEStructuralFeatures().get(2);
 	}
@@ -1106,6 +1204,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBasicCapability_Delete() {
 		return (EAttribute)basicCapabilityEClass.getEStructuralFeatures().get(3);
 	}
@@ -1115,6 +1214,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBasicCapability_Update() {
 		return (EAttribute)basicCapabilityEClass.getEStructuralFeatures().get(4);
 	}
@@ -1124,6 +1224,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDialog() {
 		return dialogEClass;
 	}
@@ -1133,6 +1234,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDialog_Title() {
 		return (EAttribute)dialogEClass.getEStructuralFeatures().get(0);
 	}
@@ -1142,6 +1244,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDialog_Label() {
 		return (EAttribute)dialogEClass.getEStructuralFeatures().get(1);
 	}
@@ -1151,6 +1254,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDialog_DialogURI() {
 		return (EAttribute)dialogEClass.getEStructuralFeatures().get(2);
 	}
@@ -1160,6 +1264,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDialog_HintWidth() {
 		return (EAttribute)dialogEClass.getEStructuralFeatures().get(3);
 	}
@@ -1169,6 +1274,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDialog_HintHeight() {
 		return (EAttribute)dialogEClass.getEStructuralFeatures().get(4);
 	}
@@ -1178,6 +1284,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDialog_ResourceTypes() {
 		return (EReference)dialogEClass.getEStructuralFeatures().get(5);
 	}
@@ -1187,6 +1294,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDialog_Usages() {
 		return (EAttribute)dialogEClass.getEStructuralFeatures().get(6);
 	}
@@ -1196,6 +1304,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPublisher() {
 		return publisherEClass;
 	}
@@ -1205,6 +1314,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPublisher_Title() {
 		return (EAttribute)publisherEClass.getEStructuralFeatures().get(0);
 	}
@@ -1214,6 +1324,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPublisher_Label() {
 		return (EAttribute)publisherEClass.getEStructuralFeatures().get(1);
 	}
@@ -1223,6 +1334,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPublisher_Identifier() {
 		return (EAttribute)publisherEClass.getEStructuralFeatures().get(2);
 	}
@@ -1232,6 +1344,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPublisher_Icon() {
 		return (EAttribute)publisherEClass.getEStructuralFeatures().get(3);
 	}
@@ -1241,6 +1354,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRequiredAdaptor() {
 		return requiredAdaptorEClass;
 	}
@@ -1250,6 +1364,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequiredAdaptor_ServiceProviderCatalogURI() {
 		return (EAttribute)requiredAdaptorEClass.getEStructuralFeatures().get(0);
 	}
@@ -1259,6 +1374,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGenericRequiredAdaptor() {
 		return genericRequiredAdaptorEClass;
 	}
@@ -1268,6 +1384,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getGenericRequiredAdaptor_Name() {
 		return (EAttribute)genericRequiredAdaptorEClass.getEStructuralFeatures().get(0);
 	}
@@ -1277,6 +1394,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGenericRequiredAdaptor_ServicedResources() {
 		return (EReference)genericRequiredAdaptorEClass.getEStructuralFeatures().get(1);
 	}
@@ -1286,6 +1404,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModelledRequiredAdaptor() {
 		return modelledRequiredAdaptorEClass;
 	}
@@ -1295,6 +1414,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModelledRequiredAdaptor_AdaptorInterface() {
 		return (EReference)modelledRequiredAdaptorEClass.getEStructuralFeatures().get(0);
 	}
@@ -1304,6 +1424,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGenerationSetting() {
 		return generationSettingEClass;
 	}
@@ -1313,6 +1434,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getGenerationSetting_JavaClassPackageName() {
 		return (EAttribute)generationSettingEClass.getEStructuralFeatures().get(0);
 	}
@@ -1322,6 +1444,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getGenerationSetting_JavaFilesPath() {
 		return (EAttribute)generationSettingEClass.getEStructuralFeatures().get(1);
 	}
@@ -1331,6 +1454,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getShape() {
 		return shapeEClass;
 	}
@@ -1340,6 +1464,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getShaclShape() {
 		return shaclShapeEClass;
 	}
@@ -1349,6 +1474,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getShaclShape_Name() {
 		return (EAttribute)shaclShapeEClass.getEStructuralFeatures().get(0);
 	}
@@ -1358,6 +1484,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getShaclShape_TargetClass() {
 		return (EReference)shaclShapeEClass.getEStructuralFeatures().get(1);
 	}
@@ -1367,6 +1494,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getShaclShape_Closed() {
 		return (EAttribute)shaclShapeEClass.getEStructuralFeatures().get(2);
 	}
@@ -1376,6 +1504,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getShaclShape_ShaclProperties() {
 		return (EReference)shaclShapeEClass.getEStructuralFeatures().get(3);
 	}
@@ -1385,6 +1514,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getShaclShape_Extends() {
 		return (EReference)shaclShapeEClass.getEStructuralFeatures().get(4);
 	}
@@ -1394,6 +1524,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getShapeProperty() {
 		return shapePropertyEClass;
 	}
@@ -1403,6 +1534,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getShaclProperty() {
 		return shaclPropertyEClass;
 	}
@@ -1412,6 +1544,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getShaclProperty_Name() {
 		return (EAttribute)shaclPropertyEClass.getEStructuralFeatures().get(0);
 	}
@@ -1421,6 +1554,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getShaclProperty_Path() {
 		return (EReference)shaclPropertyEClass.getEStructuralFeatures().get(1);
 	}
@@ -1430,6 +1564,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getShaclProperty_MinCount() {
 		return (EAttribute)shaclPropertyEClass.getEStructuralFeatures().get(2);
 	}
@@ -1439,6 +1574,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getShaclProperty_MaxCount() {
 		return (EAttribute)shaclPropertyEClass.getEStructuralFeatures().get(3);
 	}
@@ -1448,6 +1584,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getShaclProperty_DataType() {
 		return (EAttribute)shaclPropertyEClass.getEStructuralFeatures().get(4);
 	}
@@ -1457,6 +1594,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getShaclProperty_Class() {
 		return (EReference)shaclPropertyEClass.getEStructuralFeatures().get(5);
 	}
@@ -1466,6 +1604,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getResourcePropertyOccurs() {
 		return resourcePropertyOccursEEnum;
 	}
@@ -1475,6 +1614,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getResourcePropertyValueType() {
 		return resourcePropertyValueTypeEEnum;
 	}
@@ -1484,6 +1624,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getResourcePropertyRepresentation() {
 		return resourcePropertyRepresentationEEnum;
 	}
@@ -1493,6 +1634,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getResourcePropertyIsMemberProperty() {
 		return resourcePropertyIsMemberPropertyEEnum;
 	}
@@ -1502,6 +1644,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getResourceServiceNamespace() {
 		return resourceServiceNamespaceEEnum;
 	}
@@ -1511,6 +1654,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getShaclPropertyDataType() {
 		return shaclPropertyDataTypeEEnum;
 	}
@@ -1520,6 +1664,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AdaptorinterfaceFactory getAdaptorinterfaceFactory() {
 		return (AdaptorinterfaceFactory)getEFactoryInstance();
 	}
@@ -1552,6 +1697,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH);
+		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS);
@@ -1750,6 +1896,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getAdaptorInterface_JavaFilesBasePath(), ecorePackage.getEString(), "javaFilesBasePath", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_JspFilesBasePath(), ecorePackage.getEString(), "jspFilesBasePath", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_JavascriptFilesBasePath(), ecorePackage.getEString(), "javascriptFilesBasePath", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAdaptorInterface_DoNotRegenerateJspFiles(), ecorePackage.getEBoolean(), "doNotRegenerateJspFiles", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_SwaggerDocumentation(), ecorePackage.getEBoolean(), "swaggerDocumentation", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_BackendCodeTemplate_classImports(), ecorePackage.getEString(), "backendCodeTemplate_classImports", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_BackendCodeTemplate_classMethods(), ecorePackage.getEString(), "backendCodeTemplate_classMethods", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1763,9 +1910,9 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 		initEClass(specificationEClass, Specification.class, "Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSpecification_DomainSpecifications(), this.getDomainSpecification(), null, "domainSpecifications", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getSpecification_DomainSpecifications().getEKeys().add(this.getDomainSpecification_Name());
+		getSpecification_DomainSpecifications().getEKeys().add(this.getDomainSpecification_Name());
 		initEReference(getSpecification_DomainPrefixes(), this.getNamespacePrefix(), null, "domainPrefixes", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getSpecification_DomainPrefixes().getEKeys().add(this.getNamespacePrefix_Name());
+		getSpecification_DomainPrefixes().getEKeys().add(this.getNamespacePrefix_Name());
 		initEReference(getSpecification_GenerationSetting(), this.getGenerationSetting(), null, "generationSetting", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(domainSpecificationEClass, DomainSpecification.class, "DomainSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1773,14 +1920,14 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getDomainSpecification_NamespaceURI(), ecorePackage.getEString(), "namespaceURI", null, 1, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_NamespacePrefix(), this.getNamespacePrefix(), null, "namespacePrefix", null, 1, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_Resources(), this.getResource(), null, "resources", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getDomainSpecification_Resources().getEKeys().add(this.getResource_Name());
+		getDomainSpecification_Resources().getEKeys().add(this.getResource_Name());
 		initEReference(getDomainSpecification_ResourceProperties(), this.getResourceProperty(), null, "resourceProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getDomainSpecification_ResourceProperties().getEKeys().add(this.getResourceProperty_Name());
+		getDomainSpecification_ResourceProperties().getEKeys().add(this.getResourceProperty_Name());
 		initEReference(getDomainSpecification_GenerationSetting(), this.getGenerationSetting(), null, "generationSetting", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_ShaclShapes(), this.getShaclShape(), null, "shaclShapes", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getDomainSpecification_ShaclShapes().getEKeys().add(this.getShaclShape_Name());
+		getDomainSpecification_ShaclShapes().getEKeys().add(this.getShaclShape_Name());
 		initEReference(getDomainSpecification_ShaclProperties(), this.getShaclProperty(), null, "shaclProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getDomainSpecification_ShaclProperties().getEKeys().add(this.getShaclProperty_Name());
+		getDomainSpecification_ShaclProperties().getEKeys().add(this.getShaclProperty_Name());
 
 		initEClass(namespacePrefixEClass, NamespacePrefix.class, "NamespacePrefix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamespacePrefix_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamespacePrefix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

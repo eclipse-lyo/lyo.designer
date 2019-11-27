@@ -142,6 +142,7 @@ public class CreationFactoryImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -151,6 +152,7 @@ public class CreationFactoryImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTitle(String newTitle) {
 		String oldTitle = title;
 		title = newTitle;
@@ -163,6 +165,7 @@ public class CreationFactoryImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLabel() {
 		return label;
 	}
@@ -172,6 +175,7 @@ public class CreationFactoryImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLabel(String newLabel) {
 		String oldLabel = label;
 		label = newLabel;
@@ -184,6 +188,7 @@ public class CreationFactoryImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCreationURI() {
 		return creationURI;
 	}
@@ -193,6 +198,7 @@ public class CreationFactoryImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCreationURI(String newCreationURI) {
 		String oldCreationURI = creationURI;
 		creationURI = newCreationURI;
@@ -205,6 +211,7 @@ public class CreationFactoryImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Resource> getResourceTypes() {
 		if (resourceTypes == null) {
 			resourceTypes = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.CREATION_FACTORY__RESOURCE_TYPES);
@@ -217,6 +224,7 @@ public class CreationFactoryImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getUsages() {
 		if (usages == null) {
 			usages = new EDataTypeUniqueEList<String>(String.class, this, AdaptorinterfacePackage.CREATION_FACTORY__USAGES);
@@ -334,7 +342,7 @@ public class CreationFactoryImpl extends MinimalEObjectImpl.Container implements
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (title: ");
 		result.append(title);
 		result.append(", label: ");

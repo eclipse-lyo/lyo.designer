@@ -151,6 +151,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getInstanceID() {
 		return instanceID;
 	}
@@ -160,6 +161,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInstanceID(String newInstanceID) {
 		String oldInstanceID = instanceID;
 		instanceID = newInstanceID;
@@ -172,6 +174,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Resource> getResourceTypes() {
 		if (resourceTypes == null) {
 			resourceTypes = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.BASIC_CAPABILITY__RESOURCE_TYPES);
@@ -184,6 +187,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isRead() {
 		return read;
 	}
@@ -193,6 +197,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRead(boolean newRead) {
 		boolean oldRead = read;
 		read = newRead;
@@ -205,6 +210,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isDelete() {
 		return delete;
 	}
@@ -214,6 +220,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDelete(boolean newDelete) {
 		boolean oldDelete = delete;
 		delete = newDelete;
@@ -226,6 +233,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isUpdate() {
 		return update;
 	}
@@ -235,6 +243,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUpdate(boolean newUpdate) {
 		boolean oldUpdate = update;
 		update = newUpdate;
@@ -351,7 +360,7 @@ public class BasicCapabilityImpl extends MinimalEObjectImpl.Container implements
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (instanceID: ");
 		result.append(instanceID);
 		result.append(", read: ");

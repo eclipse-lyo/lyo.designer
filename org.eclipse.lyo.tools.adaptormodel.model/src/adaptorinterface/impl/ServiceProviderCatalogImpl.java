@@ -124,6 +124,7 @@ public class ServiceProviderCatalogImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -133,6 +134,7 @@ public class ServiceProviderCatalogImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTitle(String newTitle) {
 		String oldTitle = title;
 		title = newTitle;
@@ -145,6 +147,7 @@ public class ServiceProviderCatalogImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -154,6 +157,7 @@ public class ServiceProviderCatalogImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -166,6 +170,7 @@ public class ServiceProviderCatalogImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Publisher getPublisher() {
 		return publisher;
 	}
@@ -190,6 +195,7 @@ public class ServiceProviderCatalogImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPublisher(Publisher newPublisher) {
 		if (newPublisher != publisher) {
 			NotificationChain msgs = null;
@@ -209,6 +215,7 @@ public class ServiceProviderCatalogImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ServiceProvider> getServiceProviders() {
 		if (serviceProviders == null) {
 			serviceProviders = new EObjectContainmentEList<ServiceProvider>(ServiceProvider.class, this, AdaptorinterfacePackage.SERVICE_PROVIDER_CATALOG__SERVICE_PROVIDERS);
@@ -331,7 +338,7 @@ public class ServiceProviderCatalogImpl extends MinimalEObjectImpl.Container imp
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (title: ");
 		result.append(title);
 		result.append(", description: ");

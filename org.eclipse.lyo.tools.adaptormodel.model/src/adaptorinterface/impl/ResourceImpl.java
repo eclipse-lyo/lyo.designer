@@ -109,6 +109,7 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -118,6 +119,7 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -130,6 +132,7 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Resource> getExtends() {
 		if (extends_ == null) {
 			extends_ = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.RESOURCE__EXTENDS);
@@ -142,6 +145,7 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ResourceProperty> getResourceProperties() {
 		if (resourceProperties == null) {
 			resourceProperties = new EObjectResolvingEList<ResourceProperty>(ResourceProperty.class, this, AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES);
@@ -154,6 +158,7 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public vocabulary.Class getDescribes() {
 		if (describes != null && describes.eIsProxy()) {
 			InternalEObject oldDescribes = (InternalEObject)describes;
@@ -180,6 +185,7 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescribes(vocabulary.Class newDescribes) {
 		vocabulary.Class oldDescribes = describes;
 		describes = newDescribes;
@@ -288,7 +294,7 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

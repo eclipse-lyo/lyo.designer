@@ -94,6 +94,7 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DomainSpecification> getDomainSpecifications() {
 		if (domainSpecifications == null) {
 			domainSpecifications = new EObjectContainmentEList<DomainSpecification>(DomainSpecification.class, this, AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS);
@@ -106,6 +107,7 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<NamespacePrefix> getDomainPrefixes() {
 		if (domainPrefixes == null) {
 			domainPrefixes = new EObjectContainmentEList<NamespacePrefix>(NamespacePrefix.class, this, AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES);
@@ -118,6 +120,7 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GenerationSetting getGenerationSetting() {
 		return generationSetting;
 	}
@@ -142,6 +145,7 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGenerationSetting(GenerationSetting newGenerationSetting) {
 		if (newGenerationSetting != generationSetting) {
 			NotificationChain msgs = null;

@@ -61,6 +61,7 @@ public class ModelledRequiredAdaptorImpl extends RequiredAdaptorImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AdaptorInterface getAdaptorInterface() {
 		if (adaptorInterface != null && adaptorInterface.eIsProxy()) {
 			InternalEObject oldAdaptorInterface = (InternalEObject)adaptorInterface;
@@ -87,6 +88,7 @@ public class ModelledRequiredAdaptorImpl extends RequiredAdaptorImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAdaptorInterface(AdaptorInterface newAdaptorInterface) {
 		AdaptorInterface oldAdaptorInterface = adaptorInterface;
 		adaptorInterface = newAdaptorInterface;

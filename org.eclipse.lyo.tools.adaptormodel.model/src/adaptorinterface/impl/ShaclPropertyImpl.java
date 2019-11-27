@@ -165,6 +165,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -174,6 +175,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -186,6 +188,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Property getPath() {
 		if (path != null && path.eIsProxy()) {
 			InternalEObject oldPath = (InternalEObject)path;
@@ -212,6 +215,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPath(Property newPath) {
 		Property oldPath = path;
 		path = newPath;
@@ -224,6 +228,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMinCount() {
 		return minCount;
 	}
@@ -233,6 +238,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinCount(int newMinCount) {
 		int oldMinCount = minCount;
 		minCount = newMinCount;
@@ -245,6 +251,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMaxCount() {
 		return maxCount;
 	}
@@ -254,6 +261,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxCount(int newMaxCount) {
 		int oldMaxCount = maxCount;
 		maxCount = newMaxCount;
@@ -266,6 +274,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ShaclPropertyDataType getDataType() {
 		return dataType;
 	}
@@ -275,6 +284,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataType(ShaclPropertyDataType newDataType) {
 		ShaclPropertyDataType oldDataType = dataType;
 		dataType = newDataType == null ? DATA_TYPE_EDEFAULT : newDataType;
@@ -287,6 +297,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ShaclShape> getClass_() {
 		if (class_ == null) {
 			class_ = new EObjectResolvingEList<ShaclShape>(ShaclShape.class, this, AdaptorinterfacePackage.SHACL_PROPERTY__CLASS);
@@ -414,7 +425,7 @@ public class ShaclPropertyImpl extends ShapePropertyImpl implements ShaclPropert
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", minCount: ");

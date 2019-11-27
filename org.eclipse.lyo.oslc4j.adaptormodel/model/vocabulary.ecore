@@ -8,12 +8,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Vocabulary">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespaceURI" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="wildcards" value=""/>
-        <details key="name" value=""/>
-      </eAnnotations>
-    </eStructuralFeatures>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

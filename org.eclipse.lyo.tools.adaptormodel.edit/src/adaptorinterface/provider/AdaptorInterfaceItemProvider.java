@@ -68,6 +68,7 @@ public class AdaptorInterfaceItemProvider
 			addJavaFilesBasePathPropertyDescriptor(object);
 			addJspFilesBasePathPropertyDescriptor(object);
 			addJavascriptFilesBasePathPropertyDescriptor(object);
+			addDoNotRegenerateJspFilesPropertyDescriptor(object);
 			addSwaggerDocumentationPropertyDescriptor(object);
 			addBackendCodeTemplate_classImportsPropertyDescriptor(object);
 			addBackendCodeTemplate_classMethodsPropertyDescriptor(object);
@@ -188,6 +189,28 @@ public class AdaptorInterfaceItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Do Not Regenerate Jsp Files feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDoNotRegenerateJspFilesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AdaptorInterface_doNotRegenerateJspFiles_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AdaptorInterface_doNotRegenerateJspFiles_feature", "_UI_AdaptorInterface_type"),
+				 AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -487,6 +510,7 @@ public class AdaptorInterfaceItemProvider
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS:

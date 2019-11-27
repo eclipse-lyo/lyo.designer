@@ -83,11 +83,12 @@ public class Generate extends AbstractAcceleoGenerator {
      * @throws IOException
      *             This can be thrown in three scenarios : the module cannot be found, it cannot be loaded, or
      *             the model cannot be loaded.
-     * @generated
+     * @generated NOT
      */
     public Generate(URI modelURI, File targetFolder,
             List<? extends Object> arguments) throws IOException {
-        initialize(modelURI, targetFolder, arguments);
+        //initialize(modelURI, targetFolder, arguments);
+        initialize(modelURI, targetFolder, List.of(targetFolder.getAbsolutePath()));
     }
 
     /**
@@ -104,11 +105,12 @@ public class Generate extends AbstractAcceleoGenerator {
      *            pass them here.
      * @throws IOException
      *             This can be thrown in two scenarios : the module cannot be found, or it cannot be loaded.
-     * @generated
+     * @generated NOT
      */
     public Generate(EObject model, File targetFolder,
             List<? extends Object> arguments) throws IOException {
-        initialize(model, targetFolder, arguments);
+        //initialize(model, targetFolder, arguments);
+        initialize(model, targetFolder, List.of(targetFolder.getAbsolutePath()));
     }
     
     /**

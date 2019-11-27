@@ -166,6 +166,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -175,6 +176,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTitle(String newTitle) {
 		String oldTitle = title;
 		title = newTitle;
@@ -187,6 +189,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -196,6 +199,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -208,6 +212,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Publisher getPublisher() {
 		return publisher;
 	}
@@ -232,6 +237,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPublisher(Publisher newPublisher) {
 		if (newPublisher != publisher) {
 			NotificationChain msgs = null;
@@ -251,6 +257,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Service> getServices() {
 		if (services == null) {
 			services = new EObjectContainmentEList<Service>(Service.class, this, AdaptorinterfacePackage.SERVICE_PROVIDER__SERVICES);
@@ -263,6 +270,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getServiceNamespace() {
 		return serviceNamespace;
 	}
@@ -272,6 +280,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setServiceNamespace(String newServiceNamespace) {
 		String oldServiceNamespace = serviceNamespace;
 		serviceNamespace = newServiceNamespace;
@@ -284,6 +293,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getInstanceID() {
 		return instanceID;
 	}
@@ -293,6 +303,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInstanceID(String newInstanceID) {
 		String oldInstanceID = instanceID;
 		instanceID = newInstanceID;
@@ -435,7 +446,7 @@ public class ServiceProviderImpl extends MinimalEObjectImpl.Container implements
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (title: ");
 		result.append(title);
 		result.append(", description: ");

@@ -24,6 +24,11 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::fileServices/]
+
+[query public generateJspFile(anAdaptorInterface : AdaptorInterface, filePath : String) : Boolean = 
+    not (anAdaptorInterface.doNotRegenerateJspFiles()._and(fileExists(filePath)))
+/]
 
 [query private resourceCollectionJspSimpleFileName(aQueryCapability: QueryCapability) : String =
 (if (aQueryCapability.usages->size() = 0) then
