@@ -279,6 +279,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             }
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceCollectionJspRelativeFileName(aQueryCapability) /]");
             rd.forward(httpServletRequest,httpServletResponse);
+            return;
         }
 
         throw new WebApplicationException(Status.NOT_FOUND);
@@ -318,6 +319,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
                         httpServletRequest.setAttribute("resources", resources);
                         RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorResultsJspRelativeFileName(aSelectionDialog) /]");
                         rd.forward(httpServletRequest, httpServletResponse);
+                        return;
             }
             log.error("A empty search should return an empty list and not NULL!");
             throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
@@ -325,6 +327,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
         } else {
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorJspRelativeFileName(aSelectionDialog) /]");
             rd.forward(httpServletRequest, httpServletResponse);
+            return;
         }
     }
 
@@ -406,7 +409,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     @Consumes({ MediaType.APPLICATION_FORM_URLENCODED})
     public [creationMethodReturnType(aCreationDialog)/] [creationMethodName(aCreationDialog)/](MultivaluedMap<String, String> formParams
             [commaSeparate(dialogMethodSignature(aCreationDialog, false, true), true, false)/]
-        ) {
+        ) throws URISyntaxException {
         [creationMethodResourceType(aCreationDialog)/] newResource = null;
 
         [if not (aCreationDialog.resourceTypes->size() = 1)]

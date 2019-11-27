@@ -148,7 +148,7 @@ endif
 if forRDF then 
 	 queryMethodResourceType(aQueryCapability).concat('[]')
 else 
-	'Response' 
+	'void' 
 endif
 /]
 
