@@ -6,10 +6,10 @@ import java.nio.file.Paths;
 
 public class FileServices {
 
-	String targetFolder;
+	private static String targetFolder;
 	
 	public void setTargetFolder (String path) {
-		this.targetFolder = path;
+		targetFolder = path;
 	}
 	
 	public boolean fileExists(String filepath) {
