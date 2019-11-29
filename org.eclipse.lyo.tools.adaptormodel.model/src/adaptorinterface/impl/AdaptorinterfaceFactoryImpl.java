@@ -137,6 +137,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AdaptorInterface createAdaptorInterface() {
 		AdaptorInterfaceImpl adaptorInterface = new AdaptorInterfaceImpl();
 		return adaptorInterface;
@@ -147,6 +148,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Specification createSpecification() {
 		SpecificationImpl specification = new SpecificationImpl();
 		return specification;
@@ -157,6 +159,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DomainSpecification createDomainSpecification() {
 		DomainSpecificationImpl domainSpecification = new DomainSpecificationImpl();
 		return domainSpecification;
@@ -167,6 +170,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NamespacePrefix createNamespacePrefix() {
 		NamespacePrefixImpl namespacePrefix = new NamespacePrefixImpl();
 		return namespacePrefix;
@@ -177,6 +181,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ServiceProviderCatalog createServiceProviderCatalog() {
 		ServiceProviderCatalogImpl serviceProviderCatalog = new ServiceProviderCatalogImpl();
 		return serviceProviderCatalog;
@@ -187,6 +192,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ServiceProvider createServiceProvider() {
 		ServiceProviderImpl serviceProvider = new ServiceProviderImpl();
 		return serviceProvider;
@@ -197,6 +203,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Service createService() {
 		ServiceImpl service = new ServiceImpl();
 		return service;
@@ -207,6 +214,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource() {
 		ResourceImpl resource = new ResourceImpl();
 		return resource;
@@ -217,6 +225,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceProperty createResourceProperty() {
 		ResourcePropertyImpl resourceProperty = new ResourcePropertyImpl();
 		return resourceProperty;
@@ -227,6 +236,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CreationFactory createCreationFactory() {
 		CreationFactoryImpl creationFactory = new CreationFactoryImpl();
 		return creationFactory;
@@ -237,6 +247,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QueryCapability createQueryCapability() {
 		QueryCapabilityImpl queryCapability = new QueryCapabilityImpl();
 		return queryCapability;
@@ -247,6 +258,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BasicCapability createBasicCapability() {
 		BasicCapabilityImpl basicCapability = new BasicCapabilityImpl();
 		return basicCapability;
@@ -257,6 +269,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Dialog createDialog() {
 		DialogImpl dialog = new DialogImpl();
 		return dialog;
@@ -267,6 +280,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Publisher createPublisher() {
 		PublisherImpl publisher = new PublisherImpl();
 		return publisher;
@@ -277,6 +291,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GenericRequiredAdaptor createGenericRequiredAdaptor() {
 		GenericRequiredAdaptorImpl genericRequiredAdaptor = new GenericRequiredAdaptorImpl();
 		return genericRequiredAdaptor;
@@ -287,6 +302,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModelledRequiredAdaptor createModelledRequiredAdaptor() {
 		ModelledRequiredAdaptorImpl modelledRequiredAdaptor = new ModelledRequiredAdaptorImpl();
 		return modelledRequiredAdaptor;
@@ -297,6 +313,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GenerationSetting createGenerationSetting() {
 		GenerationSettingImpl generationSetting = new GenerationSettingImpl();
 		return generationSetting;
@@ -307,6 +324,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ShaclShape createShaclShape() {
 		ShaclShapeImpl shaclShape = new ShaclShapeImpl();
 		return shaclShape;
@@ -317,6 +335,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ShapeProperty createShapeProperty() {
 		ShapePropertyImpl shapeProperty = new ShapePropertyImpl();
 		return shapeProperty;
@@ -327,6 +346,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ShaclProperty createShaclProperty() {
 		ShaclPropertyImpl shaclProperty = new ShaclPropertyImpl();
 		return shaclProperty;
@@ -457,6 +477,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AdaptorinterfacePackage getAdaptorinterfacePackage() {
 		return (AdaptorinterfacePackage)getEPackage();
 	}

@@ -44,6 +44,14 @@ else
 endif)
 /]
 
+[query public doNotRegenerateJspFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if anAdaptorInterface.doNotRegenerateJspFiles.oclIsUndefined() then
+    false
+else
+    anAdaptorInterface.doNotRegenerateJspFiles
+endif)
+/]
+
 [query public javaName(anAdaptorInterface : AdaptorInterface, toUpperFirst : Boolean) : String = 
 javaString(anAdaptorInterface.name, 'oslc', toUpperFirst)
 /]

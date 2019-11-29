@@ -66,6 +66,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorClient/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResourceShapeService/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::fileServices/]
 
 [template public generateCommon(anAdaptorInterface : AdaptorInterface)]
 [anAdaptorInterface.generateLicenseFiles() /]
@@ -174,8 +175,9 @@
 [/for]
 [/template]
 
-[template public generate(anAdaptorInterface : AdaptorInterface)]
+[template public generate(anAdaptorInterface : AdaptorInterface, targetFolder : String)]
 [comment @main/]
+[setTargetFolder(targetFolder)/]
 [generateCommon(anAdaptorInterface)/]
 [if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined())]
     [generateForServiceProviderCatalog(anAdaptorInterface)/]

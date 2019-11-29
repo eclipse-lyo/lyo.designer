@@ -133,6 +133,7 @@ public class PublisherImpl extends MinimalEObjectImpl.Container implements Publi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -142,6 +143,7 @@ public class PublisherImpl extends MinimalEObjectImpl.Container implements Publi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTitle(String newTitle) {
 		String oldTitle = title;
 		title = newTitle;
@@ -154,6 +156,7 @@ public class PublisherImpl extends MinimalEObjectImpl.Container implements Publi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLabel() {
 		return label;
 	}
@@ -163,6 +166,7 @@ public class PublisherImpl extends MinimalEObjectImpl.Container implements Publi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLabel(String newLabel) {
 		String oldLabel = label;
 		label = newLabel;
@@ -175,6 +179,7 @@ public class PublisherImpl extends MinimalEObjectImpl.Container implements Publi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIdentifier() {
 		return identifier;
 	}
@@ -184,6 +189,7 @@ public class PublisherImpl extends MinimalEObjectImpl.Container implements Publi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIdentifier(String newIdentifier) {
 		String oldIdentifier = identifier;
 		identifier = newIdentifier;
@@ -196,6 +202,7 @@ public class PublisherImpl extends MinimalEObjectImpl.Container implements Publi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIcon() {
 		return icon;
 	}
@@ -205,6 +212,7 @@ public class PublisherImpl extends MinimalEObjectImpl.Container implements Publi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIcon(String newIcon) {
 		String oldIcon = icon;
 		icon = newIcon;
@@ -309,7 +317,7 @@ public class PublisherImpl extends MinimalEObjectImpl.Container implements Publi
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (title: ");
 		result.append(title);
 		result.append(", label: ");

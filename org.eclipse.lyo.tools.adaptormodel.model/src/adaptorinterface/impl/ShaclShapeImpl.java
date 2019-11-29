@@ -131,6 +131,7 @@ public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -140,6 +141,7 @@ public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -152,6 +154,7 @@ public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public vocabulary.Class getTargetClass() {
 		if (targetClass != null && targetClass.eIsProxy()) {
 			InternalEObject oldTargetClass = (InternalEObject)targetClass;
@@ -178,6 +181,7 @@ public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTargetClass(vocabulary.Class newTargetClass) {
 		vocabulary.Class oldTargetClass = targetClass;
 		targetClass = newTargetClass;
@@ -190,6 +194,7 @@ public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isClosed() {
 		return closed;
 	}
@@ -199,6 +204,7 @@ public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setClosed(boolean newClosed) {
 		boolean oldClosed = closed;
 		closed = newClosed;
@@ -211,6 +217,7 @@ public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ShaclProperty> getShaclProperties() {
 		if (shaclProperties == null) {
 			shaclProperties = new EObjectResolvingEList<ShaclProperty>(ShaclProperty.class, this, AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES);
@@ -223,6 +230,7 @@ public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ShaclShape> getExtends() {
 		if (extends_ == null) {
 			extends_ = new EObjectResolvingEList<ShaclShape>(ShaclShape.class, this, AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS);
@@ -341,7 +349,7 @@ public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", closed: ");

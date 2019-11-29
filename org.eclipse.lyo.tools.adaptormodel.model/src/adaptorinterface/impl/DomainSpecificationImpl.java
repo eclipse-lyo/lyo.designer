@@ -172,6 +172,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -181,6 +182,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -193,6 +195,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getNamespaceURI() {
 		return namespaceURI;
 	}
@@ -202,6 +205,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNamespaceURI(String newNamespaceURI) {
 		String oldNamespaceURI = namespaceURI;
 		namespaceURI = newNamespaceURI;
@@ -214,6 +218,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NamespacePrefix getNamespacePrefix() {
 		if (namespacePrefix != null && namespacePrefix.eIsProxy()) {
 			InternalEObject oldNamespacePrefix = (InternalEObject)namespacePrefix;
@@ -240,6 +245,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNamespacePrefix(NamespacePrefix newNamespacePrefix) {
 		NamespacePrefix oldNamespacePrefix = namespacePrefix;
 		namespacePrefix = newNamespacePrefix;
@@ -252,6 +258,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Resource> getResources() {
 		if (resources == null) {
 			resources = new EObjectContainmentEList<Resource>(Resource.class, this, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCES);
@@ -264,6 +271,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ResourceProperty> getResourceProperties() {
 		if (resourceProperties == null) {
 			resourceProperties = new EObjectContainmentEList<ResourceProperty>(ResourceProperty.class, this, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES);
@@ -276,6 +284,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GenerationSetting getGenerationSetting() {
 		return generationSetting;
 	}
@@ -300,6 +309,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGenerationSetting(GenerationSetting newGenerationSetting) {
 		if (newGenerationSetting != generationSetting) {
 			NotificationChain msgs = null;
@@ -319,6 +329,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ShaclShape> getShaclShapes() {
 		if (shaclShapes == null) {
 			shaclShapes = new EObjectContainmentEList<ShaclShape>(ShaclShape.class, this, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES);
@@ -331,6 +342,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ShaclProperty> getShaclProperties() {
 		if (shaclProperties == null) {
 			shaclProperties = new EObjectContainmentEList<ShaclProperty>(ShaclProperty.class, this, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES);
@@ -503,7 +515,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", namespaceURI: ");

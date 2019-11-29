@@ -184,6 +184,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -193,6 +194,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTitle(String newTitle) {
 		String oldTitle = title;
 		title = newTitle;
@@ -205,6 +207,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLabel() {
 		return label;
 	}
@@ -214,6 +217,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLabel(String newLabel) {
 		String oldLabel = label;
 		label = newLabel;
@@ -226,6 +230,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDialogURI() {
 		return dialogURI;
 	}
@@ -235,6 +240,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDialogURI(String newDialogURI) {
 		String oldDialogURI = dialogURI;
 		dialogURI = newDialogURI;
@@ -247,6 +253,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public short getHintWidth() {
 		return hintWidth;
 	}
@@ -256,6 +263,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHintWidth(short newHintWidth) {
 		short oldHintWidth = hintWidth;
 		hintWidth = newHintWidth;
@@ -268,6 +276,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public short getHintHeight() {
 		return hintHeight;
 	}
@@ -277,6 +286,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHintHeight(short newHintHeight) {
 		short oldHintHeight = hintHeight;
 		hintHeight = newHintHeight;
@@ -289,6 +299,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Resource> getResourceTypes() {
 		if (resourceTypes == null) {
 			resourceTypes = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.DIALOG__RESOURCE_TYPES);
@@ -301,6 +312,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getUsages() {
 		if (usages == null) {
 			usages = new EDataTypeUniqueEList<String>(String.class, this, AdaptorinterfacePackage.DIALOG__USAGES);
@@ -438,7 +450,7 @@ public class DialogImpl extends MinimalEObjectImpl.Container implements Dialog {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (title: ");
 		result.append(title);
 		result.append(", label: ");

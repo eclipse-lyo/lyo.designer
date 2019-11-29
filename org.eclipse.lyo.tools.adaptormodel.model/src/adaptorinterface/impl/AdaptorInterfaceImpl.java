@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavaFilesBasePath <em>Java Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJspFilesBasePath <em>Jsp Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavascriptFilesBasePath <em>Javascript Files Base Path</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#isSwaggerDocumentation <em>Swagger Documentation</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_classImports <em>Backend Code Template class Imports</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}</li>
@@ -184,6 +185,26 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String javascriptFilesBasePath = JAVASCRIPT_FILES_BASE_PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDoNotRegenerateJspFiles() <em>Do Not Regenerate Jsp Files</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDoNotRegenerateJspFiles()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DO_NOT_REGENERATE_JSP_FILES_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDoNotRegenerateJspFiles() <em>Do Not Regenerate Jsp Files</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDoNotRegenerateJspFiles()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean doNotRegenerateJspFiles = DO_NOT_REGENERATE_JSP_FILES_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isSwaggerDocumentation() <em>Swagger Documentation</em>}' attribute.
@@ -409,6 +430,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ServiceProviderCatalog getServiceProviderCatalog() {
 		return serviceProviderCatalog;
 	}
@@ -433,6 +455,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setServiceProviderCatalog(ServiceProviderCatalog newServiceProviderCatalog) {
 		if (newServiceProviderCatalog != serviceProviderCatalog) {
 			NotificationChain msgs = null;
@@ -452,6 +475,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -461,6 +485,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -473,6 +498,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getJavaClassBaseNamespace() {
 		return javaClassBaseNamespace;
 	}
@@ -482,6 +508,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setJavaClassBaseNamespace(String newJavaClassBaseNamespace) {
 		String oldJavaClassBaseNamespace = javaClassBaseNamespace;
 		javaClassBaseNamespace = newJavaClassBaseNamespace;
@@ -494,6 +521,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Specification getSpecification() {
 		return specification;
 	}
@@ -518,6 +546,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSpecification(Specification newSpecification) {
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
@@ -537,6 +566,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getJavaFilesBasePath() {
 		return javaFilesBasePath;
 	}
@@ -546,6 +576,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setJavaFilesBasePath(String newJavaFilesBasePath) {
 		String oldJavaFilesBasePath = javaFilesBasePath;
 		javaFilesBasePath = newJavaFilesBasePath;
@@ -558,6 +589,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getJspFilesBasePath() {
 		return jspFilesBasePath;
 	}
@@ -567,6 +599,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setJspFilesBasePath(String newJspFilesBasePath) {
 		String oldJspFilesBasePath = jspFilesBasePath;
 		jspFilesBasePath = newJspFilesBasePath;
@@ -579,6 +612,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getJavascriptFilesBasePath() {
 		return javascriptFilesBasePath;
 	}
@@ -588,6 +622,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setJavascriptFilesBasePath(String newJavascriptFilesBasePath) {
 		String oldJavascriptFilesBasePath = javascriptFilesBasePath;
 		javascriptFilesBasePath = newJavascriptFilesBasePath;
@@ -600,6 +635,30 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public boolean isDoNotRegenerateJspFiles() {
+		return doNotRegenerateJspFiles;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDoNotRegenerateJspFiles(boolean newDoNotRegenerateJspFiles) {
+		boolean oldDoNotRegenerateJspFiles = doNotRegenerateJspFiles;
+		doNotRegenerateJspFiles = newDoNotRegenerateJspFiles;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES, oldDoNotRegenerateJspFiles, doNotRegenerateJspFiles));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isSwaggerDocumentation() {
 		return swaggerDocumentation;
 	}
@@ -609,6 +668,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSwaggerDocumentation(boolean newSwaggerDocumentation) {
 		boolean oldSwaggerDocumentation = swaggerDocumentation;
 		swaggerDocumentation = newSwaggerDocumentation;
@@ -621,6 +681,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBackendCodeTemplate_classImports() {
 		return backendCodeTemplate_classImports;
 	}
@@ -630,6 +691,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBackendCodeTemplate_classImports(String newBackendCodeTemplate_classImports) {
 		String oldBackendCodeTemplate_classImports = backendCodeTemplate_classImports;
 		backendCodeTemplate_classImports = newBackendCodeTemplate_classImports;
@@ -642,6 +704,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBackendCodeTemplate_classMethods() {
 		return backendCodeTemplate_classMethods;
 	}
@@ -651,6 +714,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBackendCodeTemplate_classMethods(String newBackendCodeTemplate_classMethods) {
 		String oldBackendCodeTemplate_classMethods = backendCodeTemplate_classMethods;
 		backendCodeTemplate_classMethods = newBackendCodeTemplate_classMethods;
@@ -663,6 +727,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBackendCodeTemplate_servletListenerInitialize() {
 		return backendCodeTemplate_servletListenerInitialize;
 	}
@@ -672,6 +737,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBackendCodeTemplate_servletListenerInitialize(String newBackendCodeTemplate_servletListenerInitialize) {
 		String oldBackendCodeTemplate_servletListenerInitialize = backendCodeTemplate_servletListenerInitialize;
 		backendCodeTemplate_servletListenerInitialize = newBackendCodeTemplate_servletListenerInitialize;
@@ -684,6 +750,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBackendCodeTemplate_servletListenerDestroy() {
 		return backendCodeTemplate_servletListenerDestroy;
 	}
@@ -693,6 +760,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBackendCodeTemplate_servletListenerDestroy(String newBackendCodeTemplate_servletListenerDestroy) {
 		String oldBackendCodeTemplate_servletListenerDestroy = backendCodeTemplate_servletListenerDestroy;
 		backendCodeTemplate_servletListenerDestroy = newBackendCodeTemplate_servletListenerDestroy;
@@ -705,6 +773,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBackendCodeTemplate_getServiceProviders() {
 		return backendCodeTemplate_getServiceProviders;
 	}
@@ -714,6 +783,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBackendCodeTemplate_getServiceProviders(String newBackendCodeTemplate_getServiceProviders) {
 		String oldBackendCodeTemplate_getServiceProviders = backendCodeTemplate_getServiceProviders;
 		backendCodeTemplate_getServiceProviders = newBackendCodeTemplate_getServiceProviders;
@@ -726,6 +796,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RequiredAdaptor> getRequiredAdaptors() {
 		if (requiredAdaptors == null) {
 			requiredAdaptors = new EObjectContainmentEList<RequiredAdaptor>(RequiredAdaptor.class, this, AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS);
@@ -738,6 +809,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBackendCodeTemplate_getResources() {
 		return backendCodeTemplate_getResources;
 	}
@@ -747,6 +819,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBackendCodeTemplate_getResources(String newBackendCodeTemplate_getResources) {
 		String oldBackendCodeTemplate_getResources = backendCodeTemplate_getResources;
 		backendCodeTemplate_getResources = newBackendCodeTemplate_getResources;
@@ -759,6 +832,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBackendCodeTemplate_getResource() {
 		return backendCodeTemplate_getResource;
 	}
@@ -768,6 +842,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBackendCodeTemplate_getResource(String newBackendCodeTemplate_getResource) {
 		String oldBackendCodeTemplate_getResource = backendCodeTemplate_getResource;
 		backendCodeTemplate_getResource = newBackendCodeTemplate_getResource;
@@ -780,6 +855,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBackendCodeTemplate_searchResources() {
 		return backendCodeTemplate_searchResources;
 	}
@@ -789,6 +865,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBackendCodeTemplate_searchResources(String newBackendCodeTemplate_searchResources) {
 		String oldBackendCodeTemplate_searchResources = backendCodeTemplate_searchResources;
 		backendCodeTemplate_searchResources = newBackendCodeTemplate_searchResources;
@@ -801,6 +878,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBackendCodeTemplate_createResource() {
 		return backendCodeTemplate_createResource;
 	}
@@ -810,6 +888,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBackendCodeTemplate_createResource(String newBackendCodeTemplate_createResource) {
 		String oldBackendCodeTemplate_createResource = backendCodeTemplate_createResource;
 		backendCodeTemplate_createResource = newBackendCodeTemplate_createResource;
@@ -859,6 +938,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return getJspFilesBasePath();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				return getJavascriptFilesBasePath();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES:
+				return isDoNotRegenerateJspFiles();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
 				return isSwaggerDocumentation();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
@@ -916,6 +997,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				setJavascriptFilesBasePath((String)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES:
+				setDoNotRegenerateJspFiles((Boolean)newValue);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
 				setSwaggerDocumentation((Boolean)newValue);
@@ -983,6 +1067,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				setJavascriptFilesBasePath(JAVASCRIPT_FILES_BASE_PATH_EDEFAULT);
 				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES:
+				setDoNotRegenerateJspFiles(DO_NOT_REGENERATE_JSP_FILES_EDEFAULT);
+				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
 				setSwaggerDocumentation(SWAGGER_DOCUMENTATION_EDEFAULT);
 				return;
@@ -1041,6 +1128,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return JSP_FILES_BASE_PATH_EDEFAULT == null ? jspFilesBasePath != null : !JSP_FILES_BASE_PATH_EDEFAULT.equals(jspFilesBasePath);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				return JAVASCRIPT_FILES_BASE_PATH_EDEFAULT == null ? javascriptFilesBasePath != null : !JAVASCRIPT_FILES_BASE_PATH_EDEFAULT.equals(javascriptFilesBasePath);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES:
+				return doNotRegenerateJspFiles != DO_NOT_REGENERATE_JSP_FILES_EDEFAULT;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
 				return swaggerDocumentation != SWAGGER_DOCUMENTATION_EDEFAULT;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
@@ -1074,7 +1163,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", javaClassBaseNamespace: ");
@@ -1085,6 +1174,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 		result.append(jspFilesBasePath);
 		result.append(", javascriptFilesBasePath: ");
 		result.append(javascriptFilesBasePath);
+		result.append(", doNotRegenerateJspFiles: ");
+		result.append(doNotRegenerateJspFiles);
 		result.append(", swaggerDocumentation: ");
 		result.append(swaggerDocumentation);
 		result.append(", backendCodeTemplate_classImports: ");

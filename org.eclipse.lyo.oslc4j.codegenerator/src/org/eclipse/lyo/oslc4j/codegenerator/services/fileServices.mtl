@@ -1,0 +1,10 @@
+[comment encoding = UTF-8 /]
+[module fileServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[query public setTargetFolder(path : String): Boolean
+    = invoke('org.eclipse.lyo.oslc4j.codegenerator.services.FileServices', 'setTargetFolder(java.lang.String)', Sequence{path})
+/]
+
+[query public fileExists(filePath : String): Boolean
+    = invoke('org.eclipse.lyo.oslc4j.codegenerator.services.FileServices', 'fileExists(java.lang.String)', Sequence{filePath})
+/]

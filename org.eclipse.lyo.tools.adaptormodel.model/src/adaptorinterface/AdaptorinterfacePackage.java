@@ -140,13 +140,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = 7;
 
 	/**
+	 * The feature id for the '<em><b>Do Not Regenerate Jsp Files</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES = 8;
+
+	/**
 	 * The feature id for the '<em><b>Swagger Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION = 8;
+	int ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template class Imports</b></em>' attribute.
@@ -155,7 +164,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS = 9;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS = 10;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template class Methods</b></em>' attribute.
@@ -164,7 +173,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS = 10;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS = 11;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template servlet Listener Initialize</b></em>' attribute.
@@ -173,7 +182,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE = 11;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template servlet Listener Destroy</b></em>' attribute.
@@ -182,7 +191,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY = 12;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY = 13;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template get Service Providers</b></em>' attribute.
@@ -191,7 +200,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS = 13;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS = 14;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template get Resource</b></em>' attribute.
@@ -200,7 +209,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE = 14;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template get Resources</b></em>' attribute.
@@ -209,7 +218,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES = 15;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES = 16;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template search Resources</b></em>' attribute.
@@ -218,7 +227,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES = 16;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES = 17;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template create Resource</b></em>' attribute.
@@ -227,7 +236,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = 17;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = 18;
 
 	/**
 	 * The number of structural features of the '<em>Adaptor Interface</em>' class.
@@ -236,7 +245,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE_FEATURE_COUNT = 18;
+	int ADAPTOR_INTERFACE_FEATURE_COUNT = 19;
 
 	/**
 	 * The number of operations of the '<em>Adaptor Interface</em>' class.
@@ -1795,6 +1804,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getAdaptorInterface_JavascriptFilesBasePath();
 
 	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Do Not Regenerate Jsp Files</em>'.
+	 * @see adaptorinterface.AdaptorInterface#isDoNotRegenerateJspFiles()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_DoNotRegenerateJspFiles();
+
+	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#isSwaggerDocumentation <em>Swagger Documentation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3241,6 +3261,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = eINSTANCE.getAdaptorInterface_JavascriptFilesBasePath();
+
+		/**
+		 * The meta object literal for the '<em><b>Do Not Regenerate Jsp Files</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES = eINSTANCE.getAdaptorInterface_DoNotRegenerateJspFiles();
 
 		/**
 		 * The meta object literal for the '<em><b>Swagger Documentation</b></em>' attribute feature.

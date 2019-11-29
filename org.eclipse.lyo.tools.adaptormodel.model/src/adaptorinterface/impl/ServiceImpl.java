@@ -163,6 +163,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DomainSpecification getDomainSpecification() {
 		if (domainSpecification != null && domainSpecification.eIsProxy()) {
 			InternalEObject oldDomainSpecification = (InternalEObject)domainSpecification;
@@ -189,6 +190,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDomainSpecification(DomainSpecification newDomainSpecification) {
 		DomainSpecification oldDomainSpecification = domainSpecification;
 		domainSpecification = newDomainSpecification;
@@ -201,6 +203,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceServiceNamespace getServiceNamespace() {
 		return serviceNamespace;
 	}
@@ -210,6 +213,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setServiceNamespace(ResourceServiceNamespace newServiceNamespace) {
 		ResourceServiceNamespace oldServiceNamespace = serviceNamespace;
 		serviceNamespace = newServiceNamespace == null ? SERVICE_NAMESPACE_EDEFAULT : newServiceNamespace;
@@ -222,6 +226,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CreationFactory> getCreationFactories() {
 		if (creationFactories == null) {
 			creationFactories = new EObjectContainmentEList<CreationFactory>(CreationFactory.class, this, AdaptorinterfacePackage.SERVICE__CREATION_FACTORIES);
@@ -234,6 +239,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<QueryCapability> getQueryCapabilities() {
 		if (queryCapabilities == null) {
 			queryCapabilities = new EObjectContainmentEList<QueryCapability>(QueryCapability.class, this, AdaptorinterfacePackage.SERVICE__QUERY_CAPABILITIES);
@@ -246,6 +252,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Dialog> getSelectionDialogs() {
 		if (selectionDialogs == null) {
 			selectionDialogs = new EObjectContainmentEList<Dialog>(Dialog.class, this, AdaptorinterfacePackage.SERVICE__SELECTION_DIALOGS);
@@ -258,6 +265,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Dialog> getCreationDialogs() {
 		if (creationDialogs == null) {
 			creationDialogs = new EObjectContainmentEList<Dialog>(Dialog.class, this, AdaptorinterfacePackage.SERVICE__CREATION_DIALOGS);
@@ -270,6 +278,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<BasicCapability> getBasicCapabilities() {
 		if (basicCapabilities == null) {
 			basicCapabilities = new EObjectContainmentEList<BasicCapability>(BasicCapability.class, this, AdaptorinterfacePackage.SERVICE__BASIC_CAPABILITIES);
@@ -282,6 +291,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getUsages() {
 		if (usages == null) {
 			usages = new EDataTypeUniqueEList<String>(String.class, this, AdaptorinterfacePackage.SERVICE__USAGES);
@@ -456,7 +466,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (serviceNamespace: ");
 		result.append(serviceNamespace);
 		result.append(", usages: ");

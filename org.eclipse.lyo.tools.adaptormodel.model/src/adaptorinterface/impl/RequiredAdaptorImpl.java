@@ -70,6 +70,7 @@ public abstract class RequiredAdaptorImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getServiceProviderCatalogURI() {
 		return serviceProviderCatalogURI;
 	}
@@ -79,6 +80,7 @@ public abstract class RequiredAdaptorImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setServiceProviderCatalogURI(String newServiceProviderCatalogURI) {
 		String oldServiceProviderCatalogURI = serviceProviderCatalogURI;
 		serviceProviderCatalogURI = newServiceProviderCatalogURI;
@@ -153,7 +155,7 @@ public abstract class RequiredAdaptorImpl extends MinimalEObjectImpl.Container i
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (serviceProviderCatalogURI: ");
 		result.append(serviceProviderCatalogURI);
 		result.append(')');

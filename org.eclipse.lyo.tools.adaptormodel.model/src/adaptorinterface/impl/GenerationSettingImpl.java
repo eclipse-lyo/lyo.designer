@@ -91,6 +91,7 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getJavaClassPackageName() {
 		return javaClassPackageName;
 	}
@@ -100,6 +101,7 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setJavaClassPackageName(String newJavaClassPackageName) {
 		String oldJavaClassPackageName = javaClassPackageName;
 		javaClassPackageName = newJavaClassPackageName;
@@ -112,6 +114,7 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getJavaFilesPath() {
 		return javaFilesPath;
 	}
@@ -121,6 +124,7 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setJavaFilesPath(String newJavaFilesPath) {
 		String oldJavaFilesPath = javaFilesPath;
 		javaFilesPath = newJavaFilesPath;
@@ -205,7 +209,7 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (javaClassPackageName: ");
 		result.append(javaClassPackageName);
 		result.append(", javaFilesPath: ");
