@@ -273,7 +273,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 *
+	 * 
 	 * <p>This method is used to initialize {@link AdaptorinterfacePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -287,8 +287,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		if (isInited) return (AdaptorinterfacePackage)EPackage.Registry.INSTANCE.getEPackage(AdaptorinterfacePackage.eNS_URI);
 
 		// Obtain or create and register package
-		Object registeredAdaptorinterfacePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		AdaptorinterfacePackageImpl theAdaptorinterfacePackage = registeredAdaptorinterfacePackage instanceof AdaptorinterfacePackageImpl ? (AdaptorinterfacePackageImpl)registeredAdaptorinterfacePackage : new AdaptorinterfacePackageImpl();
+		AdaptorinterfacePackageImpl theAdaptorinterfacePackage = (AdaptorinterfacePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof AdaptorinterfacePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new AdaptorinterfacePackageImpl());
 
 		isInited = true;
 
@@ -304,6 +303,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		// Mark meta-data to indicate it can't be changed
 		theAdaptorinterfacePackage.freeze();
 
+  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(AdaptorinterfacePackage.eNS_URI, theAdaptorinterfacePackage);
 		return theAdaptorinterfacePackage;

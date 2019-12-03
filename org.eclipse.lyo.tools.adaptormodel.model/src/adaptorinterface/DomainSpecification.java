@@ -119,7 +119,7 @@ public interface DomainSpecification extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resources</em>' containment reference list.
 	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_Resources()
-     * @model containment="true" keys="name"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<Resource> getResources();
@@ -135,7 +135,7 @@ public interface DomainSpecification extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resource Properties</em>' containment reference list.
 	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_ResourceProperties()
-     * @model containment="true" keys="name"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<ResourceProperty> getResourceProperties();
@@ -177,7 +177,7 @@ public interface DomainSpecification extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Shacl Shapes</em>' containment reference list.
 	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_ShaclShapes()
-     * @model containment="true" keys="name"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<ShaclShape> getShaclShapes();
@@ -193,7 +193,7 @@ public interface DomainSpecification extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Shacl Properties</em>' containment reference list.
 	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_ShaclProperties()
-     * @model containment="true" keys="name"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<ShaclProperty> getShaclProperties();

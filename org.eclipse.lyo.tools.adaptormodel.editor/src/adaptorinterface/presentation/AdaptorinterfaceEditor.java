@@ -68,8 +68,6 @@ import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 
 import org.eclipse.swt.graphics.Point;
-
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 
 import org.eclipse.swt.widgets.Composite;
@@ -326,7 +324,6 @@ public class AdaptorinterfaceEditor
 	 */
 	protected IPartListener partListener =
 		new IPartListener() {
-			@Override
 			public void partActivated(IWorkbenchPart p) {
 				if (p instanceof ContentOutline) {
 					if (((ContentOutline)p).getCurrentPage() == contentOutlinePage) {
@@ -345,19 +342,15 @@ public class AdaptorinterfaceEditor
 					handleActivate();
 				}
 			}
-			@Override
 			public void partBroughtToTop(IWorkbenchPart p) {
 				// Ignore.
 			}
-			@Override
 			public void partClosed(IWorkbenchPart p) {
 				// Ignore.
 			}
-			@Override
 			public void partDeactivated(IWorkbenchPart p) {
 				// Ignore.
 			}
-			@Override
 			public void partOpened(IWorkbenchPart p) {
 				// Ignore.
 			}
@@ -443,7 +436,6 @@ public class AdaptorinterfaceEditor
 					dispatching = true;
 					getSite().getShell().getDisplay().asyncExec
 						(new Runnable() {
-							 @Override
 							 public void run() {
 								 dispatching = false;
 								 updateProblemIndication();
@@ -473,7 +465,6 @@ public class AdaptorinterfaceEditor
 	 */
 	protected IResourceChangeListener resourceChangeListener =
 		new IResourceChangeListener() {
-			@Override
 			public void resourceChanged(IResourceChangeEvent event) {
 				IResourceDelta delta = event.getDelta();
 				try {
@@ -482,7 +473,6 @@ public class AdaptorinterfaceEditor
 						protected Collection<Resource> changedResources = new ArrayList<Resource>();
 						protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
-						@Override
 						public boolean visit(IResourceDelta delta) {
 							if (delta.getResource().getType() == IResource.FILE) {
 								if (delta.getKind() == IResourceDelta.REMOVED ||
@@ -518,7 +508,6 @@ public class AdaptorinterfaceEditor
 					if (!visitor.getRemovedResources().isEmpty()) {
 						getSite().getShell().getDisplay().asyncExec
 							(new Runnable() {
-								 @Override
 								 public void run() {
 									 removedResources.addAll(visitor.getRemovedResources());
 									 if (!isDirty()) {
@@ -531,7 +520,6 @@ public class AdaptorinterfaceEditor
 					if (!visitor.getChangedResources().isEmpty()) {
 						getSite().getShell().getDisplay().asyncExec
 							(new Runnable() {
-								 @Override
 								 public void run() {
 									 changedResources.addAll(visitor.getChangedResources());
 									 if (getSite().getPage().getActiveEditor() == AdaptorinterfaceEditor.this) {
@@ -590,9 +578,8 @@ public class AdaptorinterfaceEditor
 	 */
 	protected void handleChangedResources() {
 		if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict())) {
-			ResourceSet resourceSet = editingDomain.getResourceSet();
 			if (isDirty()) {
-				changedResources.addAll(resourceSet.getResources());
+				changedResources.addAll(editingDomain.getResourceSet().getResources());
 			}
 			editingDomain.getCommandStack().flush();
 
@@ -601,7 +588,7 @@ public class AdaptorinterfaceEditor
 				if (resource.isLoaded()) {
 					resource.unload();
 					try {
-						resource.load(resourceSet.getLoadOptions());
+						resource.load(Collections.EMPTY_MAP);
 					}
 					catch (IOException exception) {
 						if (!resourceToDiagnosticMap.containsKey(resource)) {
@@ -723,11 +710,9 @@ public class AdaptorinterfaceEditor
 		//
 		commandStack.addCommandStackListener
 			(new CommandStackListener() {
-				 @Override
 				 public void commandStackChanged(final EventObject event) {
 					 getContainer().getDisplay().asyncExec
 						 (new Runnable() {
-							  @Override
 							  public void run() {
 								  firePropertyChange(IEditorPart.PROP_DIRTY);
 
@@ -739,7 +724,7 @@ public class AdaptorinterfaceEditor
 								  }
 								  for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext(); ) {
 									  PropertySheetPage propertySheetPage = i.next();
-									  if (propertySheetPage.getControl() == null || propertySheetPage.getControl().isDisposed()) {
+									  if (propertySheetPage.getControl().isDisposed()) {
 										  i.remove();
 									  }
 									  else {
@@ -780,7 +765,6 @@ public class AdaptorinterfaceEditor
 		if (theSelection != null && !theSelection.isEmpty()) {
 			Runnable runnable =
 				new Runnable() {
-					@Override
 					public void run() {
 						// Try to select the items in the current content viewer of the editor.
 						//
@@ -898,7 +882,6 @@ public class AdaptorinterfaceEditor
 					new ISelectionChangedListener() {
 						// This just notifies those things that are affected by the section.
 						//
-						@Override
 						public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
 							setSelection(selectionChangedEvent.getSelection());
 						}
@@ -1239,11 +1222,8 @@ public class AdaptorinterfaceEditor
 
 			getSite().getShell().getDisplay().asyncExec
 				(new Runnable() {
-					 @Override
 					 public void run() {
-						 if (!getContainer().isDisposed()) {
-							 setActivePage(0);
-						 }
+						 setActivePage(0);
 					 }
 				 });
 		}
@@ -1266,7 +1246,6 @@ public class AdaptorinterfaceEditor
 
 		getSite().getShell().getDisplay().asyncExec
 			(new Runnable() {
-				 @Override
 				 public void run() {
 					 updateProblemIndication();
 				 }
@@ -1284,9 +1263,9 @@ public class AdaptorinterfaceEditor
 		if (getPageCount() <= 1) {
 			setPageText(0, "");
 			if (getContainer() instanceof CTabFolder) {
+				((CTabFolder)getContainer()).setTabHeight(1);
 				Point point = getContainer().getSize();
-				Rectangle clientArea = getContainer().getClientArea();
-				getContainer().setSize(point.x,  2 * point.y - clientArea.height - clientArea.y);
+				getContainer().setSize(point.x, point.y + 6);
 			}
 		}
 	}
@@ -1302,9 +1281,9 @@ public class AdaptorinterfaceEditor
 		if (getPageCount() > 1) {
 			setPageText(0, getString("_UI_SelectionPage_label"));
 			if (getContainer() instanceof CTabFolder) {
+				((CTabFolder)getContainer()).setTabHeight(SWT.DEFAULT);
 				Point point = getContainer().getSize();
-				Rectangle clientArea = getContainer().getClientArea();
-				getContainer().setSize(point.x, clientArea.height + clientArea.y);
+				getContainer().setSize(point.x, point.y - 6);
 			}
 		}
 	}
@@ -1332,15 +1311,15 @@ public class AdaptorinterfaceEditor
 	 */
 	@SuppressWarnings("rawtypes")
 	@Override
-	public <T> T getAdapter(Class<T> key) {
+	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
-			return showOutlineView() ? key.cast(getContentOutlinePage()) : null;
+			return showOutlineView() ? getContentOutlinePage() : null;
 		}
 		else if (key.equals(IPropertySheetPage.class)) {
-			return key.cast(getPropertySheetPage());
+			return getPropertySheetPage();
 		}
 		else if (key.equals(IGotoMarker.class)) {
-			return key.cast(this);
+			return this;
 		}
 		else {
 			return super.getAdapter(key);
@@ -1403,7 +1382,6 @@ public class AdaptorinterfaceEditor
 				(new ISelectionChangedListener() {
 					 // This ensures that we handle selections correctly.
 					 //
-					 @Override
 					 public void selectionChanged(SelectionChangedEvent event) {
 						 handleContentOutlineSelection(event.getSelection());
 					 }
@@ -1421,7 +1399,7 @@ public class AdaptorinterfaceEditor
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
 		PropertySheetPage propertySheetPage =
-			new ExtendedPropertySheetPage(editingDomain, ExtendedPropertySheetPage.Decoration.NONE, null, 0, false) {
+			new ExtendedPropertySheetPage(editingDomain) {
 				@Override
 				public void setSelectionToViewer(List<?> selection) {
 					AdaptorinterfaceEditor.this.setSelectionToViewer(selection);

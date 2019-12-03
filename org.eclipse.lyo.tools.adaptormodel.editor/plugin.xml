@@ -9,13 +9,13 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated adaptorInterface -->
       <category
-            id="org.eclipse.lyo.wizard.category.ID"
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
             id="adaptorinterface.presentation.AdaptorinterfaceModelWizardID"
             name="%_UI_AdaptorinterfaceModelWizard_label"
             class="adaptorinterface.presentation.AdaptorinterfaceModelWizard"
-            category="org.eclipse.lyo.wizard.category.ID"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/AdaptorinterfaceModelFile.gif">
          <description>%_UI_AdaptorinterfaceModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
@@ -28,7 +28,7 @@
             id="adaptorinterface.presentation.AdaptorinterfaceEditorID"
             name="%_UI_AdaptorinterfaceEditor_label"
             icon="icons/full/obj16/AdaptorinterfaceModelFile.gif"
-            extensions="xml,adaptorinterface,ai"
+            extensions="adaptorinterface"
             class="adaptorinterface.presentation.AdaptorinterfaceEditor"
             contributorClass="adaptorinterface.presentation.AdaptorinterfaceActionBarContributor">
       </editor>

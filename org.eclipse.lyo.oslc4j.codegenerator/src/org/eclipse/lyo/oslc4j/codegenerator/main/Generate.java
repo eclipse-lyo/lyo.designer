@@ -88,7 +88,7 @@ public class Generate extends AbstractAcceleoGenerator {
     public Generate(URI modelURI, File targetFolder,
             List<? extends Object> arguments) throws IOException {
         //initialize(modelURI, targetFolder, arguments);
-        initialize(modelURI, targetFolder, List.of(targetFolder.getAbsolutePath()));
+        initialize(modelURI, targetFolder, new ArrayList<String>() {{add(targetFolder.getAbsolutePath());}});
     }
 
     /**
@@ -110,7 +110,7 @@ public class Generate extends AbstractAcceleoGenerator {
     public Generate(EObject model, File targetFolder,
             List<? extends Object> arguments) throws IOException {
         //initialize(model, targetFolder, arguments);
-        initialize(model, targetFolder, List.of(targetFolder.getAbsolutePath()));
+        initialize(model, targetFolder, new ArrayList<String>() {{add(targetFolder.getAbsolutePath());}});
     }
     
     /**
