@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.lyo.tools.designer.branding.application"
+            name="Lyo Designer">
+         <property
+               name="appName"
+               value="Lyo Designer">
+         </property>
+          <property name="preferenceCustomization" value="plugin_customization.ini"/>
+          <property
+                name="aboutImage"
+                value="icons/about.bmp">
+          </property>
+          <property
+                name="aboutText"
+                value="Lyo Designer&#x0A;&#x0A;Visit https://www.eclipse.org/lyo/">
+          </property>
+          <property
+                name="windowImage"
+                value="icons/logo_16.png">
+          </property>
+          <property
+                name="startupForegroundColor"
+                value="000000">
+          </property>
+          <property
+                name="startupMessageRect"
+                value="7,308,458,18">
+          </property>
+          <property
+                name="startupProgressRect"
+                value="0,328,458,18">
+          </property>
+          <property
+                name="applicationCSS"
+                value="platform:/plugin/org.eclipse.lyo.tools.designer.branding/default.css">
+          </property>
+      </product>
+   </extension>
+
+</plugin>
