@@ -10,7 +10,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<tycho.version>1.4.0</tycho.version>
-        <eclipse.cbi>1.1.7</eclipse.cbi>
+		<eclipse.cbi>1.1.7</eclipse.cbi>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<p2.repo>http://download.eclipse.org/releases/oxygen</p2.repo>
 	</properties>
@@ -163,47 +163,6 @@
 									<goal>sign</goal>
 								</goals>
 								<phase>verify</phase>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.eclipse.cbi.maven.plugins</groupId>
-						<artifactId>eclipse-winsigner-plugin</artifactId>
-						<version>${eclipse.cbi}</version>
-						<executions>
-							<execution>
-								<id>sign</id>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-								<phase>package</phase>
-								<configuration>
-									<baseSearchDir>${project.build.directory}/products/org.eclipse.lyo.tools.designer.product</baseSearchDir>
-									<fileNames>
-										<fileName>lyodesigner.exe</fileName>
-										<fileName>eclipsec.exe</fileName>
-									</fileNames>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.eclipse.cbi.maven.plugins</groupId>
-						<artifactId>eclipse-macsigner-plugin</artifactId>
-						<version>${eclipse.cbi}</version>
-						<executions>
-							<execution>
-								<id>sign</id>
-								<phase>package</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-								<configuration>
-									<baseSearchDir>${project.build.directory}/products/org.eclipse.lyo.tools.designer.product</baseSearchDir>
-									<fileNames>
-										<fileName>eclipse.app</fileName>
-									</fileNames>
-								</configuration>
 							</execution>
 						</executions>
 					</plugin>
