@@ -39,6 +39,16 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <products>
+                        <product>
+                            <id>lyo-designer</id>
+                            <archiveFileName>lyo-designer-${project.parent.version}</archiveFileName>
+                            <rootFolder>lyo-designer-${project.parent.version}</rootFolder>
+                        </product>
+                    </products>
+                </configuration>
+
             </plugin>
         </plugins>
     </build>
