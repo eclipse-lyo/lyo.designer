@@ -33,6 +33,7 @@
                     </execution>
                     <execution>
                         <id>archive-products</id>
+                        <phase>pre-integration-test</phase>
                         <goals>
                             <goal>archive-products</goal>
                         </goals>
