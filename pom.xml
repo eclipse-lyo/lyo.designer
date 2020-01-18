@@ -62,10 +62,11 @@
 			<id>acceleo</id>
 			<url>https://repo.eclipse.org/content/repositories/acceleo-releases/</url>
 		</pluginRepository>
-		<pluginRepository>
+		<!--  <pluginRepository>
 		  <id>cbi</id>
 		  <url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
 		</pluginRepository>
+		-->
 	</pluginRepositories>
 
 	<build>
