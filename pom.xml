@@ -11,6 +11,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<tycho.version>1.4.0</tycho.version>
 		<tycho.extras.version>1.4.0</tycho.extras.version>
+        <eclipse.cbi>1.1.7</eclipse.cbi>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<p2.repo>http://download.eclipse.org/releases/oxygen</p2.repo>
 	</properties>
@@ -44,7 +45,6 @@
 
         <module>org.eclipse.lyo.tools.updatesite</module>
 	</modules>
-
 	<repositories>
 		<repository>
 			<id>eclipse-p2</id>
@@ -56,17 +56,15 @@
 			<url>https://repo.eclipse.org/content/repositories/acceleo-releases/</url>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>acceleo</id>
 			<url>https://repo.eclipse.org/content/repositories/acceleo-releases/</url>
 		</pluginRepository>
-		<!--  <pluginRepository>
+		<pluginRepository>
 		  <id>cbi</id>
 		  <url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
 		</pluginRepository>
-		-->
 	</pluginRepositories>
 
 	<build>
@@ -147,7 +145,8 @@
 						</execution>
 					</executions>
 				</plugin>
-				<plugin>
+				
+<!-- 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-p2-plugin</artifactId>
 					<version>${tycho.version}</version>
@@ -167,11 +166,17 @@
 					<artifactId>tycho-pack200b-plugin</artifactId>
 					<version>${tycho.extras.version}</version>
 				</plugin>
+ -->
 				<plugin>
 					<groupId>org.eclipse.cbi.maven.plugins</groupId>
 					<artifactId>eclipse-jarsigner-plugin</artifactId>
-					<version>1.1.7</version>
+					<version>${eclipse.cbi}</version>
 				</plugin>
+		        <plugin>
+					<groupId>org.eclipse.cbi.maven.plugins</groupId>
+					<artifactId>eclipse-winsigner-plugin</artifactId>
+					<version>${eclipse.cbi}</version>
+		        </plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -193,6 +198,19 @@
 							</execution>
 						</executions>
 					</plugin>
+                    <plugin>
+                        <groupId>org.eclipse.cbi.maven.plugins</groupId>
+                        <artifactId>eclipse-winsigner-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign</id>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <phase>verify</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
 				</plugins>
 			</build>
 	    </profile>
