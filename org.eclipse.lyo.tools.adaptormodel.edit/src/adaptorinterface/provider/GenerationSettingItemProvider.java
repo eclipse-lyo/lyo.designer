@@ -62,6 +62,7 @@ public class GenerationSettingItemProvider
 
 			addJavaClassPackageNamePropertyDescriptor(object);
 			addJavaFilesPathPropertyDescriptor(object);
+			addDoNotGeneratePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -111,6 +112,28 @@ public class GenerationSettingItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Do Not Generate feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDoNotGeneratePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GenerationSetting_doNotGenerate_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_GenerationSetting_doNotGenerate_feature", "_UI_GenerationSetting_type"),
+				 AdaptorinterfacePackage.Literals.GENERATION_SETTING__DO_NOT_GENERATE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns GenerationSetting.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +173,7 @@ public class GenerationSettingItemProvider
 		switch (notification.getFeatureID(GenerationSetting.class)) {
 			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME:
 			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_FILES_PATH:
+			case AdaptorinterfacePackage.GENERATION_SETTING__DO_NOT_GENERATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

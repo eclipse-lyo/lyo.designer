@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link adaptorinterface.impl.GenerationSettingImpl#getJavaClassPackageName <em>Java Class Package Name</em>}</li>
  *   <li>{@link adaptorinterface.impl.GenerationSettingImpl#getJavaFilesPath <em>Java Files Path</em>}</li>
+ *   <li>{@link adaptorinterface.impl.GenerationSettingImpl#isDoNotGenerate <em>Do Not Generate</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,6 +67,26 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String javaFilesPath = JAVA_FILES_PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDoNotGenerate() <em>Do Not Generate</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDoNotGenerate()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DO_NOT_GENERATE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDoNotGenerate() <em>Do Not Generate</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDoNotGenerate()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean doNotGenerate = DO_NOT_GENERATE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,6 +158,27 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDoNotGenerate() {
+		return doNotGenerate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDoNotGenerate(boolean newDoNotGenerate) {
+		boolean oldDoNotGenerate = doNotGenerate;
+		doNotGenerate = newDoNotGenerate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERATION_SETTING__DO_NOT_GENERATE, oldDoNotGenerate, doNotGenerate));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -144,6 +186,8 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 				return getJavaClassPackageName();
 			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_FILES_PATH:
 				return getJavaFilesPath();
+			case AdaptorinterfacePackage.GENERATION_SETTING__DO_NOT_GENERATE:
+				return isDoNotGenerate();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,6 +205,9 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_FILES_PATH:
 				setJavaFilesPath((String)newValue);
+				return;
+			case AdaptorinterfacePackage.GENERATION_SETTING__DO_NOT_GENERATE:
+				setDoNotGenerate((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,6 +227,9 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_FILES_PATH:
 				setJavaFilesPath(JAVA_FILES_PATH_EDEFAULT);
 				return;
+			case AdaptorinterfacePackage.GENERATION_SETTING__DO_NOT_GENERATE:
+				setDoNotGenerate(DO_NOT_GENERATE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,6 +246,8 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 				return JAVA_CLASS_PACKAGE_NAME_EDEFAULT == null ? javaClassPackageName != null : !JAVA_CLASS_PACKAGE_NAME_EDEFAULT.equals(javaClassPackageName);
 			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_FILES_PATH:
 				return JAVA_FILES_PATH_EDEFAULT == null ? javaFilesPath != null : !JAVA_FILES_PATH_EDEFAULT.equals(javaFilesPath);
+			case AdaptorinterfacePackage.GENERATION_SETTING__DO_NOT_GENERATE:
+				return doNotGenerate != DO_NOT_GENERATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -214,6 +266,8 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 		result.append(javaClassPackageName);
 		result.append(", javaFilesPath: ");
 		result.append(javaFilesPath);
+		result.append(", doNotGenerate: ");
+		result.append(doNotGenerate);
 		result.append(')');
 		return result.toString();
 	}
