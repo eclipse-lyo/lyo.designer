@@ -32,6 +32,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 
 [template public generateResourceInterface(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
+[if (aResource.generate())]
 [file (javaInterfaceFullFileName(aResource, contextAdaptorInterface, defaultJavaFilesPath, defaultJavaClassPackageName), false, 'UTF-8')]
 // [protected ('Copyright')]
 /*******************************************************************************
@@ -164,4 +165,5 @@ public interface [javaInterfaceName(aResource) /]
 }
 
 [/file]
+[/if]
 [/template]

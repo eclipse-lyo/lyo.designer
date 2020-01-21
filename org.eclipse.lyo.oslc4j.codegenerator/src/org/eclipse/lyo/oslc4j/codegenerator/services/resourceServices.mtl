@@ -23,6 +23,10 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 
+[query public generate(aResource: Resource) : Boolean = 
+    not aResource.definingDomainSpecification().doNotGenerate()
+/]
+
 [query public directParentResource(aResource: Resource) : Resource =
     (if (aResource.extends->notEmpty()) then 
         aResource.extends->first()

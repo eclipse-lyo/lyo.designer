@@ -76,8 +76,70 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
+          <subContainerMappings name="Specification.DomainSpecification.GenerationSetting" semanticCandidatesExpression="[self.generationSetting/]" domainClass="adaptorinterface.GenerationSetting" childrenPresentation="List">
+            <subNodeMappings name="Specification.DomainSpecification.GenerationSetting.javaClassPackageName" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.GenerationSetting">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="['Java Class Package Name: &quot;' + self.javaClassPackageName + '&quot;'/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Specification.DomainSpecification.GenerationSetting.javaFilesPath" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.GenerationSetting">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="['Java Files Path: &quot;' + self.javaFilesPath + '&quot;'/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Specification.DomainSpecification.GenerationSetting.doNotGenerate" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.GenerationSetting">
+              <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="['Do Not Generate: ' + self.doNotGenerate/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Generation Setting" backgroundStyle="Liquid">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelFormat>underline</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="9" labelExpression="[self.name + ' (' + self.namespacePrefix.name + ')'/]" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconAdaptor.png" widthComputationExpression="40" heightComputationExpression="30">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Specification.GenerationSetting" semanticCandidatesExpression="[self.generationSetting/]" domainClass="adaptorinterface.GenerationSetting" childrenPresentation="List">
+          <subNodeMappings name="Specification.GenerationSetting.javaClassPackageName" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.GenerationSetting">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="['Java Class Package Name: &quot;' + self.javaClassPackageName + '&quot;'/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="Specification.GenerationSetting.javaFilesPath" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.GenerationSetting">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="['Java Files Path: &quot;' + self.javaFilesPath + '&quot;'/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="Specification.GenerationSetting.doNotGenerate" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.GenerationSetting">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="['Do Not Generate: ' + self.doNotGenerate/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Generation Setting" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>italic</labelFormat>
+            <labelFormat>underline</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -333,6 +395,15 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Config">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateGenerationSetting" label="Generation Setting" precondition="[self.generationSetting.oclIsUndefined()/]" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.GenerationSetting'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.GenerationSetting']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GenerationSetting" referenceName="generationSetting"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>
