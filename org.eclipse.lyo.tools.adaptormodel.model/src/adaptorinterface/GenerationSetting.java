@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link adaptorinterface.GenerationSetting#getJavaClassPackageName <em>Java Class Package Name</em>}</li>
  *   <li>{@link adaptorinterface.GenerationSetting#getJavaFilesPath <em>Java Files Path</em>}</li>
+ *   <li>{@link adaptorinterface.GenerationSetting#isDoNotGenerate <em>Do Not Generate</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getGenerationSetting()
@@ -73,5 +74,31 @@ public interface GenerationSetting extends EObject {
 	 * @generated
 	 */
 	void setJavaFilesPath(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Do Not Generate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Do Not Generate</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Do Not Generate</em>' attribute.
+	 * @see #setDoNotGenerate(boolean)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getGenerationSetting_DoNotGenerate()
+	 * @model
+	 * @generated
+	 */
+	boolean isDoNotGenerate();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.GenerationSetting#isDoNotGenerate <em>Do Not Generate</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Do Not Generate</em>' attribute.
+	 * @see #isDoNotGenerate()
+	 * @generated
+	 */
+	void setDoNotGenerate(boolean value);
 
 } // GenerationSetting

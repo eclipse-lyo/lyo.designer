@@ -1482,13 +1482,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int GENERATION_SETTING__JAVA_FILES_PATH = 1;
 
 	/**
+	 * The feature id for the '<em><b>Do Not Generate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATION_SETTING__DO_NOT_GENERATE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Generation Setting</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GENERATION_SETTING_FEATURE_COUNT = 2;
+	int GENERATION_SETTING_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Generation Setting</em>' class.
@@ -2953,6 +2962,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getGenerationSetting_JavaFilesPath();
 
 	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.GenerationSetting#isDoNotGenerate <em>Do Not Generate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Do Not Generate</em>'.
+	 * @see adaptorinterface.GenerationSetting#isDoNotGenerate()
+	 * @see #getGenerationSetting()
+	 * @generated
+	 */
+	EAttribute getGenerationSetting_DoNotGenerate();
+
+	/**
 	 * Returns the meta object for class '{@link adaptorinterface.Shape <em>Shape</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4143,6 +4163,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GENERATION_SETTING__JAVA_FILES_PATH = eINSTANCE.getGenerationSetting_JavaFilesPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Do Not Generate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERATION_SETTING__DO_NOT_GENERATE = eINSTANCE.getGenerationSetting_DoNotGenerate();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.ShapeImpl <em>Shape</em>}' class.

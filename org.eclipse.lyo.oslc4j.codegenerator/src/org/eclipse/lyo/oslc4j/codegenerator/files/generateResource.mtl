@@ -317,6 +317,7 @@ public void [javaAttributeSetterMethodName(aProperty, aResource)/](final [javaAt
 [/template]
 
 [template public generateResource(aResource : Resource, contextAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
+[if (aResource.generate())]
 [file (javaClassFullFileName(aResource, contextAdaptorInterface, defaultJavaFilesPath, defaultJavaClassPackageName), false, 'UTF-8')]
 [generateClassHeader(aResource, contextAdaptorInterface)/]
 
@@ -340,4 +341,5 @@ public void [javaAttributeSetterMethodName(aProperty, aResource)/](final [javaAt
     [generateSetters(aResource, contextAdaptorInterface)/]
 }
 [/file]
+[/if]
 [/template]

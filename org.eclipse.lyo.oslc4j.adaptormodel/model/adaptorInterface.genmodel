@@ -185,6 +185,7 @@
     <genClasses ecoreClass="adaptorInterface.ecore#//GenerationSetting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GenerationSetting/javaClassPackageName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GenerationSetting/javaFilesPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GenerationSetting/doNotGenerate"/>
     </genClasses>
     <genClasses image="false" ecoreClass="adaptorInterface.ecore#//Shape"/>
     <genClasses ecoreClass="adaptorInterface.ecore#//ShaclShape">

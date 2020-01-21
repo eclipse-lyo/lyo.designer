@@ -1454,6 +1454,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenerationSetting_DoNotGenerate() {
+		return (EAttribute)generationSettingEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getShape() {
 		return shapeEClass;
@@ -1819,6 +1828,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		generationSettingEClass = createEClass(GENERATION_SETTING);
 		createEAttribute(generationSettingEClass, GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME);
 		createEAttribute(generationSettingEClass, GENERATION_SETTING__JAVA_FILES_PATH);
+		createEAttribute(generationSettingEClass, GENERATION_SETTING__DO_NOT_GENERATE);
 
 		shapeEClass = createEClass(SHAPE);
 
@@ -2024,6 +2034,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEClass(generationSettingEClass, GenerationSetting.class, "GenerationSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGenerationSetting_JavaClassPackageName(), ecorePackage.getEString(), "javaClassPackageName", null, 0, 1, GenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenerationSetting_JavaFilesPath(), ecorePackage.getEString(), "javaFilesPath", null, 0, 1, GenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenerationSetting_DoNotGenerate(), ecorePackage.getEBoolean(), "doNotGenerate", null, 0, 1, GenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(shapeEClass, Shape.class, "Shape", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
