@@ -1,0 +1,121 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2014 Jad El-khoury.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Jad El-khoury        - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
+ *     
+ *******************************************************************************/
+/]
+
+[module webServiceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
+
+[query public containingAdaptorInterface(aWebService: WebService) : AdaptorInterface =
+aWebService.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
+/]
+
+[query public javaClassPackageName(aWebService: WebService) : String = 
+javaClassBaseNamespace(containingAdaptorInterface(aWebService)).concat('.services')
+/]
+
+[query public javaClassName(aWebService: WebService) : String = 
+    javaString(aWebService.name, '', true)
+    .concat('Service')
+/]
+
+[query public javaClassFullName(aWebService: WebService) : String = 
+javaClassPackageName(aWebService).concat('.').concat(javaClassName(aWebService))
+/]
+
+[query public javaClassFullFileName(aWebService: WebService) : String = 
+javaFilesBasePath(containingAdaptorInterface(aWebService)).concatenatePaths(javaClassPackageName(aWebService).substituteAll('.', '/')).concat('/').concat(javaClassName(aWebService)).concat('.java')
+/]
+
+[comment BasicCapability /]
+[query public instanceURISegment (aResource: Resource, aWebService: WebService) : String = 
+aWebService.resourceUrlPattern
+/]
+
+[query public instanceURI (aResource: Resource, aWebService: WebService) : String = 
+    JAXRSConcatURISegments(aWebService.serviceUrlPattern, aResource.instanceURISegment(aWebService))
+/]
+
+[query public instanceCompositeID (aResource: Resource, aWebService: WebService) : Sequence(String) = 
+JAXRSPathParameters(aResource.instanceURI(aWebService))
+/]
+
+[query public getResourceMethodName(aWebService: WebService, aResource: Resource, forRDF : Boolean) : String = 
+'get'.concat(javaName(aResource, true))
+	.concat((if forRDF then '' else 'AsHtml' endif))
+/]
+
+[query public getResourceCompactMethodName(aWebService: WebService, aResource: Resource) : String = 
+getResourceMethodName(aWebService, aResource, true).concat('Compact')
+/]
+
+[query public getResourceSmallPreviewMethodName(aWebService: WebService, aResource: Resource) : String = 
+getResourceMethodName(aWebService, aResource, false).concat('SmallPreview')
+/]
+
+[query public getResourceLargePreviewMethodName(aWebService: WebService, aResource: Resource) : String = 
+getResourceMethodName(aWebService, aResource, false).concat('LargePreview')
+/]
+
+[query public deleteResourceMethodName(aWebService: WebService, aResource: Resource) : String = 
+'delete'.concat(javaName(aResource, true))
+/]
+
+[query public updateResourceMethodName(aWebService: WebService, aResource: Resource) : String = 
+'update'.concat(javaName(aResource, true))
+/]
+
+[query public getResourceMethodResourceType(aWebService: WebService, aResource: Resource) : String = 
+javaClassName(aResource)
+/]
+
+[query public getResourceMethodReturnType(aWebService: WebService, aResource: Resource, forRDF : Boolean) : String = 
+if forRDF then 
+	 aWebService.getResourceMethodResourceType(aResource)
+else 
+	'Response' 
+endif
+/]
+
+[query public updateResourceMethodResourceType(aWebService: WebService, aResource: Resource) : String = 
+javaClassName(aResource)
+/]
+
+[query public updateResourceMethodReturnType(aWebService: WebService, aResource: Resource) : String = 
+'Response' 
+/]
+
+[query public deleteResourceMethodResourceType(aWebService: WebService, aResource: Resource) : String = 
+javaClassName(aResource)
+/]
+
+[query public deleteResourceMethodReturnType(aWebService: WebService, aResource: Resource) : String = 
+'Response' 
+/]
+
+[query public instanceMethodSignature(aResource: Resource, aWebService: WebService, forJAXRSMethod : Boolean) : String =  
+methodSignature(instanceCompositeID(aResource, aWebService), forJAXRSMethod)
+/]
+
+[query public instanceMethodParameterList(aResource: Resource, aWebService: WebService) : String =  
+methodParameterList(instanceCompositeID(aResource, aWebService))
+/]

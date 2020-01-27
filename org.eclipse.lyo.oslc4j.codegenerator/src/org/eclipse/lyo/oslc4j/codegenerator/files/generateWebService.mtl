@@ -1,0 +1,408 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2012 IBM Corporation and others.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Michael Fiedler     - initial API and implementation for Bugzilla adapter
+ *     Jad El-khoury       - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
+ *     Jim Amsden          - Support for UI Preview (494303)
+ *
+ *******************************************************************************/
+/]
+
+[module generateWebService('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::webServiceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderCatalogServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateGetResourceJsp/]
+
+[template public swaggerImportPackages(anAdaptorInterface: AdaptorInterface)]
+[if (anAdaptorInterface.swaggerDocumentationEnabled())]
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+[/if]
+[/template]
+
+[template public swaggerAnnotation(aWebService: WebService, anAdaptorInterface: AdaptorInterface)]
+[if (anAdaptorInterface.swaggerDocumentationEnabled())]
+@Api(value = "Web Service for {" + [for (aResource: Resource | aWebService.resourceTypes) separator(' + ", " + ') ][javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource) /][/for] + "}")
+[/if]
+[/template]
+
+
+[template public swaggerApiOperationAnnotation(aResource: Resource, method: String, anAdaptorInterface: AdaptorInterface)]
+[if (anAdaptorInterface.swaggerDocumentationEnabled())]
+@ApiOperation(
+    value = "[method/] for resources of type {'" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "'}",
+    notes = "[method/] for resources of type {'" + "<a href=\"" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>" + "'}" +
+        ", with respective resource shapes {'" + "<a href=\"" + "../services/" + OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>" + "'}",
+    produces = ['OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE + ", " + MediaType.TEXT_HTML + ", " + OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML'/]
+)
+[/if]
+[/template]
+
+[template public generateWebService(aWebService : WebService)]
+[file (javaClassFullFileName(aWebService), false, 'UTF-8')]
+[let anAdaptorInterface: AdaptorInterface = containingAdaptorInterface(aWebService)]
+// [protected ('Copyright')]
+/*******************************************************************************
+ * Copyright (c) 2012 IBM Corporation and others.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *
+ *     Michael Fiedler     - initial API and implementation for Bugzilla adapter
+ *     Jad El-khoury       - initial implementation of code generator (https://bugs.eclipse.org/bugs/show_bug.cgi?id=422448)
+ *     Jim Amsden          - Support for UI Preview (494303)
+ *
+ * This file is generated by org.eclipse.lyo.oslc4j.codegenerator
+ *******************************************************************************/
+// [/protected]
+
+package [javaClassPackageName(aWebService) /];
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.UriBuilder;
+
+import org.apache.wink.json4j.JSONException;
+import org.apache.wink.json4j.JSONObject;
+import org.eclipse.lyo.oslc4j.provider.json4j.JsonHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+import org.eclipse.lyo.oslc4j.core.annotation.OslcCreationFactory;
+import org.eclipse.lyo.oslc4j.core.annotation.OslcDialog;
+import org.eclipse.lyo.oslc4j.core.annotation.OslcDialogs;
+import org.eclipse.lyo.oslc4j.core.annotation.OslcQueryCapability;
+import org.eclipse.lyo.oslc4j.core.annotation.OslcService;
+import org.eclipse.lyo.oslc4j.core.model.Compact;
+import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
+import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
+import org.eclipse.lyo.oslc4j.core.model.Preview;
+import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
+import org.eclipse.lyo.oslc4j.core.model.Link;
+import org.eclipse.lyo.oslc4j.core.model.AbstractResource;
+
+import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
+import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
+[for (aDomainSpecification: DomainSpecification | (aWebService.resourceTypes.definingDomainSpecification())->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];[/for]
+import [javaClassFullNameForSingleton(anAdaptorInterface.serviceProviderCatalog) /];
+[for (aResource: Resource | aWebService.resourceTypes)]
+import [javaClassFullName(aResource, anAdaptorInterface, null) /];
+[/for]
+[anAdaptorInterface.swaggerImportPackages()
+/]
+// [protected ('imports')]
+// [/protected]
+
+// [protected ('pre_class_code')]
+// [/protected]
+[JAXRSPathAnnotation(aWebService.serviceUrlPattern) /]
+[aWebService.swaggerAnnotation(anAdaptorInterface)
+/]public class [javaClassName(aWebService) /]
+{
+    @Context private HttpServletRequest httpServletRequest;
+    @Context private HttpServletResponse httpServletResponse;
+    @Context private UriInfo uriInfo;
+
+    private static final Logger log = LoggerFactory.getLogger([javaClassName(aWebService)/].class);
+
+    // [protected ('class_attributes')]
+    // [/protected]
+
+    // [protected ('class_methods')]
+    // [/protected]
+
+    public [javaClassName(aWebService) /]()
+    {
+        super();
+    }
+
+    private void addCORSHeaders (final HttpServletResponse httpServletResponse) {
+        //UI preview can be blocked by CORS policy.
+        //add select CORS headers to every response that is embedded in an iframe.
+        httpServletResponse.addHeader("Access-Control-Allow-Origin", "*");
+        httpServletResponse.addHeader("Access-Control-Allow-Methods", "GET, OPTIONS, HEAD");
+        httpServletResponse.addHeader("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
+        httpServletResponse.addHeader("Access-Control-Allow-Credentials", "true");
+    }
+
+    [if (aWebService.read)]
+    [for (aResource: Resource | aWebService.resourceTypes)]
+    @GET
+    [JAXRSPathAnnotation(aResource.instanceURISegment(aWebService))/]
+    [annotationProducesRDF(anAdaptorInterface) /]
+    [swaggerApiOperationAnnotation(aResource, 'GET', anAdaptorInterface)
+    /]public [getResourceMethodReturnType(aWebService, aResource, true)/] [getResourceMethodName(aWebService, aResource, true)/](
+                [commaSeparate(instanceMethodSignature(aResource, aWebService, true), false, false)/]
+        ) throws IOException, ServletException, URISyntaxException
+    {
+        // [protected ('getResource_init')]
+        // [/protected]
+
+        final [getResourceMethodResourceType(aWebService, aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aWebService, aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+
+        if (a[javaName(aResource, true)/] != null) {
+            // [protected (getResourceMethodName(aWebService, aResource, true))]
+            // [/protected]
+            httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
+            return a[javaName(aResource, true)/];
+        }
+
+        throw new WebApplicationException(Status.NOT_FOUND);
+    }
+
+    @GET
+    [JAXRSPathAnnotation(aResource.instanceURISegment(aWebService))/]
+    @Produces({ MediaType.TEXT_HTML })
+    [swaggerApiOperationAnnotation(aResource, 'GET', anAdaptorInterface)
+    /]public [getResourceMethodReturnType(aWebService, aResource, false)/] [getResourceMethodName(aWebService, aResource, false)/](
+        [commaSeparate(instanceMethodSignature(aResource, aWebService, true), false, false)/]
+        ) throws ServletException, IOException, URISyntaxException
+    {
+        // [protected (getResourceMethodName(aWebService, aResource, false).concat('_init'))]
+        // [/protected]
+
+        final [getResourceMethodResourceType(aWebService, aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aWebService, aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+
+        if (a[javaName(aResource, true)/] != null) {
+            httpServletRequest.setAttribute("a[javaName(aResource, true)/]", a[javaName(aResource, true)/]);
+            // [protected (getResourceMethodName(aWebService, aResource, false).concat('_setAttributes'))]
+            // [/protected]
+
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceJspRelativeFileName(aResource, anAdaptorInterface) /]");
+            rd.forward(httpServletRequest,httpServletResponse);
+        }
+
+        throw new WebApplicationException(Status.NOT_FOUND);
+    }
+
+    @GET
+    [JAXRSPathAnnotation(aResource.instanceURISegment(aWebService))/]
+    @Produces({OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML})
+    [swaggerApiOperationAnnotation(aResource, 'GET', anAdaptorInterface)
+    /]public Compact [getResourceCompactMethodName(aWebService, aResource)/](
+        [commaSeparate(instanceMethodSignature(aResource, aWebService, true), false, false)/]
+        ) throws ServletException, IOException, URISyntaxException
+    {
+        String iconUri = OSLC4JUtils.getPublicURI() + "/images/ui_preview_icon.gif";
+        String smallPreviewHintHeight = "10em";
+        String smallPreviewHintWidth = "45em";
+        String largePreviewHintHeight = "20em";
+        String largePreviewHintWidth = "45em";
+
+        // [protected (getResourceCompactMethodName(aWebService, aResource).concat('_init'))]
+        //TODO: adjust the preview height & width values from the default values provided above.
+        // [/protected]
+
+        final [getResourceMethodResourceType(aWebService, aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aWebService, aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+
+        if (a[javaName(aResource, true)/] != null) {
+            final Compact compact = new Compact();
+
+            compact.setAbout(a[javaName(aResource, true)/].getAbout());
+            compact.setTitle(a[javaName(aResource, true)/].toString());
+
+            compact.setIcon(new URI(iconUri));
+
+            //Create and set attributes for OSLC preview resource
+            final Preview smallPreview = new Preview();
+            smallPreview.setHintHeight(smallPreviewHintHeight);
+            smallPreview.setHintWidth(smallPreviewHintWidth);
+            smallPreview.setDocument(UriBuilder.fromUri(a[javaName(aResource, true)/].getAbout()).path("smallPreview").build());
+            compact.setSmallPreview(smallPreview);
+
+            final Preview largePreview = new Preview();
+            largePreview.setHintHeight(largePreviewHintHeight);
+            largePreview.setHintWidth(largePreviewHintWidth);
+            largePreview.setDocument(UriBuilder.fromUri(a[javaName(aResource, true)/].getAbout()).path("largePreview").build());
+            compact.setLargePreview(largePreview);
+
+            httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
+            addCORSHeaders(httpServletResponse);
+            return compact;
+        }
+        throw new WebApplicationException(Status.NOT_FOUND);
+    }
+
+    @GET
+    [JAXRSPathAnnotation(JAXRSConcatURISegments(aResource.instanceURISegment(aWebService), 'smallPreview'))/]
+    @Produces({ MediaType.TEXT_HTML })
+    public void [getResourceSmallPreviewMethodName(aWebService, aResource)/](
+        [commaSeparate(instanceMethodSignature(aResource, aWebService, true), false, false)/]
+        ) throws ServletException, IOException, URISyntaxException
+    {
+        // [protected (getResourceSmallPreviewMethodName(aWebService, aResource).concat('_init'))]
+        // [/protected]
+
+        final [getResourceMethodResourceType(aWebService, aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aWebService, aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+
+        if (a[javaName(aResource, true)/] != null) {
+            httpServletRequest.setAttribute("a[javaName(aResource, true)/]", a[javaName(aResource, true)/]);
+            // [protected (getResourceSmallPreviewMethodName(aWebService, aResource).concat('_setAttributes'))]
+            // [/protected]
+
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceSmallPreviewJspRelativeFileName(aResource, anAdaptorInterface) /]");
+            httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
+            addCORSHeaders(httpServletResponse);
+            rd.forward(httpServletRequest, httpServletResponse);
+        }
+
+        throw new WebApplicationException(Status.NOT_FOUND);
+    }
+
+    @GET
+    [JAXRSPathAnnotation(JAXRSConcatURISegments(aResource.instanceURISegment(aWebService), 'largePreview'))/]
+    @Produces({ MediaType.TEXT_HTML })
+    public void [getResourceLargePreviewMethodName(aWebService, aResource)/](
+        [commaSeparate(instanceMethodSignature(aResource, aWebService, true), false, false)/]
+        ) throws ServletException, IOException, URISyntaxException
+    {
+        // [protected (getResourceLargePreviewMethodName(aWebService, aResource).concat('_init'))]
+        // [/protected]
+
+        final [getResourceMethodResourceType(aWebService, aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aWebService, aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+
+        if (a[javaName(aResource, true)/] != null) {
+            httpServletRequest.setAttribute("a[javaName(aResource, true)/]", a[javaName(aResource, true)/]);
+            // [protected (getResourceLargePreviewMethodName(aWebService, aResource).concat('_setAttributes'))]
+            // [/protected]
+
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceLargePreviewJspRelativeFileName(aResource, anAdaptorInterface) /]");
+            httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
+            addCORSHeaders(httpServletResponse);
+            rd.forward(httpServletRequest, httpServletResponse);
+        }
+
+        throw new WebApplicationException(Status.NOT_FOUND);
+    }
+    [/for]
+    [/if]
+    [if (aWebService.delete)]
+    [for (aResource: Resource | aWebService.resourceTypes)]
+    @DELETE
+    [JAXRSPathAnnotation(aResource.instanceURISegment(aWebService))/]
+    [swaggerApiOperationAnnotation(aResource, 'DELETE', anAdaptorInterface)
+    /]public [deleteResourceMethodReturnType(aWebService, aResource)/] [deleteResourceMethodName(aWebService, aResource)/](
+                [commaSeparate(instanceMethodSignature(aResource, aWebService, true), false, false)/]
+        ) throws IOException, ServletException, URISyntaxException
+    {
+        // [protected (deleteResourceMethodName(aWebService, aResource).concat('_init'))]
+        // [/protected]
+        final [deleteResourceMethodResourceType(aWebService, aResource)/] aResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aWebService, aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+
+        if (aResource != null) {
+            // [protected (deleteResourceMethodName(aWebService, aResource))]
+            // [/protected]
+            boolean deleted = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[deleteResourceMethodName(aWebService, aResource)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+            if (deleted)
+                return Response.ok().header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
+            else
+                throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
+        }
+        throw new WebApplicationException(Status.NOT_FOUND);
+    }
+
+    [/for]
+    [/if]
+    [if (aWebService.update)]
+    [for (aResource: Resource | aWebService.resourceTypes)]
+    @PUT
+    [JAXRSPathAnnotation(aResource.instanceURISegment(aWebService))/]
+    [annotationConsumesRDF(anAdaptorInterface) /]
+    [swaggerApiOperationAnnotation(aResource, 'PUT', anAdaptorInterface)
+    /]public [updateResourceMethodReturnType(aWebService, aResource)/] [updateResourceMethodName(aWebService, aResource)/](
+            @HeaderParam("If-Match") final String eTagHeader,
+            [commaSeparate(instanceMethodSignature(aResource, aWebService, true), false, true)/]
+            final [getResourceMethodResourceType(aWebService, aResource)/] aResource
+        ) throws IOException, ServletException
+    {
+        // [protected (updateResourceMethodName(aWebService, aResource).concat('_init'))]
+        // [/protected]
+        final [updateResourceMethodResourceType(aWebService, aResource)/] originalResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aWebService, aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+
+        if (originalResource != null) {
+            final String originalETag = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](originalResource);
+
+            if ((eTagHeader == null) || (originalETag.equals(eTagHeader))) {
+                // [protected (updateResourceMethodName(aWebService, aResource))]
+                // [/protected]
+                final [updateResourceMethodResourceType(aWebService, aResource)/] updatedResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[updateResourceMethodName(aWebService, aResource)/](httpServletRequest, aResource[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+                httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](updatedResource));
+                return Response.ok().header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
+            }
+            else {
+                throw new WebApplicationException(Status.PRECONDITION_FAILED);
+            }
+        }
+        else {
+            throw new WebApplicationException(Status.NOT_FOUND);
+        }
+    }
+
+    [/for]
+    [/if]
+}
+[/let]
+[/file]
+[/template]
