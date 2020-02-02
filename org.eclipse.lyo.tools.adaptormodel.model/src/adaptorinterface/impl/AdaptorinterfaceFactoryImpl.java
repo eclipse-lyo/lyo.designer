@@ -64,6 +64,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 			case AdaptorinterfacePackage.SERVICE_PROVIDER_CATALOG: return createServiceProviderCatalog();
 			case AdaptorinterfacePackage.SERVICE_PROVIDER: return createServiceProvider();
 			case AdaptorinterfacePackage.SERVICE: return createService();
+			case AdaptorinterfacePackage.WEB_SERVICE: return createWebService();
 			case AdaptorinterfacePackage.RESOURCE: return createResource();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY: return createResourceProperty();
 			case AdaptorinterfacePackage.CREATION_FACTORY: return createCreationFactory();
@@ -350,6 +351,16 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	public ShaclProperty createShaclProperty() {
 		ShaclPropertyImpl shaclProperty = new ShaclPropertyImpl();
 		return shaclProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WebService createWebService() {
+		WebServiceImpl webService = new WebServiceImpl();
+		return webService;
 	}
 
 	/**

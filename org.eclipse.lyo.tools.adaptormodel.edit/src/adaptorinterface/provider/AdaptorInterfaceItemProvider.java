@@ -448,6 +448,7 @@ public class AdaptorInterfaceItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG);
+			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__WEB_SERVICES);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__SPECIFICATION);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS);
 		}
@@ -524,6 +525,7 @@ public class AdaptorInterfaceItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -547,6 +549,11 @@ public class AdaptorInterfaceItemProvider
 			(createChildParameter
 				(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG,
 				 AdaptorinterfaceFactory.eINSTANCE.createServiceProviderCatalog()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__WEB_SERVICES,
+				 AdaptorinterfaceFactory.eINSTANCE.createWebService()));
 
 		newChildDescriptors.add
 			(createChildParameter

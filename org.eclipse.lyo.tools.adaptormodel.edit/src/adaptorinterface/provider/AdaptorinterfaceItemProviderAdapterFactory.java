@@ -532,6 +532,29 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.WebService} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WebServiceItemProvider webServiceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.WebService}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWebServiceAdapter() {
+		if (webServiceItemProvider == null) {
+			webServiceItemProvider = new WebServiceItemProvider(this);
+		}
+
+		return webServiceItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -643,6 +666,7 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 		if (serviceProviderCatalogItemProvider != null) serviceProviderCatalogItemProvider.dispose();
 		if (serviceProviderItemProvider != null) serviceProviderItemProvider.dispose();
 		if (serviceItemProvider != null) serviceItemProvider.dispose();
+		if (webServiceItemProvider != null) webServiceItemProvider.dispose();
 		if (resourceItemProvider != null) resourceItemProvider.dispose();
 		if (resourcePropertyItemProvider != null) resourcePropertyItemProvider.dispose();
 		if (creationFactoryItemProvider != null) creationFactoryItemProvider.dispose();
