@@ -162,7 +162,7 @@
 [/for]
 
 [for (aResource: Resource | relevantResources(anAdaptorInterface))]
-    [if (not basicCapabilities(anAdaptorInterface, aResource)->isEmpty())]
+    [if (not basicCapabilities(anAdaptorInterface, aResource)->isEmpty())._or(not webServices(anAdaptorInterface, aResource)->isEmpty())]
         [aResource.generateGetResourceJsp(anAdaptorInterface, anAdaptorInterface) /]
         [aResource.generateGetResourceSmallPreviewJsp(anAdaptorInterface, anAdaptorInterface) /]
         [aResource.generateGetResourceLargePreviewJsp(anAdaptorInterface, anAdaptorInterface) /]

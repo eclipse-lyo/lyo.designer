@@ -18,12 +18,14 @@
  *******************************************************************************/
 /]
 
-[module adaptorInterfaceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+[module adaptorInterfaceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
+
 
 [comment TODO: we should avoid relying on "eContainer", since objects that come from a composing emf file, will not have the eContainer relationship setup as expected.
 This method should be able to work even for objects that come from a differnet emf file than that containing the AdaptorInterface. 
@@ -72,6 +74,11 @@ anAdaptorInterface.serviceProviders()->select(aServiceProvider : ServiceProvider
                 ._or(aServiceProvider.services.selectionDialogs->exists(aDialog : Dialog | aDialog.resourceTypes->includes(aResource)))
                 ._or(aServiceProvider.services.creationDialogs->exists(aDialog : Dialog | aDialog.resourceTypes->includes(aResource)))
             )->asSet()
+/]
+
+[comment return the set of WebServices that have aResource as a managed resource./]
+[query public webServices(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(WebService) = 
+anAdaptorInterface.webServices->select(aWebService : WebService | aWebService.resourceTypes->includes(aResource))
 /]
 
 [comment return the set of QueryCapabilities whose managed resources is the same as "resources", without any consideration for order./]
@@ -123,6 +130,11 @@ anAdaptorInterface.serviceProviders().services.creationDialogs->select(aDialog :
 anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider | 
 	servicedResources(aServiceProvider)
 )->flatten()->asSet()
+->union(
+	anAdaptorInterface.webServices->collectNested(aWebService : WebService | 
+		servicedResources(aWebService)
+	)->flatten()->asSet()
+)
 /]
 
 [query public relevantResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
@@ -134,6 +146,27 @@ anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceP
 		relevantResources(aRequiredAdaptor)
 	)->flatten()->asSet()
 )
+->union(
+	anAdaptorInterface.webServices->collectNested(aWebService : WebService | 
+		relevantResources(aWebService)
+	)->flatten()->asSet()
+)
+/]
+
+[query public servicedResources(aWebService: WebService) : Set(Resource) = 
+aWebService.resourceTypes->asSet()
+/]
+
+[query public relevantResources(aWebService: WebService) : Set(Resource) =
+    (servicedResources(aWebService)
+    ->union(servicedResources(aWebService).allRelatedResources()))->flatten()->asSet()
+/]
+
+[query public relevantDomainSpecifications(aWebService: WebService) : Set(DomainSpecification) =
+relevantResources(aWebService)->collectNested(aResource : Resource | 
+    definingDomainSpecification(aResource)
+    ->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
+)->flatten()->asSet()
 /]
 
 [query public relevantDomainSpecifications(anAdaptorInterface : AdaptorInterface) : Set(DomainSpecification) =
@@ -145,7 +178,26 @@ anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceP
 		relevantDomainSpecifications(aRequiredAdaptor)
 	)->flatten()->asSet()
 )
+->union(
+    anAdaptorInterface.webServices->collectNested(aWebService: WebService | 
+        relevantDomainSpecifications(aWebService)
+    )->flatten()->asSet()
+)
 /]
+
+[query public relevantVocabularies(anAdaptorInterface : AdaptorInterface) : Set(Vocabulary) =
+anAdaptorInterface.relevantDomainSpecifications()->collectNested(aDomainSpecification : DomainSpecification | 
+    relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
+/]
+
+[query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
+aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
+->union(
+    aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
+)->asSet()
+/]
+
 
 [comment Services for AdaptorPackageInfo /]
 [query public javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface : AdaptorInterface) : String = 
@@ -273,6 +325,22 @@ javaInterfacePackageNameForAdaptorConstants(anAdaptorInterface).concat('.').conc
 
 [query public javaInterfaceFullFileNameForAdaptorConstants(anAdaptorInterface : AdaptorInterface) : String = 
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaInterfacePackageNameForAdaptorConstants(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaInterfaceNameForAdaptorConstants(anAdaptorInterface)).concat('.java')
+/]
+
+[query public resourceTypeNamespace(aResource: Resource) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification())
+else
+    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResource.describes.definingVocabulary()))
+endif)
+/]
+
+[query public resourceTypeLocalName(aResource: Resource) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    aResource.name
+else
+    aResource.describes.name
+endif)
 /]
 
 [query public javaConstantName(aDomainSpecification : DomainSpecification) : String = 

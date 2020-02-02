@@ -22,8 +22,8 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 
 [query public containingAdaptorInterface(aWebService: WebService) : AdaptorInterface =
 aWebService.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
@@ -35,7 +35,6 @@ javaClassBaseNamespace(containingAdaptorInterface(aWebService)).concat('.service
 
 [query public javaClassName(aWebService: WebService) : String = 
     javaString(aWebService.name, '', true)
-    .concat('Service')
 /]
 
 [query public javaClassFullName(aWebService: WebService) : String = 
@@ -46,69 +45,81 @@ javaClassPackageName(aWebService).concat('.').concat(javaClassName(aWebService))
 javaFilesBasePath(containingAdaptorInterface(aWebService)).concatenatePaths(javaClassPackageName(aWebService).substituteAll('.', '/')).concat('/').concat(javaClassName(aWebService)).concat('.java')
 /]
 
-[comment BasicCapability /]
-[query public instanceURISegment (aResource: Resource, aWebService: WebService) : String = 
-aWebService.resourceUrlPattern
+[query public serviceUrlPattern (aWebService: WebService) : String = 
+(if (aWebService.serviceUrlPattern.oclIsUndefined()) then
+    ''
+else
+    aWebService.serviceUrlPattern
+endif)
+/]
+
+[query public resourceUrlPattern (aResource: Resource, aWebService: WebService) : String = 
+(if (not aWebService.resourceUrlPattern.oclIsUndefined())._and(not aWebService.resourceUrlPattern.equalsIgnoreCase('')) then
+    aWebService.resourceUrlPattern.substituteAll('[ResourceType]', resourceTypeLocalName(aResource))
+else
+    resourceTypeLocalName(aResource)
+	.concat('/{id}')
+endif)
 /]
 
 [query public instanceURI (aResource: Resource, aWebService: WebService) : String = 
-    JAXRSConcatURISegments(aWebService.serviceUrlPattern, aResource.instanceURISegment(aWebService))
+    JAXRSConcatURISegments(aWebService.serviceUrlPattern(), aResource.resourceUrlPattern(aWebService))
 /]
 
 [query public instanceCompositeID (aResource: Resource, aWebService: WebService) : Sequence(String) = 
 JAXRSPathParameters(aResource.instanceURI(aWebService))
 /]
 
-[query public getResourceMethodName(aWebService: WebService, aResource: Resource, forRDF : Boolean) : String = 
+[query public getResourceMethodName(aResource: Resource, forRDF : Boolean) : String = 
 'get'.concat(javaName(aResource, true))
 	.concat((if forRDF then '' else 'AsHtml' endif))
 /]
 
-[query public getResourceCompactMethodName(aWebService: WebService, aResource: Resource) : String = 
-getResourceMethodName(aWebService, aResource, true).concat('Compact')
+[query public getResourceCompactMethodName(aResource: Resource) : String = 
+getResourceMethodName(aResource, true).concat('Compact')
 /]
 
-[query public getResourceSmallPreviewMethodName(aWebService: WebService, aResource: Resource) : String = 
-getResourceMethodName(aWebService, aResource, false).concat('SmallPreview')
+[query public getResourceSmallPreviewMethodName(aResource: Resource) : String = 
+getResourceMethodName(aResource, false).concat('SmallPreview')
 /]
 
-[query public getResourceLargePreviewMethodName(aWebService: WebService, aResource: Resource) : String = 
-getResourceMethodName(aWebService, aResource, false).concat('LargePreview')
+[query public getResourceLargePreviewMethodName(aResource: Resource) : String = 
+getResourceMethodName(aResource, false).concat('LargePreview')
 /]
 
-[query public deleteResourceMethodName(aWebService: WebService, aResource: Resource) : String = 
+[query public deleteResourceMethodName(aResource: Resource) : String = 
 'delete'.concat(javaName(aResource, true))
 /]
 
-[query public updateResourceMethodName(aWebService: WebService, aResource: Resource) : String = 
+[query public updateResourceMethodName(aResource: Resource) : String = 
 'update'.concat(javaName(aResource, true))
 /]
 
-[query public getResourceMethodResourceType(aWebService: WebService, aResource: Resource) : String = 
+[query public getResourceMethodResourceType(aResource: Resource) : String = 
 javaClassName(aResource)
 /]
 
-[query public getResourceMethodReturnType(aWebService: WebService, aResource: Resource, forRDF : Boolean) : String = 
+[query public getResourceMethodReturnType(aResource: Resource, forRDF : Boolean) : String = 
 if forRDF then 
-	 aWebService.getResourceMethodResourceType(aResource)
+	 aResource.getResourceMethodResourceType()
 else 
 	'Response' 
 endif
 /]
 
-[query public updateResourceMethodResourceType(aWebService: WebService, aResource: Resource) : String = 
+[query public updateResourceMethodResourceType(aResource: Resource) : String = 
 javaClassName(aResource)
 /]
 
-[query public updateResourceMethodReturnType(aWebService: WebService, aResource: Resource) : String = 
+[query public updateResourceMethodReturnType(aResource: Resource) : String = 
 'Response' 
 /]
 
-[query public deleteResourceMethodResourceType(aWebService: WebService, aResource: Resource) : String = 
+[query public deleteResourceMethodResourceType(aResource: Resource) : String = 
 javaClassName(aResource)
 /]
 
-[query public deleteResourceMethodReturnType(aWebService: WebService, aResource: Resource) : String = 
+[query public deleteResourceMethodReturnType(aResource: Resource) : String = 
 'Response' 
 /]
 

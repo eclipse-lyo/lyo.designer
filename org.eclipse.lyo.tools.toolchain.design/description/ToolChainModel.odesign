@@ -720,9 +720,9 @@
         </nodeMappings>
         <nodeMappings name="AdaptorInterface.BasicCapability" semanticCandidatesExpression="[serviceProviderCatalog.serviceProviders.services.basicCapabilities/]" domainClass="adaptorinterface.BasicCapability">
           <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="['BasicCapability'/]" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW" shape="ring">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="AdaptorInterface.WebService" semanticCandidatesExpression="[webServices/]" domainClass="adaptorinterface.WebService">
@@ -737,6 +737,13 @@
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="AdaptorInterface.WarningMessage" preconditionExpression="[container.serviceProviderCatalog.serviceProviders.services.basicCapabilities->size() > 0/]" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteWarningMessage']" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.AdaptorInterface">
+          <style xsi:type="style:NoteDescription" labelSize="10" showIcon="false" labelExpression="['The use of BasicCapabilities is Deprecated! \n Consider replacing each BasicCapability with a WebService. A WebService offers the same features, yet with a much better URL flexibility.'/]" labelAlignment="LEFT" sizeComputationExpression="20" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </nodeMappings>
         <edgeMappings name="ServiceProviderCatalogToServiceProvider" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']" targetFinderExpression="feature:serviceProviders">
@@ -949,6 +956,12 @@
                 <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteWarningMessage">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation/>
           </ownedTools>
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="AdaptorInterface.ReconnectServiceToServiceProvider" elementsToSelect="[target/]" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>

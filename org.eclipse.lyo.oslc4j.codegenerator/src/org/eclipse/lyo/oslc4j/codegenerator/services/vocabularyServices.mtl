@@ -20,21 +20,7 @@
 
 [module vocabularyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
-
-[query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
-aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
-->union(
-	aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
-)->asSet()
-/]
-
-[query public relevantVocabularies(anAdaptorInterface : AdaptorInterface) : Set(Vocabulary) =
-anAdaptorInterface.relevantDomainSpecifications()->collectNested(aDomainSpecification : DomainSpecification | 
-	relevantVocabularies(aDomainSpecification)
-)->flatten()->asSet()
-/]
 
 [query public definingVocabulary(aProperty: Property) : Vocabulary =
 aProperty.eContainer(Vocabulary)
