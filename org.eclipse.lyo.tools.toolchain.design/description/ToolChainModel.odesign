@@ -509,7 +509,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="Toolchain.AdaptorInterface" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DeleteAdaptorInterface']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.EditAdaptorInterfaceName']" semanticCandidatesExpression="feature:adaptorInterfaces" doubleClickDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.NavigateInsideAdaptorInterface']" domainClass="adaptorinterface.AdaptorInterface" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DropManagedResource']">
-          <borderedNodeMappings name="Toolchain.AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)/]" domainClass="adaptorinterface.Resource">
+          <borderedNodeMappings name="Toolchain.AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)->union(self.webServices.resourceTypes)/]" domainClass="adaptorinterface.Resource">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="9" showIcon="false" sizeComputationExpression="0.1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -720,16 +720,30 @@
         </nodeMappings>
         <nodeMappings name="AdaptorInterface.BasicCapability" semanticCandidatesExpression="[serviceProviderCatalog.serviceProviders.services.basicCapabilities/]" domainClass="adaptorinterface.BasicCapability">
           <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="['BasicCapability'/]" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW" shape="ring">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="AdaptorInterface.WebService" semanticCandidatesExpression="[webServices/]" domainClass="adaptorinterface.WebService">
+          <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW" shape="ring">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)/]" domainClass="adaptorinterface.Resource">
+        <nodeMappings name="AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)->union(self.webServices.resourceTypes)/]" domainClass="adaptorinterface.Resource">
           <style xsi:type="style:EllipseNodeDescription" labelSize="9" showIcon="false" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="AdaptorInterface.WarningMessage" preconditionExpression="[container.serviceProviderCatalog.serviceProviders.services.basicCapabilities->size() > 0/]" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteWarningMessage']" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.AdaptorInterface">
+          <style xsi:type="style:NoteDescription" labelSize="10" showIcon="false" labelExpression="['The use of BasicCapabilities is Deprecated! \n Consider replacing each BasicCapability with a WebService. A WebService offers the same features, yet with a much better URL flexibility.'/]" labelAlignment="LEFT" sizeComputationExpression="20" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </nodeMappings>
         <edgeMappings name="ServiceProviderCatalogToServiceProvider" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']" targetFinderExpression="feature:serviceProviders">
@@ -757,6 +771,14 @@
           </style>
         </edgeMappings>
         <edgeMappings name="ServiceCapabilityToManagedResource" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" targetFinderExpression="feature:resourceTypes" reconnections="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.ReconnectCapabilityToManagedResource']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="9">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="WebServiceToManagedResource" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.WebService']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" targetFinderExpression="feature:resourceTypes" reconnections="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.ReconnectCapabilityToManagedResource']">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="9">
@@ -869,14 +891,33 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('The use of BasicCapabilities is Deprecated!', 'The use of BasicCapabilities is Deprecated! \n Consider using a WebService instead. A WebService offers the same features, yet with a much better URL flexibility.')/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateWebService" label="Web Service" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.WebService']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.BasicCapability" referenceName="basicCapabilities">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['BasicCapability'+container.basicCapabilities->size()/]"/>
+                <subModelOperations xsi:type="tool_1:Switch">
+                  <cases conditionExpression="[container.serviceProviderCatalog.serviceProviders.services.basicCapabilities->size() > 0/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('The use of WebServices conflicts with existing BasicCapabilities', 'The use of BasicCapabilities is Deprecated! \n It is however not possible to mix WebServices with BasicCapabilities. Consider first replacing existing BasicCapabilities with WebServices. A WebService offers the same features, yet with a much better URL flexibility.')/]"/>
+                  </cases>
+                  <default>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.WebService" referenceName="webServices">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['WebService'+ container.webServices->size()/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[let userInput : String = self.promptForString('Enter Class Name', 'Enter the name of the service. This name will be denote the Java class name that implement the service method.', self.name) in (if (userInput = null) then name else userInput endif) /]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[name.toLowerFirst()/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter service relative URL', 'Enter the relative URL pattern for the web service', self.serviceUrlPattern) in (if (userInput = null) then serviceUrlPattern else userInput endif) /]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="['[ResourceType]/{id}'/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter method relative URL pattern', 'Enter the relative URL pattern for the OSLC resource methods under this web service. You can use [ResourceType] to denote the RDF type of the resource.', self.resourceUrlPattern) in (if (userInput = null) then resourceUrlPattern else userInput endif) /]"/>
+                    </subModelOperations>
+                  </default>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddManagedResource" label="Managed Resource" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddManagedResource" label="Managed Resource" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.WebService']">
             <variable name="container">
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[container.eContainer(Toolchain).specification.domainSpecifications.resources/]" childrenExpression="Select the Resouce"/>
             </variable>
@@ -919,6 +960,12 @@
                 <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteWarningMessage">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation/>
           </ownedTools>
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="AdaptorInterface.ReconnectServiceToServiceProvider" elementsToSelect="[target/]" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
