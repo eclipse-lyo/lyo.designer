@@ -100,10 +100,10 @@ concatenate(parameters->sep(', ').oclAsType(String))
 /]
 
 [query public JAXRSPathAnnotation(pathAnnotation : String) : String =
-    (if (pathAnnotation.size() >= 1) then
-        '@Path("'.concat(pathAnnotation).concat('")')
+    (if (isNullOrEmpty(pathAnnotation)) then
+        '@Path("")'
     else
-        ''
+        '@Path("'.concat(pathAnnotation).concat('")')
     endif)
 /]
 

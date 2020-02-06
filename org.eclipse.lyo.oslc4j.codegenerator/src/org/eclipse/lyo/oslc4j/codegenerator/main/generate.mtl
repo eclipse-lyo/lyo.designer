@@ -45,6 +45,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResource/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResourceInterface/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResourceService/]
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateWebService/]
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateLicenseFiles/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateCssAndJsFiles/]
@@ -161,7 +162,7 @@
 [/for]
 
 [for (aResource: Resource | relevantResources(anAdaptorInterface))]
-    [if (not basicCapabilities(anAdaptorInterface, aResource)->isEmpty())]
+    [if (not basicCapabilities(anAdaptorInterface, aResource)->isEmpty())._or(not webServices(anAdaptorInterface, aResource)->isEmpty())]
         [aResource.generateGetResourceJsp(anAdaptorInterface, anAdaptorInterface) /]
         [aResource.generateGetResourceSmallPreviewJsp(anAdaptorInterface, anAdaptorInterface) /]
         [aResource.generateGetResourceLargePreviewJsp(anAdaptorInterface, anAdaptorInterface) /]
@@ -175,6 +176,12 @@
 [/for]
 [/template]
 
+[template public generateForWebServices(anAdaptorInterface : AdaptorInterface)]
+[for (aWebService: WebService | anAdaptorInterface.webServices)]
+    [aWebService.generateWebService() /]
+[/for]
+[/template]
+
 [template public generate(anAdaptorInterface : AdaptorInterface, targetFolder : String)]
 [comment @main/]
 [setTargetFolder(targetFolder)/]
@@ -185,6 +192,7 @@
 [else]
     [generateClientOnlyMainApplication(anAdaptorInterface)/]
 [/if]
+[generateForWebServices(anAdaptorInterface)/]
 [generateForRelevantDomainSpecifications(anAdaptorInterface)/]
 [generateForRelevantVocabularies(anAdaptorInterface)/]
 [generateForRelevantResources(anAdaptorInterface)/]

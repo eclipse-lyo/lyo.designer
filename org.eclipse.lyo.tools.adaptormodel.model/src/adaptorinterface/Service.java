@@ -58,7 +58,7 @@ public interface Service extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Service Namespace</b></em>' attribute.
-	 * The default value is <code>"relativeToServiceProvider"</code>.
+	 * The default value is <code>"independantOfServiceProvider"</code>.
 	 * The literals are from the enumeration {@link adaptorinterface.ResourceServiceNamespace}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -70,7 +70,7 @@ public interface Service extends EObject {
 	 * @see adaptorinterface.ResourceServiceNamespace
 	 * @see #setServiceNamespace(ResourceServiceNamespace)
 	 * @see adaptorinterface.AdaptorinterfacePackage#getService_ServiceNamespace()
-	 * @model default="relativeToServiceProvider" required="true"
+	 * @model default="independantOfServiceProvider" required="true"
 	 * @generated
 	 */
 	ResourceServiceNamespace getServiceNamespace();
