@@ -870,6 +870,8 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['SelectionDialog'+container.selectionDialogs->size()/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="[instance.title/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="dialogURI" valueExpression="['selector'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintWidth" valueExpression="['250'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintHeight" valueExpression="['250'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -883,6 +885,8 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['CreationDialog'+container.creationDialogs->size()/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="[instance.title/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="dialogURI" valueExpression="['creator'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintWidth" valueExpression="['250'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintHeight" valueExpression="['250'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
