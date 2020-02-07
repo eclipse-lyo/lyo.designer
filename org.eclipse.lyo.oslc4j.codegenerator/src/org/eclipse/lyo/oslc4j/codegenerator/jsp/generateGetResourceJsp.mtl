@@ -116,10 +116,10 @@
 <div class="container">
     <div class="page-header">
         <h1>[aResource.name /] resource</h1>
-        <p class="lead">rdf:about:&nbsp;
+        <p class="lead">Resource URI:&nbsp;
         <jsp:include page="[resourceToHtmlJspRelativeFileName(aResource, contextAdaptorInterface)/]"></jsp:include>
         </p>
-        <p class="lead">shape:&nbsp;
+        <p class="lead">Shape:&nbsp;
         <%
         URI shapeUri = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(OslcConstants.PATH_RESOURCE_SHAPES).path([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/]).build();
         out.write("<a href=\"" + shapeUri + "\">" + shapeUri + "</a>");
