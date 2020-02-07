@@ -116,23 +116,21 @@
 <div class="container">
     <div class="page-header">
         <h1>[aResource.name /] resource</h1>
+        <%
+        URI shapeUri = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(OslcConstants.PATH_RESOURCE_SHAPES).path([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/]).build();
+        Collection<URI> types = a[javaName(aResource, true)/].getTypes();   
+        %>
         <p class="lead">Resource URI:&nbsp;
         <jsp:include page="[resourceToHtmlJspRelativeFileName(aResource, contextAdaptorInterface)/]"></jsp:include>
         </p>
         <p class="lead">Shape:&nbsp;
-        <%
-        URI shapeUri = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(OslcConstants.PATH_RESOURCE_SHAPES).path([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/]).build();
-        out.write("<a href=\"" + shapeUri + "\">" + shapeUri + "</a>");
-        %>
+        <a href="<%=shapeUri%>"><%=shapeUri%></a>
         </p>
         <p class="lead">rdf:type(s):</p>
         <ul>
-        <%
-        Collection<URI> types = a[javaName(aResource, true)/].getTypes();   
-        for (URI type : a[javaName(aResource, true)/].getTypes()) {
-            out.write("<li><a href=\"" + type + "\">" + type + "</a></li>");
-        }
-        %>
+        <%for (URI type : a[javaName(aResource, true)/].getTypes()) {%>
+        <li><a href="<%=type%>"><%=type%></a></li>
+        <%}%>
         </ul>
     </div>
         <h2>Properties</h2>
