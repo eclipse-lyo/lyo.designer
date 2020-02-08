@@ -72,7 +72,7 @@ javaClassPackageName(aService).concat('.').concat(javaClassName(aService))
 javaFilesBasePath(containingAdaptorInterface(aService)).concatenatePaths(javaClassPackageName(aService).substituteAll('.', '/')).concat('/').concat(javaClassName(aService)).concat('.java')
 /]
 
-[comment default to true if the property is not explicitly defined /]
+[comment default to false if the property is not explicitly defined /]
 [query public serviceNamespaceRelativeToServiceProvider (aService: Service) : Boolean = 
     (if (not aService.serviceNamespace.oclIsUndefined()) then
         (if (aService.serviceNamespace = ResourceServiceNamespace::relativeToServiceProvider) then
@@ -81,7 +81,7 @@ javaFilesBasePath(containingAdaptorInterface(aService)).concatenatePaths(javaCla
             false
         endif)
     else
-        true
+        false
     endif)
 /]
 

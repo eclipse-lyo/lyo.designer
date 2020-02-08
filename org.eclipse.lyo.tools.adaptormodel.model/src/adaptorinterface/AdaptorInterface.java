@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link adaptorinterface.AdaptorInterface#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getServiceProviderCatalog <em>Service Provider Catalog</em>}</li>
+ *   <li>{@link adaptorinterface.AdaptorInterface#getWebServices <em>Web Services</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getSpecification <em>Specification</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getRequiredAdaptors <em>Required Adaptors</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getJavaClassBaseNamespace <em>Java Class Base Namespace</em>}</li>
@@ -66,6 +67,22 @@ public interface AdaptorInterface extends EObject {
 	 * @generated
 	 */
 	void setServiceProviderCatalog(ServiceProviderCatalog value);
+
+	/**
+	 * Returns the value of the '<em><b>Web Services</b></em>' containment reference list.
+	 * The list contents are of type {@link adaptorinterface.WebService}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Web Services</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Web Services</em>' containment reference list.
+	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_WebServices()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<WebService> getWebServices();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

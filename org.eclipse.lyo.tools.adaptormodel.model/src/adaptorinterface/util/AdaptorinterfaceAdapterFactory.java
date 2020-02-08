@@ -96,6 +96,10 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 				return createServiceAdapter();
 			}
 			@Override
+			public Adapter caseWebService(WebService object) {
+				return createWebServiceAdapter();
+			}
+			@Override
 			public Adapter caseResource(Resource object) {
 				return createResourceAdapter();
 			}
@@ -480,6 +484,20 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createShaclPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.WebService <em>Web Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.WebService
+	 * @generated
+	 */
+	public Adapter createWebServiceAdapter() {
 		return null;
 	}
 

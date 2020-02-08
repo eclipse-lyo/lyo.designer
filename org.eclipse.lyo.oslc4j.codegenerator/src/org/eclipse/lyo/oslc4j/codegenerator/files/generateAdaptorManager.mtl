@@ -26,6 +26,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::webServiceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderCatalogServices/]
@@ -229,6 +230,47 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
     [/if]
     [/for]
 
+    [/for]
+
+    [for (aWebService: WebService | anAdaptorInterface.webServices)]
+    [if (aWebService.read)]
+    [for (aResource: Resource | aWebService.resourceTypes)]
+    public static [getResourceMethodResourceType(aResource)/] [getResourceMethodName(aResource, true)/](HttpServletRequest httpServletRequest[commaSeparate(instanceMethodSignature(aResource, aWebService, false), true, false)/])
+    {
+        [getResourceMethodResourceType(aResource)/] aResource = null;
+        [backendCode(anAdaptorInterface.backendCodeTemplate_getResource, getResourceMethodResourceType(aResource), 'aResource', instanceCompositeID(aResource, aWebService))/]
+        // [protected (getResourceMethodName(aResource, true))]
+        // TODO Implement code to return a resource
+        // [/protected]
+        return aResource;
+    }
+    [/for]
+    [/if]
+
+    [if (aWebService.delete)]
+    [for (aResource: Resource | aWebService.resourceTypes)]
+    public static Boolean [deleteResourceMethodName(aResource)/](HttpServletRequest httpServletRequest[commaSeparate(instanceMethodSignature(aResource, aWebService, false), true, false)/])
+    {
+        Boolean deleted = false;
+        // [protected (deleteResourceMethodName(aResource))]
+        // TODO Implement code to delete a resource
+        // [/protected]
+        return deleted;
+    }
+    [/for]
+    [/if]
+
+    [if (aWebService.update)]
+    [for (aResource: Resource | aWebService.resourceTypes)]
+    public static [updateResourceMethodResourceType(aResource)/] [updateResourceMethodName(aResource)/](HttpServletRequest httpServletRequest, final [updateResourceMethodResourceType(aResource)/] aResource[commaSeparate(instanceMethodSignature(aResource, aWebService, false), true, false)/]) {
+        [updateResourceMethodResourceType(aResource)/] updatedResource = null;
+        // [protected (updateResourceMethodName(aResource))]
+        // TODO Implement code to update and return a resource
+        // [/protected]
+        return updatedResource;
+    }
+    [/for]
+    [/if]
     [/for]
 
     [for (aResource: Resource | servicedResources(anAdaptorInterface)->sortedBy(name))]

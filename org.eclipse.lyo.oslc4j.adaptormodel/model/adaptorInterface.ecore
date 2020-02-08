@@ -6,6 +6,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="serviceProviderCatalog"
         lowerBound="1" eType="#//ServiceProviderCatalog" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="webServices" upperBound="-1"
+        eType="#//WebService" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specification" lowerBound="1"
         eType="#//Specification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredAdaptors" upperBound="-1"
@@ -90,7 +92,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecification" lowerBound="1"
         eType="#//DomainSpecification"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceNamespace" lowerBound="1"
-        eType="#//ResourceServiceNamespace" defaultValueLiteral="relativeToServiceProvider"/>
+        eType="#//ResourceServiceNamespace" defaultValueLiteral="independantOfServiceProvider"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="creationFactories" upperBound="-1"
         eType="#//CreationFactory" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="queryCapabilities" upperBound="-1"
@@ -103,6 +105,19 @@
         eType="#//BasicCapability" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="usages" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WebService">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceUrlPattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resourceUrlPattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceTypes" upperBound="-1"
+        eType="#//Resource"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="read" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="delete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="update" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//Shape">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

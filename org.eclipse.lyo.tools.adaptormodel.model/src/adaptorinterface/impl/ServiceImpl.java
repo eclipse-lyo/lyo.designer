@@ -67,7 +67,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ResourceServiceNamespace SERVICE_NAMESPACE_EDEFAULT = ResourceServiceNamespace.RELATIVE_TO_SERVICE_PROVIDER;
+	protected static final ResourceServiceNamespace SERVICE_NAMESPACE_EDEFAULT = ResourceServiceNamespace.INDEPENDANT_OF_SERVICE_PROVIDER;
 
 	/**
 	 * The cached value of the '{@link #getServiceNamespace() <em>Service Namespace</em>}' attribute.

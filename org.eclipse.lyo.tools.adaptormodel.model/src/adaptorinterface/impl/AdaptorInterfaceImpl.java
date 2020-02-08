@@ -8,6 +8,7 @@ import adaptorinterface.RequiredAdaptor;
 import adaptorinterface.ServiceProviderCatalog;
 import adaptorinterface.Specification;
 
+import adaptorinterface.WebService;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getServiceProviderCatalog <em>Service Provider Catalog</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getWebServices <em>Web Services</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getRequiredAdaptors <em>Required Adaptors</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavaClassBaseNamespace <em>Java Class Base Namespace</em>}</li>
@@ -85,6 +87,16 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected ServiceProviderCatalog serviceProviderCatalog;
+
+	/**
+	 * The cached value of the '{@link #getWebServices() <em>Web Services</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWebServices()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<WebService> webServices;
 
 	/**
 	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
@@ -468,6 +480,18 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG, newServiceProviderCatalog, newServiceProviderCatalog));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<WebService> getWebServices() {
+		if (webServices == null) {
+			webServices = new EObjectContainmentEList<WebService>(WebService.class, this, AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES);
+		}
+		return webServices;
 	}
 
 	/**
@@ -906,6 +930,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 		switch (featureID) {
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
 				return basicSetServiceProviderCatalog(null, msgs);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
+				return ((InternalEList<?>)getWebServices()).basicRemove(otherEnd, msgs);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				return basicSetSpecification(null, msgs);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
@@ -926,6 +952,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return getName();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
 				return getServiceProviderCatalog();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
+				return getWebServices();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				return getSpecification();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
@@ -978,6 +1006,10 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
 				setServiceProviderCatalog((ServiceProviderCatalog)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
+				getWebServices().clear();
+				getWebServices().addAll((Collection<? extends WebService>)newValue);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				setSpecification((Specification)newValue);
@@ -1049,6 +1081,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
 				setServiceProviderCatalog((ServiceProviderCatalog)null);
 				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
+				getWebServices().clear();
+				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				setSpecification((Specification)null);
 				return;
@@ -1116,6 +1151,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
 				return serviceProviderCatalog != null;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
+				return webServices != null && !webServices.isEmpty();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				return specification != null;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
