@@ -103,7 +103,7 @@ javaClassName(aResource)
 if forRDF then 
 	 aResource.getResourceMethodResourceType()
 else 
-	'Response' 
+	'void' 
 endif
 /]
 

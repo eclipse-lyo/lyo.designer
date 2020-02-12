@@ -119,7 +119,7 @@ public class [javaClassNameForResourceShapeService(anAdaptorInterface)/]
     @GET
     @Path("{resourceShapePath}")
     @Produces({ MediaType.TEXT_HTML })
-    public Response getResourceShapeAsHtml(
+    public void getResourceShapeAsHtml(
             @PathParam("resourceShapePath") final String resourceShapePath
         ) throws ServletException, IOException, URISyntaxException, OslcCoreApplicationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException
     {
@@ -133,6 +133,7 @@ public class [javaClassNameForResourceShapeService(anAdaptorInterface)/]
             
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceShapeJspRelativeFileName(anAdaptorInterface) /]");
             rd.forward(httpServletRequest,httpServletResponse);
+            return;
         }
         throw new WebApplicationException(Status.NOT_FOUND);
     }
