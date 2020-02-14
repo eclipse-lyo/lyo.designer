@@ -108,7 +108,9 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
       [/if]
     </div>
     <%for (int serviceIndex = 0; serviceIndex < services.length; serviceIndex++) {%>
+    <% URI domain = services['[serviceIndex]'/].getDomain();%>
     <h2>Service &#35;<%=serviceIndex%></h2>
+    (Domain: <a href="<%=domain%>"><%=domain%></a>)
     <% Dialog['[]'/] selectionDialogs = services['[serviceIndex]'/].getSelectionDialogs();%>
     <% if(selectionDialogs.length > 0) {%>
     <h4>Resource Selector Dialogs</h4>

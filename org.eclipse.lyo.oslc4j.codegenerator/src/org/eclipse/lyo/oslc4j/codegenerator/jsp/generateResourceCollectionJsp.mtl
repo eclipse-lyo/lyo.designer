@@ -103,12 +103,12 @@
       <div class="alert alert-secondary" role="alert">
           Number of elements:&nbsp;
           <%= resources.size()%>
+          <% if (nextPageUri != null) { %><p><a href="<%= nextPageUri %>">Next Page</a></p><% } %>
       </div>
     </div>
         <% for ([queryMethodResourceType(aQueryCapability)/] aResource : resources) { %>
         <p><a href="<%= aResource.getAbout() %>" class="oslc-resource-link"><%=aResource.getAbout().toString()%></a><br /></p>
         <% } %>
-        <% if (nextPageUri != null) { %><a href="<%= nextPageUri %>">Next Page</a><% } %>
       </div>
   <footer class="footer">
       <div class="container">
