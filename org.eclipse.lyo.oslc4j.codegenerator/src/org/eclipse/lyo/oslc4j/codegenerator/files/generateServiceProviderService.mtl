@@ -165,6 +165,7 @@ public class [javaClassNameForService(aServiceProvider) /]
 
         RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[serviceProviderJspRelativeFileName(aServiceProvider) /]");
         rd.forward(httpServletRequest, httpServletResponse);
+        return;
     }
 }
 

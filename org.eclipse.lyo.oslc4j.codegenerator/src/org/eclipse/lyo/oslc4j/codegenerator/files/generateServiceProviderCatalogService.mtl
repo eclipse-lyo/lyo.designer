@@ -178,6 +178,7 @@ public class [javaClassNameForService(aServiceProviderCatalog) /]
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[serviceProviderCatalogJspRelativeFileName() /]");
             try {
                 rd.forward(httpServletRequest, httpServletResponse);
+                return;
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new WebApplicationException(e);

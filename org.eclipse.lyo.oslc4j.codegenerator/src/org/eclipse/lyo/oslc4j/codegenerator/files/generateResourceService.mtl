@@ -523,6 +523,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceJspRelativeFileName(aResource, anAdaptorInterface) /]");
             rd.forward(httpServletRequest,httpServletResponse);
+            return;
         }
 
         throw new WebApplicationException(Status.NOT_FOUND);
@@ -597,6 +598,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
             addCORSHeaders(httpServletResponse);
             rd.forward(httpServletRequest, httpServletResponse);
+            return;
         }
 
         throw new WebApplicationException(Status.NOT_FOUND);
@@ -623,6 +625,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
             addCORSHeaders(httpServletResponse);
             rd.forward(httpServletRequest, httpServletResponse);
+            return;
         }
 
         throw new WebApplicationException(Status.NOT_FOUND);
