@@ -67,6 +67,9 @@
 <%@page import="org.eclipse.lyo.oslc4j.core.model.ServiceProvider"%>
 <%@page import="org.eclipse.lyo.oslc4j.core.model.OslcConstants"%>
 <%@page import="org.eclipse.lyo.oslc4j.core.OSLC4JUtils"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.annotation.OslcPropertyDefinition"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.annotation.OslcName"%>
+<%@page import="java.lang.reflect.Method"%>
 <%@page import="java.net.URI"%>
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.Date"%>
@@ -115,7 +118,7 @@
 <!-- Begin page content -->
 <div class="container">
     <div class="page-header">
-        <h1>[aResource.name /] resource</h1>
+        <h1>[aResource.name /]: <%= a[javaName(aResource, true)/].toString() %></h1>
         <%
         URI shapeUri = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(OslcConstants.PATH_RESOURCE_SHAPES).path([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/]).build();
         Collection<URI> types = a[javaName(aResource, true)/].getTypes();   
@@ -135,10 +138,12 @@
     </div>
         <h2>Properties</h2>
         <div>
+          <% Method method = null; %>
           [for (propertiesCollection: Collection(ResourceProperty) | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)})]
           [for (aProperty: ResourceProperty | propertiesCollection)]
           <dl class="row">
-            <dt  class="col-sm-2 text-right">[aProperty.name /]</dt>
+            <% method = [javaClassName(aResource)/].class.getMethod("[javaAttributeGetterMethodName(aProperty, aResource)/]"); %>
+            <dt  class="col-sm-2 text-right"><a href="<%=method.getAnnotation(OslcPropertyDefinition.class).value() %>"><%=method.getAnnotation(OslcName.class).value()%></a></dt>
             <dd class="col-sm-9">
             [propertyToHtml(aProperty, aResource, 'a'.concat(javaName(aResource, true)), contextAdaptorInterface) /]
             </dd>
