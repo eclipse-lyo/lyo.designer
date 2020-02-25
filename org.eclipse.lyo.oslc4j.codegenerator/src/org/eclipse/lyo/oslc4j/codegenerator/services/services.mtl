@@ -71,15 +71,6 @@ else
 endif)
 /]
 
-[query public javascriptFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
-(if anAdaptorInterface.javascriptFilesBasePath.isNullOrEmpty() then 
-    'src'
-else
-    anAdaptorInterface.javascriptFilesBasePath
-endif)
-
-/]
-
 [query public jspFilesWebappPath(anAdaptorInterface : AdaptorInterface) : String =
 '/'.concat(javaClassBaseNamespace(anAdaptorInterface)).substituteAll('.', '/')
 /]

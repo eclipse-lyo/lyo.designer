@@ -87,6 +87,7 @@
   <script src="<c:url value="/static/js/popper-1.11.0.min.js"/>"></script>
   <script src="<c:url value="/static/js/bootstrap-4.0.0-beta.min.js"/>"></script>
   <script src="<c:url value="/static/js/preview.js"/>"></script>
+  <script src="<c:url value="/static/js/ui-preview-helper.js"/>"></script>
 
 </head>
 <body>

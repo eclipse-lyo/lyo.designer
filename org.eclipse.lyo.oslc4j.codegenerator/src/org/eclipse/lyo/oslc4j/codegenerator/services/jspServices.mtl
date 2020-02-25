@@ -156,8 +156,8 @@ jspFilesBasePath(containingAdaptorInterface(aServiceProvider)).concatenatePaths(
 
 [comment TODO: I need to work out how to properly set hte javascript path. This is hard-coded :-)/]
 [query public delegatedUIJavaScriptsRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
-'delegatedUI'.concat('.js')
+'delegated-ui'.concat('.js')
 /]
 [query public delegatedUIJavaScriptsFullFileName(anAdaptorInterface : AdaptorInterface) : String =
-javascriptFilesBasePath(anAdaptorInterface).concatenatePaths(delegatedUIJavaScriptsRelativeFileName(anAdaptorInterface))
+jspFilesBasePath(anAdaptorInterface).concatenatePaths('static/js').concatenatePaths(delegatedUIJavaScriptsRelativeFileName(anAdaptorInterface))
 /]
