@@ -119,50 +119,30 @@
 </footer>
 
 <script type="text/javascript">
-  $(function () {
-      registerSelectionDUIResponseListener(document.getElementById("delegatedUI"), resetPreviousSelections, presentOslcSelection);
-      
-      function presentOslcSelection(resourceUrl, resourceLabel) {
-          var displayContainer = document.getElementById("results");
-          var hyperlinkElement = document.createElement('a');  
-          var link = document.createTextNode(resourceLabel); 
-          hyperlinkElement.appendChild(link);  
-          hyperlinkElement.title = resourceLabel;
-          hyperlinkElement.href = resourceUrl;
-          hyperlinkElement.className = 'oslc-resource-link';
-          var li = document.createElement("LI");
-          li.appendChild(hyperlinkElement); 
-          document.querySelector('#results ul').appendChild(li);
+    $(function () {
+        registerSelectionDUIResponseListener(document.getElementById("delegatedUI"), resetPreviousSelections, presentOslcSelection);
 
-          var previewLinks = $("a.oslc-resource-link");
-          previewLinks.popover({
-              container: "body",
-              content: "Loading...",
-              delay: {"show": 120, "hide": 60},
-              html: true,
-              placement: "auto",
-              trigger: "hover"
-            });
-          previewLinks.on("show.bs.popover", function () {
-              var uiElem = $(this);
-              var popoverElem = uiElem.data('bs.popover');
-              getUiPreviewIframe(resourceUrl, attachIframeToHyperlinkElement, uiElem);
-            })
-      }
+        function presentOslcSelection(resourceUrl, resourceLabel) {
+            var displayContainer = document.getElementById("results");
+            var hyperlinkElement = document.createElement('a');  
+            var link = document.createTextNode(resourceLabel); 
+            hyperlinkElement.appendChild(link);  
+            hyperlinkElement.title = resourceLabel;
+            hyperlinkElement.href = resourceUrl;
+            hyperlinkElement.className = 'oslc-resource-link';
+            var li = document.createElement("LI");
+            li.appendChild(hyperlinkElement); 
+            document.querySelector('#results ul').appendChild(li);
+            setupUiPreviewOnPopover($("a.oslc-resource-link"));
+        }
 
-      function resetPreviousSelections() {
+        function resetPreviousSelections() {
             var resultsUl = document.querySelector('#results ul')
             while(resultsUl.hasChildNodes()) {
-              resultsUl.removeChild(resultsUl.lastChild)
+                resultsUl.removeChild(resultsUl.lastChild)
             }
-    }
-
-      function attachIframeToHyperlinkElement(iframeTitle, iframeHtml, resourceCompactStructure, uiElem) {
-          uiElem.attr('data-original-title', iframeTitle);
-          uiElem.attr('data-content', iframeHtml);
-          uiElem.data('bs.popover').setContent();
         }
-  });
+    });
 </script>
 </body>
 </html>

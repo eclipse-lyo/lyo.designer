@@ -120,51 +120,30 @@
 </footer>
 
 <script type="text/javascript">
-  $(function () {
-      registerCreationDUIResponseListener(document.getElementById("delegatedUI"), resetPreviousCreation, presentOslcCreation);
+    $(function () {
+        registerCreationDUIResponseListener(document.getElementById("delegatedUI"), resetPreviousCreation, presentOslcCreation);
 
-      function presentOslcCreation(resourceUrl, resourceLabel) {
-          var displayContainer = document.getElementById("results");
-          var hyperlinkElement = document.createElement('a');  
-          var link = document.createTextNode(resourceLabel); 
-          hyperlinkElement.appendChild(link);  
-          hyperlinkElement.title = resourceLabel;
-          hyperlinkElement.href = resourceUrl;
-          hyperlinkElement.className = 'oslc-resource-link';
-          var li = document.createElement("LI");
-          li.appendChild(hyperlinkElement); 
-          document.querySelector('#results ul').appendChild(li);
+        function presentOslcCreation(resourceUrl, resourceLabel) {
+            var displayContainer = document.getElementById("results");
+            var hyperlinkElement = document.createElement('a');  
+            var link = document.createTextNode(resourceLabel); 
+            hyperlinkElement.appendChild(link);  
+            hyperlinkElement.title = resourceLabel;
+            hyperlinkElement.href = resourceUrl;
+            hyperlinkElement.className = 'oslc-resource-link';
+            var li = document.createElement("LI");
+            li.appendChild(hyperlinkElement); 
+            document.querySelector('#results ul').appendChild(li);
+            setupUiPreviewOnPopover($("a.oslc-resource-link"));
+        }
 
-          var previewLinks = $("a.oslc-resource-link");
-          previewLinks.popover({
-              container: "body",
-              content: "Loading...",
-              delay: {"show": 120, "hide": 60},
-              html: true,
-              placement: "auto",
-              trigger: "hover"
-            });
-          previewLinks.on("show.bs.popover", function () {
-              var uiElem = $(this);
-              var popoverElem = uiElem.data('bs.popover');
-              getUiPreviewIframe(resourceUrl, attachIframeToHyperlinkElement, uiElem);
-            })
-      }
-
-      function resetPreviousCreation() {
-          var resultsUl = document.querySelector('#results ul')
-          while(resultsUl.hasChildNodes()) {
-            resultsUl.removeChild(resultsUl.lastChild)
-          }
-      }
-
-      function attachIframeToHyperlinkElement(iframeTitle, iframeHtml, resourceCompactStructure, uiElem) {
-          uiElem.attr('data-original-title', iframeTitle);
-          uiElem.attr('data-content', iframeHtml);
-          uiElem.data('bs.popover').setContent();
-      }
-
-  });
+        function resetPreviousCreation() {
+            var resultsUl = document.querySelector('#results ul')
+            while(resultsUl.hasChildNodes()) {
+                resultsUl.removeChild(resultsUl.lastChild)
+            }
+        }
+    });
 </script>
 </body>
 </html>
