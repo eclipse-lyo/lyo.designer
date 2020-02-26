@@ -18,14 +18,14 @@
  *******************************************************************************/
 /]
 
-[module generateDelegatedUIJavaScripts('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+[module generateDelegatedUIJs('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 
-[template public generateDelegatedUIJavaScripts(anAdaptorInterface : AdaptorInterface)]
+[template public generateDelegatedUIJs(anAdaptorInterface : AdaptorInterface)]
 [file (delegatedUIJavaScriptsFullFileName(anAdaptorInterface), false, 'UTF-8')]
 // [protected ('"Copyright Header"')]
 /*******************************************************************************
@@ -106,7 +106,6 @@ function create(baseUrl){
 
   xmlhttp.open("POST", baseUrl, true);
   xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-  xmlhttp.setRequestHeader("Content-length",postData.length);
   xmlhttp.send(postData);
 }
 

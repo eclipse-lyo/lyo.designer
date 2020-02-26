@@ -58,13 +58,15 @@
 %>
 <html>
 <head>
-  <title>Selection Dialog client</title>
+  <title>Selection Dialog sample client</title>
   <link href="<c:url value="/static/css/bootstrap-4.0.0-beta.min.css"/>" rel="stylesheet">
   <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
 
   <script src="<c:url value="/static/js/jquery-3.2.1.min.js"/>"></script>
   <script src="<c:url value="/static/js/popper-1.11.0.min.js"/>"></script>
   <script src="<c:url value="/static/js/bootstrap-4.0.0-beta.min.js"/>"></script>
+  <script src="<c:url value="/static/js/delegated-ui-helper.js"/>"></script>
+  <script src="<c:url value="/static/js/ui-preview-helper.js"/>"></script>
 </head>
 <body>
 
@@ -77,18 +79,19 @@
 <div class="container">
 
   <div class="page-header">
-    <h1>Selection Dialog client</h1>
+    <h1>Selection Dialog sample client</h1>
+    <p>Use this sample code (html, javascript) to build your own interactions with OSLC Delegated UIs.</p>
   </div>
 
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-primary">
-        <div class="panel-heading">Selection Dialog frame</div>
+        <div class="panel-heading">Selection Dialog iframe for:</div>
+        <div class="panel-footer">
+          <p><em style="word-wrap:break-word;"><%= selectionDialogUri %></em></p>
+        </div>
         <div class="panel-body">
           <iframe src="<%= selectionDialogUri %>" id="delegatedUI"></iframe>
-        </div>
-        <div class="panel-footer">
-          <p>URI: <em style="word-wrap:break-word;"><%= selectionDialogUri %></em></p>
         </div>
       </div>
     </div>
@@ -116,36 +119,31 @@
 </footer>
 
 <script type="text/javascript">
-  $(function () {
-    function handleMessage(message) {
+    $(function () {
+        registerSelectionDUIResponseListener(document.getElementById("delegatedUI"), resetPreviousSelections, presentOslcSelection);
+
+        function presentOslcSelection(resourceUrl, resourceLabel) {
+            var displayContainer = document.getElementById("results");
+            var hyperlinkElement = document.createElement('a');  
+            var link = document.createTextNode(resourceLabel); 
+            hyperlinkElement.appendChild(link);  
+            hyperlinkElement.title = resourceLabel;
+            hyperlinkElement.href = resourceUrl;
+            hyperlinkElement.className = 'oslc-resource-link';
+            var li = document.createElement("LI");
+            li.appendChild(hyperlinkElement); 
+            document.querySelector('#results ul').appendChild(li);
+            setupUiPreviewOnPopover($("a.oslc-resource-link"));
+        }
+
+        function resetPreviousSelections() {
             var resultsUl = document.querySelector('#results ul')
             while(resultsUl.hasChildNodes()) {
-              resultsUl.removeChild(resultsUl.lastChild)
+                resultsUl.removeChild(resultsUl.lastChild)
             }
-      var results = JSON.parse(message)['['/]"oslc:results"];
-      for (var item in results) {
-          var aResult = {
-            label: results['['/]item]['['/]"oslc:label"],
-            uri: results['['/]item]['['/]"rdf:resource"]
-          }
-          handleOslcSelection(aResult);
-      }
-    }
-
-    function handleOslcSelection(resource) {
-      $("#results ul").append('<li><a href="' + resource.uri + '"><span>' + resource.label + '</span></a></li>');
-    }
-
-    window.addEventListener('message', function (e) {
-      var HEADER = "oslc-response:";
-      if (e.source == document.getElementById("delegatedUI").contentWindow
-          && e.data.indexOf(HEADER) == 0) {
-        handleMessage(e.data.slice(HEADER.length));
-      }
-    }, false);
-  });
+        }
+    });
 </script>
-
 </body>
 </html>
 [/file]
