@@ -205,6 +205,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
         if (a[javaName(aResource, true)/] != null) {
             // [protected (getResourceMethodName(aResource, true))]
             // [/protected]
+            httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](a[javaName(aResource, true)/]));
             httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
             return a[javaName(aResource, true)/];
         }
