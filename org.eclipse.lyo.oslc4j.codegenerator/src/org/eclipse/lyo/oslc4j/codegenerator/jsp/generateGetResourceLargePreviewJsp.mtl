@@ -26,10 +26,11 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyToHtml/]
 
-[template public generateGetResourceLargePreviewJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface)]
+[template public generateGetResourceLargePreviewJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface, defaultJavaClassPackageName : String)]
 [if (contextAdaptorInterface.generateJspFile(getResourceLargePreviewJspFullFileName(aResource, contextAdaptorInterface)))]
 [file (getResourceLargePreviewJspFullFileName(aResource, contextAdaptorInterface), false, 'UTF-8')]
 <%--To avoid the overriding of any manual code changes upon subsequent code generations, disable "Generate JSP Files" option in the Adaptor model.--%>
@@ -60,12 +61,23 @@
 
 <%@page import="org.eclipse.lyo.oslc4j.core.model.Link" %>
 <%@page import="org.eclipse.lyo.oslc4j.core.model.ServiceProvider"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.model.OslcConstants"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.OSLC4JUtils"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.annotation.OslcPropertyDefinition"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.annotation.OslcName"%>
+<%@page import="java.lang.reflect.Method"%>
 <%@page import="java.net.URI"%>
+<%@page import="java.util.Collection"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
+<%@page import="java.util.Map"%>
+<%@page import="javax.xml.namespace.QName"%>
+<%@page import="javax.ws.rs.core.UriBuilder"%>
+
 <%@page import="[javaClassFullName(aResource, contextAdaptorInterface, null) /]"%>
+<%@page import="[javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), contextAdaptorInterface, defaultJavaClassPackageName)/]"%>
 
 <%@ page contentType="text/html" language="java" pageEncoding="UTF-8" %>
 
@@ -87,26 +99,47 @@
   <script src="<c:url value="/static/js/jquery-3.2.1.min.js"/>"></script>
   <script src="<c:url value="/static/js/popper-1.11.0.min.js"/>"></script>
   <script src="<c:url value="/static/js/bootstrap-4.0.0-beta.min.js"/>"></script>
-  <script src="<c:url value="/static/js/ui-preview-helper.js"/>"></script>
 </head>
 
 <body>
 
 <!-- Begin page content -->
 <div>
-        <div>
-          [for (propertiesCollection: Collection(ResourceProperty) | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)})]
-          [for (aProperty: ResourceProperty | propertiesCollection)]
-          <dl class="dl-horizontal">
-            <dt>[aProperty.name /]</dt>
-            <dd>
-            [propertyToHtml(aProperty, aResource, 'a'.concat(javaName(aResource, true)), contextAdaptorInterface) /]
-            </dd>
-          </dl>
-          [/for]
-          [/for]
-        </div>
-      </div>
+    <% Method method = null; %>
+    [for (propertiesCollection: Collection(ResourceProperty) | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)})]
+    [for (aProperty: ResourceProperty | propertiesCollection)]
+    <dl class="dl-horizontal">
+        <% method = [javaClassName(aResource)/].class.getMethod("[javaAttributeGetterMethodName(aProperty, aResource)/]"); %>
+        <dt><a href="<%=method.getAnnotation(OslcPropertyDefinition.class).value() %>"><%=method.getAnnotation(OslcName.class).value()%></a></dt>
+        <dd>
+        [propertyToHtml(aProperty, aResource, 'a'.concat(javaName(aResource, true)), contextAdaptorInterface) /]
+        </dd>
+    </dl>
+    [/for]
+    [/for]
+</div>
+<%
+Map<QName, Object> extendedProperties = a[javaName(aResource, true)/].getExtendedProperties();
+if (!extendedProperties.isEmpty()) {
+%>
+    <div>
+    <%
+    for (Map.Entry<QName, Object> entry : extendedProperties.entrySet()) 
+    {
+        QName key = entry.getKey();
+        Object value = entry.getValue();
+    %>
+    <dl class="row">
+        <dt  class="col-sm-2 text-right"><a href="<%=key.getNamespaceURI() + key.getLocalPart() %>"><%=key.getLocalPart()%></a></dt>
+        <dd class="col-sm-9"><%= value.toString()%></dd>
+    </dl>
+    <%
+    }
+    %>
+    </div>
+<%
+}
+%>
 </body>
 </html>
 [/file]
