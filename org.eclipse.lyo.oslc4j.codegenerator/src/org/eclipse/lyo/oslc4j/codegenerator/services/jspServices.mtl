@@ -161,3 +161,11 @@ jspFilesBasePath(containingAdaptorInterface(aServiceProvider)).concatenatePaths(
 [query public delegatedUIJavaScriptsFullFileName(anAdaptorInterface : AdaptorInterface) : String =
 jspFilesBasePath(anAdaptorInterface).concatenatePaths('static/js').concatenatePaths(delegatedUIJavaScriptsRelativeFileName(anAdaptorInterface))
 /]
+
+[comment swagger/]
+[query public swaggerIndexJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
+'/swagger-ui/index'.concat('.jsp').toLower()
+/]
+[query public swaggerIndexJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
+jspFilesBasePath(anAdaptorInterface).concatenatePaths(swaggerIndexJspRelativeFileName(anAdaptorInterface))
+/]
