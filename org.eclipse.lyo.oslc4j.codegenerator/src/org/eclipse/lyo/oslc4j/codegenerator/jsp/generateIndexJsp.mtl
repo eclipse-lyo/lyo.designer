@@ -24,18 +24,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 
-[template public swaggerDocumentation(anAdaptorInterface : AdaptorInterface)]
-[if (anAdaptorInterface.swaggerDocumentationEnabled())]
-<p class="lead">
-    <a class="btn btn-primary btn-lg" href="<%= UriBuilder.fromUri(OSLC4JUtils.getPublicURI()).path("/swagger-ui").build() %>" role="button">Interactive API console</a>
-</p>
-<p>Use <a href="<%= "https://swagger.io/swagger-ui/" %>">Swagger UI</a> To interact with the adaptor services dedicated for RDF.
-</p>
-<p>You can also copy <a href="<%= UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/swagger.yaml").build() %>">this OpenAPI specification document (yaml file) of this adaptor</a> to a <a href="<%= "https://editor.swagger.io" %>">Swagger Editor</a> to generate client SDK code for a number of languages and platforms.
-</p>
-[/if]
-[/template]
-
 [template public generateIndexJsp(anAdaptorInterface : AdaptorInterface)]
 [if (anAdaptorInterface.generateJspFile(jspFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp')))]
 [file (jspFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp'), false, 'UTF-8')]
@@ -92,19 +80,12 @@
         </p>
         <p>Start from the Service Provider Catalog, to navigate your adaptor's services and resources, using the available Query capabilities, Selection and Creation Dialogs. 
             Note that these are end-user HTML pages, which is very useful for debugging your adaptor.</p>
-        [swaggerDocumentation(anAdaptorInterface)/]
-    </div>
-    <div class="alert alert-primary" role="alert">
-        <h4 class="alert-heading">Sample front page!</h4>
-        <hr>
-        <p>This initially generated sample front page can be modified, by changing the file <code>[jspFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp')/]</code></p>
-        <ul>
-        <li>Any changes made will not be overriden upon future re-generations.</li>
-        <li>If you need to revert to the originally generated content, delete the file and/or its complete content.</li>
-        </ul>
-        <p><strong>You enabled Swagger Documentation?</strong>
-            If you have enabled Swagger Documentation in the generated code, make sure you have configured your project according to these 
-            <a href="<%= "https://wiki.eclipse.org/Lyo/creating_OSLC4J_project#OpenApi.2FSwagger_Support_.28Optional.29" %>">Lyo Instructions for Swagger</a>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="<c:url value="[swaggerIndexJspRelativeFileName(anAdaptorInterface)/]"/>" role="button">Interactive Swagger UI</a>
+        </p>
+        <p>Use Swagger UI To interact with the adaptor services dedicated for RDF.
+        </p>
+        <p>You can also copy <a href="<%= UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/swagger.yaml").build() %>">this OpenAPI specification document (yaml file) of this adaptor</a> to a <a href="<%= "https://editor.swagger.io" %>">Swagger Editor</a> to generate client SDK code for a number of languages and platforms.
         </p>
     </div>
 </div>

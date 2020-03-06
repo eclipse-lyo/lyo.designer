@@ -80,9 +80,13 @@ ServiceProviderCatalog catalog = (ServiceProviderCatalog)request.getAttribute("c
 
   </head>
   <body>
-  <nav class="navbar sticky-top navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="<c:url value="/services/catalog/singleton"/>">[containingAdaptorInterface(aServiceProviderCatalog).name /]</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><%= application.getServletContextName() %></a></li>
+        <li class="nav-item"><a class="nav-link" href="<c:url value="/services/catalog/singleton"/>">Service Provider Catalog</a></li>
+        <li class="nav-item"><a class="nav-link" href="<c:url value="[containingAdaptorInterface(aServiceProviderCatalog).swaggerIndexJspRelativeFileName()/]"/>">Swagger UI</a></li>
+      </ul>
     </div>
   </nav>
 

@@ -62,6 +62,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateServiceProviderCatalogHTML/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateServiceProviderHTML/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateIndexJsp/]
+[import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateSwaggerIndexJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateResourceShapeJsp/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorClient/]
@@ -86,6 +87,7 @@
 [anAdaptorInterface.generateCssAndJsFiles() /]
 [anAdaptorInterface.serviceProviderCatalog.generateServiceProviderCatalogHTML() /]
 [anAdaptorInterface.generateIndexJsp() /]
+[anAdaptorInterface.generateSwaggerIndexJsp() /]
 [anAdaptorInterface.generateResourceSelectorClientJsp() /]
 [anAdaptorInterface.generateResourceCreatorClientJsp() /]
 [anAdaptorInterface.generateResourceShapeService() /]
