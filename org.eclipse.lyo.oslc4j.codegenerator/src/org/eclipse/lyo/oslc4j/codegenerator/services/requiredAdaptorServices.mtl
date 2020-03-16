@@ -25,7 +25,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 
 [query public javaClassPackageNameForClient(aRequiredAdaptor : RequiredAdaptor, anAdaptorInterface : AdaptorInterface) : String =
-javaClassBaseNamespace(anAdaptorInterface).concat('.clients')
+javaBasePackageName(anAdaptorInterface).concat('.clients')
 /]
 
 [query public javaClassNameForClient(aRequiredAdaptor : RequiredAdaptor) : String =

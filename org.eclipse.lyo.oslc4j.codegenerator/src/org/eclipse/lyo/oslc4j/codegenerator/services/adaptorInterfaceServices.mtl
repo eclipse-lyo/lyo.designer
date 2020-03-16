@@ -46,14 +46,6 @@ else
 endif)
 /]
 
-[query public doNotRegenerateJspFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
-(if anAdaptorInterface.doNotRegenerateJspFiles.oclIsUndefined() then
-    false
-else
-    anAdaptorInterface.doNotRegenerateJspFiles
-endif)
-/]
-
 [query public javaName(anAdaptorInterface : AdaptorInterface, toUpperFirst : Boolean) : String = 
 javaString(anAdaptorInterface.name, 'oslc', toUpperFirst)
 /]
@@ -217,7 +209,7 @@ relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification
 
 [comment Services for AdaptorPackageInfo /]
 [query public javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface).concat('.resources')
+javaBasePackageName(anAdaptorInterface).concat('.resources')
 /]
 
 [query public javaClassFullFileNameForAdaptorPackageInfo(anAdaptorInterface : AdaptorInterface) : String = 
@@ -226,7 +218,7 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAd
 
 [comment Services for ClientOnlyMainApplication /]
 [query public javaClassPackageNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface)
+javaBasePackageName(anAdaptorInterface)
 /]
 
 [query public javaClassNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
@@ -243,7 +235,7 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForCl
 
 [comment Services for AdaptorApplication /]
 [query public javaClassPackageNameForAdaptorApplication(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface).concat('.servlet')
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
 /]
 
 [query public javaClassNameForAdaptorApplication(anAdaptorInterface : AdaptorInterface) : String = 
@@ -260,7 +252,7 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAd
 
 [comment Services for AdaptorServletListener /]
 [query public javaClassPackageNameForAdaptorServletListener(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface).concat('.servlet')
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
 /]
 
 [query public javaClassNameForAdaptorServletListener(anAdaptorInterface : AdaptorInterface) : String = 
@@ -277,7 +269,7 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAd
 
 [comment Services for ResourcesFactory /]
 [query public javaClassPackageNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface)
+javaBasePackageName(anAdaptorInterface)
 /]
 
 [query public javaClassNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
@@ -294,7 +286,7 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForRe
 
 [comment Services for AdaptorManager /]
 [query public javaClassPackageNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface)
+javaBasePackageName(anAdaptorInterface)
 /]
 
 [query public javaClassNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
@@ -311,7 +303,7 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAd
 
 [comment Services for ResourceShapeService /]
 [query public javaClassPackageNameForResourceShapeService(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface).concat('.services')
+javaBasePackageName(anAdaptorInterface).concat('.services')
 /]
 
 [query public javaClassNameForResourceShapeService(anAdaptorInterface : AdaptorInterface) : String = 
@@ -328,7 +320,7 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForRe
 
 [comment Services for AdaptorConstants /]
 [query public javaInterfacePackageNameForAdaptorConstants(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassBaseNamespace(anAdaptorInterface)
+javaBasePackageName(anAdaptorInterface)
 /]
 
 [query public javaInterfaceNameForAdaptorConstants(anAdaptorInterface : AdaptorInterface) : String = 

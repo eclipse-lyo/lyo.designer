@@ -31,12 +31,13 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResource/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResourceInterface/]
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateLicenseFiles/]
+[import org::eclipse::lyo::oslc4j::codegenerator::config::generateConfigFiles/]
 
 [query public canGenerate(aSpecification : Specification) : Boolean = 
 not(
-aSpecification.generationSetting.oclIsUndefined()
- or(aSpecification.generationSetting.javaFilesPath.isNullOrEmpty())
- or(aSpecification.generationSetting.javaClassPackageName.isNullOrEmpty())
+aSpecification.configuration.oclIsUndefined()
+ or(aSpecification.configuration.generalConfiguration.filesBasePath.isNullOrEmpty())
+ or(aSpecification.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty())
 )
 /]
 
@@ -44,17 +45,20 @@ aSpecification.generationSetting.oclIsUndefined()
 [comment @main/]
 [if (canGenerate(aSpecification))]
     [aSpecification.generateLicenseFiles() /] 
+    [aSpecification.generateConfigFiles(null, aSpecification.configuration.generalConfiguration.filesBasePath) /]
+
     [for (aDomainSpecification: DomainSpecification | aSpecification.relevantDomainSpecifications())]
-        [aDomainSpecification.generateDomainSpecificationConstants(null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName)/]
+        [aDomainSpecification.generateDomainSpecificationConstants(null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName)/]
+        [aDomainSpecification.generateConfigFiles(null, aSpecification.configuration.generalConfiguration.filesBasePath)/]
     [/for]
 
     [for (aVocabulary: Vocabulary | aSpecification.relevantVocabularies())]
-        [aVocabulary.generateVocabularyConstants(null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName)/]
+        [aVocabulary.generateVocabularyConstants(null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName)/]
     [/for]
     
     [for (aResource: Resource | aSpecification.relevantResources())]
-        [aResource.generateResource(null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName) /]
-        [aResource.generateResourceInterface(null, null, aSpecification.generationSetting.javaFilesPath, aSpecification.generationSetting.javaClassPackageName) /]
+        [aResource.generateResource(null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName) /]
+        [aResource.generateResourceInterface(null, null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName) /]
     [/for]
 [/if]
 [/template]

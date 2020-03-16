@@ -25,8 +25,8 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 
 [template public generateIndexJsp(anAdaptorInterface : AdaptorInterface)]
-[if (anAdaptorInterface.generateJspFile(jspFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp')))]
-[file (jspFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp'), false, 'UTF-8')]
+[if (anAdaptorInterface.generateJspFile(webFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp')))]
+[file (webFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp'), false, 'UTF-8')]
 <%--To avoid the overriding of any manual code changes upon subsequent code generations, disable "Generate JSP Files" option in the Adaptor model.--%>
 <!DOCTYPE html>
 <%--

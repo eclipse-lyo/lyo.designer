@@ -50,7 +50,7 @@ aService.eContainer(ServiceProvider).oclAsType(ServiceProvider)
 /]
 
 [query public javaClassPackageName(aService: Service) : String = 
-javaClassBaseNamespace(containingAdaptorInterface(aService)).concat('.services')
+javaBasePackageName(containingAdaptorInterface(aService)).concat('.services')
 /]
 
 [query public javaClassName(aService: Service) : String = 

@@ -30,62 +30,6 @@ aProperty.eContainer(DomainSpecification)
 aResource.eContainer(DomainSpecification)
 /]
 
-[query public javaFullFilesPath(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
-(if (aSpecification.generationSetting.oclIsUndefined())._or(aSpecification.generationSetting.javaFilesPath.isNullOrEmpty()) then 
-    (if (anAdaptorInterface.oclIsUndefined()) then 
-        default
-    else
-        javaFilesBasePath(anAdaptorInterface, default)
-    endif)
-else
-    aSpecification.generationSetting.javaFilesPath
-endif)
-/]
-
-[query public javaPackageName(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
-(if (aSpecification.generationSetting.oclIsUndefined())._or(aSpecification.generationSetting.javaClassPackageName.isNullOrEmpty()) then 
-    (if (anAdaptorInterface.oclIsUndefined()) then 
-        default
-    else
-        javaClassBaseNamespace(anAdaptorInterface, default).concat('.resources')
-    endif)
-else
-    aSpecification.generationSetting.javaClassPackageName
-endif)
-/]
-
-[query public doNotGenerate(aSpecification: Specification) : Boolean = 
-(if (aSpecification.generationSetting.oclIsUndefined())._or(aSpecification.generationSetting.doNotGenerate.oclIsUndefined()) then 
-    false
-else
-    aSpecification.generationSetting.doNotGenerate
-endif)
-/]
-
-[query public javaFullFilesPath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
-(if (aDomainSpecification.generationSetting.oclIsUndefined())._or(aDomainSpecification.generationSetting.javaFilesPath.isNullOrEmpty()) then 
-    javaFullFilesPath(aDomainSpecification.eContainer(Specification), anAdaptorInterface, default)
-else
-    aDomainSpecification.generationSetting.javaFilesPath
-endif)
-/]
-
-[query public javaPackageName(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
-(if (aDomainSpecification.generationSetting.oclIsUndefined())._or(aDomainSpecification.generationSetting.javaClassPackageName.isNullOrEmpty()) then 
-    javaPackageName(aDomainSpecification.eContainer(Specification), anAdaptorInterface, default)
-else
-    aDomainSpecification.generationSetting.javaClassPackageName
-endif)
-/]
-
-[query public doNotGenerate(aDomainSpecification: DomainSpecification) : Boolean = 
-(if (aDomainSpecification.generationSetting.oclIsUndefined())._or(aDomainSpecification.generationSetting.doNotGenerate.oclIsUndefined()) then 
-    doNotGenerate(aDomainSpecification.eContainer(Specification))
-else
-    aDomainSpecification.generationSetting.doNotGenerate
-endif)
-/]
-
 [query public javaInterfacePackageNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
 javaPackageName(aDomainSpecification, anAdaptorInterface, defaultJavaPackageName)
 /]
@@ -99,7 +43,7 @@ javaInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, d
 /]
 
 [query public javaInterfaceFullFileNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String = 
-    javaFullFilesPath(aDomainSpecification, anAdaptorInterface, defaultJavaFullFilesPath)
+    javaFilesBasePath(aDomainSpecification, anAdaptorInterface, defaultJavaFullFilesPath)
     .concatenatePaths(javaInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
     .concatenatePaths(javaInterfaceNameForConstants(aDomainSpecification))
     .concat('.java')

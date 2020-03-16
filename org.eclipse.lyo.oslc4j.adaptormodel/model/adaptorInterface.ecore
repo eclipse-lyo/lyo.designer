@@ -12,6 +12,8 @@
         eType="#//Specification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredAdaptors" upperBound="-1"
         eType="#//RequiredAdaptor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//ServerConfiguration"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaClassBaseNamespace"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaFilesBasePath" lowerBound="1"
@@ -20,8 +22,6 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="javascriptFilesBasePath"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doNotRegenerateJspFiles"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="swaggerDocumentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="backendCodeTemplate_classImports"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -49,6 +49,8 @@
         eType="#//NamespacePrefix" containment="true" eKeys="#//NamespacePrefix/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="generationSetting" eType="#//GenerationSetting"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//SpecificationConfiguration"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -61,6 +63,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceProperties" upperBound="-1"
         eType="#//ResourceProperty" containment="true" eKeys="#//ResourceProperty/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="generationSetting" eType="#//GenerationSetting"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//SpecificationConfiguration"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="shaclShapes" upperBound="-1"
         eType="#//ShaclShape" containment="true" eKeys="#//ShaclShape/name"/>
@@ -277,4 +281,48 @@
     <eLiterals name="Float" value="8" literal="Float"/>
     <eLiterals name="Integer" value="9" literal="Integer"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doNotGenerate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filesBasePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaBasePackageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doNotGenerateProjectConfigurationFiles"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lyoVersion" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServerConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rootServerBaseUrl" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="applicationContextPath"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="servletUrlPattern" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doNotRegenerateJspFiles"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generalConfiguration" lowerBound="1"
+        eType="#//GeneralConfiguration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projectConfiguration" lowerBound="1"
+        eType="#//ProjectConfiguration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpecificationConfiguration" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generalConfiguration" lowerBound="1"
+        eType="#//GeneralConfiguration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projectConfiguration" lowerBound="1"
+        eType="#//ProjectConfiguration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MavenProjectConfiguration" eSuperTypes="#//ProjectConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MavenServerConfiguration" eSuperTypes="#//ServerConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jettyPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MavenSpecificationConfiguration" eSuperTypes="#//SpecificationConfiguration"/>
 </ecore:EPackage>
