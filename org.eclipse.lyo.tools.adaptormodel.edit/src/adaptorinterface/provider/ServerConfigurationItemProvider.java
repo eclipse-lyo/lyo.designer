@@ -5,7 +5,7 @@ package adaptorinterface.provider;
 
 import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.AdaptorinterfacePackage;
-import adaptorinterface.DomainSpecification;
+import adaptorinterface.ServerConfiguration;
 
 import java.util.Collection;
 import java.util.List;
@@ -29,12 +29,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link adaptorinterface.DomainSpecification} object.
+ * This is the item provider adapter for a {@link adaptorinterface.ServerConfiguration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class DomainSpecificationItemProvider 
+public class ServerConfigurationItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -48,7 +48,7 @@ public class DomainSpecificationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DomainSpecificationItemProvider(AdapterFactory adapterFactory) {
+	public ServerConfigurationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,27 +63,28 @@ public class DomainSpecificationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addNamespaceURIPropertyDescriptor(object);
-			addNamespacePrefixPropertyDescriptor(object);
+			addRootServerBaseUrlPropertyDescriptor(object);
+			addApplicationContextPathPropertyDescriptor(object);
+			addServletUrlPatternPropertyDescriptor(object);
+			addDoNotRegenerateJspFilesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Root Server Base Url feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addRootServerBaseUrlPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DomainSpecification_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DomainSpecification_name_feature", "_UI_DomainSpecification_type"),
-				 AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__NAME,
+				 getString("_UI_ServerConfiguration_rootServerBaseUrl_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServerConfiguration_rootServerBaseUrl_feature", "_UI_ServerConfiguration_type"),
+				 AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__ROOT_SERVER_BASE_URL,
 				 true,
 				 false,
 				 false,
@@ -93,19 +94,19 @@ public class DomainSpecificationItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Namespace URI feature.
+	 * This adds a property descriptor for the Application Context Path feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamespaceURIPropertyDescriptor(Object object) {
+	protected void addApplicationContextPathPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DomainSpecification_namespaceURI_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DomainSpecification_namespaceURI_feature", "_UI_DomainSpecification_type"),
-				 AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__NAMESPACE_URI,
+				 getString("_UI_ServerConfiguration_applicationContextPath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServerConfiguration_applicationContextPath_feature", "_UI_ServerConfiguration_type"),
+				 AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__APPLICATION_CONTEXT_PATH,
 				 true,
 				 false,
 				 false,
@@ -115,23 +116,45 @@ public class DomainSpecificationItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Namespace Prefix feature.
+	 * This adds a property descriptor for the Servlet Url Pattern feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamespacePrefixPropertyDescriptor(Object object) {
+	protected void addServletUrlPatternPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DomainSpecification_namespacePrefix_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DomainSpecification_namespacePrefix_feature", "_UI_DomainSpecification_type"),
-				 AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__NAMESPACE_PREFIX,
+				 getString("_UI_ServerConfiguration_servletUrlPattern_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServerConfiguration_servletUrlPattern_feature", "_UI_ServerConfiguration_type"),
+				 AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__SERVLET_URL_PATTERN,
 				 true,
 				 false,
-				 true,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Do Not Regenerate Jsp Files feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDoNotRegenerateJspFilesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ServerConfiguration_doNotRegenerateJspFiles_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServerConfiguration_doNotRegenerateJspFiles_feature", "_UI_ServerConfiguration_type"),
+				 AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -148,12 +171,8 @@ public class DomainSpecificationItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCES);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__GENERATION_SETTING);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__CONFIGURATION);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__SHACL_SHAPES);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__SHACL_PROPERTIES);
+			childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__GENERAL_CONFIGURATION);
+			childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__PROJECT_CONFIGURATION);
 		}
 		return childrenFeatures;
 	}
@@ -172,14 +191,14 @@ public class DomainSpecificationItemProvider
 	}
 
 	/**
-	 * This returns DomainSpecification.gif.
+	 * This returns ServerConfiguration.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/DomainSpecification"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ServerConfiguration"));
 	}
 
 	/**
@@ -190,10 +209,10 @@ public class DomainSpecificationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DomainSpecification)object).getName();
+		String label = ((ServerConfiguration)object).getRootServerBaseUrl();
 		return label == null || label.length() == 0 ?
-			getString("_UI_DomainSpecification_type") :
-			getString("_UI_DomainSpecification_type") + " " + label;
+			getString("_UI_ServerConfiguration_type") :
+			getString("_UI_ServerConfiguration_type") + " " + label;
 	}
 	
 
@@ -208,17 +227,15 @@ public class DomainSpecificationItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(DomainSpecification.class)) {
-			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__NAME:
-			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__NAMESPACE_URI:
+		switch (notification.getFeatureID(ServerConfiguration.class)) {
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__ROOT_SERVER_BASE_URL:
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__APPLICATION_CONTEXT_PATH:
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__SERVLET_URL_PATTERN:
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCES:
-			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES:
-			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
-			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION:
-			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
-			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERAL_CONFIGURATION:
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -238,33 +255,18 @@ public class DomainSpecificationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCES,
-				 AdaptorinterfaceFactory.eINSTANCE.createResource()));
+				(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__GENERAL_CONFIGURATION,
+				 AdaptorinterfaceFactory.eINSTANCE.createGeneralConfiguration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES,
-				 AdaptorinterfaceFactory.eINSTANCE.createResourceProperty()));
+				(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__PROJECT_CONFIGURATION,
+				 AdaptorinterfaceFactory.eINSTANCE.createProjectConfiguration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__GENERATION_SETTING,
-				 AdaptorinterfaceFactory.eINSTANCE.createGenerationSetting()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__CONFIGURATION,
-				 AdaptorinterfaceFactory.eINSTANCE.createMavenSpecificationConfiguration()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__SHACL_SHAPES,
-				 AdaptorinterfaceFactory.eINSTANCE.createShaclShape()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__SHACL_PROPERTIES,
-				 AdaptorinterfaceFactory.eINSTANCE.createShaclProperty()));
+				(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__PROJECT_CONFIGURATION,
+				 AdaptorinterfaceFactory.eINSTANCE.createMavenProjectConfiguration()));
 	}
 
 	/**

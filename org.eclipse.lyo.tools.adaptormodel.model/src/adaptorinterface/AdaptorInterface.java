@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.AdaptorInterface#getWebServices <em>Web Services</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getSpecification <em>Specification</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getRequiredAdaptors <em>Required Adaptors</em>}</li>
+ *   <li>{@link adaptorinterface.AdaptorInterface#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getJavaClassBaseNamespace <em>Java Class Base Namespace</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getJavaFilesBasePath <em>Java Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getJspFilesBasePath <em>Jsp Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getJavascriptFilesBasePath <em>Javascript Files Base Path</em>}</li>
- *   <li>{@link adaptorinterface.AdaptorInterface#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#isSwaggerDocumentation <em>Swagger Documentation</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classImports <em>Backend Code Template class Imports</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}</li>
@@ -241,28 +241,6 @@ public interface AdaptorInterface extends EObject {
 	void setJavascriptFilesBasePath(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Do Not Regenerate Jsp Files</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Do Not Regenerate Jsp Files</em>' attribute.
-	 * @see #setDoNotRegenerateJspFiles(boolean)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_DoNotRegenerateJspFiles()
-	 * @model
-	 * @generated
-	 */
-	boolean isDoNotRegenerateJspFiles();
-
-	/**
-	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Do Not Regenerate Jsp Files</em>' attribute.
-	 * @see #isDoNotRegenerateJspFiles()
-	 * @generated
-	 */
-	void setDoNotRegenerateJspFiles(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Swagger Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -433,6 +411,32 @@ public interface AdaptorInterface extends EObject {
 	 * @generated
 	 */
 	EList<RequiredAdaptor> getRequiredAdaptors();
+
+	/**
+	 * Returns the value of the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Configuration</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Configuration</em>' containment reference.
+	 * @see #setConfiguration(ServerConfiguration)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_Configuration()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ServerConfiguration getConfiguration();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getConfiguration <em>Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Configuration</em>' containment reference.
+	 * @see #getConfiguration()
+	 * @generated
+	 */
+	void setConfiguration(ServerConfiguration value);
 
 	/**
 	 * Returns the value of the '<em><b>Backend Code Template get Resources</b></em>' attribute.

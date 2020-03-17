@@ -160,6 +160,34 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 				return createShaclPropertyAdapter();
 			}
 			@Override
+			public Adapter caseGeneralConfiguration(GeneralConfiguration object) {
+				return createGeneralConfigurationAdapter();
+			}
+			@Override
+			public Adapter caseProjectConfiguration(ProjectConfiguration object) {
+				return createProjectConfigurationAdapter();
+			}
+			@Override
+			public Adapter caseServerConfiguration(ServerConfiguration object) {
+				return createServerConfigurationAdapter();
+			}
+			@Override
+			public Adapter caseSpecificationConfiguration(SpecificationConfiguration object) {
+				return createSpecificationConfigurationAdapter();
+			}
+			@Override
+			public Adapter caseMavenProjectConfiguration(MavenProjectConfiguration object) {
+				return createMavenProjectConfigurationAdapter();
+			}
+			@Override
+			public Adapter caseMavenServerConfiguration(MavenServerConfiguration object) {
+				return createMavenServerConfigurationAdapter();
+			}
+			@Override
+			public Adapter caseMavenSpecificationConfiguration(MavenSpecificationConfiguration object) {
+				return createMavenSpecificationConfigurationAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -484,6 +512,104 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createShaclPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.GeneralConfiguration <em>General Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.GeneralConfiguration
+	 * @generated
+	 */
+	public Adapter createGeneralConfigurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.ProjectConfiguration <em>Project Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.ProjectConfiguration
+	 * @generated
+	 */
+	public Adapter createProjectConfigurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.ServerConfiguration <em>Server Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.ServerConfiguration
+	 * @generated
+	 */
+	public Adapter createServerConfigurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.SpecificationConfiguration <em>Specification Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.SpecificationConfiguration
+	 * @generated
+	 */
+	public Adapter createSpecificationConfigurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.MavenProjectConfiguration <em>Maven Project Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.MavenProjectConfiguration
+	 * @generated
+	 */
+	public Adapter createMavenProjectConfigurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.MavenServerConfiguration <em>Maven Server Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.MavenServerConfiguration
+	 * @generated
+	 */
+	public Adapter createMavenServerConfigurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.MavenSpecificationConfiguration <em>Maven Specification Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.MavenSpecificationConfiguration
+	 * @generated
+	 */
+	public Adapter createMavenSpecificationConfigurationAdapter() {
 		return null;
 	}
 

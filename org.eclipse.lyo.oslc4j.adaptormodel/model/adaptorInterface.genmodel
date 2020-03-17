@@ -60,11 +60,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/webServices"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/specification"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/requiredAdaptors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/configuration"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/javaClassBaseNamespace"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/javaFilesBasePath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/jspFilesBasePath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/javascriptFilesBasePath"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/doNotRegenerateJspFiles"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/swaggerDocumentation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/backendCodeTemplate_classImports"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/backendCodeTemplate_classMethods"/>
@@ -80,6 +80,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Specification/domainSpecifications"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Specification/domainPrefixes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Specification/generationSetting"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Specification/configuration"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//DomainSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//DomainSpecification/name"/>
@@ -88,6 +89,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/resources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/resourceProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/generationSetting"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/configuration"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/shaclShapes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/shaclProperties"/>
     </genClasses>
@@ -214,5 +216,35 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ShaclProperty/dataType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ShaclProperty/class"/>
     </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//GeneralConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GeneralConfiguration/doNotGenerate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GeneralConfiguration/filesBasePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GeneralConfiguration/javaBasePackageName"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//ProjectConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ProjectConfiguration/doNotGenerateProjectConfigurationFiles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ProjectConfiguration/lyoVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//ServerConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServerConfiguration/rootServerBaseUrl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServerConfiguration/applicationContextPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServerConfiguration/servletUrlPattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServerConfiguration/doNotRegenerateJspFiles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ServerConfiguration/generalConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ServerConfiguration/projectConfiguration"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adaptorInterface.ecore#//SpecificationConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//SpecificationConfiguration/generalConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//SpecificationConfiguration/projectConfiguration"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//MavenProjectConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//MavenProjectConfiguration/groupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//MavenProjectConfiguration/artifactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//MavenProjectConfiguration/version"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//MavenServerConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//MavenServerConfiguration/jettyPort"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//MavenSpecificationConfiguration"/>
   </genPackages>
 </genmodel:GenModel>

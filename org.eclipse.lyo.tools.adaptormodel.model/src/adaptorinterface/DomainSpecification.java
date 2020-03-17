@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.DomainSpecification#getResources <em>Resources</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getResourceProperties <em>Resource Properties</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getGenerationSetting <em>Generation Setting</em>}</li>
+ *   <li>{@link adaptorinterface.DomainSpecification#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getShaclShapes <em>Shacl Shapes</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getShaclProperties <em>Shacl Properties</em>}</li>
  * </ul>
@@ -165,6 +166,32 @@ public interface DomainSpecification extends EObject {
 	 * @generated
 	 */
 	void setGenerationSetting(GenerationSetting value);
+
+	/**
+	 * Returns the value of the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Configuration</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Configuration</em>' containment reference.
+	 * @see #setConfiguration(SpecificationConfiguration)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_Configuration()
+	 * @model containment="true"
+	 * @generated
+	 */
+	SpecificationConfiguration getConfiguration();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.DomainSpecification#getConfiguration <em>Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Configuration</em>' containment reference.
+	 * @see #getConfiguration()
+	 * @generated
+	 */
+	void setConfiguration(SpecificationConfiguration value);
 
 	/**
 	 * Returns the value of the '<em><b>Shacl Shapes</b></em>' containment reference list.

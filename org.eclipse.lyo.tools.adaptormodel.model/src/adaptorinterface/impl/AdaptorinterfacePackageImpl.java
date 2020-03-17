@@ -9,10 +9,15 @@ import adaptorinterface.BasicCapability;
 import adaptorinterface.CreationFactory;
 import adaptorinterface.Dialog;
 import adaptorinterface.DomainSpecification;
+import adaptorinterface.GeneralConfiguration;
 import adaptorinterface.GenerationSetting;
 import adaptorinterface.GenericRequiredAdaptor;
+import adaptorinterface.MavenProjectConfiguration;
+import adaptorinterface.MavenServerConfiguration;
+import adaptorinterface.MavenSpecificationConfiguration;
 import adaptorinterface.ModelledRequiredAdaptor;
 import adaptorinterface.NamespacePrefix;
+import adaptorinterface.ProjectConfiguration;
 import adaptorinterface.Publisher;
 import adaptorinterface.QueryCapability;
 import adaptorinterface.RequiredAdaptor;
@@ -23,6 +28,7 @@ import adaptorinterface.ResourcePropertyOccurs;
 import adaptorinterface.ResourcePropertyRepresentation;
 import adaptorinterface.ResourcePropertyValueType;
 import adaptorinterface.ResourceServiceNamespace;
+import adaptorinterface.ServerConfiguration;
 import adaptorinterface.Service;
 import adaptorinterface.ServiceProvider;
 import adaptorinterface.ServiceProviderCatalog;
@@ -33,6 +39,7 @@ import adaptorinterface.Shape;
 import adaptorinterface.ShapeProperty;
 import adaptorinterface.Specification;
 
+import adaptorinterface.SpecificationConfiguration;
 import adaptorinterface.WebService;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -209,6 +216,55 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass generalConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass projectConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass serverConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass specificationConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mavenProjectConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mavenServerConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mavenSpecificationConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass webServiceEClass = null;
 
 	/**
@@ -363,7 +419,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	@Override
 	public EAttribute getAdaptorInterface_JavaClassBaseNamespace() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -383,16 +439,6 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	@Override
 	public EAttribute getAdaptorInterface_JavaFilesBasePath() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getAdaptorInterface_JspFilesBasePath() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -402,7 +448,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAdaptorInterface_JavascriptFilesBasePath() {
+	public EAttribute getAdaptorInterface_JspFilesBasePath() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -412,7 +458,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAdaptorInterface_DoNotRegenerateJspFiles() {
+	public EAttribute getAdaptorInterface_JavascriptFilesBasePath() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -484,6 +530,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	@Override
 	public EReference getAdaptorInterface_RequiredAdaptors() {
 		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAdaptorInterface_Configuration() {
+		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -571,6 +626,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSpecification_Configuration() {
+		return (EReference)specificationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getDomainSpecification() {
 		return domainSpecificationEClass;
@@ -641,8 +705,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EReference getDomainSpecification_ShaclShapes() {
+	public EReference getDomainSpecification_Configuration() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -652,8 +715,18 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	@Override
-	public EReference getDomainSpecification_ShaclProperties() {
+	public EReference getDomainSpecification_ShaclShapes() {
 		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDomainSpecification_ShaclProperties() {
+		return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1630,6 +1703,222 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGeneralConfiguration() {
+		return generalConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGeneralConfiguration_DoNotGenerate() {
+		return (EAttribute)generalConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGeneralConfiguration_FilesBasePath() {
+		return (EAttribute)generalConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGeneralConfiguration_JavaBasePackageName() {
+		return (EAttribute)generalConfigurationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProjectConfiguration() {
+		return projectConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectConfiguration_DoNotGenerateProjectConfigurationFiles() {
+		return (EAttribute)projectConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectConfiguration_LyoVersion() {
+		return (EAttribute)projectConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getServerConfiguration() {
+		return serverConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServerConfiguration_RootServerBaseUrl() {
+		return (EAttribute)serverConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServerConfiguration_ApplicationContextPath() {
+		return (EAttribute)serverConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServerConfiguration_ServletUrlPattern() {
+		return (EAttribute)serverConfigurationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServerConfiguration_DoNotRegenerateJspFiles() {
+		return (EAttribute)serverConfigurationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServerConfiguration_GeneralConfiguration() {
+		return (EReference)serverConfigurationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServerConfiguration_ProjectConfiguration() {
+		return (EReference)serverConfigurationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSpecificationConfiguration() {
+		return specificationConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpecificationConfiguration_GeneralConfiguration() {
+		return (EReference)specificationConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpecificationConfiguration_ProjectConfiguration() {
+		return (EReference)specificationConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMavenProjectConfiguration() {
+		return mavenProjectConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMavenProjectConfiguration_GroupId() {
+		return (EAttribute)mavenProjectConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMavenProjectConfiguration_ArtifactId() {
+		return (EAttribute)mavenProjectConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMavenProjectConfiguration_Version() {
+		return (EAttribute)mavenProjectConfigurationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMavenServerConfiguration() {
+		return mavenServerConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMavenServerConfiguration_JettyPort() {
+		return (EAttribute)mavenServerConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMavenSpecificationConfiguration() {
+		return mavenSpecificationConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getWebService() {
 		return webServiceEClass;
 	}
@@ -1792,11 +2081,11 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__WEB_SERVICES);
 		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__SPECIFICATION);
 		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__REQUIRED_ADAPTORS);
+		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__CONFIGURATION);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH);
-		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS);
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS);
@@ -1812,6 +2101,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEReference(specificationEClass, SPECIFICATION__DOMAIN_SPECIFICATIONS);
 		createEReference(specificationEClass, SPECIFICATION__DOMAIN_PREFIXES);
 		createEReference(specificationEClass, SPECIFICATION__GENERATION_SETTING);
+		createEReference(specificationEClass, SPECIFICATION__CONFIGURATION);
 
 		domainSpecificationEClass = createEClass(DOMAIN_SPECIFICATION);
 		createEAttribute(domainSpecificationEClass, DOMAIN_SPECIFICATION__NAME);
@@ -1820,6 +2110,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__RESOURCES);
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES);
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__GENERATION_SETTING);
+		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__CONFIGURATION);
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__SHACL_SHAPES);
 		createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__SHACL_PROPERTIES);
 
@@ -1948,6 +2239,37 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(shaclPropertyEClass, SHACL_PROPERTY__DATA_TYPE);
 		createEReference(shaclPropertyEClass, SHACL_PROPERTY__CLASS);
 
+		generalConfigurationEClass = createEClass(GENERAL_CONFIGURATION);
+		createEAttribute(generalConfigurationEClass, GENERAL_CONFIGURATION__DO_NOT_GENERATE);
+		createEAttribute(generalConfigurationEClass, GENERAL_CONFIGURATION__FILES_BASE_PATH);
+		createEAttribute(generalConfigurationEClass, GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME);
+
+		projectConfigurationEClass = createEClass(PROJECT_CONFIGURATION);
+		createEAttribute(projectConfigurationEClass, PROJECT_CONFIGURATION__DO_NOT_GENERATE_PROJECT_CONFIGURATION_FILES);
+		createEAttribute(projectConfigurationEClass, PROJECT_CONFIGURATION__LYO_VERSION);
+
+		serverConfigurationEClass = createEClass(SERVER_CONFIGURATION);
+		createEAttribute(serverConfigurationEClass, SERVER_CONFIGURATION__ROOT_SERVER_BASE_URL);
+		createEAttribute(serverConfigurationEClass, SERVER_CONFIGURATION__APPLICATION_CONTEXT_PATH);
+		createEAttribute(serverConfigurationEClass, SERVER_CONFIGURATION__SERVLET_URL_PATTERN);
+		createEAttribute(serverConfigurationEClass, SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES);
+		createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__GENERAL_CONFIGURATION);
+		createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__PROJECT_CONFIGURATION);
+
+		specificationConfigurationEClass = createEClass(SPECIFICATION_CONFIGURATION);
+		createEReference(specificationConfigurationEClass, SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION);
+		createEReference(specificationConfigurationEClass, SPECIFICATION_CONFIGURATION__PROJECT_CONFIGURATION);
+
+		mavenProjectConfigurationEClass = createEClass(MAVEN_PROJECT_CONFIGURATION);
+		createEAttribute(mavenProjectConfigurationEClass, MAVEN_PROJECT_CONFIGURATION__GROUP_ID);
+		createEAttribute(mavenProjectConfigurationEClass, MAVEN_PROJECT_CONFIGURATION__ARTIFACT_ID);
+		createEAttribute(mavenProjectConfigurationEClass, MAVEN_PROJECT_CONFIGURATION__VERSION);
+
+		mavenServerConfigurationEClass = createEClass(MAVEN_SERVER_CONFIGURATION);
+		createEAttribute(mavenServerConfigurationEClass, MAVEN_SERVER_CONFIGURATION__JETTY_PORT);
+
+		mavenSpecificationConfigurationEClass = createEClass(MAVEN_SPECIFICATION_CONFIGURATION);
+
 		// Create enums
 		resourcePropertyOccursEEnum = createEEnum(RESOURCE_PROPERTY_OCCURS);
 		resourcePropertyValueTypeEEnum = createEEnum(RESOURCE_PROPERTY_VALUE_TYPE);
@@ -1994,6 +2316,9 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		modelledRequiredAdaptorEClass.getESuperTypes().add(this.getRequiredAdaptor());
 		shaclShapeEClass.getESuperTypes().add(this.getShape());
 		shaclPropertyEClass.getESuperTypes().add(this.getShapeProperty());
+		mavenProjectConfigurationEClass.getESuperTypes().add(this.getProjectConfiguration());
+		mavenServerConfigurationEClass.getESuperTypes().add(this.getServerConfiguration());
+		mavenSpecificationConfigurationEClass.getESuperTypes().add(this.getSpecificationConfiguration());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(adaptorInterfaceEClass, AdaptorInterface.class, "AdaptorInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2002,11 +2327,11 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEReference(getAdaptorInterface_WebServices(), this.getWebService(), null, "webServices", null, 0, -1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdaptorInterface_Specification(), this.getSpecification(), null, "specification", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdaptorInterface_RequiredAdaptors(), this.getRequiredAdaptor(), null, "requiredAdaptors", null, 0, -1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdaptorInterface_Configuration(), this.getServerConfiguration(), null, "configuration", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_JavaClassBaseNamespace(), ecorePackage.getEString(), "javaClassBaseNamespace", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_JavaFilesBasePath(), ecorePackage.getEString(), "javaFilesBasePath", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_JspFilesBasePath(), ecorePackage.getEString(), "jspFilesBasePath", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_JavascriptFilesBasePath(), ecorePackage.getEString(), "javascriptFilesBasePath", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAdaptorInterface_DoNotRegenerateJspFiles(), ecorePackage.getEBoolean(), "doNotRegenerateJspFiles", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_SwaggerDocumentation(), ecorePackage.getEBoolean(), "swaggerDocumentation", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_BackendCodeTemplate_classImports(), ecorePackage.getEString(), "backendCodeTemplate_classImports", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdaptorInterface_BackendCodeTemplate_classMethods(), ecorePackage.getEString(), "backendCodeTemplate_classMethods", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2024,6 +2349,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEReference(getSpecification_DomainPrefixes(), this.getNamespacePrefix(), null, "domainPrefixes", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getSpecification_DomainPrefixes().getEKeys().add(this.getNamespacePrefix_Name());
 		initEReference(getSpecification_GenerationSetting(), this.getGenerationSetting(), null, "generationSetting", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecification_Configuration(), this.getSpecificationConfiguration(), null, "configuration", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(domainSpecificationEClass, DomainSpecification.class, "DomainSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDomainSpecification_Name(), ecorePackage.getEString(), "name", null, 1, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2034,6 +2360,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEReference(getDomainSpecification_ResourceProperties(), this.getResourceProperty(), null, "resourceProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getDomainSpecification_ResourceProperties().getEKeys().add(this.getResourceProperty_Name());
 		initEReference(getDomainSpecification_GenerationSetting(), this.getGenerationSetting(), null, "generationSetting", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainSpecification_Configuration(), this.getSpecificationConfiguration(), null, "configuration", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_ShaclShapes(), this.getShaclShape(), null, "shaclShapes", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getDomainSpecification_ShaclShapes().getEKeys().add(this.getShaclShape_Name());
 		initEReference(getDomainSpecification_ShaclProperties(), this.getShaclProperty(), null, "shaclProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2163,6 +2490,37 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getShaclProperty_MaxCount(), ecorePackage.getEInt(), "maxCount", null, 0, 1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getShaclProperty_DataType(), this.getShaclPropertyDataType(), "dataType", null, 0, 1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getShaclProperty_Class(), this.getShaclShape(), null, "class", null, 0, -1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(generalConfigurationEClass, GeneralConfiguration.class, "GeneralConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGeneralConfiguration_DoNotGenerate(), ecorePackage.getEBoolean(), "doNotGenerate", null, 0, 1, GeneralConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGeneralConfiguration_FilesBasePath(), ecorePackage.getEString(), "filesBasePath", null, 0, 1, GeneralConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGeneralConfiguration_JavaBasePackageName(), ecorePackage.getEString(), "javaBasePackageName", null, 0, 1, GeneralConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(projectConfigurationEClass, ProjectConfiguration.class, "ProjectConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProjectConfiguration_DoNotGenerateProjectConfigurationFiles(), ecorePackage.getEBoolean(), "doNotGenerateProjectConfigurationFiles", "false", 1, 1, ProjectConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectConfiguration_LyoVersion(), ecorePackage.getEString(), "lyoVersion", null, 1, 1, ProjectConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(serverConfigurationEClass, ServerConfiguration.class, "ServerConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServerConfiguration_RootServerBaseUrl(), ecorePackage.getEString(), "rootServerBaseUrl", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServerConfiguration_ApplicationContextPath(), ecorePackage.getEString(), "applicationContextPath", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServerConfiguration_ServletUrlPattern(), ecorePackage.getEString(), "servletUrlPattern", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServerConfiguration_DoNotRegenerateJspFiles(), ecorePackage.getEBoolean(), "doNotRegenerateJspFiles", null, 0, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServerConfiguration_GeneralConfiguration(), this.getGeneralConfiguration(), null, "generalConfiguration", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServerConfiguration_ProjectConfiguration(), this.getProjectConfiguration(), null, "projectConfiguration", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(specificationConfigurationEClass, SpecificationConfiguration.class, "SpecificationConfiguration", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSpecificationConfiguration_GeneralConfiguration(), this.getGeneralConfiguration(), null, "generalConfiguration", null, 1, 1, SpecificationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecificationConfiguration_ProjectConfiguration(), this.getProjectConfiguration(), null, "projectConfiguration", null, 1, 1, SpecificationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mavenProjectConfigurationEClass, MavenProjectConfiguration.class, "MavenProjectConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMavenProjectConfiguration_GroupId(), ecorePackage.getEString(), "groupId", null, 1, 1, MavenProjectConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMavenProjectConfiguration_ArtifactId(), ecorePackage.getEString(), "artifactId", null, 1, 1, MavenProjectConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMavenProjectConfiguration_Version(), ecorePackage.getEString(), "version", null, 1, 1, MavenProjectConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mavenServerConfigurationEClass, MavenServerConfiguration.class, "MavenServerConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMavenServerConfiguration_JettyPort(), ecorePackage.getEInt(), "jettyPort", null, 0, 1, MavenServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mavenSpecificationConfigurationEClass, MavenSpecificationConfiguration.class, "MavenSpecificationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(resourcePropertyOccursEEnum, ResourcePropertyOccurs.class, "ResourcePropertyOccurs");

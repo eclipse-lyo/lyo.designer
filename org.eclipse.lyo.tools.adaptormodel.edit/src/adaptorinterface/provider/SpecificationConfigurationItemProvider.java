@@ -5,7 +5,7 @@ package adaptorinterface.provider;
 
 import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.AdaptorinterfacePackage;
-import adaptorinterface.Specification;
+import adaptorinterface.SpecificationConfiguration;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,12 +27,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link adaptorinterface.Specification} object.
+ * This is the item provider adapter for a {@link adaptorinterface.SpecificationConfiguration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SpecificationItemProvider 
+public class SpecificationConfigurationItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -46,7 +46,7 @@ public class SpecificationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SpecificationItemProvider(AdapterFactory adapterFactory) {
+	public SpecificationConfigurationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -77,10 +77,8 @@ public class SpecificationItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__DOMAIN_SPECIFICATIONS);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__DOMAIN_PREFIXES);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__GENERATION_SETTING);
-			childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__CONFIGURATION);
+			childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION);
+			childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION_CONFIGURATION__PROJECT_CONFIGURATION);
 		}
 		return childrenFeatures;
 	}
@@ -99,17 +97,6 @@ public class SpecificationItemProvider
 	}
 
 	/**
-	 * This returns Specification.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Specification"));
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,7 +104,7 @@ public class SpecificationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Specification_type");
+		return getString("_UI_SpecificationConfiguration_type");
 	}
 	
 
@@ -132,11 +119,9 @@ public class SpecificationItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Specification.class)) {
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
-			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
-			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+		switch (notification.getFeatureID(SpecificationConfiguration.class)) {
+			case AdaptorinterfacePackage.SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION:
+			case AdaptorinterfacePackage.SPECIFICATION_CONFIGURATION__PROJECT_CONFIGURATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -156,23 +141,18 @@ public class SpecificationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AdaptorinterfacePackage.Literals.SPECIFICATION__DOMAIN_SPECIFICATIONS,
-				 AdaptorinterfaceFactory.eINSTANCE.createDomainSpecification()));
+				(AdaptorinterfacePackage.Literals.SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION,
+				 AdaptorinterfaceFactory.eINSTANCE.createGeneralConfiguration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AdaptorinterfacePackage.Literals.SPECIFICATION__DOMAIN_PREFIXES,
-				 AdaptorinterfaceFactory.eINSTANCE.createNamespacePrefix()));
+				(AdaptorinterfacePackage.Literals.SPECIFICATION_CONFIGURATION__PROJECT_CONFIGURATION,
+				 AdaptorinterfaceFactory.eINSTANCE.createProjectConfiguration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AdaptorinterfacePackage.Literals.SPECIFICATION__GENERATION_SETTING,
-				 AdaptorinterfaceFactory.eINSTANCE.createGenerationSetting()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AdaptorinterfacePackage.Literals.SPECIFICATION__CONFIGURATION,
-				 AdaptorinterfaceFactory.eINSTANCE.createMavenSpecificationConfiguration()));
+				(AdaptorinterfacePackage.Literals.SPECIFICATION_CONFIGURATION__PROJECT_CONFIGURATION,
+				 AdaptorinterfaceFactory.eINSTANCE.createMavenProjectConfiguration()));
 	}
 
 	/**

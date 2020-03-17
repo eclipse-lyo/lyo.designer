@@ -532,6 +532,144 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.GeneralConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GeneralConfigurationItemProvider generalConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.GeneralConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGeneralConfigurationAdapter() {
+		if (generalConfigurationItemProvider == null) {
+			generalConfigurationItemProvider = new GeneralConfigurationItemProvider(this);
+		}
+
+		return generalConfigurationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.ProjectConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProjectConfigurationItemProvider projectConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.ProjectConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProjectConfigurationAdapter() {
+		if (projectConfigurationItemProvider == null) {
+			projectConfigurationItemProvider = new ProjectConfigurationItemProvider(this);
+		}
+
+		return projectConfigurationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.ServerConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ServerConfigurationItemProvider serverConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.ServerConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServerConfigurationAdapter() {
+		if (serverConfigurationItemProvider == null) {
+			serverConfigurationItemProvider = new ServerConfigurationItemProvider(this);
+		}
+
+		return serverConfigurationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.MavenProjectConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MavenProjectConfigurationItemProvider mavenProjectConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.MavenProjectConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMavenProjectConfigurationAdapter() {
+		if (mavenProjectConfigurationItemProvider == null) {
+			mavenProjectConfigurationItemProvider = new MavenProjectConfigurationItemProvider(this);
+		}
+
+		return mavenProjectConfigurationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.MavenServerConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MavenServerConfigurationItemProvider mavenServerConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.MavenServerConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMavenServerConfigurationAdapter() {
+		if (mavenServerConfigurationItemProvider == null) {
+			mavenServerConfigurationItemProvider = new MavenServerConfigurationItemProvider(this);
+		}
+
+		return mavenServerConfigurationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.MavenSpecificationConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MavenSpecificationConfigurationItemProvider mavenSpecificationConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.MavenSpecificationConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMavenSpecificationConfigurationAdapter() {
+		if (mavenSpecificationConfigurationItemProvider == null) {
+			mavenSpecificationConfigurationItemProvider = new MavenSpecificationConfigurationItemProvider(this);
+		}
+
+		return mavenSpecificationConfigurationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link adaptorinterface.WebService} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -680,6 +818,12 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 		if (shaclShapeItemProvider != null) shaclShapeItemProvider.dispose();
 		if (shapePropertyItemProvider != null) shapePropertyItemProvider.dispose();
 		if (shaclPropertyItemProvider != null) shaclPropertyItemProvider.dispose();
+		if (generalConfigurationItemProvider != null) generalConfigurationItemProvider.dispose();
+		if (projectConfigurationItemProvider != null) projectConfigurationItemProvider.dispose();
+		if (serverConfigurationItemProvider != null) serverConfigurationItemProvider.dispose();
+		if (mavenProjectConfigurationItemProvider != null) mavenProjectConfigurationItemProvider.dispose();
+		if (mavenServerConfigurationItemProvider != null) mavenServerConfigurationItemProvider.dispose();
+		if (mavenSpecificationConfigurationItemProvider != null) mavenSpecificationConfigurationItemProvider.dispose();
 	}
 
 }

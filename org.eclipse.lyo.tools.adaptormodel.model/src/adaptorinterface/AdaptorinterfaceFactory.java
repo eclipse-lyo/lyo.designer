@@ -202,6 +202,60 @@ public interface AdaptorinterfaceFactory extends EFactory {
 	ShaclProperty createShaclProperty();
 
 	/**
+	 * Returns a new object of class '<em>General Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>General Configuration</em>'.
+	 * @generated
+	 */
+	GeneralConfiguration createGeneralConfiguration();
+
+	/**
+	 * Returns a new object of class '<em>Project Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Project Configuration</em>'.
+	 * @generated
+	 */
+	ProjectConfiguration createProjectConfiguration();
+
+	/**
+	 * Returns a new object of class '<em>Server Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Server Configuration</em>'.
+	 * @generated
+	 */
+	ServerConfiguration createServerConfiguration();
+
+	/**
+	 * Returns a new object of class '<em>Maven Project Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Maven Project Configuration</em>'.
+	 * @generated
+	 */
+	MavenProjectConfiguration createMavenProjectConfiguration();
+
+	/**
+	 * Returns a new object of class '<em>Maven Server Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Maven Server Configuration</em>'.
+	 * @generated
+	 */
+	MavenServerConfiguration createMavenServerConfiguration();
+
+	/**
+	 * Returns a new object of class '<em>Maven Specification Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Maven Specification Configuration</em>'.
+	 * @generated
+	 */
+	MavenSpecificationConfiguration createMavenSpecificationConfiguration();
+
+	/**
 	 * Returns a new object of class '<em>Web Service</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
