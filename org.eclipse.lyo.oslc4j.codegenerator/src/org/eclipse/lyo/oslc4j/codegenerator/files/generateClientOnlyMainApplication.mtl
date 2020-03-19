@@ -67,7 +67,7 @@ import org.eclipse.lyo.oslc4j.core.model.ResourceShapeFactory;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
 import org.eclipse.lyo.oslc4j.provider.jena.JenaModelHelper;
 
-import com.hp.hpl.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Model;
 
 [for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaClassFullName(aResource, anAdaptorInterface, null) /];[/for]
 [for (aRequiredAdaptor: RequiredAdaptor | anAdaptorInterface.requiredAdaptors) separator(lineSeparator())]import [javaClassFullNameForClient(aRequiredAdaptor, anAdaptorInterface) /];[/for]
