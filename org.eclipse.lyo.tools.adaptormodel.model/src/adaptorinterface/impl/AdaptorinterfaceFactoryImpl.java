@@ -78,6 +78,12 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 			case AdaptorinterfacePackage.SHACL_SHAPE: return createShaclShape();
 			case AdaptorinterfacePackage.SHAPE_PROPERTY: return createShapeProperty();
 			case AdaptorinterfacePackage.SHACL_PROPERTY: return createShaclProperty();
+			case AdaptorinterfacePackage.GENERAL_CONFIGURATION: return createGeneralConfiguration();
+			case AdaptorinterfacePackage.PROJECT_CONFIGURATION: return createProjectConfiguration();
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION: return createServerConfiguration();
+			case AdaptorinterfacePackage.MAVEN_PROJECT_CONFIGURATION: return createMavenProjectConfiguration();
+			case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION: return createMavenServerConfiguration();
+			case AdaptorinterfacePackage.MAVEN_SPECIFICATION_CONFIGURATION: return createMavenSpecificationConfiguration();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -351,6 +357,66 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	public ShaclProperty createShaclProperty() {
 		ShaclPropertyImpl shaclProperty = new ShaclPropertyImpl();
 		return shaclProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralConfiguration createGeneralConfiguration() {
+		GeneralConfigurationImpl generalConfiguration = new GeneralConfigurationImpl();
+		return generalConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProjectConfiguration createProjectConfiguration() {
+		ProjectConfigurationImpl projectConfiguration = new ProjectConfigurationImpl();
+		return projectConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ServerConfiguration createServerConfiguration() {
+		ServerConfigurationImpl serverConfiguration = new ServerConfigurationImpl();
+		return serverConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MavenProjectConfiguration createMavenProjectConfiguration() {
+		MavenProjectConfigurationImpl mavenProjectConfiguration = new MavenProjectConfigurationImpl();
+		return mavenProjectConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MavenServerConfiguration createMavenServerConfiguration() {
+		MavenServerConfigurationImpl mavenServerConfiguration = new MavenServerConfigurationImpl();
+		return mavenServerConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MavenSpecificationConfiguration createMavenSpecificationConfiguration() {
+		MavenSpecificationConfigurationImpl mavenSpecificationConfiguration = new MavenSpecificationConfigurationImpl();
+		return mavenSpecificationConfiguration;
 	}
 
 	/**

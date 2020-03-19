@@ -24,7 +24,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 
 [template public generateUiPreviewHelperJs(anAdaptorInterface : AdaptorInterface)]
-[file (jspFilesBasePath(anAdaptorInterface).concat('/static/js/ui-preview-helper.js') , false, 'UTF-8')]
+[file (webFilesBasePath(anAdaptorInterface).concat('/static/js/ui-preview-helper.js') , false, 'UTF-8')]
 // [protected ('"Copyright Header"')]
 /*******************************************************************************
  Copyright (c) 2020 KTH Royal Institute of Technology.

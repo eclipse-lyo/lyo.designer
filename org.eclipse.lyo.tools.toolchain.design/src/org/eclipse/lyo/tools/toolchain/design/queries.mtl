@@ -18,57 +18,36 @@
  *******************************************************************************/
 /]
 
-[module queries('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+[module queries('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [import org::eclipse::lyo::tools::toolchain::design::DialogInputServices/]
 
-[comment specificationDiagram/]
-[comment assume that the generationSetting property exists/]
-[query public promptForJavaFilesPath(aDomainSpecification : DomainSpecification) : String = 
-let userInput : String = aDomainSpecification.promptForString('Enter relative file path',
-                        'For the resources of this domain specification, enter the relative file path for their corresponding java classes.' +
-                            lineSeparator() +
-                            'This path will override any setting on the whole Specification, and/or a specific adaptor', 
-                        aDomainSpecification.generationSetting.javaFilesPath) in
-    (if (userInput = null) then 
-        aDomainSpecification.generationSetting.javaFilesPath 
-    else 
-        userInput 
-    endif) 
+[query public isNullOrEmpty (someObject : EObject, aString : String) : Boolean =
+aString.oclIsUndefined() or 
+aString.trim().equalsIgnoreCase('')
 /]
-[query public promptForJavaClassPackageName(aDomainSpecification : DomainSpecification) : String = 
-let userInput : String = aDomainSpecification.promptForString('Enter the java package name',
-                        'For the resources of this domain specification, enter the package name for their corresponding java classes.' +
-                            lineSeparator() +
-                            'This package name will override any setting on the whole Specification, and/or a specific adaptor.', 
-                        aDomainSpecification.generationSetting.javaClassPackageName) in
-    (if (userInput = null) then 
-        aDomainSpecification.generationSetting.javaClassPackageName 
-    else 
-        userInput 
-    endif) 
+
+[query public generationConfigurationNeedsMigration (container : AdaptorInterface) : Boolean =
+not (
+    container.isNullOrEmpty(javaClassBaseNamespace) and
+    container.isNullOrEmpty(javaFilesBasePath) and
+    container.isNullOrEmpty(jspFilesBasePath) and
+    container.isNullOrEmpty(javascriptFilesBasePath)
+)
 /]
-[query public promptForJavaFilesPath(aSpecification : Specification) : String = 
-let userInput : String = aSpecification.promptForString('Enter relative file path',
-                        'For the resources of this specification, enter the relative file path for their corresponding java classes.' +
-                            lineSeparator() +
-                            'This path will override any setting on a specific adaptor', 
-                        aSpecification.generationSetting.javaFilesPath) in
-    (if (userInput = null) then 
-        aSpecification.generationSetting.javaFilesPath 
-    else 
-        userInput 
-    endif) 
+
+[query public generationConfigurationNeedsMigration (container : Specification) : Boolean =
+    (not container.generationSetting.oclIsUndefined()) or 
+    container.domainSpecifications.generationConfigurationNeedsMigration()->includes(true)
 /]
-[query public promptForJavaClassPackageName(aSpecification : Specification) : String = 
-let userInput : String = aSpecification.promptForString('Enter the java package name',
-                        'For the resources of this specification, enter the package name for their corresponding java classes.' +
-                            lineSeparator() +
-                            'This package name will override any setting on a specific adaptor.', 
-                        aSpecification.generationSetting.javaClassPackageName) in
-    (if (userInput = null) then 
-        aSpecification.generationSetting.javaClassPackageName 
-    else 
-        userInput 
-    endif) 
+
+[query public generationConfigurationNeedsMigration (container : DomainSpecification) : Boolean =
+not (container.generationSetting.oclIsUndefined())
+/]
+
+[query public generationConfigurationComplete(aSpecification : Specification) : Boolean = 
+not (aSpecification.configuration.oclIsUndefined() or 
+    aSpecification.configuration.generalConfiguration.oclIsUndefined() or 
+    aSpecification.isNullOrEmpty(aSpecification.configuration.generalConfiguration.filesBasePath) or
+    aSpecification.isNullOrEmpty(aSpecification.configuration.generalConfiguration.javaBasePackageName))
 /]

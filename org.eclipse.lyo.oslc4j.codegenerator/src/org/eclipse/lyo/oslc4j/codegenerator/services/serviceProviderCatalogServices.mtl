@@ -29,7 +29,7 @@ obj.eContainer(ServiceProviderCatalog)
 
 [comment Services for serviceProviderCatalogSingleton /]
 [query public javaClassPackageNameForSingleton(aServiceProviderCatalog : ServiceProviderCatalog) : String = 
-javaClassBaseNamespace(containingAdaptorInterface(aServiceProviderCatalog)).concat('.servlet')
+javaBasePackageName(containingAdaptorInterface(aServiceProviderCatalog)).concat('.servlet')
 /]
 
 [query public javaClassNameForSingleton(aServiceProviderCatalog : ServiceProviderCatalog) : String = 
@@ -46,7 +46,7 @@ javaFilesBasePath(containingAdaptorInterface(aServiceProviderCatalog)).concatena
 
 [comment Services for serviceProviderCatalogService /]
 [query public javaClassPackageNameForService(aServiceProviderCatalog : ServiceProviderCatalog) : String = 
-javaClassBaseNamespace(containingAdaptorInterface(aServiceProviderCatalog)).concat('.services')
+javaBasePackageName(containingAdaptorInterface(aServiceProviderCatalog)).concat('.services')
 /]
 
 [query public javaClassNameForService(aServiceProviderCatalog : ServiceProviderCatalog) : String = 

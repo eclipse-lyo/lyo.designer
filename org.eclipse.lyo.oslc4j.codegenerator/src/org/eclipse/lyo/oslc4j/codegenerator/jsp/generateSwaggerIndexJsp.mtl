@@ -103,10 +103,10 @@
         <div class="alert alert-primary" role="alert">
             <h4 class="alert-heading">Swagger UI</h4>
             <hr>
-            <p><strong>You don't seem to have configured your project to use a local standalone distribution of Swagger UI!</strong></p>
+            <p><strong>You don't seem to have fully configured your project to use a local standalone distribution of Swagger UI!</strong></p>
             <ul>
-                <li>A "dist" folder containing the Swagger UI collection of HTML, Javascript, and CSS assets is expected.</li>
-                <li>Configure your project according to these <a href="<%= "https://wiki.eclipse.org/Lyo/creating_OSLC4J_project#OpenApi.2FSwagger_Support_.28Optional.29" %>">Lyo Instructions for Swagger</a></li>
+                <li>A "dist" folder containing the Swagger UI collection of HTML, Javascript, and CSS assets is missing.</li>
+                <li>Please follow the complete instrunctions under <a href="<%= "https://wiki.eclipse.org/Lyo/creating_OSLC4J_project#OpenApi.2FSwagger_Support_.28Optional.29" %>">Lyo Instructions for Swagger</a></li>
                 <li>Until then, you can copy <a href="<%=yamlPath%>">this OpenAPI specification document (yaml file)</a> 
                 to a remote <a href="<%= "https://editor.swagger.io" %>">Swagger Editor</a> and
                 <ul>

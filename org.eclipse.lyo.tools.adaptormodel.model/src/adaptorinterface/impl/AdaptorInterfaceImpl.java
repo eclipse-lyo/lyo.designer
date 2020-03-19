@@ -5,6 +5,7 @@ package adaptorinterface.impl;
 import adaptorinterface.AdaptorInterface;
 import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.RequiredAdaptor;
+import adaptorinterface.ServerConfiguration;
 import adaptorinterface.ServiceProviderCatalog;
 import adaptorinterface.Specification;
 
@@ -38,11 +39,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getWebServices <em>Web Services</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getRequiredAdaptors <em>Required Adaptors</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavaClassBaseNamespace <em>Java Class Base Namespace</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavaFilesBasePath <em>Java Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJspFilesBasePath <em>Jsp Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getJavascriptFilesBasePath <em>Javascript Files Base Path</em>}</li>
- *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#isSwaggerDocumentation <em>Swagger Documentation</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_classImports <em>Backend Code Template class Imports</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_classMethods <em>Backend Code Template class Methods</em>}</li>
@@ -117,6 +118,16 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected EList<RequiredAdaptor> requiredAdaptors;
+
+	/**
+	 * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfiguration()
+	 * @generated
+	 * @ordered
+	 */
+	protected ServerConfiguration configuration;
 
 	/**
 	 * The default value of the '{@link #getJavaClassBaseNamespace() <em>Java Class Base Namespace</em>}' attribute.
@@ -197,26 +208,6 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String javascriptFilesBasePath = JAVASCRIPT_FILES_BASE_PATH_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isDoNotRegenerateJspFiles() <em>Do Not Regenerate Jsp Files</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDoNotRegenerateJspFiles()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean DO_NOT_REGENERATE_JSP_FILES_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isDoNotRegenerateJspFiles() <em>Do Not Regenerate Jsp Files</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDoNotRegenerateJspFiles()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean doNotRegenerateJspFiles = DO_NOT_REGENERATE_JSP_FILES_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isSwaggerDocumentation() <em>Swagger Documentation</em>}' attribute.
@@ -660,29 +651,6 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
-	public boolean isDoNotRegenerateJspFiles() {
-		return doNotRegenerateJspFiles;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setDoNotRegenerateJspFiles(boolean newDoNotRegenerateJspFiles) {
-		boolean oldDoNotRegenerateJspFiles = doNotRegenerateJspFiles;
-		doNotRegenerateJspFiles = newDoNotRegenerateJspFiles;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES, oldDoNotRegenerateJspFiles, doNotRegenerateJspFiles));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public boolean isSwaggerDocumentation() {
 		return swaggerDocumentation;
 	}
@@ -833,6 +801,49 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ServerConfiguration getConfiguration() {
+		return configuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConfiguration(ServerConfiguration newConfiguration, NotificationChain msgs) {
+		ServerConfiguration oldConfiguration = configuration;
+		configuration = newConfiguration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION, oldConfiguration, newConfiguration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConfiguration(ServerConfiguration newConfiguration) {
+		if (newConfiguration != configuration) {
+			NotificationChain msgs = null;
+			if (configuration != null)
+				msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION, null, msgs);
+			if (newConfiguration != null)
+				msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION, null, msgs);
+			msgs = basicSetConfiguration(newConfiguration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION, newConfiguration, newConfiguration));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public String getBackendCodeTemplate_getResources() {
 		return backendCodeTemplate_getResources;
@@ -936,6 +947,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return basicSetSpecification(null, msgs);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
 				return ((InternalEList<?>)getRequiredAdaptors()).basicRemove(otherEnd, msgs);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION:
+				return basicSetConfiguration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -958,6 +971,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return getSpecification();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
 				return getRequiredAdaptors();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION:
+				return getConfiguration();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
 				return getJavaClassBaseNamespace();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH:
@@ -966,8 +981,6 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return getJspFilesBasePath();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				return getJavascriptFilesBasePath();
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES:
-				return isDoNotRegenerateJspFiles();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
 				return isSwaggerDocumentation();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
@@ -1018,6 +1031,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				getRequiredAdaptors().clear();
 				getRequiredAdaptors().addAll((Collection<? extends RequiredAdaptor>)newValue);
 				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION:
+				setConfiguration((ServerConfiguration)newValue);
+				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
 				setJavaClassBaseNamespace((String)newValue);
 				return;
@@ -1029,9 +1045,6 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				setJavascriptFilesBasePath((String)newValue);
-				return;
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES:
-				setDoNotRegenerateJspFiles((Boolean)newValue);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
 				setSwaggerDocumentation((Boolean)newValue);
@@ -1090,6 +1103,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
 				getRequiredAdaptors().clear();
 				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION:
+				setConfiguration((ServerConfiguration)null);
+				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
 				setJavaClassBaseNamespace(JAVA_CLASS_BASE_NAMESPACE_EDEFAULT);
 				return;
@@ -1101,9 +1117,6 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				setJavascriptFilesBasePath(JAVASCRIPT_FILES_BASE_PATH_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES:
-				setDoNotRegenerateJspFiles(DO_NOT_REGENERATE_JSP_FILES_EDEFAULT);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
 				setSwaggerDocumentation(SWAGGER_DOCUMENTATION_EDEFAULT);
@@ -1157,6 +1170,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return specification != null;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
 				return requiredAdaptors != null && !requiredAdaptors.isEmpty();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION:
+				return configuration != null;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE:
 				return JAVA_CLASS_BASE_NAMESPACE_EDEFAULT == null ? javaClassBaseNamespace != null : !JAVA_CLASS_BASE_NAMESPACE_EDEFAULT.equals(javaClassBaseNamespace);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH:
@@ -1165,8 +1180,6 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return JSP_FILES_BASE_PATH_EDEFAULT == null ? jspFilesBasePath != null : !JSP_FILES_BASE_PATH_EDEFAULT.equals(jspFilesBasePath);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH:
 				return JAVASCRIPT_FILES_BASE_PATH_EDEFAULT == null ? javascriptFilesBasePath != null : !JAVASCRIPT_FILES_BASE_PATH_EDEFAULT.equals(javascriptFilesBasePath);
-			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES:
-				return doNotRegenerateJspFiles != DO_NOT_REGENERATE_JSP_FILES_EDEFAULT;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION:
 				return swaggerDocumentation != SWAGGER_DOCUMENTATION_EDEFAULT;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS:
@@ -1211,8 +1224,6 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 		result.append(jspFilesBasePath);
 		result.append(", javascriptFilesBasePath: ");
 		result.append(javascriptFilesBasePath);
-		result.append(", doNotRegenerateJspFiles: ");
-		result.append(doNotRegenerateJspFiles);
 		result.append(", swaggerDocumentation: ");
 		result.append(swaggerDocumentation);
 		result.append(", backendCodeTemplate_classImports: ");

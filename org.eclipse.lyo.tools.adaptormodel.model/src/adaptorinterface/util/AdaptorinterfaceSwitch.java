@@ -210,6 +210,51 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AdaptorinterfacePackage.GENERAL_CONFIGURATION: {
+				GeneralConfiguration generalConfiguration = (GeneralConfiguration)theEObject;
+				T result = caseGeneralConfiguration(generalConfiguration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.PROJECT_CONFIGURATION: {
+				ProjectConfiguration projectConfiguration = (ProjectConfiguration)theEObject;
+				T result = caseProjectConfiguration(projectConfiguration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION: {
+				ServerConfiguration serverConfiguration = (ServerConfiguration)theEObject;
+				T result = caseServerConfiguration(serverConfiguration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.SPECIFICATION_CONFIGURATION: {
+				SpecificationConfiguration specificationConfiguration = (SpecificationConfiguration)theEObject;
+				T result = caseSpecificationConfiguration(specificationConfiguration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.MAVEN_PROJECT_CONFIGURATION: {
+				MavenProjectConfiguration mavenProjectConfiguration = (MavenProjectConfiguration)theEObject;
+				T result = caseMavenProjectConfiguration(mavenProjectConfiguration);
+				if (result == null) result = caseProjectConfiguration(mavenProjectConfiguration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION: {
+				MavenServerConfiguration mavenServerConfiguration = (MavenServerConfiguration)theEObject;
+				T result = caseMavenServerConfiguration(mavenServerConfiguration);
+				if (result == null) result = caseServerConfiguration(mavenServerConfiguration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.MAVEN_SPECIFICATION_CONFIGURATION: {
+				MavenSpecificationConfiguration mavenSpecificationConfiguration = (MavenSpecificationConfiguration)theEObject;
+				T result = caseMavenSpecificationConfiguration(mavenSpecificationConfiguration);
+				if (result == null) result = caseSpecificationConfiguration(mavenSpecificationConfiguration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -541,6 +586,111 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseShaclProperty(ShaclProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>General Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>General Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeneralConfiguration(GeneralConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Project Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Project Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProjectConfiguration(ProjectConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Server Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Server Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseServerConfiguration(ServerConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Specification Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Specification Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSpecificationConfiguration(SpecificationConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Maven Project Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Maven Project Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMavenProjectConfiguration(MavenProjectConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Maven Server Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Maven Server Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMavenServerConfiguration(MavenServerConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Maven Specification Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Maven Specification Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMavenSpecificationConfiguration(MavenSpecificationConfiguration object) {
 		return null;
 	}
 

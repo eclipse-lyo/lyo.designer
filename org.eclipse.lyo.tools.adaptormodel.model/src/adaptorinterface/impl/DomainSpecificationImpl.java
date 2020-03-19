@@ -11,6 +11,7 @@ import adaptorinterface.ResourceProperty;
 
 import adaptorinterface.ShaclProperty;
 import adaptorinterface.ShaclShape;
+import adaptorinterface.SpecificationConfiguration;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -41,6 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getResourceProperties <em>Resource Properties</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getGenerationSetting <em>Generation Setting</em>}</li>
+ *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getShaclShapes <em>Shacl Shapes</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getShaclProperties <em>Shacl Properties</em>}</li>
  * </ul>
@@ -127,6 +129,16 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected GenerationSetting generationSetting;
+
+	/**
+	 * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfiguration()
+	 * @generated
+	 * @ordered
+	 */
+	protected SpecificationConfiguration configuration;
 
 	/**
 	 * The cached value of the '{@link #getShaclShapes() <em>Shacl Shapes</em>}' containment reference list.
@@ -329,6 +341,49 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SpecificationConfiguration getConfiguration() {
+		return configuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConfiguration(SpecificationConfiguration newConfiguration, NotificationChain msgs) {
+		SpecificationConfiguration oldConfiguration = configuration;
+		configuration = newConfiguration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION, oldConfiguration, newConfiguration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConfiguration(SpecificationConfiguration newConfiguration) {
+		if (newConfiguration != configuration) {
+			NotificationChain msgs = null;
+			if (configuration != null)
+				msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION, null, msgs);
+			if (newConfiguration != null)
+				msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION, null, msgs);
+			msgs = basicSetConfiguration(newConfiguration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION, newConfiguration, newConfiguration));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EList<ShaclShape> getShaclShapes() {
 		if (shaclShapes == null) {
@@ -364,6 +419,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return ((InternalEList<?>)getResourceProperties()).basicRemove(otherEnd, msgs);
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				return basicSetGenerationSetting(null, msgs);
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION:
+				return basicSetConfiguration(null, msgs);
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
 				return ((InternalEList<?>)getShaclShapes()).basicRemove(otherEnd, msgs);
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
@@ -393,6 +450,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return getResourceProperties();
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				return getGenerationSetting();
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION:
+				return getConfiguration();
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
 				return getShaclShapes();
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
@@ -429,6 +488,9 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return;
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				setGenerationSetting((GenerationSetting)newValue);
+				return;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION:
+				setConfiguration((SpecificationConfiguration)newValue);
 				return;
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
 				getShaclShapes().clear();
@@ -468,6 +530,9 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				setGenerationSetting((GenerationSetting)null);
 				return;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION:
+				setConfiguration((SpecificationConfiguration)null);
+				return;
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
 				getShaclShapes().clear();
 				return;
@@ -498,6 +563,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 				return resourceProperties != null && !resourceProperties.isEmpty();
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
 				return generationSetting != null;
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION:
+				return configuration != null;
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
 				return shaclShapes != null && !shaclShapes.isEmpty();
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:

@@ -8,6 +8,7 @@ import adaptorinterface.GenerationSetting;
 import adaptorinterface.NamespacePrefix;
 import adaptorinterface.Specification;
 
+import adaptorinterface.SpecificationConfiguration;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.SpecificationImpl#getDomainSpecifications <em>Domain Specifications</em>}</li>
  *   <li>{@link adaptorinterface.impl.SpecificationImpl#getDomainPrefixes <em>Domain Prefixes</em>}</li>
  *   <li>{@link adaptorinterface.impl.SpecificationImpl#getGenerationSetting <em>Generation Setting</em>}</li>
+ *   <li>{@link adaptorinterface.impl.SpecificationImpl#getConfiguration <em>Configuration</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,6 +71,16 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	 * @ordered
 	 */
 	protected GenerationSetting generationSetting;
+
+	/**
+	 * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfiguration()
+	 * @generated
+	 * @ordered
+	 */
+	protected SpecificationConfiguration configuration;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,6 +177,49 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SpecificationConfiguration getConfiguration() {
+		return configuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConfiguration(SpecificationConfiguration newConfiguration, NotificationChain msgs) {
+		SpecificationConfiguration oldConfiguration = configuration;
+		configuration = newConfiguration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, oldConfiguration, newConfiguration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConfiguration(SpecificationConfiguration newConfiguration) {
+		if (newConfiguration != configuration) {
+			NotificationChain msgs = null;
+			if (configuration != null)
+				msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, null, msgs);
+			if (newConfiguration != null)
+				msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, null, msgs);
+			msgs = basicSetConfiguration(newConfiguration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, newConfiguration, newConfiguration));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -174,6 +229,8 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 				return ((InternalEList<?>)getDomainPrefixes()).basicRemove(otherEnd, msgs);
 			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
 				return basicSetGenerationSetting(null, msgs);
+			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+				return basicSetConfiguration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -192,6 +249,8 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 				return getDomainPrefixes();
 			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
 				return getGenerationSetting();
+			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+				return getConfiguration();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -216,6 +275,9 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
 				setGenerationSetting((GenerationSetting)newValue);
 				return;
+			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+				setConfiguration((SpecificationConfiguration)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -237,6 +299,9 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
 				setGenerationSetting((GenerationSetting)null);
 				return;
+			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+				setConfiguration((SpecificationConfiguration)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -255,6 +320,8 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 				return domainPrefixes != null && !domainPrefixes.isEmpty();
 			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
 				return generationSetting != null;
+			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+				return configuration != null;
 		}
 		return super.eIsSet(featureID);
 	}

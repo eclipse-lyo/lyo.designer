@@ -1,0 +1,24 @@
+[module generateConfigFiles('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::config::generatePomXml/]
+[import org::eclipse::lyo::oslc4j::codegenerator::config::generateWebXml/]
+
+[template public generateConfigFiles(anAdaptorInterface : AdaptorInterface)]
+[if (not anAdaptorInterface.doNotGenerateProjectFiles())]
+    [anAdaptorInterface.generatePomXml()/]
+    [anAdaptorInterface.generateWebXml()/]
+[/if]
+[/template]
+
+[template public generateConfigFiles(aSpecification : Specification, anAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String)]
+[if (not aSpecification.doNotGenerateProjectFiles())]
+    [aSpecification.generatePomXml(anAdaptorInterface, defaultJavaFilesPath)/]
+[/if]
+[/template]
+
+[template public generateConfigFiles(aDomainSpecification : DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String)]
+[if (not aDomainSpecification.doNotGenerateProjectFiles())]
+    [aDomainSpecification.generatePomXml(anAdaptorInterface, defaultJavaFilesPath)/]
+[/if]
+[/template]

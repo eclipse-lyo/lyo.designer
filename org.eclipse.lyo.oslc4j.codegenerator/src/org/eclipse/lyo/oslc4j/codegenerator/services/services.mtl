@@ -39,40 +39,167 @@ Set{'appendable', 'autocloseable', 'charsequence', 'cloneable', 'comparable', 'i
 ((javaKeywords(aString)->union(javaLangWords(aString)))->includes(aString.toLower()))
 /]
 
-[query public javaClassBaseNamespace(anAdaptorInterface : AdaptorInterface) : String =
-javaClassBaseNamespace(anAdaptorInterface, 'resources')
+[query public javaBasePackageName(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.javaBasePackageName('resources')
 /]
 
-[query public javaClassBaseNamespace(anAdaptorInterface : AdaptorInterface, default : String) : String =
-(if anAdaptorInterface.javaClassBaseNamespace.isNullOrEmpty() then 
-    default
+[query public javaBasePackageName(anAdaptorInterface : AdaptorInterface, default : String) : String =
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generalConfiguration.oclIsUndefined()) then 
+    (if anAdaptorInterface.javaClassBaseNamespace.isNullOrEmpty() then 
+        default
+    else
+        anAdaptorInterface.javaClassBaseNamespace
+    endif)
 else
-    anAdaptorInterface.javaClassBaseNamespace
+    anAdaptorInterface.configuration.generalConfiguration.javaBasePackageName
 endif)
+/]
+
+[query public javaPackageName(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.javaBasePackageName(default).concat('.resources')
+    endif)
+else
+    aSpecification.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
+[query public javaPackageName(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    aDomainSpecification.eContainer(Specification).javaPackageName(anAdaptorInterface, default)
+else
+    aDomainSpecification.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
+[query public filesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.filesBasePath('.')
+/]
+
+[query public filesBasePath(anAdaptorInterface : AdaptorInterface, default : String) : String =
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generalConfiguration.oclIsUndefined()) then 
+    (if anAdaptorInterface.javaFilesBasePath.isNullOrEmpty() then 
+        default
+    else
+        anAdaptorInterface.javaFilesBasePath.substitute('/src/main/java', '')
+    endif)
+else
+    anAdaptorInterface.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.filesBasePath(default)
+    endif)
+else
+    aSpecification.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    aDomainSpecification.eContainer(Specification).filesBasePath(anAdaptorInterface, default)
+else
+    aDomainSpecification.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query private javaFilesRelativePath(traceabilityContext : OclAny) : String =
+'/src/main/java'
+/]
+
+[query private webFilesRelativePath(traceabilityContext : OclAny) : String =
+'/src/main/webapp'
 /]
 
 [query public javaFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
-javaFilesBasePath(anAdaptorInterface, 'src')
+anAdaptorInterface.filesBasePath().concatenatePaths(javaFilesRelativePath())
 /]
 
 [query public javaFilesBasePath(anAdaptorInterface : AdaptorInterface, default : String) : String =
-(if anAdaptorInterface.javaFilesBasePath.isNullOrEmpty() then 
-    default
+anAdaptorInterface.filesBasePath(default).concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public javaFilesBasePath(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+aSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public javaFilesBasePath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+aDomainSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public webFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.filesBasePath().concatenatePaths(webFilesRelativePath())
+/]
+
+[query public webFilesWebappPath(anAdaptorInterface : AdaptorInterface) : String =
+'/'.concat(anAdaptorInterface.javaBasePackageName()).substituteAll('.', '/')
+/]
+
+[query public doNotRegenerateJspFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.doNotRegenerateJspFiles.oclIsUndefined()) then 
+    false
 else
-    anAdaptorInterface.javaFilesBasePath
+    anAdaptorInterface.configuration.doNotRegenerateJspFiles
 endif)
 /]
 
-[query public jspFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
-(if anAdaptorInterface.jspFilesBasePath.isNullOrEmpty() then 
-    'src'
+[comment We do not generate if the model does not contain a projectSetting, since we won't know how to. We need all the parameters to produce valid files/]
+[query public doNotGenerateProjectFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if (anAdaptorInterface.configuration.oclIsUndefined()) then 
+    true
 else
-    anAdaptorInterface.jspFilesBasePath
+    (if anAdaptorInterface.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
+        false
+    else
+        anAdaptorInterface.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
+    endif)
+endif)
+/]
+[query public doNotGenerateProjectFiles(aSpecification : Specification) : Boolean = 
+(if (aSpecification.configuration.oclIsUndefined()) then 
+    true
+else
+    (if aSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
+        false
+    else
+        aSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
+    endif)
+endif)
+/]
+[query public doNotGenerateProjectFiles(aDomainSpecification : DomainSpecification) : Boolean = 
+(if (aDomainSpecification.configuration.oclIsUndefined()) then 
+    true
+else
+    (if aDomainSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
+        false
+    else
+        aDomainSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
+    endif)
 endif)
 /]
 
-[query public jspFilesWebappPath(anAdaptorInterface : AdaptorInterface) : String =
-'/'.concat(javaClassBaseNamespace(anAdaptorInterface)).substituteAll('.', '/')
+[query public doNotGenerate(aSpecification: Specification) : Boolean = 
+(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
+    false
+else
+    aSpecification.configuration.generalConfiguration.doNotGenerate
+endif)
+/]
+
+[query public doNotGenerate(aDomainSpecification: DomainSpecification) : Boolean = 
+(if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
+    aDomainSpecification.eContainer(Specification).doNotGenerate()
+else
+    aDomainSpecification.configuration.generalConfiguration.doNotGenerate
+endif)
 /]
 
 [query public methodSignature(parameters: Sequence(String), forJAXRSMethod : Boolean) : String = 

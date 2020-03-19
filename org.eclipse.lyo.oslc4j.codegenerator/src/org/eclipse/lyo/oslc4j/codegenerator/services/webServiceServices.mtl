@@ -30,7 +30,7 @@ aWebService.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
 /]
 
 [query public javaClassPackageName(aWebService: WebService) : String = 
-javaClassBaseNamespace(containingAdaptorInterface(aWebService)).concat('.services')
+javaBasePackageName(containingAdaptorInterface(aWebService)).concat('.services')
 /]
 
 [query public javaClassName(aWebService: WebService) : String = 

@@ -1,0 +1,239 @@
+[comment encoding = UTF-8 /]
+[module generatePomXml('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
+
+[template private projectHeader(name : String, mavenProjectConfiguration : MavenProjectConfiguration, serverImplementation : Boolean)]
+<modelVersion>4.0.0</modelVersion>
+<!-- [protected ('header')]
+-->
+<!-- TODO: Add additional header properties here to avoid them be overrriden upon future re-generation -->
+<!-- [/protected]
+-->
+<groupId>[mavenProjectConfiguration.groupId/]</groupId>
+<artifactId>[mavenProjectConfiguration.artifactId/]</artifactId>
+<version>[mavenProjectConfiguration.version/]</version>
+<packaging>[if serverImplementation]war[else]jar[/if]</packaging>
+<name>[name/]</name>
+[/template]
+
+[template private mavenProperties(mavenProjectConfiguration : MavenProjectConfiguration)]
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <version.lyo>[mavenProjectConfiguration.lyoVersion/]</version.lyo>
+    <!-- [protected ('properties')]
+    -->
+    <!-- TODO: Add additional properties here to avoid them be overrriden upon future re-generation -->
+    <!-- [/protected]
+    -->
+</properties>
+[/template]
+
+[template private repositories(traceabilityContext : OclAny)]
+<repositories>
+    <!-- [protected ('repositories')]
+    -->
+    <!-- TODO: Add additional repositories here to avoid them be overrriden upon future re-generation -->
+    <!-- [/protected]
+    -->
+    <repository>
+        <id>lyo-releases</id>
+        <name>Eclipse Lyo Releases</name>
+        <url>https://repo.eclipse.org/content/repositories/lyo-releases/</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+    <repository>
+        <id>lyo-snapshots</id>
+        <name>Eclipse Lyo Snapshots</name>
+        <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+    </repository>
+</repositories>
+[/template]
+
+[template private generalDependencies(traceabilityContext : OclAny)]
+<!-- Specific dependencies -->
+<!-- [protected ('dependencies')]
+-->
+<!-- TODO: Add additional dependencies here to avoid them be overrriden upon future re-generation -->
+<!-- [/protected]
+-->
+<!-- General dependencies -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-simple</artifactId>
+    <version>1.7.21</version>
+    <scope>runtime</scope>
+</dependency>
+[/template]
+
+[template private servletDependencies(serverImplementation : Boolean)]
+<!-- Servlet dependencies -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.1.0</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+[if serverImplementation]
+<dependency>
+    <groupId>org.glassfish.jersey.core</groupId>
+    <artifactId>jersey-server</artifactId>
+    <version>2.25.1</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jersey.containers</groupId>
+    <artifactId>jersey-container-servlet</artifactId>
+    <version>2.25.1</version>
+</dependency>
+[/if]
+[/template]
+
+[template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean)]
+<!-- Lyo dependencies -->
+<dependency>
+    <groupId>org.eclipse.lyo.oslc4j.core</groupId>
+    <artifactId>oslc4j-core</artifactId>
+    <version>${version.lyo}</version>
+</dependency>
+[if serverImplementation]
+<dependency>
+    <groupId>org.eclipse.lyo.oslc4j.core</groupId>
+    <artifactId>oslc4j-jena-provider</artifactId>
+    <version>${version.lyo}</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.lyo.oslc4j.core</groupId>
+    <artifactId>oslc4j-json4j-provider</artifactId>
+    <version>${version.lyo}</version>
+</dependency>
+[/if]
+[if clientImplementation]
+<dependency>
+    <groupId>org.eclipse.lyo.clients</groupId>
+    <artifactId>oslc4j-client</artifactId>
+    <version>${version.lyo}</version>
+</dependency>
+[/if]
+[/template]
+
+[template public generatePomXml(anAdaptorInterface : AdaptorInterface)]
+[if (not anAdaptorInterface.doNotGenerateProjectFiles())]
+[let mavenProjectConfiguration : MavenProjectConfiguration = anAdaptorInterface.configuration.projectConfiguration]
+[let mavenServerConfiguration : MavenServerConfiguration = anAdaptorInterface.configuration]
+[file (anAdaptorInterface.filesBasePath().concatenatePaths('/pom.xml'), false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    [projectHeader(anAdaptorInterface.name, mavenProjectConfiguration, true)/]
+    [mavenProperties(mavenProjectConfiguration)/]
+    [repositories()/]
+    <dependencies>
+        [generalDependencies()/]
+        [servletDependencies(true)/]
+        [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty())/]
+        <!-- Swagger dependencies -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-jersey2-jaxrs</artifactId>
+            <version>1.5.22</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>[mavenProjectConfiguration.artifactId/]</finalName>
+            <plugins>
+            <!-- [protected ('plugins')]
+            -->
+            <!-- TODO: Add additional plugins here to avoid them be overrriden upon future re-generation -->
+            <!-- [/protected]
+            -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.18.v20190429</version>
+                <configuration>
+                    <webAppConfig>
+                        <contextPath>[mavenServerConfiguration.applicationContextPath/]</contextPath>
+                    </webAppConfig>
+                    <reload>automatic</reload>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>jetty.port</name>
+                            <value>[mavenServerConfiguration.jettyPort/]</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <stopKey />
+                    <stopPort />
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+[/file]
+[/let]
+[/let]
+[/if]
+[/template]
+
+[template public generatePomXml(aSpecification : Specification, anAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String)]
+[if (not aSpecification.doNotGenerateProjectFiles())]
+[let mavenProjectConfiguration : MavenProjectConfiguration = aSpecification.configuration.projectConfiguration]
+[file (aSpecification.filesBasePath(anAdaptorInterface, defaultJavaFilesPath).concatenatePaths('/pom.xml'), false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    [projectHeader(mavenProjectConfiguration.artifactId, mavenProjectConfiguration, false)/]
+    [mavenProperties(mavenProjectConfiguration)/]
+    [repositories()/]
+    <dependencies>
+        [generalDependencies()/]
+        [servletDependencies(false)/]
+        [lyoDependencies(false, false)/]
+    </dependencies>
+</project>
+[/file]
+[/let]
+[/if]
+[/template]
+
+[template public generatePomXml(aDomainSpecification : DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String)]
+[if (not aDomainSpecification.doNotGenerateProjectFiles())]
+[let mavenProjectConfiguration : MavenProjectConfiguration = aDomainSpecification.configuration.projectConfiguration]
+[file (aDomainSpecification.filesBasePath(anAdaptorInterface, defaultJavaFilesPath).concatenatePaths('/pom.xml'), false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    [projectHeader(aDomainSpecification.name, mavenProjectConfiguration, false)/]
+    [mavenProperties(mavenProjectConfiguration)/]
+    [repositories()/]
+    <dependencies>
+        [generalDependencies()/]
+        [servletDependencies(false)/]
+        [lyoDependencies(false, false)/]
+    </dependencies>
+</project>
+[/file]
+[/let]
+[/if]
+[/template]

@@ -42,7 +42,7 @@ endif)
 (if (anAdaptorInterface.oclIsUndefined()) then 
     default
 else
-    javaClassBaseNamespace(anAdaptorInterface, default).concat('.resources')
+    javaBasePackageName(anAdaptorInterface, default).concat('.resources')
 endif)
 /]
 

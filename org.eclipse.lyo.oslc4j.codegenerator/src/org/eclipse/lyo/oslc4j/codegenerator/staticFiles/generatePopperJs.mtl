@@ -24,7 +24,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 
 [template public generatePopperJs(anAdaptorInterface : AdaptorInterface)]
-[file (jspFilesBasePath(anAdaptorInterface).concat('/static/js/popper-1.11.0.min.js') , false, 'UTF-8')]
+[file (webFilesBasePath(anAdaptorInterface).concat('/static/js/popper-1.11.0.min.js') , false, 'UTF-8')]
 /*
  Copyright (C) Federico Zivolo 2017
  Distributed under the MIT License (license terms are at http://opensource.org/licenses/MIT).

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.Specification#getDomainSpecifications <em>Domain Specifications</em>}</li>
  *   <li>{@link adaptorinterface.Specification#getDomainPrefixes <em>Domain Prefixes</em>}</li>
  *   <li>{@link adaptorinterface.Specification#getGenerationSetting <em>Generation Setting</em>}</li>
+ *   <li>{@link adaptorinterface.Specification#getConfiguration <em>Configuration</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getSpecification()
@@ -82,5 +83,31 @@ public interface Specification extends EObject {
 	 * @generated
 	 */
 	void setGenerationSetting(GenerationSetting value);
+
+	/**
+	 * Returns the value of the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Configuration</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Configuration</em>' containment reference.
+	 * @see #setConfiguration(SpecificationConfiguration)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_Configuration()
+	 * @model containment="true"
+	 * @generated
+	 */
+	SpecificationConfiguration getConfiguration();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.Specification#getConfiguration <em>Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Configuration</em>' containment reference.
+	 * @see #getConfiguration()
+	 * @generated
+	 */
+	void setConfiguration(SpecificationConfiguration value);
 
 } // Specification

@@ -113,13 +113,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int ADAPTOR_INTERFACE__REQUIRED_ADAPTORS = 4;
 
 	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__CONFIGURATION = 5;
+
+	/**
 	 * The feature id for the '<em><b>Java Class Base Namespace</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE = 5;
+	int ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Java Files Base Path</b></em>' attribute.
@@ -128,7 +137,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH = 6;
+	int ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH = 7;
 
 	/**
 	 * The feature id for the '<em><b>Jsp Files Base Path</b></em>' attribute.
@@ -137,7 +146,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH = 7;
+	int ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH = 8;
 
 	/**
 	 * The feature id for the '<em><b>Javascript Files Base Path</b></em>' attribute.
@@ -146,16 +155,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = 8;
-
-	/**
-	 * The feature id for the '<em><b>Do Not Regenerate Jsp Files</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES = 9;
+	int ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = 9;
 
 	/**
 	 * The feature id for the '<em><b>Swagger Documentation</b></em>' attribute.
@@ -303,13 +303,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SPECIFICATION__GENERATION_SETTING = 2;
 
 	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__CONFIGURATION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFICATION_FEATURE_COUNT = 3;
+	int SPECIFICATION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Specification</em>' class.
@@ -385,13 +394,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int DOMAIN_SPECIFICATION__GENERATION_SETTING = 5;
 
 	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_SPECIFICATION__CONFIGURATION = 6;
+
+	/**
 	 * The feature id for the '<em><b>Shacl Shapes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_SPECIFICATION__SHACL_SHAPES = 6;
+	int DOMAIN_SPECIFICATION__SHACL_SHAPES = 7;
 
 	/**
 	 * The feature id for the '<em><b>Shacl Properties</b></em>' containment reference list.
@@ -400,7 +418,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_SPECIFICATION__SHACL_PROPERTIES = 7;
+	int DOMAIN_SPECIFICATION__SHACL_PROPERTIES = 8;
 
 	/**
 	 * The number of structural features of the '<em>Domain Specification</em>' class.
@@ -409,7 +427,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_SPECIFICATION_FEATURE_COUNT = 8;
+	int DOMAIN_SPECIFICATION_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Domain Specification</em>' class.
@@ -1764,6 +1782,445 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SHACL_PROPERTY_OPERATION_COUNT = SHAPE_PROPERTY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.GeneralConfigurationImpl <em>General Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.GeneralConfigurationImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGeneralConfiguration()
+	 * @generated
+	 */
+	int GENERAL_CONFIGURATION = 23;
+
+	/**
+	 * The feature id for the '<em><b>Do Not Generate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CONFIGURATION__DO_NOT_GENERATE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Files Base Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CONFIGURATION__FILES_BASE_PATH = 1;
+
+	/**
+	 * The feature id for the '<em><b>Java Base Package Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME = 2;
+
+	/**
+	 * The number of structural features of the '<em>General Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CONFIGURATION_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>General Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CONFIGURATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ProjectConfigurationImpl <em>Project Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ProjectConfigurationImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getProjectConfiguration()
+	 * @generated
+	 */
+	int PROJECT_CONFIGURATION = 24;
+
+	/**
+	 * The feature id for the '<em><b>Do Not Generate Project Configuration Files</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_CONFIGURATION__DO_NOT_GENERATE_PROJECT_CONFIGURATION_FILES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Lyo Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_CONFIGURATION__LYO_VERSION = 1;
+
+	/**
+	 * The number of structural features of the '<em>Project Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_CONFIGURATION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Project Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_CONFIGURATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ServerConfigurationImpl <em>Server Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ServerConfigurationImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getServerConfiguration()
+	 * @generated
+	 */
+	int SERVER_CONFIGURATION = 25;
+
+	/**
+	 * The feature id for the '<em><b>Root Server Base Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CONFIGURATION__ROOT_SERVER_BASE_URL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Application Context Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CONFIGURATION__APPLICATION_CONTEXT_PATH = 1;
+
+	/**
+	 * The feature id for the '<em><b>Servlet Url Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CONFIGURATION__SERVLET_URL_PATTERN = 2;
+
+	/**
+	 * The feature id for the '<em><b>Do Not Regenerate Jsp Files</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES = 3;
+
+	/**
+	 * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CONFIGURATION__GENERAL_CONFIGURATION = 4;
+
+	/**
+	 * The feature id for the '<em><b>Project Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CONFIGURATION__PROJECT_CONFIGURATION = 5;
+
+	/**
+	 * The number of structural features of the '<em>Server Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CONFIGURATION_FEATURE_COUNT = 6;
+
+	/**
+	 * The number of operations of the '<em>Server Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CONFIGURATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.SpecificationConfigurationImpl <em>Specification Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.SpecificationConfigurationImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSpecificationConfiguration()
+	 * @generated
+	 */
+	int SPECIFICATION_CONFIGURATION = 26;
+
+	/**
+	 * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Project Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION_CONFIGURATION__PROJECT_CONFIGURATION = 1;
+
+	/**
+	 * The number of structural features of the '<em>Specification Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION_CONFIGURATION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Specification Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION_CONFIGURATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.MavenProjectConfigurationImpl <em>Maven Project Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.MavenProjectConfigurationImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenProjectConfiguration()
+	 * @generated
+	 */
+	int MAVEN_PROJECT_CONFIGURATION = 27;
+
+	/**
+	 * The feature id for the '<em><b>Do Not Generate Project Configuration Files</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_PROJECT_CONFIGURATION__DO_NOT_GENERATE_PROJECT_CONFIGURATION_FILES = PROJECT_CONFIGURATION__DO_NOT_GENERATE_PROJECT_CONFIGURATION_FILES;
+
+	/**
+	 * The feature id for the '<em><b>Lyo Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_PROJECT_CONFIGURATION__LYO_VERSION = PROJECT_CONFIGURATION__LYO_VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Group Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_PROJECT_CONFIGURATION__GROUP_ID = PROJECT_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Artifact Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_PROJECT_CONFIGURATION__ARTIFACT_ID = PROJECT_CONFIGURATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_PROJECT_CONFIGURATION__VERSION = PROJECT_CONFIGURATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Maven Project Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_PROJECT_CONFIGURATION_FEATURE_COUNT = PROJECT_CONFIGURATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Maven Project Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_PROJECT_CONFIGURATION_OPERATION_COUNT = PROJECT_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.MavenServerConfigurationImpl <em>Maven Server Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.MavenServerConfigurationImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenServerConfiguration()
+	 * @generated
+	 */
+	int MAVEN_SERVER_CONFIGURATION = 28;
+
+	/**
+	 * The feature id for the '<em><b>Root Server Base Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SERVER_CONFIGURATION__ROOT_SERVER_BASE_URL = SERVER_CONFIGURATION__ROOT_SERVER_BASE_URL;
+
+	/**
+	 * The feature id for the '<em><b>Application Context Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SERVER_CONFIGURATION__APPLICATION_CONTEXT_PATH = SERVER_CONFIGURATION__APPLICATION_CONTEXT_PATH;
+
+	/**
+	 * The feature id for the '<em><b>Servlet Url Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SERVER_CONFIGURATION__SERVLET_URL_PATTERN = SERVER_CONFIGURATION__SERVLET_URL_PATTERN;
+
+	/**
+	 * The feature id for the '<em><b>Do Not Regenerate Jsp Files</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES = SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES;
+
+	/**
+	 * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SERVER_CONFIGURATION__GENERAL_CONFIGURATION = SERVER_CONFIGURATION__GENERAL_CONFIGURATION;
+
+	/**
+	 * The feature id for the '<em><b>Project Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SERVER_CONFIGURATION__PROJECT_CONFIGURATION = SERVER_CONFIGURATION__PROJECT_CONFIGURATION;
+
+	/**
+	 * The feature id for the '<em><b>Jetty Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SERVER_CONFIGURATION__JETTY_PORT = SERVER_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Maven Server Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SERVER_CONFIGURATION_FEATURE_COUNT = SERVER_CONFIGURATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Maven Server Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SERVER_CONFIGURATION_OPERATION_COUNT = SERVER_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.MavenSpecificationConfigurationImpl <em>Maven Specification Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.MavenSpecificationConfigurationImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenSpecificationConfiguration()
+	 * @generated
+	 */
+	int MAVEN_SPECIFICATION_CONFIGURATION = 29;
+
+	/**
+	 * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION = SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION;
+
+	/**
+	 * The feature id for the '<em><b>Project Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SPECIFICATION_CONFIGURATION__PROJECT_CONFIGURATION = SPECIFICATION_CONFIGURATION__PROJECT_CONFIGURATION;
+
+	/**
+	 * The number of structural features of the '<em>Maven Specification Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SPECIFICATION_CONFIGURATION_FEATURE_COUNT = SPECIFICATION_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Maven Specification Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAVEN_SPECIFICATION_CONFIGURATION_OPERATION_COUNT = SPECIFICATION_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1771,7 +2228,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyOccurs()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_OCCURS = 23;
+	int RESOURCE_PROPERTY_OCCURS = 30;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyValueType <em>Resource Property Value Type</em>}' enum.
@@ -1781,7 +2238,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyValueType()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_VALUE_TYPE = 24;
+	int RESOURCE_PROPERTY_VALUE_TYPE = 31;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyRepresentation <em>Resource Property Representation</em>}' enum.
@@ -1791,7 +2248,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRepresentation()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_REPRESENTATION = 25;
+	int RESOURCE_PROPERTY_REPRESENTATION = 32;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyIsMemberProperty <em>Resource Property Is Member Property</em>}' enum.
@@ -1801,7 +2258,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyIsMemberProperty()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 26;
+	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 33;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -1811,7 +2268,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
 	 * @generated
 	 */
-	int RESOURCE_SERVICE_NAMESPACE = 27;
+	int RESOURCE_SERVICE_NAMESPACE = 34;
 
 
 	/**
@@ -1822,7 +2279,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
 	 * @generated
 	 */
-	int SHACL_PROPERTY_DATA_TYPE = 28;
+	int SHACL_PROPERTY_DATA_TYPE = 35;
 
 
 	/**
@@ -1924,17 +2381,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getAdaptorInterface_JavascriptFilesBasePath();
 
 	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Do Not Regenerate Jsp Files</em>'.
-	 * @see adaptorinterface.AdaptorInterface#isDoNotRegenerateJspFiles()
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 */
-	EAttribute getAdaptorInterface_DoNotRegenerateJspFiles();
-
-	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#isSwaggerDocumentation <em>Swagger Documentation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2010,6 +2456,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAdaptorInterface_RequiredAdaptors();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.AdaptorInterface#getConfiguration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Configuration</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getConfiguration()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EReference getAdaptorInterface_Configuration();
 
 	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getResources <em>Backend Code Template get Resources</em>}'.
@@ -2099,6 +2556,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getSpecification_GenerationSetting();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.Specification#getConfiguration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Configuration</em>'.
+	 * @see adaptorinterface.Specification#getConfiguration()
+	 * @see #getSpecification()
+	 * @generated
+	 */
+	EReference getSpecification_Configuration();
+
+	/**
 	 * Returns the meta object for class '{@link adaptorinterface.DomainSpecification <em>Domain Specification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2173,6 +2641,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDomainSpecification_GenerationSetting();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.DomainSpecification#getConfiguration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Configuration</em>'.
+	 * @see adaptorinterface.DomainSpecification#getConfiguration()
+	 * @see #getDomainSpecification()
+	 * @generated
+	 */
+	EReference getDomainSpecification_Configuration();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link adaptorinterface.DomainSpecification#getShaclShapes <em>Shacl Shapes</em>}'.
@@ -3245,6 +3724,263 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getShaclProperty_Class();
 
 	/**
+	 * Returns the meta object for class '{@link adaptorinterface.GeneralConfiguration <em>General Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>General Configuration</em>'.
+	 * @see adaptorinterface.GeneralConfiguration
+	 * @generated
+	 */
+	EClass getGeneralConfiguration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.GeneralConfiguration#isDoNotGenerate <em>Do Not Generate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Do Not Generate</em>'.
+	 * @see adaptorinterface.GeneralConfiguration#isDoNotGenerate()
+	 * @see #getGeneralConfiguration()
+	 * @generated
+	 */
+	EAttribute getGeneralConfiguration_DoNotGenerate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.GeneralConfiguration#getFilesBasePath <em>Files Base Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Files Base Path</em>'.
+	 * @see adaptorinterface.GeneralConfiguration#getFilesBasePath()
+	 * @see #getGeneralConfiguration()
+	 * @generated
+	 */
+	EAttribute getGeneralConfiguration_FilesBasePath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.GeneralConfiguration#getJavaBasePackageName <em>Java Base Package Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Java Base Package Name</em>'.
+	 * @see adaptorinterface.GeneralConfiguration#getJavaBasePackageName()
+	 * @see #getGeneralConfiguration()
+	 * @generated
+	 */
+	EAttribute getGeneralConfiguration_JavaBasePackageName();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.ProjectConfiguration <em>Project Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Project Configuration</em>'.
+	 * @see adaptorinterface.ProjectConfiguration
+	 * @generated
+	 */
+	EClass getProjectConfiguration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ProjectConfiguration#isDoNotGenerateProjectConfigurationFiles <em>Do Not Generate Project Configuration Files</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Do Not Generate Project Configuration Files</em>'.
+	 * @see adaptorinterface.ProjectConfiguration#isDoNotGenerateProjectConfigurationFiles()
+	 * @see #getProjectConfiguration()
+	 * @generated
+	 */
+	EAttribute getProjectConfiguration_DoNotGenerateProjectConfigurationFiles();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ProjectConfiguration#getLyoVersion <em>Lyo Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lyo Version</em>'.
+	 * @see adaptorinterface.ProjectConfiguration#getLyoVersion()
+	 * @see #getProjectConfiguration()
+	 * @generated
+	 */
+	EAttribute getProjectConfiguration_LyoVersion();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.ServerConfiguration <em>Server Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Server Configuration</em>'.
+	 * @see adaptorinterface.ServerConfiguration
+	 * @generated
+	 */
+	EClass getServerConfiguration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ServerConfiguration#getRootServerBaseUrl <em>Root Server Base Url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Root Server Base Url</em>'.
+	 * @see adaptorinterface.ServerConfiguration#getRootServerBaseUrl()
+	 * @see #getServerConfiguration()
+	 * @generated
+	 */
+	EAttribute getServerConfiguration_RootServerBaseUrl();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ServerConfiguration#getApplicationContextPath <em>Application Context Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Application Context Path</em>'.
+	 * @see adaptorinterface.ServerConfiguration#getApplicationContextPath()
+	 * @see #getServerConfiguration()
+	 * @generated
+	 */
+	EAttribute getServerConfiguration_ApplicationContextPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ServerConfiguration#getServletUrlPattern <em>Servlet Url Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Servlet Url Pattern</em>'.
+	 * @see adaptorinterface.ServerConfiguration#getServletUrlPattern()
+	 * @see #getServerConfiguration()
+	 * @generated
+	 */
+	EAttribute getServerConfiguration_ServletUrlPattern();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ServerConfiguration#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Do Not Regenerate Jsp Files</em>'.
+	 * @see adaptorinterface.ServerConfiguration#isDoNotRegenerateJspFiles()
+	 * @see #getServerConfiguration()
+	 * @generated
+	 */
+	EAttribute getServerConfiguration_DoNotRegenerateJspFiles();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.ServerConfiguration#getGeneralConfiguration <em>General Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>General Configuration</em>'.
+	 * @see adaptorinterface.ServerConfiguration#getGeneralConfiguration()
+	 * @see #getServerConfiguration()
+	 * @generated
+	 */
+	EReference getServerConfiguration_GeneralConfiguration();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.ServerConfiguration#getProjectConfiguration <em>Project Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Project Configuration</em>'.
+	 * @see adaptorinterface.ServerConfiguration#getProjectConfiguration()
+	 * @see #getServerConfiguration()
+	 * @generated
+	 */
+	EReference getServerConfiguration_ProjectConfiguration();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.SpecificationConfiguration <em>Specification Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Specification Configuration</em>'.
+	 * @see adaptorinterface.SpecificationConfiguration
+	 * @generated
+	 */
+	EClass getSpecificationConfiguration();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.SpecificationConfiguration#getGeneralConfiguration <em>General Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>General Configuration</em>'.
+	 * @see adaptorinterface.SpecificationConfiguration#getGeneralConfiguration()
+	 * @see #getSpecificationConfiguration()
+	 * @generated
+	 */
+	EReference getSpecificationConfiguration_GeneralConfiguration();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.SpecificationConfiguration#getProjectConfiguration <em>Project Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Project Configuration</em>'.
+	 * @see adaptorinterface.SpecificationConfiguration#getProjectConfiguration()
+	 * @see #getSpecificationConfiguration()
+	 * @generated
+	 */
+	EReference getSpecificationConfiguration_ProjectConfiguration();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.MavenProjectConfiguration <em>Maven Project Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Maven Project Configuration</em>'.
+	 * @see adaptorinterface.MavenProjectConfiguration
+	 * @generated
+	 */
+	EClass getMavenProjectConfiguration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.MavenProjectConfiguration#getGroupId <em>Group Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Group Id</em>'.
+	 * @see adaptorinterface.MavenProjectConfiguration#getGroupId()
+	 * @see #getMavenProjectConfiguration()
+	 * @generated
+	 */
+	EAttribute getMavenProjectConfiguration_GroupId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.MavenProjectConfiguration#getArtifactId <em>Artifact Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Artifact Id</em>'.
+	 * @see adaptorinterface.MavenProjectConfiguration#getArtifactId()
+	 * @see #getMavenProjectConfiguration()
+	 * @generated
+	 */
+	EAttribute getMavenProjectConfiguration_ArtifactId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.MavenProjectConfiguration#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see adaptorinterface.MavenProjectConfiguration#getVersion()
+	 * @see #getMavenProjectConfiguration()
+	 * @generated
+	 */
+	EAttribute getMavenProjectConfiguration_Version();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.MavenServerConfiguration <em>Maven Server Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Maven Server Configuration</em>'.
+	 * @see adaptorinterface.MavenServerConfiguration
+	 * @generated
+	 */
+	EClass getMavenServerConfiguration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.MavenServerConfiguration#getJettyPort <em>Jetty Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Jetty Port</em>'.
+	 * @see adaptorinterface.MavenServerConfiguration#getJettyPort()
+	 * @see #getMavenServerConfiguration()
+	 * @generated
+	 */
+	EAttribute getMavenServerConfiguration_JettyPort();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.MavenSpecificationConfiguration <em>Maven Specification Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Maven Specification Configuration</em>'.
+	 * @see adaptorinterface.MavenSpecificationConfiguration
+	 * @generated
+	 */
+	EClass getMavenSpecificationConfiguration();
+
+	/**
 	 * Returns the meta object for class '{@link adaptorinterface.WebService <em>Web Service</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3489,14 +4225,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = eINSTANCE.getAdaptorInterface_JavascriptFilesBasePath();
 
 		/**
-		 * The meta object literal for the '<em><b>Do Not Regenerate Jsp Files</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ADAPTOR_INTERFACE__DO_NOT_REGENERATE_JSP_FILES = eINSTANCE.getAdaptorInterface_DoNotRegenerateJspFiles();
-
-		/**
 		 * The meta object literal for the '<em><b>Swagger Documentation</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3551,6 +4279,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference ADAPTOR_INTERFACE__REQUIRED_ADAPTORS = eINSTANCE.getAdaptorInterface_RequiredAdaptors();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADAPTOR_INTERFACE__CONFIGURATION = eINSTANCE.getAdaptorInterface_Configuration();
 
 		/**
 		 * The meta object literal for the '<em><b>Backend Code Template get Resources</b></em>' attribute feature.
@@ -3619,6 +4355,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference SPECIFICATION__GENERATION_SETTING = eINSTANCE.getSpecification_GenerationSetting();
 
 		/**
+		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFICATION__CONFIGURATION = eINSTANCE.getSpecification_Configuration();
+
+		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.DomainSpecificationImpl <em>Domain Specification</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3675,6 +4419,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOMAIN_SPECIFICATION__GENERATION_SETTING = eINSTANCE.getDomainSpecification_GenerationSetting();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_SPECIFICATION__CONFIGURATION = eINSTANCE.getDomainSpecification_Configuration();
 
 		/**
 		 * The meta object literal for the '<em><b>Shacl Shapes</b></em>' containment reference list feature.
@@ -4505,6 +5257,212 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SHACL_PROPERTY__CLASS = eINSTANCE.getShaclProperty_Class();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.GeneralConfigurationImpl <em>General Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.GeneralConfigurationImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGeneralConfiguration()
+		 * @generated
+		 */
+		EClass GENERAL_CONFIGURATION = eINSTANCE.getGeneralConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Do Not Generate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERAL_CONFIGURATION__DO_NOT_GENERATE = eINSTANCE.getGeneralConfiguration_DoNotGenerate();
+
+		/**
+		 * The meta object literal for the '<em><b>Files Base Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERAL_CONFIGURATION__FILES_BASE_PATH = eINSTANCE.getGeneralConfiguration_FilesBasePath();
+
+		/**
+		 * The meta object literal for the '<em><b>Java Base Package Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME = eINSTANCE.getGeneralConfiguration_JavaBasePackageName();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.ProjectConfigurationImpl <em>Project Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.ProjectConfigurationImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getProjectConfiguration()
+		 * @generated
+		 */
+		EClass PROJECT_CONFIGURATION = eINSTANCE.getProjectConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Do Not Generate Project Configuration Files</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_CONFIGURATION__DO_NOT_GENERATE_PROJECT_CONFIGURATION_FILES = eINSTANCE.getProjectConfiguration_DoNotGenerateProjectConfigurationFiles();
+
+		/**
+		 * The meta object literal for the '<em><b>Lyo Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_CONFIGURATION__LYO_VERSION = eINSTANCE.getProjectConfiguration_LyoVersion();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.ServerConfigurationImpl <em>Server Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.ServerConfigurationImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getServerConfiguration()
+		 * @generated
+		 */
+		EClass SERVER_CONFIGURATION = eINSTANCE.getServerConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Root Server Base Url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVER_CONFIGURATION__ROOT_SERVER_BASE_URL = eINSTANCE.getServerConfiguration_RootServerBaseUrl();
+
+		/**
+		 * The meta object literal for the '<em><b>Application Context Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVER_CONFIGURATION__APPLICATION_CONTEXT_PATH = eINSTANCE.getServerConfiguration_ApplicationContextPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Servlet Url Pattern</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVER_CONFIGURATION__SERVLET_URL_PATTERN = eINSTANCE.getServerConfiguration_ServletUrlPattern();
+
+		/**
+		 * The meta object literal for the '<em><b>Do Not Regenerate Jsp Files</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES = eINSTANCE.getServerConfiguration_DoNotRegenerateJspFiles();
+
+		/**
+		 * The meta object literal for the '<em><b>General Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVER_CONFIGURATION__GENERAL_CONFIGURATION = eINSTANCE.getServerConfiguration_GeneralConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Project Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVER_CONFIGURATION__PROJECT_CONFIGURATION = eINSTANCE.getServerConfiguration_ProjectConfiguration();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.SpecificationConfigurationImpl <em>Specification Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.SpecificationConfigurationImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSpecificationConfiguration()
+		 * @generated
+		 */
+		EClass SPECIFICATION_CONFIGURATION = eINSTANCE.getSpecificationConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>General Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION = eINSTANCE.getSpecificationConfiguration_GeneralConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Project Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFICATION_CONFIGURATION__PROJECT_CONFIGURATION = eINSTANCE.getSpecificationConfiguration_ProjectConfiguration();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.MavenProjectConfigurationImpl <em>Maven Project Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.MavenProjectConfigurationImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenProjectConfiguration()
+		 * @generated
+		 */
+		EClass MAVEN_PROJECT_CONFIGURATION = eINSTANCE.getMavenProjectConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Group Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAVEN_PROJECT_CONFIGURATION__GROUP_ID = eINSTANCE.getMavenProjectConfiguration_GroupId();
+
+		/**
+		 * The meta object literal for the '<em><b>Artifact Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAVEN_PROJECT_CONFIGURATION__ARTIFACT_ID = eINSTANCE.getMavenProjectConfiguration_ArtifactId();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAVEN_PROJECT_CONFIGURATION__VERSION = eINSTANCE.getMavenProjectConfiguration_Version();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.MavenServerConfigurationImpl <em>Maven Server Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.MavenServerConfigurationImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenServerConfiguration()
+		 * @generated
+		 */
+		EClass MAVEN_SERVER_CONFIGURATION = eINSTANCE.getMavenServerConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Jetty Port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAVEN_SERVER_CONFIGURATION__JETTY_PORT = eINSTANCE.getMavenServerConfiguration_JettyPort();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.MavenSpecificationConfigurationImpl <em>Maven Specification Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.MavenSpecificationConfigurationImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenSpecificationConfiguration()
+		 * @generated
+		 */
+		EClass MAVEN_SPECIFICATION_CONFIGURATION = eINSTANCE.getMavenSpecificationConfiguration();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.WebServiceImpl <em>Web Service</em>}' class.

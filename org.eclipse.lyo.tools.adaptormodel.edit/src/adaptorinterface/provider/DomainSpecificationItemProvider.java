@@ -151,6 +151,7 @@ public class DomainSpecificationItemProvider
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCES);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__GENERATION_SETTING);
+			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__CONFIGURATION);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__SHACL_SHAPES);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__SHACL_PROPERTIES);
 		}
@@ -215,6 +216,7 @@ public class DomainSpecificationItemProvider
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCES:
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES:
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__GENERATION_SETTING:
+			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION:
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
 			case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -248,6 +250,11 @@ public class DomainSpecificationItemProvider
 			(createChildParameter
 				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__GENERATION_SETTING,
 				 AdaptorinterfaceFactory.eINSTANCE.createGenerationSetting()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__CONFIGURATION,
+				 AdaptorinterfaceFactory.eINSTANCE.createMavenSpecificationConfiguration()));
 
 		newChildDescriptors.add
 			(createChildParameter
