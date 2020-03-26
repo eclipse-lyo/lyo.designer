@@ -149,7 +149,9 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         List<[queryMethodResourceType(aQueryCapability)/]> resources = null;
         [backendCode(anAdaptorInterface.backendCodeTemplate_getResources, queryMethodResourceType(aQueryCapability), 'resources', queryCompositeID(aQueryCapability))/]
         // [protected (queryMethodName(aQueryCapability, true))]
-        // TODO Implement code to return a set of resources
+        // TODO Implement code to return a set of resources.
+        // An empty List should imply that no resources where found.
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return resources;
     }
@@ -161,6 +163,8 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         [backendCode(anAdaptorInterface.backendCodeTemplate_searchResources, dialogMethodResourceType(aSelectionDialog), 'resources', dialogCompositeID(aSelectionDialog, true))/]
         // [protected (dialogMethodName(aSelectionDialog, true))]
         // TODO Implement code to return a set of resources, based on search criteria 
+        // An empty List should imply that no resources where found.
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return resources;
     }
@@ -172,6 +176,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         [backendCode(anAdaptorInterface.backendCodeTemplate_createResource, creationMethodResourceType(aCreationFactory), 'newResource', creationCompositeID(aCreationFactory))/]
         // [protected (creationMethodName(aCreationFactory))]
         // TODO Implement code to create a resource
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return newResource;
     }
@@ -184,6 +189,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         [backendCode(anAdaptorInterface.backendCodeTemplate_createResource, creationMethodResourceType(aCreationDialog), 'newResource', dialogCompositeID(aCreationDialog, false))/]
         // [protected (creationMethodName(aCreationDialog))]
         // TODO Implement code to create a resource
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return newResource;
     }
@@ -198,6 +204,8 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         [backendCode(anAdaptorInterface.backendCodeTemplate_getResource, getResourceMethodResourceType(aBasicCapability, aResource), 'aResource', instanceCompositeID(aResource, aBasicCapability))/]
         // [protected (getResourceMethodName(aBasicCapability, aResource, true))]
         // TODO Implement code to return a resource
+        // return 'null' if the resource was not found.
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return aResource;
     }
@@ -211,6 +219,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         Boolean deleted = false;
         // [protected (deleteResourceMethodName(aBasicCapability, aResource))]
         // TODO Implement code to delete a resource
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return deleted;
     }
@@ -223,6 +232,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         [updateResourceMethodResourceType(aBasicCapability, aResource)/] updatedResource = null;
         // [protected (updateResourceMethodName(aBasicCapability, aResource))]
         // TODO Implement code to update and return a resource
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return updatedResource;
     }
@@ -241,6 +251,8 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         [backendCode(anAdaptorInterface.backendCodeTemplate_getResource, getResourceMethodResourceType(aResource), 'aResource', instanceCompositeID(aResource, aWebService))/]
         // [protected (getResourceMethodName(aResource, true))]
         // TODO Implement code to return a resource
+        // return 'null' if the resource was not found.
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return aResource;
     }
@@ -254,6 +266,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         Boolean deleted = false;
         // [protected (deleteResourceMethodName(aResource))]
         // TODO Implement code to delete a resource
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return deleted;
     }
@@ -266,6 +279,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         [updateResourceMethodResourceType(aResource)/] updatedResource = null;
         // [protected (updateResourceMethodName(aResource))]
         // TODO Implement code to update and return a resource
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return updatedResource;
     }
@@ -279,6 +293,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         String eTag = null;
         // [protected (getResourceETagMethodName(aResource))]
         // TODO Implement code to return an ETag for a particular resource
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return eTag;
     }
@@ -293,6 +308,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         String eTag = null;
         // [protected (getResourceETagMethodName(aCreationFactory.resourceTypes))]
         // TODO Implement code to return an ETag for a particular resource
+        // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
         // [/protected]
         return eTag;
     }

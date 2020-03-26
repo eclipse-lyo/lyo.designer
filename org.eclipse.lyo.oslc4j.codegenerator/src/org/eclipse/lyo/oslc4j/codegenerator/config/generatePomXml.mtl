@@ -146,6 +146,10 @@
     [projectHeader(anAdaptorInterface.name, mavenProjectConfiguration, true)/]
     [mavenProperties(mavenProjectConfiguration)/]
     [repositories()/]
+    <!-- [protected ('pre_dependencies')]
+    -->
+    <!-- [/protected]
+    -->
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(true)/]
@@ -157,6 +161,10 @@
             <version>1.5.22</version>
         </dependency>
     </dependencies>
+    <!-- [protected ('post_dependencies')]
+    -->
+    <!-- [/protected]
+    -->
     <build>
         <finalName>[mavenProjectConfiguration.artifactId/]</finalName>
             <plugins>
@@ -187,6 +195,10 @@
             </plugin>
         </plugins>
     </build>
+    <!-- [protected ('post_build')]
+    -->
+    <!-- [/protected]
+    -->
 </project>
 [/file]
 [/let]
@@ -205,11 +217,19 @@
     [projectHeader(mavenProjectConfiguration.artifactId, mavenProjectConfiguration, false)/]
     [mavenProperties(mavenProjectConfiguration)/]
     [repositories()/]
+    <!-- [protected ('pre_dependencies')]
+    -->
+    <!-- [/protected]
+    -->
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(false)/]
         [lyoDependencies(false, false)/]
     </dependencies>
+    <!-- [protected ('post_dependencies')]
+    -->
+    <!-- [/protected]
+    -->
 </project>
 [/file]
 [/let]
@@ -227,11 +247,19 @@
     [projectHeader(aDomainSpecification.name, mavenProjectConfiguration, false)/]
     [mavenProperties(mavenProjectConfiguration)/]
     [repositories()/]
+    <!-- [protected ('pre_dependencies')]
+    -->
+    <!-- [/protected]
+    -->
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(false)/]
         [lyoDependencies(false, false)/]
     </dependencies>
+    <!-- [protected ('post_dependencies')]
+    -->
+    <!-- [/protected]
+    -->
 </project>
 [/file]
 [/let]
