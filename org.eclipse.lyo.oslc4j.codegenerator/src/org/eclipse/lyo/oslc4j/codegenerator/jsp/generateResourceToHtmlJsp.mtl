@@ -50,12 +50,12 @@
 <%
 String asLocalResource = request.getParameter("asLocalResource");
 [javaClassName(aResource)/] aResource = null;
-if (request.getAttribute("a[javaName(aResource, true)/]") != null) {
-    aResource = ([javaClassName(aResource)/]) request.getAttribute("a[javaName(aResource, true)/]");
+if (request.getParameter("resourceUri") != null) {
+    aResource = new [javaClassName(aResource)/] (new URI(request.getParameter("resourceUri")));
 }
 else {
-    if (request.getParameter("resourceUri") != null) {
-        aResource = new [javaClassName(aResource)/] (new URI(request.getParameter("resourceUri")));
+    if (request.getAttribute("a[javaName(aResource, true)/]") != null) {
+        aResource = ([javaClassName(aResource)/]) request.getAttribute("a[javaName(aResource, true)/]");
     }
 }
 
