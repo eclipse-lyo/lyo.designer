@@ -160,6 +160,10 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 				return createShaclPropertyAdapter();
 			}
 			@Override
+			public Adapter caseAuthenticationConfiguration(AuthenticationConfiguration object) {
+				return createAuthenticationConfigurationAdapter();
+			}
+			@Override
 			public Adapter caseGeneralConfiguration(GeneralConfiguration object) {
 				return createGeneralConfigurationAdapter();
 			}
@@ -512,6 +516,20 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createShaclPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.AuthenticationConfiguration <em>Authentication Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.AuthenticationConfiguration
+	 * @generated
+	 */
+	public Adapter createAuthenticationConfigurationAdapter() {
 		return null;
 	}
 

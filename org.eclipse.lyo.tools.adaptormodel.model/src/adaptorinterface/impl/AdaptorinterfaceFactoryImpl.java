@@ -78,6 +78,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 			case AdaptorinterfacePackage.SHACL_SHAPE: return createShaclShape();
 			case AdaptorinterfacePackage.SHAPE_PROPERTY: return createShapeProperty();
 			case AdaptorinterfacePackage.SHACL_PROPERTY: return createShaclProperty();
+			case AdaptorinterfacePackage.AUTHENTICATION_CONFIGURATION: return createAuthenticationConfiguration();
 			case AdaptorinterfacePackage.GENERAL_CONFIGURATION: return createGeneralConfiguration();
 			case AdaptorinterfacePackage.PROJECT_CONFIGURATION: return createProjectConfiguration();
 			case AdaptorinterfacePackage.SERVER_CONFIGURATION: return createServerConfiguration();
@@ -357,6 +358,16 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	public ShaclProperty createShaclProperty() {
 		ShaclPropertyImpl shaclProperty = new ShaclPropertyImpl();
 		return shaclProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AuthenticationConfiguration createAuthenticationConfiguration() {
+		AuthenticationConfigurationImpl authenticationConfiguration = new AuthenticationConfigurationImpl();
+		return authenticationConfiguration;
 	}
 
 	/**

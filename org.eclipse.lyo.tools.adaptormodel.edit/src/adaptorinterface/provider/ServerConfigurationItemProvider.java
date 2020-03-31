@@ -173,6 +173,7 @@ public class ServerConfigurationItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__GENERAL_CONFIGURATION);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__PROJECT_CONFIGURATION);
+			childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION);
 		}
 		return childrenFeatures;
 	}
@@ -236,6 +237,7 @@ public class ServerConfigurationItemProvider
 				return;
 			case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERAL_CONFIGURATION:
 			case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -267,6 +269,11 @@ public class ServerConfigurationItemProvider
 			(createChildParameter
 				(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__PROJECT_CONFIGURATION,
 				 AdaptorinterfaceFactory.eINSTANCE.createMavenProjectConfiguration()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION,
+				 AdaptorinterfaceFactory.eINSTANCE.createAuthenticationConfiguration()));
 	}
 
 	/**

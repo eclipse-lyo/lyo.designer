@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.ServerConfiguration#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}</li>
  *   <li>{@link adaptorinterface.ServerConfiguration#getGeneralConfiguration <em>General Configuration</em>}</li>
  *   <li>{@link adaptorinterface.ServerConfiguration#getProjectConfiguration <em>Project Configuration</em>}</li>
+ *   <li>{@link adaptorinterface.ServerConfiguration#getAuthenticationConfiguration <em>Authentication Configuration</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getServerConfiguration()
@@ -181,5 +182,31 @@ public interface ServerConfiguration extends EObject {
 	 * @generated
 	 */
 	void setProjectConfiguration(ProjectConfiguration value);
+
+	/**
+	 * Returns the value of the '<em><b>Authentication Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Authentication Configuration</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Authentication Configuration</em>' containment reference.
+	 * @see #setAuthenticationConfiguration(AuthenticationConfiguration)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getServerConfiguration_AuthenticationConfiguration()
+	 * @model containment="true"
+	 * @generated
+	 */
+	AuthenticationConfiguration getAuthenticationConfiguration();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.ServerConfiguration#getAuthenticationConfiguration <em>Authentication Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Authentication Configuration</em>' containment reference.
+	 * @see #getAuthenticationConfiguration()
+	 * @generated
+	 */
+	void setAuthenticationConfiguration(AuthenticationConfiguration value);
 
 } // ServerConfiguration
