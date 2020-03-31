@@ -88,6 +88,9 @@ import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
 import org.eclipse.lyo.oslc4j.provider.jena.JenaProvidersRegistry;
 import org.eclipse.lyo.oslc4j.provider.json4j.Json4JProvidersRegistry;
 
+[if (anAdaptorInterface.authenticationEnabled())]
+import [anAdaptorInterface.javaClassFullNameForRootServicesService() /];
+[/if]
 [if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined())]
 import [javaClassFullNameForService(anAdaptorInterface.serviceProviderCatalog) /];
 [/if]
@@ -145,6 +148,17 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
         // Swagger resources
         RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.ApiListingResource.class);
         RESOURCE_CLASSES.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+        [/if]
+        [if anAdaptorInterface.authenticationEnabled()]
+        // OAuth resources
+        RESOURCE_CLASSES.add([anAdaptorInterface.javaClassNameForRootServicesService() /].class);
+        try {
+            RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.ConsumersService"));
+            RESOURCE_CLASSES.add(Class.forName("org.eclipse.lyo.server.oauth.webapp.services.OAuthService"));
+        } catch (ClassNotFoundException e) {
+            // [protected ('OAuthServiceClasses_notFound')]
+            // [/protected]
+        }
         [/if]
 
         // [protected ('Custom Resource Classes')]

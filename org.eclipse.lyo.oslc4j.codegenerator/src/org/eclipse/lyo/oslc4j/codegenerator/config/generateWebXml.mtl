@@ -54,6 +54,17 @@
         <servlet-name>JAX-RS Servlet</servlet-name>
         <url-pattern>[anAdaptorInterface.configuration.servletUrlPattern/]</url-pattern>
     </servlet-mapping>
+    [if anAdaptorInterface.authenticationEnabled()]
+    <filter>
+        <display-name>CredentialsFilter</display-name>
+        <filter-name>CredentialsFilter</filter-name>
+        <filter-class>[javaClassFullNameForCredentialsFilter(anAdaptorInterface)/]</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CredentialsFilter</filter-name>
+        <url-pattern>[anAdaptorInterface.configuration.servletUrlPattern/]</url-pattern>
+    </filter-mapping>
+    [/if]
     [if anAdaptorInterface.swaggerDocumentation]
     <servlet>
         <servlet-name>DefaultJaxrsConfig</servlet-name>

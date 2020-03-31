@@ -38,6 +38,26 @@ else
 endif)
 /]
 
+[query public authenticationOauthRealm(anAdaptorInterface : AdaptorInterface) : String = 
+anAdaptorInterface.configuration.authenticationConfiguration.oauthRealm
+/]
+
+[query public authenticationApplicationName(anAdaptorInterface : AdaptorInterface) : String = 
+anAdaptorInterface.configuration.authenticationConfiguration.applicationName
+/]
+
+[query public authenticationEnabled(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if (anAdaptorInterface.configuration.oclIsUndefined()) then 
+    false
+else
+    (if anAdaptorInterface.configuration.authenticationConfiguration.oclIsUndefined() then 
+        false
+    else
+        true
+    endif)
+endif)
+/]
+
 [query public swaggerDocumentationEnabled(anAdaptorInterface : AdaptorInterface) : Boolean = 
 (if anAdaptorInterface.swaggerDocumentation.oclIsUndefined() then
     false
@@ -205,6 +225,91 @@ aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(
 relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
     relevantVocabularies(aDomainSpecification)
 )->flatten()->asSet()
+/]
+
+[comment Services for AuthenticationApplication/]
+[query public javaClassPackageNameForAuthenticationApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.auth')
+/]
+
+[query public javaClassNameForAuthenticationApplication(anAdaptorInterface : AdaptorInterface) : String = 
+'AuthenticationApplication'
+/]
+
+[query public javaClassFullNameForAuthenticationApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForAuthenticationApplication(anAdaptorInterface).concat('.').concat(javaClassNameForAuthenticationApplication(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForAuthenticationApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAuthenticationApplication(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForAuthenticationApplication(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for CredentialsFilter/]
+[query public javaClassPackageNameForCredentialsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForCredentialsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+'CredentialsFilter'
+/]
+
+[query public javaClassFullNameForCredentialsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForCredentialsFilter(anAdaptorInterface).concat('.').concat(javaClassNameForCredentialsFilter(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForCredentialsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForCredentialsFilter(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForCredentialsFilter(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for RootServicesService/]
+[query public javaClassPackageNameForRootServicesService(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.services')
+/]
+
+[query public javaClassNameForRootServicesService(anAdaptorInterface : AdaptorInterface) : String = 
+'RootServicesService'
+/]
+
+[query public javaClassFullNameForRootServicesService(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForRootServicesService(anAdaptorInterface).concat('.').concat(javaClassNameForRootServicesService(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForRootServicesService(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForRootServicesService(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForRootServicesService(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for RestException/]
+[query public javaClassPackageNameForRestException(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.exception')
+/]
+
+[query public javaClassNameForRestException(anAdaptorInterface : AdaptorInterface) : String = 
+'RestException'
+/]
+
+[query public javaClassFullNameForRestException(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForRestException(anAdaptorInterface).concat('.').concat(javaClassNameForRestException(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForRestException(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForRestException(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForRestException(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for UnauthorizedException/]
+[query public javaClassPackageNameForUnauthorizedException(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.exception')
+/]
+
+[query public javaClassNameForUnauthorizedException(anAdaptorInterface : AdaptorInterface) : String = 
+'UnauthorizedException'
+/]
+
+[query public javaClassFullNameForUnauthorizedException(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForUnauthorizedException(anAdaptorInterface).concat('.').concat(javaClassNameForUnauthorizedException(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForUnauthorizedException(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForUnauthorizedException(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForUnauthorizedException(anAdaptorInterface)).concat('.java')
 /]
 
 [comment Services for AdaptorPackageInfo /]
