@@ -1116,13 +1116,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_PROPERTY__REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Rdf Collection Representation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 7;
+
+	/**
 	 * The feature id for the '<em><b>Range</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__RANGE = SHAPE_PROPERTY_FEATURE_COUNT + 7;
+	int RESOURCE_PROPERTY__RANGE = SHAPE_PROPERTY_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1131,7 +1140,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__DESCRIPTION = SHAPE_PROPERTY_FEATURE_COUNT + 8;
+	int RESOURCE_PROPERTY__DESCRIPTION = SHAPE_PROPERTY_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Allowed Value</b></em>' attribute list.
@@ -1140,7 +1149,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__ALLOWED_VALUE = SHAPE_PROPERTY_FEATURE_COUNT + 9;
+	int RESOURCE_PROPERTY__ALLOWED_VALUE = SHAPE_PROPERTY_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Is Member Property</b></em>' attribute.
@@ -1149,7 +1158,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = SHAPE_PROPERTY_FEATURE_COUNT + 10;
+	int RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = SHAPE_PROPERTY_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Resource Property</em>' class.
@@ -1158,7 +1167,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 11;
+	int RESOURCE_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of operations of the '<em>Resource Property</em>' class.
@@ -2261,6 +2270,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 33;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyRdfCollectionRepresentation <em>Resource Property Rdf Collection Representation</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.ResourcePropertyRdfCollectionRepresentation
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRdfCollectionRepresentation()
+	 * @generated
+	 */
+	int RESOURCE_PROPERTY_RDF_COLLECTION_REPRESENTATION = 34;
+
+	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2268,7 +2287,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
 	 * @generated
 	 */
-	int RESOURCE_SERVICE_NAMESPACE = 34;
+	int RESOURCE_SERVICE_NAMESPACE = 35;
 
 
 	/**
@@ -2279,7 +2298,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
 	 * @generated
 	 */
-	int SHACL_PROPERTY_DATA_TYPE = 35;
+	int SHACL_PROPERTY_DATA_TYPE = 36;
 
 
 	/**
@@ -3064,6 +3083,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResourceProperty_Representation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ResourceProperty#getRdfCollectionRepresentation <em>Rdf Collection Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rdf Collection Representation</em>'.
+	 * @see adaptorinterface.ResourceProperty#getRdfCollectionRepresentation()
+	 * @see #getResourceProperty()
+	 * @generated
+	 */
+	EAttribute getResourceProperty_RdfCollectionRepresentation();
 
 	/**
 	 * Returns the meta object for the reference list '{@link adaptorinterface.ResourceProperty#getRange <em>Range</em>}'.
@@ -4108,6 +4138,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EEnum getResourcePropertyIsMemberProperty();
 
 	/**
+	 * Returns the meta object for enum '{@link adaptorinterface.ResourcePropertyRdfCollectionRepresentation <em>Resource Property Rdf Collection Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Resource Property Rdf Collection Representation</em>'.
+	 * @see adaptorinterface.ResourcePropertyRdfCollectionRepresentation
+	 * @generated
+	 */
+	EEnum getResourcePropertyRdfCollectionRepresentation();
+
+	/**
 	 * Returns the meta object for enum '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4743,6 +4783,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOURCE_PROPERTY__REPRESENTATION = eINSTANCE.getResourceProperty_Representation();
+
+		/**
+		 * The meta object literal for the '<em><b>Rdf Collection Representation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION = eINSTANCE.getResourceProperty_RdfCollectionRepresentation();
 
 		/**
 		 * The meta object literal for the '<em><b>Range</b></em>' reference list feature.
@@ -5569,6 +5617,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = eINSTANCE.getResourcePropertyIsMemberProperty();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.ResourcePropertyRdfCollectionRepresentation <em>Resource Property Rdf Collection Representation</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.ResourcePropertyRdfCollectionRepresentation
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRdfCollectionRepresentation()
+		 * @generated
+		 */
+		EEnum RESOURCE_PROPERTY_RDF_COLLECTION_REPRESENTATION = eINSTANCE.getResourcePropertyRdfCollectionRepresentation();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.

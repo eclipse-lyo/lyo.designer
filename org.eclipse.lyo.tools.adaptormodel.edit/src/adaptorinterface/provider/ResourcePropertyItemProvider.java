@@ -52,6 +52,7 @@ public class ResourcePropertyItemProvider
 			addReadOnlyPropertyDescriptor(object);
 			addValueTypePropertyDescriptor(object);
 			addRepresentationPropertyDescriptor(object);
+			addRdfCollectionRepresentationPropertyDescriptor(object);
 			addRangePropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
 			addAllowedValuePropertyDescriptor(object);
@@ -215,6 +216,28 @@ public class ResourcePropertyItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Rdf Collection Representation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRdfCollectionRepresentationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ResourceProperty_rdfCollectionRepresentation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_rdfCollectionRepresentation_feature", "_UI_ResourceProperty_type"),
+				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Range feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -346,6 +369,7 @@ public class ResourcePropertyItemProvider
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__READ_ONLY:
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__VALUE_TYPE:
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION:
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:

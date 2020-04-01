@@ -7,6 +7,7 @@ import adaptorinterface.Resource;
 import adaptorinterface.ResourceProperty;
 import adaptorinterface.ResourcePropertyIsMemberProperty;
 import adaptorinterface.ResourcePropertyOccurs;
+import adaptorinterface.ResourcePropertyRdfCollectionRepresentation;
 import adaptorinterface.ResourcePropertyRepresentation;
 import adaptorinterface.ResourcePropertyValueType;
 
@@ -39,6 +40,7 @@ import vocabulary.Property;
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getValueType <em>Value Type</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getRepresentation <em>Representation</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getRdfCollectionRepresentation <em>Rdf Collection Representation</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getRange <em>Range</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getAllowedValue <em>Allowed Value</em>}</li>
@@ -177,6 +179,26 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * @ordered
 	 */
 	protected ResourcePropertyRepresentation representation = REPRESENTATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRdfCollectionRepresentation() <em>Rdf Collection Representation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRdfCollectionRepresentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ResourcePropertyRdfCollectionRepresentation RDF_COLLECTION_REPRESENTATION_EDEFAULT = ResourcePropertyRdfCollectionRepresentation.NA;
+
+	/**
+	 * The cached value of the '{@link #getRdfCollectionRepresentation() <em>Rdf Collection Representation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRdfCollectionRepresentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected ResourcePropertyRdfCollectionRepresentation rdfCollectionRepresentation = RDF_COLLECTION_REPRESENTATION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getRange() <em>Range</em>}' reference list.
@@ -440,6 +462,27 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ResourcePropertyRdfCollectionRepresentation getRdfCollectionRepresentation() {
+		return rdfCollectionRepresentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRdfCollectionRepresentation(ResourcePropertyRdfCollectionRepresentation newRdfCollectionRepresentation) {
+		ResourcePropertyRdfCollectionRepresentation oldRdfCollectionRepresentation = rdfCollectionRepresentation;
+		rdfCollectionRepresentation = newRdfCollectionRepresentation == null ? RDF_COLLECTION_REPRESENTATION_EDEFAULT : newRdfCollectionRepresentation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION, oldRdfCollectionRepresentation, rdfCollectionRepresentation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EList<Resource> getRange() {
 		if (range == null) {
@@ -530,6 +573,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 				return getValueType();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
 				return getRepresentation();
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION:
+				return getRdfCollectionRepresentation();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
 				return getRange();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
@@ -571,6 +616,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 				return;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
 				setRepresentation((ResourcePropertyRepresentation)newValue);
+				return;
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION:
+				setRdfCollectionRepresentation((ResourcePropertyRdfCollectionRepresentation)newValue);
 				return;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
 				getRange().clear();
@@ -619,6 +667,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
 				setRepresentation(REPRESENTATION_EDEFAULT);
 				return;
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION:
+				setRdfCollectionRepresentation(RDF_COLLECTION_REPRESENTATION_EDEFAULT);
+				return;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
 				getRange().clear();
 				return;
@@ -657,6 +708,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 				return valueType != VALUE_TYPE_EDEFAULT;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
 				return representation != REPRESENTATION_EDEFAULT;
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION:
+				return rdfCollectionRepresentation != RDF_COLLECTION_REPRESENTATION_EDEFAULT;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
 				return range != null && !range.isEmpty();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
@@ -691,6 +744,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 		result.append(valueType);
 		result.append(", representation: ");
 		result.append(representation);
+		result.append(", rdfCollectionRepresentation: ");
+		result.append(rdfCollectionRepresentation);
 		result.append(", description: ");
 		result.append(description);
 		result.append(", allowedValue: ");

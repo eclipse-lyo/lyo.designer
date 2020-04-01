@@ -84,6 +84,7 @@ import org.eclipse.lyo.oslc4j.core.annotation.OslcName;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcNamespace;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcOccurs;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcPropertyDefinition;
+import org.eclipse.lyo.oslc4j.core.annotation.OslcRdfCollectionType;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcRange;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcReadOnly;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcRepresentation;
@@ -136,6 +137,9 @@ public interface [javaInterfaceName(aResource) /]
     [/if]
     [if (not (descriptionAnnotation(aProperty) = ''))]
     [descriptionAnnotation(aProperty)/]
+    [/if]
+    [if (not (rdfCollectionTypeAnnotation(aProperty) = ''))]
+    [rdfCollectionTypeAnnotation(aProperty)/]
     [/if]
     [if (not (occursAnnotation(aProperty) = ''))]
     [occursAnnotation(aProperty)/]
