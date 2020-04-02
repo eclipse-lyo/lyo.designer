@@ -142,7 +142,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="representation" eType="#//ResourcePropertyRepresentation"
         defaultValueLiteral="n_a"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rdfCollectionRepresentation"
-        eType="#//ResourcePropertyRdfCollectionRepresentation" defaultValueLiteral="n_a"/>
+        eType="#//ResourcePropertyRdfCollectionRepresentation" defaultValueLiteral="none"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="range" upperBound="-1"
         eType="#//Resource"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -180,9 +180,8 @@
     <eLiterals name="true" value="1" literal="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResourcePropertyRdfCollectionRepresentation">
-    <eLiterals name="n_a" literal="n_a"/>
+    <eLiterals name="none" literal="none"/>
     <eLiterals name="rdfList" value="1" literal="rdfList"/>
-    <eLiterals name="rdfBag" value="2" literal="rdfBag"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CreationFactory">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

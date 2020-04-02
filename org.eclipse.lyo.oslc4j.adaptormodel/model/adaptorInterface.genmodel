@@ -40,9 +40,8 @@
       <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ResourcePropertyIsMemberProperty/true"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="adaptorInterface.ecore#//ResourcePropertyRdfCollectionRepresentation">
-      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ResourcePropertyRdfCollectionRepresentation/n_a"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ResourcePropertyRdfCollectionRepresentation/none"/>
       <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ResourcePropertyRdfCollectionRepresentation/rdfList"/>
-      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ResourcePropertyRdfCollectionRepresentation/rdfBag"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="adaptorInterface.ecore#//ResourceServiceNamespace">
       <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ResourceServiceNamespace/relativeToServiceProvider"/>

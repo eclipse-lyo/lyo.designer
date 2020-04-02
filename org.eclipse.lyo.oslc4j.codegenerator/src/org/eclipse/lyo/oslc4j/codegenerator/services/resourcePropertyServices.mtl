@@ -136,11 +136,7 @@ Also, only annotation if the occurs is "many"/]
         if (aProperty.rdfCollectionRepresentation = ResourcePropertyRdfCollectionRepresentation::rdfList) then
             '@OslcRdfCollectionType(collectionType = OslcRdfCollectionType.RDF_LIST)'
         else
-            if (aProperty.rdfCollectionRepresentation = ResourcePropertyRdfCollectionRepresentation::rdfBag) then
-                '@OslcRdfCollectionType(collectionType = OslcRdfCollectionType.RDF_BAG)'
-            else
-                ''
-            endif
+            ''
         endif
     else
         ''

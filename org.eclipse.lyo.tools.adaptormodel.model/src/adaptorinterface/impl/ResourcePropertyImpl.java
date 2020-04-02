@@ -188,7 +188,7 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ResourcePropertyRdfCollectionRepresentation RDF_COLLECTION_REPRESENTATION_EDEFAULT = ResourcePropertyRdfCollectionRepresentation.NA;
+	protected static final ResourcePropertyRdfCollectionRepresentation RDF_COLLECTION_REPRESENTATION_EDEFAULT = ResourcePropertyRdfCollectionRepresentation.NONE;
 
 	/**
 	 * The cached value of the '{@link #getRdfCollectionRepresentation() <em>Rdf Collection Representation</em>}' attribute.

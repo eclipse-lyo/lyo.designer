@@ -228,7 +228,7 @@ public interface ResourceProperty extends ShapeProperty {
 
 	/**
 	 * Returns the value of the '<em><b>Rdf Collection Representation</b></em>' attribute.
-	 * The default value is <code>"n_a"</code>.
+	 * The default value is <code>"none"</code>.
 	 * The literals are from the enumeration {@link adaptorinterface.ResourcePropertyRdfCollectionRepresentation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -240,7 +240,7 @@ public interface ResourceProperty extends ShapeProperty {
 	 * @see adaptorinterface.ResourcePropertyRdfCollectionRepresentation
 	 * @see #setRdfCollectionRepresentation(ResourcePropertyRdfCollectionRepresentation)
 	 * @see adaptorinterface.AdaptorinterfacePackage#getResourceProperty_RdfCollectionRepresentation()
-	 * @model default="n_a"
+	 * @model default="none"
 	 * @generated
 	 */
 	ResourcePropertyRdfCollectionRepresentation getRdfCollectionRepresentation();

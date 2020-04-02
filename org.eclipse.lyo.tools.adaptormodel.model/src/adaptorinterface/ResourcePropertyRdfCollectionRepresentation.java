@@ -19,16 +19,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	/**
-	 * The '<em><b>Na</b></em>' literal object.
+	 * The '<em><b>None</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NA_VALUE
+	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NA(0, "n_a", "n_a"),
-
-	/**
+	NONE(0, "none", "none"), /**
 	 * The '<em><b>Rdf List</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36,32 +34,22 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	RDF_LIST(1, "rdfList", "rdfList"),
+	RDF_LIST(1, "rdfList", "rdfList");
 
 	/**
-	 * The '<em><b>Rdf Bag</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RDF_BAG_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	RDF_BAG(2, "rdfBag", "rdfBag");
-
-	/**
-	 * The '<em><b>Na</b></em>' literal value.
+	 * The '<em><b>None</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Na</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NA
-	 * @model name="n_a"
+	 * @see #NONE
+	 * @model name="none"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NA_VALUE = 0;
+	public static final int NONE_VALUE = 0;
 
 	/**
 	 * The '<em><b>Rdf List</b></em>' literal value.
@@ -79,21 +67,6 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	public static final int RDF_LIST_VALUE = 1;
 
 	/**
-	 * The '<em><b>Rdf Bag</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Rdf Bag</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #RDF_BAG
-	 * @model name="rdfBag"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RDF_BAG_VALUE = 2;
-
-	/**
 	 * An array of all the '<em><b>Resource Property Rdf Collection Representation</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,9 +74,8 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	 */
 	private static final ResourcePropertyRdfCollectionRepresentation[] VALUES_ARRAY =
 		new ResourcePropertyRdfCollectionRepresentation[] {
-			NA,
+			NONE,
 			RDF_LIST,
-			RDF_BAG,
 		};
 
 	/**
@@ -160,9 +132,8 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	 */
 	public static ResourcePropertyRdfCollectionRepresentation get(int value) {
 		switch (value) {
-			case NA_VALUE: return NA;
+			case NONE_VALUE: return NONE;
 			case RDF_LIST_VALUE: return RDF_LIST;
-			case RDF_BAG_VALUE: return RDF_BAG;
 		}
 		return null;
 	}
