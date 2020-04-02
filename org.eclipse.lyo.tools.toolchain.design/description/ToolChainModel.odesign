@@ -858,6 +858,13 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
+          <subNodeMappings name="AdaptorInterface.ServerConfiguration.AuthenticationConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.AuthenticationConfiguration">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="Authentication" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Configuration" backgroundStyle="Liquid">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>italic</labelFormat>
@@ -1153,6 +1160,18 @@
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="version" valueExpression="['0.0.1-SNAPSHOT'/]"/>
                   </subModelOperations>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateAuthenticationConfiguration" label="Authentication Configuration" precondition="[self.authenticationConfiguration.oclIsUndefined()/]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.ServerConfiguration']/@subNodeMappings[name='AdaptorInterface.ServerConfiguration.AuthenticationConfiguration']">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="adaptor" computationExpression="[container.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)/]"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.AuthenticationConfiguration" referenceName="authenticationConfiguration">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="applicationName" valueExpression="[adaptor.name/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="oauthRealm" valueExpression="[adaptor.name/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

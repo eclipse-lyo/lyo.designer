@@ -210,6 +210,12 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AdaptorinterfacePackage.AUTHENTICATION_CONFIGURATION: {
+				AuthenticationConfiguration authenticationConfiguration = (AuthenticationConfiguration)theEObject;
+				T result = caseAuthenticationConfiguration(authenticationConfiguration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AdaptorinterfacePackage.GENERAL_CONFIGURATION: {
 				GeneralConfiguration generalConfiguration = (GeneralConfiguration)theEObject;
 				T result = caseGeneralConfiguration(generalConfiguration);
@@ -586,6 +592,21 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseShaclProperty(ShaclProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Authentication Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Authentication Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAuthenticationConfiguration(AuthenticationConfiguration object) {
 		return null;
 	}
 

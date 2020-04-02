@@ -106,7 +106,7 @@
 [/if]
 [/template]
 
-[template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean)]
+[template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean, authenticationEnabled : Boolean)]
 <!-- Lyo dependencies -->
 <dependency>
     <groupId>org.eclipse.lyo.oslc4j.core</groupId>
@@ -132,6 +132,24 @@
     <version>${version.lyo}</version>
 </dependency>
 [/if]
+[if authenticationEnabled]
+<dependency>
+    <groupId>org.eclipse.lyo.server</groupId>
+    <artifactId>oauth-core</artifactId>
+    <version>${version.lyo}</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.lyo.server</groupId>
+    <artifactId>oauth-consumer-store</artifactId>
+    <version>${version.lyo}</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.lyo.server</groupId>
+    <artifactId>oauth-webapp</artifactId>
+    <version>${version.lyo}</version>
+    <type>war</type>
+</dependency>
+[/if]
 [/template]
 
 [template public generatePomXml(anAdaptorInterface : AdaptorInterface)]
@@ -153,7 +171,7 @@
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(true)/]
-        [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty())/]
+        [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled())/]
         <!-- Swagger dependencies -->
         <dependency>
             <groupId>io.swagger</groupId>
@@ -224,7 +242,7 @@
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(false)/]
-        [lyoDependencies(false, false)/]
+        [lyoDependencies(false, false, false)/]
     </dependencies>
     <!-- [protected ('post_dependencies')]
     -->
@@ -254,7 +272,7 @@
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(false)/]
-        [lyoDependencies(false, false)/]
+        [lyoDependencies(false, false, false)/]
     </dependencies>
     <!-- [protected ('post_dependencies')]
     -->
