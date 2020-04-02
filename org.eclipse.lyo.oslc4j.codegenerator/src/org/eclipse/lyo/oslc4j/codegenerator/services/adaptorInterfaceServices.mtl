@@ -278,40 +278,6 @@ javaClassPackageNameForRootServicesService(anAdaptorInterface).concat('.').conca
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForRootServicesService(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForRootServicesService(anAdaptorInterface)).concat('.java')
 /]
 
-[comment Services for RestException/]
-[query public javaClassPackageNameForRestException(anAdaptorInterface : AdaptorInterface) : String = 
-javaBasePackageName(anAdaptorInterface).concat('.exception')
-/]
-
-[query public javaClassNameForRestException(anAdaptorInterface : AdaptorInterface) : String = 
-'RestException'
-/]
-
-[query public javaClassFullNameForRestException(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassPackageNameForRestException(anAdaptorInterface).concat('.').concat(javaClassNameForRestException(anAdaptorInterface))
-/]
-
-[query public javaClassFullFileNameForRestException(anAdaptorInterface : AdaptorInterface) : String = 
-javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForRestException(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForRestException(anAdaptorInterface)).concat('.java')
-/]
-
-[comment Services for UnauthorizedException/]
-[query public javaClassPackageNameForUnauthorizedException(anAdaptorInterface : AdaptorInterface) : String = 
-javaBasePackageName(anAdaptorInterface).concat('.exception')
-/]
-
-[query public javaClassNameForUnauthorizedException(anAdaptorInterface : AdaptorInterface) : String = 
-'UnauthorizedException'
-/]
-
-[query public javaClassFullNameForUnauthorizedException(anAdaptorInterface : AdaptorInterface) : String = 
-javaClassPackageNameForUnauthorizedException(anAdaptorInterface).concat('.').concat(javaClassNameForUnauthorizedException(anAdaptorInterface))
-/]
-
-[query public javaClassFullFileNameForUnauthorizedException(anAdaptorInterface : AdaptorInterface) : String = 
-javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForUnauthorizedException(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForUnauthorizedException(anAdaptorInterface)).concat('.java')
-/]
-
 [comment Services for AdaptorPackageInfo /]
 [query public javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface : AdaptorInterface) : String = 
 javaBasePackageName(anAdaptorInterface).concat('.resources')

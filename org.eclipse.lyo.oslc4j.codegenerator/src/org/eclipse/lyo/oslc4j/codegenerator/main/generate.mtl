@@ -51,8 +51,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateRootServicesService/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateCredentialsFilter/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAuthenticationApplication/]
-[import org::eclipse::lyo::oslc4j::codegenerator::exceptions::generateUnauthorizedException/]
-[import org::eclipse::lyo::oslc4j::codegenerator::exceptions::generateRestException/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateCssAndJsFiles/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateResourceCollectionJsp/]
@@ -102,7 +100,6 @@
 [anAdaptorInterface.generateResourceCreatorClientJsp() /]
 [anAdaptorInterface.generateResourceShapeService() /]
 [anAdaptorInterface.generateResourceShapeJsp() /]
-[anAdaptorInterface.generateRestException()/]
 [/if]
 [/template]
 
@@ -111,7 +108,6 @@
 [anAdaptorInterface.generateRootServicesService()/]
 [anAdaptorInterface.generateCredentialsFilter()/]
 [anAdaptorInterface.generateAuthenticationApplication()/]
-[anAdaptorInterface.generateUnauthorizedException()/]
 [/if]
 [/template]
 

@@ -56,7 +56,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.lyo.server.oauth.core.Application;
 import org.eclipse.lyo.server.oauth.core.token.LRUCache;
 import org.eclipse.lyo.server.oauth.core.AuthenticationException;
-import [anAdaptorInterface.javaClassFullNameForUnauthorizedException()/];
 
 // [protected ('imports')]
 // [/protected]
@@ -152,14 +151,14 @@ public class [anAdaptorInterface.javaClassNameForAuthenticationApplication()/] i
      *      if the request did not contain an <code>Authorization</code> header
      *      or, on problems reading the credentials from the <code>Authorization</code> request header
      */
-    public void loginWithBasicAuthentication(HttpServletRequest request) throws UnauthorizedException {
+    public void loginWithBasicAuthentication(HttpServletRequest request) throws AuthenticationException {
         String authorizationHeader = request.getHeader(AUTHORIZATION_HEADER);
         if (authorizationHeader == null || "".equals(authorizationHeader)) {
-            throw new [anAdaptorInterface.javaClassNameForUnauthorizedException()/]("No basic authentication header identified in request.");
+            throw new AuthenticationException("No basic authentication header identified in request.");
         }
     
         if (!authorizationHeader.startsWith(BASIC_AUTHORIZATION_PREFIX)) {
-            throw new [anAdaptorInterface.javaClassNameForUnauthorizedException()/]("Only basic access authentication is supported.");
+            throw new AuthenticationException("Only basic access authentication is supported.");
         }
         
         String encodedString = authorizationHeader.substring(BASIC_AUTHORIZATION_PREFIX.length());
@@ -167,15 +166,15 @@ public class [anAdaptorInterface.javaClassNameForAuthenticationApplication()/] i
             String unencodedString = new String(Base64.getDecoder().decode(encodedString), "UTF-8");
             int seperator = unencodedString.indexOf(':');
             if (seperator == -1) {
-                throw new [anAdaptorInterface.javaClassNameForUnauthorizedException()/]("Invalid Authorization header value.");
+                throw new AuthenticationException("Invalid Authorization header value.");
             }
             String username = unencodedString.substring(0, seperator);
             String password = unencodedString.substring(seperator + 1);
             login(request, username, password);
         } catch (UnsupportedEncodingException e) {
-            throw new [anAdaptorInterface.javaClassNameForUnauthorizedException()/](e);
+            throw new AuthenticationException(e);
         } catch (AuthenticationException e) {
-            throw new [anAdaptorInterface.javaClassNameForUnauthorizedException()/](e);
+            throw new AuthenticationException(e);
         }
         return;
     }
