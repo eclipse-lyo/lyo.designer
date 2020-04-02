@@ -131,9 +131,9 @@ endif)
 [comment Only annotation if the rdfCollectionRepresentation & occurs properties are set.
 Also, only annotation if the occurs is "many"/]
 [query public rdfCollectionTypeAnnotation(aProperty: ResourceProperty) : String =
-(if ((not aProperty.rdfCollectionRepresentation.oclIsUndefined()) and (not aProperty.occurs.oclIsUndefined())) then
+(if ((not aProperty.multiValueRepresentation.oclIsUndefined()) and (not aProperty.occurs.oclIsUndefined())) then
     if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany or aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
-        if (aProperty.rdfCollectionRepresentation = ResourcePropertyRdfCollectionRepresentation::rdfList) then
+        if (aProperty.multiValueRepresentation = ResourcePropertyMultiValueRepresentation::rdfList) then
             '@OslcRdfCollectionType(collectionType = OslcRdfCollectionType.RDF_LIST)'
         else
             ''
@@ -199,9 +199,9 @@ aProperty.definingDomainSpecification().namespaceURI.concat('#').concat(javaName
 
 [comment return "Set" except for the case where we need an rdf collection of type rdf:list /]
 [query private javaAttributeCollectionType(aProperty: ResourceProperty) : String =
-(if ((not aProperty.rdfCollectionRepresentation.oclIsUndefined()) and (not aProperty.occurs.oclIsUndefined())) then
+(if ((not aProperty.multiValueRepresentation.oclIsUndefined()) and (not aProperty.occurs.oclIsUndefined())) then
     if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany or aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
-        if (aProperty.rdfCollectionRepresentation = ResourcePropertyRdfCollectionRepresentation::rdfList) then
+        if (aProperty.multiValueRepresentation = ResourcePropertyMultiValueRepresentation::rdfList) then
             'List'
         else
             'Set'

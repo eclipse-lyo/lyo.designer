@@ -10,23 +10,25 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Resource Property Rdf Collection Representation</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Resource Property Multi Value Representation</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see adaptorinterface.AdaptorinterfacePackage#getResourcePropertyRdfCollectionRepresentation()
+ * @see adaptorinterface.AdaptorinterfacePackage#getResourcePropertyMultiValueRepresentation()
  * @model
  * @generated
  */
-public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
+public enum ResourcePropertyMultiValueRepresentation implements Enumerator {
 	/**
-	 * The '<em><b>None</b></em>' literal object.
+	 * The '<em><b>Multiple Triples</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NONE_VALUE
+	 * @see #MULTIPLE_TRIPLES_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NONE(0, "none", "none"), /**
+	MULTIPLE_TRIPLES(0, "multipleTriples", "multipleTriples"),
+
+	/**
 	 * The '<em><b>Rdf List</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37,19 +39,19 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	RDF_LIST(1, "rdfList", "rdfList");
 
 	/**
-	 * The '<em><b>None</b></em>' literal value.
+	 * The '<em><b>Multiple Triples</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Multiple Triples</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NONE
-	 * @model name="none"
+	 * @see #MULTIPLE_TRIPLES
+	 * @model name="multipleTriples"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NONE_VALUE = 0;
+	public static final int MULTIPLE_TRIPLES_VALUE = 0;
 
 	/**
 	 * The '<em><b>Rdf List</b></em>' literal value.
@@ -67,36 +69,36 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	public static final int RDF_LIST_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Resource Property Rdf Collection Representation</b></em>' enumerators.
+	 * An array of all the '<em><b>Resource Property Multi Value Representation</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ResourcePropertyRdfCollectionRepresentation[] VALUES_ARRAY =
-		new ResourcePropertyRdfCollectionRepresentation[] {
-			NONE,
+	private static final ResourcePropertyMultiValueRepresentation[] VALUES_ARRAY =
+		new ResourcePropertyMultiValueRepresentation[] {
+			MULTIPLE_TRIPLES,
 			RDF_LIST,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Resource Property Rdf Collection Representation</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Resource Property Multi Value Representation</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ResourcePropertyRdfCollectionRepresentation> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ResourcePropertyMultiValueRepresentation> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Resource Property Rdf Collection Representation</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Resource Property Multi Value Representation</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ResourcePropertyRdfCollectionRepresentation get(String literal) {
+	public static ResourcePropertyMultiValueRepresentation get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ResourcePropertyRdfCollectionRepresentation result = VALUES_ARRAY[i];
+			ResourcePropertyMultiValueRepresentation result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -105,16 +107,16 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Resource Property Rdf Collection Representation</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Resource Property Multi Value Representation</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ResourcePropertyRdfCollectionRepresentation getByName(String name) {
+	public static ResourcePropertyMultiValueRepresentation getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ResourcePropertyRdfCollectionRepresentation result = VALUES_ARRAY[i];
+			ResourcePropertyMultiValueRepresentation result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -123,16 +125,16 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Resource Property Rdf Collection Representation</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Resource Property Multi Value Representation</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ResourcePropertyRdfCollectionRepresentation get(int value) {
+	public static ResourcePropertyMultiValueRepresentation get(int value) {
 		switch (value) {
-			case NONE_VALUE: return NONE;
+			case MULTIPLE_TRIPLES_VALUE: return MULTIPLE_TRIPLES;
 			case RDF_LIST_VALUE: return RDF_LIST;
 		}
 		return null;
@@ -165,7 +167,7 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ResourcePropertyRdfCollectionRepresentation(int value, String name, String literal) {
+	private ResourcePropertyMultiValueRepresentation(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -209,4 +211,4 @@ public enum ResourcePropertyRdfCollectionRepresentation implements Enumerator {
 		return literal;
 	}
 	
-} //ResourcePropertyRdfCollectionRepresentation
+} //ResourcePropertyMultiValueRepresentation

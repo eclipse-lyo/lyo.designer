@@ -1116,13 +1116,13 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_PROPERTY__REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Rdf Collection Representation</b></em>' attribute.
+	 * The feature id for the '<em><b>Multi Value Representation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 7;
+	int RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Range</b></em>' reference list.
@@ -2270,14 +2270,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 33;
 
 	/**
-	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyRdfCollectionRepresentation <em>Resource Property Rdf Collection Representation</em>}' enum.
+	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyMultiValueRepresentation <em>Resource Property Multi Value Representation</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.ResourcePropertyRdfCollectionRepresentation
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRdfCollectionRepresentation()
+	 * @see adaptorinterface.ResourcePropertyMultiValueRepresentation
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyMultiValueRepresentation()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_RDF_COLLECTION_REPRESENTATION = 34;
+	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 34;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -3085,15 +3085,15 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getResourceProperty_Representation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.ResourceProperty#getRdfCollectionRepresentation <em>Rdf Collection Representation</em>}'.
+	 * Returns the meta object for the attribute '{@link adaptorinterface.ResourceProperty#getMultiValueRepresentation <em>Multi Value Representation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Rdf Collection Representation</em>'.
-	 * @see adaptorinterface.ResourceProperty#getRdfCollectionRepresentation()
+	 * @return the meta object for the attribute '<em>Multi Value Representation</em>'.
+	 * @see adaptorinterface.ResourceProperty#getMultiValueRepresentation()
 	 * @see #getResourceProperty()
 	 * @generated
 	 */
-	EAttribute getResourceProperty_RdfCollectionRepresentation();
+	EAttribute getResourceProperty_MultiValueRepresentation();
 
 	/**
 	 * Returns the meta object for the reference list '{@link adaptorinterface.ResourceProperty#getRange <em>Range</em>}'.
@@ -4138,14 +4138,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EEnum getResourcePropertyIsMemberProperty();
 
 	/**
-	 * Returns the meta object for enum '{@link adaptorinterface.ResourcePropertyRdfCollectionRepresentation <em>Resource Property Rdf Collection Representation</em>}'.
+	 * Returns the meta object for enum '{@link adaptorinterface.ResourcePropertyMultiValueRepresentation <em>Resource Property Multi Value Representation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Resource Property Rdf Collection Representation</em>'.
-	 * @see adaptorinterface.ResourcePropertyRdfCollectionRepresentation
+	 * @return the meta object for enum '<em>Resource Property Multi Value Representation</em>'.
+	 * @see adaptorinterface.ResourcePropertyMultiValueRepresentation
 	 * @generated
 	 */
-	EEnum getResourcePropertyRdfCollectionRepresentation();
+	EEnum getResourcePropertyMultiValueRepresentation();
 
 	/**
 	 * Returns the meta object for enum '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}'.
@@ -4785,12 +4785,12 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute RESOURCE_PROPERTY__REPRESENTATION = eINSTANCE.getResourceProperty_Representation();
 
 		/**
-		 * The meta object literal for the '<em><b>Rdf Collection Representation</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Multi Value Representation</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION = eINSTANCE.getResourceProperty_RdfCollectionRepresentation();
+		EAttribute RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION = eINSTANCE.getResourceProperty_MultiValueRepresentation();
 
 		/**
 		 * The meta object literal for the '<em><b>Range</b></em>' reference list feature.
@@ -5619,14 +5619,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EEnum RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = eINSTANCE.getResourcePropertyIsMemberProperty();
 
 		/**
-		 * The meta object literal for the '{@link adaptorinterface.ResourcePropertyRdfCollectionRepresentation <em>Resource Property Rdf Collection Representation</em>}' enum.
+		 * The meta object literal for the '{@link adaptorinterface.ResourcePropertyMultiValueRepresentation <em>Resource Property Multi Value Representation</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see adaptorinterface.ResourcePropertyRdfCollectionRepresentation
-		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRdfCollectionRepresentation()
+		 * @see adaptorinterface.ResourcePropertyMultiValueRepresentation
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyMultiValueRepresentation()
 		 * @generated
 		 */
-		EEnum RESOURCE_PROPERTY_RDF_COLLECTION_REPRESENTATION = eINSTANCE.getResourcePropertyRdfCollectionRepresentation();
+		EEnum RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = eINSTANCE.getResourcePropertyMultiValueRepresentation();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.

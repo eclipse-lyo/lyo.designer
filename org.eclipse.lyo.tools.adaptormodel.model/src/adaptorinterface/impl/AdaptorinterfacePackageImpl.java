@@ -24,8 +24,8 @@ import adaptorinterface.RequiredAdaptor;
 import adaptorinterface.Resource;
 import adaptorinterface.ResourceProperty;
 import adaptorinterface.ResourcePropertyIsMemberProperty;
+import adaptorinterface.ResourcePropertyMultiValueRepresentation;
 import adaptorinterface.ResourcePropertyOccurs;
-import adaptorinterface.ResourcePropertyRdfCollectionRepresentation;
 import adaptorinterface.ResourcePropertyRepresentation;
 import adaptorinterface.ResourcePropertyValueType;
 import adaptorinterface.ResourceServiceNamespace;
@@ -301,7 +301,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum resourcePropertyRdfCollectionRepresentationEEnum = null;
+	private EEnum resourcePropertyMultiValueRepresentationEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1102,7 +1102,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getResourceProperty_RdfCollectionRepresentation() {
+	public EAttribute getResourceProperty_MultiValueRepresentation() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -2048,8 +2048,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getResourcePropertyRdfCollectionRepresentation() {
-		return resourcePropertyRdfCollectionRepresentationEEnum;
+	public EEnum getResourcePropertyMultiValueRepresentation() {
+		return resourcePropertyMultiValueRepresentationEEnum;
 	}
 
 	/**
@@ -2190,7 +2190,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__READ_ONLY);
 		createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__VALUE_TYPE);
 		createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__REPRESENTATION);
-		createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__RDF_COLLECTION_REPRESENTATION);
+		createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION);
 		createEReference(resourcePropertyEClass, RESOURCE_PROPERTY__RANGE);
 		createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__DESCRIPTION);
 		createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__ALLOWED_VALUE);
@@ -2302,7 +2302,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		resourcePropertyValueTypeEEnum = createEEnum(RESOURCE_PROPERTY_VALUE_TYPE);
 		resourcePropertyRepresentationEEnum = createEEnum(RESOURCE_PROPERTY_REPRESENTATION);
 		resourcePropertyIsMemberPropertyEEnum = createEEnum(RESOURCE_PROPERTY_IS_MEMBER_PROPERTY);
-		resourcePropertyRdfCollectionRepresentationEEnum = createEEnum(RESOURCE_PROPERTY_RDF_COLLECTION_REPRESENTATION);
+		resourcePropertyMultiValueRepresentationEEnum = createEEnum(RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION);
 		resourceServiceNamespaceEEnum = createEEnum(RESOURCE_SERVICE_NAMESPACE);
 		shaclPropertyDataTypeEEnum = createEEnum(SHACL_PROPERTY_DATA_TYPE);
 	}
@@ -2444,7 +2444,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getResourceProperty_ReadOnly(), ecorePackage.getEBoolean(), "readOnly", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResourceProperty_ValueType(), this.getResourcePropertyValueType(), "valueType", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResourceProperty_Representation(), this.getResourcePropertyRepresentation(), "representation", "n_a", 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getResourceProperty_RdfCollectionRepresentation(), this.getResourcePropertyRdfCollectionRepresentation(), "rdfCollectionRepresentation", "none", 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResourceProperty_MultiValueRepresentation(), this.getResourcePropertyMultiValueRepresentation(), "multiValueRepresentation", "multipleTriples", 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResourceProperty_Range(), this.getResource(), null, "range", null, 0, -1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResourceProperty_Description(), ecorePackage.getEString(), "description", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResourceProperty_AllowedValue(), ecorePackage.getEString(), "allowedValue", null, 0, -1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2581,9 +2581,9 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		addEEnumLiteral(resourcePropertyIsMemberPropertyEEnum, ResourcePropertyIsMemberProperty.FALSE);
 		addEEnumLiteral(resourcePropertyIsMemberPropertyEEnum, ResourcePropertyIsMemberProperty.TRUE);
 
-		initEEnum(resourcePropertyRdfCollectionRepresentationEEnum, ResourcePropertyRdfCollectionRepresentation.class, "ResourcePropertyRdfCollectionRepresentation");
-		addEEnumLiteral(resourcePropertyRdfCollectionRepresentationEEnum, ResourcePropertyRdfCollectionRepresentation.NONE);
-		addEEnumLiteral(resourcePropertyRdfCollectionRepresentationEEnum, ResourcePropertyRdfCollectionRepresentation.RDF_LIST);
+		initEEnum(resourcePropertyMultiValueRepresentationEEnum, ResourcePropertyMultiValueRepresentation.class, "ResourcePropertyMultiValueRepresentation");
+		addEEnumLiteral(resourcePropertyMultiValueRepresentationEEnum, ResourcePropertyMultiValueRepresentation.MULTIPLE_TRIPLES);
+		addEEnumLiteral(resourcePropertyMultiValueRepresentationEEnum, ResourcePropertyMultiValueRepresentation.RDF_LIST);
 
 		initEEnum(resourceServiceNamespaceEEnum, ResourceServiceNamespace.class, "ResourceServiceNamespace");
 		addEEnumLiteral(resourceServiceNamespaceEEnum, ResourceServiceNamespace.RELATIVE_TO_SERVICE_PROVIDER);

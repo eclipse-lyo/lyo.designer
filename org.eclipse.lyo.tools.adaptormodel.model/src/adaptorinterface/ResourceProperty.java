@@ -21,7 +21,7 @@ import vocabulary.Property;
  *   <li>{@link adaptorinterface.ResourceProperty#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getValueType <em>Value Type</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getRepresentation <em>Representation</em>}</li>
- *   <li>{@link adaptorinterface.ResourceProperty#getRdfCollectionRepresentation <em>Rdf Collection Representation</em>}</li>
+ *   <li>{@link adaptorinterface.ResourceProperty#getMultiValueRepresentation <em>Multi Value Representation</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getRange <em>Range</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getAllowedValue <em>Allowed Value</em>}</li>
@@ -227,34 +227,34 @@ public interface ResourceProperty extends ShapeProperty {
 	void setRepresentation(ResourcePropertyRepresentation value);
 
 	/**
-	 * Returns the value of the '<em><b>Rdf Collection Representation</b></em>' attribute.
-	 * The default value is <code>"none"</code>.
-	 * The literals are from the enumeration {@link adaptorinterface.ResourcePropertyRdfCollectionRepresentation}.
+	 * Returns the value of the '<em><b>Multi Value Representation</b></em>' attribute.
+	 * The default value is <code>"multipleTriples"</code>.
+	 * The literals are from the enumeration {@link adaptorinterface.ResourcePropertyMultiValueRepresentation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Rdf Collection Representation</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Multi Value Representation</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rdf Collection Representation</em>' attribute.
-	 * @see adaptorinterface.ResourcePropertyRdfCollectionRepresentation
-	 * @see #setRdfCollectionRepresentation(ResourcePropertyRdfCollectionRepresentation)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getResourceProperty_RdfCollectionRepresentation()
-	 * @model default="none"
+	 * @return the value of the '<em>Multi Value Representation</em>' attribute.
+	 * @see adaptorinterface.ResourcePropertyMultiValueRepresentation
+	 * @see #setMultiValueRepresentation(ResourcePropertyMultiValueRepresentation)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getResourceProperty_MultiValueRepresentation()
+	 * @model default="multipleTriples"
 	 * @generated
 	 */
-	ResourcePropertyRdfCollectionRepresentation getRdfCollectionRepresentation();
+	ResourcePropertyMultiValueRepresentation getMultiValueRepresentation();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.ResourceProperty#getRdfCollectionRepresentation <em>Rdf Collection Representation</em>}' attribute.
+	 * Sets the value of the '{@link adaptorinterface.ResourceProperty#getMultiValueRepresentation <em>Multi Value Representation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Rdf Collection Representation</em>' attribute.
-	 * @see adaptorinterface.ResourcePropertyRdfCollectionRepresentation
-	 * @see #getRdfCollectionRepresentation()
+	 * @param value the new value of the '<em>Multi Value Representation</em>' attribute.
+	 * @see adaptorinterface.ResourcePropertyMultiValueRepresentation
+	 * @see #getMultiValueRepresentation()
 	 * @generated
 	 */
-	void setRdfCollectionRepresentation(ResourcePropertyRdfCollectionRepresentation value);
+	void setMultiValueRepresentation(ResourcePropertyMultiValueRepresentation value);
 
 	/**
 	 * Returns the value of the '<em><b>Range</b></em>' reference list.
