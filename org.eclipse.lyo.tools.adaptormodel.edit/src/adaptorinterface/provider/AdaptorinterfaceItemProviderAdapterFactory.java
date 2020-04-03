@@ -532,6 +532,29 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.AuthenticationConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AuthenticationConfigurationItemProvider authenticationConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.AuthenticationConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAuthenticationConfigurationAdapter() {
+		if (authenticationConfigurationItemProvider == null) {
+			authenticationConfigurationItemProvider = new AuthenticationConfigurationItemProvider(this);
+		}
+
+		return authenticationConfigurationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link adaptorinterface.GeneralConfiguration} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -818,6 +841,7 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 		if (shaclShapeItemProvider != null) shaclShapeItemProvider.dispose();
 		if (shapePropertyItemProvider != null) shapePropertyItemProvider.dispose();
 		if (shaclPropertyItemProvider != null) shaclPropertyItemProvider.dispose();
+		if (authenticationConfigurationItemProvider != null) authenticationConfigurationItemProvider.dispose();
 		if (generalConfigurationItemProvider != null) generalConfigurationItemProvider.dispose();
 		if (projectConfigurationItemProvider != null) projectConfigurationItemProvider.dispose();
 		if (serverConfigurationItemProvider != null) serverConfigurationItemProvider.dispose();

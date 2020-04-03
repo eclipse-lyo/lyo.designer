@@ -3,6 +3,7 @@
 package adaptorinterface.impl;
 
 import adaptorinterface.AdaptorinterfacePackage;
+import adaptorinterface.AuthenticationConfiguration;
 import adaptorinterface.GeneralConfiguration;
 import adaptorinterface.ProjectConfiguration;
 import adaptorinterface.ServerConfiguration;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getGeneralConfiguration <em>General Configuration</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getProjectConfiguration <em>Project Configuration</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getAuthenticationConfiguration <em>Authentication Configuration</em>}</li>
  * </ul>
  *
  * @generated
@@ -134,6 +136,16 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected ProjectConfiguration projectConfiguration;
+
+	/**
+	 * The cached value of the '{@link #getAuthenticationConfiguration() <em>Authentication Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAuthenticationConfiguration()
+	 * @generated
+	 * @ordered
+	 */
+	protected AuthenticationConfiguration authenticationConfiguration;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -329,6 +341,49 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public AuthenticationConfiguration getAuthenticationConfiguration() {
+		return authenticationConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAuthenticationConfiguration(AuthenticationConfiguration newAuthenticationConfiguration, NotificationChain msgs) {
+		AuthenticationConfiguration oldAuthenticationConfiguration = authenticationConfiguration;
+		authenticationConfiguration = newAuthenticationConfiguration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION, oldAuthenticationConfiguration, newAuthenticationConfiguration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAuthenticationConfiguration(AuthenticationConfiguration newAuthenticationConfiguration) {
+		if (newAuthenticationConfiguration != authenticationConfiguration) {
+			NotificationChain msgs = null;
+			if (authenticationConfiguration != null)
+				msgs = ((InternalEObject)authenticationConfiguration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION, null, msgs);
+			if (newAuthenticationConfiguration != null)
+				msgs = ((InternalEObject)newAuthenticationConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION, null, msgs);
+			msgs = basicSetAuthenticationConfiguration(newAuthenticationConfiguration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION, newAuthenticationConfiguration, newAuthenticationConfiguration));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -336,6 +391,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 				return basicSetGeneralConfiguration(null, msgs);
 			case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
 				return basicSetProjectConfiguration(null, msgs);
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
+				return basicSetAuthenticationConfiguration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -360,6 +417,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 				return getGeneralConfiguration();
 			case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
 				return getProjectConfiguration();
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
+				return getAuthenticationConfiguration();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -389,6 +448,9 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 				return;
 			case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
 				setProjectConfiguration((ProjectConfiguration)newValue);
+				return;
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
+				setAuthenticationConfiguration((AuthenticationConfiguration)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -420,6 +482,9 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 			case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
 				setProjectConfiguration((ProjectConfiguration)null);
 				return;
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
+				setAuthenticationConfiguration((AuthenticationConfiguration)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -444,6 +509,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 				return generalConfiguration != null;
 			case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
 				return projectConfiguration != null;
+			case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
+				return authenticationConfiguration != null;
 		}
 		return super.eIsSet(featureID);
 	}

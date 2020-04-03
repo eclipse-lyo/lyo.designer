@@ -5,6 +5,7 @@ package adaptorinterface.impl;
 import adaptorinterface.AdaptorInterface;
 import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.AdaptorinterfacePackage;
+import adaptorinterface.AuthenticationConfiguration;
 import adaptorinterface.BasicCapability;
 import adaptorinterface.CreationFactory;
 import adaptorinterface.Dialog;
@@ -211,6 +212,13 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	private EClass shaclPropertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass authenticationConfigurationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1720,6 +1728,33 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAuthenticationConfiguration() {
+		return authenticationConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAuthenticationConfiguration_ApplicationName() {
+		return (EAttribute)authenticationConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAuthenticationConfiguration_OauthRealm() {
+		return (EAttribute)authenticationConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGeneralConfiguration() {
 		return generalConfigurationEClass;
 	}
@@ -1839,6 +1874,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	public EReference getServerConfiguration_ProjectConfiguration() {
 		return (EReference)serverConfigurationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServerConfiguration_AuthenticationConfiguration() {
+		return (EReference)serverConfigurationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2266,6 +2310,10 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(shaclPropertyEClass, SHACL_PROPERTY__DATA_TYPE);
 		createEReference(shaclPropertyEClass, SHACL_PROPERTY__CLASS);
 
+		authenticationConfigurationEClass = createEClass(AUTHENTICATION_CONFIGURATION);
+		createEAttribute(authenticationConfigurationEClass, AUTHENTICATION_CONFIGURATION__APPLICATION_NAME);
+		createEAttribute(authenticationConfigurationEClass, AUTHENTICATION_CONFIGURATION__OAUTH_REALM);
+
 		generalConfigurationEClass = createEClass(GENERAL_CONFIGURATION);
 		createEAttribute(generalConfigurationEClass, GENERAL_CONFIGURATION__DO_NOT_GENERATE);
 		createEAttribute(generalConfigurationEClass, GENERAL_CONFIGURATION__FILES_BASE_PATH);
@@ -2282,6 +2330,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(serverConfigurationEClass, SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES);
 		createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__GENERAL_CONFIGURATION);
 		createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__PROJECT_CONFIGURATION);
+		createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION);
 
 		specificationConfigurationEClass = createEClass(SPECIFICATION_CONFIGURATION);
 		createEReference(specificationConfigurationEClass, SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION);
@@ -2520,6 +2569,10 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getShaclProperty_DataType(), this.getShaclPropertyDataType(), "dataType", null, 0, 1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getShaclProperty_Class(), this.getShaclShape(), null, "class", null, 0, -1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(authenticationConfigurationEClass, AuthenticationConfiguration.class, "AuthenticationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAuthenticationConfiguration_ApplicationName(), ecorePackage.getEString(), "applicationName", null, 1, 1, AuthenticationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAuthenticationConfiguration_OauthRealm(), ecorePackage.getEString(), "oauthRealm", null, 1, 1, AuthenticationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(generalConfigurationEClass, GeneralConfiguration.class, "GeneralConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGeneralConfiguration_DoNotGenerate(), ecorePackage.getEBoolean(), "doNotGenerate", null, 0, 1, GeneralConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGeneralConfiguration_FilesBasePath(), ecorePackage.getEString(), "filesBasePath", null, 0, 1, GeneralConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2536,6 +2589,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getServerConfiguration_DoNotRegenerateJspFiles(), ecorePackage.getEBoolean(), "doNotRegenerateJspFiles", null, 0, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServerConfiguration_GeneralConfiguration(), this.getGeneralConfiguration(), null, "generalConfiguration", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServerConfiguration_ProjectConfiguration(), this.getProjectConfiguration(), null, "projectConfiguration", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServerConfiguration_AuthenticationConfiguration(), this.getAuthenticationConfiguration(), null, "authenticationConfiguration", null, 0, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(specificationConfigurationEClass, SpecificationConfiguration.class, "SpecificationConfiguration", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSpecificationConfiguration_GeneralConfiguration(), this.getGeneralConfiguration(), null, "generalConfiguration", null, 1, 1, SpecificationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

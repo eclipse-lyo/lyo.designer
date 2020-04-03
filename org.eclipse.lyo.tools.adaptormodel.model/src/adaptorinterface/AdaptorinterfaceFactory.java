@@ -202,6 +202,15 @@ public interface AdaptorinterfaceFactory extends EFactory {
 	ShaclProperty createShaclProperty();
 
 	/**
+	 * Returns a new object of class '<em>Authentication Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Authentication Configuration</em>'.
+	 * @generated
+	 */
+	AuthenticationConfiguration createAuthenticationConfiguration();
+
+	/**
 	 * Returns a new object of class '<em>General Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
