@@ -1,6 +1,5 @@
-/**
- */
 package adaptorinterface;
+
 
 import org.eclipse.emf.common.util.EList;
 import vocabulary.Property;

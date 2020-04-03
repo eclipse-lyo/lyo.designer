@@ -1,6 +1,5 @@
-/**
- */
 package adaptorinterface;
+
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -722,156 +721,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SERVICE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.ShapeImpl <em>Shape</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.ShapeImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShape()
-	 * @generated
-	 */
-	int SHAPE = 19;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.ResourceImpl <em>Resource</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.ResourceImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResource()
-	 * @generated
-	 */
-	int RESOURCE = 8;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.ShapePropertyImpl <em>Shape Property</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.ShapePropertyImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShapeProperty()
-	 * @generated
-	 */
-	int SHAPE_PROPERTY = 21;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.ResourcePropertyImpl <em>Resource Property</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.ResourcePropertyImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceProperty()
-	 * @generated
-	 */
-	int RESOURCE_PROPERTY = 9;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.CreationFactoryImpl <em>Creation Factory</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.CreationFactoryImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getCreationFactory()
-	 * @generated
-	 */
-	int CREATION_FACTORY = 10;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.QueryCapabilityImpl <em>Query Capability</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.QueryCapabilityImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getQueryCapability()
-	 * @generated
-	 */
-	int QUERY_CAPABILITY = 11;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.BasicCapabilityImpl <em>Basic Capability</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.BasicCapabilityImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getBasicCapability()
-	 * @generated
-	 */
-	int BASIC_CAPABILITY = 12;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.DialogImpl <em>Dialog</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.DialogImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getDialog()
-	 * @generated
-	 */
-	int DIALOG = 13;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.PublisherImpl <em>Publisher</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.PublisherImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getPublisher()
-	 * @generated
-	 */
-	int PUBLISHER = 14;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.RequiredAdaptorImpl <em>Required Adaptor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.RequiredAdaptorImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getRequiredAdaptor()
-	 * @generated
-	 */
-	int REQUIRED_ADAPTOR = 15;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.GenericRequiredAdaptorImpl <em>Generic Required Adaptor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.GenericRequiredAdaptorImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGenericRequiredAdaptor()
-	 * @generated
-	 */
-	int GENERIC_REQUIRED_ADAPTOR = 16;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.ModelledRequiredAdaptorImpl <em>Modelled Required Adaptor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.ModelledRequiredAdaptorImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getModelledRequiredAdaptor()
-	 * @generated
-	 */
-	int MODELLED_REQUIRED_ADAPTOR = 17;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.GenerationSettingImpl <em>Generation Setting</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.GenerationSettingImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGenerationSetting()
-	 * @generated
-	 */
-	int GENERATION_SETTING = 18;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.ShaclShapeImpl <em>Shacl Shape</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.ShaclShapeImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclShape()
-	 * @generated
-	 */
-	int SHACL_SHAPE = 20;
-
-	/**
-	 * The meta object id for the '{@link adaptorinterface.impl.ShaclPropertyImpl <em>Shacl Property</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see adaptorinterface.impl.ShaclPropertyImpl
-	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclProperty()
-	 * @generated
-	 */
-	int SHACL_PROPERTY = 22;
-
-	/**
 	 * The meta object id for the '{@link adaptorinterface.impl.WebServiceImpl <em>Web Service</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -963,6 +812,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int WEB_SERVICE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ShapeImpl <em>Shape</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ShapeImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShape()
+	 * @generated
+	 */
+	int SHAPE = 19;
+
+	/**
 	 * The number of structural features of the '<em>Shape</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -979,6 +838,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @ordered
 	 */
 	int SHAPE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ResourceImpl <em>Resource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ResourceImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResource()
+	 * @generated
+	 */
+	int RESOURCE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1035,6 +904,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_OPERATION_COUNT = SHAPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ShapePropertyImpl <em>Shape Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ShapePropertyImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShapeProperty()
+	 * @generated
+	 */
+	int SHAPE_PROPERTY = 21;
+
+	/**
 	 * The number of structural features of the '<em>Shape Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1051,6 +930,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @ordered
 	 */
 	int SHAPE_PROPERTY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ResourcePropertyImpl <em>Resource Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ResourcePropertyImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceProperty()
+	 * @generated
+	 */
+	int RESOURCE_PROPERTY = 9;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -1179,6 +1068,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_PROPERTY_OPERATION_COUNT = SHAPE_PROPERTY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.CreationFactoryImpl <em>Creation Factory</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.CreationFactoryImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getCreationFactory()
+	 * @generated
+	 */
+	int CREATION_FACTORY = 10;
+
+	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1240,6 +1139,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @ordered
 	 */
 	int CREATION_FACTORY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.QueryCapabilityImpl <em>Query Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.QueryCapabilityImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getQueryCapability()
+	 * @generated
+	 */
+	int QUERY_CAPABILITY = 11;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -1305,6 +1214,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int QUERY_CAPABILITY_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.BasicCapabilityImpl <em>Basic Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.BasicCapabilityImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getBasicCapability()
+	 * @generated
+	 */
+	int BASIC_CAPABILITY = 12;
+
+	/**
 	 * The feature id for the '<em><b>Instance ID</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1366,6 +1285,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @ordered
 	 */
 	int BASIC_CAPABILITY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.DialogImpl <em>Dialog</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.DialogImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getDialog()
+	 * @generated
+	 */
+	int DIALOG = 13;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -1449,6 +1378,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int DIALOG_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.PublisherImpl <em>Publisher</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.PublisherImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getPublisher()
+	 * @generated
+	 */
+	int PUBLISHER = 14;
+
+	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1503,6 +1442,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int PUBLISHER_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.RequiredAdaptorImpl <em>Required Adaptor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.RequiredAdaptorImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getRequiredAdaptor()
+	 * @generated
+	 */
+	int REQUIRED_ADAPTOR = 15;
+
+	/**
 	 * The feature id for the '<em><b>Service Provider Catalog URI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1528,6 +1477,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @ordered
 	 */
 	int REQUIRED_ADAPTOR_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.GenericRequiredAdaptorImpl <em>Generic Required Adaptor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.GenericRequiredAdaptorImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGenericRequiredAdaptor()
+	 * @generated
+	 */
+	int GENERIC_REQUIRED_ADAPTOR = 16;
 
 	/**
 	 * The feature id for the '<em><b>Service Provider Catalog URI</b></em>' attribute.
@@ -1575,6 +1534,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int GENERIC_REQUIRED_ADAPTOR_OPERATION_COUNT = REQUIRED_ADAPTOR_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ModelledRequiredAdaptorImpl <em>Modelled Required Adaptor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ModelledRequiredAdaptorImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getModelledRequiredAdaptor()
+	 * @generated
+	 */
+	int MODELLED_REQUIRED_ADAPTOR = 17;
+
+	/**
 	 * The feature id for the '<em><b>Service Provider Catalog URI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1609,6 +1578,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @ordered
 	 */
 	int MODELLED_REQUIRED_ADAPTOR_OPERATION_COUNT = REQUIRED_ADAPTOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.GenerationSettingImpl <em>Generation Setting</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.GenerationSettingImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGenerationSetting()
+	 * @generated
+	 */
+	int GENERATION_SETTING = 18;
 
 	/**
 	 * The feature id for the '<em><b>Java Class Package Name</b></em>' attribute.
@@ -1654,6 +1633,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @ordered
 	 */
 	int GENERATION_SETTING_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ShaclShapeImpl <em>Shacl Shape</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ShaclShapeImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclShape()
+	 * @generated
+	 */
+	int SHACL_SHAPE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1717,6 +1706,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @ordered
 	 */
 	int SHACL_SHAPE_OPERATION_COUNT = SHAPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.ShaclPropertyImpl <em>Shacl Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.ShaclPropertyImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclProperty()
+	 * @generated
+	 */
+	int SHACL_PROPERTY = 22;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2341,7 +2340,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyMultiValueRepresentation()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 34;
+	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 35;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -2351,8 +2350,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
 	 * @generated
 	 */
-	int RESOURCE_SERVICE_NAMESPACE = 35;
-
+	int RESOURCE_SERVICE_NAMESPACE = 36;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ShaclPropertyDataType <em>Shacl Property Data Type</em>}' enum.
@@ -2362,7 +2360,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
 	 * @generated
 	 */
-	int SHACL_PROPERTY_DATA_TYPE = 36;
+	int SHACL_PROPERTY_DATA_TYPE = 37;
 
 
 	/**
@@ -2374,6 +2372,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAdaptorInterface();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getName()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EAttribute getAdaptorInterface_Name();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link adaptorinterface.AdaptorInterface#getServiceProviderCatalog <em>Service Provider Catalog</em>}'.
@@ -2398,15 +2407,37 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getAdaptorInterface_WebServices();
 
 	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getName <em>Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.AdaptorInterface#getSpecification <em>Specification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see adaptorinterface.AdaptorInterface#getName()
+	 * @return the meta object for the containment reference '<em>Specification</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getSpecification()
 	 * @see #getAdaptorInterface()
 	 * @generated
 	 */
-	EAttribute getAdaptorInterface_Name();
+	EReference getAdaptorInterface_Specification();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link adaptorinterface.AdaptorInterface#getRequiredAdaptors <em>Required Adaptors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Required Adaptors</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getRequiredAdaptors()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EReference getAdaptorInterface_RequiredAdaptors();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.AdaptorInterface#getConfiguration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Configuration</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getConfiguration()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EReference getAdaptorInterface_Configuration();
 
 	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getJavaClassBaseNamespace <em>Java Class Base Namespace</em>}'.
@@ -2418,17 +2449,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAdaptorInterface_JavaClassBaseNamespace();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link adaptorinterface.AdaptorInterface#getSpecification <em>Specification</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Specification</em>'.
-	 * @see adaptorinterface.AdaptorInterface#getSpecification()
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 */
-	EReference getAdaptorInterface_Specification();
 
 	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getJavaFilesBasePath <em>Java Files Base Path</em>}'.
@@ -2530,26 +2550,15 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link adaptorinterface.AdaptorInterface#getRequiredAdaptors <em>Required Adaptors</em>}'.
+	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getResource <em>Backend Code Template get Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Required Adaptors</em>'.
-	 * @see adaptorinterface.AdaptorInterface#getRequiredAdaptors()
+	 * @return the meta object for the attribute '<em>Backend Code Template get Resource</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getResource()
 	 * @see #getAdaptorInterface()
 	 * @generated
 	 */
-	EReference getAdaptorInterface_RequiredAdaptors();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link adaptorinterface.AdaptorInterface#getConfiguration <em>Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Configuration</em>'.
-	 * @see adaptorinterface.AdaptorInterface#getConfiguration()
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 */
-	EReference getAdaptorInterface_Configuration();
+	EAttribute getAdaptorInterface_BackendCodeTemplate_getResource();
 
 	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getResources <em>Backend Code Template get Resources</em>}'.
@@ -2561,17 +2570,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAdaptorInterface_BackendCodeTemplate_getResources();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getResource <em>Backend Code Template get Resource</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Backend Code Template get Resource</em>'.
-	 * @see adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getResource()
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 */
-	EAttribute getAdaptorInterface_BackendCodeTemplate_getResource();
 
 	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_searchResources <em>Backend Code Template search Resources</em>}'.
@@ -3008,6 +3006,93 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getService_Usages();
 
 	/**
+	 * Returns the meta object for class '{@link adaptorinterface.WebService <em>Web Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Web Service</em>'.
+	 * @see adaptorinterface.WebService
+	 * @generated
+	 */
+	EClass getWebService();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see adaptorinterface.WebService#getName()
+	 * @see #getWebService()
+	 * @generated
+	 */
+	EAttribute getWebService_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#getServiceUrlPattern <em>Service Url Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Url Pattern</em>'.
+	 * @see adaptorinterface.WebService#getServiceUrlPattern()
+	 * @see #getWebService()
+	 * @generated
+	 */
+	EAttribute getWebService_ServiceUrlPattern();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#getResourceUrlPattern <em>Resource Url Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resource Url Pattern</em>'.
+	 * @see adaptorinterface.WebService#getResourceUrlPattern()
+	 * @see #getWebService()
+	 * @generated
+	 */
+	EAttribute getWebService_ResourceUrlPattern();
+
+	/**
+	 * Returns the meta object for the reference list '{@link adaptorinterface.WebService#getResourceTypes <em>Resource Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Resource Types</em>'.
+	 * @see adaptorinterface.WebService#getResourceTypes()
+	 * @see #getWebService()
+	 * @generated
+	 */
+	EReference getWebService_ResourceTypes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#isRead <em>Read</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Read</em>'.
+	 * @see adaptorinterface.WebService#isRead()
+	 * @see #getWebService()
+	 * @generated
+	 */
+	EAttribute getWebService_Read();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#isDelete <em>Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Delete</em>'.
+	 * @see adaptorinterface.WebService#isDelete()
+	 * @see #getWebService()
+	 * @generated
+	 */
+	EAttribute getWebService_Delete();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#isUpdate <em>Update</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Update</em>'.
+	 * @see adaptorinterface.WebService#isUpdate()
+	 * @see #getWebService()
+	 * @generated
+	 */
+	EAttribute getWebService_Update();
+
+	/**
 	 * Returns the meta object for class '{@link adaptorinterface.Resource <em>Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3027,6 +3112,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResource_Name();
+
+	/**
+	 * Returns the meta object for the reference '{@link adaptorinterface.Resource#getDescribes <em>Describes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Describes</em>'.
+	 * @see adaptorinterface.Resource#getDescribes()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EReference getResource_Describes();
 
 	/**
 	 * Returns the meta object for the reference list '{@link adaptorinterface.Resource#getExtends <em>Extends</em>}'.
@@ -3049,17 +3145,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getResource_ResourceProperties();
-
-	/**
-	 * Returns the meta object for the reference '{@link adaptorinterface.Resource#getDescribes <em>Describes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Describes</em>'.
-	 * @see adaptorinterface.Resource#getDescribes()
-	 * @see #getResource()
-	 * @generated
-	 */
-	EReference getResource_Describes();
 
 	/**
 	 * Returns the meta object for class '{@link adaptorinterface.ResourceProperty <em>Resource Property</em>}'.
@@ -4118,93 +4203,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EClass getMavenSpecificationConfiguration();
 
 	/**
-	 * Returns the meta object for class '{@link adaptorinterface.WebService <em>Web Service</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Web Service</em>'.
-	 * @see adaptorinterface.WebService
-	 * @generated
-	 */
-	EClass getWebService();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see adaptorinterface.WebService#getName()
-	 * @see #getWebService()
-	 * @generated
-	 */
-	EAttribute getWebService_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#getServiceUrlPattern <em>Service Url Pattern</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Service Url Pattern</em>'.
-	 * @see adaptorinterface.WebService#getServiceUrlPattern()
-	 * @see #getWebService()
-	 * @generated
-	 */
-	EAttribute getWebService_ServiceUrlPattern();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#getResourceUrlPattern <em>Resource Url Pattern</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Resource Url Pattern</em>'.
-	 * @see adaptorinterface.WebService#getResourceUrlPattern()
-	 * @see #getWebService()
-	 * @generated
-	 */
-	EAttribute getWebService_ResourceUrlPattern();
-
-	/**
-	 * Returns the meta object for the reference list '{@link adaptorinterface.WebService#getResourceTypes <em>Resource Types</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Resource Types</em>'.
-	 * @see adaptorinterface.WebService#getResourceTypes()
-	 * @see #getWebService()
-	 * @generated
-	 */
-	EReference getWebService_ResourceTypes();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#isRead <em>Read</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Read</em>'.
-	 * @see adaptorinterface.WebService#isRead()
-	 * @see #getWebService()
-	 * @generated
-	 */
-	EAttribute getWebService_Read();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#isDelete <em>Delete</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Delete</em>'.
-	 * @see adaptorinterface.WebService#isDelete()
-	 * @see #getWebService()
-	 * @generated
-	 */
-	EAttribute getWebService_Delete();
-
-	/**
-	 * Returns the meta object for the attribute '{@link adaptorinterface.WebService#isUpdate <em>Update</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Update</em>'.
-	 * @see adaptorinterface.WebService#isUpdate()
-	 * @see #getWebService()
-	 * @generated
-	 */
-	EAttribute getWebService_Update();
-
-	/**
 	 * Returns the meta object for enum '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4308,6 +4306,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EClass ADAPTOR_INTERFACE = eINSTANCE.getAdaptorInterface();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADAPTOR_INTERFACE__NAME = eINSTANCE.getAdaptorInterface_Name();
+
+		/**
 		 * The meta object literal for the '<em><b>Service Provider Catalog</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4324,12 +4330,28 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference ADAPTOR_INTERFACE__WEB_SERVICES = eINSTANCE.getAdaptorInterface_WebServices();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Specification</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ADAPTOR_INTERFACE__NAME = eINSTANCE.getAdaptorInterface_Name();
+		EReference ADAPTOR_INTERFACE__SPECIFICATION = eINSTANCE.getAdaptorInterface_Specification();
+
+		/**
+		 * The meta object literal for the '<em><b>Required Adaptors</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADAPTOR_INTERFACE__REQUIRED_ADAPTORS = eINSTANCE.getAdaptorInterface_RequiredAdaptors();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADAPTOR_INTERFACE__CONFIGURATION = eINSTANCE.getAdaptorInterface_Configuration();
 
 		/**
 		 * The meta object literal for the '<em><b>Java Class Base Namespace</b></em>' attribute feature.
@@ -4338,14 +4360,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE = eINSTANCE.getAdaptorInterface_JavaClassBaseNamespace();
-
-		/**
-		 * The meta object literal for the '<em><b>Specification</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ADAPTOR_INTERFACE__SPECIFICATION = eINSTANCE.getAdaptorInterface_Specification();
 
 		/**
 		 * The meta object literal for the '<em><b>Java Files Base Path</b></em>' attribute feature.
@@ -4420,20 +4434,12 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_getServiceProviders();
 
 		/**
-		 * The meta object literal for the '<em><b>Required Adaptors</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Backend Code Template get Resource</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ADAPTOR_INTERFACE__REQUIRED_ADAPTORS = eINSTANCE.getAdaptorInterface_RequiredAdaptors();
-
-		/**
-		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ADAPTOR_INTERFACE__CONFIGURATION = eINSTANCE.getAdaptorInterface_Configuration();
+		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_getResource();
 
 		/**
 		 * The meta object literal for the '<em><b>Backend Code Template get Resources</b></em>' attribute feature.
@@ -4442,14 +4448,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_getResources();
-
-		/**
-		 * The meta object literal for the '<em><b>Backend Code Template get Resource</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_getResource();
 
 		/**
 		 * The meta object literal for the '<em><b>Backend Code Template search Resources</b></em>' attribute feature.
@@ -4784,6 +4782,72 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute SERVICE__USAGES = eINSTANCE.getService_Usages();
 
 		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.WebServiceImpl <em>Web Service</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.WebServiceImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getWebService()
+		 * @generated
+		 */
+		EClass WEB_SERVICE = eINSTANCE.getWebService();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_SERVICE__NAME = eINSTANCE.getWebService_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Url Pattern</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_SERVICE__SERVICE_URL_PATTERN = eINSTANCE.getWebService_ServiceUrlPattern();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource Url Pattern</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_SERVICE__RESOURCE_URL_PATTERN = eINSTANCE.getWebService_ResourceUrlPattern();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource Types</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WEB_SERVICE__RESOURCE_TYPES = eINSTANCE.getWebService_ResourceTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Read</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_SERVICE__READ = eINSTANCE.getWebService_Read();
+
+		/**
+		 * The meta object literal for the '<em><b>Delete</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_SERVICE__DELETE = eINSTANCE.getWebService_Delete();
+
+		/**
+		 * The meta object literal for the '<em><b>Update</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_SERVICE__UPDATE = eINSTANCE.getWebService_Update();
+
+		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.ResourceImpl <em>Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4802,6 +4866,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute RESOURCE__NAME = eINSTANCE.getResource_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Describes</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE__DESCRIBES = eINSTANCE.getResource_Describes();
+
+		/**
 		 * The meta object literal for the '<em><b>Extends</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4816,14 +4888,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESOURCE__RESOURCE_PROPERTIES = eINSTANCE.getResource_ResourceProperties();
-
-		/**
-		 * The meta object literal for the '<em><b>Describes</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCE__DESCRIBES = eINSTANCE.getResource_Describes();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.ResourcePropertyImpl <em>Resource Property</em>}' class.
@@ -5652,72 +5716,6 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EClass MAVEN_SPECIFICATION_CONFIGURATION = eINSTANCE.getMavenSpecificationConfiguration();
-
-		/**
-		 * The meta object literal for the '{@link adaptorinterface.impl.WebServiceImpl <em>Web Service</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see adaptorinterface.impl.WebServiceImpl
-		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getWebService()
-		 * @generated
-		 */
-		EClass WEB_SERVICE = eINSTANCE.getWebService();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WEB_SERVICE__NAME = eINSTANCE.getWebService_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Service Url Pattern</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WEB_SERVICE__SERVICE_URL_PATTERN = eINSTANCE.getWebService_ServiceUrlPattern();
-
-		/**
-		 * The meta object literal for the '<em><b>Resource Url Pattern</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WEB_SERVICE__RESOURCE_URL_PATTERN = eINSTANCE.getWebService_ResourceUrlPattern();
-
-		/**
-		 * The meta object literal for the '<em><b>Resource Types</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WEB_SERVICE__RESOURCE_TYPES = eINSTANCE.getWebService_ResourceTypes();
-
-		/**
-		 * The meta object literal for the '<em><b>Read</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WEB_SERVICE__READ = eINSTANCE.getWebService_Read();
-
-		/**
-		 * The meta object literal for the '<em><b>Delete</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WEB_SERVICE__DELETE = eINSTANCE.getWebService_Delete();
-
-		/**
-		 * The meta object literal for the '<em><b>Update</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WEB_SERVICE__UPDATE = eINSTANCE.getWebService_Update();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.

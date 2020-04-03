@@ -1,16 +1,12 @@
-/**
- */
 package adaptorinterface.provider;
 
-import adaptorinterface.util.AdaptorinterfaceAdapterFactory;
 
+import adaptorinterface.util.AdaptorinterfaceAdapterFactory;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -230,6 +226,29 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 		}
 
 		return serviceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.WebService} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WebServiceItemProvider webServiceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.WebService}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWebServiceAdapter() {
+		if (webServiceItemProvider == null) {
+			webServiceItemProvider = new WebServiceItemProvider(this);
+		}
+
+		return webServiceItemProvider;
 	}
 
 	/**
@@ -693,35 +712,11 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link adaptorinterface.WebService} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WebServiceItemProvider webServiceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link adaptorinterface.WebService}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createWebServiceAdapter() {
-		if (webServiceItemProvider == null) {
-			webServiceItemProvider = new WebServiceItemProvider(this);
-		}
-
-		return webServiceItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -732,7 +727,6 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -781,7 +775,6 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -792,7 +785,6 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -803,7 +795,6 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -818,7 +809,6 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void dispose() {
 		if (adaptorInterfaceItemProvider != null) adaptorInterfaceItemProvider.dispose();
 		if (specificationItemProvider != null) specificationItemProvider.dispose();
