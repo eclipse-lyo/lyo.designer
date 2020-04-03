@@ -6,6 +6,7 @@ import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.Resource;
 import adaptorinterface.ResourceProperty;
 import adaptorinterface.ResourcePropertyIsMemberProperty;
+import adaptorinterface.ResourcePropertyMultiValueRepresentation;
 import adaptorinterface.ResourcePropertyOccurs;
 import adaptorinterface.ResourcePropertyRepresentation;
 import adaptorinterface.ResourcePropertyValueType;
@@ -39,6 +40,7 @@ import vocabulary.Property;
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getValueType <em>Value Type</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getRepresentation <em>Representation</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getMultiValueRepresentation <em>Multi Value Representation</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getRange <em>Range</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getAllowedValue <em>Allowed Value</em>}</li>
@@ -177,6 +179,26 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * @ordered
 	 */
 	protected ResourcePropertyRepresentation representation = REPRESENTATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMultiValueRepresentation() <em>Multi Value Representation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMultiValueRepresentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ResourcePropertyMultiValueRepresentation MULTI_VALUE_REPRESENTATION_EDEFAULT = ResourcePropertyMultiValueRepresentation.MULTIPLE_TRIPLES;
+
+	/**
+	 * The cached value of the '{@link #getMultiValueRepresentation() <em>Multi Value Representation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMultiValueRepresentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected ResourcePropertyMultiValueRepresentation multiValueRepresentation = MULTI_VALUE_REPRESENTATION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getRange() <em>Range</em>}' reference list.
@@ -440,6 +462,27 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ResourcePropertyMultiValueRepresentation getMultiValueRepresentation() {
+		return multiValueRepresentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiValueRepresentation(ResourcePropertyMultiValueRepresentation newMultiValueRepresentation) {
+		ResourcePropertyMultiValueRepresentation oldMultiValueRepresentation = multiValueRepresentation;
+		multiValueRepresentation = newMultiValueRepresentation == null ? MULTI_VALUE_REPRESENTATION_EDEFAULT : newMultiValueRepresentation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION, oldMultiValueRepresentation, multiValueRepresentation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EList<Resource> getRange() {
 		if (range == null) {
@@ -530,6 +573,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 				return getValueType();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
 				return getRepresentation();
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
+				return getMultiValueRepresentation();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
 				return getRange();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
@@ -571,6 +616,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 				return;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
 				setRepresentation((ResourcePropertyRepresentation)newValue);
+				return;
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
+				setMultiValueRepresentation((ResourcePropertyMultiValueRepresentation)newValue);
 				return;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
 				getRange().clear();
@@ -619,6 +667,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
 				setRepresentation(REPRESENTATION_EDEFAULT);
 				return;
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
+				setMultiValueRepresentation(MULTI_VALUE_REPRESENTATION_EDEFAULT);
+				return;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
 				getRange().clear();
 				return;
@@ -657,6 +708,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 				return valueType != VALUE_TYPE_EDEFAULT;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
 				return representation != REPRESENTATION_EDEFAULT;
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
+				return multiValueRepresentation != MULTI_VALUE_REPRESENTATION_EDEFAULT;
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
 				return range != null && !range.isEmpty();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
@@ -691,6 +744,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 		result.append(valueType);
 		result.append(", representation: ");
 		result.append(representation);
+		result.append(", multiValueRepresentation: ");
+		result.append(multiValueRepresentation);
 		result.append(", description: ");
 		result.append(description);
 		result.append(", allowedValue: ");

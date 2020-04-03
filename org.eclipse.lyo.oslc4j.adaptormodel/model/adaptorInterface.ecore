@@ -141,6 +141,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//ResourcePropertyValueType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="representation" eType="#//ResourcePropertyRepresentation"
         defaultValueLiteral="n_a"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiValueRepresentation"
+        eType="#//ResourcePropertyMultiValueRepresentation" defaultValueLiteral="multipleTriples"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="range" upperBound="-1"
         eType="#//Resource"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -176,6 +178,10 @@
     <eLiterals name="n_a" value="-1" literal="n_a"/>
     <eLiterals name="false" literal="false"/>
     <eLiterals name="true" value="1" literal="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ResourcePropertyMultiValueRepresentation">
+    <eLiterals name="multipleTriples" literal="multipleTriples"/>
+    <eLiterals name="rdfList" value="1" literal="rdfList"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CreationFactory">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

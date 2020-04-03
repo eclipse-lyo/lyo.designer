@@ -106,6 +106,8 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 				return createResourcePropertyRepresentationFromString(eDataType, initialValue);
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY_IS_MEMBER_PROPERTY:
 				return createResourcePropertyIsMemberPropertyFromString(eDataType, initialValue);
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION:
+				return createResourcePropertyMultiValueRepresentationFromString(eDataType, initialValue);
 			case AdaptorinterfacePackage.RESOURCE_SERVICE_NAMESPACE:
 				return createResourceServiceNamespaceFromString(eDataType, initialValue);
 			case AdaptorinterfacePackage.SHACL_PROPERTY_DATA_TYPE:
@@ -131,6 +133,8 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 				return convertResourcePropertyRepresentationToString(eDataType, instanceValue);
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY_IS_MEMBER_PROPERTY:
 				return convertResourcePropertyIsMemberPropertyToString(eDataType, instanceValue);
+			case AdaptorinterfacePackage.RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION:
+				return convertResourcePropertyMultiValueRepresentationToString(eDataType, instanceValue);
 			case AdaptorinterfacePackage.RESOURCE_SERVICE_NAMESPACE:
 				return convertResourceServiceNamespaceToString(eDataType, instanceValue);
 			case AdaptorinterfacePackage.SHACL_PROPERTY_DATA_TYPE:
@@ -517,6 +521,26 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	 * @generated
 	 */
 	public String convertResourcePropertyIsMemberPropertyToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResourcePropertyMultiValueRepresentation createResourcePropertyMultiValueRepresentationFromString(EDataType eDataType, String initialValue) {
+		ResourcePropertyMultiValueRepresentation result = ResourcePropertyMultiValueRepresentation.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertResourcePropertyMultiValueRepresentationToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -49,7 +49,7 @@ endif)
 (if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
     '"'.concat(aResourceProperty.name).concat('"')
 else
-	'"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
+    '"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
 endif)
 /]
 
@@ -69,109 +69,127 @@ endif)
 
 [query public descriptionAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.description.oclIsUndefined()) then
-	'@OslcDescription("'.concat(aProperty.description).concat('")')
+    '@OslcDescription("'.concat(aProperty.description).concat('")')
 else
-	''
+    ''
 endif)
 /]
 
 [query public occursAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.occurs.oclIsUndefined()) then
-	if (aProperty.occurs = ResourcePropertyOccurs::exactlyOne) then
-		'@OslcOccurs(Occurs.ExactlyOne)'
-	else
-		if (aProperty.occurs = ResourcePropertyOccurs::zeroOrOne) then
-			'@OslcOccurs(Occurs.ZeroOrOne)'
-		else
-			if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany) then
-				'@OslcOccurs(Occurs.ZeroOrMany)'
-			else
-				if (aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
-					'@OslcOccurs(Occurs.OneOrMany)'
-				else
-					''
-				endif
-			endif
-		endif
-	endif
+    if (aProperty.occurs = ResourcePropertyOccurs::exactlyOne) then
+        '@OslcOccurs(Occurs.ExactlyOne)'
+    else
+        if (aProperty.occurs = ResourcePropertyOccurs::zeroOrOne) then
+            '@OslcOccurs(Occurs.ZeroOrOne)'
+        else
+            if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany) then
+                '@OslcOccurs(Occurs.ZeroOrMany)'
+            else
+                if (aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
+                    '@OslcOccurs(Occurs.OneOrMany)'
+                else
+                    ''
+                endif
+            endif
+        endif
+    endif
 else
-	''
+    ''
 endif)
 /]
 
 [query public valueTypeAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.valueType.oclIsUndefined()) then
-	if (hasOSLCSupportedValueType(aProperty)) then
-		'@OslcValueType(ValueType.'.concat(aProperty.valueType.toString()).concat(')')
-	else
-		''
-	endif
+    if (hasOSLCSupportedValueType(aProperty)) then
+        '@OslcValueType(ValueType.'.concat(aProperty.valueType.toString()).concat(')')
+    else
+        ''
+    endif
 else
-	''
+    ''
 endif)
 /]
 
 [comment  Either not supported by OSLC4J /]
 [query public representationAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.representation.oclIsUndefined()) then
-	if (not aProperty.representation.toString().equalsIgnoreCase('n_a')) then
-		if (not aProperty.representation.toString().equalsIgnoreCase('either')) then
-			'@OslcRepresentation(Representation.'.concat(aProperty.representation.toString().toUpperFirst()).concat(')')
-		else
-			''
-		endif
-	else
-		''
-	endif
+    if (not aProperty.representation.toString().equalsIgnoreCase('n_a')) then
+        if (not aProperty.representation.toString().equalsIgnoreCase('either')) then
+            '@OslcRepresentation(Representation.'.concat(aProperty.representation.toString().toUpperFirst()).concat(')')
+        else
+            ''
+        endif
+    else
+        ''
+    endif
 else
-	''
+    ''
+endif)
+/]
+
+[comment Only annotation if the rdfCollectionRepresentation & occurs properties are set.
+Also, only annotation if the occurs is "many"/]
+[query public rdfCollectionTypeAnnotation(aProperty: ResourceProperty) : String =
+(if ((not aProperty.multiValueRepresentation.oclIsUndefined()) and (not aProperty.occurs.oclIsUndefined())) then
+    if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany or aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
+        if (aProperty.multiValueRepresentation = ResourcePropertyMultiValueRepresentation::rdfList) then
+            '@OslcRdfCollectionType(collectionType = OslcRdfCollectionType.RDF_LIST)'
+        else
+            ''
+        endif
+    else
+        ''
+    endif
+else
+    ''
 endif)
 /]
 
 [query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
 (if (aProperty.range->size() > 0) then
-	'@OslcRange({'
-		.concat(concatenate(aProperty.range->collect(aRange : Resource | javaInterfaceNameForConstants(aRange.definingDomainSpecification()).concat('.').concat(resourceTypeConstantName(aRange))), ', '))
-		.concat('})')
+    '@OslcRange({'
+        .concat(concatenate(aProperty.range->collect(aRange : Resource | javaInterfaceNameForConstants(aRange.definingDomainSpecification()).concat('.').concat(resourceTypeConstantName(aRange))), ', '))
+        .concat('})')
 else
-	''
+    ''
 endif)
 /]
 
 [query public readOnlyAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.readOnly.oclIsUndefined()) then
-	'@OslcReadOnly('.concat(aProperty.readOnly.toString()).concat(')')
+    '@OslcReadOnly('.concat(aProperty.readOnly.toString()).concat(')')
 else
-	''
+    ''
 endif)
 /]
 
 [query public titleAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.title.oclIsUndefined()) then
-	'@OslcTitle("'.concat(aProperty.title).concat('")')
+    '@OslcTitle("'.concat(aProperty.title).concat('")')
 else
-	''
+    ''
 endif)
 /]
 
 [comment: It is not possible to have a boolean property which the user can leave undefined. Hence, we need to create an enum with a third option of "n_a"./]
 [query public isMemberPropertyAnnotation(aProperty: ResourceProperty) : String =
 if (aProperty.isMemberProperty.toString().equalsIgnoreCase('true')) then
-	'@OslcMemberProperty(true)'
+    '@OslcMemberProperty(true)'
 else
-	if (aProperty.isMemberProperty.toString().equalsIgnoreCase('false')) then
-		'@OslcMemberProperty(false)'
-	else
-		''
-	endif
+    if (aProperty.isMemberProperty.toString().equalsIgnoreCase('false')) then
+        '@OslcMemberProperty(false)'
+    else
+        ''
+    endif
 endif
 /]
 
 [query public allowedValueAnnotation(aProperty: ResourceProperty) : String =
 (if (aProperty.allowedValue->size() > 0) then
-	'@OslcAllowedValue({"'.concat(concatenate((aProperty.allowedValue)->asSequence(), '", "')).concat('"})')
+    '@OslcAllowedValue({"'.concat(concatenate((aProperty.allowedValue)->asSequence(), '", "')).concat('"})')
 else
-	''
+    ''
 endif)
 /]
 
@@ -179,68 +197,83 @@ endif)
 aProperty.definingDomainSpecification().namespaceURI.concat('#').concat(javaName(aProperty, false))
 /]
 
+[comment return "Set" except for the case where we need an rdf collection of type rdf:list /]
+[query private javaAttributeCollectionType(aProperty: ResourceProperty) : String =
+(if ((not aProperty.multiValueRepresentation.oclIsUndefined()) and (not aProperty.occurs.oclIsUndefined())) then
+    if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany or aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
+        if (aProperty.multiValueRepresentation = ResourcePropertyMultiValueRepresentation::rdfList) then
+            'List'
+        else
+            'Set'
+        endif
+    else
+        'Set'
+    endif
+else
+    'Set'
+endif)
+/]
+
 [query private javaAttributeTypeNeedsConstruction(aProperty: ResourceProperty) : Boolean =
 Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())
 /]
 
 [query public javaAttributeBaseTypeCastFromString(aProperty: ResourceProperty, variable: String) : String =
-	(if (aProperty.valueType.toString() = 'String') then
-		variable
-	else
-		if (aProperty.valueType.toString() = 'XMLLiteral') then
-			variable
-		else
-			if(aProperty.valueType.toString() = 'DateTime') then
-				'new SimpleDateFormat("M/D/y").parse(' + variable + ')'
-			else
-				if(aProperty.valueType.toString() = 'URI') then
-					'new URI(' + variable + ')'
-				else
-					if(aProperty.valueType.toString() = 'Boolean') then
-						'new Boolean(' + variable + ')'
-					else
-						if(aProperty.valueType.toString() = 'Double') then
-							'Double.valueOf(' + variable + ')'
-						else
-							if(aProperty.valueType.toString() = 'Float') then
-								'Float.valueOf(' + variable + ')'
-							else
-								if(aProperty.valueType.toString() = 'Integer') then
-									'Integer.valueOf(' + variable + ')'
-								else
-									if(aProperty.valueType.toString() = 'Resource') then
-										'new Link(new URI(' + variable + '))'
-									else
-										if(aProperty.valueType.toString() = 'LocalResource') then
-											if (aProperty.range->size() = 1) then
-												'new ' + javaClassName(aProperty.range->first()) + '(new URI(' + variable + '))'
-											else
-												'new Link(new URI(' + variable + '))'
-											endif
-										else
-											''
-										endif
-									endif
-								endif
-							endif
-						endif
-					endif
-				endif
-			endif
-		endif
-	endif)
+    (if (aProperty.valueType.toString() = 'String') then
+        variable
+    else
+        if (aProperty.valueType.toString() = 'XMLLiteral') then
+            variable
+        else
+            if(aProperty.valueType.toString() = 'DateTime') then
+                'new SimpleDateFormat("M/D/y").parse(' + variable + ')'
+            else
+                if(aProperty.valueType.toString() = 'URI') then
+                    'new URI(' + variable + ')'
+                else
+                    if(aProperty.valueType.toString() = 'Boolean') then
+                        'new Boolean(' + variable + ')'
+                    else
+                        if(aProperty.valueType.toString() = 'Double') then
+                            'Double.valueOf(' + variable + ')'
+                        else
+                            if(aProperty.valueType.toString() = 'Float') then
+                                'Float.valueOf(' + variable + ')'
+                            else
+                                if(aProperty.valueType.toString() = 'Integer') then
+                                    'Integer.valueOf(' + variable + ')'
+                                else
+                                    if(aProperty.valueType.toString() = 'Resource') then
+                                        'new Link(new URI(' + variable + '))'
+                                    else
+                                        if(aProperty.valueType.toString() = 'LocalResource') then
+                                            if (aProperty.range->size() = 1) then
+                                                'new ' + javaClassName(aProperty.range->first()) + '(new URI(' + variable + '))'
+                                            else
+                                                'new Link(new URI(' + variable + '))'
+                                            endif
+                                        else
+                                            ''
+                                        endif
+                                    endif
+                                endif
+                            endif
+                        endif
+                    endif
+                endif
+            endif
+        endif
+    endif)
 /]
 
-
-[comment TODO: If occurs = 'zeroOrMany', it is not 100% clear when to use Set and when to use ArrayList, or TreeSet./]
 [query public javaAttributeTypeDeclaration(aProperty: ResourceProperty) : String =
     (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
-        'Set<'
+        javaAttributeCollectionType(aProperty).concat('<')
     else
         ''
     endif)
-	.concat(javaAttributeBaseType(aProperty))
-	.concat(
+    .concat(javaAttributeBaseType(aProperty))
+    .concat(
     (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
         '>'
     else
@@ -250,7 +283,12 @@ Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())
 
 [query public javaAttributeInitialConstruction(aProperty: ResourceProperty) : String =
     (if (javaAttributeTypeNeedsConstruction(aProperty)) then
-        ' = new '.concat('HashSet<').concat(javaAttributeBaseType(aProperty)).concat('>').concat('()')
+        ' = new '
+            .concat(if (javaAttributeCollectionType(aProperty) = 'Set') then'HashSet'else'ArrayList'endif)
+            .concat('<')
+            .concat(javaAttributeBaseType(aProperty))
+            .concat('>')
+            .concat('()')
     else
         ''
     endif)
@@ -258,51 +296,51 @@ Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())
 
 [comment For Resource properties, we always have a Link type. That is how OSLC4 wants it. /]
 [query public javaAttributeBaseType(aProperty: ResourceProperty) : String =
-	(if (aProperty.valueType.toString() = 'String') then
-		'String'
-	else
-		if (aProperty.valueType.toString() = 'XMLLiteral') then
-			'String'
-		else
-			if(aProperty.valueType.toString() = 'DateTime') then
-				'Date'
-			else
-				if(aProperty.valueType.toString() = 'URI') then
-					'URI'
-				else
-					if(aProperty.valueType.toString() = 'Boolean') then
-						'Boolean'
-					else
-						if(aProperty.valueType.toString() = 'Double') then
-							'Double'
-						else
-							if(aProperty.valueType.toString() = 'Float') then
-								'Float'
-							else
-								if(aProperty.valueType.toString() = 'Integer') then
-									'Integer'
-								else
-									if(aProperty.valueType.toString() = 'Resource') then
-											'Link'
-									else
-										if(aProperty.valueType.toString() = 'LocalResource') then
-											if (aProperty.range->size() = 1) then
-												javaClassName(aProperty.range->first())
-											else
-												'Link'
-											endif
-										else
-											''
-										endif
-									endif
-								endif
-							endif
-						endif
-					endif
-				endif
-			endif
-		endif
-	endif)
+    (if (aProperty.valueType.toString() = 'String') then
+        'String'
+    else
+        if (aProperty.valueType.toString() = 'XMLLiteral') then
+            'String'
+        else
+            if(aProperty.valueType.toString() = 'DateTime') then
+                'Date'
+            else
+                if(aProperty.valueType.toString() = 'URI') then
+                    'URI'
+                else
+                    if(aProperty.valueType.toString() = 'Boolean') then
+                        'Boolean'
+                    else
+                        if(aProperty.valueType.toString() = 'Double') then
+                            'Double'
+                        else
+                            if(aProperty.valueType.toString() = 'Float') then
+                                'Float'
+                            else
+                                if(aProperty.valueType.toString() = 'Integer') then
+                                    'Integer'
+                                else
+                                    if(aProperty.valueType.toString() = 'Resource') then
+                                            'Link'
+                                    else
+                                        if(aProperty.valueType.toString() = 'LocalResource') then
+                                            if (aProperty.range->size() = 1) then
+                                                javaClassName(aProperty.range->first())
+                                            else
+                                                'Link'
+                                            endif
+                                        else
+                                            ''
+                                        endif
+                                    endif
+                                endif
+                            endif
+                        endif
+                    endif
+                endif
+            endif
+        endif
+    endif)
 /]
 
 [query public javaAttributeName(aProperty: ResourceProperty, aResource: Resource) : String =
@@ -329,11 +367,11 @@ endif)
 [query public propertyToHtmlForCreationMethodName(aProperty: ResourceProperty, aResource: Resource, aCreationDialog: Dialog) : String =
 javaAttributeName(aProperty, aResource).concat('ToHtmlForCreation')
 .concat(
-	(if (aCreationDialog.oclIsUndefined())
-		then
-			''
-		else
-			creationDialogs(containingAdaptorInterface(aCreationDialog), aResource)->indexOf(aCreationDialog).toString()
-	endif)
+    (if (aCreationDialog.oclIsUndefined())
+        then
+            ''
+        else
+            creationDialogs(containingAdaptorInterface(aCreationDialog), aResource)->indexOf(aCreationDialog).toString()
+    endif)
 )
 /]
