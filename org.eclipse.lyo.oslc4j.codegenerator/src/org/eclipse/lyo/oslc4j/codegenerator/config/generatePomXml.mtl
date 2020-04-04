@@ -22,13 +22,17 @@
 <name>[name/]</name>
 [/template]
 
-[template private mavenProperties(mavenProjectConfiguration : MavenProjectConfiguration)]
+[template private mavenProperties(mavenProjectConfiguration : MavenProjectConfiguration, swaggerDocumentationEnabled : Boolean)]
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <version.lyo>[mavenProjectConfiguration.lyoVersion/]</version.lyo>
+    [if (swaggerDocumentationEnabled)]
+    <swagger.version>1.5.22</swagger.version>
+    <swagger-ui.version>3.25.0</swagger-ui.version>
+    [/if]
     <!-- [protected ('properties')]
     -->
     <!-- TODO: Add additional properties here to avoid them be overrriden upon future re-generation -->
@@ -162,7 +166,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     [projectHeader(anAdaptorInterface.name, mavenProjectConfiguration, true)/]
-    [mavenProperties(mavenProjectConfiguration)/]
+    [mavenProperties(mavenProjectConfiguration, anAdaptorInterface.swaggerDocumentationEnabled())/]
     [repositories()/]
     <!-- [protected ('pre_dependencies')]
     -->
@@ -172,20 +176,22 @@
         [generalDependencies()/]
         [servletDependencies(true)/]
         [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled())/]
+        [if (anAdaptorInterface.swaggerDocumentationEnabled())]
         <!-- Swagger dependencies -->
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-jersey2-jaxrs</artifactId>
-            <version>1.5.22</version>
+            <version>${swagger.version}</version>
         </dependency>
+        [/if]
     </dependencies>
     <!-- [protected ('post_dependencies')]
     -->
     <!-- [/protected]
     -->
     <build>
-        <finalName>[mavenProjectConfiguration.artifactId/]</finalName>
-            <plugins>
+        <finalName>[mavenServerConfiguration.applicationContextPath/]</finalName>
+        <plugins>
             <!-- [protected ('plugins')]
             -->
             <!-- TODO: Add additional plugins here to avoid them be overrriden upon future re-generation -->
@@ -211,6 +217,50 @@
                     <stopPort />
                 </configuration>
             </plugin>
+            [if (anAdaptorInterface.swaggerDocumentationEnabled())]
+            <!-- Swagger-ui -->
+            <plugin>
+                <!-- Download Swagger UI webjar. -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.2</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.webjars</groupId>
+                                    <artifactId>swagger-ui</artifactId>
+                                    <version>${swagger-ui.version}</version>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/swagger-ui</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- Add Swagger UI resources to the war file. -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
+                <configuration>
+                    <webResources combine.children="append">
+                        <resource>
+                            <directory>${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/${swagger-ui.version}</directory>
+                            <includes>
+                                <include>**/*.*</include>
+                            </includes>
+                            <targetPath>/swagger-ui/dist</targetPath>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+            [/if]
         </plugins>
     </build>
     <!-- [protected ('post_build')]
@@ -233,7 +283,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     [projectHeader(mavenProjectConfiguration.artifactId, mavenProjectConfiguration, false)/]
-    [mavenProperties(mavenProjectConfiguration)/]
+    [mavenProperties(mavenProjectConfiguration, false)/]
     [repositories()/]
     <!-- [protected ('pre_dependencies')]
     -->
@@ -263,7 +313,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     [projectHeader(aDomainSpecification.name, mavenProjectConfiguration, false)/]
-    [mavenProperties(mavenProjectConfiguration)/]
+    [mavenProperties(mavenProjectConfiguration, false)/]
     [repositories()/]
     <!-- [protected ('pre_dependencies')]
     -->
