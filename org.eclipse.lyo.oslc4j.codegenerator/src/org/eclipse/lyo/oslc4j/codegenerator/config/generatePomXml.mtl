@@ -190,7 +190,9 @@
     <!-- [/protected]
     -->
     <build>
-        <finalName>[mavenServerConfiguration.applicationContextPath/]</finalName>
+        [if (not mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim().isNullOrEmpty())]
+        <finalName>[mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim()/]</finalName>
+        [/if]
         <plugins>
             <!-- [protected ('plugins')]
             -->
