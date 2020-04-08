@@ -242,6 +242,7 @@ public interface AdaptorInterface extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Swagger Documentation</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Swagger Documentation</em>' attribute isn't clear,
@@ -251,7 +252,7 @@ public interface AdaptorInterface extends EObject {
 	 * @return the value of the '<em>Swagger Documentation</em>' attribute.
 	 * @see #setSwaggerDocumentation(boolean)
 	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_SwaggerDocumentation()
-	 * @model
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isSwaggerDocumentation();

@@ -217,7 +217,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean SWAGGER_DOCUMENTATION_EDEFAULT = false;
+	protected static final boolean SWAGGER_DOCUMENTATION_EDEFAULT = true;
 
 	/**
 	 * The cached value of the '{@link #isSwaggerDocumentation() <em>Swagger Documentation</em>}' attribute.
