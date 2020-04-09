@@ -205,7 +205,8 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferenceProperty" label="Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select range of the reference property"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -218,7 +219,8 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferenceProperty" label="Local Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select range of the reference property"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -597,7 +599,8 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddManagedResource" label="Managed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[container.oclAsType(AdaptorInterface).eContainer(Toolchain).specification.domainSpecifications.resources/]" multiple="true" message="Select the Resouce"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managingServiceCapability" candidatesExpression="[container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationFactories->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.queryCapabilities)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.selectionDialogs)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.creationDialogs)->union(container.oclAsType(AdaptorInterface).serviceProviderCatalog.serviceProviders.services.basicCapabilities)/]" message="Select a Service Capability"/>
             </variable>
             <viewVariable name="containerView"/>
@@ -629,7 +632,8 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddConsumedResource" label="Consumed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[container.oclAsType(AdaptorInterface).eContainer(Toolchain).specification.domainSpecifications.resources/]" multiple="true" message="Select the Resouce"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="requiredAdaptor" candidatesExpression="[container.oclAsType(AdaptorInterface).requiredAdaptors/]" message="Select the RequiredAdaptor"/>
             </variable>
             <viewVariable name="containerView"/>
@@ -1022,7 +1026,8 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddManagedResource" label="Managed Resource" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.WebService']">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[container.eContainer(Toolchain).specification.domainSpecifications.resources/]" childrenExpression="Select the Resouce"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1033,7 +1038,8 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddConsumedResource" label="Consumed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']/@subNodeMappings[name='AdaptorInterface.GenericRequiredAdaptor.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
             <variable name="container">
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[container.eContainer(Toolchain).specification.domainSpecifications.resources/]" childrenExpression="Select the Resouce"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>

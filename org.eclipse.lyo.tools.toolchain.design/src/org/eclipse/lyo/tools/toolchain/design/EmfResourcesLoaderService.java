@@ -34,7 +34,17 @@ import vocabulary.Vocabulary;
 import vocabulary.VocabularyPackage;
 
 public class EmfResourcesLoaderService {
-    /**
+
+    public Collection<adaptorinterface.Resource> getLoadedResources(EObject self) {
+        Collection<adaptorinterface.Resource> eList = new BasicEList<adaptorinterface.Resource>();
+        Session session = SessionManager.INSTANCE.getSession(self);
+        for (DomainSpecification domainSpecification : getSessionDomainSpecifications(session)) {
+        	eList.addAll(domainSpecification.getResources());
+		}
+        return eList;
+    }
+
+	/**
      * <p>
      * This method is used for getting the list of all the
      * <{@link DomainSpecification} that exits in all the xmi files with in the
