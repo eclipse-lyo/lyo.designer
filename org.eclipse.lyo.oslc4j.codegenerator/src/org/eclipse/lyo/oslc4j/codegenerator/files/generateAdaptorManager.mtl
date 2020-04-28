@@ -151,7 +151,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         // [protected ('TRSInitialBase')]
         //TODO: Provide the initial list of URIs to populate the TRS log with
         // [/protected]
-        InmemPagedTrs temp = new PagedTrsFactory().getInmemPagedTrs(50, 50, uris);
+        InmemPagedTrs temp = new PagedTrsFactory().getInmemPagedTrs([anAdaptorInterface.trsService.basePageLimit/], [anAdaptorInterface.trsService.changeLogPageLimit/], uris);
         pagedTrs = temp;
         trsEventHandler = temp;
         // [protected ('TRSFinalize')]
