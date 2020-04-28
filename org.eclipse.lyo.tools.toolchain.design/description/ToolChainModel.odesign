@@ -771,6 +771,13 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
+        <nodeMappings name="AdaptorInterface.TrsService" semanticCandidatesExpression="[trsService/]" domainClass="adaptorinterface.TrsService">
+          <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="['TRS Service'/]" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
         <nodeMappings name="AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)->union(self.webServices.resourceTypes)/]" domainClass="adaptorinterface.Resource">
           <style xsi:type="style:EllipseNodeDescription" labelSize="9" showIcon="false" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1021,6 +1028,18 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter method relative URL pattern', 'Enter the relative URL pattern for the OSLC resource methods under this web service. You can use [ResourceType] to denote the RDF type of the resource.', self.resourceUrlPattern) in (if (userInput = null) then resourceUrlPattern else userInput endif) /]"/>
                     </subModelOperations>
                   </default>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateInmemPagedTrsService" label="In-memory Paged TRS Service" precondition="[self.trsService.oclIsUndefined()/]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.TrsService']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.InmemPagedTrsService" referenceName="trsService">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="basePageLimit" valueExpression="[50/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="changeLogPageLimit" valueExpression="[50/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

@@ -111,6 +111,11 @@
 [/if]
 [/template]
 
+[template public generateForTrsService(anAdaptorInterface : AdaptorInterface)]
+[if (anAdaptorInterface.trsServiceEnabled())]
+[/if]
+[/template]
+
 [template public generateForRelevantDomainSpecifications(anAdaptorInterface : AdaptorInterface)]
 [for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface))]
     [aDomainSpecification.generateDomainSpecificationConstants(anAdaptorInterface, null, null)/]
@@ -211,6 +216,9 @@
 [/if]
 [if (anAdaptorInterface.authenticationEnabled())]
     [generateForAuthentication(anAdaptorInterface)/]
+[/if]
+[if (anAdaptorInterface.trsServiceEnabled())]
+    [generateForTrsService(anAdaptorInterface)/]
 [/if]
 [generateForWebServices(anAdaptorInterface)/]
 [generateForRelevantDomainSpecifications(anAdaptorInterface)/]
