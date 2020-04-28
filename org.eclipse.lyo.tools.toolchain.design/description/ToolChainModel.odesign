@@ -534,14 +534,14 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Toolchain.AdaptorInterface" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DeleteAdaptorInterface']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.EditAdaptorInterfaceName']" semanticCandidatesExpression="feature:adaptorInterfaces" doubleClickDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.NavigateInsideAdaptorInterface']" domainClass="adaptorinterface.AdaptorInterface" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DropManagedResource']">
+        <containerMappings name="Toolchain.AdaptorInterface" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Toolchain.DeleteAdaptorInterface']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Toolchain.EditAdaptorInterfaceName']" semanticCandidatesExpression="feature:adaptorInterfaces" doubleClickDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Toolchain.NavigateInsideAdaptorInterface']" domainClass="adaptorinterface.AdaptorInterface" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DropManagedResource']">
           <borderedNodeMappings name="Toolchain.AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)->union(self.webServices.resourceTypes)/]" domainClass="adaptorinterface.Resource">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="9" showIcon="false" sizeComputationExpression="0.1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="Toolchain.AdaptorInterface.ConsumedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Toolchain.DeleteConsumedResource']" semanticCandidatesExpression="[self.requiredAdaptors.oclAsType(GenericRequiredAdaptor).servicedResources/]" domainClass="adaptorinterface.Resource">
+          <borderedNodeMappings name="Toolchain.AdaptorInterface.ConsumedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Toolchain.DeleteConsumedResource']" semanticCandidatesExpression="[self.requiredAdaptors.oclAsType(GenericRequiredAdaptor).servicedResources/]" domainClass="adaptorinterface.Resource">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="9" showIcon="false" sizeComputationExpression="0.1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -554,8 +554,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="Operations">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Toolchain.CreateAdaptorInterface" label="Adaptor Interface" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconNewAdaptor.png">
+        <toolSections name="OSLC Server">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Toolchain.CreateOslcServer" label="OSLC Server" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconNewAdaptor.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="doNotRegenerateJspFiles" computationExpression="[false/]"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="javaBasePackageName" computationExpression="['your.basepackage.name'/]"/>
@@ -564,7 +564,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.AdaptorInterface" referenceName="adaptorInterfaces" variableName="adaptorInterface">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['AdaptorInterface' + container.oclAsType(Toolchain).adaptorInterfaces->size() /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['OSLC Server' + container.oclAsType(Toolchain).adaptorInterfaces->size() /]"/>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ServiceProviderCatalog" referenceName="serviceProviderCatalog">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['Service Provider Catalog'/]"/>
@@ -573,10 +573,6 @@
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['Service Provider'/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="['Service Provider'/]"/>
                   </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GenericRequiredAdaptor" referenceName="requiredAdaptors">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['GenericRequiredAdaptor'/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/services/catalog/singleton'/]"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenServerConfiguration" referenceName="configuration" variableName="configuration">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="rootServerBaseUrl" valueExpression="['http://localhost:8080/'/]"/>
@@ -631,32 +627,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddConsumedResource" label="Consumed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="requiredAdaptor" candidatesExpression="[container.oclAsType(AdaptorInterface).requiredAdaptors/]" message="Select the RequiredAdaptor"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[requiredAdaptor/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="servicedResources" valueExpression="[consumedResource/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Toolchain.EditAdaptorInterfaceName">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Toolchain.NavigateInsideAdaptorInterface" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Toolchain.DeleteManagedResource">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -673,6 +643,56 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+        </toolSections>
+        <toolSections name="OSLC Client">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Toolchain.CreateOslcClient" label="OSLC Client" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconNewAdaptor.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="doNotRegenerateJspFiles" computationExpression="[false/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="javaBasePackageName" computationExpression="['your.basepackage.name'/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="filesBasePath" computationExpression="['.'/]"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.AdaptorInterface" referenceName="adaptorInterfaces" variableName="adaptorInterface">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['OSLC Client' + container.oclAsType(Toolchain).adaptorInterfaces->size() /]"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GenericRequiredAdaptor" referenceName="requiredAdaptors">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['GenericRequiredAdaptor'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/services/catalog/singleton'/]"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenServerConfiguration" referenceName="configuration" variableName="configuration">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="rootServerBaseUrl" valueExpression="['http://localhost:8080/'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="applicationContextPath" valueExpression="['/'.concat(adaptorInterface.name.toLower().replaceAll('\\W+', '-'))/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="servletUrlPattern" valueExpression="['/services/*'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="jettyPort" valueExpression="['8080'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="doNotRegenerateJspFiles" valueExpression="[doNotRegenerateJspFiles/]"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GeneralConfiguration" referenceName="generalConfiguration" variableName="generalConfiguration">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="javaBasePackageName" valueExpression="[javaBasePackageName/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="filesBasePath" valueExpression="[filesBasePath/]"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenProjectConfiguration" referenceName="projectConfiguration" variableName="projectConfiguration">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="lyoVersion" valueExpression="['4.0.0-SNAPSHOT'/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="groupId" valueExpression="[generalConfiguration.javaBasePackageName/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactId" valueExpression="[adaptorInterface.name.toLower().replaceAll('\\W+', '-')/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="version" valueExpression="['0.0.1-SNAPSHOT'/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Toolchain.AddConsumedResource" label="Consumed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']/@borderedNodeMappings[name='Toolchain.AdaptorInterface.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="requiredAdaptor" candidatesExpression="[container.oclAsType(AdaptorInterface).requiredAdaptors/]" message="Select the RequiredAdaptor"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[requiredAdaptor/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="servicedResources" valueExpression="[consumedResource/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Toolchain.DeleteConsumedResource">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -685,6 +705,21 @@
                   <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
                 </subModelOperations>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Operations">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Toolchain.NavigateInsideAdaptorInterface" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ToolchainDiagram']/@defaultLayer/@containerMappings[name='Toolchain.AdaptorInterface']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Toolchain.EditAdaptorInterfaceName">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Toolchain.DeleteAdaptorInterface">
@@ -834,7 +869,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="AdaptorInterface.GenericRequiredAdaptor" semanticCandidatesExpression="feature:requiredAdaptors" domainClass="adaptorinterface.GenericRequiredAdaptor">
-          <subNodeMappings name="AdaptorInterface.GenericRequiredAdaptor.ConsumedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteConsumedResource']" semanticCandidatesExpression="[self.servicedResources/]" domainClass="adaptorinterface.Resource">
+          <subNodeMappings name="AdaptorInterface.GenericRequiredAdaptor.ConsumedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='AdaptorInterface.DeleteConsumedResource']" semanticCandidatesExpression="[self.servicedResources/]" domainClass="adaptorinterface.Resource">
             <style xsi:type="style:EllipseNodeDescription" labelSize="9" showIcon="false" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -848,7 +883,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="AdaptorInterface.ServerConfiguration" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='AdaptorInterface.DeleteServerConfiguration']" semanticCandidatesExpression="[self.configuration/]" domainClass="adaptorinterface.ServerConfiguration" childrenPresentation="List">
+        <containerMappings name="AdaptorInterface.ServerConfiguration" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='AdaptorInterface.DeleteServerConfiguration']" semanticCandidatesExpression="[self.configuration/]" domainClass="adaptorinterface.ServerConfiguration" childrenPresentation="List">
           <subNodeMappings name="AdaptorInterface.ServerConfiguration.GeneralConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.GeneralConfiguration">
             <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="General" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -920,7 +955,19 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="Tool">
+        <toolSections name="OSLC Server">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateServiceProviderCatalog" label="Service Provider Catalog" precondition="[self.serviceProviderCatalog.oclIsUndefined()/]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ServiceProviderCatalog" referenceName="serviceProviderCatalog">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['Service Provider Catalog'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="[instance.title/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateServiceProvider" label="Service Provider" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProvider']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -1032,18 +1079,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateInmemPagedTrsService" label="In-memory Paged TRS Service" precondition="[self.trsService.oclIsUndefined()/]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.TrsService']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.InmemPagedTrsService" referenceName="trsService">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="basePageLimit" valueExpression="[50/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="changeLogPageLimit" valueExpression="[50/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddManagedResource" label="Managed Resource" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/providedInterface_icon.png" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationFactory'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.QueryCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.SelectionDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CreationDialog'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.BasicCapability'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.WebService']">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
@@ -1056,15 +1091,15 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddConsumedResource" label="Consumed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']/@subNodeMappings[name='AdaptorInterface.GenericRequiredAdaptor.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
-            </variable>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateInmemPagedTrsService" label="In-memory Paged TRS Service" precondition="[self.trsService.oclIsUndefined()/]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.TrsService']">
+            <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="servicedResources" valueExpression="[consumedResource/]"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.InmemPagedTrsService" referenceName="trsService">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="basePageLimit" valueExpression="[50/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="changeLogPageLimit" valueExpression="[50/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1077,16 +1112,6 @@
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[capability/]">
                   <subModelOperations xsi:type="tool_1:Unset" featureName="resourceTypes" elementExpression="[element/]"/>
                 </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteConsumedResource">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.oclAsType(DNodeContainer).target/]">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1155,6 +1180,42 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="OSLC Client">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AdaptorInterface.CreateGenericRequiredAdaptor" label="Generic Required Adaptor" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GenericRequiredAdaptor" referenceName="requiredAdaptors">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Generic Required Adaptor '+container.requiredAdaptors->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/services/catalog/singleton'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddConsumedResource" label="Consumed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']/@subNodeMappings[name='AdaptorInterface.GenericRequiredAdaptor.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="servicedResources" valueExpression="[consumedResource/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteConsumedResource">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.oclAsType(DNodeContainer).target/]">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Config">
