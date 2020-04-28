@@ -61,6 +61,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 			case AdaptorinterfacePackage.SERVICE_PROVIDER: return createServiceProvider();
 			case AdaptorinterfacePackage.SERVICE: return createService();
 			case AdaptorinterfacePackage.WEB_SERVICE: return createWebService();
+			case AdaptorinterfacePackage.INMEM_PAGED_TRS_SERVICE: return createInmemPagedTrsService();
 			case AdaptorinterfacePackage.RESOURCE: return createResource();
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY: return createResourceProperty();
 			case AdaptorinterfacePackage.CREATION_FACTORY: return createCreationFactory();
@@ -218,6 +219,16 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 	public WebService createWebService() {
 		WebServiceImpl webService = new WebServiceImpl();
 		return webService;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InmemPagedTrsService createInmemPagedTrsService() {
+		InmemPagedTrsServiceImpl inmemPagedTrsService = new InmemPagedTrsServiceImpl();
+		return inmemPagedTrsService;
 	}
 
 	/**

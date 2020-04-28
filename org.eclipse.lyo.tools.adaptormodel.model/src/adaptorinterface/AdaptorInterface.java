@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.AdaptorInterface#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getServiceProviderCatalog <em>Service Provider Catalog</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getWebServices <em>Web Services</em>}</li>
+ *   <li>{@link adaptorinterface.AdaptorInterface#getTrsService <em>Trs Service</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getSpecification <em>Specification</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getRequiredAdaptors <em>Required Adaptors</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getConfiguration <em>Configuration</em>}</li>
@@ -83,6 +84,32 @@ public interface AdaptorInterface extends EObject {
 	 * @generated
 	 */
 	EList<WebService> getWebServices();
+
+	/**
+	 * Returns the value of the '<em><b>Trs Service</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Trs Service</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trs Service</em>' containment reference.
+	 * @see #setTrsService(TrsService)
+	 * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_TrsService()
+	 * @model containment="true"
+	 * @generated
+	 */
+	TrsService getTrsService();
+
+	/**
+	 * Sets the value of the '{@link adaptorinterface.AdaptorInterface#getTrsService <em>Trs Service</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Trs Service</em>' containment reference.
+	 * @see #getTrsService()
+	 * @generated
+	 */
+	void setTrsService(TrsService value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

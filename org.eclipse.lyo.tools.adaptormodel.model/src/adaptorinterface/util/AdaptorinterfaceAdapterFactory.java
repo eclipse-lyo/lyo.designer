@@ -100,6 +100,14 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 				return createWebServiceAdapter();
 			}
 			@Override
+			public Adapter caseTrsService(TrsService object) {
+				return createTrsServiceAdapter();
+			}
+			@Override
+			public Adapter caseInmemPagedTrsService(InmemPagedTrsService object) {
+				return createInmemPagedTrsServiceAdapter();
+			}
+			@Override
 			public Adapter caseResource(Resource object) {
 				return createResourceAdapter();
 			}
@@ -642,6 +650,34 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWebServiceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.TrsService <em>Trs Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.TrsService
+	 * @generated
+	 */
+	public Adapter createTrsServiceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link adaptorinterface.InmemPagedTrsService <em>Inmem Paged Trs Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see adaptorinterface.InmemPagedTrsService
+	 * @generated
+	 */
+	public Adapter createInmemPagedTrsServiceAdapter() {
 		return null;
 	}
 
