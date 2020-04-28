@@ -9,6 +9,7 @@ import adaptorinterface.ServerConfiguration;
 import adaptorinterface.ServiceProviderCatalog;
 import adaptorinterface.Specification;
 
+import adaptorinterface.TrsService;
 import adaptorinterface.WebService;
 import java.util.Collection;
 
@@ -37,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getServiceProviderCatalog <em>Service Provider Catalog</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getWebServices <em>Web Services</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getTrsService <em>Trs Service</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getRequiredAdaptors <em>Required Adaptors</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getConfiguration <em>Configuration</em>}</li>
@@ -98,6 +100,16 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected EList<WebService> webServices;
+
+	/**
+	 * The cached value of the '{@link #getTrsService() <em>Trs Service</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTrsService()
+	 * @generated
+	 * @ordered
+	 */
+	protected TrsService trsService;
 
 	/**
 	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
@@ -483,6 +495,49 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 			webServices = new EObjectContainmentEList<WebService>(WebService.class, this, AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES);
 		}
 		return webServices;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TrsService getTrsService() {
+		return trsService;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTrsService(TrsService newTrsService, NotificationChain msgs) {
+		TrsService oldTrsService = trsService;
+		trsService = newTrsService;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE, oldTrsService, newTrsService);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTrsService(TrsService newTrsService) {
+		if (newTrsService != trsService) {
+			NotificationChain msgs = null;
+			if (trsService != null)
+				msgs = ((InternalEObject)trsService).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE, null, msgs);
+			if (newTrsService != null)
+				msgs = ((InternalEObject)newTrsService).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE, null, msgs);
+			msgs = basicSetTrsService(newTrsService, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE, newTrsService, newTrsService));
 	}
 
 	/**
@@ -943,6 +998,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return basicSetServiceProviderCatalog(null, msgs);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
 				return ((InternalEList<?>)getWebServices()).basicRemove(otherEnd, msgs);
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE:
+				return basicSetTrsService(null, msgs);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				return basicSetSpecification(null, msgs);
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
@@ -967,6 +1024,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return getServiceProviderCatalog();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
 				return getWebServices();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE:
+				return getTrsService();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				return getSpecification();
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
@@ -1023,6 +1082,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
 				getWebServices().clear();
 				getWebServices().addAll((Collection<? extends WebService>)newValue);
+				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE:
+				setTrsService((TrsService)newValue);
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				setSpecification((Specification)newValue);
@@ -1097,6 +1159,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
 				getWebServices().clear();
 				return;
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE:
+				setTrsService((TrsService)null);
+				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				setSpecification((Specification)null);
 				return;
@@ -1166,6 +1231,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 				return serviceProviderCatalog != null;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
 				return webServices != null && !webServices.isEmpty();
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE:
+				return trsService != null;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 				return specification != null;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:

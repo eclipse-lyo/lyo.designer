@@ -252,6 +252,29 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link adaptorinterface.InmemPagedTrsService} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InmemPagedTrsServiceItemProvider inmemPagedTrsServiceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link adaptorinterface.InmemPagedTrsService}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInmemPagedTrsServiceAdapter() {
+		if (inmemPagedTrsServiceItemProvider == null) {
+			inmemPagedTrsServiceItemProvider = new InmemPagedTrsServiceItemProvider(this);
+		}
+
+		return inmemPagedTrsServiceItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link adaptorinterface.Resource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -818,6 +841,7 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
 		if (serviceProviderItemProvider != null) serviceProviderItemProvider.dispose();
 		if (serviceItemProvider != null) serviceItemProvider.dispose();
 		if (webServiceItemProvider != null) webServiceItemProvider.dispose();
+		if (inmemPagedTrsServiceItemProvider != null) inmemPagedTrsServiceItemProvider.dispose();
 		if (resourceItemProvider != null) resourceItemProvider.dispose();
 		if (resourcePropertyItemProvider != null) resourcePropertyItemProvider.dispose();
 		if (creationFactoryItemProvider != null) creationFactoryItemProvider.dispose();

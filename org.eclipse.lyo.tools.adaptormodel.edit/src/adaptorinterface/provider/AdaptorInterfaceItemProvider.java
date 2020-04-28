@@ -426,6 +426,7 @@ public class AdaptorInterfaceItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__WEB_SERVICES);
+			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__TRS_SERVICE);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__SPECIFICATION);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS);
 			childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__CONFIGURATION);
@@ -503,6 +504,7 @@ public class AdaptorInterfaceItemProvider
 				return;
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES:
+			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__TRS_SERVICE:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SPECIFICATION:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
 			case AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION:
@@ -532,6 +534,11 @@ public class AdaptorInterfaceItemProvider
 			(createChildParameter
 				(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__WEB_SERVICES,
 				 AdaptorinterfaceFactory.eINSTANCE.createWebService()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__TRS_SERVICE,
+				 AdaptorinterfaceFactory.eINSTANCE.createInmemPagedTrsService()));
 
 		newChildDescriptors.add
 			(createChildParameter

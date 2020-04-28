@@ -110,7 +110,7 @@
 [/if]
 [/template]
 
-[template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean, authenticationEnabled : Boolean)]
+[template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean, authenticationEnabled : Boolean, trsServiceEnabled : Boolean)]
 <!-- Lyo dependencies -->
 <dependency>
     <groupId>org.eclipse.lyo.oslc4j.core</groupId>
@@ -128,6 +128,13 @@
     <artifactId>oslc4j-json4j-provider</artifactId>
     <version>${version.lyo}</version>
 </dependency>
+[if trsServiceEnabled]
+<dependency>
+    <groupId>org.eclipse.lyo.trs</groupId>
+    <artifactId>trs-server</artifactId>
+    <version>${version.lyo}</version>
+</dependency>
+[/if]
 [/if]
 [if clientImplementation]
 <dependency>
@@ -175,7 +182,7 @@
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(true)/]
-        [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled())/]
+        [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled(), anAdaptorInterface.trsServiceEnabled())/]
         [if (anAdaptorInterface.swaggerDocumentationEnabled())]
         <!-- Swagger dependencies -->
         <dependency>
@@ -294,7 +301,7 @@
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(false)/]
-        [lyoDependencies(false, false, false)/]
+        [lyoDependencies(false, false, false, false)/]
     </dependencies>
     <!-- [protected ('post_dependencies')]
     -->
@@ -324,7 +331,7 @@
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(false)/]
-        [lyoDependencies(false, false, false)/]
+        [lyoDependencies(false, false, false, false)/]
     </dependencies>
     <!-- [protected ('post_dependencies')]
     -->

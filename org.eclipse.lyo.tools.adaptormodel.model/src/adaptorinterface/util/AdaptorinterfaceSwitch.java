@@ -114,6 +114,19 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AdaptorinterfacePackage.TRS_SERVICE: {
+				TrsService trsService = (TrsService)theEObject;
+				T result = caseTrsService(trsService);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AdaptorinterfacePackage.INMEM_PAGED_TRS_SERVICE: {
+				InmemPagedTrsService inmemPagedTrsService = (InmemPagedTrsService)theEObject;
+				T result = caseInmemPagedTrsService(inmemPagedTrsService);
+				if (result == null) result = caseTrsService(inmemPagedTrsService);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AdaptorinterfacePackage.RESOURCE: {
 				Resource resource = (Resource)theEObject;
 				T result = caseResource(resource);
@@ -727,6 +740,36 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseWebService(WebService object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Trs Service</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Trs Service</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTrsService(TrsService object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Inmem Paged Trs Service</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inmem Paged Trs Service</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInmemPagedTrsService(InmemPagedTrsService object) {
 		return null;
 	}
 

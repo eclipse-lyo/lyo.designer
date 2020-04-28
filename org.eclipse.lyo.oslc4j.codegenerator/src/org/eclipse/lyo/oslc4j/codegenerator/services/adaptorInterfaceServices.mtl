@@ -66,6 +66,10 @@ else
 endif)
 /]
 
+[query public trsServiceEnabled(anAdaptorInterface : AdaptorInterface) : Boolean = 
+not anAdaptorInterface.trsService.oclIsUndefined()
+/]
+
 [query public javaName(anAdaptorInterface : AdaptorInterface, toUpperFirst : Boolean) : String = 
 javaString(anAdaptorInterface.name, 'oslc', toUpperFirst)
 /]

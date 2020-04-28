@@ -103,6 +103,14 @@ import [javaClassFullNameForResourceShapeService(anAdaptorInterface) /];
 [for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];[/for]
 [for (aService: Service | anAdaptorInterface.serviceProviders().services) separator(lineSeparator())]import [javaClassFullName(aService) /];[/for]
 [for (aWebService: WebService | anAdaptorInterface.webServices) separator(lineSeparator())]import [javaClassFullName(aWebService) /];[/for]
+[if (anAdaptorInterface.trsServiceEnabled())]
+import java.util.Collections;
+import org.glassfish.hk2.api.Factory;
+import org.glassfish.hk2.utilities.binding.AbstractBinder;
+import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
+import org.eclipse.lyo.oslc4j.trs.server.service.TrackedResourceSetService;
+import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
+[/if]
 
 // [protected ('imports')]
 // [/protected]
@@ -124,6 +132,27 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
     // [protected ('class_methods')]
     // [/protected]
 
+    [if (anAdaptorInterface.trsServiceEnabled())]
+    @Override
+    public Set<Object> getSingletons() {
+        return Collections.singleton(new AbstractBinder() {
+            @Override
+            protected void configure() {
+                bindFactory(new Factory<PagedTrs>() {
+                            @Override
+                            public PagedTrs provide() {
+                                return [anAdaptorInterface.javaClassNameForAdaptorManager()/].getPagedTrs();
+                            }
+
+                            @Override
+                            public void dispose(PagedTrs instance) {
+                            }
+                        }
+                ).to(PagedTrs.class);
+            }
+        });
+    }
+    [/if]
     static
     {
         RESOURCE_CLASSES.addAll(JenaProvidersRegistry.getProviders());
@@ -159,6 +188,10 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
             // [protected ('OAuthServiceClasses_notFound')]
             // [/protected]
         }
+        [/if]
+        [if (anAdaptorInterface.trsServiceEnabled())]
+        // TRS Server resources
+        RESOURCE_CLASSES.add(TrackedResourceSetService.class);
         [/if]
 
         // [protected ('Custom Resource Classes')]

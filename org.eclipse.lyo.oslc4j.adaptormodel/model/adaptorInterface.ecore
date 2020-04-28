@@ -8,6 +8,8 @@
         lowerBound="1" eType="#//ServiceProviderCatalog" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="webServices" upperBound="-1"
         eType="#//WebService" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trsService" eType="#//TrsService"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specification" lowerBound="1"
         eType="#//Specification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredAdaptors" upperBound="-1"
@@ -124,6 +126,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="update" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TrsService" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePageLimit" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="changeLogPageLimit" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InmemPagedTrsService" eSuperTypes="#//TrsService"/>
   <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//Shape">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="describes" eType="ecore:EClass vocabulary.ecore#//Class"/>

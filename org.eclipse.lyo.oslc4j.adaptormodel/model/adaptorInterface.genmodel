@@ -62,6 +62,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/serviceProviderCatalog"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/webServices"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/trsService"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/specification"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/requiredAdaptors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/configuration"/>
@@ -133,6 +134,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebService/delete"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebService/update"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="adaptorInterface.ecore#//TrsService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//TrsService/basePageLimit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//TrsService/changeLogPageLimit"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//InmemPagedTrsService"/>
     <genClasses ecoreClass="adaptorInterface.ecore#//Resource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Resource/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Resource/describes"/>

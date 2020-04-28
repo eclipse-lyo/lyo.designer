@@ -12,6 +12,7 @@ import adaptorinterface.DomainSpecification;
 import adaptorinterface.GeneralConfiguration;
 import adaptorinterface.GenerationSetting;
 import adaptorinterface.GenericRequiredAdaptor;
+import adaptorinterface.InmemPagedTrsService;
 import adaptorinterface.MavenProjectConfiguration;
 import adaptorinterface.MavenServerConfiguration;
 import adaptorinterface.MavenSpecificationConfiguration;
@@ -40,6 +41,7 @@ import adaptorinterface.Shape;
 import adaptorinterface.ShapeProperty;
 import adaptorinterface.Specification;
 import adaptorinterface.SpecificationConfiguration;
+import adaptorinterface.TrsService;
 import adaptorinterface.WebService;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -111,6 +113,20 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	private EClass webServiceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass trsServiceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inmemPagedTrsServiceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -427,7 +443,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAdaptorInterface_Specification() {
+	public EReference getAdaptorInterface_TrsService() {
 		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -436,7 +452,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAdaptorInterface_RequiredAdaptors() {
+	public EReference getAdaptorInterface_Specification() {
 		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -445,7 +461,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAdaptorInterface_Configuration() {
+	public EReference getAdaptorInterface_RequiredAdaptors() {
 		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -454,8 +470,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_JavaClassBaseNamespace() {
-		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(6);
+	public EReference getAdaptorInterface_Configuration() {
+		return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -463,7 +479,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_JavaFilesBasePath() {
+	public EAttribute getAdaptorInterface_JavaClassBaseNamespace() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -472,7 +488,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_JspFilesBasePath() {
+	public EAttribute getAdaptorInterface_JavaFilesBasePath() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -481,7 +497,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_JavascriptFilesBasePath() {
+	public EAttribute getAdaptorInterface_JspFilesBasePath() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -490,7 +506,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_SwaggerDocumentation() {
+	public EAttribute getAdaptorInterface_JavascriptFilesBasePath() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -499,7 +515,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_classImports() {
+	public EAttribute getAdaptorInterface_SwaggerDocumentation() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -508,7 +524,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_classImports() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -517,7 +533,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_classMethods() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -526,7 +542,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerInitialize() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -535,7 +551,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_servletListenerDestroy() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -544,7 +560,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResource() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_getServiceProviders() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -553,7 +569,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResources() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResource() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -562,7 +578,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_searchResources() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_getResources() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(18);
 	}
 
@@ -571,8 +587,17 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAdaptorInterface_BackendCodeTemplate_createResource() {
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_searchResources() {
 		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdaptorInterface_BackendCodeTemplate_createResource() {
+		return (EAttribute)adaptorInterfaceEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -987,6 +1012,42 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 */
 	public EAttribute getWebService_Update() {
 		return (EAttribute)webServiceEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTrsService() {
+		return trsServiceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTrsService_BasePageLimit() {
+		return (EAttribute)trsServiceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTrsService_ChangeLogPageLimit() {
+		return (EAttribute)trsServiceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInmemPagedTrsService() {
+		return inmemPagedTrsServiceEClass;
 	}
 
 	/**
@@ -2011,6 +2072,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__NAME);
 		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__SERVICE_PROVIDER_CATALOG);
 		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__WEB_SERVICES);
+		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__TRS_SERVICE);
 		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__SPECIFICATION);
 		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__REQUIRED_ADAPTORS);
 		createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__CONFIGURATION);
@@ -2081,6 +2143,12 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		createEAttribute(webServiceEClass, WEB_SERVICE__READ);
 		createEAttribute(webServiceEClass, WEB_SERVICE__DELETE);
 		createEAttribute(webServiceEClass, WEB_SERVICE__UPDATE);
+
+		trsServiceEClass = createEClass(TRS_SERVICE);
+		createEAttribute(trsServiceEClass, TRS_SERVICE__BASE_PAGE_LIMIT);
+		createEAttribute(trsServiceEClass, TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT);
+
+		inmemPagedTrsServiceEClass = createEClass(INMEM_PAGED_TRS_SERVICE);
 
 		resourceEClass = createEClass(RESOURCE);
 		createEAttribute(resourceEClass, RESOURCE__NAME);
@@ -2249,6 +2317,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		inmemPagedTrsServiceEClass.getESuperTypes().add(this.getTrsService());
 		resourceEClass.getESuperTypes().add(this.getShape());
 		resourcePropertyEClass.getESuperTypes().add(this.getShapeProperty());
 		genericRequiredAdaptorEClass.getESuperTypes().add(this.getRequiredAdaptor());
@@ -2264,6 +2333,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getAdaptorInterface_Name(), ecorePackage.getEString(), "name", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdaptorInterface_ServiceProviderCatalog(), this.getServiceProviderCatalog(), null, "serviceProviderCatalog", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdaptorInterface_WebServices(), this.getWebService(), null, "webServices", null, 0, -1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdaptorInterface_TrsService(), this.getTrsService(), null, "trsService", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdaptorInterface_Specification(), this.getSpecification(), null, "specification", null, 1, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdaptorInterface_RequiredAdaptors(), this.getRequiredAdaptor(), null, "requiredAdaptors", null, 0, -1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdaptorInterface_Configuration(), this.getServerConfiguration(), null, "configuration", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2340,6 +2410,12 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getWebService_Read(), ecorePackage.getEBoolean(), "read", "true", 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWebService_Delete(), ecorePackage.getEBoolean(), "delete", "false", 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWebService_Update(), ecorePackage.getEBoolean(), "update", "false", 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(trsServiceEClass, TrsService.class, "TrsService", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTrsService_BasePageLimit(), ecorePackage.getEInt(), "basePageLimit", null, 1, 1, TrsService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrsService_ChangeLogPageLimit(), ecorePackage.getEInt(), "changeLogPageLimit", null, 1, 1, TrsService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(inmemPagedTrsServiceEClass, InmemPagedTrsService.class, "InmemPagedTrsService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(resourceEClass, Resource.class, "Resource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getResource_Name(), ecorePackage.getEString(), "name", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

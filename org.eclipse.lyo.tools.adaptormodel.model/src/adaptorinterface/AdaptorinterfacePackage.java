@@ -94,13 +94,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int ADAPTOR_INTERFACE__WEB_SERVICES = 2;
 
 	/**
+	 * The feature id for the '<em><b>Trs Service</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTOR_INTERFACE__TRS_SERVICE = 3;
+
+	/**
 	 * The feature id for the '<em><b>Specification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__SPECIFICATION = 3;
+	int ADAPTOR_INTERFACE__SPECIFICATION = 4;
 
 	/**
 	 * The feature id for the '<em><b>Required Adaptors</b></em>' containment reference list.
@@ -109,7 +118,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__REQUIRED_ADAPTORS = 4;
+	int ADAPTOR_INTERFACE__REQUIRED_ADAPTORS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
@@ -118,7 +127,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__CONFIGURATION = 5;
+	int ADAPTOR_INTERFACE__CONFIGURATION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Java Class Base Namespace</b></em>' attribute.
@@ -127,7 +136,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE = 6;
+	int ADAPTOR_INTERFACE__JAVA_CLASS_BASE_NAMESPACE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Java Files Base Path</b></em>' attribute.
@@ -136,7 +145,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH = 7;
+	int ADAPTOR_INTERFACE__JAVA_FILES_BASE_PATH = 8;
 
 	/**
 	 * The feature id for the '<em><b>Jsp Files Base Path</b></em>' attribute.
@@ -145,7 +154,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH = 8;
+	int ADAPTOR_INTERFACE__JSP_FILES_BASE_PATH = 9;
 
 	/**
 	 * The feature id for the '<em><b>Javascript Files Base Path</b></em>' attribute.
@@ -154,7 +163,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = 9;
+	int ADAPTOR_INTERFACE__JAVASCRIPT_FILES_BASE_PATH = 10;
 
 	/**
 	 * The feature id for the '<em><b>Swagger Documentation</b></em>' attribute.
@@ -163,7 +172,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION = 10;
+	int ADAPTOR_INTERFACE__SWAGGER_DOCUMENTATION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template class Imports</b></em>' attribute.
@@ -172,7 +181,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS = 11;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_IMPORTS = 12;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template class Methods</b></em>' attribute.
@@ -181,7 +190,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS = 12;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CLASS_METHODS = 13;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template servlet Listener Initialize</b></em>' attribute.
@@ -190,7 +199,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE = 13;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_INITIALIZE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template servlet Listener Destroy</b></em>' attribute.
@@ -199,7 +208,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY = 14;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SERVLET_LISTENER_DESTROY = 15;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template get Service Providers</b></em>' attribute.
@@ -208,7 +217,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS = 15;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_SERVICE_PROVIDERS = 16;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template get Resource</b></em>' attribute.
@@ -217,7 +226,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE = 16;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template get Resources</b></em>' attribute.
@@ -226,7 +235,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES = 17;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES = 18;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template search Resources</b></em>' attribute.
@@ -235,7 +244,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES = 18;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES = 19;
 
 	/**
 	 * The feature id for the '<em><b>Backend Code Template create Resource</b></em>' attribute.
@@ -244,7 +253,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = 19;
+	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = 20;
 
 	/**
 	 * The number of structural features of the '<em>Adaptor Interface</em>' class.
@@ -253,7 +262,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTOR_INTERFACE_FEATURE_COUNT = 20;
+	int ADAPTOR_INTERFACE_FEATURE_COUNT = 21;
 
 	/**
 	 * The number of operations of the '<em>Adaptor Interface</em>' class.
@@ -812,6 +821,98 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int WEB_SERVICE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.TrsServiceImpl <em>Trs Service</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.TrsServiceImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getTrsService()
+	 * @generated
+	 */
+	int TRS_SERVICE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Base Page Limit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRS_SERVICE__BASE_PAGE_LIMIT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Change Log Page Limit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT = 1;
+
+	/**
+	 * The number of structural features of the '<em>Trs Service</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRS_SERVICE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Trs Service</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRS_SERVICE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link adaptorinterface.impl.InmemPagedTrsServiceImpl <em>Inmem Paged Trs Service</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see adaptorinterface.impl.InmemPagedTrsServiceImpl
+	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getInmemPagedTrsService()
+	 * @generated
+	 */
+	int INMEM_PAGED_TRS_SERVICE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Base Page Limit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INMEM_PAGED_TRS_SERVICE__BASE_PAGE_LIMIT = TRS_SERVICE__BASE_PAGE_LIMIT;
+
+	/**
+	 * The feature id for the '<em><b>Change Log Page Limit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INMEM_PAGED_TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT = TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT;
+
+	/**
+	 * The number of structural features of the '<em>Inmem Paged Trs Service</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INMEM_PAGED_TRS_SERVICE_FEATURE_COUNT = TRS_SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Inmem Paged Trs Service</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INMEM_PAGED_TRS_SERVICE_OPERATION_COUNT = TRS_SERVICE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link adaptorinterface.impl.ShapeImpl <em>Shape</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -819,7 +920,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShape()
 	 * @generated
 	 */
-	int SHAPE = 19;
+	int SHAPE = 21;
 
 	/**
 	 * The number of structural features of the '<em>Shape</em>' class.
@@ -847,7 +948,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResource()
 	 * @generated
 	 */
-	int RESOURCE = 8;
+	int RESOURCE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -911,7 +1012,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShapeProperty()
 	 * @generated
 	 */
-	int SHAPE_PROPERTY = 21;
+	int SHAPE_PROPERTY = 23;
 
 	/**
 	 * The number of structural features of the '<em>Shape Property</em>' class.
@@ -939,7 +1040,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceProperty()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY = 9;
+	int RESOURCE_PROPERTY = 11;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -1075,7 +1176,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getCreationFactory()
 	 * @generated
 	 */
-	int CREATION_FACTORY = 10;
+	int CREATION_FACTORY = 12;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -1148,7 +1249,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getQueryCapability()
 	 * @generated
 	 */
-	int QUERY_CAPABILITY = 11;
+	int QUERY_CAPABILITY = 13;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -1221,7 +1322,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getBasicCapability()
 	 * @generated
 	 */
-	int BASIC_CAPABILITY = 12;
+	int BASIC_CAPABILITY = 14;
 
 	/**
 	 * The feature id for the '<em><b>Instance ID</b></em>' attribute.
@@ -1294,7 +1395,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getDialog()
 	 * @generated
 	 */
-	int DIALOG = 13;
+	int DIALOG = 15;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -1385,7 +1486,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getPublisher()
 	 * @generated
 	 */
-	int PUBLISHER = 14;
+	int PUBLISHER = 16;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -1449,7 +1550,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getRequiredAdaptor()
 	 * @generated
 	 */
-	int REQUIRED_ADAPTOR = 15;
+	int REQUIRED_ADAPTOR = 17;
 
 	/**
 	 * The feature id for the '<em><b>Service Provider Catalog URI</b></em>' attribute.
@@ -1486,7 +1587,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGenericRequiredAdaptor()
 	 * @generated
 	 */
-	int GENERIC_REQUIRED_ADAPTOR = 16;
+	int GENERIC_REQUIRED_ADAPTOR = 18;
 
 	/**
 	 * The feature id for the '<em><b>Service Provider Catalog URI</b></em>' attribute.
@@ -1541,7 +1642,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getModelledRequiredAdaptor()
 	 * @generated
 	 */
-	int MODELLED_REQUIRED_ADAPTOR = 17;
+	int MODELLED_REQUIRED_ADAPTOR = 19;
 
 	/**
 	 * The feature id for the '<em><b>Service Provider Catalog URI</b></em>' attribute.
@@ -1587,7 +1688,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGenerationSetting()
 	 * @generated
 	 */
-	int GENERATION_SETTING = 18;
+	int GENERATION_SETTING = 20;
 
 	/**
 	 * The feature id for the '<em><b>Java Class Package Name</b></em>' attribute.
@@ -1642,7 +1743,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclShape()
 	 * @generated
 	 */
-	int SHACL_SHAPE = 20;
+	int SHACL_SHAPE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1715,7 +1816,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclProperty()
 	 * @generated
 	 */
-	int SHACL_PROPERTY = 22;
+	int SHACL_PROPERTY = 24;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1797,7 +1898,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getAuthenticationConfiguration()
 	 * @generated
 	 */
-	int AUTHENTICATION_CONFIGURATION = 23;
+	int AUTHENTICATION_CONFIGURATION = 25;
 
 	/**
 	 * The feature id for the '<em><b>Application Name</b></em>' attribute.
@@ -1843,7 +1944,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGeneralConfiguration()
 	 * @generated
 	 */
-	int GENERAL_CONFIGURATION = 24;
+	int GENERAL_CONFIGURATION = 26;
 
 	/**
 	 * The feature id for the '<em><b>Do Not Generate</b></em>' attribute.
@@ -1898,7 +1999,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getProjectConfiguration()
 	 * @generated
 	 */
-	int PROJECT_CONFIGURATION = 25;
+	int PROJECT_CONFIGURATION = 27;
 
 	/**
 	 * The feature id for the '<em><b>Do Not Generate Project Configuration Files</b></em>' attribute.
@@ -1944,7 +2045,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getServerConfiguration()
 	 * @generated
 	 */
-	int SERVER_CONFIGURATION = 26;
+	int SERVER_CONFIGURATION = 28;
 
 	/**
 	 * The feature id for the '<em><b>Root Server Base Url</b></em>' attribute.
@@ -2035,7 +2136,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSpecificationConfiguration()
 	 * @generated
 	 */
-	int SPECIFICATION_CONFIGURATION = 27;
+	int SPECIFICATION_CONFIGURATION = 29;
 
 	/**
 	 * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
@@ -2081,7 +2182,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenProjectConfiguration()
 	 * @generated
 	 */
-	int MAVEN_PROJECT_CONFIGURATION = 28;
+	int MAVEN_PROJECT_CONFIGURATION = 30;
 
 	/**
 	 * The feature id for the '<em><b>Do Not Generate Project Configuration Files</b></em>' attribute.
@@ -2154,7 +2255,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenServerConfiguration()
 	 * @generated
 	 */
-	int MAVEN_SERVER_CONFIGURATION = 29;
+	int MAVEN_SERVER_CONFIGURATION = 31;
 
 	/**
 	 * The feature id for the '<em><b>Root Server Base Url</b></em>' attribute.
@@ -2254,7 +2355,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenSpecificationConfiguration()
 	 * @generated
 	 */
-	int MAVEN_SPECIFICATION_CONFIGURATION = 30;
+	int MAVEN_SPECIFICATION_CONFIGURATION = 32;
 
 	/**
 	 * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
@@ -2300,7 +2401,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyOccurs()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_OCCURS = 31;
+	int RESOURCE_PROPERTY_OCCURS = 33;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyValueType <em>Resource Property Value Type</em>}' enum.
@@ -2310,7 +2411,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyValueType()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_VALUE_TYPE = 32;
+	int RESOURCE_PROPERTY_VALUE_TYPE = 34;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyRepresentation <em>Resource Property Representation</em>}' enum.
@@ -2320,7 +2421,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRepresentation()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_REPRESENTATION = 33;
+	int RESOURCE_PROPERTY_REPRESENTATION = 35;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyIsMemberProperty <em>Resource Property Is Member Property</em>}' enum.
@@ -2330,7 +2431,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyIsMemberProperty()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 34;
+	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 36;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourcePropertyMultiValueRepresentation <em>Resource Property Multi Value Representation</em>}' enum.
@@ -2340,7 +2441,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyMultiValueRepresentation()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 35;
+	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 37;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -2350,7 +2451,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
 	 * @generated
 	 */
-	int RESOURCE_SERVICE_NAMESPACE = 36;
+	int RESOURCE_SERVICE_NAMESPACE = 38;
 
 	/**
 	 * The meta object id for the '{@link adaptorinterface.ShaclPropertyDataType <em>Shacl Property Data Type</em>}' enum.
@@ -2360,7 +2461,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
 	 * @generated
 	 */
-	int SHACL_PROPERTY_DATA_TYPE = 37;
+	int SHACL_PROPERTY_DATA_TYPE = 39;
 
 
 	/**
@@ -2405,6 +2506,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAdaptorInterface_WebServices();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link adaptorinterface.AdaptorInterface#getTrsService <em>Trs Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Trs Service</em>'.
+	 * @see adaptorinterface.AdaptorInterface#getTrsService()
+	 * @see #getAdaptorInterface()
+	 * @generated
+	 */
+	EReference getAdaptorInterface_TrsService();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link adaptorinterface.AdaptorInterface#getSpecification <em>Specification</em>}'.
@@ -3091,6 +3203,48 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getWebService_Update();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.TrsService <em>Trs Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Trs Service</em>'.
+	 * @see adaptorinterface.TrsService
+	 * @generated
+	 */
+	EClass getTrsService();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.TrsService#getBasePageLimit <em>Base Page Limit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Base Page Limit</em>'.
+	 * @see adaptorinterface.TrsService#getBasePageLimit()
+	 * @see #getTrsService()
+	 * @generated
+	 */
+	EAttribute getTrsService_BasePageLimit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link adaptorinterface.TrsService#getChangeLogPageLimit <em>Change Log Page Limit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Change Log Page Limit</em>'.
+	 * @see adaptorinterface.TrsService#getChangeLogPageLimit()
+	 * @see #getTrsService()
+	 * @generated
+	 */
+	EAttribute getTrsService_ChangeLogPageLimit();
+
+	/**
+	 * Returns the meta object for class '{@link adaptorinterface.InmemPagedTrsService <em>Inmem Paged Trs Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inmem Paged Trs Service</em>'.
+	 * @see adaptorinterface.InmemPagedTrsService
+	 * @generated
+	 */
+	EClass getInmemPagedTrsService();
 
 	/**
 	 * Returns the meta object for class '{@link adaptorinterface.Resource <em>Resource</em>}'.
@@ -4330,6 +4484,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference ADAPTOR_INTERFACE__WEB_SERVICES = eINSTANCE.getAdaptorInterface_WebServices();
 
 		/**
+		 * The meta object literal for the '<em><b>Trs Service</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADAPTOR_INTERFACE__TRS_SERVICE = eINSTANCE.getAdaptorInterface_TrsService();
+
+		/**
 		 * The meta object literal for the '<em><b>Specification</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4846,6 +5008,42 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute WEB_SERVICE__UPDATE = eINSTANCE.getWebService_Update();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.TrsServiceImpl <em>Trs Service</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.TrsServiceImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getTrsService()
+		 * @generated
+		 */
+		EClass TRS_SERVICE = eINSTANCE.getTrsService();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Page Limit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRS_SERVICE__BASE_PAGE_LIMIT = eINSTANCE.getTrsService_BasePageLimit();
+
+		/**
+		 * The meta object literal for the '<em><b>Change Log Page Limit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT = eINSTANCE.getTrsService_ChangeLogPageLimit();
+
+		/**
+		 * The meta object literal for the '{@link adaptorinterface.impl.InmemPagedTrsServiceImpl <em>Inmem Paged Trs Service</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see adaptorinterface.impl.InmemPagedTrsServiceImpl
+		 * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getInmemPagedTrsService()
+		 * @generated
+		 */
+		EClass INMEM_PAGED_TRS_SERVICE = eINSTANCE.getInmemPagedTrsService();
 
 		/**
 		 * The meta object literal for the '{@link adaptorinterface.impl.ResourceImpl <em>Resource</em>}' class.
