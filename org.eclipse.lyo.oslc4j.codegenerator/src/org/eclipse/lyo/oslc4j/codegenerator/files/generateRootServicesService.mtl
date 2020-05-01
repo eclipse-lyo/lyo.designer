@@ -55,6 +55,7 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
 import [anAdaptorInterface.javaClassFullNameForAuthenticationApplication()/];
 import [anAdaptorInterface.serviceProviderCatalog.javaClassFullNameForSingleton() /];
 
@@ -105,7 +106,7 @@ public class [anAdaptorInterface.javaClassNameForRootServicesService() /] {
         MediaType mediaType = MediaType.valueOf("application/rdf+xml");
         ResponseBuilder builder = Response.ok(response, mediaType);
         builder.type("application/rdf+xml; charset=UTF-8");
-        builder.header("OSLC-Core-Version", "2.0");
+        builder.header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
         return builder.build();
     }
 }
