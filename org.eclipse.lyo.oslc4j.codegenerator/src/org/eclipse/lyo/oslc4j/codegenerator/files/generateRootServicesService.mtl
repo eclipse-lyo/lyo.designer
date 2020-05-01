@@ -48,13 +48,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
-
 import [anAdaptorInterface.javaClassFullNameForAuthenticationApplication()/];
 import [anAdaptorInterface.serviceProviderCatalog.javaClassFullNameForSingleton() /];
 
@@ -79,16 +79,21 @@ public class [anAdaptorInterface.javaClassNameForRootServicesService() /] {
      * See https://jazz.net/wiki/bin/view/Main/RootServicesSpec
      */
     @GET
-    @Produces({ OslcMediaType.APPLICATION_RDF_XML })
+    @Produces({ OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML })
     public Response getRootServices() {
         String response = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "\n" +
-                "<rdf:Description rdf:about=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("rootservices").build().toString() + "\"" + "\n" +
+                "<rdf:Description \n" +
                 "    xmlns:oslc_cm=\"http://open-services.net/xmlns/cm/1.0/\"" + "\n" +
-                "    xmlns:dcterms=\"http://purl.org/dc/terms/\"" + "\n" +
+                "    xmlns:oslc_am=\"http://open-services.net/ns/am#\"" + "\n" +
+                "    xmlns:oslc_rm=\"http://open-services.net/xmlns/rm/1.0/\"" + "\n" +
+                "    xmlns:dc=\"http://purl.org/dc/terms/\"" + "\n" +
                 "    xmlns:jfs=\"http://jazz.net/xmlns/prod/jazz/jfs/1.0/\"" + "\n" +
-                "    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">" + "\n" +
-                "    <dcterms:title>Root Services</dcterms:title>" + "\n" +
-                "    <oslc_cm:cmServiceProviders rdf:resource=\"" + ServiceProviderCatalogSingleton.getServiceProviderCatalog(httpServletRequest).getAbout().toString() + "\" />" + "\n" +
+                "    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n" +
+                "    rdf:about=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("rootservices").build().toString() + "\">\n" +
+                "    <dc:title>Root Services</dc:title>" + "\n" +
+                "    <oslc_am:amServiceProviders rdf:resource=\"" + [anAdaptorInterface.serviceProviderCatalog.javaClassNameForSingleton()/].getUri() + "\" />" + "\n" +
+                "    <oslc_rm:rmServiceProviders rdf:resource=\"" + [anAdaptorInterface.serviceProviderCatalog.javaClassNameForSingleton()/].getUri() + "\" />" + "\n" +
+                "    <oslc_cm:cmServiceProviders rdf:resource=\"" + [anAdaptorInterface.serviceProviderCatalog.javaClassNameForSingleton()/].getUri() + "\" />" + "\n" +
                 "    <jfs:oauthRealmName>" + [anAdaptorInterface.javaClassNameForAuthenticationApplication()/].OAUTH_REALM + "</jfs:oauthRealmName>" + "\n" +
                 "    <jfs:oauthDomain>" + OSLC4JUtils.getPublicURI() + "</jfs:oauthDomain>" + "\n" +
                 "    <jfs:oauthRequestConsumerKeyUrl rdf:resource=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/requestKey").build().toString() + "\"/>" + "\n" +
@@ -97,7 +102,11 @@ public class [anAdaptorInterface.javaClassNameForRootServicesService() /] {
                 "    <jfs:oauthUserAuthorizationUrl rdf:resource=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/authorize").build().toString() + "\"/>" + "\n" +
                 "    <jfs:oauthAccessTokenUrl rdf:resource=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/accessToken").build().toString() + "\"/>" + "\n" +
                 "    </rdf:Description>" + "\n";
-        return Response.ok(response, MediaType.valueOf("application/rdf+xml")).build();
+        MediaType mediaType = MediaType.valueOf("application/rdf+xml");
+        ResponseBuilder builder = Response.ok(response, mediaType);
+        builder.type("application/rdf+xml; charset=UTF-8");
+        builder.header("OSLC-Core-Version", "2.0");
+        return builder.build();
     }
 }
 [/file]
