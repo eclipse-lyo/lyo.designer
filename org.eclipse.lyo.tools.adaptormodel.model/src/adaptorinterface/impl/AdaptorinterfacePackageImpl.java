@@ -1064,7 +1064,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getResource_Name() {
+    public EAttribute getResource_Id() {
 		return (EAttribute)resourceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1072,9 +1072,18 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+     */
+	public EAttribute getResource_Name() {
+        return (EAttribute)resourceEClass.getEStructuralFeatures().get(1);
+    }
+
+	/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
 	 */
 	public EReference getResource_Describes() {
-		return (EReference)resourceEClass.getEStructuralFeatures().get(1);
+        return (EReference)resourceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1083,7 +1092,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EReference getResource_Extends() {
-		return (EReference)resourceEClass.getEStructuralFeatures().get(2);
+        return (EReference)resourceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1092,7 +1101,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EReference getResource_ResourceProperties() {
-		return (EReference)resourceEClass.getEStructuralFeatures().get(3);
+        return (EReference)resourceEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1109,7 +1118,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getResourceProperty_Title() {
+    public EAttribute getResourceProperty_Id() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1118,7 +1127,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getResourceProperty_Name() {
+	public EAttribute getResourceProperty_Title() {
 		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1126,9 +1135,18 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+     */
+	public EAttribute getResourceProperty_Name() {
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(2);
+    }
+
+	/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
 	 */
 	public EReference getResourceProperty_PropertyDefinition() {
-		return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(2);
+        return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1137,7 +1155,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EAttribute getResourceProperty_Occurs() {
-		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(3);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1146,7 +1164,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EAttribute getResourceProperty_ReadOnly() {
-		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(4);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1155,7 +1173,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EAttribute getResourceProperty_ValueType() {
-		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(5);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1164,7 +1182,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EAttribute getResourceProperty_Representation() {
-		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(6);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1173,7 +1191,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EAttribute getResourceProperty_MultiValueRepresentation() {
-		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(7);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1182,7 +1200,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EReference getResourceProperty_Range() {
-		return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(8);
+        return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1191,7 +1209,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EAttribute getResourceProperty_Description() {
-		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(9);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -1200,7 +1218,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EAttribute getResourceProperty_AllowedValue() {
-		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(10);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1209,7 +1227,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * @generated
 	 */
 	public EAttribute getResourceProperty_IsMemberProperty() {
-		return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(11);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -2151,12 +2169,14 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		inmemPagedTrsServiceEClass = createEClass(INMEM_PAGED_TRS_SERVICE);
 
 		resourceEClass = createEClass(RESOURCE);
+        createEAttribute(resourceEClass, RESOURCE__ID);
 		createEAttribute(resourceEClass, RESOURCE__NAME);
 		createEReference(resourceEClass, RESOURCE__DESCRIBES);
 		createEReference(resourceEClass, RESOURCE__EXTENDS);
 		createEReference(resourceEClass, RESOURCE__RESOURCE_PROPERTIES);
 
 		resourcePropertyEClass = createEClass(RESOURCE_PROPERTY);
+        createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__ID);
 		createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__TITLE);
 		createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__NAME);
 		createEReference(resourcePropertyEClass, RESOURCE_PROPERTY__PROPERTY_DEFINITION);
@@ -2365,9 +2385,9 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEAttribute(getDomainSpecification_NamespaceURI(), ecorePackage.getEString(), "namespaceURI", null, 1, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_NamespacePrefix(), this.getNamespacePrefix(), null, "namespacePrefix", null, 1, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_Resources(), this.getResource(), null, "resources", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getDomainSpecification_Resources().getEKeys().add(this.getResource_Name());
+        getDomainSpecification_Resources().getEKeys().add(this.getResource_Id());
 		initEReference(getDomainSpecification_ResourceProperties(), this.getResourceProperty(), null, "resourceProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getDomainSpecification_ResourceProperties().getEKeys().add(this.getResourceProperty_Name());
+        getDomainSpecification_ResourceProperties().getEKeys().add(this.getResourceProperty_Id());
 		initEReference(getDomainSpecification_GenerationSetting(), this.getGenerationSetting(), null, "generationSetting", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_Configuration(), this.getSpecificationConfiguration(), null, "configuration", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDomainSpecification_ShaclShapes(), this.getShaclShape(), null, "shaclShapes", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2418,12 +2438,14 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 		initEClass(inmemPagedTrsServiceEClass, InmemPagedTrsService.class, "InmemPagedTrsService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(resourceEClass, Resource.class, "Resource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getResource_Id(), ecorePackage.getEString(), "id", null, 1, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResource_Name(), ecorePackage.getEString(), "name", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_Describes(), theVocabularyPackage.getClass_(), null, "describes", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_Extends(), this.getResource(), null, "extends", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_ResourceProperties(), this.getResourceProperty(), null, "resourceProperties", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourcePropertyEClass, ResourceProperty.class, "ResourceProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getResourceProperty_Id(), ecorePackage.getEString(), "id", null, 1, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResourceProperty_Title(), ecorePackage.getEString(), "title", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResourceProperty_Name(), ecorePackage.getEString(), "name", null, 1, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResourceProperty_PropertyDefinition(), theVocabularyPackage.getProperty(), null, "propertyDefinition", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

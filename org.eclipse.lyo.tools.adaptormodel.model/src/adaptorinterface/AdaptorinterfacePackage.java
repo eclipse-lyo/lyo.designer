@@ -951,13 +951,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE = 10;
 
 	/**
+     * The feature id for the '<em><b>Id</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RESOURCE__ID = SHAPE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__NAME = SHAPE_FEATURE_COUNT + 0;
+	int RESOURCE__NAME = SHAPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference.
@@ -966,7 +975,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__DESCRIBES = SHAPE_FEATURE_COUNT + 1;
+	int RESOURCE__DESCRIBES = SHAPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Extends</b></em>' reference list.
@@ -975,7 +984,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__EXTENDS = SHAPE_FEATURE_COUNT + 2;
+	int RESOURCE__EXTENDS = SHAPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Resource Properties</b></em>' reference list.
@@ -984,7 +993,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__RESOURCE_PROPERTIES = SHAPE_FEATURE_COUNT + 3;
+	int RESOURCE__RESOURCE_PROPERTIES = SHAPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -993,7 +1002,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 4;
+	int RESOURCE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -1043,13 +1052,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_PROPERTY = 11;
 
 	/**
+     * The feature id for the '<em><b>Id</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RESOURCE_PROPERTY__ID = SHAPE_PROPERTY_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__TITLE = SHAPE_PROPERTY_FEATURE_COUNT + 0;
+	int RESOURCE_PROPERTY__TITLE = SHAPE_PROPERTY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1058,7 +1076,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__NAME = SHAPE_PROPERTY_FEATURE_COUNT + 1;
+	int RESOURCE_PROPERTY__NAME = SHAPE_PROPERTY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Property Definition</b></em>' reference.
@@ -1067,7 +1085,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__PROPERTY_DEFINITION = SHAPE_PROPERTY_FEATURE_COUNT + 2;
+	int RESOURCE_PROPERTY__PROPERTY_DEFINITION = SHAPE_PROPERTY_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Occurs</b></em>' attribute.
@@ -1076,7 +1094,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__OCCURS = SHAPE_PROPERTY_FEATURE_COUNT + 3;
+	int RESOURCE_PROPERTY__OCCURS = SHAPE_PROPERTY_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Read Only</b></em>' attribute.
@@ -1085,7 +1103,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__READ_ONLY = SHAPE_PROPERTY_FEATURE_COUNT + 4;
+	int RESOURCE_PROPERTY__READ_ONLY = SHAPE_PROPERTY_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Value Type</b></em>' attribute.
@@ -1094,7 +1112,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__VALUE_TYPE = SHAPE_PROPERTY_FEATURE_COUNT + 5;
+	int RESOURCE_PROPERTY__VALUE_TYPE = SHAPE_PROPERTY_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Representation</b></em>' attribute.
@@ -1103,7 +1121,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 6;
+	int RESOURCE_PROPERTY__REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Multi Value Representation</b></em>' attribute.
@@ -1112,7 +1130,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 7;
+	int RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Range</b></em>' reference list.
@@ -1121,7 +1139,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__RANGE = SHAPE_PROPERTY_FEATURE_COUNT + 8;
+	int RESOURCE_PROPERTY__RANGE = SHAPE_PROPERTY_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1130,7 +1148,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__DESCRIPTION = SHAPE_PROPERTY_FEATURE_COUNT + 9;
+	int RESOURCE_PROPERTY__DESCRIPTION = SHAPE_PROPERTY_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Allowed Value</b></em>' attribute list.
@@ -1139,7 +1157,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__ALLOWED_VALUE = SHAPE_PROPERTY_FEATURE_COUNT + 10;
+	int RESOURCE_PROPERTY__ALLOWED_VALUE = SHAPE_PROPERTY_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Is Member Property</b></em>' attribute.
@@ -1148,7 +1166,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = SHAPE_PROPERTY_FEATURE_COUNT + 11;
+	int RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = SHAPE_PROPERTY_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>Resource Property</em>' class.
@@ -1157,7 +1175,7 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 12;
+	int RESOURCE_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of operations of the '<em>Resource Property</em>' class.
@@ -3257,6 +3275,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EClass getResource();
 
 	/**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Resource#getId <em>Id</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Id</em>'.
+     * @see adaptorinterface.Resource#getId()
+     * @see #getResource()
+     * @generated
+     */
+    EAttribute getResource_Id();
+
+	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.Resource#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3309,6 +3338,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getResourceProperty();
+
+	/**
+     * Returns the meta object for the attribute '{@link adaptorinterface.ResourceProperty#getId <em>Id</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Id</em>'.
+     * @see adaptorinterface.ResourceProperty#getId()
+     * @see #getResourceProperty()
+     * @generated
+     */
+    EAttribute getResourceProperty_Id();
 
 	/**
 	 * Returns the meta object for the attribute '{@link adaptorinterface.ResourceProperty#getTitle <em>Title</em>}'.
@@ -5056,6 +5096,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EClass RESOURCE = eINSTANCE.getResource();
 
 		/**
+         * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute RESOURCE__ID = eINSTANCE.getResource_Id();
+
+		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5096,6 +5144,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		 * @generated
 		 */
 		EClass RESOURCE_PROPERTY = eINSTANCE.getResourceProperty();
+
+		/**
+         * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute RESOURCE_PROPERTY__ID = eINSTANCE.getResourceProperty_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.

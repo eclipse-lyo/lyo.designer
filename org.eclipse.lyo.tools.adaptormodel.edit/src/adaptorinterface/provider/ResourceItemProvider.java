@@ -45,6 +45,7 @@ public class ResourceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+            addIdPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addDescribesPropertyDescriptor(object);
 			addExtendsPropertyDescriptor(object);
@@ -52,6 +53,28 @@ public class ResourceItemProvider
 		}
 		return itemPropertyDescriptors;
 	}
+
+	/**
+     * This adds a property descriptor for the Id feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addIdPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Resource_id_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Resource_id_feature", "_UI_Resource_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE__ID,
+                 false,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
 	 * This adds a property descriptor for the Name feature.
@@ -179,6 +202,7 @@ public class ResourceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Resource.class)) {
+            case AdaptorinterfacePackage.RESOURCE__ID:
 			case AdaptorinterfacePackage.RESOURCE__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
