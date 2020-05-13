@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link adaptorinterface.impl.ResourceImpl#getId <em>Id</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getDescribes <em>Describes</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getExtends <em>Extends</em>}</li>
@@ -36,6 +37,26 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class ResourceImpl extends ShapeImpl implements Resource {
 	/**
+     * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getId()
+     * @generated
+     * @ordered
+     */
+    protected static final String ID_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getId()
+     * @generated
+     * @ordered
+     */
+    protected String id = ID_EDEFAULT;
+
+    /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,6 +124,30 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	protected EClass eStaticClass() {
 		return AdaptorinterfacePackage.Literals.RESOURCE;
 	}
+
+	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * EclipseLyo: creating the id once it is null
+     */
+    public String getId() {
+        if (null == id) {
+            id = org.eclipse.emf.ecore.util.EcoreUtil.generateUUID();
+        }
+        return id;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setId(String newId) {
+        String oldId = id;
+        id = newId;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE__ID, oldId, id));
+    }
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,6 +246,8 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+            case AdaptorinterfacePackage.RESOURCE__ID:
+                return getId();
 			case AdaptorinterfacePackage.RESOURCE__NAME:
 				return getName();
 			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
@@ -223,6 +270,9 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+            case AdaptorinterfacePackage.RESOURCE__ID:
+                setId((String)newValue);
+                return;
 			case AdaptorinterfacePackage.RESOURCE__NAME:
 				setName((String)newValue);
 				return;
@@ -249,6 +299,9 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+            case AdaptorinterfacePackage.RESOURCE__ID:
+                setId(ID_EDEFAULT);
+                return;
 			case AdaptorinterfacePackage.RESOURCE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -273,6 +326,8 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+            case AdaptorinterfacePackage.RESOURCE__ID:
+                return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case AdaptorinterfacePackage.RESOURCE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
@@ -295,7 +350,9 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+        result.append(" (id: ");
+        result.append(id);
+        result.append(", name: ");
 		result.append(name);
 		result.append(')');
 		return result.toString();

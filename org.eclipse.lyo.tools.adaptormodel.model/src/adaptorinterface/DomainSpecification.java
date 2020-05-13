@@ -120,7 +120,7 @@ public interface DomainSpecification extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resources</em>' containment reference list.
 	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_Resources()
-	 * @model containment="true" keys="name"
+     * @model containment="true" keys="id"
 	 * @generated
 	 */
 	EList<Resource> getResources();
@@ -136,7 +136,7 @@ public interface DomainSpecification extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resource Properties</em>' containment reference list.
 	 * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_ResourceProperties()
-	 * @model containment="true" keys="name"
+     * @model containment="true" keys="id"
 	 * @generated
 	 */
 	EList<ResourceProperty> getResourceProperties();

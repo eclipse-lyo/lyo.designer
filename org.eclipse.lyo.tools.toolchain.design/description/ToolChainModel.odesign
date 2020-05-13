@@ -68,7 +68,7 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Properties">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Property Constraints">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -193,7 +193,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralProperty" label="Literal Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralProperty" label="Property Constraint (Literal)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -203,7 +203,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferenceProperty" label="Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferenceProperty" label="Property Constraint (Reference)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select range of the reference property"/>
@@ -217,7 +217,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferenceProperty" label="Local Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferenceProperty" label="Property Constraint (Local Reference)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select range of the reference property"/>
@@ -451,7 +451,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralPropertyFromVocabulary" label="Literal Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralPropertyFromVocabulary" label="Property Constraint (Literal)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyToBeReferenced" candidatesExpression="[loadedVocabularies->collect(v | Set{v}->union(v.oclAsType(vocabulary::Vocabulary).properties))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v | v.oclAsType(vocabulary::Vocabulary).properties->notEmpty() ) /]" childrenExpression="[self.oclAsType(vocabulary::Vocabulary).properties/]" message="Select the rdf:Property being referenced"/>
@@ -467,7 +467,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferencePropertyFromVocabulary" label="Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferencePropertyFromVocabulary" label="Property Constraint (Reference)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyToBeReferenced" candidatesExpression="[loadedVocabularies->collect(v | Set{v}->union(v.oclAsType(vocabulary::Vocabulary).properties))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v | v.oclAsType(vocabulary::Vocabulary).properties->notEmpty() ) /]" childrenExpression="[self.oclAsType(vocabulary::Vocabulary).properties/]" message="Select the rdf:Property being referenced"/>
@@ -485,7 +485,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferencePropertyFromVocabulary" label="Local Reference Property" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferencePropertyFromVocabulary" label="Property Constraint (Local Reference)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyToBeReferenced" candidatesExpression="[loadedVocabularies->collect(v | Set{v}->union(v.oclAsType(vocabulary::Vocabulary).properties))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v | v.oclAsType(vocabulary::Vocabulary).properties->notEmpty() ) /]" childrenExpression="[self.oclAsType(vocabulary::Vocabulary).properties/]" message="Select the rdf:Property being referenced"/>

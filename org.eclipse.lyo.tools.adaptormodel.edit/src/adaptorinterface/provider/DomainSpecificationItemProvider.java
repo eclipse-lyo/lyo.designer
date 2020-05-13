@@ -6,17 +6,21 @@ package adaptorinterface.provider;
 import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.DomainSpecification;
+import adaptorinterface.Resource;
+import adaptorinterface.ResourceProperty;
 
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -277,5 +281,41 @@ public class DomainSpecificationItemProvider
 	public ResourceLocator getResourceLocator() {
 		return AdaptorInterfaceEditPlugin.INSTANCE;
 	}
+
+    /**
+     * EclipseLyo: For copy/past of resources and resourceProperties, we want to set the id attribute to null
+     * This way, the two elements will have different ids. the getId() method will in turn create a new GUID if the current one is null.
+     * 
+     */
+    @Override
+    protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, java.util.Collection<?> collection, int index) {
+            if (feature.getFeatureID() == AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCE_PROPERTIES.getFeatureID()) {
+                    AddCommand addCommand = new AddCommand(domain, owner, feature, collection, index) {
+                            @Override
+                            public void doExecute() {
+                                    super.doExecute();
+                                    for (Object object : collection) {
+                                        ResourceProperty p = (ResourceProperty) object;
+                                        p.setId(null);
+                                    }
+                            }
+                    };
+                    return addCommand;
+            }
+            if (feature.getFeatureID() == AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__RESOURCES.getFeatureID()) {
+                AddCommand addCommand = new AddCommand(domain, owner, feature, collection, index) {
+                        @Override
+                        public void doExecute() {
+                                super.doExecute();
+                                for (Object object : collection) {
+                                    Resource p = (Resource) object;
+                                    p.setId(null);
+                                }
+                        }
+                };
+                return addCommand;
+        }
+            return super.createAddCommand(domain, owner, feature, collection, index);
+    }
 
 }

@@ -40,6 +40,7 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+            addIdPropertyDescriptor(object);
 			addTitlePropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addPropertyDefinitionPropertyDescriptor(object);
@@ -55,6 +56,28 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
 		}
 		return itemPropertyDescriptors;
 	}
+
+	/**
+     * This adds a property descriptor for the Id feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addIdPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_id_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_id_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__ID,
+                 false,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
 	 * This adds a property descriptor for the Title feature.
@@ -358,6 +381,7 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ResourceProperty.class)) {
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__ID:
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
 			case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:

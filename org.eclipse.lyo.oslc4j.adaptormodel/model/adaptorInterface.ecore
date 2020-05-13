@@ -62,9 +62,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="namespacePrefix" lowerBound="1"
         eType="#//NamespacePrefix"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
-        eType="#//Resource" containment="true" eKeys="#//Resource/name"/>
+        eType="#//Resource" containment="true" eKeys="#//Resource/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceProperties" upperBound="-1"
-        eType="#//ResourceProperty" containment="true" eKeys="#//ResourceProperty/name"/>
+        eType="#//ResourceProperty" containment="true" eKeys="#//ResourceProperty/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="generationSetting" eType="#//GenerationSetting"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//SpecificationConfiguration"
@@ -134,6 +134,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InmemPagedTrsService" eSuperTypes="#//TrsService"/>
   <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//Shape">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="describes" eType="ecore:EClass vocabulary.ecore#//Class"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
@@ -142,6 +144,8 @@
         eType="#//ResourceProperty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceProperty" eSuperTypes="#//ShapeProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyDefinition" eType="ecore:EClass vocabulary.ecore#//Property"/>

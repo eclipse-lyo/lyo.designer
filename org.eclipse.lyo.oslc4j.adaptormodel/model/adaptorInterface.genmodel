@@ -140,12 +140,14 @@
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//InmemPagedTrsService"/>
     <genClasses ecoreClass="adaptorInterface.ecore#//Resource">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Resource/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Resource/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Resource/describes"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Resource/extends"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Resource/resourceProperties"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//ResourceProperty">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ResourceProperty/propertyDefinition"/>
