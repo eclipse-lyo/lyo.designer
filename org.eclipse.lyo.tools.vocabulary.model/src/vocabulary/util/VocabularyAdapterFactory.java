@@ -9,10 +9,12 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import vocabulary.GeneralConfiguration;
 import vocabulary.Property;
 import vocabulary.Term;
 import vocabulary.Vocabularies;
 import vocabulary.Vocabulary;
+import vocabulary.VocabularyConfiguration;
 import vocabulary.VocabularyPackage;
 
 /**
@@ -90,6 +92,14 @@ public class VocabularyAdapterFactory extends AdapterFactoryImpl {
             @Override
             public Adapter caseProperty(Property object) {
                 return createPropertyAdapter();
+            }
+            @Override
+            public Adapter caseGeneralConfiguration(GeneralConfiguration object) {
+                return createGeneralConfigurationAdapter();
+            }
+            @Override
+            public Adapter caseVocabularyConfiguration(VocabularyConfiguration object) {
+                return createVocabularyConfigurationAdapter();
             }
             @Override
             public Adapter defaultCase(EObject object) {
@@ -178,6 +188,34 @@ public class VocabularyAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createPropertyAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link vocabulary.GeneralConfiguration <em>General Configuration</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see vocabulary.GeneralConfiguration
+     * @generated
+     */
+    public Adapter createGeneralConfigurationAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link vocabulary.VocabularyConfiguration <em>Configuration</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see vocabulary.VocabularyConfiguration
+     * @generated
+     */
+    public Adapter createVocabularyConfigurationAdapter() {
         return null;
     }
 

@@ -1329,8 +1329,42 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
+          <subContainerMappings name="Vocabularies.Vocabulary.VocabularyConfiguration" semanticCandidatesExpression="[self.configuration/]" domainClass="vocabulary.VocabularyConfiguration" childrenPresentation="List">
+            <subNodeMappings name="Vocabularies.Vocabulary.VocabularyConfiguration.GeneralConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.GeneralConfiguration">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="General" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Configuration" backgroundStyle="Liquid">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelFormat>underline</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[label + ' (' + preferredNamespacePrefix + ')'/]" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/VocabularyIcon.png" widthComputationExpression="40" heightComputationExpression="30">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Vocabularies.VocabularyConfiguration" semanticCandidatesExpression="[self.configuration/]" domainClass="vocabulary.VocabularyConfiguration" childrenPresentation="List">
+          <subNodeMappings name="Vocabulary.VocabularyConfiguration.GeneralConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.GeneralConfiguration">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="General" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Configuration" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>italic</labelFormat>
+            <labelFormat>underline</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -1473,6 +1507,28 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:Unset" featureName="type" elementExpression="aql:elementView.targetNode.target"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Config">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateVocabularyConfiguration" label="Vocabulary Configuration" precondition="[self.configuration.oclIsUndefined()/]" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.VocabularyConfiguration'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.VocabularyConfiguration']">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="javaBasePackageName" computationExpression="[if (container.oclIsTypeOf(Vocabularies)) then 'your.basepackage.name' else '' endif/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="filesBasePath" computationExpression="[if (container.oclIsTypeOf(Vocabularies)) then '.' else '' endif/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="doNotGenerate" computationExpression="[false/]"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.VocabularyConfiguration" referenceName="configuration" variableName="configuration">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.GeneralConfiguration" referenceName="generalConfiguration" variableName="generalConfiguration">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="javaBasePackageName" valueExpression="[javaBasePackageName/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="filesBasePath" valueExpression="[filesBasePath/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="doNotGenerate" valueExpression="[doNotGenerate/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="generationSetting" valueExpression="[null/]"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>

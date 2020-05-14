@@ -9,10 +9,12 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import vocabulary.GeneralConfiguration;
 import vocabulary.Property;
 import vocabulary.Term;
 import vocabulary.Vocabularies;
 import vocabulary.Vocabulary;
+import vocabulary.VocabularyConfiguration;
 import vocabulary.VocabularyFactory;
 import vocabulary.VocabularyPackage;
 
@@ -57,6 +59,20 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * @generated
      */
     private EClass propertyEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass generalConfigurationEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass vocabularyConfigurationEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -142,6 +158,15 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EReference getVocabularies_Configuration() {
+        return (EReference)vocabulariesEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getVocabulary() {
         return vocabularyEClass;
     }
@@ -207,6 +232,15 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      */
     public EReference getVocabulary_Properties() {
         return (EReference)vocabularyEClass.getEStructuralFeatures().get(6);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getVocabulary_Configuration() {
+        return (EReference)vocabularyEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -322,6 +356,60 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getGeneralConfiguration() {
+        return generalConfigurationEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getGeneralConfiguration_DoNotGenerate() {
+        return (EAttribute)generalConfigurationEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getGeneralConfiguration_FilesBasePath() {
+        return (EAttribute)generalConfigurationEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getGeneralConfiguration_JavaBasePackageName() {
+        return (EAttribute)generalConfigurationEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getVocabularyConfiguration() {
+        return vocabularyConfigurationEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getVocabularyConfiguration_GeneralConfiguration() {
+        return (EReference)vocabularyConfigurationEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public VocabularyFactory getVocabularyFactory() {
         return (VocabularyFactory)getEFactoryInstance();
     }
@@ -347,6 +435,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         // Create classes and their features
         vocabulariesEClass = createEClass(VOCABULARIES);
         createEReference(vocabulariesEClass, VOCABULARIES__VOCABULARIES);
+        createEReference(vocabulariesEClass, VOCABULARIES__CONFIGURATION);
 
         vocabularyEClass = createEClass(VOCABULARY);
         createEAttribute(vocabularyEClass, VOCABULARY__NAMESPACE_URI);
@@ -356,6 +445,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         createEAttribute(vocabularyEClass, VOCABULARY__PREFERRED_NAMESPACE_PREFIX);
         createEReference(vocabularyEClass, VOCABULARY__CLASSES);
         createEReference(vocabularyEClass, VOCABULARY__PROPERTIES);
+        createEReference(vocabularyEClass, VOCABULARY__CONFIGURATION);
 
         termEClass = createEClass(TERM);
         createEAttribute(termEClass, TERM__NAME);
@@ -371,6 +461,14 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         createEReference(propertyEClass, PROPERTY__SUB_PROPERTY_OF);
         createEReference(propertyEClass, PROPERTY__DOMAIN);
         createEReference(propertyEClass, PROPERTY__RANGE);
+
+        generalConfigurationEClass = createEClass(GENERAL_CONFIGURATION);
+        createEAttribute(generalConfigurationEClass, GENERAL_CONFIGURATION__DO_NOT_GENERATE);
+        createEAttribute(generalConfigurationEClass, GENERAL_CONFIGURATION__FILES_BASE_PATH);
+        createEAttribute(generalConfigurationEClass, GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME);
+
+        vocabularyConfigurationEClass = createEClass(VOCABULARY_CONFIGURATION);
+        createEReference(vocabularyConfigurationEClass, VOCABULARY_CONFIGURATION__GENERAL_CONFIGURATION);
     }
 
     /**
@@ -408,6 +506,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         initEClass(vocabulariesEClass, Vocabularies.class, "Vocabularies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getVocabularies_Vocabularies(), this.getVocabulary(), null, "vocabularies", null, 0, -1, Vocabularies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         getVocabularies_Vocabularies().getEKeys().add(this.getVocabulary_Label());
+        initEReference(getVocabularies_Configuration(), this.getVocabularyConfiguration(), null, "configuration", null, 0, 1, Vocabularies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(vocabularyEClass, Vocabulary.class, "Vocabulary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getVocabulary_NamespaceURI(), ecorePackage.getEString(), "namespaceURI", null, 1, 1, Vocabulary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -419,6 +518,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         getVocabulary_Classes().getEKeys().add(this.getTerm_Name());
         initEReference(getVocabulary_Properties(), this.getProperty(), null, "properties", null, 0, -1, Vocabulary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         getVocabulary_Properties().getEKeys().add(this.getTerm_Name());
+        initEReference(getVocabulary_Configuration(), this.getVocabularyConfiguration(), null, "configuration", null, 0, 1, Vocabulary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(termEClass, Term.class, "Term", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTerm_Name(), ecorePackage.getEString(), "name", null, 1, 1, Term.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -435,29 +535,16 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         initEReference(getProperty_Domain(), this.getClass_(), null, "domain", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getProperty_Range(), this.getClass_(), null, "range", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+        initEClass(generalConfigurationEClass, GeneralConfiguration.class, "GeneralConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getGeneralConfiguration_DoNotGenerate(), ecorePackage.getEBoolean(), "doNotGenerate", null, 0, 1, GeneralConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getGeneralConfiguration_FilesBasePath(), ecorePackage.getEString(), "filesBasePath", null, 0, 1, GeneralConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getGeneralConfiguration_JavaBasePackageName(), ecorePackage.getEString(), "javaBasePackageName", null, 0, 1, GeneralConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(vocabularyConfigurationEClass, VocabularyConfiguration.class, "VocabularyConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getVocabularyConfiguration_GeneralConfiguration(), this.getGeneralConfiguration(), null, "generalConfiguration", null, 1, 1, VocabularyConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
         // Create resource
         createResource(eNS_URI);
-
-        // Create annotations
-        // http:///org/eclipse/emf/ecore/util/ExtendedMetaData
-        createExtendedMetaDataAnnotations();
-    }
-
-    /**
-     * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void createExtendedMetaDataAnnotations() {
-        String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";	
-        addAnnotation
-          (getVocabulary_NamespaceURI(), 
-           source, 
-           new String[] {
-             "wildcards", "",
-             "name", ""
-           });
     }
 
 } //VocabularyPackageImpl

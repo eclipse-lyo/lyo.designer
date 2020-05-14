@@ -76,13 +76,22 @@ public interface VocabularyPackage extends EPackage {
     int VOCABULARIES__VOCABULARIES = 0;
 
     /**
+     * The feature id for the '<em><b>Configuration</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VOCABULARIES__CONFIGURATION = 1;
+
+    /**
      * The number of structural features of the '<em>Vocabularies</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int VOCABULARIES_FEATURE_COUNT = 1;
+    int VOCABULARIES_FEATURE_COUNT = 2;
 
     /**
      * The number of operations of the '<em>Vocabularies</em>' class.
@@ -167,13 +176,22 @@ public interface VocabularyPackage extends EPackage {
     int VOCABULARY__PROPERTIES = 6;
 
     /**
+     * The feature id for the '<em><b>Configuration</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VOCABULARY__CONFIGURATION = 7;
+
+    /**
      * The number of structural features of the '<em>Vocabulary</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int VOCABULARY_FEATURE_COUNT = 7;
+    int VOCABULARY_FEATURE_COUNT = 8;
 
     /**
      * The number of operations of the '<em>Vocabulary</em>' class.
@@ -423,6 +441,99 @@ public interface VocabularyPackage extends EPackage {
 
 
     /**
+     * The meta object id for the '{@link vocabulary.impl.GeneralConfigurationImpl <em>General Configuration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see vocabulary.impl.GeneralConfigurationImpl
+     * @see vocabulary.impl.VocabularyPackageImpl#getGeneralConfiguration()
+     * @generated
+     */
+    int GENERAL_CONFIGURATION = 5;
+
+    /**
+     * The feature id for the '<em><b>Do Not Generate</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GENERAL_CONFIGURATION__DO_NOT_GENERATE = 0;
+
+    /**
+     * The feature id for the '<em><b>Files Base Path</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GENERAL_CONFIGURATION__FILES_BASE_PATH = 1;
+
+    /**
+     * The feature id for the '<em><b>Java Base Package Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME = 2;
+
+    /**
+     * The number of structural features of the '<em>General Configuration</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GENERAL_CONFIGURATION_FEATURE_COUNT = 3;
+
+    /**
+     * The number of operations of the '<em>General Configuration</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GENERAL_CONFIGURATION_OPERATION_COUNT = 0;
+
+    /**
+     * The meta object id for the '{@link vocabulary.impl.VocabularyConfigurationImpl <em>Configuration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see vocabulary.impl.VocabularyConfigurationImpl
+     * @see vocabulary.impl.VocabularyPackageImpl#getVocabularyConfiguration()
+     * @generated
+     */
+    int VOCABULARY_CONFIGURATION = 6;
+
+    /**
+     * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VOCABULARY_CONFIGURATION__GENERAL_CONFIGURATION = 0;
+
+    /**
+     * The number of structural features of the '<em>Configuration</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VOCABULARY_CONFIGURATION_FEATURE_COUNT = 1;
+
+    /**
+     * The number of operations of the '<em>Configuration</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VOCABULARY_CONFIGURATION_OPERATION_COUNT = 0;
+
+
+    /**
      * Returns the meta object for class '{@link vocabulary.Vocabularies <em>Vocabularies</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -442,6 +553,17 @@ public interface VocabularyPackage extends EPackage {
      * @generated
      */
     EReference getVocabularies_Vocabularies();
+
+    /**
+     * Returns the meta object for the containment reference '{@link vocabulary.Vocabularies#getConfiguration <em>Configuration</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Configuration</em>'.
+     * @see vocabulary.Vocabularies#getConfiguration()
+     * @see #getVocabularies()
+     * @generated
+     */
+    EReference getVocabularies_Configuration();
 
     /**
      * Returns the meta object for class '{@link vocabulary.Vocabulary <em>Vocabulary</em>}'.
@@ -529,6 +651,17 @@ public interface VocabularyPackage extends EPackage {
      * @generated
      */
     EReference getVocabulary_Properties();
+
+    /**
+     * Returns the meta object for the containment reference '{@link vocabulary.Vocabulary#getConfiguration <em>Configuration</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Configuration</em>'.
+     * @see vocabulary.Vocabulary#getConfiguration()
+     * @see #getVocabulary()
+     * @generated
+     */
+    EReference getVocabulary_Configuration();
 
     /**
      * Returns the meta object for class '{@link vocabulary.Term <em>Term</em>}'.
@@ -660,6 +793,70 @@ public interface VocabularyPackage extends EPackage {
     EReference getProperty_Range();
 
     /**
+     * Returns the meta object for class '{@link vocabulary.GeneralConfiguration <em>General Configuration</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>General Configuration</em>'.
+     * @see vocabulary.GeneralConfiguration
+     * @generated
+     */
+    EClass getGeneralConfiguration();
+
+    /**
+     * Returns the meta object for the attribute '{@link vocabulary.GeneralConfiguration#isDoNotGenerate <em>Do Not Generate</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Do Not Generate</em>'.
+     * @see vocabulary.GeneralConfiguration#isDoNotGenerate()
+     * @see #getGeneralConfiguration()
+     * @generated
+     */
+    EAttribute getGeneralConfiguration_DoNotGenerate();
+
+    /**
+     * Returns the meta object for the attribute '{@link vocabulary.GeneralConfiguration#getFilesBasePath <em>Files Base Path</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Files Base Path</em>'.
+     * @see vocabulary.GeneralConfiguration#getFilesBasePath()
+     * @see #getGeneralConfiguration()
+     * @generated
+     */
+    EAttribute getGeneralConfiguration_FilesBasePath();
+
+    /**
+     * Returns the meta object for the attribute '{@link vocabulary.GeneralConfiguration#getJavaBasePackageName <em>Java Base Package Name</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Java Base Package Name</em>'.
+     * @see vocabulary.GeneralConfiguration#getJavaBasePackageName()
+     * @see #getGeneralConfiguration()
+     * @generated
+     */
+    EAttribute getGeneralConfiguration_JavaBasePackageName();
+
+    /**
+     * Returns the meta object for class '{@link vocabulary.VocabularyConfiguration <em>Configuration</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Configuration</em>'.
+     * @see vocabulary.VocabularyConfiguration
+     * @generated
+     */
+    EClass getVocabularyConfiguration();
+
+    /**
+     * Returns the meta object for the containment reference '{@link vocabulary.VocabularyConfiguration#getGeneralConfiguration <em>General Configuration</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>General Configuration</em>'.
+     * @see vocabulary.VocabularyConfiguration#getGeneralConfiguration()
+     * @see #getVocabularyConfiguration()
+     * @generated
+     */
+    EReference getVocabularyConfiguration_GeneralConfiguration();
+
+    /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -699,6 +896,14 @@ public interface VocabularyPackage extends EPackage {
          * @generated
          */
         EReference VOCABULARIES__VOCABULARIES = eINSTANCE.getVocabularies_Vocabularies();
+
+        /**
+         * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference VOCABULARIES__CONFIGURATION = eINSTANCE.getVocabularies_Configuration();
 
         /**
          * The meta object literal for the '{@link vocabulary.impl.VocabularyImpl <em>Vocabulary</em>}' class.
@@ -765,6 +970,14 @@ public interface VocabularyPackage extends EPackage {
          * @generated
          */
         EReference VOCABULARY__PROPERTIES = eINSTANCE.getVocabulary_Properties();
+
+        /**
+         * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference VOCABULARY__CONFIGURATION = eINSTANCE.getVocabulary_Configuration();
 
         /**
          * The meta object literal for the '{@link vocabulary.impl.TermImpl <em>Term</em>}' class.
@@ -867,6 +1080,58 @@ public interface VocabularyPackage extends EPackage {
          * @generated
          */
         EReference PROPERTY__RANGE = eINSTANCE.getProperty_Range();
+
+        /**
+         * The meta object literal for the '{@link vocabulary.impl.GeneralConfigurationImpl <em>General Configuration</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see vocabulary.impl.GeneralConfigurationImpl
+         * @see vocabulary.impl.VocabularyPackageImpl#getGeneralConfiguration()
+         * @generated
+         */
+        EClass GENERAL_CONFIGURATION = eINSTANCE.getGeneralConfiguration();
+
+        /**
+         * The meta object literal for the '<em><b>Do Not Generate</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute GENERAL_CONFIGURATION__DO_NOT_GENERATE = eINSTANCE.getGeneralConfiguration_DoNotGenerate();
+
+        /**
+         * The meta object literal for the '<em><b>Files Base Path</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute GENERAL_CONFIGURATION__FILES_BASE_PATH = eINSTANCE.getGeneralConfiguration_FilesBasePath();
+
+        /**
+         * The meta object literal for the '<em><b>Java Base Package Name</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME = eINSTANCE.getGeneralConfiguration_JavaBasePackageName();
+
+        /**
+         * The meta object literal for the '{@link vocabulary.impl.VocabularyConfigurationImpl <em>Configuration</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see vocabulary.impl.VocabularyConfigurationImpl
+         * @see vocabulary.impl.VocabularyPackageImpl#getVocabularyConfiguration()
+         * @generated
+         */
+        EClass VOCABULARY_CONFIGURATION = eINSTANCE.getVocabularyConfiguration();
+
+        /**
+         * The meta object literal for the '<em><b>General Configuration</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference VOCABULARY_CONFIGURATION__GENERAL_CONFIGURATION = eINSTANCE.getVocabularyConfiguration_GeneralConfiguration();
 
     }
 

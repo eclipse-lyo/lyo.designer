@@ -5,6 +5,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Vocabularies">
     <eStructuralFeatures xsi:type="ecore:EReference" name="vocabularies" upperBound="-1"
         eType="#//Vocabulary" containment="true" eKeys="#//Vocabulary/label"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//VocabularyConfiguration"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Vocabulary">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespaceURI" lowerBound="1"
@@ -24,6 +26,8 @@
         eType="#//Class" containment="true" eKeys="#//Term/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true" eKeys="#//Term/name"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//VocabularyConfiguration"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Term" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -44,5 +48,14 @@
         eType="#//Class"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="range" upperBound="-1"
         eType="#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doNotGenerate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filesBasePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaBasePackageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VocabularyConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generalConfiguration" lowerBound="1"
+        eType="#//GeneralConfiguration" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

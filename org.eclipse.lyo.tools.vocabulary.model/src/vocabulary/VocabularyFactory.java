@@ -58,6 +58,24 @@ public interface VocabularyFactory extends EFactory {
     Property createProperty();
 
     /**
+     * Returns a new object of class '<em>General Configuration</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>General Configuration</em>'.
+     * @generated
+     */
+    GeneralConfiguration createGeneralConfiguration();
+
+    /**
+     * Returns a new object of class '<em>Configuration</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Configuration</em>'.
+     * @generated
+     */
+    VocabularyConfiguration createVocabularyConfiguration();
+
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

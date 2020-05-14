@@ -103,7 +103,7 @@ import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(
 [for (aVocabulary: Vocabulary | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))->asSet()
         ->select(p: ResourceProperty | not (p.propertyDefinition.oclIsUndefined()))
         ->collect(p: ResourceProperty | p.propertyDefinition.definingVocabulary())
-        ->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, contextAdaptorInterface, defaultJavaClassPackageName) /];
+        ->flatten()->asSet()->sortedBy(label)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, contextAdaptorInterface, defaultJavaClassPackageName) /];
 [/for]
 [for (aProperty: ResourceProperty | allProperties(aResource)->sortedBy(name))]
 [if(Sequence{'Resource', 'LocalResource'}->includes(aProperty.valueType.toString())) ]

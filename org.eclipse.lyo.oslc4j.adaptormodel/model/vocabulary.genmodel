@@ -10,6 +10,7 @@
   <genPackages prefix="Vocabulary" disposableProviderFactory="true" ecorePackage="vocabulary.ecore#/">
     <genClasses ecoreClass="vocabulary.ecore#//Vocabularies">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabularies/vocabularies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabularies/configuration"/>
     </genClasses>
     <genClasses ecoreClass="vocabulary.ecore#//Vocabulary">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/namespaceURI"/>
@@ -19,6 +20,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/preferredNamespacePrefix"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabulary/classes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabulary/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabulary/configuration"/>
     </genClasses>
     <genClasses image="false" ecoreClass="vocabulary.ecore#//Term">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/name"/>
@@ -34,6 +36,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Property/subPropertyOf"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Property/domain"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Property/range"/>
+    </genClasses>
+    <genClasses ecoreClass="vocabulary.ecore#//GeneralConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//GeneralConfiguration/doNotGenerate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//GeneralConfiguration/filesBasePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//GeneralConfiguration/javaBasePackageName"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="vocabulary.ecore#//VocabularyConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//VocabularyConfiguration/generalConfiguration"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

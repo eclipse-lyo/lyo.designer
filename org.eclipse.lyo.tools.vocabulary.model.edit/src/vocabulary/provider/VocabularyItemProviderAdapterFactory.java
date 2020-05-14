@@ -164,6 +164,52 @@ public class VocabularyItemProviderAdapterFactory extends VocabularyAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link vocabulary.GeneralConfiguration} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected GeneralConfigurationItemProvider generalConfigurationItemProvider;
+
+    /**
+     * This creates an adapter for a {@link vocabulary.GeneralConfiguration}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createGeneralConfigurationAdapter() {
+        if (generalConfigurationItemProvider == null) {
+            generalConfigurationItemProvider = new GeneralConfigurationItemProvider(this);
+        }
+
+        return generalConfigurationItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link vocabulary.VocabularyConfiguration} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected VocabularyConfigurationItemProvider vocabularyConfigurationItemProvider;
+
+    /**
+     * This creates an adapter for a {@link vocabulary.VocabularyConfiguration}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createVocabularyConfigurationAdapter() {
+        if (vocabularyConfigurationItemProvider == null) {
+            vocabularyConfigurationItemProvider = new VocabularyConfigurationItemProvider(this);
+        }
+
+        return vocabularyConfigurationItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -266,6 +312,8 @@ public class VocabularyItemProviderAdapterFactory extends VocabularyAdapterFacto
         if (vocabularyItemProvider != null) vocabularyItemProvider.dispose();
         if (classItemProvider != null) classItemProvider.dispose();
         if (propertyItemProvider != null) propertyItemProvider.dispose();
+        if (generalConfigurationItemProvider != null) generalConfigurationItemProvider.dispose();
+        if (vocabularyConfigurationItemProvider != null) vocabularyConfigurationItemProvider.dispose();
     }
 
 }
