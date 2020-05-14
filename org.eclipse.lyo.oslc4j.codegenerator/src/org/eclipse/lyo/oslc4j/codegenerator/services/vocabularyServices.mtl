@@ -30,30 +30,6 @@ aProperty.eContainer(Vocabulary)
 aClass.eContainer(Vocabulary)
 /]
 
-[query public javaFullFilesPath(aVocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
-(if (anAdaptorInterface.oclIsUndefined()) then 
-    default
-else
-    javaFilesBasePath(anAdaptorInterface, default)
-endif)
-/]
-
-[query public javaPackageName(aVocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
-(if (anAdaptorInterface.oclIsUndefined()) then 
-    default
-else
-    javaBasePackageName(anAdaptorInterface, default).concat('.resources')
-endif)
-/]
-
-[query public javaFullFilesPath(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
-javaFullFilesPath(aVocabulary.eContainer(Vocabularies), anAdaptorInterface, default)
-/]
-
-[query public javaPackageName(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
-javaPackageName(aVocabulary.eContainer(Vocabularies), anAdaptorInterface, default)
-/]
-
 [query public javaInterfacePackageNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
 javaPackageName(aVocabulary, anAdaptorInterface, defaultJavaPackageName)
 /]
@@ -67,7 +43,7 @@ javaInterfacePackageNameForConstants(aVocabulary, anAdaptorInterface, defaultJav
 /]
 
 [query public javaInterfaceFullFileNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String = 
-    javaFullFilesPath(aVocabulary, anAdaptorInterface, defaultJavaFullFilesPath)
+    javaFilesBasePath(aVocabulary, anAdaptorInterface, defaultJavaFullFilesPath)
     .concatenatePaths(javaInterfacePackageNameForConstants(aVocabulary, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
     .concatenatePaths(javaInterfaceNameForConstants(aVocabulary))
     .concat('.java')

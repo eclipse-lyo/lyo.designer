@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link vocabulary.Vocabulary#getPreferredNamespacePrefix <em>Preferred Namespace Prefix</em>}</li>
  *   <li>{@link vocabulary.Vocabulary#getClasses <em>Classes</em>}</li>
  *   <li>{@link vocabulary.Vocabulary#getProperties <em>Properties</em>}</li>
+ *   <li>{@link vocabulary.Vocabulary#getConfiguration <em>Configuration</em>}</li>
  * </ul>
  *
  * @see vocabulary.VocabularyPackage#getVocabulary()
@@ -41,7 +42,6 @@ public interface Vocabulary extends EObject {
      * @see #setNamespaceURI(String)
      * @see vocabulary.VocabularyPackage#getVocabulary_NamespaceURI()
      * @model required="true"
-     *        extendedMetaData="wildcards='' name=''"
      * @generated
      */
     String getNamespaceURI();
@@ -190,5 +190,31 @@ public interface Vocabulary extends EObject {
      * @generated
      */
     EList<Property> getProperties();
+
+    /**
+     * Returns the value of the '<em><b>Configuration</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Configuration</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Configuration</em>' containment reference.
+     * @see #setConfiguration(VocabularyConfiguration)
+     * @see vocabulary.VocabularyPackage#getVocabulary_Configuration()
+     * @model containment="true"
+     * @generated
+     */
+    VocabularyConfiguration getConfiguration();
+
+    /**
+     * Sets the value of the '{@link vocabulary.Vocabulary#getConfiguration <em>Configuration</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Configuration</em>' containment reference.
+     * @see #getConfiguration()
+     * @generated
+     */
+    void setConfiguration(VocabularyConfiguration value);
 
 } // Vocabulary

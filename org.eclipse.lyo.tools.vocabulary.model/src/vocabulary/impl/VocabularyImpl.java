@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import vocabulary.Property;
 import vocabulary.Vocabulary;
+import vocabulary.VocabularyConfiguration;
 import vocabulary.VocabularyPackage;
 
 /**
@@ -36,6 +37,7 @@ import vocabulary.VocabularyPackage;
  *   <li>{@link vocabulary.impl.VocabularyImpl#getPreferredNamespacePrefix <em>Preferred Namespace Prefix</em>}</li>
  *   <li>{@link vocabulary.impl.VocabularyImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link vocabulary.impl.VocabularyImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link vocabulary.impl.VocabularyImpl#getConfiguration <em>Configuration</em>}</li>
  * </ul>
  *
  * @generated
@@ -160,6 +162,16 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * @ordered
      */
     protected EList<Property> properties;
+
+    /**
+     * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getConfiguration()
+     * @generated
+     * @ordered
+     */
+    protected VocabularyConfiguration configuration;
 
     /**
      * <!-- begin-user-doc -->
@@ -314,6 +326,49 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    public VocabularyConfiguration getConfiguration() {
+        return configuration;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetConfiguration(VocabularyConfiguration newConfiguration, NotificationChain msgs) {
+        VocabularyConfiguration oldConfiguration = configuration;
+        configuration = newConfiguration;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VocabularyPackage.VOCABULARY__CONFIGURATION, oldConfiguration, newConfiguration);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setConfiguration(VocabularyConfiguration newConfiguration) {
+        if (newConfiguration != configuration) {
+            NotificationChain msgs = null;
+            if (configuration != null)
+                msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VocabularyPackage.VOCABULARY__CONFIGURATION, null, msgs);
+            if (newConfiguration != null)
+                msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VocabularyPackage.VOCABULARY__CONFIGURATION, null, msgs);
+            msgs = basicSetConfiguration(newConfiguration, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, VocabularyPackage.VOCABULARY__CONFIGURATION, newConfiguration, newConfiguration));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -321,6 +376,8 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
                 return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
             case VocabularyPackage.VOCABULARY__PROPERTIES:
                 return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+            case VocabularyPackage.VOCABULARY__CONFIGURATION:
+                return basicSetConfiguration(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -347,6 +404,8 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
                 return getClasses();
             case VocabularyPackage.VOCABULARY__PROPERTIES:
                 return getProperties();
+            case VocabularyPackage.VOCABULARY__CONFIGURATION:
+                return getConfiguration();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -383,6 +442,9 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
                 getProperties().clear();
                 getProperties().addAll((Collection<? extends Property>)newValue);
                 return;
+            case VocabularyPackage.VOCABULARY__CONFIGURATION:
+                setConfiguration((VocabularyConfiguration)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -416,6 +478,9 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
             case VocabularyPackage.VOCABULARY__PROPERTIES:
                 getProperties().clear();
                 return;
+            case VocabularyPackage.VOCABULARY__CONFIGURATION:
+                setConfiguration((VocabularyConfiguration)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -442,6 +507,8 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
                 return classes != null && !classes.isEmpty();
             case VocabularyPackage.VOCABULARY__PROPERTIES:
                 return properties != null && !properties.isEmpty();
+            case VocabularyPackage.VOCABULARY__CONFIGURATION:
+                return configuration != null;
         }
         return super.eIsSet(featureID);
     }

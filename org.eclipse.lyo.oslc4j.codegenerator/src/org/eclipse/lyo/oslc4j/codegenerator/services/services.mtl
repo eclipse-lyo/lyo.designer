@@ -18,7 +18,7 @@
  *******************************************************************************/
 /]
 
-[module services('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+[module services('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
 
 [query private javaKeywords(traceabilityContext : OclAny) : Set(String) =
 Set{'abstract', 'continue', 'for', 'new', 'switch', 'assert', 'default', 'goto', 'package', 'synchronized', 'boolean', 'do',
@@ -67,11 +67,31 @@ else
 endif)
 /]
 
+[query public javaPackageName(vocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.javaBasePackageName(default).concat('.resources')
+    endif)
+else
+    vocabularies.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
 [query public javaPackageName(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
 (if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
     aDomainSpecification.eContainer(Specification).javaPackageName(anAdaptorInterface, default)
 else
     aDomainSpecification.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
+[query public javaPackageName(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    aVocabulary.eContainer(Vocabularies).javaPackageName(anAdaptorInterface, default)
+else
+    aVocabulary.configuration.generalConfiguration.javaBasePackageName
 endif)
 /]
 
@@ -103,11 +123,31 @@ else
 endif)
 /]
 
+[query public filesBasePath(vocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.filesBasePath(default)
+    endif)
+else
+    vocabularies.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
 [query public filesBasePath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
 (if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
     aDomainSpecification.eContainer(Specification).filesBasePath(anAdaptorInterface, default)
 else
     aDomainSpecification.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    aVocabulary.eContainer(Vocabularies).filesBasePath(anAdaptorInterface, default)
+else
+    aVocabulary.configuration.generalConfiguration.filesBasePath
 endif)
 /]
 
@@ -131,8 +171,16 @@ anAdaptorInterface.filesBasePath(default).concatenatePaths(javaFilesRelativePath
 aSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
 /]
 
+[query public javaFilesBasePath(vocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+vocabularies.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
+/]
+
 [query public javaFilesBasePath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
 aDomainSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public javaFilesBasePath(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+aVocabulary.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
 /]
 
 [query public webFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
@@ -194,11 +242,27 @@ else
 endif)
 /]
 
+[query public doNotGenerate(vocabularies: Vocabularies) : Boolean = 
+(if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
+    false
+else
+    vocabularies.configuration.generalConfiguration.doNotGenerate
+endif)
+/]
+
 [query public doNotGenerate(aDomainSpecification: DomainSpecification) : Boolean = 
 (if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
     aDomainSpecification.eContainer(Specification).doNotGenerate()
 else
     aDomainSpecification.configuration.generalConfiguration.doNotGenerate
+endif)
+/]
+
+[query public doNotGenerate(aVocabulary: Vocabulary) : Boolean = 
+(if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
+    aVocabulary.eContainer(Vocabularies).doNotGenerate()
+else
+    aVocabulary.configuration.generalConfiguration.doNotGenerate
 endif)
 /]
 

@@ -10,9 +10,11 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import vocabulary.GeneralConfiguration;
 import vocabulary.Property;
 import vocabulary.Vocabularies;
 import vocabulary.Vocabulary;
+import vocabulary.VocabularyConfiguration;
 import vocabulary.VocabularyFactory;
 import vocabulary.VocabularyPackage;
 
@@ -64,6 +66,8 @@ public class VocabularyFactoryImpl extends EFactoryImpl implements VocabularyFac
             case VocabularyPackage.VOCABULARY: return createVocabulary();
             case VocabularyPackage.CLASS: return createClass();
             case VocabularyPackage.PROPERTY: return createProperty();
+            case VocabularyPackage.GENERAL_CONFIGURATION: return createGeneralConfiguration();
+            case VocabularyPackage.VOCABULARY_CONFIGURATION: return createVocabularyConfiguration();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -107,6 +111,26 @@ public class VocabularyFactoryImpl extends EFactoryImpl implements VocabularyFac
     public Property createProperty() {
         PropertyImpl property = new PropertyImpl();
         return property;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public GeneralConfiguration createGeneralConfiguration() {
+        GeneralConfigurationImpl generalConfiguration = new GeneralConfigurationImpl();
+        return generalConfiguration;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public VocabularyConfiguration createVocabularyConfiguration() {
+        VocabularyConfigurationImpl vocabularyConfiguration = new VocabularyConfigurationImpl();
+        return vocabularyConfiguration;
     }
 
     /**

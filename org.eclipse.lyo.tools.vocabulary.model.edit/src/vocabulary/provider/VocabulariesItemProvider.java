@@ -78,6 +78,7 @@ public class VocabulariesItemProvider
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(VocabularyPackage.Literals.VOCABULARIES__VOCABULARIES);
+            childrenFeatures.add(VocabularyPackage.Literals.VOCABULARIES__CONFIGURATION);
         }
         return childrenFeatures;
     }
@@ -131,6 +132,7 @@ public class VocabulariesItemProvider
 
         switch (notification.getFeatureID(Vocabularies.class)) {
             case VocabularyPackage.VOCABULARIES__VOCABULARIES:
+            case VocabularyPackage.VOCABULARIES__CONFIGURATION:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -152,6 +154,11 @@ public class VocabulariesItemProvider
             (createChildParameter
                 (VocabularyPackage.Literals.VOCABULARIES__VOCABULARIES,
                  VocabularyFactory.eINSTANCE.createVocabulary()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (VocabularyPackage.Literals.VOCABULARIES__CONFIGURATION,
+                 VocabularyFactory.eINSTANCE.createVocabularyConfiguration()));
     }
 
     /**
