@@ -23,55 +23,55 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SpecificationConfiguration extends EObject {
 	/**
-	 * Returns the value of the '<em><b>General Configuration</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>General Configuration</b></em>' containment reference.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>General Configuration</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>General Configuration</em>' containment reference.
-	 * @see #setGeneralConfiguration(GeneralConfiguration)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecificationConfiguration_GeneralConfiguration()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>General Configuration</em>' containment reference.
+     * @see #setGeneralConfiguration(GeneralConfiguration)
+     * @see adaptorinterface.AdaptorinterfacePackage#getSpecificationConfiguration_GeneralConfiguration()
+     * @model containment="true" required="true"
+     * @generated
+     */
 	GeneralConfiguration getGeneralConfiguration();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.SpecificationConfiguration#getGeneralConfiguration <em>General Configuration</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.SpecificationConfiguration#getGeneralConfiguration <em>General Configuration</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>General Configuration</em>' containment reference.
-	 * @see #getGeneralConfiguration()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>General Configuration</em>' containment reference.
+     * @see #getGeneralConfiguration()
+     * @generated
+     */
 	void setGeneralConfiguration(GeneralConfiguration value);
 
 	/**
-	 * Returns the value of the '<em><b>Project Configuration</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Project Configuration</b></em>' containment reference.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Project Configuration</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Project Configuration</em>' containment reference.
-	 * @see #setProjectConfiguration(ProjectConfiguration)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecificationConfiguration_ProjectConfiguration()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Project Configuration</em>' containment reference.
+     * @see #setProjectConfiguration(ProjectConfiguration)
+     * @see adaptorinterface.AdaptorinterfacePackage#getSpecificationConfiguration_ProjectConfiguration()
+     * @model containment="true" required="true"
+     * @generated
+     */
 	ProjectConfiguration getProjectConfiguration();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.SpecificationConfiguration#getProjectConfiguration <em>Project Configuration</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.SpecificationConfiguration#getProjectConfiguration <em>Project Configuration</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Project Configuration</em>' containment reference.
-	 * @see #getProjectConfiguration()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Project Configuration</em>' containment reference.
+     * @see #getProjectConfiguration()
+     * @generated
+     */
 	void setProjectConfiguration(ProjectConfiguration value);
 
 } // SpecificationConfiguration

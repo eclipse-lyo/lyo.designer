@@ -16,55 +16,55 @@ import junit.textui.TestRunner;
 public class ShaclPropertyTest extends ShapePropertyTest {
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(ShaclPropertyTest.class);
-	}
+        TestRunner.run(ShaclPropertyTest.class);
+    }
 
 	/**
-	 * Constructs a new Shacl Property test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Shacl Property test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ShaclPropertyTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Returns the fixture for this Shacl Property test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Shacl Property test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected ShaclProperty getFixture() {
-		return (ShaclProperty)fixture;
-	}
+        return (ShaclProperty)fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createShaclProperty());
-	}
+        setFixture(AdaptorinterfaceFactory.eINSTANCE.createShaclProperty());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //ShaclPropertyTest

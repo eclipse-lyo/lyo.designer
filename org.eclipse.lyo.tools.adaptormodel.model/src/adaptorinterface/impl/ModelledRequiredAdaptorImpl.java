@@ -28,131 +28,131 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ModelledRequiredAdaptorImpl extends RequiredAdaptorImpl implements ModelledRequiredAdaptor {
 	/**
-	 * The cached value of the '{@link #getAdaptorInterface() <em>Adaptor Interface</em>}' reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getAdaptorInterface() <em>Adaptor Interface</em>}' reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getAdaptorInterface()
+     * @generated
+     * @ordered
+     */
 	protected AdaptorInterface adaptorInterface;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ModelledRequiredAdaptorImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.MODELLED_REQUIRED_ADAPTOR;
-	}
+        return AdaptorinterfacePackage.Literals.MODELLED_REQUIRED_ADAPTOR;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public AdaptorInterface getAdaptorInterface() {
-		if (adaptorInterface != null && adaptorInterface.eIsProxy()) {
-			InternalEObject oldAdaptorInterface = (InternalEObject)adaptorInterface;
-			adaptorInterface = (AdaptorInterface)eResolveProxy(oldAdaptorInterface);
-			if (adaptorInterface != oldAdaptorInterface) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE, oldAdaptorInterface, adaptorInterface));
-			}
-		}
-		return adaptorInterface;
-	}
+        if (adaptorInterface != null && adaptorInterface.eIsProxy()) {
+            InternalEObject oldAdaptorInterface = (InternalEObject)adaptorInterface;
+            adaptorInterface = (AdaptorInterface)eResolveProxy(oldAdaptorInterface);
+            if (adaptorInterface != oldAdaptorInterface) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE, oldAdaptorInterface, adaptorInterface));
+            }
+        }
+        return adaptorInterface;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public AdaptorInterface basicGetAdaptorInterface() {
-		return adaptorInterface;
-	}
+        return adaptorInterface;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setAdaptorInterface(AdaptorInterface newAdaptorInterface) {
-		AdaptorInterface oldAdaptorInterface = adaptorInterface;
-		adaptorInterface = newAdaptorInterface;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE, oldAdaptorInterface, adaptorInterface));
-	}
+        AdaptorInterface oldAdaptorInterface = adaptorInterface;
+        adaptorInterface = newAdaptorInterface;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE, oldAdaptorInterface, adaptorInterface));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE:
-				if (resolve) return getAdaptorInterface();
-				return basicGetAdaptorInterface();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE:
+                if (resolve) return getAdaptorInterface();
+                return basicGetAdaptorInterface();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE:
-				setAdaptorInterface((AdaptorInterface)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE:
+                setAdaptorInterface((AdaptorInterface)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE:
-				setAdaptorInterface((AdaptorInterface)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE:
+                setAdaptorInterface((AdaptorInterface)null);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE:
-				return adaptorInterface != null;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.MODELLED_REQUIRED_ADAPTOR__ADAPTOR_INTERFACE:
+                return adaptorInterface != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
 } //ModelledRequiredAdaptorImpl

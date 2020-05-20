@@ -16,55 +16,55 @@ import junit.textui.TestRunner;
 public class ShaclShapeTest extends ShapeTest {
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(ShaclShapeTest.class);
-	}
+        TestRunner.run(ShaclShapeTest.class);
+    }
 
 	/**
-	 * Constructs a new Shacl Shape test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Shacl Shape test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ShaclShapeTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Returns the fixture for this Shacl Shape test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Shacl Shape test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected ShaclShape getFixture() {
-		return (ShaclShape)fixture;
-	}
+        return (ShaclShape)fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createShaclShape());
-	}
+        setFixture(AdaptorinterfaceFactory.eINSTANCE.createShaclShape());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //ShaclShapeTest

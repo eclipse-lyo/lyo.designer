@@ -38,324 +38,324 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class ShaclShapeImpl extends ShapeImpl implements ShaclShape {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTargetClass() <em>Target Class</em>}' reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getTargetClass() <em>Target Class</em>}' reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTargetClass()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTargetClass()
+     * @generated
+     * @ordered
+     */
 	protected vocabulary.Class targetClass;
 
 	/**
-	 * The default value of the '{@link #isClosed() <em>Closed</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #isClosed() <em>Closed</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isClosed()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isClosed()
+     * @generated
+     * @ordered
+     */
 	protected static final boolean CLOSED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isClosed() <em>Closed</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #isClosed() <em>Closed</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isClosed()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isClosed()
+     * @generated
+     * @ordered
+     */
 	protected boolean closed = CLOSED_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getShaclProperties() <em>Shacl Properties</em>}' reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getShaclProperties() <em>Shacl Properties</em>}' reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getShaclProperties()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getShaclProperties()
+     * @generated
+     * @ordered
+     */
 	protected EList<ShaclProperty> shaclProperties;
 
 	/**
-	 * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExtends()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getExtends()
+     * @generated
+     * @ordered
+     */
 	protected EList<ShaclShape> extends_;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ShaclShapeImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.SHACL_SHAPE;
-	}
+        return AdaptorinterfacePackage.Literals.SHACL_SHAPE;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getName() {
-		return name;
-	}
+        return name;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SHACL_SHAPE__NAME, oldName, name));
-	}
+        String oldName = name;
+        name = newName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SHACL_SHAPE__NAME, oldName, name));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public vocabulary.Class getTargetClass() {
-		if (targetClass != null && targetClass.eIsProxy()) {
-			InternalEObject oldTargetClass = (InternalEObject)targetClass;
-			targetClass = (vocabulary.Class)eResolveProxy(oldTargetClass);
-			if (targetClass != oldTargetClass) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS, oldTargetClass, targetClass));
-			}
-		}
-		return targetClass;
-	}
+        if (targetClass != null && targetClass.eIsProxy()) {
+            InternalEObject oldTargetClass = (InternalEObject)targetClass;
+            targetClass = (vocabulary.Class)eResolveProxy(oldTargetClass);
+            if (targetClass != oldTargetClass) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS, oldTargetClass, targetClass));
+            }
+        }
+        return targetClass;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public vocabulary.Class basicGetTargetClass() {
-		return targetClass;
-	}
+        return targetClass;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setTargetClass(vocabulary.Class newTargetClass) {
-		vocabulary.Class oldTargetClass = targetClass;
-		targetClass = newTargetClass;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS, oldTargetClass, targetClass));
-	}
+        vocabulary.Class oldTargetClass = targetClass;
+        targetClass = newTargetClass;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS, oldTargetClass, targetClass));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean isClosed() {
-		return closed;
-	}
+        return closed;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setClosed(boolean newClosed) {
-		boolean oldClosed = closed;
-		closed = newClosed;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SHACL_SHAPE__CLOSED, oldClosed, closed));
-	}
+        boolean oldClosed = closed;
+        closed = newClosed;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SHACL_SHAPE__CLOSED, oldClosed, closed));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EList<ShaclProperty> getShaclProperties() {
-		if (shaclProperties == null) {
-			shaclProperties = new EObjectResolvingEList<ShaclProperty>(ShaclProperty.class, this, AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES);
-		}
-		return shaclProperties;
-	}
+        if (shaclProperties == null) {
+            shaclProperties = new EObjectResolvingEList<ShaclProperty>(ShaclProperty.class, this, AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES);
+        }
+        return shaclProperties;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EList<ShaclShape> getExtends() {
-		if (extends_ == null) {
-			extends_ = new EObjectResolvingEList<ShaclShape>(ShaclShape.class, this, AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS);
-		}
-		return extends_;
-	}
+        if (extends_ == null) {
+            extends_ = new EObjectResolvingEList<ShaclShape>(ShaclShape.class, this, AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS);
+        }
+        return extends_;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.SHACL_SHAPE__NAME:
-				return getName();
-			case AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS:
-				if (resolve) return getTargetClass();
-				return basicGetTargetClass();
-			case AdaptorinterfacePackage.SHACL_SHAPE__CLOSED:
-				return isClosed();
-			case AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES:
-				return getShaclProperties();
-			case AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS:
-				return getExtends();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.SHACL_SHAPE__NAME:
+                return getName();
+            case AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS:
+                if (resolve) return getTargetClass();
+                return basicGetTargetClass();
+            case AdaptorinterfacePackage.SHACL_SHAPE__CLOSED:
+                return isClosed();
+            case AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES:
+                return getShaclProperties();
+            case AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS:
+                return getExtends();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.SHACL_SHAPE__NAME:
-				setName((String)newValue);
-				return;
-			case AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS:
-				setTargetClass((vocabulary.Class)newValue);
-				return;
-			case AdaptorinterfacePackage.SHACL_SHAPE__CLOSED:
-				setClosed((Boolean)newValue);
-				return;
-			case AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES:
-				getShaclProperties().clear();
-				getShaclProperties().addAll((Collection<? extends ShaclProperty>)newValue);
-				return;
-			case AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS:
-				getExtends().clear();
-				getExtends().addAll((Collection<? extends ShaclShape>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.SHACL_SHAPE__NAME:
+                setName((String)newValue);
+                return;
+            case AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS:
+                setTargetClass((vocabulary.Class)newValue);
+                return;
+            case AdaptorinterfacePackage.SHACL_SHAPE__CLOSED:
+                setClosed((Boolean)newValue);
+                return;
+            case AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES:
+                getShaclProperties().clear();
+                getShaclProperties().addAll((Collection<? extends ShaclProperty>)newValue);
+                return;
+            case AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS:
+                getExtends().clear();
+                getExtends().addAll((Collection<? extends ShaclShape>)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.SHACL_SHAPE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS:
-				setTargetClass((vocabulary.Class)null);
-				return;
-			case AdaptorinterfacePackage.SHACL_SHAPE__CLOSED:
-				setClosed(CLOSED_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES:
-				getShaclProperties().clear();
-				return;
-			case AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS:
-				getExtends().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.SHACL_SHAPE__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS:
+                setTargetClass((vocabulary.Class)null);
+                return;
+            case AdaptorinterfacePackage.SHACL_SHAPE__CLOSED:
+                setClosed(CLOSED_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES:
+                getShaclProperties().clear();
+                return;
+            case AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS:
+                getExtends().clear();
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.SHACL_SHAPE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS:
-				return targetClass != null;
-			case AdaptorinterfacePackage.SHACL_SHAPE__CLOSED:
-				return closed != CLOSED_EDEFAULT;
-			case AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES:
-				return shaclProperties != null && !shaclProperties.isEmpty();
-			case AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS:
-				return extends_ != null && !extends_.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.SHACL_SHAPE__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case AdaptorinterfacePackage.SHACL_SHAPE__TARGET_CLASS:
+                return targetClass != null;
+            case AdaptorinterfacePackage.SHACL_SHAPE__CLOSED:
+                return closed != CLOSED_EDEFAULT;
+            case AdaptorinterfacePackage.SHACL_SHAPE__SHACL_PROPERTIES:
+                return shaclProperties != null && !shaclProperties.isEmpty();
+            case AdaptorinterfacePackage.SHACL_SHAPE__EXTENDS:
+                return extends_ != null && !extends_.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", closed: ");
-		result.append(closed);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (name: ");
+        result.append(name);
+        result.append(", closed: ");
+        result.append(closed);
+        result.append(')');
+        return result.toString();
+    }
 
 } //ShaclShapeImpl

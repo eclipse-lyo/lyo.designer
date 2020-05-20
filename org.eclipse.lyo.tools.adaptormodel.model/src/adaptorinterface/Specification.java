@@ -27,87 +27,87 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Specification extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Domain Specifications</b></em>' containment reference list.
-	 * The list contents are of type {@link adaptorinterface.DomainSpecification}.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Domain Specifications</b></em>' containment reference list.
+     * The list contents are of type {@link adaptorinterface.DomainSpecification}.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Specifications</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Domain Specifications</em>' containment reference list.
-	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_DomainSpecifications()
-	 * @model containment="true" keys="name"
-	 * @generated
-	 */
+     * @return the value of the '<em>Domain Specifications</em>' containment reference list.
+     * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_DomainSpecifications()
+     * @model containment="true" keys="name"
+     * @generated
+     */
 	EList<DomainSpecification> getDomainSpecifications();
 
 	/**
-	 * Returns the value of the '<em><b>Domain Prefixes</b></em>' containment reference list.
-	 * The list contents are of type {@link adaptorinterface.NamespacePrefix}.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Domain Prefixes</b></em>' containment reference list.
+     * The list contents are of type {@link adaptorinterface.NamespacePrefix}.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Prefixes</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Domain Prefixes</em>' containment reference list.
-	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_DomainPrefixes()
-	 * @model containment="true" keys="name"
-	 * @generated
-	 */
+     * @return the value of the '<em>Domain Prefixes</em>' containment reference list.
+     * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_DomainPrefixes()
+     * @model containment="true" keys="name"
+     * @generated
+     */
 	EList<NamespacePrefix> getDomainPrefixes();
 
 	/**
-	 * Returns the value of the '<em><b>Generation Setting</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Generation Setting</b></em>' containment reference.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Generation Setting</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Generation Setting</em>' containment reference.
-	 * @see #setGenerationSetting(GenerationSetting)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_GenerationSetting()
-	 * @model containment="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Generation Setting</em>' containment reference.
+     * @see #setGenerationSetting(GenerationSetting)
+     * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_GenerationSetting()
+     * @model containment="true"
+     * @generated
+     */
 	GenerationSetting getGenerationSetting();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.Specification#getGenerationSetting <em>Generation Setting</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.Specification#getGenerationSetting <em>Generation Setting</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Generation Setting</em>' containment reference.
-	 * @see #getGenerationSetting()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Generation Setting</em>' containment reference.
+     * @see #getGenerationSetting()
+     * @generated
+     */
 	void setGenerationSetting(GenerationSetting value);
 
 	/**
-	 * Returns the value of the '<em><b>Configuration</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Configuration</b></em>' containment reference.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Configuration</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Configuration</em>' containment reference.
-	 * @see #setConfiguration(SpecificationConfiguration)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_Configuration()
-	 * @model containment="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Configuration</em>' containment reference.
+     * @see #setConfiguration(SpecificationConfiguration)
+     * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_Configuration()
+     * @model containment="true"
+     * @generated
+     */
 	SpecificationConfiguration getConfiguration();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.Specification#getConfiguration <em>Configuration</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.Specification#getConfiguration <em>Configuration</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Configuration</em>' containment reference.
-	 * @see #getConfiguration()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Configuration</em>' containment reference.
+     * @see #getConfiguration()
+     * @generated
+     */
 	void setConfiguration(SpecificationConfiguration value);
 
 } // Specification

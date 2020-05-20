@@ -20,7 +20,7 @@
  *******************************************************************************/
 /]
 
-[module generate('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')]
+[module generate('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
@@ -117,22 +117,27 @@
 [/template]
 
 [template public generateForRelevantDomainSpecifications(anAdaptorInterface : AdaptorInterface)]
-[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface))]
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)
+    ->select(o: DomainSpecification | anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject))))]
     [aDomainSpecification.generateDomainSpecificationConstants(anAdaptorInterface, null, null)/]
     [aDomainSpecification.generateConfigFiles(anAdaptorInterface, null)/]
 [/for]
 [/template]
 
 [template public generateForRelevantVocabularies(anAdaptorInterface : AdaptorInterface)]
-[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface))]
+[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)
+    ->select(o: Vocabulary | anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject))))]
     [aVocabulary.generateVocabularyConstants(anAdaptorInterface, null, null)/]
 [/for]
 [/template]
 
 [template public generateForRelevantResources(anAdaptorInterface : AdaptorInterface)]
-[for (aResource: Resource | relevantResources(anAdaptorInterface))]
+[for (aResource: Resource | relevantResources(anAdaptorInterface)
+    ->select(o: Resource | anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject))))]
     [aResource.generateResource(anAdaptorInterface, null, null) /]
     [aResource.generateResourceInterface(anAdaptorInterface, anAdaptorInterface, null, null) /]
+[/for]
+[for (aResource: Resource | relevantResources(anAdaptorInterface))]
     [aResource.generateResourceToHtmlJsp(anAdaptorInterface) /]
 [/for]
 [/template]

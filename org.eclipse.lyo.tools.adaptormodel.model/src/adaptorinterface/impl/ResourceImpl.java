@@ -57,73 +57,73 @@ public class ResourceImpl extends ShapeImpl implements Resource {
     protected String id = ID_EDEFAULT;
 
     /**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDescribes() <em>Describes</em>}' reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getDescribes() <em>Describes</em>}' reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescribes()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDescribes()
+     * @generated
+     * @ordered
+     */
 	protected vocabulary.Class describes;
 
 	/**
-	 * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExtends()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getExtends()
+     * @generated
+     * @ordered
+     */
 	protected EList<Resource> extends_;
 
 	/**
-	 * The cached value of the '{@link #getResourceProperties() <em>Resource Properties</em>}' reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getResourceProperties() <em>Resource Properties</em>}' reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResourceProperties()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getResourceProperties()
+     * @generated
+     * @ordered
+     */
 	protected EList<ResourceProperty> resourceProperties;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ResourceImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.RESOURCE;
-	}
+        return AdaptorinterfacePackage.Literals.RESOURCE;
+    }
 
 	/**
      * <!-- begin-user-doc -->
@@ -150,212 +150,212 @@ public class ResourceImpl extends ShapeImpl implements Resource {
     }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getName() {
-		return name;
-	}
+        return name;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE__NAME, oldName, name));
-	}
+        String oldName = name;
+        name = newName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE__NAME, oldName, name));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EList<Resource> getExtends() {
-		if (extends_ == null) {
-			extends_ = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.RESOURCE__EXTENDS);
-		}
-		return extends_;
-	}
+        if (extends_ == null) {
+            extends_ = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.RESOURCE__EXTENDS);
+        }
+        return extends_;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EList<ResourceProperty> getResourceProperties() {
-		if (resourceProperties == null) {
-			resourceProperties = new EObjectResolvingEList<ResourceProperty>(ResourceProperty.class, this, AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES);
-		}
-		return resourceProperties;
-	}
+        if (resourceProperties == null) {
+            resourceProperties = new EObjectResolvingEList<ResourceProperty>(ResourceProperty.class, this, AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES);
+        }
+        return resourceProperties;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public vocabulary.Class getDescribes() {
-		if (describes != null && describes.eIsProxy()) {
-			InternalEObject oldDescribes = (InternalEObject)describes;
-			describes = (vocabulary.Class)eResolveProxy(oldDescribes);
-			if (describes != oldDescribes) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptorinterfacePackage.RESOURCE__DESCRIBES, oldDescribes, describes));
-			}
-		}
-		return describes;
-	}
+        if (describes != null && describes.eIsProxy()) {
+            InternalEObject oldDescribes = (InternalEObject)describes;
+            describes = (vocabulary.Class)eResolveProxy(oldDescribes);
+            if (describes != oldDescribes) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptorinterfacePackage.RESOURCE__DESCRIBES, oldDescribes, describes));
+            }
+        }
+        return describes;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public vocabulary.Class basicGetDescribes() {
-		return describes;
-	}
+        return describes;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setDescribes(vocabulary.Class newDescribes) {
-		vocabulary.Class oldDescribes = describes;
-		describes = newDescribes;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE__DESCRIBES, oldDescribes, describes));
-	}
+        vocabulary.Class oldDescribes = describes;
+        describes = newDescribes;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE__DESCRIBES, oldDescribes, describes));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
+        switch (featureID) {
             case AdaptorinterfacePackage.RESOURCE__ID:
                 return getId();
-			case AdaptorinterfacePackage.RESOURCE__NAME:
-				return getName();
-			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
-				if (resolve) return getDescribes();
-				return basicGetDescribes();
-			case AdaptorinterfacePackage.RESOURCE__EXTENDS:
-				return getExtends();
-			case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
-				return getResourceProperties();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+            case AdaptorinterfacePackage.RESOURCE__NAME:
+                return getName();
+            case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
+                if (resolve) return getDescribes();
+                return basicGetDescribes();
+            case AdaptorinterfacePackage.RESOURCE__EXTENDS:
+                return getExtends();
+            case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
+                return getResourceProperties();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
+        switch (featureID) {
             case AdaptorinterfacePackage.RESOURCE__ID:
                 setId((String)newValue);
                 return;
-			case AdaptorinterfacePackage.RESOURCE__NAME:
-				setName((String)newValue);
-				return;
-			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
-				setDescribes((vocabulary.Class)newValue);
-				return;
-			case AdaptorinterfacePackage.RESOURCE__EXTENDS:
-				getExtends().clear();
-				getExtends().addAll((Collection<? extends Resource>)newValue);
-				return;
-			case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
-				getResourceProperties().clear();
-				getResourceProperties().addAll((Collection<? extends ResourceProperty>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+            case AdaptorinterfacePackage.RESOURCE__NAME:
+                setName((String)newValue);
+                return;
+            case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
+                setDescribes((vocabulary.Class)newValue);
+                return;
+            case AdaptorinterfacePackage.RESOURCE__EXTENDS:
+                getExtends().clear();
+                getExtends().addAll((Collection<? extends Resource>)newValue);
+                return;
+            case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
+                getResourceProperties().clear();
+                getResourceProperties().addAll((Collection<? extends ResourceProperty>)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
+        switch (featureID) {
             case AdaptorinterfacePackage.RESOURCE__ID:
                 setId(ID_EDEFAULT);
                 return;
-			case AdaptorinterfacePackage.RESOURCE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
-				setDescribes((vocabulary.Class)null);
-				return;
-			case AdaptorinterfacePackage.RESOURCE__EXTENDS:
-				getExtends().clear();
-				return;
-			case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
-				getResourceProperties().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+            case AdaptorinterfacePackage.RESOURCE__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
+                setDescribes((vocabulary.Class)null);
+                return;
+            case AdaptorinterfacePackage.RESOURCE__EXTENDS:
+                getExtends().clear();
+                return;
+            case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
+                getResourceProperties().clear();
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
+        switch (featureID) {
             case AdaptorinterfacePackage.RESOURCE__ID:
                 return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case AdaptorinterfacePackage.RESOURCE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
-				return describes != null;
-			case AdaptorinterfacePackage.RESOURCE__EXTENDS:
-				return extends_ != null && !extends_.isEmpty();
-			case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
-				return resourceProperties != null && !resourceProperties.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+            case AdaptorinterfacePackage.RESOURCE__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
+                return describes != null;
+            case AdaptorinterfacePackage.RESOURCE__EXTENDS:
+                return extends_ != null && !extends_.isEmpty();
+            case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
+                return resourceProperties != null && !resourceProperties.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+        StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: ");
         result.append(id);
         result.append(", name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
-	}
+        result.append(name);
+        result.append(')');
+        return result.toString();
+    }
 
 } //ResourceImpl

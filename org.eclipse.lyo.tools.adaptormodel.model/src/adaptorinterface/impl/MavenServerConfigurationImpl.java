@@ -26,137 +26,137 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class MavenServerConfigurationImpl extends ServerConfigurationImpl implements MavenServerConfiguration {
 	/**
-	 * The default value of the '{@link #getJettyPort() <em>Jetty Port</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getJettyPort() <em>Jetty Port</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getJettyPort()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getJettyPort()
+     * @generated
+     * @ordered
+     */
 	protected static final int JETTY_PORT_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getJettyPort() <em>Jetty Port</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getJettyPort() <em>Jetty Port</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getJettyPort()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getJettyPort()
+     * @generated
+     * @ordered
+     */
 	protected int jettyPort = JETTY_PORT_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected MavenServerConfigurationImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.MAVEN_SERVER_CONFIGURATION;
-	}
+        return AdaptorinterfacePackage.Literals.MAVEN_SERVER_CONFIGURATION;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getJettyPort() {
-		return jettyPort;
-	}
+        return jettyPort;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setJettyPort(int newJettyPort) {
-		int oldJettyPort = jettyPort;
-		jettyPort = newJettyPort;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT, oldJettyPort, jettyPort));
-	}
+        int oldJettyPort = jettyPort;
+        jettyPort = newJettyPort;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT, oldJettyPort, jettyPort));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT:
-				return getJettyPort();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT:
+                return getJettyPort();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT:
-				setJettyPort((Integer)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT:
+                setJettyPort((Integer)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT:
-				setJettyPort(JETTY_PORT_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT:
+                setJettyPort(JETTY_PORT_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT:
-				return jettyPort != JETTY_PORT_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION__JETTY_PORT:
+                return jettyPort != JETTY_PORT_EDEFAULT;
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (jettyPort: ");
-		result.append(jettyPort);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (jettyPort: ");
+        result.append(jettyPort);
+        result.append(')');
+        return result.toString();
+    }
 
 } //MavenServerConfigurationImpl

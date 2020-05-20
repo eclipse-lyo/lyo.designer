@@ -235,6 +235,7 @@
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//GeneralConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GeneralConfiguration/doNotGenerate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GeneralConfiguration/doNotGenerateFromImportedModels"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GeneralConfiguration/filesBasePath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//GeneralConfiguration/javaBasePackageName"/>
     </genClasses>

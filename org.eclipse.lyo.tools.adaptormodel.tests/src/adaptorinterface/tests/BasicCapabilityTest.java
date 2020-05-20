@@ -18,72 +18,72 @@ import junit.textui.TestRunner;
 public class BasicCapabilityTest extends TestCase {
 
 	/**
-	 * The fixture for this Basic Capability test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Basic Capability test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected BasicCapability fixture = null;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(BasicCapabilityTest.class);
-	}
+        TestRunner.run(BasicCapabilityTest.class);
+    }
 
 	/**
-	 * Constructs a new Basic Capability test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Basic Capability test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public BasicCapabilityTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Sets the fixture for this Basic Capability test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Basic Capability test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void setFixture(BasicCapability fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
 	/**
-	 * Returns the fixture for this Basic Capability test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Basic Capability test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected BasicCapability getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createBasicCapability());
-	}
+        setFixture(AdaptorinterfaceFactory.eINSTANCE.createBasicCapability());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //BasicCapabilityTest

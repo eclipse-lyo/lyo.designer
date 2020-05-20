@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class InmemPagedTrsServiceImpl extends TrsServiceImpl implements InmemPagedTrsService {
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected InmemPagedTrsServiceImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.INMEM_PAGED_TRS_SERVICE;
-	}
+        return AdaptorinterfacePackage.Literals.INMEM_PAGED_TRS_SERVICE;
+    }
 
 } //InmemPagedTrsServiceImpl

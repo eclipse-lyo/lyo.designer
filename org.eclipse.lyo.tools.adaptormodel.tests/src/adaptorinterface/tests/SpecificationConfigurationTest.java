@@ -15,41 +15,41 @@ import junit.framework.TestCase;
 public abstract class SpecificationConfigurationTest extends TestCase {
 
 	/**
-	 * The fixture for this Specification Configuration test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Specification Configuration test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected SpecificationConfiguration fixture = null;
 
 	/**
-	 * Constructs a new Specification Configuration test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Specification Configuration test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public SpecificationConfigurationTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Sets the fixture for this Specification Configuration test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Specification Configuration test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void setFixture(SpecificationConfiguration fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
 	/**
-	 * Returns the fixture for this Specification Configuration test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Specification Configuration test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected SpecificationConfiguration getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
 } //SpecificationConfigurationTest

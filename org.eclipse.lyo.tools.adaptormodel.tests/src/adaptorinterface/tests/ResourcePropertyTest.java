@@ -15,55 +15,55 @@ import junit.textui.TestRunner;
 public class ResourcePropertyTest extends ShapePropertyTest {
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(ResourcePropertyTest.class);
-	}
+        TestRunner.run(ResourcePropertyTest.class);
+    }
 
 	/**
-	 * Constructs a new Resource Property test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Resource Property test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ResourcePropertyTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Returns the fixture for this Resource Property test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Resource Property test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected ResourceProperty getFixture() {
-		return (ResourceProperty)fixture;
-	}
+        return (ResourceProperty)fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createResourceProperty());
-	}
+        setFixture(AdaptorinterfaceFactory.eINSTANCE.createResourceProperty());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //ResourcePropertyTest

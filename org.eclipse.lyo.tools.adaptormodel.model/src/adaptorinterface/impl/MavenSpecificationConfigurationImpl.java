@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class MavenSpecificationConfigurationImpl extends SpecificationConfigurationImpl implements MavenSpecificationConfiguration {
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected MavenSpecificationConfigurationImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.MAVEN_SPECIFICATION_CONFIGURATION;
-	}
+        return AdaptorinterfacePackage.Literals.MAVEN_SPECIFICATION_CONFIGURATION;
+    }
 
 } //MavenSpecificationConfigurationImpl

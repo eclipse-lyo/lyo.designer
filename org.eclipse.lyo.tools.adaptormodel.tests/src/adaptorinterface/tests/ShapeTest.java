@@ -15,41 +15,41 @@ import junit.framework.TestCase;
 public abstract class ShapeTest extends TestCase {
 
 	/**
-	 * The fixture for this Shape test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Shape test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected Shape fixture = null;
 
 	/**
-	 * Constructs a new Shape test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Shape test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ShapeTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Sets the fixture for this Shape test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Shape test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void setFixture(Shape fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
 	/**
-	 * Returns the fixture for this Shape test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Shape test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected Shape getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
 } //ShapeTest

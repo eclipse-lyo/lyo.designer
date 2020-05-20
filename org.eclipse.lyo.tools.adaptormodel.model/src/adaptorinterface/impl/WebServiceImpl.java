@@ -36,436 +36,436 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebService {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getServiceUrlPattern() <em>Service Url Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getServiceUrlPattern() <em>Service Url Pattern</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getServiceUrlPattern()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getServiceUrlPattern()
+     * @generated
+     * @ordered
+     */
 	protected static final String SERVICE_URL_PATTERN_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getServiceUrlPattern() <em>Service Url Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getServiceUrlPattern() <em>Service Url Pattern</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getServiceUrlPattern()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getServiceUrlPattern()
+     * @generated
+     * @ordered
+     */
 	protected String serviceUrlPattern = SERVICE_URL_PATTERN_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getResourceUrlPattern() <em>Resource Url Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getResourceUrlPattern() <em>Resource Url Pattern</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResourceUrlPattern()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getResourceUrlPattern()
+     * @generated
+     * @ordered
+     */
 	protected static final String RESOURCE_URL_PATTERN_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getResourceUrlPattern() <em>Resource Url Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getResourceUrlPattern() <em>Resource Url Pattern</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResourceUrlPattern()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getResourceUrlPattern()
+     * @generated
+     * @ordered
+     */
 	protected String resourceUrlPattern = RESOURCE_URL_PATTERN_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getResourceTypes() <em>Resource Types</em>}' reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getResourceTypes() <em>Resource Types</em>}' reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResourceTypes()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getResourceTypes()
+     * @generated
+     * @ordered
+     */
 	protected EList<Resource> resourceTypes;
 
 	/**
-	 * The default value of the '{@link #isRead() <em>Read</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #isRead() <em>Read</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRead()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isRead()
+     * @generated
+     * @ordered
+     */
 	protected static final boolean READ_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isRead() <em>Read</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #isRead() <em>Read</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRead()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isRead()
+     * @generated
+     * @ordered
+     */
 	protected boolean read = READ_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isDelete() <em>Delete</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #isDelete() <em>Delete</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isDelete()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isDelete()
+     * @generated
+     * @ordered
+     */
 	protected static final boolean DELETE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDelete() <em>Delete</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #isDelete() <em>Delete</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isDelete()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isDelete()
+     * @generated
+     * @ordered
+     */
 	protected boolean delete = DELETE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isUpdate() <em>Update</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #isUpdate() <em>Update</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isUpdate()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isUpdate()
+     * @generated
+     * @ordered
+     */
 	protected static final boolean UPDATE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isUpdate() <em>Update</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #isUpdate() <em>Update</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isUpdate()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isUpdate()
+     * @generated
+     * @ordered
+     */
 	protected boolean update = UPDATE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected WebServiceImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.WEB_SERVICE;
-	}
+        return AdaptorinterfacePackage.Literals.WEB_SERVICE;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getName() {
-		return name;
-	}
+        return name;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__NAME, oldName, name));
-	}
+        String oldName = name;
+        name = newName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__NAME, oldName, name));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getServiceUrlPattern() {
-		return serviceUrlPattern;
-	}
+        return serviceUrlPattern;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setServiceUrlPattern(String newServiceUrlPattern) {
-		String oldServiceUrlPattern = serviceUrlPattern;
-		serviceUrlPattern = newServiceUrlPattern;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN, oldServiceUrlPattern, serviceUrlPattern));
-	}
+        String oldServiceUrlPattern = serviceUrlPattern;
+        serviceUrlPattern = newServiceUrlPattern;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN, oldServiceUrlPattern, serviceUrlPattern));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getResourceUrlPattern() {
-		return resourceUrlPattern;
-	}
+        return resourceUrlPattern;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setResourceUrlPattern(String newResourceUrlPattern) {
-		String oldResourceUrlPattern = resourceUrlPattern;
-		resourceUrlPattern = newResourceUrlPattern;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN, oldResourceUrlPattern, resourceUrlPattern));
-	}
+        String oldResourceUrlPattern = resourceUrlPattern;
+        resourceUrlPattern = newResourceUrlPattern;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN, oldResourceUrlPattern, resourceUrlPattern));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<Resource> getResourceTypes() {
-		if (resourceTypes == null) {
-			resourceTypes = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES);
-		}
-		return resourceTypes;
-	}
+        if (resourceTypes == null) {
+            resourceTypes = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES);
+        }
+        return resourceTypes;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public boolean isRead() {
-		return read;
-	}
+        return read;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setRead(boolean newRead) {
-		boolean oldRead = read;
-		read = newRead;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__READ, oldRead, read));
-	}
+        boolean oldRead = read;
+        read = newRead;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__READ, oldRead, read));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public boolean isDelete() {
-		return delete;
-	}
+        return delete;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setDelete(boolean newDelete) {
-		boolean oldDelete = delete;
-		delete = newDelete;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__DELETE, oldDelete, delete));
-	}
+        boolean oldDelete = delete;
+        delete = newDelete;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__DELETE, oldDelete, delete));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public boolean isUpdate() {
-		return update;
-	}
+        return update;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setUpdate(boolean newUpdate) {
-		boolean oldUpdate = update;
-		update = newUpdate;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__UPDATE, oldUpdate, update));
-	}
+        boolean oldUpdate = update;
+        update = newUpdate;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__UPDATE, oldUpdate, update));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.WEB_SERVICE__NAME:
-				return getName();
-			case AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN:
-				return getServiceUrlPattern();
-			case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN:
-				return getResourceUrlPattern();
-			case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES:
-				return getResourceTypes();
-			case AdaptorinterfacePackage.WEB_SERVICE__READ:
-				return isRead();
-			case AdaptorinterfacePackage.WEB_SERVICE__DELETE:
-				return isDelete();
-			case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
-				return isUpdate();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.WEB_SERVICE__NAME:
+                return getName();
+            case AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN:
+                return getServiceUrlPattern();
+            case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN:
+                return getResourceUrlPattern();
+            case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES:
+                return getResourceTypes();
+            case AdaptorinterfacePackage.WEB_SERVICE__READ:
+                return isRead();
+            case AdaptorinterfacePackage.WEB_SERVICE__DELETE:
+                return isDelete();
+            case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
+                return isUpdate();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.WEB_SERVICE__NAME:
-				setName((String)newValue);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN:
-				setServiceUrlPattern((String)newValue);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN:
-				setResourceUrlPattern((String)newValue);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES:
-				getResourceTypes().clear();
-				getResourceTypes().addAll((Collection<? extends Resource>)newValue);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__READ:
-				setRead((Boolean)newValue);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__DELETE:
-				setDelete((Boolean)newValue);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
-				setUpdate((Boolean)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.WEB_SERVICE__NAME:
+                setName((String)newValue);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN:
+                setServiceUrlPattern((String)newValue);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN:
+                setResourceUrlPattern((String)newValue);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES:
+                getResourceTypes().clear();
+                getResourceTypes().addAll((Collection<? extends Resource>)newValue);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__READ:
+                setRead((Boolean)newValue);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__DELETE:
+                setDelete((Boolean)newValue);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
+                setUpdate((Boolean)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.WEB_SERVICE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN:
-				setServiceUrlPattern(SERVICE_URL_PATTERN_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN:
-				setResourceUrlPattern(RESOURCE_URL_PATTERN_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES:
-				getResourceTypes().clear();
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__READ:
-				setRead(READ_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__DELETE:
-				setDelete(DELETE_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
-				setUpdate(UPDATE_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.WEB_SERVICE__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN:
+                setServiceUrlPattern(SERVICE_URL_PATTERN_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN:
+                setResourceUrlPattern(RESOURCE_URL_PATTERN_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES:
+                getResourceTypes().clear();
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__READ:
+                setRead(READ_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__DELETE:
+                setDelete(DELETE_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
+                setUpdate(UPDATE_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.WEB_SERVICE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN:
-				return SERVICE_URL_PATTERN_EDEFAULT == null ? serviceUrlPattern != null : !SERVICE_URL_PATTERN_EDEFAULT.equals(serviceUrlPattern);
-			case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN:
-				return RESOURCE_URL_PATTERN_EDEFAULT == null ? resourceUrlPattern != null : !RESOURCE_URL_PATTERN_EDEFAULT.equals(resourceUrlPattern);
-			case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES:
-				return resourceTypes != null && !resourceTypes.isEmpty();
-			case AdaptorinterfacePackage.WEB_SERVICE__READ:
-				return read != READ_EDEFAULT;
-			case AdaptorinterfacePackage.WEB_SERVICE__DELETE:
-				return delete != DELETE_EDEFAULT;
-			case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
-				return update != UPDATE_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.WEB_SERVICE__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case AdaptorinterfacePackage.WEB_SERVICE__SERVICE_URL_PATTERN:
+                return SERVICE_URL_PATTERN_EDEFAULT == null ? serviceUrlPattern != null : !SERVICE_URL_PATTERN_EDEFAULT.equals(serviceUrlPattern);
+            case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_URL_PATTERN:
+                return RESOURCE_URL_PATTERN_EDEFAULT == null ? resourceUrlPattern != null : !RESOURCE_URL_PATTERN_EDEFAULT.equals(resourceUrlPattern);
+            case AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES:
+                return resourceTypes != null && !resourceTypes.isEmpty();
+            case AdaptorinterfacePackage.WEB_SERVICE__READ:
+                return read != READ_EDEFAULT;
+            case AdaptorinterfacePackage.WEB_SERVICE__DELETE:
+                return delete != DELETE_EDEFAULT;
+            case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
+                return update != UPDATE_EDEFAULT;
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", serviceUrlPattern: ");
-		result.append(serviceUrlPattern);
-		result.append(", resourceUrlPattern: ");
-		result.append(resourceUrlPattern);
-		result.append(", read: ");
-		result.append(read);
-		result.append(", delete: ");
-		result.append(delete);
-		result.append(", update: ");
-		result.append(update);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (name: ");
+        result.append(name);
+        result.append(", serviceUrlPattern: ");
+        result.append(serviceUrlPattern);
+        result.append(", resourceUrlPattern: ");
+        result.append(resourceUrlPattern);
+        result.append(", read: ");
+        result.append(read);
+        result.append(", delete: ");
+        result.append(delete);
+        result.append(", update: ");
+        result.append(update);
+        result.append(')');
+        return result.toString();
+    }
 
 } //WebServiceImpl

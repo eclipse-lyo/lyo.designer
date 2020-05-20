@@ -22,55 +22,55 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface AuthenticationConfiguration extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Application Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Application Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Application Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Application Name</em>' attribute.
-	 * @see #setApplicationName(String)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getAuthenticationConfiguration_ApplicationName()
-	 * @model required="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Application Name</em>' attribute.
+     * @see #setApplicationName(String)
+     * @see adaptorinterface.AdaptorinterfacePackage#getAuthenticationConfiguration_ApplicationName()
+     * @model required="true"
+     * @generated
+     */
 	String getApplicationName();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.AuthenticationConfiguration#getApplicationName <em>Application Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.AuthenticationConfiguration#getApplicationName <em>Application Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Application Name</em>' attribute.
-	 * @see #getApplicationName()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Application Name</em>' attribute.
+     * @see #getApplicationName()
+     * @generated
+     */
 	void setApplicationName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Oauth Realm</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Oauth Realm</b></em>' attribute.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Oauth Realm</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Oauth Realm</em>' attribute.
-	 * @see #setOauthRealm(String)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getAuthenticationConfiguration_OauthRealm()
-	 * @model required="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Oauth Realm</em>' attribute.
+     * @see #setOauthRealm(String)
+     * @see adaptorinterface.AdaptorinterfacePackage#getAuthenticationConfiguration_OauthRealm()
+     * @model required="true"
+     * @generated
+     */
 	String getOauthRealm();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.AuthenticationConfiguration#getOauthRealm <em>Oauth Realm</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.AuthenticationConfiguration#getOauthRealm <em>Oauth Realm</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Oauth Realm</em>' attribute.
-	 * @see #getOauthRealm()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Oauth Realm</em>' attribute.
+     * @see #getOauthRealm()
+     * @generated
+     */
 	void setOauthRealm(String value);
 
 } // AuthenticationConfiguration
