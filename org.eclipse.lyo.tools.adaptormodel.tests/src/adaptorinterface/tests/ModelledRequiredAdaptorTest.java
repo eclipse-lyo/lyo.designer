@@ -16,55 +16,55 @@ import junit.textui.TestRunner;
 public class ModelledRequiredAdaptorTest extends RequiredAdaptorTest {
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(ModelledRequiredAdaptorTest.class);
-	}
+        TestRunner.run(ModelledRequiredAdaptorTest.class);
+    }
 
 	/**
-	 * Constructs a new Modelled Required Adaptor test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Modelled Required Adaptor test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ModelledRequiredAdaptorTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Returns the fixture for this Modelled Required Adaptor test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Modelled Required Adaptor test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected ModelledRequiredAdaptor getFixture() {
-		return (ModelledRequiredAdaptor)fixture;
-	}
+        return (ModelledRequiredAdaptor)fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createModelledRequiredAdaptor());
-	}
+        setFixture(AdaptorinterfaceFactory.eINSTANCE.createModelledRequiredAdaptor());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //ModelledRequiredAdaptorTest

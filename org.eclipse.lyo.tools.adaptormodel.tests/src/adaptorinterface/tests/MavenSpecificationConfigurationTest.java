@@ -16,55 +16,55 @@ import junit.textui.TestRunner;
 public class MavenSpecificationConfigurationTest extends SpecificationConfigurationTest {
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(MavenSpecificationConfigurationTest.class);
-	}
+        TestRunner.run(MavenSpecificationConfigurationTest.class);
+    }
 
 	/**
-	 * Constructs a new Maven Specification Configuration test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Maven Specification Configuration test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public MavenSpecificationConfigurationTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Returns the fixture for this Maven Specification Configuration test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Maven Specification Configuration test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected MavenSpecificationConfiguration getFixture() {
-		return (MavenSpecificationConfiguration)fixture;
-	}
+        return (MavenSpecificationConfiguration)fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createMavenSpecificationConfiguration());
-	}
+        setFixture(AdaptorinterfaceFactory.eINSTANCE.createMavenSpecificationConfiguration());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //MavenSpecificationConfigurationTest

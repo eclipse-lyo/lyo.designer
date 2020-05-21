@@ -40,167 +40,167 @@ public class GenerationSettingItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+     * This constructs an instance from a factory and a notifier.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public GenerationSettingItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+        super(adapterFactory);
+    }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the property descriptors for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+        if (itemPropertyDescriptors == null) {
+            super.getPropertyDescriptors(object);
 
-			addJavaClassPackageNamePropertyDescriptor(object);
-			addJavaFilesPathPropertyDescriptor(object);
-			addDoNotGeneratePropertyDescriptor(object);
-		}
-		return itemPropertyDescriptors;
-	}
+            addJavaClassPackageNamePropertyDescriptor(object);
+            addJavaFilesPathPropertyDescriptor(object);
+            addDoNotGeneratePropertyDescriptor(object);
+        }
+        return itemPropertyDescriptors;
+    }
 
 	/**
-	 * This adds a property descriptor for the Java Class Package Name feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Java Class Package Name feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addJavaClassPackageNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GenerationSetting_javaClassPackageName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GenerationSetting_javaClassPackageName_feature", "_UI_GenerationSetting_type"),
-				 AdaptorinterfacePackage.Literals.GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_GenerationSetting_javaClassPackageName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_GenerationSetting_javaClassPackageName_feature", "_UI_GenerationSetting_type"),
+                 AdaptorinterfacePackage.Literals.GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Java Files Path feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Java Files Path feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addJavaFilesPathPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GenerationSetting_javaFilesPath_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GenerationSetting_javaFilesPath_feature", "_UI_GenerationSetting_type"),
-				 AdaptorinterfacePackage.Literals.GENERATION_SETTING__JAVA_FILES_PATH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_GenerationSetting_javaFilesPath_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_GenerationSetting_javaFilesPath_feature", "_UI_GenerationSetting_type"),
+                 AdaptorinterfacePackage.Literals.GENERATION_SETTING__JAVA_FILES_PATH,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Do Not Generate feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Do Not Generate feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addDoNotGeneratePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GenerationSetting_doNotGenerate_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GenerationSetting_doNotGenerate_feature", "_UI_GenerationSetting_type"),
-				 AdaptorinterfacePackage.Literals.GENERATION_SETTING__DO_NOT_GENERATE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_GenerationSetting_doNotGenerate_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_GenerationSetting_doNotGenerate_feature", "_UI_GenerationSetting_type"),
+                 AdaptorinterfacePackage.Literals.GENERATION_SETTING__DO_NOT_GENERATE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This returns GenerationSetting.gif.
-	 * <!-- begin-user-doc -->
+     * This returns GenerationSetting.gif.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenerationSetting"));
-	}
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/GenerationSetting"));
+    }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getText(Object object) {
-		String label = ((GenerationSetting)object).getJavaClassPackageName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_GenerationSetting_type") :
-			getString("_UI_GenerationSetting_type") + " " + label;
-	}
+        String label = ((GenerationSetting)object).getJavaClassPackageName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_GenerationSetting_type") :
+            getString("_UI_GenerationSetting_type") + " " + label;
+    }
 	
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+        updateChildren(notification);
 
-		switch (notification.getFeatureID(GenerationSetting.class)) {
-			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME:
-			case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_FILES_PATH:
-			case AdaptorinterfacePackage.GENERATION_SETTING__DO_NOT_GENERATE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+        switch (notification.getFeatureID(GenerationSetting.class)) {
+            case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_CLASS_PACKAGE_NAME:
+            case AdaptorinterfacePackage.GENERATION_SETTING__JAVA_FILES_PATH:
+            case AdaptorinterfacePackage.GENERATION_SETTING__DO_NOT_GENERATE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+        }
+        super.notifyChanged(notification);
+    }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+     * that can be created under this object.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
+     * Return the resource locator for this item provider's resources.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return AdaptorInterfaceEditPlugin.INSTANCE;
-	}
+        return AdaptorInterfaceEditPlugin.INSTANCE;
+    }
 
 }

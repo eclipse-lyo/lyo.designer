@@ -30,304 +30,304 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class PublisherImpl extends MinimalEObjectImpl.Container implements Publisher {
 	/**
-	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
 	protected static final String TITLE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
 	protected String title = TITLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLabel()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getLabel()
+     * @generated
+     * @ordered
+     */
 	protected static final String LABEL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLabel()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getLabel()
+     * @generated
+     * @ordered
+     */
 	protected String label = LABEL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdentifier()
+     * @generated
+     * @ordered
+     */
 	protected static final String IDENTIFIER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdentifier()
+     * @generated
+     * @ordered
+     */
 	protected String identifier = IDENTIFIER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIcon()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIcon()
+     * @generated
+     * @ordered
+     */
 	protected static final String ICON_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIcon()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIcon()
+     * @generated
+     * @ordered
+     */
 	protected String icon = ICON_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected PublisherImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.PUBLISHER;
-	}
+        return AdaptorinterfacePackage.Literals.PUBLISHER;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getTitle() {
-		return title;
-	}
+        return title;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setTitle(String newTitle) {
-		String oldTitle = title;
-		title = newTitle;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.PUBLISHER__TITLE, oldTitle, title));
-	}
+        String oldTitle = title;
+        title = newTitle;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.PUBLISHER__TITLE, oldTitle, title));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getLabel() {
-		return label;
-	}
+        return label;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setLabel(String newLabel) {
-		String oldLabel = label;
-		label = newLabel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.PUBLISHER__LABEL, oldLabel, label));
-	}
+        String oldLabel = label;
+        label = newLabel;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.PUBLISHER__LABEL, oldLabel, label));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getIdentifier() {
-		return identifier;
-	}
+        return identifier;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setIdentifier(String newIdentifier) {
-		String oldIdentifier = identifier;
-		identifier = newIdentifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.PUBLISHER__IDENTIFIER, oldIdentifier, identifier));
-	}
+        String oldIdentifier = identifier;
+        identifier = newIdentifier;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.PUBLISHER__IDENTIFIER, oldIdentifier, identifier));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getIcon() {
-		return icon;
-	}
+        return icon;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setIcon(String newIcon) {
-		String oldIcon = icon;
-		icon = newIcon;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.PUBLISHER__ICON, oldIcon, icon));
-	}
+        String oldIcon = icon;
+        icon = newIcon;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.PUBLISHER__ICON, oldIcon, icon));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.PUBLISHER__TITLE:
-				return getTitle();
-			case AdaptorinterfacePackage.PUBLISHER__LABEL:
-				return getLabel();
-			case AdaptorinterfacePackage.PUBLISHER__IDENTIFIER:
-				return getIdentifier();
-			case AdaptorinterfacePackage.PUBLISHER__ICON:
-				return getIcon();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.PUBLISHER__TITLE:
+                return getTitle();
+            case AdaptorinterfacePackage.PUBLISHER__LABEL:
+                return getLabel();
+            case AdaptorinterfacePackage.PUBLISHER__IDENTIFIER:
+                return getIdentifier();
+            case AdaptorinterfacePackage.PUBLISHER__ICON:
+                return getIcon();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.PUBLISHER__TITLE:
-				setTitle((String)newValue);
-				return;
-			case AdaptorinterfacePackage.PUBLISHER__LABEL:
-				setLabel((String)newValue);
-				return;
-			case AdaptorinterfacePackage.PUBLISHER__IDENTIFIER:
-				setIdentifier((String)newValue);
-				return;
-			case AdaptorinterfacePackage.PUBLISHER__ICON:
-				setIcon((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.PUBLISHER__TITLE:
+                setTitle((String)newValue);
+                return;
+            case AdaptorinterfacePackage.PUBLISHER__LABEL:
+                setLabel((String)newValue);
+                return;
+            case AdaptorinterfacePackage.PUBLISHER__IDENTIFIER:
+                setIdentifier((String)newValue);
+                return;
+            case AdaptorinterfacePackage.PUBLISHER__ICON:
+                setIcon((String)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.PUBLISHER__TITLE:
-				setTitle(TITLE_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.PUBLISHER__LABEL:
-				setLabel(LABEL_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.PUBLISHER__IDENTIFIER:
-				setIdentifier(IDENTIFIER_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.PUBLISHER__ICON:
-				setIcon(ICON_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.PUBLISHER__TITLE:
+                setTitle(TITLE_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.PUBLISHER__LABEL:
+                setLabel(LABEL_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.PUBLISHER__IDENTIFIER:
+                setIdentifier(IDENTIFIER_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.PUBLISHER__ICON:
+                setIcon(ICON_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.PUBLISHER__TITLE:
-				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
-			case AdaptorinterfacePackage.PUBLISHER__LABEL:
-				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
-			case AdaptorinterfacePackage.PUBLISHER__IDENTIFIER:
-				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-			case AdaptorinterfacePackage.PUBLISHER__ICON:
-				return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.PUBLISHER__TITLE:
+                return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+            case AdaptorinterfacePackage.PUBLISHER__LABEL:
+                return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            case AdaptorinterfacePackage.PUBLISHER__IDENTIFIER:
+                return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            case AdaptorinterfacePackage.PUBLISHER__ICON:
+                return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (title: ");
-		result.append(title);
-		result.append(", label: ");
-		result.append(label);
-		result.append(", identifier: ");
-		result.append(identifier);
-		result.append(", icon: ");
-		result.append(icon);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (title: ");
+        result.append(title);
+        result.append(", label: ");
+        result.append(label);
+        result.append(", identifier: ");
+        result.append(identifier);
+        result.append(", icon: ");
+        result.append(icon);
+        result.append(')');
+        return result.toString();
+    }
 
 } //PublisherImpl

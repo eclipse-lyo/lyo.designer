@@ -21,29 +21,29 @@ package adaptorinterface;
  */
 public interface ModelledRequiredAdaptor extends RequiredAdaptor {
 	/**
-	 * Returns the value of the '<em><b>Adaptor Interface</b></em>' reference.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Adaptor Interface</b></em>' reference.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Adaptor Interface</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Adaptor Interface</em>' reference.
-	 * @see #setAdaptorInterface(AdaptorInterface)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getModelledRequiredAdaptor_AdaptorInterface()
-	 * @model required="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Adaptor Interface</em>' reference.
+     * @see #setAdaptorInterface(AdaptorInterface)
+     * @see adaptorinterface.AdaptorinterfacePackage#getModelledRequiredAdaptor_AdaptorInterface()
+     * @model required="true"
+     * @generated
+     */
 	AdaptorInterface getAdaptorInterface();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.ModelledRequiredAdaptor#getAdaptorInterface <em>Adaptor Interface</em>}' reference.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.ModelledRequiredAdaptor#getAdaptorInterface <em>Adaptor Interface</em>}' reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Adaptor Interface</em>' reference.
-	 * @see #getAdaptorInterface()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Adaptor Interface</em>' reference.
+     * @see #getAdaptorInterface()
+     * @generated
+     */
 	void setAdaptorInterface(AdaptorInterface value);
 
 } // ModelledRequiredAdaptor

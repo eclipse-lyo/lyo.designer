@@ -18,72 +18,72 @@ import junit.textui.TestRunner;
 public class WebServiceTest extends TestCase {
 
 	/**
-	 * The fixture for this Web Service test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Web Service test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected WebService fixture = null;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(WebServiceTest.class);
-	}
+        TestRunner.run(WebServiceTest.class);
+    }
 
 	/**
-	 * Constructs a new Web Service test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Web Service test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public WebServiceTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Sets the fixture for this Web Service test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Web Service test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void setFixture(WebService fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
 	/**
-	 * Returns the fixture for this Web Service test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Web Service test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected WebService getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createWebService());
-	}
+        setFixture(AdaptorinterfaceFactory.eINSTANCE.createWebService());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //WebServiceTest

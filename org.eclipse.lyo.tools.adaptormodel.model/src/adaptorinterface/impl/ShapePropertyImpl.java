@@ -18,22 +18,22 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ShapePropertyImpl extends MinimalEObjectImpl.Container implements ShapeProperty {
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ShapePropertyImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.SHAPE_PROPERTY;
-	}
+        return AdaptorinterfacePackage.Literals.SHAPE_PROPERTY;
+    }
 
 } //ShapePropertyImpl

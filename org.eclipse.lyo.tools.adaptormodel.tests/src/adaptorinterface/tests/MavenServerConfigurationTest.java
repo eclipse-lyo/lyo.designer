@@ -16,55 +16,55 @@ import junit.textui.TestRunner;
 public class MavenServerConfigurationTest extends ServerConfigurationTest {
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(MavenServerConfigurationTest.class);
-	}
+        TestRunner.run(MavenServerConfigurationTest.class);
+    }
 
 	/**
-	 * Constructs a new Maven Server Configuration test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Maven Server Configuration test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public MavenServerConfigurationTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Returns the fixture for this Maven Server Configuration test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Maven Server Configuration test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected MavenServerConfiguration getFixture() {
-		return (MavenServerConfiguration)fixture;
-	}
+        return (MavenServerConfiguration)fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createMavenServerConfiguration());
-	}
+        setFixture(AdaptorinterfaceFactory.eINSTANCE.createMavenServerConfiguration());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //MavenServerConfigurationTest

@@ -15,41 +15,41 @@ import junit.framework.TestCase;
 public abstract class RequiredAdaptorTest extends TestCase {
 
 	/**
-	 * The fixture for this Required Adaptor test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Required Adaptor test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected RequiredAdaptor fixture = null;
 
 	/**
-	 * Constructs a new Required Adaptor test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Required Adaptor test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public RequiredAdaptorTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Sets the fixture for this Required Adaptor test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Required Adaptor test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void setFixture(RequiredAdaptor fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
 	/**
-	 * Returns the fixture for this Required Adaptor test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Required Adaptor test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected RequiredAdaptor getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
 } //RequiredAdaptorTest

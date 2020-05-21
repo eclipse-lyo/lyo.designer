@@ -34,174 +34,174 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class GenericRequiredAdaptorImpl extends RequiredAdaptorImpl implements GenericRequiredAdaptor {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getServicedResources() <em>Serviced Resources</em>}' reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getServicedResources() <em>Serviced Resources</em>}' reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getServicedResources()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getServicedResources()
+     * @generated
+     * @ordered
+     */
 	protected EList<Resource> servicedResources;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected GenericRequiredAdaptorImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.GENERIC_REQUIRED_ADAPTOR;
-	}
+        return AdaptorinterfacePackage.Literals.GENERIC_REQUIRED_ADAPTOR;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getName() {
-		return name;
-	}
+        return name;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME, oldName, name));
-	}
+        String oldName = name;
+        name = newName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME, oldName, name));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EList<Resource> getServicedResources() {
-		if (servicedResources == null) {
-			servicedResources = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES);
-		}
-		return servicedResources;
-	}
+        if (servicedResources == null) {
+            servicedResources = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES);
+        }
+        return servicedResources;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME:
-				return getName();
-			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES:
-				return getServicedResources();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME:
+                return getName();
+            case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES:
+                return getServicedResources();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME:
-				setName((String)newValue);
-				return;
-			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES:
-				getServicedResources().clear();
-				getServicedResources().addAll((Collection<? extends Resource>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME:
+                setName((String)newValue);
+                return;
+            case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES:
+                getServicedResources().clear();
+                getServicedResources().addAll((Collection<? extends Resource>)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES:
-				getServicedResources().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES:
+                getServicedResources().clear();
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES:
-				return servicedResources != null && !servicedResources.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case AdaptorinterfacePackage.GENERIC_REQUIRED_ADAPTOR__SERVICED_RESOURCES:
+                return servicedResources != null && !servicedResources.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (name: ");
+        result.append(name);
+        result.append(')');
+        return result.toString();
+    }
 
 } //GenericRequiredAdaptorImpl

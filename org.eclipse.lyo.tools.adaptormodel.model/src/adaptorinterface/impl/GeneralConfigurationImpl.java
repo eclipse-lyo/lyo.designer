@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.GeneralConfigurationImpl#isDoNotGenerate <em>Do Not Generate</em>}</li>
+ *   <li>{@link adaptorinterface.impl.GeneralConfigurationImpl#isDoNotGenerateFromImportedModels <em>Do Not Generate From Imported Models</em>}</li>
  *   <li>{@link adaptorinterface.impl.GeneralConfigurationImpl#getFilesBasePath <em>Files Base Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.GeneralConfigurationImpl#getJavaBasePackageName <em>Java Base Package Name</em>}</li>
  * </ul>
@@ -29,243 +30,296 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container implements GeneralConfiguration {
 	/**
-	 * The default value of the '{@link #isDoNotGenerate() <em>Do Not Generate</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #isDoNotGenerate() <em>Do Not Generate</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isDoNotGenerate()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isDoNotGenerate()
+     * @generated
+     * @ordered
+     */
 	protected static final boolean DO_NOT_GENERATE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDoNotGenerate() <em>Do Not Generate</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #isDoNotGenerate() <em>Do Not Generate</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isDoNotGenerate()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #isDoNotGenerate()
+     * @generated
+     * @ordered
+     */
 	protected boolean doNotGenerate = DO_NOT_GENERATE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getFilesBasePath() <em>Files Base Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #isDoNotGenerateFromImportedModels() <em>Do Not Generate From Imported Models</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isDoNotGenerateFromImportedModels()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean DO_NOT_GENERATE_FROM_IMPORTED_MODELS_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isDoNotGenerateFromImportedModels() <em>Do Not Generate From Imported Models</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isDoNotGenerateFromImportedModels()
+     * @generated
+     * @ordered
+     */
+    protected boolean doNotGenerateFromImportedModels = DO_NOT_GENERATE_FROM_IMPORTED_MODELS_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getFilesBasePath() <em>Files Base Path</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFilesBasePath()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getFilesBasePath()
+     * @generated
+     * @ordered
+     */
 	protected static final String FILES_BASE_PATH_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getFilesBasePath() <em>Files Base Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getFilesBasePath() <em>Files Base Path</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFilesBasePath()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getFilesBasePath()
+     * @generated
+     * @ordered
+     */
 	protected String filesBasePath = FILES_BASE_PATH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getJavaBasePackageName() <em>Java Base Package Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getJavaBasePackageName() <em>Java Base Package Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getJavaBasePackageName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getJavaBasePackageName()
+     * @generated
+     * @ordered
+     */
 	protected static final String JAVA_BASE_PACKAGE_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getJavaBasePackageName() <em>Java Base Package Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getJavaBasePackageName() <em>Java Base Package Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getJavaBasePackageName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getJavaBasePackageName()
+     * @generated
+     * @ordered
+     */
 	protected String javaBasePackageName = JAVA_BASE_PACKAGE_NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected GeneralConfigurationImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.GENERAL_CONFIGURATION;
-	}
+        return AdaptorinterfacePackage.Literals.GENERAL_CONFIGURATION;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public boolean isDoNotGenerate() {
-		return doNotGenerate;
-	}
+        return doNotGenerate;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setDoNotGenerate(boolean newDoNotGenerate) {
-		boolean oldDoNotGenerate = doNotGenerate;
-		doNotGenerate = newDoNotGenerate;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE, oldDoNotGenerate, doNotGenerate));
-	}
+        boolean oldDoNotGenerate = doNotGenerate;
+        doNotGenerate = newDoNotGenerate;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE, oldDoNotGenerate, doNotGenerate));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isDoNotGenerateFromImportedModels() {
+        return doNotGenerateFromImportedModels;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setDoNotGenerateFromImportedModels(boolean newDoNotGenerateFromImportedModels) {
+        boolean oldDoNotGenerateFromImportedModels = doNotGenerateFromImportedModels;
+        doNotGenerateFromImportedModels = newDoNotGenerateFromImportedModels;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE_FROM_IMPORTED_MODELS, oldDoNotGenerateFromImportedModels, doNotGenerateFromImportedModels));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getFilesBasePath() {
-		return filesBasePath;
-	}
+        return filesBasePath;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setFilesBasePath(String newFilesBasePath) {
-		String oldFilesBasePath = filesBasePath;
-		filesBasePath = newFilesBasePath;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH, oldFilesBasePath, filesBasePath));
-	}
+        String oldFilesBasePath = filesBasePath;
+        filesBasePath = newFilesBasePath;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH, oldFilesBasePath, filesBasePath));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getJavaBasePackageName() {
-		return javaBasePackageName;
-	}
+        return javaBasePackageName;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setJavaBasePackageName(String newJavaBasePackageName) {
-		String oldJavaBasePackageName = javaBasePackageName;
-		javaBasePackageName = newJavaBasePackageName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME, oldJavaBasePackageName, javaBasePackageName));
-	}
+        String oldJavaBasePackageName = javaBasePackageName;
+        javaBasePackageName = newJavaBasePackageName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME, oldJavaBasePackageName, javaBasePackageName));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE:
-				return isDoNotGenerate();
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH:
-				return getFilesBasePath();
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME:
-				return getJavaBasePackageName();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE:
+                return isDoNotGenerate();
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE_FROM_IMPORTED_MODELS:
+                return isDoNotGenerateFromImportedModels();
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH:
+                return getFilesBasePath();
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME:
+                return getJavaBasePackageName();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE:
-				setDoNotGenerate((Boolean)newValue);
-				return;
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH:
-				setFilesBasePath((String)newValue);
-				return;
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME:
-				setJavaBasePackageName((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE:
+                setDoNotGenerate((Boolean)newValue);
+                return;
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE_FROM_IMPORTED_MODELS:
+                setDoNotGenerateFromImportedModels((Boolean)newValue);
+                return;
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH:
+                setFilesBasePath((String)newValue);
+                return;
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME:
+                setJavaBasePackageName((String)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE:
-				setDoNotGenerate(DO_NOT_GENERATE_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH:
-				setFilesBasePath(FILES_BASE_PATH_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME:
-				setJavaBasePackageName(JAVA_BASE_PACKAGE_NAME_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE:
+                setDoNotGenerate(DO_NOT_GENERATE_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE_FROM_IMPORTED_MODELS:
+                setDoNotGenerateFromImportedModels(DO_NOT_GENERATE_FROM_IMPORTED_MODELS_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH:
+                setFilesBasePath(FILES_BASE_PATH_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME:
+                setJavaBasePackageName(JAVA_BASE_PACKAGE_NAME_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE:
-				return doNotGenerate != DO_NOT_GENERATE_EDEFAULT;
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH:
-				return FILES_BASE_PATH_EDEFAULT == null ? filesBasePath != null : !FILES_BASE_PATH_EDEFAULT.equals(filesBasePath);
-			case AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME:
-				return JAVA_BASE_PACKAGE_NAME_EDEFAULT == null ? javaBasePackageName != null : !JAVA_BASE_PACKAGE_NAME_EDEFAULT.equals(javaBasePackageName);
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE:
+                return doNotGenerate != DO_NOT_GENERATE_EDEFAULT;
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__DO_NOT_GENERATE_FROM_IMPORTED_MODELS:
+                return doNotGenerateFromImportedModels != DO_NOT_GENERATE_FROM_IMPORTED_MODELS_EDEFAULT;
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__FILES_BASE_PATH:
+                return FILES_BASE_PATH_EDEFAULT == null ? filesBasePath != null : !FILES_BASE_PATH_EDEFAULT.equals(filesBasePath);
+            case AdaptorinterfacePackage.GENERAL_CONFIGURATION__JAVA_BASE_PACKAGE_NAME:
+                return JAVA_BASE_PACKAGE_NAME_EDEFAULT == null ? javaBasePackageName != null : !JAVA_BASE_PACKAGE_NAME_EDEFAULT.equals(javaBasePackageName);
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (doNotGenerate: ");
-		result.append(doNotGenerate);
-		result.append(", filesBasePath: ");
-		result.append(filesBasePath);
-		result.append(", javaBasePackageName: ");
-		result.append(javaBasePackageName);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (doNotGenerate: ");
+        result.append(doNotGenerate);
+        result.append(", doNotGenerateFromImportedModels: ");
+        result.append(doNotGenerateFromImportedModels);
+        result.append(", filesBasePath: ");
+        result.append(filesBasePath);
+        result.append(", javaBasePackageName: ");
+        result.append(javaBasePackageName);
+        result.append(')');
+        return result.toString();
+    }
 
 } //GeneralConfigurationImpl

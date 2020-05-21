@@ -28,126 +28,126 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface BasicCapability extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Instance ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Instance ID</b></em>' attribute.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Instance ID</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Instance ID</em>' attribute.
-	 * @see #setInstanceID(String)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_InstanceID()
-	 * @model
-	 * @generated
-	 */
+     * @return the value of the '<em>Instance ID</em>' attribute.
+     * @see #setInstanceID(String)
+     * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_InstanceID()
+     * @model
+     * @generated
+     */
 	String getInstanceID();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.BasicCapability#getInstanceID <em>Instance ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.BasicCapability#getInstanceID <em>Instance ID</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Instance ID</em>' attribute.
-	 * @see #getInstanceID()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Instance ID</em>' attribute.
+     * @see #getInstanceID()
+     * @generated
+     */
 	void setInstanceID(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Resource Types</b></em>' reference list.
-	 * The list contents are of type {@link adaptorinterface.Resource}.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Resource Types</b></em>' reference list.
+     * The list contents are of type {@link adaptorinterface.Resource}.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Resource Types</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resource Types</em>' reference list.
-	 * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_ResourceTypes()
-	 * @model
-	 * @generated
-	 */
+     * @return the value of the '<em>Resource Types</em>' reference list.
+     * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_ResourceTypes()
+     * @model
+     * @generated
+     */
 	EList<Resource> getResourceTypes();
 
 	/**
-	 * Returns the value of the '<em><b>Read</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Read</b></em>' attribute.
+     * The default value is <code>"true"</code>.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Read</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Read</em>' attribute.
-	 * @see #setRead(boolean)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_Read()
-	 * @model default="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Read</em>' attribute.
+     * @see #setRead(boolean)
+     * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_Read()
+     * @model default="true"
+     * @generated
+     */
 	boolean isRead();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.BasicCapability#isRead <em>Read</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.BasicCapability#isRead <em>Read</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Read</em>' attribute.
-	 * @see #isRead()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Read</em>' attribute.
+     * @see #isRead()
+     * @generated
+     */
 	void setRead(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Delete</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Delete</b></em>' attribute.
+     * The default value is <code>"false"</code>.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Delete</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Delete</em>' attribute.
-	 * @see #setDelete(boolean)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_Delete()
-	 * @model default="false"
-	 * @generated
-	 */
+     * @return the value of the '<em>Delete</em>' attribute.
+     * @see #setDelete(boolean)
+     * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_Delete()
+     * @model default="false"
+     * @generated
+     */
 	boolean isDelete();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.BasicCapability#isDelete <em>Delete</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.BasicCapability#isDelete <em>Delete</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Delete</em>' attribute.
-	 * @see #isDelete()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Delete</em>' attribute.
+     * @see #isDelete()
+     * @generated
+     */
 	void setDelete(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Update</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Update</b></em>' attribute.
+     * The default value is <code>"false"</code>.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Update</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Update</em>' attribute.
-	 * @see #setUpdate(boolean)
-	 * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_Update()
-	 * @model default="false"
-	 * @generated
-	 */
+     * @return the value of the '<em>Update</em>' attribute.
+     * @see #setUpdate(boolean)
+     * @see adaptorinterface.AdaptorinterfacePackage#getBasicCapability_Update()
+     * @model default="false"
+     * @generated
+     */
 	boolean isUpdate();
 
 	/**
-	 * Sets the value of the '{@link adaptorinterface.BasicCapability#isUpdate <em>Update</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link adaptorinterface.BasicCapability#isUpdate <em>Update</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Update</em>' attribute.
-	 * @see #isUpdate()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Update</em>' attribute.
+     * @see #isUpdate()
+     * @generated
+     */
 	void setUpdate(boolean value);
 
 } // BasicCapability

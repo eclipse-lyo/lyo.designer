@@ -16,55 +16,55 @@ import junit.textui.TestRunner;
 public class MavenProjectConfigurationTest extends ProjectConfigurationTest {
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(MavenProjectConfigurationTest.class);
-	}
+        TestRunner.run(MavenProjectConfigurationTest.class);
+    }
 
 	/**
-	 * Constructs a new Maven Project Configuration test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Maven Project Configuration test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public MavenProjectConfigurationTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Returns the fixture for this Maven Project Configuration test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Maven Project Configuration test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected MavenProjectConfiguration getFixture() {
-		return (MavenProjectConfiguration)fixture;
-	}
+        return (MavenProjectConfiguration)fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(AdaptorinterfaceFactory.eINSTANCE.createMavenProjectConfiguration());
-	}
+        setFixture(AdaptorinterfaceFactory.eINSTANCE.createMavenProjectConfiguration());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //MavenProjectConfigurationTest

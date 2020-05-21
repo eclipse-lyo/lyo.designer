@@ -27,139 +27,139 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public abstract class RequiredAdaptorImpl extends MinimalEObjectImpl.Container implements RequiredAdaptor {
 	/**
-	 * The default value of the '{@link #getServiceProviderCatalogURI() <em>Service Provider Catalog URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getServiceProviderCatalogURI() <em>Service Provider Catalog URI</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getServiceProviderCatalogURI()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getServiceProviderCatalogURI()
+     * @generated
+     * @ordered
+     */
 	protected static final String SERVICE_PROVIDER_CATALOG_URI_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getServiceProviderCatalogURI() <em>Service Provider Catalog URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getServiceProviderCatalogURI() <em>Service Provider Catalog URI</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getServiceProviderCatalogURI()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getServiceProviderCatalogURI()
+     * @generated
+     * @ordered
+     */
 	protected String serviceProviderCatalogURI = SERVICE_PROVIDER_CATALOG_URI_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected RequiredAdaptorImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.REQUIRED_ADAPTOR;
-	}
+        return AdaptorinterfacePackage.Literals.REQUIRED_ADAPTOR;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getServiceProviderCatalogURI() {
-		return serviceProviderCatalogURI;
-	}
+        return serviceProviderCatalogURI;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setServiceProviderCatalogURI(String newServiceProviderCatalogURI) {
-		String oldServiceProviderCatalogURI = serviceProviderCatalogURI;
-		serviceProviderCatalogURI = newServiceProviderCatalogURI;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI, oldServiceProviderCatalogURI, serviceProviderCatalogURI));
-	}
+        String oldServiceProviderCatalogURI = serviceProviderCatalogURI;
+        serviceProviderCatalogURI = newServiceProviderCatalogURI;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI, oldServiceProviderCatalogURI, serviceProviderCatalogURI));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI:
-				return getServiceProviderCatalogURI();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI:
+                return getServiceProviderCatalogURI();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI:
-				setServiceProviderCatalogURI((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI:
+                setServiceProviderCatalogURI((String)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI:
-				setServiceProviderCatalogURI(SERVICE_PROVIDER_CATALOG_URI_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI:
+                setServiceProviderCatalogURI(SERVICE_PROVIDER_CATALOG_URI_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI:
-				return SERVICE_PROVIDER_CATALOG_URI_EDEFAULT == null ? serviceProviderCatalogURI != null : !SERVICE_PROVIDER_CATALOG_URI_EDEFAULT.equals(serviceProviderCatalogURI);
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.REQUIRED_ADAPTOR__SERVICE_PROVIDER_CATALOG_URI:
+                return SERVICE_PROVIDER_CATALOG_URI_EDEFAULT == null ? serviceProviderCatalogURI != null : !SERVICE_PROVIDER_CATALOG_URI_EDEFAULT.equals(serviceProviderCatalogURI);
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (serviceProviderCatalogURI: ");
-		result.append(serviceProviderCatalogURI);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (serviceProviderCatalogURI: ");
+        result.append(serviceProviderCatalogURI);
+        result.append(')');
+        return result.toString();
+    }
 
 } //RequiredAdaptorImpl

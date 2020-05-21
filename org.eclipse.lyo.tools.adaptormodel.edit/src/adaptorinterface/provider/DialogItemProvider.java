@@ -40,262 +40,262 @@ public class DialogItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+     * This constructs an instance from a factory and a notifier.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public DialogItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+        super(adapterFactory);
+    }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the property descriptors for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+        if (itemPropertyDescriptors == null) {
+            super.getPropertyDescriptors(object);
 
-			addTitlePropertyDescriptor(object);
-			addLabelPropertyDescriptor(object);
-			addDialogURIPropertyDescriptor(object);
-			addHintWidthPropertyDescriptor(object);
-			addHintHeightPropertyDescriptor(object);
-			addResourceTypesPropertyDescriptor(object);
-			addUsagesPropertyDescriptor(object);
-		}
-		return itemPropertyDescriptors;
-	}
+            addTitlePropertyDescriptor(object);
+            addLabelPropertyDescriptor(object);
+            addDialogURIPropertyDescriptor(object);
+            addHintWidthPropertyDescriptor(object);
+            addHintHeightPropertyDescriptor(object);
+            addResourceTypesPropertyDescriptor(object);
+            addUsagesPropertyDescriptor(object);
+        }
+        return itemPropertyDescriptors;
+    }
 
 	/**
-	 * This adds a property descriptor for the Title feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Title feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addTitlePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Dialog_title_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_title_feature", "_UI_Dialog_type"),
-				 AdaptorinterfacePackage.Literals.DIALOG__TITLE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Dialog_title_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_title_feature", "_UI_Dialog_type"),
+                 AdaptorinterfacePackage.Literals.DIALOG__TITLE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Label feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Label feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addLabelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Dialog_label_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_label_feature", "_UI_Dialog_type"),
-				 AdaptorinterfacePackage.Literals.DIALOG__LABEL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Dialog_label_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_label_feature", "_UI_Dialog_type"),
+                 AdaptorinterfacePackage.Literals.DIALOG__LABEL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Dialog URI feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Dialog URI feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addDialogURIPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Dialog_dialogURI_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_dialogURI_feature", "_UI_Dialog_type"),
-				 AdaptorinterfacePackage.Literals.DIALOG__DIALOG_URI,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Dialog_dialogURI_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_dialogURI_feature", "_UI_Dialog_type"),
+                 AdaptorinterfacePackage.Literals.DIALOG__DIALOG_URI,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Hint Width feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Hint Width feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addHintWidthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Dialog_hintWidth_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_hintWidth_feature", "_UI_Dialog_type"),
-				 AdaptorinterfacePackage.Literals.DIALOG__HINT_WIDTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Dialog_hintWidth_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_hintWidth_feature", "_UI_Dialog_type"),
+                 AdaptorinterfacePackage.Literals.DIALOG__HINT_WIDTH,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Hint Height feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Hint Height feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addHintHeightPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Dialog_hintHeight_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_hintHeight_feature", "_UI_Dialog_type"),
-				 AdaptorinterfacePackage.Literals.DIALOG__HINT_HEIGHT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Dialog_hintHeight_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_hintHeight_feature", "_UI_Dialog_type"),
+                 AdaptorinterfacePackage.Literals.DIALOG__HINT_HEIGHT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Resource Types feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Resource Types feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addResourceTypesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Dialog_resourceTypes_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_resourceTypes_feature", "_UI_Dialog_type"),
-				 AdaptorinterfacePackage.Literals.DIALOG__RESOURCE_TYPES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Dialog_resourceTypes_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_resourceTypes_feature", "_UI_Dialog_type"),
+                 AdaptorinterfacePackage.Literals.DIALOG__RESOURCE_TYPES,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Usages feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Usages feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addUsagesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Dialog_usages_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_usages_feature", "_UI_Dialog_type"),
-				 AdaptorinterfacePackage.Literals.DIALOG__USAGES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Dialog_usages_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Dialog_usages_feature", "_UI_Dialog_type"),
+                 AdaptorinterfacePackage.Literals.DIALOG__USAGES,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This returns Dialog.gif.
-	 * <!-- begin-user-doc -->
+     * This returns Dialog.gif.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Dialog"));
-	}
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Dialog"));
+    }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getText(Object object) {
-		String label = ((Dialog)object).getTitle();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Dialog_type") :
-			getString("_UI_Dialog_type") + " " + label;
-	}
+        String label = ((Dialog)object).getTitle();
+        return label == null || label.length() == 0 ?
+            getString("_UI_Dialog_type") :
+            getString("_UI_Dialog_type") + " " + label;
+    }
 	
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+        updateChildren(notification);
 
-		switch (notification.getFeatureID(Dialog.class)) {
-			case AdaptorinterfacePackage.DIALOG__TITLE:
-			case AdaptorinterfacePackage.DIALOG__LABEL:
-			case AdaptorinterfacePackage.DIALOG__DIALOG_URI:
-			case AdaptorinterfacePackage.DIALOG__HINT_WIDTH:
-			case AdaptorinterfacePackage.DIALOG__HINT_HEIGHT:
-			case AdaptorinterfacePackage.DIALOG__USAGES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+        switch (notification.getFeatureID(Dialog.class)) {
+            case AdaptorinterfacePackage.DIALOG__TITLE:
+            case AdaptorinterfacePackage.DIALOG__LABEL:
+            case AdaptorinterfacePackage.DIALOG__DIALOG_URI:
+            case AdaptorinterfacePackage.DIALOG__HINT_WIDTH:
+            case AdaptorinterfacePackage.DIALOG__HINT_HEIGHT:
+            case AdaptorinterfacePackage.DIALOG__USAGES:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+        }
+        super.notifyChanged(notification);
+    }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+     * that can be created under this object.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
+     * Return the resource locator for this item provider's resources.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return AdaptorInterfaceEditPlugin.INSTANCE;
-	}
+        return AdaptorInterfaceEditPlugin.INSTANCE;
+    }
 
 }

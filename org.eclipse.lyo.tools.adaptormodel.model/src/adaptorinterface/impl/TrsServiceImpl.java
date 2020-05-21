@@ -28,190 +28,190 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public abstract class TrsServiceImpl extends MinimalEObjectImpl.Container implements TrsService {
 	/**
-	 * The default value of the '{@link #getBasePageLimit() <em>Base Page Limit</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getBasePageLimit() <em>Base Page Limit</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBasePageLimit()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getBasePageLimit()
+     * @generated
+     * @ordered
+     */
 	protected static final int BASE_PAGE_LIMIT_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getBasePageLimit() <em>Base Page Limit</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getBasePageLimit() <em>Base Page Limit</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBasePageLimit()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getBasePageLimit()
+     * @generated
+     * @ordered
+     */
 	protected int basePageLimit = BASE_PAGE_LIMIT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getChangeLogPageLimit() <em>Change Log Page Limit</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getChangeLogPageLimit() <em>Change Log Page Limit</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getChangeLogPageLimit()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getChangeLogPageLimit()
+     * @generated
+     * @ordered
+     */
 	protected static final int CHANGE_LOG_PAGE_LIMIT_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getChangeLogPageLimit() <em>Change Log Page Limit</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getChangeLogPageLimit() <em>Change Log Page Limit</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getChangeLogPageLimit()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getChangeLogPageLimit()
+     * @generated
+     * @ordered
+     */
 	protected int changeLogPageLimit = CHANGE_LOG_PAGE_LIMIT_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected TrsServiceImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.TRS_SERVICE;
-	}
+        return AdaptorinterfacePackage.Literals.TRS_SERVICE;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getBasePageLimit() {
-		return basePageLimit;
-	}
+        return basePageLimit;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setBasePageLimit(int newBasePageLimit) {
-		int oldBasePageLimit = basePageLimit;
-		basePageLimit = newBasePageLimit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT, oldBasePageLimit, basePageLimit));
-	}
+        int oldBasePageLimit = basePageLimit;
+        basePageLimit = newBasePageLimit;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT, oldBasePageLimit, basePageLimit));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getChangeLogPageLimit() {
-		return changeLogPageLimit;
-	}
+        return changeLogPageLimit;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setChangeLogPageLimit(int newChangeLogPageLimit) {
-		int oldChangeLogPageLimit = changeLogPageLimit;
-		changeLogPageLimit = newChangeLogPageLimit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT, oldChangeLogPageLimit, changeLogPageLimit));
-	}
+        int oldChangeLogPageLimit = changeLogPageLimit;
+        changeLogPageLimit = newChangeLogPageLimit;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT, oldChangeLogPageLimit, changeLogPageLimit));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT:
-				return getBasePageLimit();
-			case AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT:
-				return getChangeLogPageLimit();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT:
+                return getBasePageLimit();
+            case AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT:
+                return getChangeLogPageLimit();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT:
-				setBasePageLimit((Integer)newValue);
-				return;
-			case AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT:
-				setChangeLogPageLimit((Integer)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT:
+                setBasePageLimit((Integer)newValue);
+                return;
+            case AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT:
+                setChangeLogPageLimit((Integer)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT:
-				setBasePageLimit(BASE_PAGE_LIMIT_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT:
-				setChangeLogPageLimit(CHANGE_LOG_PAGE_LIMIT_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT:
+                setBasePageLimit(BASE_PAGE_LIMIT_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT:
+                setChangeLogPageLimit(CHANGE_LOG_PAGE_LIMIT_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT:
-				return basePageLimit != BASE_PAGE_LIMIT_EDEFAULT;
-			case AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT:
-				return changeLogPageLimit != CHANGE_LOG_PAGE_LIMIT_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.TRS_SERVICE__BASE_PAGE_LIMIT:
+                return basePageLimit != BASE_PAGE_LIMIT_EDEFAULT;
+            case AdaptorinterfacePackage.TRS_SERVICE__CHANGE_LOG_PAGE_LIMIT:
+                return changeLogPageLimit != CHANGE_LOG_PAGE_LIMIT_EDEFAULT;
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (basePageLimit: ");
-		result.append(basePageLimit);
-		result.append(", changeLogPageLimit: ");
-		result.append(changeLogPageLimit);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (basePageLimit: ");
+        result.append(basePageLimit);
+        result.append(", changeLogPageLimit: ");
+        result.append(changeLogPageLimit);
+        result.append(')');
+        return result.toString();
+    }
 
 } //TrsServiceImpl

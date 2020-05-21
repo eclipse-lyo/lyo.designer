@@ -17,7 +17,7 @@
  *******************************************************************************/
 /]
 
-[module generateSpecification('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')]
+[module generateSpecification('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary','http://www.eclipse.org/emf/2002/Ecore')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
@@ -47,16 +47,19 @@ aSpecification.configuration.oclIsUndefined()
     [aSpecification.generateLicenseFiles() /] 
     [aSpecification.generateConfigFiles(null, aSpecification.configuration.generalConfiguration.filesBasePath) /]
 
-    [for (aDomainSpecification: DomainSpecification | aSpecification.relevantDomainSpecifications())]
+    [for (aDomainSpecification: DomainSpecification | aSpecification.relevantDomainSpecifications()
+        ->select(d: DomainSpecification | aSpecification.generateIfFromImportedModels(d.oclAsType(EObject))))]
         [aDomainSpecification.generateDomainSpecificationConstants(null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName)/]
         [aDomainSpecification.generateConfigFiles(null, aSpecification.configuration.generalConfiguration.filesBasePath)/]
     [/for]
 
-    [for (aVocabulary: Vocabulary | aSpecification.relevantVocabularies())]
+    [for (aVocabulary: Vocabulary | aSpecification.relevantVocabularies()
+        ->select(v: Vocabulary | aSpecification.generateIfFromImportedModels(v.oclAsType(EObject))))]
         [aVocabulary.generateVocabularyConstants(null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName)/]
     [/for]
-    
-    [for (aResource: Resource | aSpecification.relevantResources())]
+
+    [for (aResource: Resource | aSpecification.relevantResources()
+        ->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject))))]
         [aResource.generateResource(null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName) /]
         [aResource.generateResourceInterface(null, null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName) /]
     [/for]

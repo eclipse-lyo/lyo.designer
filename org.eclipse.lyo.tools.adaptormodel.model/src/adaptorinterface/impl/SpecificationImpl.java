@@ -43,287 +43,287 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class SpecificationImpl extends MinimalEObjectImpl.Container implements Specification {
 	/**
-	 * The cached value of the '{@link #getDomainSpecifications() <em>Domain Specifications</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getDomainSpecifications() <em>Domain Specifications</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDomainSpecifications()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDomainSpecifications()
+     * @generated
+     * @ordered
+     */
 	protected EList<DomainSpecification> domainSpecifications;
 
 	/**
-	 * The cached value of the '{@link #getDomainPrefixes() <em>Domain Prefixes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getDomainPrefixes() <em>Domain Prefixes</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDomainPrefixes()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDomainPrefixes()
+     * @generated
+     * @ordered
+     */
 	protected EList<NamespacePrefix> domainPrefixes;
 
 	/**
-	 * The cached value of the '{@link #getGenerationSetting() <em>Generation Setting</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getGenerationSetting() <em>Generation Setting</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGenerationSetting()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getGenerationSetting()
+     * @generated
+     * @ordered
+     */
 	protected GenerationSetting generationSetting;
 
 	/**
-	 * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConfiguration()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getConfiguration()
+     * @generated
+     * @ordered
+     */
 	protected SpecificationConfiguration configuration;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected SpecificationImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.SPECIFICATION;
-	}
+        return AdaptorinterfacePackage.Literals.SPECIFICATION;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EList<DomainSpecification> getDomainSpecifications() {
-		if (domainSpecifications == null) {
-			domainSpecifications = new EObjectContainmentEList<DomainSpecification>(DomainSpecification.class, this, AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS);
-		}
-		return domainSpecifications;
-	}
+        if (domainSpecifications == null) {
+            domainSpecifications = new EObjectContainmentEList<DomainSpecification>(DomainSpecification.class, this, AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS);
+        }
+        return domainSpecifications;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EList<NamespacePrefix> getDomainPrefixes() {
-		if (domainPrefixes == null) {
-			domainPrefixes = new EObjectContainmentEList<NamespacePrefix>(NamespacePrefix.class, this, AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES);
-		}
-		return domainPrefixes;
-	}
+        if (domainPrefixes == null) {
+            domainPrefixes = new EObjectContainmentEList<NamespacePrefix>(NamespacePrefix.class, this, AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES);
+        }
+        return domainPrefixes;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public GenerationSetting getGenerationSetting() {
-		return generationSetting;
-	}
+        return generationSetting;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetGenerationSetting(GenerationSetting newGenerationSetting, NotificationChain msgs) {
-		GenerationSetting oldGenerationSetting = generationSetting;
-		generationSetting = newGenerationSetting;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING, oldGenerationSetting, newGenerationSetting);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+        GenerationSetting oldGenerationSetting = generationSetting;
+        generationSetting = newGenerationSetting;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING, oldGenerationSetting, newGenerationSetting);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setGenerationSetting(GenerationSetting newGenerationSetting) {
-		if (newGenerationSetting != generationSetting) {
-			NotificationChain msgs = null;
-			if (generationSetting != null)
-				msgs = ((InternalEObject)generationSetting).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING, null, msgs);
-			if (newGenerationSetting != null)
-				msgs = ((InternalEObject)newGenerationSetting).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING, null, msgs);
-			msgs = basicSetGenerationSetting(newGenerationSetting, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING, newGenerationSetting, newGenerationSetting));
-	}
+        if (newGenerationSetting != generationSetting) {
+            NotificationChain msgs = null;
+            if (generationSetting != null)
+                msgs = ((InternalEObject)generationSetting).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING, null, msgs);
+            if (newGenerationSetting != null)
+                msgs = ((InternalEObject)newGenerationSetting).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING, null, msgs);
+            msgs = basicSetGenerationSetting(newGenerationSetting, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING, newGenerationSetting, newGenerationSetting));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public SpecificationConfiguration getConfiguration() {
-		return configuration;
-	}
+        return configuration;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetConfiguration(SpecificationConfiguration newConfiguration, NotificationChain msgs) {
-		SpecificationConfiguration oldConfiguration = configuration;
-		configuration = newConfiguration;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, oldConfiguration, newConfiguration);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+        SpecificationConfiguration oldConfiguration = configuration;
+        configuration = newConfiguration;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, oldConfiguration, newConfiguration);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setConfiguration(SpecificationConfiguration newConfiguration) {
-		if (newConfiguration != configuration) {
-			NotificationChain msgs = null;
-			if (configuration != null)
-				msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, null, msgs);
-			if (newConfiguration != null)
-				msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, null, msgs);
-			msgs = basicSetConfiguration(newConfiguration, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, newConfiguration, newConfiguration));
-	}
+        if (newConfiguration != configuration) {
+            NotificationChain msgs = null;
+            if (configuration != null)
+                msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, null, msgs);
+            if (newConfiguration != null)
+                msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, null, msgs);
+            msgs = basicSetConfiguration(newConfiguration, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION, newConfiguration, newConfiguration));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
-				return ((InternalEList<?>)getDomainSpecifications()).basicRemove(otherEnd, msgs);
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
-				return ((InternalEList<?>)getDomainPrefixes()).basicRemove(otherEnd, msgs);
-			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
-				return basicSetGenerationSetting(null, msgs);
-			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
-				return basicSetConfiguration(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
+                return ((InternalEList<?>)getDomainSpecifications()).basicRemove(otherEnd, msgs);
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
+                return ((InternalEList<?>)getDomainPrefixes()).basicRemove(otherEnd, msgs);
+            case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
+                return basicSetGenerationSetting(null, msgs);
+            case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+                return basicSetConfiguration(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
-				return getDomainSpecifications();
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
-				return getDomainPrefixes();
-			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
-				return getGenerationSetting();
-			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
-				return getConfiguration();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
+                return getDomainSpecifications();
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
+                return getDomainPrefixes();
+            case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
+                return getGenerationSetting();
+            case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+                return getConfiguration();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
-				getDomainSpecifications().clear();
-				getDomainSpecifications().addAll((Collection<? extends DomainSpecification>)newValue);
-				return;
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
-				getDomainPrefixes().clear();
-				getDomainPrefixes().addAll((Collection<? extends NamespacePrefix>)newValue);
-				return;
-			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
-				setGenerationSetting((GenerationSetting)newValue);
-				return;
-			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
-				setConfiguration((SpecificationConfiguration)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
+                getDomainSpecifications().clear();
+                getDomainSpecifications().addAll((Collection<? extends DomainSpecification>)newValue);
+                return;
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
+                getDomainPrefixes().clear();
+                getDomainPrefixes().addAll((Collection<? extends NamespacePrefix>)newValue);
+                return;
+            case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
+                setGenerationSetting((GenerationSetting)newValue);
+                return;
+            case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+                setConfiguration((SpecificationConfiguration)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
-				getDomainSpecifications().clear();
-				return;
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
-				getDomainPrefixes().clear();
-				return;
-			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
-				setGenerationSetting((GenerationSetting)null);
-				return;
-			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
-				setConfiguration((SpecificationConfiguration)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
+                getDomainSpecifications().clear();
+                return;
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
+                getDomainPrefixes().clear();
+                return;
+            case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
+                setGenerationSetting((GenerationSetting)null);
+                return;
+            case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+                setConfiguration((SpecificationConfiguration)null);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
-				return domainSpecifications != null && !domainSpecifications.isEmpty();
-			case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
-				return domainPrefixes != null && !domainPrefixes.isEmpty();
-			case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
-				return generationSetting != null;
-			case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
-				return configuration != null;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
+                return domainSpecifications != null && !domainSpecifications.isEmpty();
+            case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
+                return domainPrefixes != null && !domainPrefixes.isEmpty();
+            case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
+                return generationSetting != null;
+            case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+                return configuration != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
 } //SpecificationImpl

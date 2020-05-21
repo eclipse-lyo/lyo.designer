@@ -39,320 +39,320 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class QueryCapabilityImpl extends MinimalEObjectImpl.Container implements QueryCapability {
 	/**
-	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
 	protected static final String TITLE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
 	protected String title = TITLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLabel()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getLabel()
+     * @generated
+     * @ordered
+     */
 	protected static final String LABEL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLabel()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getLabel()
+     * @generated
+     * @ordered
+     */
 	protected String label = LABEL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getQueryBaseURI() <em>Query Base URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getQueryBaseURI() <em>Query Base URI</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQueryBaseURI()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getQueryBaseURI()
+     * @generated
+     * @ordered
+     */
 	protected static final String QUERY_BASE_URI_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getQueryBaseURI() <em>Query Base URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getQueryBaseURI() <em>Query Base URI</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQueryBaseURI()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getQueryBaseURI()
+     * @generated
+     * @ordered
+     */
 	protected String queryBaseURI = QUERY_BASE_URI_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getResourceTypes() <em>Resource Types</em>}' reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getResourceTypes() <em>Resource Types</em>}' reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResourceTypes()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getResourceTypes()
+     * @generated
+     * @ordered
+     */
 	protected EList<Resource> resourceTypes;
 
 	/**
-	 * The cached value of the '{@link #getUsages() <em>Usages</em>}' attribute list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getUsages() <em>Usages</em>}' attribute list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUsages()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getUsages()
+     * @generated
+     * @ordered
+     */
 	protected EList<String> usages;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected QueryCapabilityImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return AdaptorinterfacePackage.Literals.QUERY_CAPABILITY;
-	}
+        return AdaptorinterfacePackage.Literals.QUERY_CAPABILITY;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getTitle() {
-		return title;
-	}
+        return title;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setTitle(String newTitle) {
-		String oldTitle = title;
-		title = newTitle;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE, oldTitle, title));
-	}
+        String oldTitle = title;
+        title = newTitle;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE, oldTitle, title));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getLabel() {
-		return label;
-	}
+        return label;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setLabel(String newLabel) {
-		String oldLabel = label;
-		label = newLabel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL, oldLabel, label));
-	}
+        String oldLabel = label;
+        label = newLabel;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL, oldLabel, label));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getQueryBaseURI() {
-		return queryBaseURI;
-	}
+        return queryBaseURI;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void setQueryBaseURI(String newQueryBaseURI) {
-		String oldQueryBaseURI = queryBaseURI;
-		queryBaseURI = newQueryBaseURI;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI, oldQueryBaseURI, queryBaseURI));
-	}
+        String oldQueryBaseURI = queryBaseURI;
+        queryBaseURI = newQueryBaseURI;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI, oldQueryBaseURI, queryBaseURI));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EList<Resource> getResourceTypes() {
-		if (resourceTypes == null) {
-			resourceTypes = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES);
-		}
-		return resourceTypes;
-	}
+        if (resourceTypes == null) {
+            resourceTypes = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES);
+        }
+        return resourceTypes;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EList<String> getUsages() {
-		if (usages == null) {
-			usages = new EDataTypeUniqueEList<String>(String.class, this, AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES);
-		}
-		return usages;
-	}
+        if (usages == null) {
+            usages = new EDataTypeUniqueEList<String>(String.class, this, AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES);
+        }
+        return usages;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE:
-				return getTitle();
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL:
-				return getLabel();
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI:
-				return getQueryBaseURI();
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
-				return getResourceTypes();
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
-				return getUsages();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE:
+                return getTitle();
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL:
+                return getLabel();
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI:
+                return getQueryBaseURI();
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
+                return getResourceTypes();
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
+                return getUsages();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE:
-				setTitle((String)newValue);
-				return;
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL:
-				setLabel((String)newValue);
-				return;
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI:
-				setQueryBaseURI((String)newValue);
-				return;
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
-				getResourceTypes().clear();
-				getResourceTypes().addAll((Collection<? extends Resource>)newValue);
-				return;
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
-				getUsages().clear();
-				getUsages().addAll((Collection<? extends String>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE:
+                setTitle((String)newValue);
+                return;
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL:
+                setLabel((String)newValue);
+                return;
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI:
+                setQueryBaseURI((String)newValue);
+                return;
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
+                getResourceTypes().clear();
+                getResourceTypes().addAll((Collection<? extends Resource>)newValue);
+                return;
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
+                getUsages().clear();
+                getUsages().addAll((Collection<? extends String>)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE:
-				setTitle(TITLE_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL:
-				setLabel(LABEL_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI:
-				setQueryBaseURI(QUERY_BASE_URI_EDEFAULT);
-				return;
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
-				getResourceTypes().clear();
-				return;
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
-				getUsages().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE:
+                setTitle(TITLE_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL:
+                setLabel(LABEL_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI:
+                setQueryBaseURI(QUERY_BASE_URI_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
+                getResourceTypes().clear();
+                return;
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
+                getUsages().clear();
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE:
-				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL:
-				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI:
-				return QUERY_BASE_URI_EDEFAULT == null ? queryBaseURI != null : !QUERY_BASE_URI_EDEFAULT.equals(queryBaseURI);
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
-				return resourceTypes != null && !resourceTypes.isEmpty();
-			case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
-				return usages != null && !usages.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__TITLE:
+                return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__LABEL:
+                return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__QUERY_BASE_URI:
+                return QUERY_BASE_URI_EDEFAULT == null ? queryBaseURI != null : !QUERY_BASE_URI_EDEFAULT.equals(queryBaseURI);
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__RESOURCE_TYPES:
+                return resourceTypes != null && !resourceTypes.isEmpty();
+            case AdaptorinterfacePackage.QUERY_CAPABILITY__USAGES:
+                return usages != null && !usages.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (title: ");
-		result.append(title);
-		result.append(", label: ");
-		result.append(label);
-		result.append(", queryBaseURI: ");
-		result.append(queryBaseURI);
-		result.append(", usages: ");
-		result.append(usages);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (title: ");
+        result.append(title);
+        result.append(", label: ");
+        result.append(label);
+        result.append(", queryBaseURI: ");
+        result.append(queryBaseURI);
+        result.append(", usages: ");
+        result.append(usages);
+        result.append(')');
+        return result.toString();
+    }
 
 } //QueryCapabilityImpl

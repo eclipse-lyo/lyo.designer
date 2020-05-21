@@ -18,7 +18,7 @@
  *******************************************************************************/
 /]
 
-[module services('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+[module services('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [query private javaKeywords(traceabilityContext : OclAny) : Set(String) =
 Set{'abstract', 'continue', 'for', 'new', 'switch', 'assert', 'default', 'goto', 'package', 'synchronized', 'boolean', 'do',
@@ -189,6 +189,34 @@ anAdaptorInterface.filesBasePath().concatenatePaths(webFilesRelativePath())
 
 [query public webFilesWebappPath(anAdaptorInterface : AdaptorInterface) : String =
 '/'.concat(anAdaptorInterface.javaBasePackageName()).substituteAll('.', '/')
+/]
+
+[comment unlike other "do not generate" flags, doNotGenerateFromImportedModels is not recursive.
+We only read the top level "doNotGenerateFromImportedModels" and decide whether objects from any imported model (direct or indirect) will be generated./]
+[query public generateIfFromImportedModels(anAdaptorInterface : AdaptorInterface, obj : EObject) : Boolean = 
+    not anAdaptorInterface.doNotGenerateFromImportedModels() 
+    or (anAdaptorInterface.eResource() = obj.eResource())
+/]
+
+[query public generateIfFromImportedModels(aSpecification: Specification, obj : EObject) : Boolean = 
+    not aSpecification.doNotGenerateFromImportedModels() 
+    or (aSpecification.eResource() = obj.eResource())
+/]
+
+[query public doNotGenerateFromImportedModels(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if (anAdaptorInterface.configuration.oclIsUndefined())._or(anAdaptorInterface.configuration.generalConfiguration.doNotGenerateFromImportedModels.oclIsUndefined()) then 
+    false
+else
+    anAdaptorInterface.configuration.generalConfiguration.doNotGenerateFromImportedModels
+endif)
+/]
+
+[query public doNotGenerateFromImportedModels(aSpecification: Specification) : Boolean = 
+(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.doNotGenerateFromImportedModels.oclIsUndefined()) then 
+    false
+else
+    aSpecification.configuration.generalConfiguration.doNotGenerateFromImportedModels
+endif)
 /]
 
 [query public doNotRegenerateJspFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 

@@ -20,42 +20,42 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  */
 public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+     * This constructs an instance from a factory and a notifier.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ResourcePropertyItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+        super(adapterFactory);
+    }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the property descriptors for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+        if (itemPropertyDescriptors == null) {
+            super.getPropertyDescriptors(object);
 
             addIdPropertyDescriptor(object);
-			addTitlePropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
-			addPropertyDefinitionPropertyDescriptor(object);
-			addOccursPropertyDescriptor(object);
-			addReadOnlyPropertyDescriptor(object);
-			addValueTypePropertyDescriptor(object);
-			addRepresentationPropertyDescriptor(object);
-			addMultiValueRepresentationPropertyDescriptor(object);
-			addRangePropertyDescriptor(object);
-			addDescriptionPropertyDescriptor(object);
-			addAllowedValuePropertyDescriptor(object);
-			addIsMemberPropertyPropertyDescriptor(object);
-		}
-		return itemPropertyDescriptors;
-	}
+            addTitlePropertyDescriptor(object);
+            addNamePropertyDescriptor(object);
+            addPropertyDefinitionPropertyDescriptor(object);
+            addOccursPropertyDescriptor(object);
+            addReadOnlyPropertyDescriptor(object);
+            addValueTypePropertyDescriptor(object);
+            addRepresentationPropertyDescriptor(object);
+            addMultiValueRepresentationPropertyDescriptor(object);
+            addRangePropertyDescriptor(object);
+            addDescriptionPropertyDescriptor(object);
+            addAllowedValuePropertyDescriptor(object);
+            addIsMemberPropertyPropertyDescriptor(object);
+        }
+        return itemPropertyDescriptors;
+    }
 
 	/**
      * This adds a property descriptor for the Id feature.
@@ -80,334 +80,334 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
     }
 
 	/**
-	 * This adds a property descriptor for the Title feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Title feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addTitlePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_title_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_title_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__TITLE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_title_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_title_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__TITLE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Name feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_name_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_name_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Property Definition feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Property Definition feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addPropertyDefinitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_propertyDefinition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_propertyDefinition_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__PROPERTY_DEFINITION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_propertyDefinition_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_propertyDefinition_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__PROPERTY_DEFINITION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Occurs feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Occurs feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addOccursPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_occurs_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_occurs_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__OCCURS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_occurs_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_occurs_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__OCCURS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Read Only feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Read Only feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addReadOnlyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_readOnly_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_readOnly_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__READ_ONLY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_readOnly_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_readOnly_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__READ_ONLY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Value Type feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Value Type feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addValueTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_valueType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_valueType_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__VALUE_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_valueType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_valueType_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__VALUE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Representation feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Representation feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addRepresentationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_representation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_representation_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__REPRESENTATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_representation_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_representation_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__REPRESENTATION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Multi Value Representation feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Multi Value Representation feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addMultiValueRepresentationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_multiValueRepresentation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_multiValueRepresentation_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_multiValueRepresentation_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_multiValueRepresentation_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Range feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Range feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addRangePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_range_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_range_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__RANGE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_range_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_range_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__RANGE,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Description feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Description feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_description_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__DESCRIPTION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_description_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_description_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__DESCRIPTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Allowed Value feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Allowed Value feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addAllowedValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_allowedValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_allowedValue_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__ALLOWED_VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_allowedValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_allowedValue_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__ALLOWED_VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Is Member Property feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Is Member Property feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addIsMemberPropertyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceProperty_isMemberProperty_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_isMemberProperty_feature", "_UI_ResourceProperty_type"),
-				 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_isMemberProperty_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_isMemberProperty_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This returns ResourceProperty.gif.
-	 * <!-- begin-user-doc -->
+     * This returns ResourceProperty.gif.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ResourceProperty"));
-	}
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ResourceProperty"));
+    }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getText(Object object) {
-		String label = ((ResourceProperty)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ResourceProperty_type") :
-			getString("_UI_ResourceProperty_type") + " " + label;
-	}
+        String label = ((ResourceProperty)object).getName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ResourceProperty_type") :
+            getString("_UI_ResourceProperty_type") + " " + label;
+    }
 	
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+        updateChildren(notification);
 
-		switch (notification.getFeatureID(ResourceProperty.class)) {
+        switch (notification.getFeatureID(ResourceProperty.class)) {
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ID:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__READ_ONLY:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__VALUE_TYPE:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
-			case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__READ_ONLY:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__VALUE_TYPE:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+        }
+        super.notifyChanged(notification);
+    }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+     * that can be created under this object.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
 
 }
