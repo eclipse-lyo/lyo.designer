@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="ToolchainModel" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="ToolchainModel" version="12.0.0.2017041100">
   <ownedViewpoints name="ToolchainViewpoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]" enablePopupBars="true">
       <diagramInitialisation/>
@@ -367,14 +367,6 @@
             <initialOperation/>
           </ownedTools>
           <ownedTools xsi:type="tool_1:PopupMenu" name="SpecificationDiagram.Menu" label="OSLC Lyo Designer">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.DomainSpecificationMenu.SetPrefix" label="Set Domain Prefix" precondition="[self.oclIsTypeOf(DomainSpecification)/]">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.namespacePrefix/]">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[let userInput : String = self.promptForString('Enter the domain namespace prefix', 'Enter the domain namespace prefix', self.name) in (if (userInput = null) then name else userInput endif) /]"/>
-                </firstModelOperations>
-              </initialOperation>
-            </menuItemDescription>
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.SpecificationMenu.GenerateSpecification" label="Generate Specification Java Code" precondition="[self.oclIsTypeOf(Specification)/]">
               <view name="views"/>
               <initialOperation>
@@ -1851,4 +1843,207 @@
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::domainSpecificationDiagram"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::shaclSpecificationDiagram"/>
   </ownedViewpoints>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="sirius_default_rules_properties">
+    <categories name="Default">
+      <pages name="sirius_default_rules_defaultpage" labelExpression="aql:input.emfEditServices(self).getTabName()" semanticCandidateExpression="aql:input.getAllSemanticElements()->reject(e | e.oclIsTypeOf(adaptorinterface::AdaptorInterface) or e.oclIsTypeOf(adaptorinterface::DomainSpecification) or e.oclIsTypeOf(adaptorinterface::Resource) or e.oclIsTypeOf(adaptorinterface::ResourceProperty))" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <groups name="sirius_default_rules_defaultgroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="">
+        <controls xsi:type="properties:DynamicMappingForDescription" name="sirius_default_rules_structural_features_for" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()">
+          <ifs name="sirius_default_rules_mono_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
+            <widget xsi:type="properties:TextDescription" name="sirius_default_rules_mono_string" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue)"/>
+              </initialOperation>
+              <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+                <style>
+                  <labelFontFormat>bold</labelFontFormat>
+                </style>
+              </conditionalStyles>
+            </widget>
+          </ifs>
+          <ifs name="sirius_default_rules_multi_string_if" predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and input.emfEditServices(self).isMultiline(eStructuralFeature)">
+            <widget xsi:type="properties:TextAreaDescription" name="sirius_default_rules_multi_string" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue)"/>
+              </initialOperation>
+              <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+                <style>
+                  <labelFontFormat>bold</labelFontFormat>
+                </style>
+              </conditionalStyles>
+            </widget>
+          </ifs>
+          <ifs name="sirius_default_rules_mono_boolean" predicateExpression="aql:input.emfEditServices(self).needsCheckboxWidget(eStructuralFeature)">
+            <widget xsi:type="properties:CheckboxDescription" name="sirius_default_rules_mono_boolean" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue)"/>
+              </initialOperation>
+              <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+                <style>
+                  <labelFontFormat>bold</labelFontFormat>
+                </style>
+              </conditionalStyles>
+            </widget>
+          </ifs>
+          <ifs name="sirius_default_rules_enum_if" predicateExpression="aql:eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many)">
+            <widget xsi:type="properties:RadioDescription" name="sirius_default_rules_enum" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).getEEnumLiteralByLiteral(self.eGet(eStructuralFeature.name).toString())" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue.instance)"/>
+              </initialOperation>
+              <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+                <style>
+                  <labelFontFormat>bold</labelFontFormat>
+                </style>
+              </conditionalStyles>
+            </widget>
+          </ifs>
+          <ifs name="sirius_default_rules_eattribute_many_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many">
+            <widget xsi:type="properties:ListDescription" name="sirius_default_rules_eattribute_many" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="var:value"/>
+          </ifs>
+          <ifs name="sirius_default_rules_ereference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)">
+            <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="sirius_default_rules_ereference" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name"/>
+          </ifs>
+        </controls>
+      </groups>
+    </categories>
+  </extensions>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties AdaptorInterface">
+    <metamodels href="http://org.eclipse.lyo/oslc4j/adaptorInterface#/"/>
+    <categories name="Default Category">
+      <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.AdaptorInterface" semanticCandidateExpression="var:self" groups="//@extensions.1/@categories.0/@groups.0"/>
+      <groups name="Default Group" labelExpression="Properties" domainClass="adaptorinterface.AdaptorInterface" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::AdaptorInterface name" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('name')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('name'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('name').changeable" valueExpression="aql:self.name">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+          </initialOperation>
+          <conditionalStyles preconditionExpression="aql:self.eClass().getEStructuralFeature('name').lowerBound = 1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
+        </controls>
+        <controls xsi:type="properties:CheckboxDescription" name="adaptorinterface::AdaptorInterface swaggerDocumentation" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('swaggerDocumentation'))" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('swaggerDocumentation'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('swaggerDocumentation').changeable" valueExpression="aql:self.swaggerDocumentation">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="swaggerDocumentation" valueExpression="var:newValue"/>
+          </initialOperation>
+        </controls>
+      </groups>
+    </categories>
+  </extensions>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties ResourceProperty">
+    <metamodels href="http://org.eclipse.lyo/oslc4j/adaptorInterface#/"/>
+    <categories name="Default Category">
+      <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.ResourceProperty" semanticCandidateExpression="var:self" groups="//@extensions.2/@categories.0/@groups.0"/>
+      <groups name="Default Group" labelExpression="Properties" domainClass="adaptorinterface.ResourceProperty" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::ResourceProperty title" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('title')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('title'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('title').changeable" valueExpression="aql:self.title">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:newValue"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::ResourceProperty name" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('name')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('name'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('name').changeable" valueExpression="aql:self.name">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+          </initialOperation>
+          <conditionalStyles preconditionExpression="aql:self.eClass().getEStructuralFeature('name').lowerBound = 1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
+        </controls>
+        <controls xsi:type="properties:TextAreaDescription" name="adaptorinterface::ResourceProperty description" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('description')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('description'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('description').changeable" valueExpression="aql:self.description">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:newValue"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::ResourceProperty propertyDefinition" referenceNameExpression="aql:'propertyDefinition'"/>
+        <controls xsi:type="properties:RadioDescription" name="adaptorinterface::ResourceProperty occurs" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('occurs')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('occurs'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('occurs').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('occurs').eType.getEEnumLiteralByLiteral(self.occurs.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('occurs').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="occurs" valueExpression="aql:newValue.instance"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:CheckboxDescription" name="adaptorinterface::ResourceProperty readOnly" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('readOnly'))" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('readOnly'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('readOnly').changeable" valueExpression="aql:self.readOnly">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="readOnly" valueExpression="var:newValue"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:RadioDescription" name="adaptorinterface::ResourceProperty valueType" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('valueType')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('valueType'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('valueType').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('valueType').eType.getEEnumLiteralByLiteral(self.valueType.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('valueType').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="aql:newValue.instance"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::ResourceProperty range" referenceNameExpression="aql:'range'"/>
+        <controls xsi:type="properties:RadioDescription" name="adaptorinterface::ResourceProperty representation" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('representation')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('representation'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('representation').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('representation').eType.getEEnumLiteralByLiteral(self.representation.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('representation').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="representation" valueExpression="aql:newValue.instance"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:RadioDescription" name="adaptorinterface::ResourceProperty multiValueRepresentation" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('multiValueRepresentation')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('multiValueRepresentation'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('multiValueRepresentation').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('multiValueRepresentation').eType.getEEnumLiteralByLiteral(self.multiValueRepresentation.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('multiValueRepresentation').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="multiValueRepresentation" valueExpression="aql:newValue.instance"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:ListDescription" name="adaptorinterface::ResourceProperty allowedValue" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('allowedValue')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('allowedValue'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('allowedValue').changeable" valueExpression="aql:self.allowedValue" displayExpression="var:value"/>
+        <controls xsi:type="properties:RadioDescription" name="adaptorinterface::ResourceProperty isMemberProperty" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('isMemberProperty')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('isMemberProperty'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('isMemberProperty').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('isMemberProperty').eType.getEEnumLiteralByLiteral(self.isMemberProperty.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('isMemberProperty').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="isMemberProperty" valueExpression="aql:newValue.instance"/>
+          </initialOperation>
+        </controls>
+      </groups>
+    </categories>
+  </extensions>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties Resource">
+    <metamodels href="http://org.eclipse.lyo/oslc4j/adaptorInterface#/"/>
+    <categories name="Default Category">
+      <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.Resource" semanticCandidateExpression="var:self" groups="//@extensions.3/@categories.0/@groups.0"/>
+      <groups name="Default Group" labelExpression="Properties" domainClass="adaptorinterface.Resource" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::Resource name" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('name')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('name'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('name').changeable" valueExpression="aql:self.name">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource describes" referenceNameExpression="aql:'describes'"/>
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource extends" referenceNameExpression="aql:'extends'"/>
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource resourceProperties" referenceNameExpression="aql:'resourceProperties'"/>
+      </groups>
+    </categories>
+  </extensions>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties DomainSpecification">
+    <metamodels href="http://org.eclipse.lyo/oslc4j/adaptorInterface#/"/>
+    <categories name="Default Category">
+      <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.DomainSpecification" semanticCandidateExpression="var:self" groups="//@extensions.4/@categories.0/@groups.0"/>
+      <groups name="Default Group" labelExpression="Properties" domainClass="adaptorinterface.DomainSpecification" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::DomainSpecification name" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('name')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('name'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('name').changeable" valueExpression="aql:self.name">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+          </initialOperation>
+          <conditionalStyles preconditionExpression="aql:self.eClass().getEStructuralFeature('name').lowerBound = 1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
+        </controls>
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::DomainSpecification namespaceURI" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('namespaceURI')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('namespaceURI'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('namespaceURI').changeable" valueExpression="aql:self.namespaceURI">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="namespaceURI" valueExpression="var:newValue"/>
+          </initialOperation>
+          <conditionalStyles preconditionExpression="aql:self.eClass().getEStructuralFeature('namespaceURI').lowerBound = 1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
+        </controls>
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::DomainSpecification namespacePrefix" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('namespacePrefix')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('namespacePrefix'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('namespacePrefix').changeable" valueExpression="aql:self.namespacePrefix.name">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.namespacePrefix">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+            </firstModelOperations>
+          </initialOperation>
+          <conditionalStyles preconditionExpression="aql:self.eClass().getEStructuralFeature('name').lowerBound = 1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
+        </controls>
+      </groups>
+    </categories>
+  </extensions>
 </description:Group>
