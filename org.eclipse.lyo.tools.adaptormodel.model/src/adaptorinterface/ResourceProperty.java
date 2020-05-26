@@ -16,14 +16,14 @@ import vocabulary.Property;
  *   <li>{@link adaptorinterface.ResourceProperty#getId <em>Id</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getName <em>Name</em>}</li>
+ *   <li>{@link adaptorinterface.ResourceProperty#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getPropertyDefinition <em>Property Definition</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getOccurs <em>Occurs</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link adaptorinterface.ResourceProperty#getRange <em>Range</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getRepresentation <em>Representation</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getMultiValueRepresentation <em>Multi Value Representation</em>}</li>
- *   <li>{@link adaptorinterface.ResourceProperty#getRange <em>Range</em>}</li>
- *   <li>{@link adaptorinterface.ResourceProperty#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getAllowedValue <em>Allowed Value</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getIsMemberProperty <em>Is Member Property</em>}</li>
  * </ul>

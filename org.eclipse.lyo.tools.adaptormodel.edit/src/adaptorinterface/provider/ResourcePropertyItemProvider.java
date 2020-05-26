@@ -43,14 +43,14 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
             addIdPropertyDescriptor(object);
             addTitlePropertyDescriptor(object);
             addNamePropertyDescriptor(object);
+            addDescriptionPropertyDescriptor(object);
             addPropertyDefinitionPropertyDescriptor(object);
             addOccursPropertyDescriptor(object);
             addReadOnlyPropertyDescriptor(object);
             addValueTypePropertyDescriptor(object);
+            addRangePropertyDescriptor(object);
             addRepresentationPropertyDescriptor(object);
             addMultiValueRepresentationPropertyDescriptor(object);
-            addRangePropertyDescriptor(object);
-            addDescriptionPropertyDescriptor(object);
             addAllowedValuePropertyDescriptor(object);
             addIsMemberPropertyPropertyDescriptor(object);
         }
@@ -292,7 +292,7 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
                  getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_description_feature", "_UI_ResourceProperty_type"),
                  AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__DESCRIPTION,
                  true,
-                 false,
+                 true,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                  null,
@@ -384,12 +384,12 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ID:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__READ_ONLY:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__VALUE_TYPE:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

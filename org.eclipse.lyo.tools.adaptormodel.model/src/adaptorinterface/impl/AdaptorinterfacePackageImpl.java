@@ -1146,7 +1146,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
 	public EReference getResourceProperty_PropertyDefinition() {
-        return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(3);
+        return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(4);
     }
 
 	/**
@@ -1155,15 +1155,6 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
 	public EAttribute getResourceProperty_Occurs() {
-        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(4);
-    }
-
-	/**
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	public EAttribute getResourceProperty_ReadOnly() {
         return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(5);
     }
 
@@ -1172,7 +1163,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getResourceProperty_ValueType() {
+	public EAttribute getResourceProperty_ReadOnly() {
         return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(6);
     }
 
@@ -1181,7 +1172,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getResourceProperty_Representation() {
+	public EAttribute getResourceProperty_ValueType() {
         return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(7);
     }
 
@@ -1190,8 +1181,17 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	 * <!-- end-user-doc -->
      * @generated
      */
+	public EAttribute getResourceProperty_Representation() {
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(9);
+    }
+
+	/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
 	public EAttribute getResourceProperty_MultiValueRepresentation() {
-        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(8);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(10);
     }
 
 	/**
@@ -1200,7 +1200,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
 	public EReference getResourceProperty_Range() {
-        return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(9);
+        return (EReference)resourcePropertyEClass.getEStructuralFeatures().get(8);
     }
 
 	/**
@@ -1209,7 +1209,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
 	public EAttribute getResourceProperty_Description() {
-        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(10);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(3);
     }
 
 	/**
@@ -2188,14 +2188,14 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__ID);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__TITLE);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__NAME);
+        createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__DESCRIPTION);
         createEReference(resourcePropertyEClass, RESOURCE_PROPERTY__PROPERTY_DEFINITION);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__OCCURS);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__READ_ONLY);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__VALUE_TYPE);
+        createEReference(resourcePropertyEClass, RESOURCE_PROPERTY__RANGE);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__REPRESENTATION);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION);
-        createEReference(resourcePropertyEClass, RESOURCE_PROPERTY__RANGE);
-        createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__DESCRIPTION);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__ALLOWED_VALUE);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__IS_MEMBER_PROPERTY);
 
@@ -2458,14 +2458,14 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getResourceProperty_Id(), ecorePackage.getEString(), "id", null, 1, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_Title(), ecorePackage.getEString(), "title", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_Name(), ecorePackage.getEString(), "name", null, 1, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getResourceProperty_Description(), ecorePackage.getEString(), "description", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getResourceProperty_PropertyDefinition(), theVocabularyPackage.getProperty(), null, "propertyDefinition", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_Occurs(), this.getResourcePropertyOccurs(), "occurs", "exactlyOne", 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_ReadOnly(), ecorePackage.getEBoolean(), "readOnly", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_ValueType(), this.getResourcePropertyValueType(), "valueType", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getResourceProperty_Range(), this.getResource(), null, "range", null, 0, -1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_Representation(), this.getResourcePropertyRepresentation(), "representation", "n_a", 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_MultiValueRepresentation(), this.getResourcePropertyMultiValueRepresentation(), "multiValueRepresentation", "multipleTriples", 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getResourceProperty_Range(), this.getResource(), null, "range", null, 0, -1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getResourceProperty_Description(), ecorePackage.getEString(), "description", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_AllowedValue(), ecorePackage.getEString(), "allowedValue", null, 0, -1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_IsMemberProperty(), this.getResourcePropertyIsMemberProperty(), "isMemberProperty", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

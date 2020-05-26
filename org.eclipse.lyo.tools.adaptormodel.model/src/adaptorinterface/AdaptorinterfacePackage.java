@@ -1079,76 +1079,76 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_PROPERTY__NAME = SHAPE_PROPERTY_FEATURE_COUNT + 2;
 
 	/**
-     * The feature id for the '<em><b>Property Definition</b></em>' reference.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RESOURCE_PROPERTY__PROPERTY_DEFINITION = SHAPE_PROPERTY_FEATURE_COUNT + 3;
-
-	/**
-     * The feature id for the '<em><b>Occurs</b></em>' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RESOURCE_PROPERTY__OCCURS = SHAPE_PROPERTY_FEATURE_COUNT + 4;
-
-	/**
-     * The feature id for the '<em><b>Read Only</b></em>' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RESOURCE_PROPERTY__READ_ONLY = SHAPE_PROPERTY_FEATURE_COUNT + 5;
-
-	/**
-     * The feature id for the '<em><b>Value Type</b></em>' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RESOURCE_PROPERTY__VALUE_TYPE = SHAPE_PROPERTY_FEATURE_COUNT + 6;
-
-	/**
-     * The feature id for the '<em><b>Representation</b></em>' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RESOURCE_PROPERTY__REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 7;
-
-	/**
-     * The feature id for the '<em><b>Multi Value Representation</b></em>' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 8;
-
-	/**
-     * The feature id for the '<em><b>Range</b></em>' reference list.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RESOURCE_PROPERTY__RANGE = SHAPE_PROPERTY_FEATURE_COUNT + 9;
-
-	/**
      * The feature id for the '<em><b>Description</b></em>' attribute.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RESOURCE_PROPERTY__DESCRIPTION = SHAPE_PROPERTY_FEATURE_COUNT + 10;
+	int RESOURCE_PROPERTY__DESCRIPTION = SHAPE_PROPERTY_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Property Definition</b></em>' reference.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+	int RESOURCE_PROPERTY__PROPERTY_DEFINITION = SHAPE_PROPERTY_FEATURE_COUNT + 4;
+
+    /**
+     * The feature id for the '<em><b>Occurs</b></em>' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+	int RESOURCE_PROPERTY__OCCURS = SHAPE_PROPERTY_FEATURE_COUNT + 5;
+
+    /**
+     * The feature id for the '<em><b>Read Only</b></em>' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+	int RESOURCE_PROPERTY__READ_ONLY = SHAPE_PROPERTY_FEATURE_COUNT + 6;
+
+    /**
+     * The feature id for the '<em><b>Value Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+	int RESOURCE_PROPERTY__VALUE_TYPE = SHAPE_PROPERTY_FEATURE_COUNT + 7;
+
+    /**
+     * The feature id for the '<em><b>Range</b></em>' reference list.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+	int RESOURCE_PROPERTY__RANGE = SHAPE_PROPERTY_FEATURE_COUNT + 8;
+
+    /**
+     * The feature id for the '<em><b>Representation</b></em>' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+	int RESOURCE_PROPERTY__REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 9;
+
+    /**
+     * The feature id for the '<em><b>Multi Value Representation</b></em>' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+	int RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION = SHAPE_PROPERTY_FEATURE_COUNT + 10;
 
 	/**
      * The feature id for the '<em><b>Allowed Value</b></em>' attribute list.

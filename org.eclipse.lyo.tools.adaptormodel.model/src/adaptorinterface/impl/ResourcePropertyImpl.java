@@ -30,14 +30,14 @@ import vocabulary.Property;
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getId <em>Id</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getPropertyDefinition <em>Property Definition</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getOccurs <em>Occurs</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getRange <em>Range</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getRepresentation <em>Representation</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getMultiValueRepresentation <em>Multi Value Representation</em>}</li>
- *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getRange <em>Range</em>}</li>
- *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getAllowedValue <em>Allowed Value</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getIsMemberProperty <em>Is Member Property</em>}</li>
  * </ul>
@@ -106,126 +106,6 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	protected String name = NAME_EDEFAULT;
 
 	/**
-     * The cached value of the '{@link #getPropertyDefinition() <em>Property Definition</em>}' reference.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getPropertyDefinition()
-     * @generated
-     * @ordered
-     */
-	protected Property propertyDefinition;
-
-	/**
-     * The default value of the '{@link #getOccurs() <em>Occurs</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getOccurs()
-     * @generated
-     * @ordered
-     */
-	protected static final ResourcePropertyOccurs OCCURS_EDEFAULT = ResourcePropertyOccurs.EXACTLY_ONE;
-
-	/**
-     * The cached value of the '{@link #getOccurs() <em>Occurs</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getOccurs()
-     * @generated
-     * @ordered
-     */
-	protected ResourcePropertyOccurs occurs = OCCURS_EDEFAULT;
-
-	/**
-     * The default value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #isReadOnly()
-     * @generated
-     * @ordered
-     */
-	protected static final boolean READ_ONLY_EDEFAULT = false;
-
-	/**
-     * The cached value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #isReadOnly()
-     * @generated
-     * @ordered
-     */
-	protected boolean readOnly = READ_ONLY_EDEFAULT;
-
-	/**
-     * The default value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getValueType()
-     * @generated
-     * @ordered
-     */
-	protected static final ResourcePropertyValueType VALUE_TYPE_EDEFAULT = ResourcePropertyValueType.BOOLEAN;
-
-	/**
-     * The cached value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getValueType()
-     * @generated
-     * @ordered
-     */
-	protected ResourcePropertyValueType valueType = VALUE_TYPE_EDEFAULT;
-
-	/**
-     * The default value of the '{@link #getRepresentation() <em>Representation</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getRepresentation()
-     * @generated
-     * @ordered
-     */
-	protected static final ResourcePropertyRepresentation REPRESENTATION_EDEFAULT = ResourcePropertyRepresentation.NA;
-
-	/**
-     * The cached value of the '{@link #getRepresentation() <em>Representation</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getRepresentation()
-     * @generated
-     * @ordered
-     */
-	protected ResourcePropertyRepresentation representation = REPRESENTATION_EDEFAULT;
-
-	/**
-     * The default value of the '{@link #getMultiValueRepresentation() <em>Multi Value Representation</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getMultiValueRepresentation()
-     * @generated
-     * @ordered
-     */
-	protected static final ResourcePropertyMultiValueRepresentation MULTI_VALUE_REPRESENTATION_EDEFAULT = ResourcePropertyMultiValueRepresentation.MULTIPLE_TRIPLES;
-
-	/**
-     * The cached value of the '{@link #getMultiValueRepresentation() <em>Multi Value Representation</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getMultiValueRepresentation()
-     * @generated
-     * @ordered
-     */
-	protected ResourcePropertyMultiValueRepresentation multiValueRepresentation = MULTI_VALUE_REPRESENTATION_EDEFAULT;
-
-	/**
-     * The cached value of the '{@link #getRange() <em>Range</em>}' reference list.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getRange()
-     * @generated
-     * @ordered
-     */
-	protected EList<Resource> range;
-
-	/**
      * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -244,6 +124,126 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
      * @ordered
      */
 	protected String description = DESCRIPTION_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getPropertyDefinition() <em>Property Definition</em>}' reference.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getPropertyDefinition()
+     * @generated
+     * @ordered
+     */
+	protected Property propertyDefinition;
+
+    /**
+     * The default value of the '{@link #getOccurs() <em>Occurs</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getOccurs()
+     * @generated
+     * @ordered
+     */
+	protected static final ResourcePropertyOccurs OCCURS_EDEFAULT = ResourcePropertyOccurs.EXACTLY_ONE;
+
+    /**
+     * The cached value of the '{@link #getOccurs() <em>Occurs</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getOccurs()
+     * @generated
+     * @ordered
+     */
+	protected ResourcePropertyOccurs occurs = OCCURS_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #isReadOnly()
+     * @generated
+     * @ordered
+     */
+	protected static final boolean READ_ONLY_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #isReadOnly()
+     * @generated
+     * @ordered
+     */
+	protected boolean readOnly = READ_ONLY_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getValueType()
+     * @generated
+     * @ordered
+     */
+	protected static final ResourcePropertyValueType VALUE_TYPE_EDEFAULT = ResourcePropertyValueType.BOOLEAN;
+
+    /**
+     * The cached value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getValueType()
+     * @generated
+     * @ordered
+     */
+	protected ResourcePropertyValueType valueType = VALUE_TYPE_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getRange() <em>Range</em>}' reference list.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getRange()
+     * @generated
+     * @ordered
+     */
+	protected EList<Resource> range;
+
+    /**
+     * The default value of the '{@link #getRepresentation() <em>Representation</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getRepresentation()
+     * @generated
+     * @ordered
+     */
+	protected static final ResourcePropertyRepresentation REPRESENTATION_EDEFAULT = ResourcePropertyRepresentation.NA;
+
+    /**
+     * The cached value of the '{@link #getRepresentation() <em>Representation</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getRepresentation()
+     * @generated
+     * @ordered
+     */
+	protected ResourcePropertyRepresentation representation = REPRESENTATION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getMultiValueRepresentation() <em>Multi Value Representation</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getMultiValueRepresentation()
+     * @generated
+     * @ordered
+     */
+	protected static final ResourcePropertyMultiValueRepresentation MULTI_VALUE_REPRESENTATION_EDEFAULT = ResourcePropertyMultiValueRepresentation.MULTIPLE_TRIPLES;
+
+    /**
+     * The cached value of the '{@link #getMultiValueRepresentation() <em>Multi Value Representation</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getMultiValueRepresentation()
+     * @generated
+     * @ordered
+     */
+	protected ResourcePropertyMultiValueRepresentation multiValueRepresentation = MULTI_VALUE_REPRESENTATION_EDEFAULT;
 
 	/**
      * The cached value of the '{@link #getAllowedValue() <em>Allowed Value</em>}' attribute list.
@@ -583,6 +583,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
                 return getTitle();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
                 return getName();
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
+                return getDescription();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
                 if (resolve) return getPropertyDefinition();
                 return basicGetPropertyDefinition();
@@ -592,14 +594,12 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
                 return isReadOnly();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__VALUE_TYPE:
                 return getValueType();
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
+                return getRange();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
                 return getRepresentation();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
                 return getMultiValueRepresentation();
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
-                return getRange();
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
-                return getDescription();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
                 return getAllowedValue();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
@@ -626,6 +626,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
                 setName((String)newValue);
                 return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
+                setDescription((String)newValue);
+                return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
                 setPropertyDefinition((Property)newValue);
                 return;
@@ -638,18 +641,15 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__VALUE_TYPE:
                 setValueType((ResourcePropertyValueType)newValue);
                 return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
+                getRange().clear();
+                getRange().addAll((Collection<? extends Resource>)newValue);
+                return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
                 setRepresentation((ResourcePropertyRepresentation)newValue);
                 return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
                 setMultiValueRepresentation((ResourcePropertyMultiValueRepresentation)newValue);
-                return;
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
-                getRange().clear();
-                getRange().addAll((Collection<? extends Resource>)newValue);
-                return;
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
-                setDescription((String)newValue);
                 return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
                 getAllowedValue().clear();
@@ -679,6 +679,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
                 setName(NAME_EDEFAULT);
                 return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
+                setDescription(DESCRIPTION_EDEFAULT);
+                return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
                 setPropertyDefinition((Property)null);
                 return;
@@ -691,17 +694,14 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__VALUE_TYPE:
                 setValueType(VALUE_TYPE_EDEFAULT);
                 return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
+                getRange().clear();
+                return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
                 setRepresentation(REPRESENTATION_EDEFAULT);
                 return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
                 setMultiValueRepresentation(MULTI_VALUE_REPRESENTATION_EDEFAULT);
-                return;
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
-                getRange().clear();
-                return;
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
-                setDescription(DESCRIPTION_EDEFAULT);
                 return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
                 getAllowedValue().clear();
@@ -727,6 +727,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
                 return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
                 return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
+                return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
                 return propertyDefinition != null;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:
@@ -735,14 +737,12 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
                 return readOnly != READ_ONLY_EDEFAULT;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__VALUE_TYPE:
                 return valueType != VALUE_TYPE_EDEFAULT;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
+                return range != null && !range.isEmpty();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__REPRESENTATION:
                 return representation != REPRESENTATION_EDEFAULT;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
                 return multiValueRepresentation != MULTI_VALUE_REPRESENTATION_EDEFAULT;
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE:
-                return range != null && !range.isEmpty();
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
-                return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
                 return allowedValue != null && !allowedValue.isEmpty();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
@@ -767,6 +767,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
         result.append(title);
         result.append(", name: ");
         result.append(name);
+        result.append(", description: ");
+        result.append(description);
         result.append(", occurs: ");
         result.append(occurs);
         result.append(", readOnly: ");
@@ -777,8 +779,6 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
         result.append(representation);
         result.append(", multiValueRepresentation: ");
         result.append(multiValueRepresentation);
-        result.append(", description: ");
-        result.append(description);
         result.append(", allowedValue: ");
         result.append(allowedValue);
         result.append(", isMemberProperty: ");
