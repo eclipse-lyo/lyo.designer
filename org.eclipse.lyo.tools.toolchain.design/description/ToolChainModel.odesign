@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]" enablePopupBars="true">
       <diagramInitialisation/>
       <defaultLayer name="Default">
-        <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.range /]" sourceFinderExpression="[diagram.visibleResources()->select(r : Resource | r.resourceProperties->includes(self))/]" domainClass="adaptorinterface.ResourceProperty" useDomainElement="true">
+        <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.range /]" sourceFinderExpression="[diagram.visibleResources()->select(r : Resource | r.resourceProperties->includes(self))/]" domainClass="adaptorinterface.ResourceProperty" useDomainElement="true" reconnections="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.ResourceToReferenceProperty.ReconnectSource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.ResourceToReferenceProperty.ReconnectTarget']">
           <conditionnalStyles predicateExpression="[self.valueType = ResourcePropertyValueType::Resource/]">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -233,6 +233,47 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Operations">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Specification.ResourceToReferenceProperty.ReconnectSource" elementsToSelect="[target/]" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[element/]"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                  <subModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[element/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Specification.ResourceToReferenceProperty.ReconnectTarget" elementsToSelect="[target/]">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool_1:Let" variableName="response" valueExpression="service:element.replaceInRange(source, target)">
+                  <subModelOperations xsi:type="tool_1:Switch">
+                    <cases conditionExpression="[response = -1/]"/>
+                    <cases conditionExpression="[response = 1/]">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[target/]"/>
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="range" elementExpression="[source/]"/>
+                    </cases>
+                    <cases conditionExpression="[response = 0/]">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[target/]"/>
+                    </cases>
+                    <default/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
           <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.DropDomainSpecification" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
@@ -1840,6 +1881,7 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.EmfResourcesLoaderService"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ConfirmDeletionServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ResourcePropertyRangeServices"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::domainSpecificationDiagram"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::shaclSpecificationDiagram"/>
   </ownedViewpoints>
