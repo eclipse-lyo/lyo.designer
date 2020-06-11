@@ -2,6 +2,7 @@
  */
 package vocabulary;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -103,29 +104,19 @@ public interface Term extends EObject {
     void setComment(String value);
 
     /**
-     * Returns the value of the '<em><b>See Also</b></em>' attribute.
+     * Returns the value of the '<em><b>See Also</b></em>' attribute list.
+     * The list contents are of type {@link java.lang.String}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>See Also</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>See Also</em>' attribute.
-     * @see #setSeeAlso(String)
+     * @return the value of the '<em>See Also</em>' attribute list.
      * @see vocabulary.VocabularyPackage#getTerm_SeeAlso()
      * @model
      * @generated
      */
-    String getSeeAlso();
-
-    /**
-     * Sets the value of the '{@link vocabulary.Term#getSeeAlso <em>See Also</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>See Also</em>' attribute.
-     * @see #getSeeAlso()
-     * @generated
-     */
-    void setSeeAlso(String value);
+    EList<String> getSeeAlso();
 
 } // Term

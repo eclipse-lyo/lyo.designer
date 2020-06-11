@@ -240,7 +240,7 @@ public interface VocabularyPackage extends EPackage {
     int TERM__COMMENT = 2;
 
     /**
-     * The feature id for the '<em><b>See Also</b></em>' attribute.
+     * The feature id for the '<em><b>See Also</b></em>' attribute list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -304,7 +304,7 @@ public interface VocabularyPackage extends EPackage {
     int CLASS__COMMENT = TERM__COMMENT;
 
     /**
-     * The feature id for the '<em><b>See Also</b></em>' attribute.
+     * The feature id for the '<em><b>See Also</b></em>' attribute list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -386,7 +386,7 @@ public interface VocabularyPackage extends EPackage {
     int PROPERTY__COMMENT = TERM__COMMENT;
 
     /**
-     * The feature id for the '<em><b>See Also</b></em>' attribute.
+     * The feature id for the '<em><b>See Also</b></em>' attribute list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -707,10 +707,10 @@ public interface VocabularyPackage extends EPackage {
     EAttribute getTerm_Comment();
 
     /**
-     * Returns the meta object for the attribute '{@link vocabulary.Term#getSeeAlso <em>See Also</em>}'.
+     * Returns the meta object for the attribute list '{@link vocabulary.Term#getSeeAlso <em>See Also</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>See Also</em>'.
+     * @return the meta object for the attribute list '<em>See Also</em>'.
      * @see vocabulary.Term#getSeeAlso()
      * @see #getTerm()
      * @generated
@@ -1014,7 +1014,7 @@ public interface VocabularyPackage extends EPackage {
         EAttribute TERM__COMMENT = eINSTANCE.getTerm_Comment();
 
         /**
-         * The meta object literal for the '<em><b>See Also</b></em>' attribute feature.
+         * The meta object literal for the '<em><b>See Also</b></em>' attribute list feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated

@@ -2,13 +2,16 @@
  */
 package vocabulary.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import vocabulary.Term;
 import vocabulary.VocabularyPackage;
 
@@ -90,24 +93,14 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
     protected String comment = COMMENT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getSeeAlso() <em>See Also</em>}' attribute.
+     * The cached value of the '{@link #getSeeAlso() <em>See Also</em>}' attribute list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see #getSeeAlso()
      * @generated
      * @ordered
      */
-    protected static final String SEE_ALSO_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getSeeAlso() <em>See Also</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getSeeAlso()
-     * @generated
-     * @ordered
-     */
-    protected String seeAlso = SEE_ALSO_EDEFAULT;
+    protected EList<String> seeAlso;
 
     /**
      * <!-- begin-user-doc -->
@@ -196,20 +189,11 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
      * <!-- end-user-doc -->
      * @generated
      */
-    public String getSeeAlso() {
+    public EList<String> getSeeAlso() {
+        if (seeAlso == null) {
+            seeAlso = new EDataTypeUniqueEList<String>(String.class, this, VocabularyPackage.TERM__SEE_ALSO);
+        }
         return seeAlso;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void setSeeAlso(String newSeeAlso) {
-        String oldSeeAlso = seeAlso;
-        seeAlso = newSeeAlso;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, VocabularyPackage.TERM__SEE_ALSO, oldSeeAlso, seeAlso));
     }
 
     /**
@@ -237,6 +221,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
      * <!-- end-user-doc -->
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -250,7 +235,8 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
                 setComment((String)newValue);
                 return;
             case VocabularyPackage.TERM__SEE_ALSO:
-                setSeeAlso((String)newValue);
+                getSeeAlso().clear();
+                getSeeAlso().addAll((Collection<? extends String>)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -274,7 +260,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
                 setComment(COMMENT_EDEFAULT);
                 return;
             case VocabularyPackage.TERM__SEE_ALSO:
-                setSeeAlso(SEE_ALSO_EDEFAULT);
+                getSeeAlso().clear();
                 return;
         }
         super.eUnset(featureID);
@@ -295,7 +281,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
             case VocabularyPackage.TERM__COMMENT:
                 return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
             case VocabularyPackage.TERM__SEE_ALSO:
-                return SEE_ALSO_EDEFAULT == null ? seeAlso != null : !SEE_ALSO_EDEFAULT.equals(seeAlso);
+                return seeAlso != null && !seeAlso.isEmpty();
         }
         return super.eIsSet(featureID);
     }
