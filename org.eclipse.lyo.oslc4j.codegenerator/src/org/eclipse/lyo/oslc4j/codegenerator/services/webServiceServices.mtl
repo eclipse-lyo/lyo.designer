@@ -70,6 +70,18 @@ endif)
 JAXRSPathParameters(aResource.instanceURI(aWebService))
 /]
 
+[query public constructURIMethodName(aResource: Resource, aWebService: WebService) : String = 
+'constructURIFor'
+    .concat(javaName(aResource, true))
+    .concat((if (aWebService.containingAdaptorInterface().webServices(aResource)->size() = 1) then '' else aWebService.name endif))
+/]
+
+[query public constructLinkMethodName(aResource: Resource, aWebService: WebService) : String = 
+'constructLinkFor'
+    .concat(javaName(aResource, true))
+    .concat((if (aWebService.containingAdaptorInterface().webServices(aResource)->size() = 1) then '' else aWebService.name endif))
+/]
+
 [query public getResourceMethodName(aResource: Resource, forRDF : Boolean) : String = 
 'get'.concat(javaName(aResource, true))
 	.concat((if forRDF then '' else 'AsHtml' endif))

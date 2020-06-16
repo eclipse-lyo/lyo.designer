@@ -27,6 +27,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::storeServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateServiceProviderCatalogService/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateServiceProviderCatalogSingleton/]
@@ -51,6 +52,9 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateRootServicesService/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateCredentialsFilter/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAuthenticationApplication/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateStorePool/]
+[import org::eclipse::lyo::oslc4j::codegenerator::config::generateStoreProperties/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateCssAndJsFiles/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateResourceCollectionJsp/]
@@ -113,6 +117,13 @@
 
 [template public generateForTrsService(anAdaptorInterface : AdaptorInterface)]
 [if (anAdaptorInterface.trsServiceEnabled())]
+[/if]
+[/template]
+
+[template public generateForStore(anAdaptorInterface : AdaptorInterface)]
+[if (anAdaptorInterface.storeEnabled())]
+[anAdaptorInterface.generateStorePool()/]
+[anAdaptorInterface.generateStoreProperties()/]
 [/if]
 [/template]
 
@@ -224,6 +235,9 @@
 [/if]
 [if (anAdaptorInterface.trsServiceEnabled())]
     [generateForTrsService(anAdaptorInterface)/]
+[/if]
+[if (anAdaptorInterface.storeEnabled())]
+    [generateForStore(anAdaptorInterface)/]
 [/if]
 [generateForWebServices(anAdaptorInterface)/]
 [generateForRelevantDomainSpecifications(anAdaptorInterface)/]

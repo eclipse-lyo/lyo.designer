@@ -30,6 +30,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderCatalogServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::storeServices/]
 
 [query public backendCode(backendCodeTemplate : String, resourceClassName : String, resourceInstanceName : String, compositeID : Sequence(String)) : String = 
 (if (not backendCodeTemplate.oclIsUndefined()) then
@@ -85,6 +86,8 @@ package [javaClassPackageNameForAdaptorManager(anAdaptorInterface) /];
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.ServletContextEvent;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.model.AbstractResource;
@@ -97,6 +100,7 @@ import [javaClassFullName(aServiceProvider) /];
 [for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name))]
 import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
+[anAdaptorInterface.storeImports()/]
 [if (anAdaptorInterface.trsServiceEnabled())]
 import org.eclipse.lyo.oslc4j.trs.server.InmemPagedTrs;
 import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
@@ -113,6 +117,9 @@ import org.eclipse.lyo.oslc4j.trs.server.TrsEventHandler;
 
 public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
 
+    private static final Logger log = LoggerFactory.getLogger([anAdaptorInterface.javaClassNameForAdaptorManager()/].class);
+
+    [anAdaptorInterface.storeClassAttributes()/]
     [if (anAdaptorInterface.trsServiceEnabled())]
     private static PagedTrs pagedTrs;
     private static TrsEventHandler trsEventHandler;
@@ -144,6 +151,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         // [protected ('contextInitializeServletListener')]
         // TODO Implement code to establish connection to data backbone etc ...
         // [/protected]
+        [anAdaptorInterface.storeInitialization()/]
         [if (anAdaptorInterface.trsServiceEnabled())]
         // [protected ('TRSInitialise')]
         // [/protected]
@@ -185,6 +193,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
     {
         List<[queryMethodResourceType(aQueryCapability)/]> resources = null;
         [backendCode(anAdaptorInterface.backendCodeTemplate_getResources, queryMethodResourceType(aQueryCapability), 'resources', queryCompositeID(aQueryCapability))/]
+        [queryResourcesFromStore(aQueryCapability)/]
         // [protected (queryMethodName(aQueryCapability, true))]
         // TODO Implement code to return a set of resources.
         // An empty List should imply that no resources where found.
@@ -198,6 +207,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
     {
         List<[dialogMethodResourceType(aSelectionDialog)/]> resources = null;
         [backendCode(anAdaptorInterface.backendCodeTemplate_searchResources, dialogMethodResourceType(aSelectionDialog), 'resources', dialogCompositeID(aSelectionDialog, true))/]
+        [searchResourcesFromStore(aSelectionDialog)/]
         // [protected (dialogMethodName(aSelectionDialog, true))]
         // TODO Implement code to return a set of resources, based on search criteria 
         // An empty List should imply that no resources where found.
@@ -211,6 +221,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
     {
         [creationMethodResourceType(aCreationFactory)/] newResource = null;
         [backendCode(anAdaptorInterface.backendCodeTemplate_createResource, creationMethodResourceType(aCreationFactory), 'newResource', creationCompositeID(aCreationFactory))/]
+        [createResourceFromStore(aCreationFactory)/]
         // [protected (creationMethodName(aCreationFactory))]
         // TODO Implement code to create a resource
         // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
@@ -224,6 +235,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
     {
         [creationMethodResourceType(aCreationDialog)/] newResource = null;
         [backendCode(anAdaptorInterface.backendCodeTemplate_createResource, creationMethodResourceType(aCreationDialog), 'newResource', dialogCompositeID(aCreationDialog, false))/]
+        [createResourceFromStore(aCreationDialog)/]
         // [protected (creationMethodName(aCreationDialog))]
         // TODO Implement code to create a resource
         // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
@@ -286,10 +298,12 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
     {
         [getResourceMethodResourceType(aResource)/] aResource = null;
         [backendCode(anAdaptorInterface.backendCodeTemplate_getResource, getResourceMethodResourceType(aResource), 'aResource', instanceCompositeID(aResource, aWebService))/]
+        [aWebService.getResourceFromStore(aResource)/]
         // [protected (getResourceMethodName(aResource, true))]
         // TODO Implement code to return a resource
         // return 'null' if the resource was not found.
         // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
+        Throw exception here to make sure user implements it.
         // [/protected]
         return aResource;
     }
@@ -301,6 +315,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
     public static Boolean [deleteResourceMethodName(aResource)/](HttpServletRequest httpServletRequest[commaSeparate(instanceMethodSignature(aResource, aWebService, false), true, false)/])
     {
         Boolean deleted = false;
+        [aWebService.deleteResourceFromStore(aResource)/]
         // [protected (deleteResourceMethodName(aResource))]
         // TODO Implement code to delete a resource
         // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
@@ -314,6 +329,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
     [for (aResource: Resource | aWebService.resourceTypes)]
     public static [updateResourceMethodResourceType(aResource)/] [updateResourceMethodName(aResource)/](HttpServletRequest httpServletRequest, final [updateResourceMethodResourceType(aResource)/] aResource[commaSeparate(instanceMethodSignature(aResource, aWebService, false), true, false)/]) {
         [updateResourceMethodResourceType(aResource)/] updatedResource = null;
+        [aWebService.updateResourceFromStore(aResource)/]
         // [protected (updateResourceMethodName(aResource))]
         // TODO Implement code to update and return a resource
         // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)

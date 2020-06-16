@@ -1,0 +1,251 @@
+[comment encoding = UTF-8 /]
+[comment
+/*******************************************************************************
+ * Copyright (c) 2020 Jad El-khoury.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
+ *
+ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *     
+ *******************************************************************************/
+/]
+
+[module storeServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::webServiceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+
+[comment We assume a single store per adaptor. The Sirius model ensures that. 
+But the EMF model allows multiple stores, since this could potentially be of interest in future./]
+[query public oneAndOnlyStore(anAdaptorInterface : AdaptorInterface) : Store = 
+(if (anAdaptorInterface.stores->size() > 0) then
+    anAdaptorInterface.stores->first()
+else
+    null
+endif)
+/]
+
+[query public storeEnabled(anAdaptorInterface : AdaptorInterface) : Boolean = 
+anAdaptorInterface.stores->size() > 0
+/]
+
+[query public persisted(aWebService: WebService) : Boolean =
+(not aWebService.persistence.oclIsUndefined()) and (not aWebService.persistence.store.oclIsUndefined())
+/]
+
+[query public persisted(aService: Service) : Boolean =
+(not aService.persistence.oclIsUndefined()) and (not aService.persistence.store.oclIsUndefined())
+/]
+
+[comment Services for StorePropertiesFile/]
+[query public fileNameForStoreProperties(anAdaptorInterface : AdaptorInterface) : String = 
+'store.properties'
+/]
+
+[query public relativeFileNameForStoreProperties(anAdaptorInterface : AdaptorInterface) : String = 
+'/'.concat(anAdaptorInterface.fileNameForStoreProperties())
+/]
+
+[query public fullFileNameForStoreProperties(anAdaptorInterface : AdaptorInterface) : String = 
+anAdaptorInterface.propertyFilesBasePath().concatenatePaths(anAdaptorInterface.relativeFileNameForStoreProperties())
+/]
+
+[comment Services for StorePool/]
+[query public javaClassPackageNameForStorePool(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface)
+/]
+
+[query public javaClassNameForStorePool(anAdaptorInterface : AdaptorInterface) : String = 
+'StorePool'
+/]
+
+[query public javaClassFullNameForStorePool(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForStorePool(anAdaptorInterface).concat('.').concat(javaClassNameForStorePool(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForStorePool(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForStorePool(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForStorePool(anAdaptorInterface)).concat('.java')
+/]
+
+[template public storeImports(anAdaptorInterface: AdaptorInterface)]
+[if (anAdaptorInterface.storeEnabled())]
+import org.eclipse.lyo.store.ModelUnmarshallingException;
+import org.eclipse.lyo.store.Store;
+import org.eclipse.lyo.store.StoreAccessException;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response.Status;
+
+[/if]
+[/template]
+
+[template public storeClassAttributes(anAdaptorInterface: AdaptorInterface)]
+[if (anAdaptorInterface.storeEnabled())]
+private static StorePool storePool;
+[/if]
+[/template]
+
+[template public storeInitialization(anAdaptorInterface: AdaptorInterface)]
+[if (anAdaptorInterface.storeEnabled())]
+// [protected ('StoreInitialise')]
+// [/protected]
+try {
+    storePool = StorePool.create("[anAdaptorInterface.relativeFileNameForStoreProperties()/]");
+} catch (StoreAccessException e) {
+    log.error("Failed to initialise store.", e);
+    throw new RuntimeException(e);
+}
+// [protected ('StoreFinalize')]
+// [/protected]
+[/if]
+[/template]
+
+[template public getResourceFromStore(aWebService: WebService, aResource: Resource)]
+[if (aWebService.persisted() and aWebService.persistence.read)]
+// [protected (aResource.getResourceMethodName(true).concat('_storeInit'))]
+// [/protected]
+Store store = storePool.getStore();
+URI uri = [aWebService.containingAdaptorInterface().javaClassNameForResourcesFactory()/].[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
+try {
+    aResource = store.getResource(storePool.getDefaultNamedGraphUri(), uri, [getResourceMethodResourceType(aResource)/].class);
+} catch (NoSuchElementException e) {
+    log.error("Resource: '" + uri + "' not found");
+    throw new WebApplicationException("Failed to get resource: '" + uri + "'", e, Status.NOT_FOUND);
+} catch (StoreAccessException | ModelUnmarshallingException  e) {
+    log.error("Failed to get resource: '" + uri + "'", e);
+    throw new WebApplicationException("Failed to get resource: '" + uri + "'", e, Status.INTERNAL_SERVER_ERROR);
+} finally {
+    storePool.releaseStore(store);
+}
+// [protected (aResource.getResourceMethodName(true).concat('_storeFinalize'))]
+// [/protected]
+[/if]
+[/template]
+
+[template public updateResourceFromStore(aWebService: WebService, aResource: Resource)]
+[if (aWebService.persisted() and aWebService.persistence.update)]
+// [protected (aResource.updateResourceMethodName().concat('_storeInit'))]
+// [/protected]
+Store store = storePool.getStore();
+URI uri = [aWebService.containingAdaptorInterface().javaClassNameForResourcesFactory()/].[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
+if (!store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
+    log.error("Cannot update a resource that does not already exists: '" + uri + "'");
+    throw new WebApplicationException("Cannot update a resource that does not already exists: '" + uri + "'", Status.NOT_FOUND);
+}
+aResource.setAbout(uri);
+try {
+    store.deleteResources(storePool.getDefaultNamedGraphUri(), uri);
+    store.appendResource(storePool.getDefaultNamedGraphUri(), aResource);
+} catch (StoreAccessException e) {
+    log.error("Failed to update resource: '" + uri + "'", e);
+    throw new WebApplicationException("Failed to update resource: '" + uri + "'", e);
+} finally {
+    storePool.releaseStore(store);
+}
+updatedResource = aResource;
+// [protected (aResource.updateResourceMethodName().concat('_storeFinalize'))]
+// [/protected]
+[/if]
+[/template]
+
+[template public deleteResourceFromStore(aWebService: WebService, aResource: Resource)]
+[if (aWebService.persisted() and aWebService.persistence.delete)]
+// [protected (aResource.deleteResourceMethodName().concat('_storeInit'))]
+// [/protected]
+Store store = storePool.getStore();
+URI uri = [aWebService.containingAdaptorInterface().javaClassNameForResourcesFactory()/].[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
+if (!store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
+    log.error("Cannot delete a resource that does not already exists: '" + uri + "'");
+    throw new WebApplicationException("Cannot delete a resource that does not already exists: '" + uri + "'", Status.NOT_FOUND);
+}
+store.deleteResources(storePool.getDefaultNamedGraphUri(), uri);
+storePool.releaseStore(store);
+deleted = true;
+// [protected (aResource.deleteResourceMethodName().concat('_storeFinalize'))]
+// [/protected]
+[/if]
+[/template]
+
+[template public queryResourcesFromStore(aQueryCapability: QueryCapability)]
+[if (aQueryCapability.containingService().persisted() and aQueryCapability.containingService().persistence.queryCapability)]
+// [protected (aQueryCapability.queryMethodName(true).concat('_storeInit'))]
+// [/protected]
+Store store = storePool.getStore();
+try {
+    resources = new ArrayList<[queryMethodResourceType(aQueryCapability)/]>(store.getResources(storePool.getDefaultNamedGraphUri(), [queryMethodResourceType(aQueryCapability)/].class, "", "", "", limit+1, page*limit));
+} catch (StoreAccessException | ModelUnmarshallingException e) {
+    log.error("Failed to query resources, with where-string '" + where + "'", e);
+    throw new WebApplicationException("Failed to query resources, with where-string '" + where + "'", e, Status.INTERNAL_SERVER_ERROR);
+} finally {
+    storePool.releaseStore(store);
+}
+// [protected (aQueryCapability.queryMethodName(true).concat('_storeFinalize'))]
+// [/protected]
+[/if]
+[/template]
+
+[template public searchResourcesFromStore(aSelectionDialog: Dialog)]
+[if (aSelectionDialog.containingService().persisted() and aSelectionDialog.containingService().persistence.selectionDialog)]
+// [protected (aSelectionDialog.dialogMethodName(true).concat('_storeInit'))]
+// [/protected]
+Store store = storePool.getStore();
+try {
+    resources = new ArrayList<[dialogMethodResourceType(aSelectionDialog)/]>(store.getResources(storePool.getDefaultNamedGraphUri(), [dialogMethodResourceType(aSelectionDialog)/].class, "", "", terms, 20, -1));
+} catch (StoreAccessException | ModelUnmarshallingException e) {
+    log.error("Failed to search resources, with search-term '" + terms + "'", e);
+    throw new WebApplicationException("Failed to search resources, with search-term '" + terms + "'", e, Status.INTERNAL_SERVER_ERROR);
+} finally {
+    storePool.releaseStore(store);
+}
+// [protected (aSelectionDialog.dialogMethodName(true).concat('_storeFinalize'))]
+// [/protected]
+[/if]
+[/template]
+
+[template private _createResourceFromStore(obj : OclAny, callingMethodName : String)]
+// [protected (callingMethodName.concat('_storeInit'))]
+// [/protected]
+Store store = storePool.getStore();
+try {
+    URI uri = null;
+    // [protected (callingMethodName.concat('_storeSetUri'))]
+    //TODO: Set the uri of the resource to be created. Replace this code within the protected user code.
+    if (null == uri) {
+        throw new UnsupportedOperationException("Set the uri of the resource to be created, before it can be added to the store. You can then remove this UnsupportedOperationException");
+    }
+    // [/protected]
+    if (store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
+        log.error("Cannot create a resource that already exists: '" + uri + "'");
+        throw new WebApplicationException("Cannot create a resource that already exists: '" + uri + "'", Status.SEE_OTHER);
+    }
+    aResource.setAbout(uri);
+    try {
+        store.appendResource(storePool.getDefaultNamedGraphUri(), aResource);
+    } catch (StoreAccessException e) {
+        log.error("Failed to create resource: '" + aResource.getAbout() + "'", e);            
+        throw new WebApplicationException("Failed to create resource: '" + aResource.getAbout() + "'", e, Status.INTERNAL_SERVER_ERROR);
+    }
+} finally {
+    storePool.releaseStore(store);
+}
+newResource = aResource;
+// [protected (callingMethodName.concat('_storeFinalize'))]
+// [/protected]
+[/template]
+
+[template public createResourceFromStore(aCreationFactory: CreationFactory)]
+[if (aCreationFactory.containingService().persisted() and aCreationFactory.containingService().persistence.creationFactory)]
+[aCreationFactory._createResourceFromStore(aCreationFactory.creationMethodName())/]
+[/if]
+[/template]
+
+[template public createResourceFromStore(aCreationDialog: Dialog)]
+[if (aCreationDialog.containingService().persisted() and aCreationDialog.containingService().persistence.creationDialog)]
+[aCreationDialog._createResourceFromStore(aCreationDialog.creationMethodName())/]
+[/if]
+[/template]

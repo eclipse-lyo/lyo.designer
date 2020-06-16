@@ -3,6 +3,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::storeServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
@@ -110,7 +111,7 @@
 [/if]
 [/template]
 
-[template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean, authenticationEnabled : Boolean, trsServiceEnabled : Boolean)]
+[template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean, authenticationEnabled : Boolean, trsServiceEnabled : Boolean, storeEnabled : Boolean)]
 <!-- Lyo dependencies -->
 <dependency>
     <groupId>org.eclipse.lyo.oslc4j.core</groupId>
@@ -132,6 +133,13 @@
 <dependency>
     <groupId>org.eclipse.lyo.trs</groupId>
     <artifactId>trs-server</artifactId>
+    <version>${version.lyo}</version>
+</dependency>
+[/if]
+[if storeEnabled]
+<dependency>
+    <groupId>org.eclipse.lyo.store</groupId>
+    <artifactId>store-core</artifactId>
     <version>${version.lyo}</version>
 </dependency>
 [/if]
@@ -182,7 +190,7 @@
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(true)/]
-        [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled(), anAdaptorInterface.trsServiceEnabled())/]
+        [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled(), anAdaptorInterface.trsServiceEnabled(), anAdaptorInterface.storeEnabled())/]
         [if (anAdaptorInterface.swaggerDocumentationEnabled())]
         <!-- Swagger dependencies -->
         <dependency>
@@ -301,7 +309,7 @@
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(false)/]
-        [lyoDependencies(false, false, false, false)/]
+        [lyoDependencies(false, false, false, false, false)/]
     </dependencies>
     <!-- [protected ('post_dependencies')]
     -->
@@ -331,7 +339,7 @@
     <dependencies>
         [generalDependencies()/]
         [servletDependencies(false)/]
-        [lyoDependencies(false, false, false, false)/]
+        [lyoDependencies(false, false, false, false, false)/]
     </dependencies>
     <!-- [protected ('post_dependencies')]
     -->
