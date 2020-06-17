@@ -1167,9 +1167,26 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Store" referenceName="stores">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="initialPoolSize" valueExpression="500"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="defaultNamedGraph" valueExpression="['urn:x-arq:DefaultGraph'/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="queryEndpoint" valueExpression="['http://localhost:3030/dataset/sparql'/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="updateEndpoint" valueExpression="['http://localhost:3030/dataset/update'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sparqlQueryEndpoint" valueExpression="['http://localhost:3030/dataset/sparql'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sparqlUpdateEndpoint" valueExpression="['http://localhost:3030/dataset/update'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateStoreWithAuthentication" label="Store With Authentication" precondition="[self.stores->size() &lt;  1/]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Store']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.StoreWithAuthentication" referenceName="stores">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="initialPoolSize" valueExpression="500"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="defaultNamedGraph" valueExpression="['urn:x-arq:DefaultGraph'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sparqlQueryEndpoint" valueExpression="['http://localhost:3030/dataset/sparql'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sparqlUpdateEndpoint" valueExpression="['http://localhost:3030/dataset/update'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="username" valueExpression="['user'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="password" valueExpression="['pass'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

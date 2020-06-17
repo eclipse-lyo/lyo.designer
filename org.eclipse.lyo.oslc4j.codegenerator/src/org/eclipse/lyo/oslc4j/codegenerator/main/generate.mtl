@@ -53,7 +53,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateCredentialsFilter/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAuthenticationApplication/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::files::generateStorePool/]
 [import org::eclipse::lyo::oslc4j::codegenerator::config::generateStoreProperties/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateCssAndJsFiles/]
@@ -122,7 +121,6 @@
 
 [template public generateForStore(anAdaptorInterface : AdaptorInterface)]
 [if (anAdaptorInterface.storeEnabled())]
-[anAdaptorInterface.generateStorePool()/]
 [anAdaptorInterface.generateStoreProperties()/]
 [/if]
 [/template]
