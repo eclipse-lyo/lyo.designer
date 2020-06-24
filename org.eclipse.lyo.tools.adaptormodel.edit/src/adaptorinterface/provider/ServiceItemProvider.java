@@ -154,6 +154,7 @@ public class ServiceItemProvider
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVICE__SELECTION_DIALOGS);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVICE__CREATION_DIALOGS);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVICE__BASIC_CAPABILITIES);
+            childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVICE__PERSISTENCE);
         }
         return childrenFeatures;
     }
@@ -219,6 +220,7 @@ public class ServiceItemProvider
             case AdaptorinterfacePackage.SERVICE__SELECTION_DIALOGS:
             case AdaptorinterfacePackage.SERVICE__CREATION_DIALOGS:
             case AdaptorinterfacePackage.SERVICE__BASIC_CAPABILITIES:
+            case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -260,6 +262,11 @@ public class ServiceItemProvider
             (createChildParameter
                 (AdaptorinterfacePackage.Literals.SERVICE__BASIC_CAPABILITIES,
                  AdaptorinterfaceFactory.eINSTANCE.createBasicCapability()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (AdaptorinterfacePackage.Literals.SERVICE__PERSISTENCE,
+                 AdaptorinterfaceFactory.eINSTANCE.createOSLCServicePersistence()));
     }
 
 	/**

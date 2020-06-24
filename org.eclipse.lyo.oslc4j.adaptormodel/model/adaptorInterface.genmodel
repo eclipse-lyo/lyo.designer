@@ -80,6 +80,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/backendCodeTemplate_getResources"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/backendCodeTemplate_searchResources"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/backendCodeTemplate_createResource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/stores"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//Specification">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Specification/domainSpecifications"/>
@@ -124,6 +125,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Service/creationDialogs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Service/basicCapabilities"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Service/usages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Service/persistence"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//WebService">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebService/name"/>
@@ -133,6 +135,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebService/read"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebService/delete"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebService/update"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//WebService/persistence"/>
     </genClasses>
     <genClasses image="false" ecoreClass="adaptorInterface.ecore#//TrsService">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//TrsService/basePageLimit"/>
@@ -265,5 +268,29 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//MavenServerConfiguration/jettyPort"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//MavenSpecificationConfiguration"/>
+    <genClasses ecoreClass="adaptorInterface.ecore#//Store">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Store/defaultNamedGraph"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Store/sparqlQueryEndpoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Store/sparqlUpdateEndpoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Store/initialPoolSize"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//StoreWithAuthentication">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//StoreWithAuthentication/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//StoreWithAuthentication/password"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adaptorInterface.ecore#//ServicePersistence">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ServicePersistence/store"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//OSLCServicePersistence">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//OSLCServicePersistence/creationFactory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//OSLCServicePersistence/queryCapability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//OSLCServicePersistence/selectionDialog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//OSLCServicePersistence/creationDialog"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//WebServicePersistence">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebServicePersistence/read"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebServicePersistence/delete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebServicePersistence/update"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

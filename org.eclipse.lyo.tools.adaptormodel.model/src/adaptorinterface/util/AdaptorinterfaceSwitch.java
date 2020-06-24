@@ -274,6 +274,39 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case AdaptorinterfacePackage.STORE: {
+                Store store = (Store)theEObject;
+                T result = caseStore(store);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case AdaptorinterfacePackage.STORE_WITH_AUTHENTICATION: {
+                StoreWithAuthentication storeWithAuthentication = (StoreWithAuthentication)theEObject;
+                T result = caseStoreWithAuthentication(storeWithAuthentication);
+                if (result == null) result = caseStore(storeWithAuthentication);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case AdaptorinterfacePackage.SERVICE_PERSISTENCE: {
+                ServicePersistence servicePersistence = (ServicePersistence)theEObject;
+                T result = caseServicePersistence(servicePersistence);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case AdaptorinterfacePackage.OSLC_SERVICE_PERSISTENCE: {
+                OSLCServicePersistence oslcServicePersistence = (OSLCServicePersistence)theEObject;
+                T result = caseOSLCServicePersistence(oslcServicePersistence);
+                if (result == null) result = caseServicePersistence(oslcServicePersistence);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case AdaptorinterfacePackage.WEB_SERVICE_PERSISTENCE: {
+                WebServicePersistence webServicePersistence = (WebServicePersistence)theEObject;
+                T result = caseWebServicePersistence(webServicePersistence);
+                if (result == null) result = caseServicePersistence(webServicePersistence);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             default: return defaultCase(theEObject);
         }
     }
@@ -729,6 +762,81 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
     }
 
 	/**
+     * Returns the result of interpreting the object as an instance of '<em>Store</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Store</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseStore(Store object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Store With Authentication</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Store With Authentication</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseStoreWithAuthentication(StoreWithAuthentication object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Service Persistence</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Service Persistence</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseServicePersistence(ServicePersistence object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>OSLC Service Persistence</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>OSLC Service Persistence</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseOSLCServicePersistence(OSLCServicePersistence object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Web Service Persistence</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Web Service Persistence</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseWebServicePersistence(WebServicePersistence object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Web Service</em>'.
      * <!-- begin-user-doc -->
 	 * This implementation returns null;

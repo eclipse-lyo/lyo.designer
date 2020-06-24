@@ -3,6 +3,7 @@
 package adaptorinterface.provider;
 
 
+import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.WebService;
 
@@ -14,6 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -226,6 +228,36 @@ public class WebServiceItemProvider
     }
 
 	/**
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+        if (childrenFeatures == null) {
+            super.getChildrenFeatures(object);
+            childrenFeatures.add(AdaptorinterfacePackage.Literals.WEB_SERVICE__PERSISTENCE);
+        }
+        return childrenFeatures;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    protected EStructuralFeature getChildFeature(Object object, Object child) {
+        // Check the type of the specified child object and return the proper feature to use for
+        // adding (see {@link AddCommand}) it as a child.
+
+        return super.getChildFeature(object, child);
+    }
+
+    /**
      * This returns WebService.gif.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -271,6 +303,9 @@ public class WebServiceItemProvider
             case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
+            case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -285,6 +320,11 @@ public class WebServiceItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add
+            (createChildParameter
+                (AdaptorinterfacePackage.Literals.WEB_SERVICE__PERSISTENCE,
+                 AdaptorinterfaceFactory.eINSTANCE.createWebServicePersistence()));
     }
 
 	/**

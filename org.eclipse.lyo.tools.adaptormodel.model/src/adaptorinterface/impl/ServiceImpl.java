@@ -7,6 +7,7 @@ import adaptorinterface.BasicCapability;
 import adaptorinterface.CreationFactory;
 import adaptorinterface.Dialog;
 import adaptorinterface.DomainSpecification;
+import adaptorinterface.OSLCServicePersistence;
 import adaptorinterface.QueryCapability;
 import adaptorinterface.ResourceServiceNamespace;
 import adaptorinterface.Service;
@@ -44,6 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getCreationDialogs <em>Creation Dialogs</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getBasicCapabilities <em>Basic Capabilities</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getUsages <em>Usages</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ServiceImpl#getPersistence <em>Persistence</em>}</li>
  * </ul>
  *
  * @generated
@@ -140,6 +142,16 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	protected EList<String> usages;
 
 	/**
+     * The cached value of the '{@link #getPersistence() <em>Persistence</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getPersistence()
+     * @generated
+     * @ordered
+     */
+    protected OSLCServicePersistence persistence;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -301,6 +313,49 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public OSLCServicePersistence getPersistence() {
+        return persistence;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetPersistence(OSLCServicePersistence newPersistence, NotificationChain msgs) {
+        OSLCServicePersistence oldPersistence = persistence;
+        persistence = newPersistence;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SERVICE__PERSISTENCE, oldPersistence, newPersistence);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setPersistence(OSLCServicePersistence newPersistence) {
+        if (newPersistence != persistence) {
+            NotificationChain msgs = null;
+            if (persistence != null)
+                msgs = ((InternalEObject)persistence).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SERVICE__PERSISTENCE, null, msgs);
+            if (newPersistence != null)
+                msgs = ((InternalEObject)newPersistence).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SERVICE__PERSISTENCE, null, msgs);
+            msgs = basicSetPersistence(newPersistence, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SERVICE__PERSISTENCE, newPersistence, newPersistence));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -317,6 +372,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
                 return ((InternalEList<?>)getCreationDialogs()).basicRemove(otherEnd, msgs);
             case AdaptorinterfacePackage.SERVICE__BASIC_CAPABILITIES:
                 return ((InternalEList<?>)getBasicCapabilities()).basicRemove(otherEnd, msgs);
+            case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
+                return basicSetPersistence(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -346,6 +403,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
                 return getBasicCapabilities();
             case AdaptorinterfacePackage.SERVICE__USAGES:
                 return getUsages();
+            case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
+                return getPersistence();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -389,6 +448,9 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
                 getUsages().clear();
                 getUsages().addAll((Collection<? extends String>)newValue);
                 return;
+            case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
+                setPersistence((OSLCServicePersistence)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -425,6 +487,9 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
             case AdaptorinterfacePackage.SERVICE__USAGES:
                 getUsages().clear();
                 return;
+            case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
+                setPersistence((OSLCServicePersistence)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -453,6 +518,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
                 return basicCapabilities != null && !basicCapabilities.isEmpty();
             case AdaptorinterfacePackage.SERVICE__USAGES:
                 return usages != null && !usages.isEmpty();
+            case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
+                return persistence != null;
         }
         return super.eIsSet(featureID);
     }

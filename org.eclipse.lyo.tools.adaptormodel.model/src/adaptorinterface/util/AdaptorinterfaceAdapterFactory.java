@@ -200,6 +200,26 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
                 return createMavenSpecificationConfigurationAdapter();
             }
             @Override
+            public Adapter caseStore(Store object) {
+                return createStoreAdapter();
+            }
+            @Override
+            public Adapter caseStoreWithAuthentication(StoreWithAuthentication object) {
+                return createStoreWithAuthenticationAdapter();
+            }
+            @Override
+            public Adapter caseServicePersistence(ServicePersistence object) {
+                return createServicePersistenceAdapter();
+            }
+            @Override
+            public Adapter caseOSLCServicePersistence(OSLCServicePersistence object) {
+                return createOSLCServicePersistenceAdapter();
+            }
+            @Override
+            public Adapter caseWebServicePersistence(WebServicePersistence object) {
+                return createWebServicePersistenceAdapter();
+            }
+            @Override
             public Adapter defaultCase(EObject object) {
                 return createEObjectAdapter();
             }
@@ -640,6 +660,76 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
     }
 
 	/**
+     * Creates a new adapter for an object of class '{@link adaptorinterface.Store <em>Store</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see adaptorinterface.Store
+     * @generated
+     */
+    public Adapter createStoreAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link adaptorinterface.StoreWithAuthentication <em>Store With Authentication</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see adaptorinterface.StoreWithAuthentication
+     * @generated
+     */
+    public Adapter createStoreWithAuthenticationAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link adaptorinterface.ServicePersistence <em>Service Persistence</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see adaptorinterface.ServicePersistence
+     * @generated
+     */
+    public Adapter createServicePersistenceAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link adaptorinterface.OSLCServicePersistence <em>OSLC Service Persistence</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see adaptorinterface.OSLCServicePersistence
+     * @generated
+     */
+    public Adapter createOSLCServicePersistenceAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link adaptorinterface.WebServicePersistence <em>Web Service Persistence</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see adaptorinterface.WebServicePersistence
+     * @generated
+     */
+    public Adapter createWebServicePersistenceAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for an object of class '{@link adaptorinterface.WebService <em>Web Service</em>}'.
      * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;

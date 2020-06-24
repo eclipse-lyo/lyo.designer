@@ -256,13 +256,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = 20;
 
 	/**
+     * The feature id for the '<em><b>Stores</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ADAPTOR_INTERFACE__STORES = 21;
+
+    /**
      * The number of structural features of the '<em>Adaptor Interface</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int ADAPTOR_INTERFACE_FEATURE_COUNT = 21;
+	int ADAPTOR_INTERFACE_FEATURE_COUNT = 22;
 
 	/**
      * The number of operations of the '<em>Adaptor Interface</em>' class.
@@ -712,13 +721,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SERVICE__USAGES = 7;
 
 	/**
+     * The feature id for the '<em><b>Persistence</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVICE__PERSISTENCE = 8;
+
+    /**
      * The number of structural features of the '<em>Service</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int SERVICE_FEATURE_COUNT = 8;
+	int SERVICE_FEATURE_COUNT = 9;
 
 	/**
      * The number of operations of the '<em>Service</em>' class.
@@ -803,13 +821,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int WEB_SERVICE__UPDATE = 6;
 
 	/**
+     * The feature id for the '<em><b>Persistence</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int WEB_SERVICE__PERSISTENCE = 7;
+
+    /**
      * The number of structural features of the '<em>Web Service</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int WEB_SERVICE_FEATURE_COUNT = 7;
+	int WEB_SERVICE_FEATURE_COUNT = 8;
 
 	/**
      * The number of operations of the '<em>Web Service</em>' class.
@@ -2421,6 +2448,326 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int MAVEN_SPECIFICATION_CONFIGURATION_OPERATION_COUNT = SPECIFICATION_CONFIGURATION_OPERATION_COUNT + 0;
 
 	/**
+     * The meta object id for the '{@link adaptorinterface.impl.StoreImpl <em>Store</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.impl.StoreImpl
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getStore()
+     * @generated
+     */
+    int STORE = 33;
+
+    /**
+     * The feature id for the '<em><b>Default Named Graph</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE__DEFAULT_NAMED_GRAPH = 0;
+
+    /**
+     * The feature id for the '<em><b>Sparql Query Endpoint</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE__SPARQL_QUERY_ENDPOINT = 1;
+
+    /**
+     * The feature id for the '<em><b>Sparql Update Endpoint</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE__SPARQL_UPDATE_ENDPOINT = 2;
+
+    /**
+     * The feature id for the '<em><b>Initial Pool Size</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE__INITIAL_POOL_SIZE = 3;
+
+    /**
+     * The number of structural features of the '<em>Store</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_FEATURE_COUNT = 4;
+
+    /**
+     * The number of operations of the '<em>Store</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_OPERATION_COUNT = 0;
+
+    /**
+     * The meta object id for the '{@link adaptorinterface.impl.StoreWithAuthenticationImpl <em>Store With Authentication</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.impl.StoreWithAuthenticationImpl
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getStoreWithAuthentication()
+     * @generated
+     */
+    int STORE_WITH_AUTHENTICATION = 34;
+
+    /**
+     * The feature id for the '<em><b>Default Named Graph</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_WITH_AUTHENTICATION__DEFAULT_NAMED_GRAPH = STORE__DEFAULT_NAMED_GRAPH;
+
+    /**
+     * The feature id for the '<em><b>Sparql Query Endpoint</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_WITH_AUTHENTICATION__SPARQL_QUERY_ENDPOINT = STORE__SPARQL_QUERY_ENDPOINT;
+
+    /**
+     * The feature id for the '<em><b>Sparql Update Endpoint</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_WITH_AUTHENTICATION__SPARQL_UPDATE_ENDPOINT = STORE__SPARQL_UPDATE_ENDPOINT;
+
+    /**
+     * The feature id for the '<em><b>Initial Pool Size</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_WITH_AUTHENTICATION__INITIAL_POOL_SIZE = STORE__INITIAL_POOL_SIZE;
+
+    /**
+     * The feature id for the '<em><b>Username</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_WITH_AUTHENTICATION__USERNAME = STORE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Password</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_WITH_AUTHENTICATION__PASSWORD = STORE_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>Store With Authentication</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_WITH_AUTHENTICATION_FEATURE_COUNT = STORE_FEATURE_COUNT + 2;
+
+    /**
+     * The number of operations of the '<em>Store With Authentication</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STORE_WITH_AUTHENTICATION_OPERATION_COUNT = STORE_OPERATION_COUNT + 0;
+
+    /**
+     * The meta object id for the '{@link adaptorinterface.impl.ServicePersistenceImpl <em>Service Persistence</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.impl.ServicePersistenceImpl
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getServicePersistence()
+     * @generated
+     */
+    int SERVICE_PERSISTENCE = 35;
+
+    /**
+     * The feature id for the '<em><b>Store</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVICE_PERSISTENCE__STORE = 0;
+
+    /**
+     * The number of structural features of the '<em>Service Persistence</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVICE_PERSISTENCE_FEATURE_COUNT = 1;
+
+    /**
+     * The number of operations of the '<em>Service Persistence</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVICE_PERSISTENCE_OPERATION_COUNT = 0;
+
+    /**
+     * The meta object id for the '{@link adaptorinterface.impl.OSLCServicePersistenceImpl <em>OSLC Service Persistence</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.impl.OSLCServicePersistenceImpl
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getOSLCServicePersistence()
+     * @generated
+     */
+    int OSLC_SERVICE_PERSISTENCE = 36;
+
+    /**
+     * The feature id for the '<em><b>Store</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int OSLC_SERVICE_PERSISTENCE__STORE = SERVICE_PERSISTENCE__STORE;
+
+    /**
+     * The feature id for the '<em><b>Creation Factory</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int OSLC_SERVICE_PERSISTENCE__CREATION_FACTORY = SERVICE_PERSISTENCE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Query Capability</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int OSLC_SERVICE_PERSISTENCE__QUERY_CAPABILITY = SERVICE_PERSISTENCE_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Selection Dialog</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int OSLC_SERVICE_PERSISTENCE__SELECTION_DIALOG = SERVICE_PERSISTENCE_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Creation Dialog</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int OSLC_SERVICE_PERSISTENCE__CREATION_DIALOG = SERVICE_PERSISTENCE_FEATURE_COUNT + 3;
+
+    /**
+     * The number of structural features of the '<em>OSLC Service Persistence</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int OSLC_SERVICE_PERSISTENCE_FEATURE_COUNT = SERVICE_PERSISTENCE_FEATURE_COUNT + 4;
+
+    /**
+     * The number of operations of the '<em>OSLC Service Persistence</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int OSLC_SERVICE_PERSISTENCE_OPERATION_COUNT = SERVICE_PERSISTENCE_OPERATION_COUNT + 0;
+
+    /**
+     * The meta object id for the '{@link adaptorinterface.impl.WebServicePersistenceImpl <em>Web Service Persistence</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.impl.WebServicePersistenceImpl
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getWebServicePersistence()
+     * @generated
+     */
+    int WEB_SERVICE_PERSISTENCE = 37;
+
+    /**
+     * The feature id for the '<em><b>Store</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int WEB_SERVICE_PERSISTENCE__STORE = SERVICE_PERSISTENCE__STORE;
+
+    /**
+     * The feature id for the '<em><b>Read</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int WEB_SERVICE_PERSISTENCE__READ = SERVICE_PERSISTENCE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Delete</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int WEB_SERVICE_PERSISTENCE__DELETE = SERVICE_PERSISTENCE_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Update</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int WEB_SERVICE_PERSISTENCE__UPDATE = SERVICE_PERSISTENCE_FEATURE_COUNT + 2;
+
+    /**
+     * The number of structural features of the '<em>Web Service Persistence</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int WEB_SERVICE_PERSISTENCE_FEATURE_COUNT = SERVICE_PERSISTENCE_FEATURE_COUNT + 3;
+
+    /**
+     * The number of operations of the '<em>Web Service Persistence</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int WEB_SERVICE_PERSISTENCE_OPERATION_COUNT = SERVICE_PERSISTENCE_OPERATION_COUNT + 0;
+
+    /**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2428,7 +2775,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyOccurs()
      * @generated
      */
-	int RESOURCE_PROPERTY_OCCURS = 33;
+	int RESOURCE_PROPERTY_OCCURS = 38;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyValueType <em>Resource Property Value Type</em>}' enum.
@@ -2438,7 +2785,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyValueType()
      * @generated
      */
-	int RESOURCE_PROPERTY_VALUE_TYPE = 34;
+	int RESOURCE_PROPERTY_VALUE_TYPE = 39;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyRepresentation <em>Resource Property Representation</em>}' enum.
@@ -2448,7 +2795,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRepresentation()
      * @generated
      */
-	int RESOURCE_PROPERTY_REPRESENTATION = 35;
+	int RESOURCE_PROPERTY_REPRESENTATION = 40;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyIsMemberProperty <em>Resource Property Is Member Property</em>}' enum.
@@ -2458,7 +2805,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyIsMemberProperty()
      * @generated
      */
-	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 36;
+	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 41;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyMultiValueRepresentation <em>Resource Property Multi Value Representation</em>}' enum.
@@ -2468,7 +2815,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyMultiValueRepresentation()
      * @generated
      */
-	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 37;
+	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 42;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -2478,7 +2825,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
      * @generated
      */
-	int RESOURCE_SERVICE_NAMESPACE = 38;
+	int RESOURCE_SERVICE_NAMESPACE = 43;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ShaclPropertyDataType <em>Shacl Property Data Type</em>}' enum.
@@ -2488,7 +2835,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
      * @generated
      */
-	int SHACL_PROPERTY_DATA_TYPE = 39;
+	int SHACL_PROPERTY_DATA_TYPE = 44;
 
 
 	/**
@@ -2733,6 +3080,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getAdaptorInterface_BackendCodeTemplate_createResource();
 
 	/**
+     * Returns the meta object for the containment reference list '{@link adaptorinterface.AdaptorInterface#getStores <em>Stores</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Stores</em>'.
+     * @see adaptorinterface.AdaptorInterface#getStores()
+     * @see #getAdaptorInterface()
+     * @generated
+     */
+    EReference getAdaptorInterface_Stores();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.Specification <em>Specification</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3145,6 +3503,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getService_Usages();
 
 	/**
+     * Returns the meta object for the containment reference '{@link adaptorinterface.Service#getPersistence <em>Persistence</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Persistence</em>'.
+     * @see adaptorinterface.Service#getPersistence()
+     * @see #getService()
+     * @generated
+     */
+    EReference getService_Persistence();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.WebService <em>Web Service</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3232,6 +3601,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getWebService_Update();
 
 	/**
+     * Returns the meta object for the containment reference '{@link adaptorinterface.WebService#getPersistence <em>Persistence</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Persistence</em>'.
+     * @see adaptorinterface.WebService#getPersistence()
+     * @see #getWebService()
+     * @generated
+     */
+    EReference getWebService_Persistence();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.TrsService <em>Trs Service</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4417,6 +4797,210 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EClass getMavenSpecificationConfiguration();
 
 	/**
+     * Returns the meta object for class '{@link adaptorinterface.Store <em>Store</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Store</em>'.
+     * @see adaptorinterface.Store
+     * @generated
+     */
+    EClass getStore();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Store#getDefaultNamedGraph <em>Default Named Graph</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Default Named Graph</em>'.
+     * @see adaptorinterface.Store#getDefaultNamedGraph()
+     * @see #getStore()
+     * @generated
+     */
+    EAttribute getStore_DefaultNamedGraph();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Store#getSparqlQueryEndpoint <em>Sparql Query Endpoint</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Sparql Query Endpoint</em>'.
+     * @see adaptorinterface.Store#getSparqlQueryEndpoint()
+     * @see #getStore()
+     * @generated
+     */
+    EAttribute getStore_SparqlQueryEndpoint();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Store#getSparqlUpdateEndpoint <em>Sparql Update Endpoint</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Sparql Update Endpoint</em>'.
+     * @see adaptorinterface.Store#getSparqlUpdateEndpoint()
+     * @see #getStore()
+     * @generated
+     */
+    EAttribute getStore_SparqlUpdateEndpoint();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Store#getInitialPoolSize <em>Initial Pool Size</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Initial Pool Size</em>'.
+     * @see adaptorinterface.Store#getInitialPoolSize()
+     * @see #getStore()
+     * @generated
+     */
+    EAttribute getStore_InitialPoolSize();
+
+    /**
+     * Returns the meta object for class '{@link adaptorinterface.StoreWithAuthentication <em>Store With Authentication</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Store With Authentication</em>'.
+     * @see adaptorinterface.StoreWithAuthentication
+     * @generated
+     */
+    EClass getStoreWithAuthentication();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.StoreWithAuthentication#getUsername <em>Username</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Username</em>'.
+     * @see adaptorinterface.StoreWithAuthentication#getUsername()
+     * @see #getStoreWithAuthentication()
+     * @generated
+     */
+    EAttribute getStoreWithAuthentication_Username();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.StoreWithAuthentication#getPassword <em>Password</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Password</em>'.
+     * @see adaptorinterface.StoreWithAuthentication#getPassword()
+     * @see #getStoreWithAuthentication()
+     * @generated
+     */
+    EAttribute getStoreWithAuthentication_Password();
+
+    /**
+     * Returns the meta object for class '{@link adaptorinterface.ServicePersistence <em>Service Persistence</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Service Persistence</em>'.
+     * @see adaptorinterface.ServicePersistence
+     * @generated
+     */
+    EClass getServicePersistence();
+
+    /**
+     * Returns the meta object for the reference '{@link adaptorinterface.ServicePersistence#getStore <em>Store</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Store</em>'.
+     * @see adaptorinterface.ServicePersistence#getStore()
+     * @see #getServicePersistence()
+     * @generated
+     */
+    EReference getServicePersistence_Store();
+
+    /**
+     * Returns the meta object for class '{@link adaptorinterface.OSLCServicePersistence <em>OSLC Service Persistence</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>OSLC Service Persistence</em>'.
+     * @see adaptorinterface.OSLCServicePersistence
+     * @generated
+     */
+    EClass getOSLCServicePersistence();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.OSLCServicePersistence#isCreationFactory <em>Creation Factory</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Creation Factory</em>'.
+     * @see adaptorinterface.OSLCServicePersistence#isCreationFactory()
+     * @see #getOSLCServicePersistence()
+     * @generated
+     */
+    EAttribute getOSLCServicePersistence_CreationFactory();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.OSLCServicePersistence#isQueryCapability <em>Query Capability</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Query Capability</em>'.
+     * @see adaptorinterface.OSLCServicePersistence#isQueryCapability()
+     * @see #getOSLCServicePersistence()
+     * @generated
+     */
+    EAttribute getOSLCServicePersistence_QueryCapability();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.OSLCServicePersistence#isSelectionDialog <em>Selection Dialog</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Selection Dialog</em>'.
+     * @see adaptorinterface.OSLCServicePersistence#isSelectionDialog()
+     * @see #getOSLCServicePersistence()
+     * @generated
+     */
+    EAttribute getOSLCServicePersistence_SelectionDialog();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.OSLCServicePersistence#isCreationDialog <em>Creation Dialog</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Creation Dialog</em>'.
+     * @see adaptorinterface.OSLCServicePersistence#isCreationDialog()
+     * @see #getOSLCServicePersistence()
+     * @generated
+     */
+    EAttribute getOSLCServicePersistence_CreationDialog();
+
+    /**
+     * Returns the meta object for class '{@link adaptorinterface.WebServicePersistence <em>Web Service Persistence</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Web Service Persistence</em>'.
+     * @see adaptorinterface.WebServicePersistence
+     * @generated
+     */
+    EClass getWebServicePersistence();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.WebServicePersistence#isRead <em>Read</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Read</em>'.
+     * @see adaptorinterface.WebServicePersistence#isRead()
+     * @see #getWebServicePersistence()
+     * @generated
+     */
+    EAttribute getWebServicePersistence_Read();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.WebServicePersistence#isDelete <em>Delete</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Delete</em>'.
+     * @see adaptorinterface.WebServicePersistence#isDelete()
+     * @see #getWebServicePersistence()
+     * @generated
+     */
+    EAttribute getWebServicePersistence_Delete();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.WebServicePersistence#isUpdate <em>Update</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Update</em>'.
+     * @see adaptorinterface.WebServicePersistence#isUpdate()
+     * @see #getWebServicePersistence()
+     * @generated
+     */
+    EAttribute getWebServicePersistence_Update();
+
+    /**
      * Returns the meta object for enum '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4688,6 +5272,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE = eINSTANCE.getAdaptorInterface_BackendCodeTemplate_createResource();
 
 		/**
+         * The meta object literal for the '<em><b>Stores</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ADAPTOR_INTERFACE__STORES = eINSTANCE.getAdaptorInterface_Stores();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.SpecificationImpl <em>Specification</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5004,6 +5596,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute SERVICE__USAGES = eINSTANCE.getService_Usages();
 
 		/**
+         * The meta object literal for the '<em><b>Persistence</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVICE__PERSISTENCE = eINSTANCE.getService_Persistence();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.WebServiceImpl <em>Web Service</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5070,6 +5670,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute WEB_SERVICE__UPDATE = eINSTANCE.getWebService_Update();
 
 		/**
+         * The meta object literal for the '<em><b>Persistence</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference WEB_SERVICE__PERSISTENCE = eINSTANCE.getWebService_Persistence();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.TrsServiceImpl <em>Trs Service</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6000,6 +6608,168 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EClass MAVEN_SPECIFICATION_CONFIGURATION = eINSTANCE.getMavenSpecificationConfiguration();
 
 		/**
+         * The meta object literal for the '{@link adaptorinterface.impl.StoreImpl <em>Store</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.impl.StoreImpl
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getStore()
+         * @generated
+         */
+        EClass STORE = eINSTANCE.getStore();
+
+        /**
+         * The meta object literal for the '<em><b>Default Named Graph</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute STORE__DEFAULT_NAMED_GRAPH = eINSTANCE.getStore_DefaultNamedGraph();
+
+        /**
+         * The meta object literal for the '<em><b>Sparql Query Endpoint</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute STORE__SPARQL_QUERY_ENDPOINT = eINSTANCE.getStore_SparqlQueryEndpoint();
+
+        /**
+         * The meta object literal for the '<em><b>Sparql Update Endpoint</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute STORE__SPARQL_UPDATE_ENDPOINT = eINSTANCE.getStore_SparqlUpdateEndpoint();
+
+        /**
+         * The meta object literal for the '<em><b>Initial Pool Size</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute STORE__INITIAL_POOL_SIZE = eINSTANCE.getStore_InitialPoolSize();
+
+        /**
+         * The meta object literal for the '{@link adaptorinterface.impl.StoreWithAuthenticationImpl <em>Store With Authentication</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.impl.StoreWithAuthenticationImpl
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getStoreWithAuthentication()
+         * @generated
+         */
+        EClass STORE_WITH_AUTHENTICATION = eINSTANCE.getStoreWithAuthentication();
+
+        /**
+         * The meta object literal for the '<em><b>Username</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute STORE_WITH_AUTHENTICATION__USERNAME = eINSTANCE.getStoreWithAuthentication_Username();
+
+        /**
+         * The meta object literal for the '<em><b>Password</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute STORE_WITH_AUTHENTICATION__PASSWORD = eINSTANCE.getStoreWithAuthentication_Password();
+
+        /**
+         * The meta object literal for the '{@link adaptorinterface.impl.ServicePersistenceImpl <em>Service Persistence</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.impl.ServicePersistenceImpl
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getServicePersistence()
+         * @generated
+         */
+        EClass SERVICE_PERSISTENCE = eINSTANCE.getServicePersistence();
+
+        /**
+         * The meta object literal for the '<em><b>Store</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVICE_PERSISTENCE__STORE = eINSTANCE.getServicePersistence_Store();
+
+        /**
+         * The meta object literal for the '{@link adaptorinterface.impl.OSLCServicePersistenceImpl <em>OSLC Service Persistence</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.impl.OSLCServicePersistenceImpl
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getOSLCServicePersistence()
+         * @generated
+         */
+        EClass OSLC_SERVICE_PERSISTENCE = eINSTANCE.getOSLCServicePersistence();
+
+        /**
+         * The meta object literal for the '<em><b>Creation Factory</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute OSLC_SERVICE_PERSISTENCE__CREATION_FACTORY = eINSTANCE.getOSLCServicePersistence_CreationFactory();
+
+        /**
+         * The meta object literal for the '<em><b>Query Capability</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute OSLC_SERVICE_PERSISTENCE__QUERY_CAPABILITY = eINSTANCE.getOSLCServicePersistence_QueryCapability();
+
+        /**
+         * The meta object literal for the '<em><b>Selection Dialog</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute OSLC_SERVICE_PERSISTENCE__SELECTION_DIALOG = eINSTANCE.getOSLCServicePersistence_SelectionDialog();
+
+        /**
+         * The meta object literal for the '<em><b>Creation Dialog</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute OSLC_SERVICE_PERSISTENCE__CREATION_DIALOG = eINSTANCE.getOSLCServicePersistence_CreationDialog();
+
+        /**
+         * The meta object literal for the '{@link adaptorinterface.impl.WebServicePersistenceImpl <em>Web Service Persistence</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.impl.WebServicePersistenceImpl
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getWebServicePersistence()
+         * @generated
+         */
+        EClass WEB_SERVICE_PERSISTENCE = eINSTANCE.getWebServicePersistence();
+
+        /**
+         * The meta object literal for the '<em><b>Read</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute WEB_SERVICE_PERSISTENCE__READ = eINSTANCE.getWebServicePersistence_Read();
+
+        /**
+         * The meta object literal for the '<em><b>Delete</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute WEB_SERVICE_PERSISTENCE__DELETE = eINSTANCE.getWebServicePersistence_Delete();
+
+        /**
+         * The meta object literal for the '<em><b>Update</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute WEB_SERVICE_PERSISTENCE__UPDATE = eINSTANCE.getWebServicePersistence_Update();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

@@ -6,11 +6,14 @@ import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.Resource;
 import adaptorinterface.WebService;
 
+import adaptorinterface.WebServicePersistence;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -30,6 +33,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link adaptorinterface.impl.WebServiceImpl#isRead <em>Read</em>}</li>
  *   <li>{@link adaptorinterface.impl.WebServiceImpl#isDelete <em>Delete</em>}</li>
  *   <li>{@link adaptorinterface.impl.WebServiceImpl#isUpdate <em>Update</em>}</li>
+ *   <li>{@link adaptorinterface.impl.WebServiceImpl#getPersistence <em>Persistence</em>}</li>
  * </ul>
  *
  * @generated
@@ -166,6 +170,16 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	protected boolean update = UPDATE_EDEFAULT;
 
 	/**
+     * The cached value of the '{@link #getPersistence() <em>Persistence</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getPersistence()
+     * @generated
+     * @ordered
+     */
+    protected WebServicePersistence persistence;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -324,6 +338,63 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public WebServicePersistence getPersistence() {
+        return persistence;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetPersistence(WebServicePersistence newPersistence, NotificationChain msgs) {
+        WebServicePersistence oldPersistence = persistence;
+        persistence = newPersistence;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE, oldPersistence, newPersistence);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setPersistence(WebServicePersistence newPersistence) {
+        if (newPersistence != persistence) {
+            NotificationChain msgs = null;
+            if (persistence != null)
+                msgs = ((InternalEObject)persistence).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE, null, msgs);
+            if (newPersistence != null)
+                msgs = ((InternalEObject)newPersistence).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE, null, msgs);
+            msgs = basicSetPersistence(newPersistence, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE, newPersistence, newPersistence));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+            case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
+                return basicSetPersistence(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -344,6 +415,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
                 return isDelete();
             case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
                 return isUpdate();
+            case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
+                return getPersistence();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -379,6 +452,9 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
             case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
                 setUpdate((Boolean)newValue);
                 return;
+            case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
+                setPersistence((WebServicePersistence)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -412,6 +488,9 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
             case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
                 setUpdate(UPDATE_EDEFAULT);
                 return;
+            case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
+                setPersistence((WebServicePersistence)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -438,6 +517,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
                 return delete != DELETE_EDEFAULT;
             case AdaptorinterfacePackage.WEB_SERVICE__UPDATE:
                 return update != UPDATE_EDEFAULT;
+            case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
+                return persistence != null;
         }
         return super.eIsSet(featureID);
     }
