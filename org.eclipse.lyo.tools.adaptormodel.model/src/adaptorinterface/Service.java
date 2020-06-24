@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.Service#getCreationDialogs <em>Creation Dialogs</em>}</li>
  *   <li>{@link adaptorinterface.Service#getBasicCapabilities <em>Basic Capabilities</em>}</li>
  *   <li>{@link adaptorinterface.Service#getUsages <em>Usages</em>}</li>
+ *   <li>{@link adaptorinterface.Service#getPersistence <em>Persistence</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getService()
@@ -181,5 +182,31 @@ public interface Service extends EObject {
      * @generated
      */
 	EList<String> getUsages();
+
+    /**
+     * Returns the value of the '<em><b>Persistence</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Persistence</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Persistence</em>' containment reference.
+     * @see #setPersistence(OSLCServicePersistence)
+     * @see adaptorinterface.AdaptorinterfacePackage#getService_Persistence()
+     * @model containment="true"
+     * @generated
+     */
+    OSLCServicePersistence getPersistence();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.Service#getPersistence <em>Persistence</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Persistence</em>' containment reference.
+     * @see #getPersistence()
+     * @generated
+     */
+    void setPersistence(OSLCServicePersistence value);
 
 } // Service

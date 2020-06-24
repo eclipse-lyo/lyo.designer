@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_getResources <em>Backend Code Template get Resources</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_searchResources <em>Backend Code Template search Resources</em>}</li>
  *   <li>{@link adaptorinterface.AdaptorInterface#getBackendCodeTemplate_createResource <em>Backend Code Template create Resource</em>}</li>
+ *   <li>{@link adaptorinterface.AdaptorInterface#getStores <em>Stores</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface()
@@ -569,5 +570,21 @@ public interface AdaptorInterface extends EObject {
      * @generated
      */
 	void setBackendCodeTemplate_createResource(String value);
+
+    /**
+     * Returns the value of the '<em><b>Stores</b></em>' containment reference list.
+     * The list contents are of type {@link adaptorinterface.Store}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Stores</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Stores</em>' containment reference list.
+     * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_Stores()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Store> getStores();
 
 } // AdaptorInterface

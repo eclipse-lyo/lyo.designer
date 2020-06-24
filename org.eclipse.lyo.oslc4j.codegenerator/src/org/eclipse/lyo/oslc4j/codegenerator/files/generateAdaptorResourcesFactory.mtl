@@ -79,15 +79,14 @@ public static Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([
 [/for]
 
 [for (aWebService: WebService | webServices(anAdaptorInterface, aResource))]
-[let methodSuffix: String = (if (webServices(anAdaptorInterface, aResource)->size() = 1) then '' else aWebService.name endif)]
 [if (webServices(anAdaptorInterface, aResource)->indexOf(aWebService) = 1)]
 public static [javaClassName(aResource)/] create[javaName(aResource, true)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/])
 {
-    return new [javaClassName(aResource)/](constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]));
+    return new [javaClassName(aResource)/]([constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]));
 }
 [/if]
 
-public static URI constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/])
+public static URI [constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/])
 {
     String basePath = OSLC4JUtils.getServletURI();
     Map<String, Object> pathParameters = new HashMap<String, Object>();
@@ -100,16 +99,15 @@ public static URI constructURIFor[javaName(aResource, true)/][methodSuffix/]([co
     return builder.path(instanceURI).buildFromMap(pathParameters);
 }
 
-public static Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, true)/] final String label)
+public static Link [constructLinkMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, true)/] final String label)
 {
-    return new Link(constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]), label);
+    return new Link([constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]), label);
 }
 
-public static Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/])
+public static Link [constructLinkMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/])
 {
-    return new Link(constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]));
+    return new Link([constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]));
 }
-[/let]
 [/for]
 [/template]
 

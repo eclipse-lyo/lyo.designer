@@ -846,6 +846,13 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
+        <nodeMappings name="AdaptorInterface.Store" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteStore']" semanticCandidatesExpression="[stores/]" domainClass="adaptorinterface.Store">
+          <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="['Store'/]" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
         <nodeMappings name="AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)->union(self.webServices.resourceTypes)/]" domainClass="adaptorinterface.Resource">
           <style xsi:type="style:EllipseNodeDescription" labelSize="9" showIcon="false" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -900,6 +907,24 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
+        </edgeMappings>
+        <edgeMappings name="ServiceToStore" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Service'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.WebService']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Store']" targetFinderExpression="[thisEObject.store/]" sourceFinderExpression="[self.eContainer()/]" domainClass="adaptorinterface::ServicePersistence" useDomainElement="true">
+          <conditionnalStyles predicateExpression="[self.oclIsTypeOf(OSLCServicePersistence)/]">
+            <style lineStyle="dot" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="['Persistence'/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.oclIsTypeOf(WebServicePersistence)/]">
+            <style lineStyle="dot" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="['Persistence'/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
         </edgeMappings>
         <containerMappings name="AdaptorInterface.GenericRequiredAdaptor" semanticCandidatesExpression="feature:requiredAdaptors" domainClass="adaptorinterface.GenericRequiredAdaptor">
           <subNodeMappings name="AdaptorInterface.GenericRequiredAdaptor.ConsumedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='AdaptorInterface.DeleteConsumedResource']" semanticCandidatesExpression="[self.servicedResources/]" domainClass="adaptorinterface.Resource">
@@ -1136,6 +1161,60 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateStore" label="Store" precondition="[self.stores->size() &lt;  1/]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Store']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Store" referenceName="stores">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="initialPoolSize" valueExpression="500"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="defaultNamedGraph" valueExpression="['urn:x-arq:DefaultGraph'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sparqlQueryEndpoint" valueExpression="['http://localhost:3030/dataset/sparql'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sparqlUpdateEndpoint" valueExpression="['http://localhost:3030/dataset/update'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateStoreWithAuthentication" label="Store With Authentication" precondition="[self.stores->size() &lt;  1/]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Store']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.StoreWithAuthentication" referenceName="stores">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="initialPoolSize" valueExpression="500"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="defaultNamedGraph" valueExpression="['urn:x-arq:DefaultGraph'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sparqlQueryEndpoint" valueExpression="['http://localhost:3030/dataset/sparql'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sparqlUpdateEndpoint" valueExpression="['http://localhost:3030/dataset/update'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="username" valueExpression="['user'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="password" valueExpression="['pass'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="AdaptorInterface.ConnectServiceToStore" label="Connect Service To Store" edgeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@edgeMappings[name='ServiceToStore']" connectionStartPrecondition="[preSource.persistence.oclIsUndefined()/]">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source.oclIsTypeOf(WebService)/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface::WebServicePersistence" referenceName="persistence" variableName="servicePersistence">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="servicePersistence">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="store" valueExpression="[target/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source.oclIsTypeOf(Service)/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface::OSLCServicePersistence" referenceName="persistence" variableName="servicePersistence">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="servicePersistence">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="store" valueExpression="[target/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteManagedResource">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -1153,6 +1232,21 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteStore">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool_1:For" expression="[elementView.incomingEdges.semanticElements->filter(ServicePersistence)/]" iteratorName="p">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[p/]">
+                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="AdaptorInterface.ReconnectServiceToServiceProvider" elementsToSelect="[target/]" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
@@ -1968,6 +2062,12 @@
             <firstModelOperations xsi:type="tool_1:SetValue" featureName="swaggerDocumentation" valueExpression="var:newValue"/>
           </initialOperation>
         </controls>
+        <controls xsi:type="properties:ButtonDescription" name="adaptorinterface::AdaptorInterface generate" labelExpression="Generation" buttonLabelExpression="Generate Adaptor Java Code">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:generateAdaptorInterface()"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:LabelDescription" name="adaptorinterface::AdaptorInterface generationTips" labelExpression="TIPS" displayExpression="Create a 'generator.properties' file  (in the same folder as your toolchain model) and set a 'generationPath' property. This will avoid the prompt dialog for generation location."/>
       </groups>
     </categories>
   </extensions>

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.WebService#isRead <em>Read</em>}</li>
  *   <li>{@link adaptorinterface.WebService#isDelete <em>Delete</em>}</li>
  *   <li>{@link adaptorinterface.WebService#isUpdate <em>Update</em>}</li>
+ *   <li>{@link adaptorinterface.WebService#getPersistence <em>Persistence</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getWebService()
@@ -202,5 +203,31 @@ public interface WebService extends EObject {
      * @generated
      */
 	void setUpdate(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Persistence</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Persistence</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Persistence</em>' containment reference.
+     * @see #setPersistence(WebServicePersistence)
+     * @see adaptorinterface.AdaptorinterfacePackage#getWebService_Persistence()
+     * @model containment="true"
+     * @generated
+     */
+    WebServicePersistence getPersistence();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.WebService#getPersistence <em>Persistence</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Persistence</em>' containment reference.
+     * @see #getPersistence()
+     * @generated
+     */
+    void setPersistence(WebServicePersistence value);
 
 } // WebService

@@ -265,6 +265,42 @@ public interface AdaptorinterfaceFactory extends EFactory {
 	MavenSpecificationConfiguration createMavenSpecificationConfiguration();
 
 	/**
+     * Returns a new object of class '<em>Store</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Store</em>'.
+     * @generated
+     */
+    Store createStore();
+
+    /**
+     * Returns a new object of class '<em>Store With Authentication</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Store With Authentication</em>'.
+     * @generated
+     */
+    StoreWithAuthentication createStoreWithAuthentication();
+
+    /**
+     * Returns a new object of class '<em>OSLC Service Persistence</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>OSLC Service Persistence</em>'.
+     * @generated
+     */
+    OSLCServicePersistence createOSLCServicePersistence();
+
+    /**
+     * Returns a new object of class '<em>Web Service Persistence</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Web Service Persistence</em>'.
+     * @generated
+     */
+    WebServicePersistence createWebServicePersistence();
+
+    /**
      * Returns a new object of class '<em>Web Service</em>'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

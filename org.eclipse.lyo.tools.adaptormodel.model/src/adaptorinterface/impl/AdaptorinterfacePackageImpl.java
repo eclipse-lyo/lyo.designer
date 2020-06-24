@@ -18,6 +18,7 @@ import adaptorinterface.MavenServerConfiguration;
 import adaptorinterface.MavenSpecificationConfiguration;
 import adaptorinterface.ModelledRequiredAdaptor;
 import adaptorinterface.NamespacePrefix;
+import adaptorinterface.OSLCServicePersistence;
 import adaptorinterface.ProjectConfiguration;
 import adaptorinterface.Publisher;
 import adaptorinterface.QueryCapability;
@@ -32,6 +33,7 @@ import adaptorinterface.ResourcePropertyValueType;
 import adaptorinterface.ResourceServiceNamespace;
 import adaptorinterface.ServerConfiguration;
 import adaptorinterface.Service;
+import adaptorinterface.ServicePersistence;
 import adaptorinterface.ServiceProvider;
 import adaptorinterface.ServiceProviderCatalog;
 import adaptorinterface.ShaclProperty;
@@ -41,8 +43,11 @@ import adaptorinterface.Shape;
 import adaptorinterface.ShapeProperty;
 import adaptorinterface.Specification;
 import adaptorinterface.SpecificationConfiguration;
+import adaptorinterface.Store;
+import adaptorinterface.StoreWithAuthentication;
 import adaptorinterface.TrsService;
 import adaptorinterface.WebService;
+import adaptorinterface.WebServicePersistence;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -290,6 +295,41 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	private EClass mavenSpecificationConfigurationEClass = null;
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass storeEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass storeWithAuthenticationEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass servicePersistenceEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass oslcServicePersistenceEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass webServicePersistenceEClass = null;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -601,6 +641,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getAdaptorInterface_Stores() {
+        return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(21);
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -944,6 +993,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getService_Persistence() {
+        return (EReference)serviceEClass.getEStructuralFeatures().get(8);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -1015,6 +1073,15 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getWebService_Persistence() {
+        return (EReference)webServiceEClass.getEStructuralFeatures().get(7);
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -2006,6 +2073,177 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getStore() {
+        return storeEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStore_DefaultNamedGraph() {
+        return (EAttribute)storeEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStore_SparqlQueryEndpoint() {
+        return (EAttribute)storeEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStore_SparqlUpdateEndpoint() {
+        return (EAttribute)storeEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStore_InitialPoolSize() {
+        return (EAttribute)storeEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getStoreWithAuthentication() {
+        return storeWithAuthenticationEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStoreWithAuthentication_Username() {
+        return (EAttribute)storeWithAuthenticationEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStoreWithAuthentication_Password() {
+        return (EAttribute)storeWithAuthenticationEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getServicePersistence() {
+        return servicePersistenceEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getServicePersistence_Store() {
+        return (EReference)servicePersistenceEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getOSLCServicePersistence() {
+        return oslcServicePersistenceEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getOSLCServicePersistence_CreationFactory() {
+        return (EAttribute)oslcServicePersistenceEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getOSLCServicePersistence_QueryCapability() {
+        return (EAttribute)oslcServicePersistenceEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getOSLCServicePersistence_SelectionDialog() {
+        return (EAttribute)oslcServicePersistenceEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getOSLCServicePersistence_CreationDialog() {
+        return (EAttribute)oslcServicePersistenceEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getWebServicePersistence() {
+        return webServicePersistenceEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getWebServicePersistence_Read() {
+        return (EAttribute)webServicePersistenceEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getWebServicePersistence_Delete() {
+        return (EAttribute)webServicePersistenceEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getWebServicePersistence_Update() {
+        return (EAttribute)webServicePersistenceEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -2117,6 +2355,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_GET_RESOURCES);
         createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES);
         createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE);
+        createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__STORES);
 
         specificationEClass = createEClass(SPECIFICATION);
         createEReference(specificationEClass, SPECIFICATION__DOMAIN_SPECIFICATIONS);
@@ -2161,6 +2400,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEReference(serviceEClass, SERVICE__CREATION_DIALOGS);
         createEReference(serviceEClass, SERVICE__BASIC_CAPABILITIES);
         createEAttribute(serviceEClass, SERVICE__USAGES);
+        createEReference(serviceEClass, SERVICE__PERSISTENCE);
 
         webServiceEClass = createEClass(WEB_SERVICE);
         createEAttribute(webServiceEClass, WEB_SERVICE__NAME);
@@ -2170,6 +2410,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEAttribute(webServiceEClass, WEB_SERVICE__READ);
         createEAttribute(webServiceEClass, WEB_SERVICE__DELETE);
         createEAttribute(webServiceEClass, WEB_SERVICE__UPDATE);
+        createEReference(webServiceEClass, WEB_SERVICE__PERSISTENCE);
 
         trsServiceEClass = createEClass(TRS_SERVICE);
         createEAttribute(trsServiceEClass, TRS_SERVICE__BASE_PAGE_LIMIT);
@@ -2306,6 +2547,30 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
         mavenSpecificationConfigurationEClass = createEClass(MAVEN_SPECIFICATION_CONFIGURATION);
 
+        storeEClass = createEClass(STORE);
+        createEAttribute(storeEClass, STORE__DEFAULT_NAMED_GRAPH);
+        createEAttribute(storeEClass, STORE__SPARQL_QUERY_ENDPOINT);
+        createEAttribute(storeEClass, STORE__SPARQL_UPDATE_ENDPOINT);
+        createEAttribute(storeEClass, STORE__INITIAL_POOL_SIZE);
+
+        storeWithAuthenticationEClass = createEClass(STORE_WITH_AUTHENTICATION);
+        createEAttribute(storeWithAuthenticationEClass, STORE_WITH_AUTHENTICATION__USERNAME);
+        createEAttribute(storeWithAuthenticationEClass, STORE_WITH_AUTHENTICATION__PASSWORD);
+
+        servicePersistenceEClass = createEClass(SERVICE_PERSISTENCE);
+        createEReference(servicePersistenceEClass, SERVICE_PERSISTENCE__STORE);
+
+        oslcServicePersistenceEClass = createEClass(OSLC_SERVICE_PERSISTENCE);
+        createEAttribute(oslcServicePersistenceEClass, OSLC_SERVICE_PERSISTENCE__CREATION_FACTORY);
+        createEAttribute(oslcServicePersistenceEClass, OSLC_SERVICE_PERSISTENCE__QUERY_CAPABILITY);
+        createEAttribute(oslcServicePersistenceEClass, OSLC_SERVICE_PERSISTENCE__SELECTION_DIALOG);
+        createEAttribute(oslcServicePersistenceEClass, OSLC_SERVICE_PERSISTENCE__CREATION_DIALOG);
+
+        webServicePersistenceEClass = createEClass(WEB_SERVICE_PERSISTENCE);
+        createEAttribute(webServicePersistenceEClass, WEB_SERVICE_PERSISTENCE__READ);
+        createEAttribute(webServicePersistenceEClass, WEB_SERVICE_PERSISTENCE__DELETE);
+        createEAttribute(webServicePersistenceEClass, WEB_SERVICE_PERSISTENCE__UPDATE);
+
         // Create enums
         resourcePropertyOccursEEnum = createEEnum(RESOURCE_PROPERTY_OCCURS);
         resourcePropertyValueTypeEEnum = createEEnum(RESOURCE_PROPERTY_VALUE_TYPE);
@@ -2357,6 +2622,9 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         mavenProjectConfigurationEClass.getESuperTypes().add(this.getProjectConfiguration());
         mavenServerConfigurationEClass.getESuperTypes().add(this.getServerConfiguration());
         mavenSpecificationConfigurationEClass.getESuperTypes().add(this.getSpecificationConfiguration());
+        storeWithAuthenticationEClass.getESuperTypes().add(this.getStore());
+        oslcServicePersistenceEClass.getESuperTypes().add(this.getServicePersistence());
+        webServicePersistenceEClass.getESuperTypes().add(this.getServicePersistence());
 
         // Initialize classes, features, and operations; add parameters
         initEClass(adaptorInterfaceEClass, AdaptorInterface.class, "AdaptorInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2381,6 +2649,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getAdaptorInterface_BackendCodeTemplate_getResources(), ecorePackage.getEString(), "backendCodeTemplate_getResources", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAdaptorInterface_BackendCodeTemplate_searchResources(), ecorePackage.getEString(), "backendCodeTemplate_searchResources", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAdaptorInterface_BackendCodeTemplate_createResource(), ecorePackage.getEString(), "backendCodeTemplate_createResource", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getAdaptorInterface_Stores(), this.getStore(), null, "stores", null, 0, -1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(specificationEClass, Specification.class, "Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getSpecification_DomainSpecifications(), this.getDomainSpecification(), null, "domainSpecifications", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2431,6 +2700,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEReference(getService_CreationDialogs(), this.getDialog(), null, "creationDialogs", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getService_BasicCapabilities(), this.getBasicCapability(), null, "basicCapabilities", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getService_Usages(), ecorePackage.getEString(), "usages", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getService_Persistence(), this.getOSLCServicePersistence(), null, "persistence", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(webServiceEClass, WebService.class, "WebService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getWebService_Name(), ecorePackage.getEString(), "name", null, 1, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2440,6 +2710,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getWebService_Read(), ecorePackage.getEBoolean(), "read", "true", 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getWebService_Delete(), ecorePackage.getEBoolean(), "delete", "false", 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getWebService_Update(), ecorePackage.getEBoolean(), "update", "false", 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getWebService_Persistence(), this.getWebServicePersistence(), null, "persistence", null, 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(trsServiceEClass, TrsService.class, "TrsService", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTrsService_BasePageLimit(), ecorePackage.getEInt(), "basePageLimit", null, 1, 1, TrsService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2575,6 +2846,30 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getMavenServerConfiguration_JettyPort(), ecorePackage.getEInt(), "jettyPort", null, 0, 1, MavenServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(mavenSpecificationConfigurationEClass, MavenSpecificationConfiguration.class, "MavenSpecificationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getStore_DefaultNamedGraph(), ecorePackage.getEString(), "defaultNamedGraph", null, 1, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getStore_SparqlQueryEndpoint(), ecorePackage.getEString(), "sparqlQueryEndpoint", null, 1, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getStore_SparqlUpdateEndpoint(), ecorePackage.getEString(), "sparqlUpdateEndpoint", null, 1, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getStore_InitialPoolSize(), ecorePackage.getEInt(), "initialPoolSize", null, 1, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(storeWithAuthenticationEClass, StoreWithAuthentication.class, "StoreWithAuthentication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getStoreWithAuthentication_Username(), ecorePackage.getEString(), "username", null, 1, 1, StoreWithAuthentication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getStoreWithAuthentication_Password(), ecorePackage.getEString(), "password", null, 1, 1, StoreWithAuthentication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(servicePersistenceEClass, ServicePersistence.class, "ServicePersistence", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getServicePersistence_Store(), this.getStore(), null, "store", null, 1, 1, ServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(oslcServicePersistenceEClass, OSLCServicePersistence.class, "OSLCServicePersistence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getOSLCServicePersistence_CreationFactory(), ecorePackage.getEBoolean(), "creationFactory", "false", 1, 1, OSLCServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getOSLCServicePersistence_QueryCapability(), ecorePackage.getEBoolean(), "queryCapability", "true", 1, 1, OSLCServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getOSLCServicePersistence_SelectionDialog(), ecorePackage.getEBoolean(), "selectionDialog", "true", 1, 1, OSLCServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getOSLCServicePersistence_CreationDialog(), ecorePackage.getEBoolean(), "creationDialog", "false", 1, 1, OSLCServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(webServicePersistenceEClass, WebServicePersistence.class, "WebServicePersistence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getWebServicePersistence_Read(), ecorePackage.getEBoolean(), "read", "true", 1, 1, WebServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getWebServicePersistence_Delete(), ecorePackage.getEBoolean(), "delete", "false", 1, 1, WebServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getWebServicePersistence_Update(), ecorePackage.getEBoolean(), "update", "false", 1, 1, WebServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(resourcePropertyOccursEEnum, ResourcePropertyOccurs.class, "ResourcePropertyOccurs");

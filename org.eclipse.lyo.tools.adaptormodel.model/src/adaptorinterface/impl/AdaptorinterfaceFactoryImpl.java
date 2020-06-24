@@ -82,6 +82,10 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
             case AdaptorinterfacePackage.MAVEN_PROJECT_CONFIGURATION: return createMavenProjectConfiguration();
             case AdaptorinterfacePackage.MAVEN_SERVER_CONFIGURATION: return createMavenServerConfiguration();
             case AdaptorinterfacePackage.MAVEN_SPECIFICATION_CONFIGURATION: return createMavenSpecificationConfiguration();
+            case AdaptorinterfacePackage.STORE: return createStore();
+            case AdaptorinterfacePackage.STORE_WITH_AUTHENTICATION: return createStoreWithAuthentication();
+            case AdaptorinterfacePackage.OSLC_SERVICE_PERSISTENCE: return createOSLCServicePersistence();
+            case AdaptorinterfacePackage.WEB_SERVICE_PERSISTENCE: return createWebServicePersistence();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -432,6 +436,46 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Store createStore() {
+        StoreImpl store = new StoreImpl();
+        return store;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public StoreWithAuthentication createStoreWithAuthentication() {
+        StoreWithAuthenticationImpl storeWithAuthentication = new StoreWithAuthenticationImpl();
+        return storeWithAuthentication;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public OSLCServicePersistence createOSLCServicePersistence() {
+        OSLCServicePersistenceImpl oslcServicePersistence = new OSLCServicePersistenceImpl();
+        return oslcServicePersistence;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public WebServicePersistence createWebServicePersistence() {
+        WebServicePersistenceImpl webServicePersistence = new WebServicePersistenceImpl();
+        return webServicePersistence;
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated

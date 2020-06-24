@@ -735,6 +735,98 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
     }
 
 	/**
+     * This keeps track of the one adapter used for all {@link adaptorinterface.Store} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected StoreItemProvider storeItemProvider;
+
+    /**
+     * This creates an adapter for a {@link adaptorinterface.Store}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createStoreAdapter() {
+        if (storeItemProvider == null) {
+            storeItemProvider = new StoreItemProvider(this);
+        }
+
+        return storeItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link adaptorinterface.StoreWithAuthentication} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected StoreWithAuthenticationItemProvider storeWithAuthenticationItemProvider;
+
+    /**
+     * This creates an adapter for a {@link adaptorinterface.StoreWithAuthentication}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createStoreWithAuthenticationAdapter() {
+        if (storeWithAuthenticationItemProvider == null) {
+            storeWithAuthenticationItemProvider = new StoreWithAuthenticationItemProvider(this);
+        }
+
+        return storeWithAuthenticationItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link adaptorinterface.OSLCServicePersistence} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected OSLCServicePersistenceItemProvider oslcServicePersistenceItemProvider;
+
+    /**
+     * This creates an adapter for a {@link adaptorinterface.OSLCServicePersistence}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createOSLCServicePersistenceAdapter() {
+        if (oslcServicePersistenceItemProvider == null) {
+            oslcServicePersistenceItemProvider = new OSLCServicePersistenceItemProvider(this);
+        }
+
+        return oslcServicePersistenceItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link adaptorinterface.WebServicePersistence} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected WebServicePersistenceItemProvider webServicePersistenceItemProvider;
+
+    /**
+     * This creates an adapter for a {@link adaptorinterface.WebServicePersistence}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createWebServicePersistenceAdapter() {
+        if (webServicePersistenceItemProvider == null) {
+            webServicePersistenceItemProvider = new WebServicePersistenceItemProvider(this);
+        }
+
+        return webServicePersistenceItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -862,6 +954,10 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
         if (mavenProjectConfigurationItemProvider != null) mavenProjectConfigurationItemProvider.dispose();
         if (mavenServerConfigurationItemProvider != null) mavenServerConfigurationItemProvider.dispose();
         if (mavenSpecificationConfigurationItemProvider != null) mavenSpecificationConfigurationItemProvider.dispose();
+        if (storeItemProvider != null) storeItemProvider.dispose();
+        if (storeWithAuthenticationItemProvider != null) storeWithAuthenticationItemProvider.dispose();
+        if (oslcServicePersistenceItemProvider != null) oslcServicePersistenceItemProvider.dispose();
+        if (webServicePersistenceItemProvider != null) webServicePersistenceItemProvider.dispose();
     }
 
 }
