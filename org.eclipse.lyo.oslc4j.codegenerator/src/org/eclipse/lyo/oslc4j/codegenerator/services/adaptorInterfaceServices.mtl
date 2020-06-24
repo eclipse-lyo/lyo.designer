@@ -93,7 +93,7 @@ anAdaptorInterface.serviceProviders()->select(aServiceProvider : ServiceProvider
 /]
 
 [comment return the set of WebServices that have aResource as a managed resource./]
-[query public webServices(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(WebService) = 
+[query public webServices(anAdaptorInterface : AdaptorInterface, aResource: Resource) : OrderedSet(WebService) = 
 anAdaptorInterface.webServices->select(aWebService : WebService | aWebService.resourceTypes->includes(aResource))
 /]
 

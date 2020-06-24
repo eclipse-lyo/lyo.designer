@@ -151,12 +151,20 @@ else
 endif)
 /]
 
+[query private propertyFilesRelativePath(traceabilityContext : OclAny) : String =
+'/src/main/resources'
+/]
+
 [query private javaFilesRelativePath(traceabilityContext : OclAny) : String =
 '/src/main/java'
 /]
 
 [query private webFilesRelativePath(traceabilityContext : OclAny) : String =
 '/src/main/webapp'
+/]
+
+[query public propertyFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.filesBasePath().concatenatePaths(propertyFilesRelativePath())
 /]
 
 [query public javaFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =

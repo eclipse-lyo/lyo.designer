@@ -49,6 +49,18 @@ aBasicCapability.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
 aService.eContainer(ServiceProvider).oclAsType(ServiceProvider)
 /]
 
+[query public containingService (aQueryCapability: QueryCapability) : Service = 
+aQueryCapability.eContainer(Service).oclAsType(Service)
+/]
+
+[query public containingService (aDialog: Dialog) : Service = 
+aDialog.eContainer(Service).oclAsType(Service)
+/]
+
+[query public containingService (aCreationFactory: CreationFactory) : Service = 
+aCreationFactory.eContainer(Service).oclAsType(Service)
+/]
+
 [query public javaClassPackageName(aService: Service) : String = 
 javaBasePackageName(containingAdaptorInterface(aService)).concat('.services')
 /]
