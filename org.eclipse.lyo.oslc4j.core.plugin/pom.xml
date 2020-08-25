@@ -26,6 +26,7 @@
                             <goal>site</goal>
                         </goals>
                         <configuration>
+                            <!-- 2020-08-25 Jad: Why am I skipInvalidArtifacts? Otherwise, the script unnecessarily fails for dependencies of type pom. Namely, apache-jena-libs-->
                             <skipInvalidArtifacts>true</skipInvalidArtifacts>
                             <categoryFileURL>${basedir}/category.xml</categoryFileURL>
                             <featureDefinitions>
