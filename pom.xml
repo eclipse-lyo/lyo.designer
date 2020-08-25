@@ -41,8 +41,10 @@
         <module>org.eclipse.lyo.tools.designer.branding</module>
         <module>org.eclipse.lyo.tools.designer.product</module>
         <module>org.eclipse.lyo.tools.designer.product.feature</module>
-
+ 
         <module>org.eclipse.lyo.tools.updatesite</module>
+ 
+        <module>org.eclipse.lyo.oslc4j.core.plugin</module>
     </modules>
     <repositories>
         <repository>
