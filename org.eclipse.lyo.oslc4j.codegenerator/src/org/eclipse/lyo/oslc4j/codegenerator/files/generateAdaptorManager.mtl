@@ -86,6 +86,7 @@ package [javaClassPackageNameForAdaptorManager(anAdaptorInterface) /];
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.ServletContextEvent;
 import java.util.List;
+import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -303,7 +304,6 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
         // TODO Implement code to return a resource
         // return 'null' if the resource was not found.
         // If you encounter problems, consider throwing the runtime exception WebApplicationException(message, cause, final httpStatus)
-        Throw exception here to make sure user implements it.
         // [/protected]
         return aResource;
     }

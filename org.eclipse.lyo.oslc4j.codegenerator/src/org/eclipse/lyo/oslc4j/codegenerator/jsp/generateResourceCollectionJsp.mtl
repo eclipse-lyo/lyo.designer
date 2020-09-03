@@ -63,6 +63,7 @@
 
 <%@page import="org.eclipse.lyo.oslc4j.core.model.ServiceProvider"%>
 <%@page import="org.eclipse.lyo.oslc4j.core.model.AbstractResource"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.OSLC4JConstants"%>
 <%@page import="java.util.List" %>
 [for (aResource: Resource | aQueryCapability.resourceTypes)]
 <%@page import="[javaClassFullName(aResource, anAdaptorInterface, null) /]"%>
@@ -71,7 +72,7 @@
 <%
   List<[queryMethodResourceType(aQueryCapability)/]> resources = (List<[queryMethodResourceType(aQueryCapability)/]>) request.getAttribute("resources");
   String queryUri = (String)request.getAttribute("queryUri");
-  String nextPageUri = (String)request.getAttribute("nextPageUri");
+  String nextPageUri = (String)request.getAttribute(OSLC4JConstants.OSLC4J_NEXT_PAG);
 %>
 <html lang="en">
 <head>
