@@ -115,7 +115,7 @@
       </div>
     </div>
         <% for ([queryMethodResourceType(aQueryCapability)/] aResource : resources) { %>
-        <p><a href="<%= aResource.getAbout() %>" class="oslc-resource-link"><%=aResource.getAbout().toString()%></a><br /></p>
+        <p><a href="<%= aResource.getAbout() %>" class="oslc-resource-link"><%=aResource.toString()%></a><br /></p>
         <% } %>
       </div>
   <footer class="footer">

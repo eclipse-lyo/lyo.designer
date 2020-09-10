@@ -223,6 +223,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     /]public [queryMethodReturnType(aQueryCapability, true)/] [queryMethodName(aQueryCapability, true)/](
                                                     [commaSeparate(queryMethodSignature(aQueryCapability, true), false, true) /]
                                                      @QueryParam("oslc.where") final String where,
+                                                     @QueryParam("oslc.prefix") final String prefix,
                                                      @QueryParam("page") final String pageString,
                                                     @QueryParam("oslc.pageSize") final String pageSizeString) throws IOException, ServletException
     {
@@ -239,7 +240,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
         // Here additional logic can be implemented that complements main action taken in [javaClassNameForAdaptorManager(anAdaptorInterface) /]
         // [/protected]
 
-        final List<[queryMethodResourceType(aQueryCapability)/]> resources = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[queryMethodName(aQueryCapability, true)/](httpServletRequest[commaSeparate(queryMethodParameterList(aQueryCapability), true, false)/], where, page, pageSize);
+        final List<[queryMethodResourceType(aQueryCapability)/]> resources = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[queryMethodName(aQueryCapability, true)/](httpServletRequest[commaSeparate(queryMethodParameterList(aQueryCapability), true, false)/], where, prefix, page, pageSize);
         httpServletRequest.setAttribute("queryUri",
                 uriInfo.getAbsolutePath().toString() + "?oslc.paging=true");
         if (resources.size() > pageSize) {
@@ -257,6 +258,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     /]public [queryMethodReturnType(aQueryCapability, false)/] [queryMethodName(aQueryCapability, false)/](
                                     [commaSeparate(queryMethodSignature(aQueryCapability, true), false, true)/]
                                        @QueryParam("oslc.where") final String where,
+                                       @QueryParam("oslc.prefix") final String prefix,
                                        @QueryParam("page") final String pageString,
                                     @QueryParam("oslc.pageSize") final String pageSizeString) throws ServletException, IOException
     {
@@ -272,7 +274,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
         // [protected (queryMethodName(aQueryCapability, false))]
         // [/protected]
 
-        final List<[queryMethodResourceType(aQueryCapability)/]> resources = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[queryMethodName(aQueryCapability, true)/](httpServletRequest[commaSeparate(queryMethodParameterList(aQueryCapability), true, false)/], where, page, pageSize);
+        final List<[queryMethodResourceType(aQueryCapability)/]> resources = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[queryMethodName(aQueryCapability, true)/](httpServletRequest[commaSeparate(queryMethodParameterList(aQueryCapability), true, false)/], where, prefix, page, pageSize);
 
         if (resources!= null) {
             httpServletRequest.setAttribute("resources", resources);

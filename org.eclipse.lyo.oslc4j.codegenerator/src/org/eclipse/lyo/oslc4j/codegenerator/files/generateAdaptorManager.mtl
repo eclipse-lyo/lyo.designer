@@ -190,7 +190,7 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
 
     [for (aService: Service | anAdaptorInterface.serviceProviders().services)]
     [for (aQueryCapability: QueryCapability | aService.queryCapabilities)]
-    public static List<[queryMethodResourceType(aQueryCapability)/]> [queryMethodName(aQueryCapability, true)/](HttpServletRequest httpServletRequest[commaSeparate(queryMethodSignature(aQueryCapability, false), true, false)/], String where, int page, int limit)
+    public static List<[queryMethodResourceType(aQueryCapability)/]> [queryMethodName(aQueryCapability, true)/](HttpServletRequest httpServletRequest[commaSeparate(queryMethodSignature(aQueryCapability, false), true, false)/], String where, String prefix, int page, int limit)
     {
         List<[queryMethodResourceType(aQueryCapability)/]> resources = null;
         [backendCode(anAdaptorInterface.backendCodeTemplate_getResources, queryMethodResourceType(aQueryCapability), 'resources', queryCompositeID(aQueryCapability))/]
