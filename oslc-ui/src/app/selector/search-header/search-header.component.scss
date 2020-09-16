@@ -1,0 +1,10 @@
+:host,
+.full-width {
+  width: 100%;
+}
+
+.max-width {
+  height: 300px;
+  flex-grow: 1;
+  overflow: auto;
+}
