@@ -1,0 +1,47 @@
+<section *ngIf="data">
+    <dl class="row" *ngFor="let item of data.properties">
+        <dt class="col-3">
+            <span *ngIf="item.propertyDefintion.representationType === 'Text'">
+                {{item.propertyDefintion.data}}:
+            </span>
+            <a *ngIf="item.propertyDefintion.representationType === 'Link'" href="{{item.propertyDefintion.data.link}}">
+                {{item.propertyDefintion.data.title}}:
+            </a>
+        </dt>
+        <dd class="col-7">
+
+            <ng-container *ngIf="item.propertyValue.representAsList === true; else singlevalues">
+                <ul>
+                    <li *ngFor="let dataItem of item.propertyValue.data">
+                        <ng-container [ngTemplateOutlet]="valuecontainer"
+                            [ngTemplateOutletContext]="{valuetype:item.propertyValue.representationType,itemvalue:dataItem}">
+                        </ng-container>
+                    </li>
+                </ul>
+            </ng-container>
+
+
+            <ng-template #singlevalues>
+                <ng-container [ngTemplateOutlet]="valuecontainer"
+                    [ngTemplateOutletContext]="{valuetype:item.propertyValue.representationType,itemvalue:item.propertyValue.data}">
+                </ng-container>
+            </ng-template>
+
+        </dd>
+    </dl>
+</section>
+
+
+<ng-template #valuecontainer let-valuetype='valuetype' let-itemvalue='itemvalue'>
+    <ng-container *ngIf="valuetype === 'Text'">
+        <span>
+            {{itemvalue}}
+        </span>
+    </ng-container>
+
+    <ng-container *ngIf="valuetype === 'Link'">
+        <a href="{{itemvalue.link}}">
+            {{itemvalue.title}}
+        </a>
+    </ng-container>
+</ng-template>

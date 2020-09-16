@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-body">
+        <app-search-header (itemsSelected)="onItemsSelected($event)" [noDataText]="noDataText" [searchPlaceholderText]="searchPlaceholderText"></app-search-header>
+    </div>
+</div>
+
+<div class="footer">
+
+    <div class="btn-group" role="group">
+        <button class="btn btn-outline-secondary" type="button" (click)="onOk()" cdkFocusInitial>Ok</button>
+        <button class="btn btn-outline-secondary" type="button" (click)="onCancel()">Cancel</button>
+    </div>
+
+</div>

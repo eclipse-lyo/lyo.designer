@@ -1,0 +1,47 @@
+<div class="input-group mb-3">
+    <input [(ngModel)]="searchValue" (ngModelChange)="onSearchInputChange($event)" autofocus type="search"
+        class="form-control" [placeholder]="searchPlaceholderText" aria-describedby="button-search">
+
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-search" (click)="onSearch()">
+            <span *ngIf="busy === true" class="spinner-border spinner-border-sm" role="status"
+                aria-hidden="true"></span>
+            Search
+        </button>
+    </div>
+</div>
+
+<div class="table-sm table-hover table-responsive-sm max-width" *ngIf="searchResult$ | async as result; else noresult">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th *ngFor="let field of this.searchService.fields" scope="col">{{field}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of result, let i = index" (click)="onItemSelected(item, i)"
+                [class.table-primary]="selectedRows[i]?.selected" #CdkOverlayOrigin="cdkOverlayOrigin" cdkOverlayOrigin>
+                <th scope="row">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rowCheck{{item.id}}"
+                            [checked]="selectedRows[i]?.selected" (click)="onItemSelected(item, i)">
+                        <label class="custom-control-label" for="rowCheck{{item.id}}">&nbsp;</label>
+                    </div>
+                </th>
+                <td *ngFor="let field of this.searchService.fields">
+                    <span>{{item[field]}}</span>
+                </td>
+
+                <app-popup #popup [CdkOverlayOrigin]="CdkOverlayOrigin" (open)="renderPreviewIframe(popup, item.resource)">
+                    Loading...
+                </app-popup>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<ng-template #noresult>
+    <span>{{noDataText}}</span>
+</ng-template>

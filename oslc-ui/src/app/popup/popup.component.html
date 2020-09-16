@@ -1,0 +1,10 @@
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="CdkOverlayOrigin" [cdkConnectedOverlayOpen]="isOpened"
+    (detach)="connectedOverlayDetach()">
+    <div #dialog role="dialog" aria-label="Dialog" class="dialog-container">
+        <div *ngIf="SafeContent" [innerHTML]="SafeContent">
+        </div>
+        <div *ngIf="!SafeContent">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</ng-template>
