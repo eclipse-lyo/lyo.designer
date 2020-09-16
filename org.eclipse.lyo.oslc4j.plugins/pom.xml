@@ -10,7 +10,7 @@
         <version>4.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>org.eclipse.lyo.oslc4j.core.plugin</artifactId>
+    <artifactId>org.eclipse.lyo.oslc4j.plugins</artifactId>
     <packaging>pom</packaging>
     <build>
         <plugins>
@@ -101,9 +101,11 @@
                                         Java and all Java-based trademarks are trademarks of Oracle Corporation in the United States, other countries, or both.
                                     </license>
                                     <artifacts>
-                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-core:4.0.0-SNAPSHOT</id></artifact>
-                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:4.0.0-SNAPSHOT</id></artifact>
-                                        <artifact><id>org.eclipse.lyo.core.query:oslc-query:4.0.0-SNAPSHOT</id></artifact>
+                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-core:${project.version}</id></artifact>
+                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${project.version}</id></artifact>
+                                        <artifact><id>org.eclipse.lyo.core.query:oslc-query:${project.version}</id></artifact>
+                                        <!-- 2020-08-25 Jad: We need to add this slf4j-simple dependency, since it would be missing otherwise, and the feature will not install properly -->
+                                        <artifact><id>org.slf4j:slf4j-simple:jar:1.7.26</id></artifact>
                                      </artifacts>
                                 </feature>
                                 <feature>
@@ -177,23 +179,9 @@
                                         Java and all Java-based trademarks are trademarks of Oracle Corporation in the United States, other countries, or both.
                                     </license>
                                     <artifacts>
-                                        <artifact><id>org.eclipse.lyo.clients:oslc4j-client:4.0.0-SNAPSHOT</id></artifact>
-                                    </artifacts>
-                                </feature>
-                                <feature>
-                                    <id>org.eclipse.lyo.oslc4j.implementations.plugin.feature</id>
-                                    <version>${project.version}</version>
-                                    <label>Lyo OSLC4J Implementations</label>
-                                    <providerName>Eclipse Lyo</providerName>
-                                    <description url="https://www.eclipse.org/lyo/"> 
-                                        On OSGI bundle of necessary plugins to get a Lyo OSLC4J Client or Server working.
-                                    </description>
-                                    <artifacts>
+                                        <artifact><id>org.eclipse.lyo.clients:oslc4j-client:${project.version}</id></artifact>
                                         <!-- 2020-08-25 Jad: We need to add this slf4j-simple dependency, since it would be missing otherwise, and the feature will not install properly -->
                                         <artifact><id>org.slf4j:slf4j-simple:jar:1.7.26</id></artifact>
-                                        <artifact><id>org.glassfish.jersey.containers:jersey-container-servlet:2.25.1</id></artifact>
-                                        <artifact><id>org.glassfish.jersey.core:jersey-server:2.25.1</id></artifact>
-                                        <artifact><id>org.glassfish.jersey.core:jersey-client:2.25.1</id></artifact>
                                     </artifacts>
                                 </feature>
                             </featureDefinitions>
