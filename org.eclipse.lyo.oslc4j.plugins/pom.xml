@@ -104,8 +104,6 @@
                                         <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-core:${project.version}</id></artifact>
                                         <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${project.version}</id></artifact>
                                         <artifact><id>org.eclipse.lyo.core.query:oslc-query:${project.version}</id></artifact>
-                                        <!-- 2020-08-25 Jad: We need to add this slf4j-simple dependency, since it would be missing otherwise, and the feature will not install properly -->
-                                        <artifact><id>org.slf4j:slf4j-api:jar:1.7.26</id></artifact>
                                      </artifacts>
                                 </feature>
                                 <feature>
@@ -180,8 +178,6 @@
                                     </license>
                                     <artifacts>
                                         <artifact><id>org.eclipse.lyo.clients:oslc4j-client:${project.version}</id></artifact>
-                                        <!-- 2020-08-25 Jad: We need to add this slf4j-simple dependency, since it would be missing otherwise, and the feature will not install properly -->
-                                        <artifact><id>org.slf4j:slf4j-api:jar:1.7.26</id></artifact>
                                     </artifacts>
                                 </feature>
                             </featureDefinitions>
