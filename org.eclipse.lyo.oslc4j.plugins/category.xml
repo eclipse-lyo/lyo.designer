@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.eclipse.lyo.oslc4j.implementations.plugin.feature_4.0.0.qualifier.jar" id="org.eclipse.lyo.oslc4j.implementations.plugin.feature" version="4.0.0.qualifier">
+   <feature id="org.eclipse.lyo.oslc4j.implementations.plugin.feature">
       <category name="org.eclipse.lyo.oslc4j.osgi.bundles.category"/>
    </feature>
-   <feature url="features/org.eclipse.lyo.oslc4j.client.plugin.feature_4.0.0.qualifier.jar" id="org.eclipse.lyo.oslc4j.client.plugin.feature" version="4.0.0.qualifier">
+   <feature id="org.eclipse.lyo.oslc4j.client.plugin.feature">
       <category name="org.eclipse.lyo.oslc4j.osgi.bundles.category"/>
    </feature>
-   <feature url="features/org.eclipse.lyo.oslc4j.core.plugin.feature_4.0.0.qualifier.jar" id="org.eclipse.lyo.oslc4j.core.plugin.feature" version="4.0.0.qualifier">
+   <feature id="org.eclipse.lyo.oslc4j.core.plugin.feature">
       <category name="org.eclipse.lyo.oslc4j.osgi.bundles.category"/>
    </feature>
    <category-def name="org.eclipse.lyo.oslc4j.osgi.bundles.category" label="Lyo OSGI Bundles"/>
