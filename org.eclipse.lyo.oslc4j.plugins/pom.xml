@@ -39,7 +39,7 @@
                                         On OSGI bundle of Lyo OSLC4J Core (including Query and Jena-provider), which is otherwise available under maven.
                                     </description>
                                     <copyright url="https://www.eclipse.org/lyo/">
-                                              Copyright (c) 2012 IBM Corporation and others.
+                                              Copyright (c) 2020 Eclipse contributors and others.
                                         All rights reserved. This program and the accompanying materials
                                         are made available under the terms of the Eclipse Public License
                                         v1.0 and Eclipse Distribution License v. 1.0 which accompanies
@@ -132,7 +132,7 @@
                                         On OSGI bundle of Lyo OSLC4J Client, which is otherwise available under maven.
                                     </description>
                                     <copyright url="https://www.eclipse.org/lyo/">
-                                              Copyright (c) 2012 IBM Corporation and others.
+                                              Copyright (c) 2020 Eclipse contributors and others.
                                         All rights reserved. This program and the accompanying materials
                                         are made available under the terms of the Eclipse Public License
                                         v1.0 and Eclipse Distribution License v. 1.0 which accompanies
