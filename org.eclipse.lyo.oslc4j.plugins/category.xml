@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.eclipse.lyo.oslc4j.implementations.plugin.feature">
+      <category name="org.eclipse.lyo.oslc4j.osgi.bundles.category"/>
+   </feature>
+   <feature id="org.eclipse.lyo.oslc4j.client.plugin.feature">
+      <category name="org.eclipse.lyo.oslc4j.osgi.bundles.category"/>
+   </feature>
+   <feature id="org.eclipse.lyo.oslc4j.core.plugin.feature">
+      <category name="org.eclipse.lyo.oslc4j.osgi.bundles.category"/>
+   </feature>
+   <category-def name="org.eclipse.lyo.oslc4j.osgi.bundles.category" label="Lyo OSGI Bundles"/>
+</site>

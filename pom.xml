@@ -41,8 +41,10 @@
         <module>org.eclipse.lyo.tools.designer.branding</module>
         <module>org.eclipse.lyo.tools.designer.product</module>
         <module>org.eclipse.lyo.tools.designer.product.feature</module>
-
+ 
         <module>org.eclipse.lyo.tools.updatesite</module>
+ 
+        <module>org.eclipse.lyo.oslc4j.plugins</module>
     </modules>
     <repositories>
         <repository>
@@ -53,6 +55,22 @@
         <repository>
             <id>acceleo</id>
             <url>https://repo.eclipse.org/content/repositories/acceleo-releases/</url>
+        </repository>
+        <repository>
+            <id>lyo-releases</id>
+            <name>Eclipse Lyo Releases</name>
+            <url>https://repo.eclipse.org/content/repositories/lyo-releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>lyo-snapshots</id>
+            <name>Eclipse Lyo Snapshots</name>
+            <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
         </repository>
     </repositories>
     <pluginRepositories>
