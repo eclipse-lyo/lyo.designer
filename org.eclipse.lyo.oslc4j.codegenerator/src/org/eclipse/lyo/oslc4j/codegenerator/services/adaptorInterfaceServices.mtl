@@ -38,6 +38,23 @@ else
 endif)
 /]
 
+[comment url patterns in  most cases end with '\*'. But a url-pattern with just '\' may be found for exact matches. /]
+[query public getServletPath(anAdaptorInterface : AdaptorInterface) : String = 
+    (if anAdaptorInterface.configuration.servletUrlPattern.endsWith('*') then 
+        anAdaptorInterface.configuration.servletUrlPattern.substring(1, anAdaptorInterface.configuration.servletUrlPattern.size()-1)
+    else
+        anAdaptorInterface.configuration.servletUrlPattern
+    endif)
+/]
+
+[query public getApplicationBaseUrl(anAdaptorInterface : AdaptorInterface) : String = 
+JAXRSConcatURISegments(anAdaptorInterface.configuration.rootServerBaseUrl, anAdaptorInterface.configuration.applicationContextPath)
+/]
+
+[query public getServletUrl(anAdaptorInterface : AdaptorInterface) : String = 
+JAXRSConcatURISegments(anAdaptorInterface.getApplicationBaseUrl(), anAdaptorInterface.getServletPath())
+/]
+
 [query public authenticationOauthRealm(anAdaptorInterface : AdaptorInterface) : String = 
 anAdaptorInterface.configuration.authenticationConfiguration.oauthRealm
 /]

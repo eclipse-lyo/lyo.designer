@@ -75,7 +75,7 @@
         </init-param>
         <init-param>
             <param-name>swagger.api.basepath</param-name>
-            <param-value>[JAXRSConcatURISegments(anAdaptorInterface.configuration.rootServerBaseUrl, anAdaptorInterface.configuration.applicationContextPath)/]</param-value>
+            <param-value>[anAdaptorInterface.getServletUrl()/]</param-value>
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
