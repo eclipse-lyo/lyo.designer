@@ -9,9 +9,9 @@
     "build:elements-prod": "npm install && node --max-old-space-size=6144 ./node_modules/@angular/cli/bin/ng build --prod --output-hashing none && npm run generate",
     "create-preview-schema": "ts-json-schema-generator --type Preview --tsconfig ./tsconfig.json --path \"./src/app/preview/models.ts\" > src/preview-schemas.json",
     "create-link-schema": "ts-json-schema-generator --type Link --tsconfig ./tsconfig.json --path \"./src/app/preview/models.ts\" > src/link-schemas.json",
-    "create-java-preview-classes": ".\\libs\\jsonschema2pojo-1.0.2\\bin\\jsonschema2pojo --source \"src/preview-schemas.json\" --target dist/oslc-ui/java-gen -p org.eclipse.lyo.oslc_ui",
-    "create-java-link-classes": ".\\libs\\jsonschema2pojo-1.0.2\\bin\\jsonschema2pojo --source \"src/link-schemas.json\" --target dist/oslc-ui/java-gen -p org.eclipse.lyo.oslc_ui",
-    "generate": "npm run create-preview-schema && npm run create-link-schema && npm run create-java-preview-classes && npm run create-java-link-classes && copy includes\\PreviewFactory.java dist\\oslc-ui\\java-gen\\org\\eclipse\\lyo\\oslc_ui\\ /y",
+    "create-java-preview-classes": "./libs/jsonschema2pojo-1.0.2/bin/jsonschema2pojo --source \"src/preview-schemas.json\" --target dist/oslc-ui/java-gen -p org.eclipse.lyo.oslc_ui",
+    "create-java-link-classes": "./libs/jsonschema2pojo-1.0.2/bin/jsonschema2pojo --source \"src/link-schemas.json\" --target dist/oslc-ui/java-gen -p org.eclipse.lyo.oslc_ui",
+    "generate": "npm run create-preview-schema && npm run create-link-schema && npm run create-java-preview-classes && npm run create-java-link-classes && cp includes/PreviewFactory.java dist/oslc-ui/java-gen/org/eclipse/lyo/oslc_ui/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
