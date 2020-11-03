@@ -106,7 +106,7 @@
             <p><strong>You don't seem to have fully configured your project to use a local standalone distribution of Swagger UI!</strong></p>
             <ul>
                 <li>A "dist" folder containing the Swagger UI collection of HTML, Javascript, and CSS assets is missing.</li>
-                <li>Please follow the complete instrunctions under <a href="<%= "https://wiki.eclipse.org/Lyo/creating_OSLC4J_project#OpenApi.2FSwagger_Support_.28Optional.29" %>">Lyo Instructions for Swagger</a></li>
+                <li>Please follow the complete instrunctions under <a href="<%= "https://oslc.github.io/developing-oslc-applications/eclipse_lyo/setup-an-oslc-provider-consumer-application.html#provide-openapi-support" %>">Lyo Instructions for Swagger</a></li>
                 <li>Until then, you can copy <a href="<%=yamlPath%>">this OpenAPI specification document (yaml file)</a> 
                 to a remote <a href="<%= "https://editor.swagger.io" %>">Swagger Editor</a> and
                 <ul>
@@ -145,7 +145,7 @@
         <p><strong>You don't seem to have enabled Swagger Documentation!</strong></p>
         <ol>
         <li>Generate the necessary code and annotations for Swagger documentation by checking the "Swagger Documentation" option in the Adaptor model.</li>
-        <li>Configure your project according to these <a href="<%= "https://wiki.eclipse.org/Lyo/creating_OSLC4J_project#OpenApi.2FSwagger_Support_.28Optional.29" %>">Lyo Instructions for Swagger</a></li>
+        <li>Configure your project according to these <a href="<%= "https://oslc.github.io/developing-oslc-applications/eclipse_lyo/setup-an-oslc-provider-consumer-application.html#provide-openapi-support" %>">Lyo Instructions for Swagger</a></li>
         </ol>
     </div>
 </div>
