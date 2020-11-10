@@ -1,5 +1,7 @@
-[![](https://img.shields.io/jenkins/s/https/ci.eclipse.org/lyo/job/lyo-designer-master.svg)](https://ci.eclipse.org/lyo/job/lyo-designer-master/)
 ![CI](https://github.com/eclipse/lyo.designer/workflows/CI/badge.svg)
+[![](https://img.shields.io/jenkins/s/https/ci.eclipse.org/lyo/job/lyo-designer-master.svg?label=Jenkins%20build)](https://ci.eclipse.org/lyo/job/lyo-designer-master/)
+![Discourse users](https://img.shields.io/discourse/users?color=28bd84&server=https%3A%2F%2Fforum.open-services.net%2F)
+
 
 This repository contains the [Eclipse Lyo](https://projects.eclipse.org/projects/technology.lyo) Designer library.
 
