@@ -147,7 +147,7 @@
 [if clientImplementation]
 <dependency>
     <groupId>org.eclipse.lyo.clients</groupId>
-    <artifactId>oslc4j-client</artifactId>
+    <artifactId>oslc-client</artifactId>
     <version>${version.lyo}</version>
 </dependency>
 [/if]
