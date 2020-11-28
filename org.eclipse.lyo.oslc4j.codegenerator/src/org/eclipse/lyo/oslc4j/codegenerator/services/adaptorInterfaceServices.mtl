@@ -1,4 +1,5 @@
 [comment encoding = UTF-8 /]
+[comment
 /*
  * Copyright (c) 2020 Contributors to the Eclipse Foundation
  *
@@ -13,7 +14,6 @@
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
 /]
-
 [module adaptorInterfaceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
