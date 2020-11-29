@@ -14,10 +14,21 @@
         <plugins>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-p2-plugin</artifactId>
+                <version>${tycho.version}</version>
+                <configuration>
+                    <generateDownloadStatsProperty>true</generateDownloadStatsProperty>
+                </configuration>
+            </plugin>        
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-p2-repository-plugin</artifactId>
                 <version>${tycho.version}</version>
                 <configuration>
                     <includeAllDependencies>true</includeAllDependencies>
+                    <extraArtifactRepositoryProperties>
+                        <p2.statsURI>https://download.eclipse.org/stats</p2.statsURI>
+                    </extraArtifactRepositoryProperties>
                 </configuration>
             </plugin>
             <plugin>
