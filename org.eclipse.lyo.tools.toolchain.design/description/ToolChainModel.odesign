@@ -451,7 +451,7 @@
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="doNotGenerate" valueExpression="[doNotGenerate/]"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenProjectConfiguration" referenceName="projectConfiguration" variableName="projectConfiguration">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="lyoVersion" valueExpression="['4.0.0-SNAPSHOT'/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="lyoVersion" valueExpression="['4.0.0'/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactId" valueExpression="[if (container.oclIsTypeOf(DomainSpecification)) then container.oclAsType(DomainSpecification).name.toLower().replaceAll('\\W+', '-') else 'oslc-specification' endif/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="groupId" valueExpression="[if (not projectConfiguration.isNullOrEmpty(generalConfiguration.javaBasePackageName)) then generalConfiguration.javaBasePackageName else projectConfiguration.artifactId endif/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="version" valueExpression="['0.0.1-SNAPSHOT'/]"/>
@@ -618,7 +618,7 @@
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="filesBasePath" valueExpression="[filesBasePath/]"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenProjectConfiguration" referenceName="projectConfiguration" variableName="projectConfiguration">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="lyoVersion" valueExpression="['4.0.0-SNAPSHOT'/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="lyoVersion" valueExpression="['4.0.0'/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="groupId" valueExpression="[generalConfiguration.javaBasePackageName/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactId" valueExpression="[adaptorInterface.name.toLower().replaceAll('\\W+', '-')/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="version" valueExpression="['0.0.1-SNAPSHOT'/]"/>
@@ -704,7 +704,7 @@
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="filesBasePath" valueExpression="[filesBasePath/]"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenProjectConfiguration" referenceName="projectConfiguration" variableName="projectConfiguration">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="lyoVersion" valueExpression="['4.0.0-SNAPSHOT'/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="lyoVersion" valueExpression="['4.0.0'/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="groupId" valueExpression="[generalConfiguration.javaBasePackageName/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactId" valueExpression="[adaptorInterface.name.toLower().replaceAll('\\W+', '-')/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="version" valueExpression="['0.0.1-SNAPSHOT'/]"/>
@@ -1368,7 +1368,7 @@
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="filesBasePath" valueExpression="[filesBasePath/]"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenProjectConfiguration" referenceName="projectConfiguration" variableName="projectConfiguration">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="lyoVersion" valueExpression="['4.0.0-SNAPSHOT'/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="lyoVersion" valueExpression="['4.0.0'/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="groupId" valueExpression="[generalConfiguration.javaBasePackageName/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="artifactId" valueExpression="[adaptorInterface.name.toLower().replaceAll('\\W+', '-')/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="version" valueExpression="['0.0.1-SNAPSHOT'/]"/>
