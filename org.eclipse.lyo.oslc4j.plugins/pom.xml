@@ -12,6 +12,9 @@
     </parent>
     <artifactId>org.eclipse.lyo.oslc4j.plugins</artifactId>
     <packaging>pom</packaging>
+    <properties>
+        <lyo.version>4.0.0</lyo.version>
+    </properties>
     <build>
         <plugins>
             <plugin>
@@ -101,7 +104,7 @@
                                         Java and all Java-based trademarks are trademarks of Oracle Corporation in the United States, other countries, or both.
                                     </license>
                                     <artifacts>
-                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-core:${project.version}</id>
+                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-core:${lyo.version}</id>
                                             <!-- 2020-09-30 Jad: We need to exclude some items, since they are already part of an eclipse installation.
                                              Adding them might mean upgrading/downgrading these plugins, which leads to problems with other plugin installations. -->
                                             <excludes>
@@ -109,13 +112,13 @@
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
                                         </artifact>
-                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${project.version}</id>
+                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${lyo.version}</id>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
                                         </artifact>
-                                        <artifact><id>org.eclipse.lyo.core.query:oslc-query:${project.version}</id>
+                                        <artifact><id>org.eclipse.lyo.core.query:oslc-query:${lyo.version}</id>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
@@ -194,7 +197,7 @@
                                         Java and all Java-based trademarks are trademarks of Oracle Corporation in the United States, other countries, or both.
                                     </license>
                                     <artifacts>
-                                        <artifact><id>org.eclipse.lyo.clients:oslc4j-client:${project.version}</id>
+                                        <artifact><id>org.eclipse.lyo.clients:oslc-client:${lyo.version}</id>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
