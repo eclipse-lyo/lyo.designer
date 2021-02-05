@@ -3,6 +3,9 @@
    <feature id="org.eclipse.lyo.oslc4j.implementations.plugin.feature">
       <category name="org.eclipse.lyo.oslc4j.osgi.bundles.category"/>
    </feature>
+   <feature id="org.eclipse.lyo.oslc4j.store.plugin.feature">
+      <category name="org.eclipse.lyo.oslc4j.osgi.bundles.category"/>
+   </feature>
    <feature id="org.eclipse.lyo.oslc4j.client.plugin.feature">
       <category name="org.eclipse.lyo.oslc4j.osgi.bundles.category"/>
    </feature>
