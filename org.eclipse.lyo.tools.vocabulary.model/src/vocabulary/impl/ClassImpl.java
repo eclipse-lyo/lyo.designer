@@ -75,6 +75,7 @@ public class ClassImpl extends TermImpl implements vocabulary.Class {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<vocabulary.Class> getSubClassOf() {
         if (subClassOf == null) {
             subClassOf = new EObjectResolvingEList<vocabulary.Class>(vocabulary.Class.class, this, VocabularyPackage.CLASS__SUB_CLASS_OF);
@@ -87,6 +88,7 @@ public class ClassImpl extends TermImpl implements vocabulary.Class {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public vocabulary.Class getType() {
         if (type != null && type.eIsProxy()) {
             InternalEObject oldType = (InternalEObject)type;
@@ -113,6 +115,7 @@ public class ClassImpl extends TermImpl implements vocabulary.Class {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setType(vocabulary.Class newType) {
         vocabulary.Class oldType = type;
         type = newType;

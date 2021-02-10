@@ -203,7 +203,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getName() {
+	@Override
+    public String getName() {
         return name;
     }
 
@@ -212,7 +213,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setName(String newName) {
+	@Override
+    public void setName(String newName) {
         String oldName = name;
         name = newName;
         if (eNotificationRequired())
@@ -224,7 +226,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getServiceUrlPattern() {
+	@Override
+    public String getServiceUrlPattern() {
         return serviceUrlPattern;
     }
 
@@ -233,7 +236,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setServiceUrlPattern(String newServiceUrlPattern) {
+	@Override
+    public void setServiceUrlPattern(String newServiceUrlPattern) {
         String oldServiceUrlPattern = serviceUrlPattern;
         serviceUrlPattern = newServiceUrlPattern;
         if (eNotificationRequired())
@@ -245,7 +249,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getResourceUrlPattern() {
+	@Override
+    public String getResourceUrlPattern() {
         return resourceUrlPattern;
     }
 
@@ -254,7 +259,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setResourceUrlPattern(String newResourceUrlPattern) {
+	@Override
+    public void setResourceUrlPattern(String newResourceUrlPattern) {
         String oldResourceUrlPattern = resourceUrlPattern;
         resourceUrlPattern = newResourceUrlPattern;
         if (eNotificationRequired())
@@ -266,7 +272,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EList<Resource> getResourceTypes() {
+	@Override
+    public EList<Resource> getResourceTypes() {
         if (resourceTypes == null) {
             resourceTypes = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.WEB_SERVICE__RESOURCE_TYPES);
         }
@@ -278,7 +285,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public boolean isRead() {
+	@Override
+    public boolean isRead() {
         return read;
     }
 
@@ -287,7 +295,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setRead(boolean newRead) {
+	@Override
+    public void setRead(boolean newRead) {
         boolean oldRead = read;
         read = newRead;
         if (eNotificationRequired())
@@ -299,7 +308,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public boolean isDelete() {
+	@Override
+    public boolean isDelete() {
         return delete;
     }
 
@@ -308,7 +318,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setDelete(boolean newDelete) {
+	@Override
+    public void setDelete(boolean newDelete) {
         boolean oldDelete = delete;
         delete = newDelete;
         if (eNotificationRequired())
@@ -320,7 +331,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public boolean isUpdate() {
+	@Override
+    public boolean isUpdate() {
         return update;
     }
 
@@ -329,7 +341,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setUpdate(boolean newUpdate) {
+	@Override
+    public void setUpdate(boolean newUpdate) {
         boolean oldUpdate = update;
         update = newUpdate;
         if (eNotificationRequired())
@@ -341,6 +354,7 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public WebServicePersistence getPersistence() {
         return persistence;
     }
@@ -365,6 +379,7 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setPersistence(WebServicePersistence newPersistence) {
         if (newPersistence != persistence) {
             NotificationChain msgs = null;
@@ -532,7 +547,7 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: ");
         result.append(name);
         result.append(", serviceUrlPattern: ");

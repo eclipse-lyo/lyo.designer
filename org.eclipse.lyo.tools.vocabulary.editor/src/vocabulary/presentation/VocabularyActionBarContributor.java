@@ -163,6 +163,7 @@ public class VocabularyActionBarContributor
      */
     @Override
     public void contributeToToolBar(IToolBarManager toolBarManager) {
+        super.contributeToToolBar(toolBarManager);
         toolBarManager.add(new Separator("vocabulary-settings"));
         toolBarManager.add(new Separator("vocabulary-additions"));
     }
@@ -199,6 +200,7 @@ public class VocabularyActionBarContributor
         //
         submenuManager.addMenuListener
             (new IMenuListener() {
+                 @Override
                  public void menuAboutToShow(IMenuManager menuManager) {
                      menuManager.updateAll(true);
                  }
@@ -246,6 +248,7 @@ public class VocabularyActionBarContributor
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void selectionChanged(SelectionChangedEvent event) {
         // Remove any menu items for old selection.
         //

@@ -126,6 +126,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -135,6 +136,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
@@ -147,6 +149,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -156,6 +159,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
@@ -168,6 +172,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getComment() {
         return comment;
     }
@@ -177,6 +182,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setComment(String newComment) {
         String oldComment = comment;
         comment = newComment;
@@ -189,6 +195,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<String> getSeeAlso() {
         if (seeAlso == null) {
             seeAlso = new EDataTypeUniqueEList<String>(String.class, this, VocabularyPackage.TERM__SEE_ALSO);
@@ -295,7 +302,7 @@ public abstract class TermImpl extends MinimalEObjectImpl.Container implements T
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: ");
         result.append(name);
         result.append(", label: ");

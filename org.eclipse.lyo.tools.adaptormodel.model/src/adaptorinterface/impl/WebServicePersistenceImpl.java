@@ -111,6 +111,7 @@ public class WebServicePersistenceImpl extends ServicePersistenceImpl implements
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public boolean isRead() {
         return read;
     }
@@ -120,6 +121,7 @@ public class WebServicePersistenceImpl extends ServicePersistenceImpl implements
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setRead(boolean newRead) {
         boolean oldRead = read;
         read = newRead;
@@ -132,6 +134,7 @@ public class WebServicePersistenceImpl extends ServicePersistenceImpl implements
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public boolean isDelete() {
         return delete;
     }
@@ -141,6 +144,7 @@ public class WebServicePersistenceImpl extends ServicePersistenceImpl implements
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setDelete(boolean newDelete) {
         boolean oldDelete = delete;
         delete = newDelete;
@@ -153,6 +157,7 @@ public class WebServicePersistenceImpl extends ServicePersistenceImpl implements
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public boolean isUpdate() {
         return update;
     }
@@ -162,6 +167,7 @@ public class WebServicePersistenceImpl extends ServicePersistenceImpl implements
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setUpdate(boolean newUpdate) {
         boolean oldUpdate = update;
         update = newUpdate;
@@ -256,7 +262,7 @@ public class WebServicePersistenceImpl extends ServicePersistenceImpl implements
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (read: ");
         result.append(read);
         result.append(", delete: ");

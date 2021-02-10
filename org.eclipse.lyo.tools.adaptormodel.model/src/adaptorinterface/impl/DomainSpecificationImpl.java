@@ -341,7 +341,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public SpecificationConfiguration getConfiguration() {
+	@Override
+    public SpecificationConfiguration getConfiguration() {
         return configuration;
     }
 
@@ -365,7 +366,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setConfiguration(SpecificationConfiguration newConfiguration) {
+	@Override
+    public void setConfiguration(SpecificationConfiguration newConfiguration) {
         if (newConfiguration != configuration) {
             NotificationChain msgs = null;
             if (configuration != null)
@@ -582,7 +584,7 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: ");
         result.append(name);
         result.append(", namespaceURI: ");

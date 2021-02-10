@@ -82,6 +82,7 @@ public class VocabulariesImpl extends MinimalEObjectImpl.Container implements Vo
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<Vocabulary> getVocabularies() {
         if (vocabularies == null) {
             vocabularies = new EObjectContainmentEList<Vocabulary>(Vocabulary.class, this, VocabularyPackage.VOCABULARIES__VOCABULARIES);
@@ -94,6 +95,7 @@ public class VocabulariesImpl extends MinimalEObjectImpl.Container implements Vo
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public VocabularyConfiguration getConfiguration() {
         return configuration;
     }
@@ -118,6 +120,7 @@ public class VocabulariesImpl extends MinimalEObjectImpl.Container implements Vo
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setConfiguration(VocabularyConfiguration newConfiguration) {
         if (newConfiguration != configuration) {
             NotificationChain msgs = null;

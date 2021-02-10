@@ -81,6 +81,7 @@ public class PropertyImpl extends TermImpl implements Property {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<Property> getSubPropertyOf() {
         if (subPropertyOf == null) {
             subPropertyOf = new EObjectResolvingEList<Property>(Property.class, this, VocabularyPackage.PROPERTY__SUB_PROPERTY_OF);
@@ -93,6 +94,7 @@ public class PropertyImpl extends TermImpl implements Property {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<vocabulary.Class> getDomain() {
         if (domain == null) {
             domain = new EObjectResolvingEList<vocabulary.Class>(vocabulary.Class.class, this, VocabularyPackage.PROPERTY__DOMAIN);
@@ -105,6 +107,7 @@ public class PropertyImpl extends TermImpl implements Property {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<vocabulary.Class> getRange() {
         if (range == null) {
             range = new EObjectResolvingEList<vocabulary.Class>(vocabulary.Class.class, this, VocabularyPackage.PROPERTY__RANGE);

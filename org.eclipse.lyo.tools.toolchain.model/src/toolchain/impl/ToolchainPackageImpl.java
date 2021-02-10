@@ -58,7 +58,7 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 
 	/**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-     * 
+     *
      * <p>This method is used to initialize {@link ToolchainPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
@@ -72,7 +72,8 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
         if (isInited) return (ToolchainPackage)EPackage.Registry.INSTANCE.getEPackage(ToolchainPackage.eNS_URI);
 
         // Obtain or create and register package
-        ToolchainPackageImpl theToolchainPackage = (ToolchainPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ToolchainPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ToolchainPackageImpl());
+        Object registeredToolchainPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+        ToolchainPackageImpl theToolchainPackage = registeredToolchainPackage instanceof ToolchainPackageImpl ? (ToolchainPackageImpl)registeredToolchainPackage : new ToolchainPackageImpl();
 
         isInited = true;
 
@@ -89,7 +90,6 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
         // Mark meta-data to indicate it can't be changed
         theToolchainPackage.freeze();
 
-  
         // Update the registry and return the package
         EPackage.Registry.INSTANCE.put(ToolchainPackage.eNS_URI, theToolchainPackage);
         return theToolchainPackage;
@@ -100,7 +100,8 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getToolchain() {
+	@Override
+    public EClass getToolchain() {
         return toolchainEClass;
     }
 
@@ -109,7 +110,8 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getToolchain_Name() {
+	@Override
+    public EAttribute getToolchain_Name() {
         return (EAttribute)toolchainEClass.getEStructuralFeatures().get(0);
     }
 
@@ -118,7 +120,8 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getToolchain_AdaptorInterfaces() {
+	@Override
+    public EReference getToolchain_AdaptorInterfaces() {
         return (EReference)toolchainEClass.getEStructuralFeatures().get(1);
     }
 
@@ -127,7 +130,8 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getToolchain_Specification() {
+	@Override
+    public EReference getToolchain_Specification() {
         return (EReference)toolchainEClass.getEStructuralFeatures().get(2);
     }
 
@@ -136,7 +140,8 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getToolchain_Vocabularies() {
+	@Override
+    public EReference getToolchain_Vocabularies() {
         return (EReference)toolchainEClass.getEStructuralFeatures().get(3);
     }
 
@@ -145,7 +150,8 @@ public class ToolchainPackageImpl extends EPackageImpl implements ToolchainPacka
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public ToolchainFactory getToolchainFactory() {
+	@Override
+    public ToolchainFactory getToolchainFactory() {
         return (ToolchainFactory)getEFactoryInstance();
     }
 

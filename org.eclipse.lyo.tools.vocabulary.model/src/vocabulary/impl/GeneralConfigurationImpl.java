@@ -112,6 +112,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public boolean isDoNotGenerate() {
         return doNotGenerate;
     }
@@ -121,6 +122,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setDoNotGenerate(boolean newDoNotGenerate) {
         boolean oldDoNotGenerate = doNotGenerate;
         doNotGenerate = newDoNotGenerate;
@@ -133,6 +135,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getFilesBasePath() {
         return filesBasePath;
     }
@@ -142,6 +145,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setFilesBasePath(String newFilesBasePath) {
         String oldFilesBasePath = filesBasePath;
         filesBasePath = newFilesBasePath;
@@ -154,6 +158,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getJavaBasePackageName() {
         return javaBasePackageName;
     }
@@ -163,6 +168,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setJavaBasePackageName(String newJavaBasePackageName) {
         String oldJavaBasePackageName = javaBasePackageName;
         javaBasePackageName = newJavaBasePackageName;
@@ -257,7 +263,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (doNotGenerate: ");
         result.append(doNotGenerate);
         result.append(", filesBasePath: ");

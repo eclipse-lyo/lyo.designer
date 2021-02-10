@@ -91,7 +91,8 @@ public abstract class TrsServiceImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public int getBasePageLimit() {
+	@Override
+    public int getBasePageLimit() {
         return basePageLimit;
     }
 
@@ -100,7 +101,8 @@ public abstract class TrsServiceImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setBasePageLimit(int newBasePageLimit) {
+	@Override
+    public void setBasePageLimit(int newBasePageLimit) {
         int oldBasePageLimit = basePageLimit;
         basePageLimit = newBasePageLimit;
         if (eNotificationRequired())
@@ -112,7 +114,8 @@ public abstract class TrsServiceImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public int getChangeLogPageLimit() {
+	@Override
+    public int getChangeLogPageLimit() {
         return changeLogPageLimit;
     }
 
@@ -121,7 +124,8 @@ public abstract class TrsServiceImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setChangeLogPageLimit(int newChangeLogPageLimit) {
+	@Override
+    public void setChangeLogPageLimit(int newChangeLogPageLimit) {
         int oldChangeLogPageLimit = changeLogPageLimit;
         changeLogPageLimit = newChangeLogPageLimit;
         if (eNotificationRequired())
@@ -205,7 +209,7 @@ public abstract class TrsServiceImpl extends MinimalEObjectImpl.Container implem
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (basePageLimit: ");
         result.append(basePageLimit);
         result.append(", changeLogPageLimit: ");

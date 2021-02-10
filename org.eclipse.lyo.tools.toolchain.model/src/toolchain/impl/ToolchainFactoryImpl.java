@@ -20,76 +20,78 @@ import toolchain.*;
  */
 public class ToolchainFactoryImpl extends EFactoryImpl implements ToolchainFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+     * Creates the default factory implementation.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static ToolchainFactory init() {
-		try {
-			ToolchainFactory theToolchainFactory = (ToolchainFactory)EPackage.Registry.INSTANCE.getEFactory(ToolchainPackage.eNS_URI);
-			if (theToolchainFactory != null) {
-				return theToolchainFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new ToolchainFactoryImpl();
-	}
+        try {
+            ToolchainFactory theToolchainFactory = (ToolchainFactory)EPackage.Registry.INSTANCE.getEFactory(ToolchainPackage.eNS_URI);
+            if (theToolchainFactory != null) {
+                return theToolchainFactory;
+            }
+        }
+        catch (Exception exception) {
+            EcorePlugin.INSTANCE.log(exception);
+        }
+        return new ToolchainFactoryImpl();
+    }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ToolchainFactoryImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case ToolchainPackage.TOOLCHAIN: return createToolchain();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+        switch (eClass.getClassifierID()) {
+            case ToolchainPackage.TOOLCHAIN: return createToolchain();
+            default:
+                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+        }
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Toolchain createToolchain() {
-		ToolchainImpl toolchain = new ToolchainImpl();
-		return toolchain;
-	}
+     * @generated
+     */
+	@Override
+    public Toolchain createToolchain() {
+        ToolchainImpl toolchain = new ToolchainImpl();
+        return toolchain;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ToolchainPackage getToolchainPackage() {
-		return (ToolchainPackage)getEPackage();
-	}
+     * @generated
+     */
+	@Override
+    public ToolchainPackage getToolchainPackage() {
+        return (ToolchainPackage)getEPackage();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+     * @deprecated
+     * @generated
+     */
 	@Deprecated
 	public static ToolchainPackage getPackage() {
-		return ToolchainPackage.eINSTANCE;
-	}
+        return ToolchainPackage.eINSTANCE;
+    }
 
 } //ToolchainFactoryImpl

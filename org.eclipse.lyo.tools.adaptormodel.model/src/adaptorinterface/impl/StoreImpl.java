@@ -133,6 +133,7 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getDefaultNamedGraph() {
         return defaultNamedGraph;
     }
@@ -142,6 +143,7 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setDefaultNamedGraph(String newDefaultNamedGraph) {
         String oldDefaultNamedGraph = defaultNamedGraph;
         defaultNamedGraph = newDefaultNamedGraph;
@@ -154,6 +156,7 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getSparqlQueryEndpoint() {
         return sparqlQueryEndpoint;
     }
@@ -163,6 +166,7 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setSparqlQueryEndpoint(String newSparqlQueryEndpoint) {
         String oldSparqlQueryEndpoint = sparqlQueryEndpoint;
         sparqlQueryEndpoint = newSparqlQueryEndpoint;
@@ -175,6 +179,7 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getSparqlUpdateEndpoint() {
         return sparqlUpdateEndpoint;
     }
@@ -184,6 +189,7 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setSparqlUpdateEndpoint(String newSparqlUpdateEndpoint) {
         String oldSparqlUpdateEndpoint = sparqlUpdateEndpoint;
         sparqlUpdateEndpoint = newSparqlUpdateEndpoint;
@@ -196,6 +202,7 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public int getInitialPoolSize() {
         return initialPoolSize;
     }
@@ -205,6 +212,7 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setInitialPoolSize(int newInitialPoolSize) {
         int oldInitialPoolSize = initialPoolSize;
         initialPoolSize = newInitialPoolSize;
@@ -309,7 +317,7 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (defaultNamedGraph: ");
         result.append(defaultNamedGraph);
         result.append(", sparqlQueryEndpoint: ");

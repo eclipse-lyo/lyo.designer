@@ -132,6 +132,7 @@ public class OSLCServicePersistenceImpl extends ServicePersistenceImpl implement
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public boolean isCreationFactory() {
         return creationFactory;
     }
@@ -141,6 +142,7 @@ public class OSLCServicePersistenceImpl extends ServicePersistenceImpl implement
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setCreationFactory(boolean newCreationFactory) {
         boolean oldCreationFactory = creationFactory;
         creationFactory = newCreationFactory;
@@ -153,6 +155,7 @@ public class OSLCServicePersistenceImpl extends ServicePersistenceImpl implement
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public boolean isQueryCapability() {
         return queryCapability;
     }
@@ -162,6 +165,7 @@ public class OSLCServicePersistenceImpl extends ServicePersistenceImpl implement
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setQueryCapability(boolean newQueryCapability) {
         boolean oldQueryCapability = queryCapability;
         queryCapability = newQueryCapability;
@@ -174,6 +178,7 @@ public class OSLCServicePersistenceImpl extends ServicePersistenceImpl implement
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public boolean isSelectionDialog() {
         return selectionDialog;
     }
@@ -183,6 +188,7 @@ public class OSLCServicePersistenceImpl extends ServicePersistenceImpl implement
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setSelectionDialog(boolean newSelectionDialog) {
         boolean oldSelectionDialog = selectionDialog;
         selectionDialog = newSelectionDialog;
@@ -195,6 +201,7 @@ public class OSLCServicePersistenceImpl extends ServicePersistenceImpl implement
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public boolean isCreationDialog() {
         return creationDialog;
     }
@@ -204,6 +211,7 @@ public class OSLCServicePersistenceImpl extends ServicePersistenceImpl implement
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setCreationDialog(boolean newCreationDialog) {
         boolean oldCreationDialog = creationDialog;
         creationDialog = newCreationDialog;
@@ -308,7 +316,7 @@ public class OSLCServicePersistenceImpl extends ServicePersistenceImpl implement
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (creationFactory: ");
         result.append(creationFactory);
         result.append(", queryCapability: ");

@@ -90,6 +90,7 @@ public class StoreWithAuthenticationImpl extends StoreImpl implements StoreWithA
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getUsername() {
         return username;
     }
@@ -99,6 +100,7 @@ public class StoreWithAuthenticationImpl extends StoreImpl implements StoreWithA
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setUsername(String newUsername) {
         String oldUsername = username;
         username = newUsername;
@@ -111,6 +113,7 @@ public class StoreWithAuthenticationImpl extends StoreImpl implements StoreWithA
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getPassword() {
         return password;
     }
@@ -120,6 +123,7 @@ public class StoreWithAuthenticationImpl extends StoreImpl implements StoreWithA
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setPassword(String newPassword) {
         String oldPassword = password;
         password = newPassword;
@@ -204,7 +208,7 @@ public class StoreWithAuthenticationImpl extends StoreImpl implements StoreWithA
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (username: ");
         result.append(username);
         result.append(", password: ");

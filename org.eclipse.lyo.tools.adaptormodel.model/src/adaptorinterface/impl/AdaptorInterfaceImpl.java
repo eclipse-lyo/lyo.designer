@@ -502,7 +502,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EList<WebService> getWebServices() {
+	@Override
+    public EList<WebService> getWebServices() {
         if (webServices == null) {
             webServices = new EObjectContainmentEList<WebService>(WebService.class, this, AdaptorinterfacePackage.ADAPTOR_INTERFACE__WEB_SERVICES);
         }
@@ -514,7 +515,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public TrsService getTrsService() {
+	@Override
+    public TrsService getTrsService() {
         return trsService;
     }
 
@@ -538,7 +540,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setTrsService(TrsService newTrsService) {
+	@Override
+    public void setTrsService(TrsService newTrsService) {
         if (newTrsService != trsService) {
             NotificationChain msgs = null;
             if (trsService != null)
@@ -868,7 +871,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public ServerConfiguration getConfiguration() {
+	@Override
+    public ServerConfiguration getConfiguration() {
         return configuration;
     }
 
@@ -892,7 +896,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setConfiguration(ServerConfiguration newConfiguration) {
+	@Override
+    public void setConfiguration(ServerConfiguration newConfiguration) {
         if (newConfiguration != configuration) {
             NotificationChain msgs = null;
             if (configuration != null)
@@ -1003,6 +1008,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<Store> getStores() {
         if (stores == null) {
             stores = new EObjectContainmentEList<Store>(Store.class, this, AdaptorinterfacePackage.ADAPTOR_INTERFACE__STORES);
@@ -1317,7 +1323,7 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: ");
         result.append(name);
         result.append(", javaClassBaseNamespace: ");

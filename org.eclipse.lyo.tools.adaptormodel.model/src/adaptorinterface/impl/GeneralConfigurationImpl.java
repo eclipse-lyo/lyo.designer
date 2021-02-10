@@ -133,7 +133,8 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public boolean isDoNotGenerate() {
+	@Override
+    public boolean isDoNotGenerate() {
         return doNotGenerate;
     }
 
@@ -142,7 +143,8 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setDoNotGenerate(boolean newDoNotGenerate) {
+	@Override
+    public void setDoNotGenerate(boolean newDoNotGenerate) {
         boolean oldDoNotGenerate = doNotGenerate;
         doNotGenerate = newDoNotGenerate;
         if (eNotificationRequired())
@@ -154,6 +156,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public boolean isDoNotGenerateFromImportedModels() {
         return doNotGenerateFromImportedModels;
     }
@@ -163,6 +166,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setDoNotGenerateFromImportedModels(boolean newDoNotGenerateFromImportedModels) {
         boolean oldDoNotGenerateFromImportedModels = doNotGenerateFromImportedModels;
         doNotGenerateFromImportedModels = newDoNotGenerateFromImportedModels;
@@ -175,7 +179,8 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getFilesBasePath() {
+	@Override
+    public String getFilesBasePath() {
         return filesBasePath;
     }
 
@@ -184,7 +189,8 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setFilesBasePath(String newFilesBasePath) {
+	@Override
+    public void setFilesBasePath(String newFilesBasePath) {
         String oldFilesBasePath = filesBasePath;
         filesBasePath = newFilesBasePath;
         if (eNotificationRequired())
@@ -196,7 +202,8 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getJavaBasePackageName() {
+	@Override
+    public String getJavaBasePackageName() {
         return javaBasePackageName;
     }
 
@@ -205,7 +212,8 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setJavaBasePackageName(String newJavaBasePackageName) {
+	@Override
+    public void setJavaBasePackageName(String newJavaBasePackageName) {
         String oldJavaBasePackageName = javaBasePackageName;
         javaBasePackageName = newJavaBasePackageName;
         if (eNotificationRequired())
@@ -309,7 +317,7 @@ public class GeneralConfigurationImpl extends MinimalEObjectImpl.Container imple
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (doNotGenerate: ");
         result.append(doNotGenerate);
         result.append(", doNotGenerateFromImportedModels: ");
