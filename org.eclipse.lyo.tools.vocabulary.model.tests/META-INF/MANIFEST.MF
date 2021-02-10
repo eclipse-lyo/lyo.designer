@@ -6,7 +6,7 @@ Bundle-Version: 2.4.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: vocabulary.tests
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.lyo.tools.vocabulary.model;visibility:=reexport,
