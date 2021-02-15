@@ -43,7 +43,7 @@
  
         <module>org.eclipse.lyo.tools.updatesite</module>
  
-        <!-- <module>org.eclipse.lyo.oslc4j.plugins</module> -->
+        <module>org.eclipse.lyo.oslc4j.plugins</module>
     </modules>
     <repositories>
         <repository>
