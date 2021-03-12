@@ -69,7 +69,8 @@ public class MavenServerConfigurationImpl extends ServerConfigurationImpl implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public int getJettyPort() {
+	@Override
+    public int getJettyPort() {
         return jettyPort;
     }
 
@@ -78,7 +79,8 @@ public class MavenServerConfigurationImpl extends ServerConfigurationImpl implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setJettyPort(int newJettyPort) {
+	@Override
+    public void setJettyPort(int newJettyPort) {
         int oldJettyPort = jettyPort;
         jettyPort = newJettyPort;
         if (eNotificationRequired())
@@ -152,7 +154,7 @@ public class MavenServerConfigurationImpl extends ServerConfigurationImpl implem
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (jettyPort: ");
         result.append(jettyPort);
         result.append(')');

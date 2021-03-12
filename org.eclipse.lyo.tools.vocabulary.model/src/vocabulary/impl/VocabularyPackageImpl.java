@@ -102,7 +102,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
 
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-     * 
+     *
      * <p>This method is used to initialize {@link VocabularyPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
@@ -116,7 +116,8 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         if (isInited) return (VocabularyPackage)EPackage.Registry.INSTANCE.getEPackage(VocabularyPackage.eNS_URI);
 
         // Obtain or create and register package
-        VocabularyPackageImpl theVocabularyPackage = (VocabularyPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof VocabularyPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new VocabularyPackageImpl());
+        Object registeredVocabularyPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+        VocabularyPackageImpl theVocabularyPackage = registeredVocabularyPackage instanceof VocabularyPackageImpl ? (VocabularyPackageImpl)registeredVocabularyPackage : new VocabularyPackageImpl();
 
         isInited = true;
 
@@ -129,7 +130,6 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
         // Mark meta-data to indicate it can't be changed
         theVocabularyPackage.freeze();
 
-  
         // Update the registry and return the package
         EPackage.Registry.INSTANCE.put(VocabularyPackage.eNS_URI, theVocabularyPackage);
         return theVocabularyPackage;
@@ -140,6 +140,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getVocabularies() {
         return vocabulariesEClass;
     }
@@ -149,6 +150,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getVocabularies_Vocabularies() {
         return (EReference)vocabulariesEClass.getEStructuralFeatures().get(0);
     }
@@ -158,6 +160,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getVocabularies_Configuration() {
         return (EReference)vocabulariesEClass.getEStructuralFeatures().get(1);
     }
@@ -167,6 +170,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getVocabulary() {
         return vocabularyEClass;
     }
@@ -176,6 +180,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getVocabulary_NamespaceURI() {
         return (EAttribute)vocabularyEClass.getEStructuralFeatures().get(0);
     }
@@ -185,6 +190,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getVocabulary_Label() {
         return (EAttribute)vocabularyEClass.getEStructuralFeatures().get(1);
     }
@@ -194,6 +200,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getVocabulary_Description() {
         return (EAttribute)vocabularyEClass.getEStructuralFeatures().get(2);
     }
@@ -203,6 +210,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getVocabulary_Source() {
         return (EAttribute)vocabularyEClass.getEStructuralFeatures().get(3);
     }
@@ -212,6 +220,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getVocabulary_PreferredNamespacePrefix() {
         return (EAttribute)vocabularyEClass.getEStructuralFeatures().get(4);
     }
@@ -221,6 +230,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getVocabulary_Classes() {
         return (EReference)vocabularyEClass.getEStructuralFeatures().get(5);
     }
@@ -230,6 +240,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getVocabulary_Properties() {
         return (EReference)vocabularyEClass.getEStructuralFeatures().get(6);
     }
@@ -239,6 +250,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getVocabulary_Configuration() {
         return (EReference)vocabularyEClass.getEStructuralFeatures().get(7);
     }
@@ -248,6 +260,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getTerm() {
         return termEClass;
     }
@@ -257,6 +270,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getTerm_Name() {
         return (EAttribute)termEClass.getEStructuralFeatures().get(0);
     }
@@ -266,6 +280,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getTerm_Label() {
         return (EAttribute)termEClass.getEStructuralFeatures().get(1);
     }
@@ -275,6 +290,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getTerm_Comment() {
         return (EAttribute)termEClass.getEStructuralFeatures().get(2);
     }
@@ -284,6 +300,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getTerm_SeeAlso() {
         return (EAttribute)termEClass.getEStructuralFeatures().get(3);
     }
@@ -293,6 +310,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getClass_() {
         return classEClass;
     }
@@ -302,6 +320,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getClass_SubClassOf() {
         return (EReference)classEClass.getEStructuralFeatures().get(0);
     }
@@ -311,6 +330,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getClass_Type() {
         return (EReference)classEClass.getEStructuralFeatures().get(1);
     }
@@ -320,6 +340,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getProperty() {
         return propertyEClass;
     }
@@ -329,6 +350,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getProperty_SubPropertyOf() {
         return (EReference)propertyEClass.getEStructuralFeatures().get(0);
     }
@@ -338,6 +360,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getProperty_Domain() {
         return (EReference)propertyEClass.getEStructuralFeatures().get(1);
     }
@@ -347,6 +370,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getProperty_Range() {
         return (EReference)propertyEClass.getEStructuralFeatures().get(2);
     }
@@ -356,6 +380,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getGeneralConfiguration() {
         return generalConfigurationEClass;
     }
@@ -365,6 +390,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getGeneralConfiguration_DoNotGenerate() {
         return (EAttribute)generalConfigurationEClass.getEStructuralFeatures().get(0);
     }
@@ -374,6 +400,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getGeneralConfiguration_FilesBasePath() {
         return (EAttribute)generalConfigurationEClass.getEStructuralFeatures().get(1);
     }
@@ -383,6 +410,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EAttribute getGeneralConfiguration_JavaBasePackageName() {
         return (EAttribute)generalConfigurationEClass.getEStructuralFeatures().get(2);
     }
@@ -392,6 +420,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EClass getVocabularyConfiguration() {
         return vocabularyConfigurationEClass;
     }
@@ -401,6 +430,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EReference getVocabularyConfiguration_GeneralConfiguration() {
         return (EReference)vocabularyConfigurationEClass.getEStructuralFeatures().get(0);
     }
@@ -410,6 +440,7 @@ public class VocabularyPackageImpl extends EPackageImpl implements VocabularyPac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public VocabularyFactory getVocabularyFactory() {
         return (VocabularyFactory)getEFactoryInstance();
     }

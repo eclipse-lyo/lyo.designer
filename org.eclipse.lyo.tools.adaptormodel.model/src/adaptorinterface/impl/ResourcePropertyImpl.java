@@ -311,6 +311,7 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
@@ -323,7 +324,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getTitle() {
+	@Override
+    public String getTitle() {
         return title;
     }
 
@@ -332,7 +334,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setTitle(String newTitle) {
+	@Override
+    public void setTitle(String newTitle) {
         String oldTitle = title;
         title = newTitle;
         if (eNotificationRequired())
@@ -344,7 +347,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getName() {
+	@Override
+    public String getName() {
         return name;
     }
 
@@ -353,7 +357,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setName(String newName) {
+	@Override
+    public void setName(String newName) {
         String oldName = name;
         name = newName;
         if (eNotificationRequired())
@@ -365,7 +370,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public Property getPropertyDefinition() {
+	@Override
+    public Property getPropertyDefinition() {
         if (propertyDefinition != null && propertyDefinition.eIsProxy()) {
             InternalEObject oldPropertyDefinition = (InternalEObject)propertyDefinition;
             propertyDefinition = (Property)eResolveProxy(oldPropertyDefinition);
@@ -391,7 +397,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setPropertyDefinition(Property newPropertyDefinition) {
+	@Override
+    public void setPropertyDefinition(Property newPropertyDefinition) {
         Property oldPropertyDefinition = propertyDefinition;
         propertyDefinition = newPropertyDefinition;
         if (eNotificationRequired())
@@ -403,7 +410,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public ResourcePropertyOccurs getOccurs() {
+	@Override
+    public ResourcePropertyOccurs getOccurs() {
         return occurs;
     }
 
@@ -412,7 +420,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setOccurs(ResourcePropertyOccurs newOccurs) {
+	@Override
+    public void setOccurs(ResourcePropertyOccurs newOccurs) {
         ResourcePropertyOccurs oldOccurs = occurs;
         occurs = newOccurs == null ? OCCURS_EDEFAULT : newOccurs;
         if (eNotificationRequired())
@@ -424,7 +433,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public boolean isReadOnly() {
+	@Override
+    public boolean isReadOnly() {
         return readOnly;
     }
 
@@ -433,7 +443,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setReadOnly(boolean newReadOnly) {
+	@Override
+    public void setReadOnly(boolean newReadOnly) {
         boolean oldReadOnly = readOnly;
         readOnly = newReadOnly;
         if (eNotificationRequired())
@@ -445,7 +456,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public ResourcePropertyValueType getValueType() {
+	@Override
+    public ResourcePropertyValueType getValueType() {
         return valueType;
     }
 
@@ -454,7 +466,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setValueType(ResourcePropertyValueType newValueType) {
+	@Override
+    public void setValueType(ResourcePropertyValueType newValueType) {
         ResourcePropertyValueType oldValueType = valueType;
         valueType = newValueType == null ? VALUE_TYPE_EDEFAULT : newValueType;
         if (eNotificationRequired())
@@ -466,7 +479,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public ResourcePropertyRepresentation getRepresentation() {
+	@Override
+    public ResourcePropertyRepresentation getRepresentation() {
         return representation;
     }
 
@@ -475,7 +489,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setRepresentation(ResourcePropertyRepresentation newRepresentation) {
+	@Override
+    public void setRepresentation(ResourcePropertyRepresentation newRepresentation) {
         ResourcePropertyRepresentation oldRepresentation = representation;
         representation = newRepresentation == null ? REPRESENTATION_EDEFAULT : newRepresentation;
         if (eNotificationRequired())
@@ -487,7 +502,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public ResourcePropertyMultiValueRepresentation getMultiValueRepresentation() {
+	@Override
+    public ResourcePropertyMultiValueRepresentation getMultiValueRepresentation() {
         return multiValueRepresentation;
     }
 
@@ -496,7 +512,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setMultiValueRepresentation(ResourcePropertyMultiValueRepresentation newMultiValueRepresentation) {
+	@Override
+    public void setMultiValueRepresentation(ResourcePropertyMultiValueRepresentation newMultiValueRepresentation) {
         ResourcePropertyMultiValueRepresentation oldMultiValueRepresentation = multiValueRepresentation;
         multiValueRepresentation = newMultiValueRepresentation == null ? MULTI_VALUE_REPRESENTATION_EDEFAULT : newMultiValueRepresentation;
         if (eNotificationRequired())
@@ -508,7 +525,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EList<Resource> getRange() {
+	@Override
+    public EList<Resource> getRange() {
         if (range == null) {
             range = new EObjectResolvingEList<Resource>(Resource.class, this, AdaptorinterfacePackage.RESOURCE_PROPERTY__RANGE);
         }
@@ -520,7 +538,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getDescription() {
+	@Override
+    public String getDescription() {
         return description;
     }
 
@@ -529,7 +548,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setDescription(String newDescription) {
+	@Override
+    public void setDescription(String newDescription) {
         String oldDescription = description;
         description = newDescription;
         if (eNotificationRequired())
@@ -541,7 +561,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getAllowedValue() {
+	@Override
+    public EList<String> getAllowedValue() {
         if (allowedValue == null) {
             allowedValue = new EDataTypeUniqueEList<String>(String.class, this, AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE);
         }
@@ -553,7 +574,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public ResourcePropertyIsMemberProperty getIsMemberProperty() {
+	@Override
+    public ResourcePropertyIsMemberProperty getIsMemberProperty() {
         return isMemberProperty;
     }
 
@@ -562,7 +584,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setIsMemberProperty(ResourcePropertyIsMemberProperty newIsMemberProperty) {
+	@Override
+    public void setIsMemberProperty(ResourcePropertyIsMemberProperty newIsMemberProperty) {
         ResourcePropertyIsMemberProperty oldIsMemberProperty = isMemberProperty;
         isMemberProperty = newIsMemberProperty == null ? IS_MEMBER_PROPERTY_EDEFAULT : newIsMemberProperty;
         if (eNotificationRequired())
@@ -760,7 +783,7 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (id: ");
         result.append(id);
         result.append(", title: ");

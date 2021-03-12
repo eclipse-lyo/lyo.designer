@@ -171,7 +171,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getRootServerBaseUrl() {
+	@Override
+    public String getRootServerBaseUrl() {
         return rootServerBaseUrl;
     }
 
@@ -180,7 +181,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setRootServerBaseUrl(String newRootServerBaseUrl) {
+	@Override
+    public void setRootServerBaseUrl(String newRootServerBaseUrl) {
         String oldRootServerBaseUrl = rootServerBaseUrl;
         rootServerBaseUrl = newRootServerBaseUrl;
         if (eNotificationRequired())
@@ -192,7 +194,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getApplicationContextPath() {
+	@Override
+    public String getApplicationContextPath() {
         return applicationContextPath;
     }
 
@@ -201,7 +204,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setApplicationContextPath(String newApplicationContextPath) {
+	@Override
+    public void setApplicationContextPath(String newApplicationContextPath) {
         String oldApplicationContextPath = applicationContextPath;
         applicationContextPath = newApplicationContextPath;
         if (eNotificationRequired())
@@ -213,7 +217,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getServletUrlPattern() {
+	@Override
+    public String getServletUrlPattern() {
         return servletUrlPattern;
     }
 
@@ -222,7 +227,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setServletUrlPattern(String newServletUrlPattern) {
+	@Override
+    public void setServletUrlPattern(String newServletUrlPattern) {
         String oldServletUrlPattern = servletUrlPattern;
         servletUrlPattern = newServletUrlPattern;
         if (eNotificationRequired())
@@ -234,7 +240,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public boolean isDoNotRegenerateJspFiles() {
+	@Override
+    public boolean isDoNotRegenerateJspFiles() {
         return doNotRegenerateJspFiles;
     }
 
@@ -243,7 +250,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setDoNotRegenerateJspFiles(boolean newDoNotRegenerateJspFiles) {
+	@Override
+    public void setDoNotRegenerateJspFiles(boolean newDoNotRegenerateJspFiles) {
         boolean oldDoNotRegenerateJspFiles = doNotRegenerateJspFiles;
         doNotRegenerateJspFiles = newDoNotRegenerateJspFiles;
         if (eNotificationRequired())
@@ -255,7 +263,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public GeneralConfiguration getGeneralConfiguration() {
+	@Override
+    public GeneralConfiguration getGeneralConfiguration() {
         return generalConfiguration;
     }
 
@@ -279,7 +288,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setGeneralConfiguration(GeneralConfiguration newGeneralConfiguration) {
+	@Override
+    public void setGeneralConfiguration(GeneralConfiguration newGeneralConfiguration) {
         if (newGeneralConfiguration != generalConfiguration) {
             NotificationChain msgs = null;
             if (generalConfiguration != null)
@@ -298,7 +308,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public ProjectConfiguration getProjectConfiguration() {
+	@Override
+    public ProjectConfiguration getProjectConfiguration() {
         return projectConfiguration;
     }
 
@@ -322,7 +333,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setProjectConfiguration(ProjectConfiguration newProjectConfiguration) {
+	@Override
+    public void setProjectConfiguration(ProjectConfiguration newProjectConfiguration) {
         if (newProjectConfiguration != projectConfiguration) {
             NotificationChain msgs = null;
             if (projectConfiguration != null)
@@ -341,7 +353,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public AuthenticationConfiguration getAuthenticationConfiguration() {
+	@Override
+    public AuthenticationConfiguration getAuthenticationConfiguration() {
         return authenticationConfiguration;
     }
 
@@ -365,7 +378,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setAuthenticationConfiguration(AuthenticationConfiguration newAuthenticationConfiguration) {
+	@Override
+    public void setAuthenticationConfiguration(AuthenticationConfiguration newAuthenticationConfiguration) {
         if (newAuthenticationConfiguration != authenticationConfiguration) {
             NotificationChain msgs = null;
             if (authenticationConfiguration != null)
@@ -524,7 +538,7 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (rootServerBaseUrl: ");
         result.append(rootServerBaseUrl);
         result.append(", applicationContextPath: ");

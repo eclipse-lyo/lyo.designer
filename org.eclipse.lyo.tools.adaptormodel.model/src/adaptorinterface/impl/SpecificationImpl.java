@@ -177,7 +177,8 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public SpecificationConfiguration getConfiguration() {
+	@Override
+    public SpecificationConfiguration getConfiguration() {
         return configuration;
     }
 
@@ -201,7 +202,8 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setConfiguration(SpecificationConfiguration newConfiguration) {
+	@Override
+    public void setConfiguration(SpecificationConfiguration newConfiguration) {
         if (newConfiguration != configuration) {
             NotificationChain msgs = null;
             if (configuration != null)

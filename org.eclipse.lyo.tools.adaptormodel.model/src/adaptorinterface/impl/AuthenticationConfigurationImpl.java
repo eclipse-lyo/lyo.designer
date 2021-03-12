@@ -91,7 +91,8 @@ public class AuthenticationConfigurationImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getApplicationName() {
+	@Override
+    public String getApplicationName() {
         return applicationName;
     }
 
@@ -100,7 +101,8 @@ public class AuthenticationConfigurationImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setApplicationName(String newApplicationName) {
+	@Override
+    public void setApplicationName(String newApplicationName) {
         String oldApplicationName = applicationName;
         applicationName = newApplicationName;
         if (eNotificationRequired())
@@ -112,7 +114,8 @@ public class AuthenticationConfigurationImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getOauthRealm() {
+	@Override
+    public String getOauthRealm() {
         return oauthRealm;
     }
 
@@ -121,7 +124,8 @@ public class AuthenticationConfigurationImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setOauthRealm(String newOauthRealm) {
+	@Override
+    public void setOauthRealm(String newOauthRealm) {
         String oldOauthRealm = oauthRealm;
         oauthRealm = newOauthRealm;
         if (eNotificationRequired())
@@ -205,7 +209,7 @@ public class AuthenticationConfigurationImpl extends MinimalEObjectImpl.Containe
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (applicationName: ");
         result.append(applicationName);
         result.append(", oauthRealm: ");

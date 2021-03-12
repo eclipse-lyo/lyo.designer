@@ -78,6 +78,7 @@ public class VocabularyFactoryImpl extends EFactoryImpl implements VocabularyFac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public Vocabularies createVocabularies() {
         VocabulariesImpl vocabularies = new VocabulariesImpl();
         return vocabularies;
@@ -88,6 +89,7 @@ public class VocabularyFactoryImpl extends EFactoryImpl implements VocabularyFac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public Vocabulary createVocabulary() {
         VocabularyImpl vocabulary = new VocabularyImpl();
         return vocabulary;
@@ -98,6 +100,7 @@ public class VocabularyFactoryImpl extends EFactoryImpl implements VocabularyFac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public vocabulary.Class createClass() {
         ClassImpl class_ = new ClassImpl();
         return class_;
@@ -108,6 +111,7 @@ public class VocabularyFactoryImpl extends EFactoryImpl implements VocabularyFac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public Property createProperty() {
         PropertyImpl property = new PropertyImpl();
         return property;
@@ -118,6 +122,7 @@ public class VocabularyFactoryImpl extends EFactoryImpl implements VocabularyFac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public GeneralConfiguration createGeneralConfiguration() {
         GeneralConfigurationImpl generalConfiguration = new GeneralConfigurationImpl();
         return generalConfiguration;
@@ -128,6 +133,7 @@ public class VocabularyFactoryImpl extends EFactoryImpl implements VocabularyFac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public VocabularyConfiguration createVocabularyConfiguration() {
         VocabularyConfigurationImpl vocabularyConfiguration = new VocabularyConfigurationImpl();
         return vocabularyConfiguration;
@@ -138,6 +144,7 @@ public class VocabularyFactoryImpl extends EFactoryImpl implements VocabularyFac
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public VocabularyPackage getVocabularyPackage() {
         return (VocabularyPackage)getEPackage();
     }

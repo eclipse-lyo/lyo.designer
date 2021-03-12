@@ -197,6 +197,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getNamespaceURI() {
         return namespaceURI;
     }
@@ -206,6 +207,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setNamespaceURI(String newNamespaceURI) {
         String oldNamespaceURI = namespaceURI;
         namespaceURI = newNamespaceURI;
@@ -218,6 +220,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getLabel() {
         return label;
     }
@@ -227,6 +230,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setLabel(String newLabel) {
         String oldLabel = label;
         label = newLabel;
@@ -239,6 +243,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getDescription() {
         return description;
     }
@@ -248,6 +253,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setDescription(String newDescription) {
         String oldDescription = description;
         description = newDescription;
@@ -260,6 +266,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getSource() {
         return source;
     }
@@ -269,6 +276,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setSource(String newSource) {
         String oldSource = source;
         source = newSource;
@@ -281,6 +289,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getPreferredNamespacePrefix() {
         return preferredNamespacePrefix;
     }
@@ -290,6 +299,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setPreferredNamespacePrefix(String newPreferredNamespacePrefix) {
         String oldPreferredNamespacePrefix = preferredNamespacePrefix;
         preferredNamespacePrefix = newPreferredNamespacePrefix;
@@ -302,6 +312,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<vocabulary.Class> getClasses() {
         if (classes == null) {
             classes = new EObjectContainmentEList<vocabulary.Class>(vocabulary.Class.class, this, VocabularyPackage.VOCABULARY__CLASSES);
@@ -314,6 +325,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public EList<Property> getProperties() {
         if (properties == null) {
             properties = new EObjectContainmentEList<Property>(Property.class, this, VocabularyPackage.VOCABULARY__PROPERTIES);
@@ -326,6 +338,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public VocabularyConfiguration getConfiguration() {
         return configuration;
     }
@@ -350,6 +363,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setConfiguration(VocabularyConfiguration newConfiguration) {
         if (newConfiguration != configuration) {
             NotificationChain msgs = null;
@@ -522,7 +536,7 @@ public class VocabularyImpl extends MinimalEObjectImpl.Container implements Voca
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (namespaceURI: ");
         result.append(namespaceURI);
         result.append(", label: ");

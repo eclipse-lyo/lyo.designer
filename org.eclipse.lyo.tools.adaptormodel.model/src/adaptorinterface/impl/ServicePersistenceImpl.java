@@ -62,6 +62,7 @@ public abstract class ServicePersistenceImpl extends MinimalEObjectImpl.Containe
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public Store getStore() {
         if (store != null && store.eIsProxy()) {
             InternalEObject oldStore = (InternalEObject)store;
@@ -88,6 +89,7 @@ public abstract class ServicePersistenceImpl extends MinimalEObjectImpl.Containe
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setStore(Store newStore) {
         Store oldStore = store;
         store = newStore;

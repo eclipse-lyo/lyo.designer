@@ -91,7 +91,8 @@ public class ProjectConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public boolean isDoNotGenerateProjectConfigurationFiles() {
+	@Override
+    public boolean isDoNotGenerateProjectConfigurationFiles() {
         return doNotGenerateProjectConfigurationFiles;
     }
 
@@ -100,7 +101,8 @@ public class ProjectConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setDoNotGenerateProjectConfigurationFiles(boolean newDoNotGenerateProjectConfigurationFiles) {
+	@Override
+    public void setDoNotGenerateProjectConfigurationFiles(boolean newDoNotGenerateProjectConfigurationFiles) {
         boolean oldDoNotGenerateProjectConfigurationFiles = doNotGenerateProjectConfigurationFiles;
         doNotGenerateProjectConfigurationFiles = newDoNotGenerateProjectConfigurationFiles;
         if (eNotificationRequired())
@@ -112,7 +114,8 @@ public class ProjectConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getLyoVersion() {
+	@Override
+    public String getLyoVersion() {
         return lyoVersion;
     }
 
@@ -121,7 +124,8 @@ public class ProjectConfigurationImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setLyoVersion(String newLyoVersion) {
+	@Override
+    public void setLyoVersion(String newLyoVersion) {
         String oldLyoVersion = lyoVersion;
         lyoVersion = newLyoVersion;
         if (eNotificationRequired())
@@ -205,7 +209,7 @@ public class ProjectConfigurationImpl extends MinimalEObjectImpl.Container imple
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (doNotGenerateProjectConfigurationFiles: ");
         result.append(doNotGenerateProjectConfigurationFiles);
         result.append(", lyoVersion: ");

@@ -158,7 +158,8 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public boolean isDoNotGenerate() {
+	@Override
+    public boolean isDoNotGenerate() {
         return doNotGenerate;
     }
 
@@ -167,7 +168,8 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setDoNotGenerate(boolean newDoNotGenerate) {
+	@Override
+    public void setDoNotGenerate(boolean newDoNotGenerate) {
         boolean oldDoNotGenerate = doNotGenerate;
         doNotGenerate = newDoNotGenerate;
         if (eNotificationRequired())
@@ -261,7 +263,7 @@ public class GenerationSettingImpl extends MinimalEObjectImpl.Container implemen
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (javaClassPackageName: ");
         result.append(javaClassPackageName);
         result.append(", javaFilesPath: ");

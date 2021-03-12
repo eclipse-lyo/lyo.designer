@@ -19,78 +19,78 @@ import vocabulary.provider.VocabularyEditPlugin;
  */
 public final class ToolchainEditorPlugin extends EMFPlugin {
 	/**
-	 * Keep track of the singleton.
-	 * <!-- begin-user-doc -->
+     * Keep track of the singleton.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static final ToolchainEditorPlugin INSTANCE = new ToolchainEditorPlugin();
 	
 	/**
-	 * Keep track of the singleton.
-	 * <!-- begin-user-doc -->
+     * Keep track of the singleton.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	private static Implementation plugin;
 
 	/**
-	 * Create the instance.
-	 * <!-- begin-user-doc -->
+     * Create the instance.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ToolchainEditorPlugin() {
-		super
-			(new ResourceLocator [] {
-				AdaptorInterfaceEditPlugin.INSTANCE,
-				VocabularyEditPlugin.INSTANCE,
-			});
-	}
+        super
+            (new ResourceLocator [] {
+                AdaptorInterfaceEditPlugin.INSTANCE,
+                VocabularyEditPlugin.INSTANCE,
+            });
+    }
 
 	/**
-	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc -->
+     * Returns the singleton instance of the Eclipse plugin.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the singleton instance.
-	 * @generated
-	 */
+     * @return the singleton instance.
+     * @generated
+     */
 	@Override
 	public ResourceLocator getPluginResourceLocator() {
-		return plugin;
-	}
+        return plugin;
+    }
 	
 	/**
-	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc -->
+     * Returns the singleton instance of the Eclipse plugin.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the singleton instance.
-	 * @generated
-	 */
+     * @return the singleton instance.
+     * @generated
+     */
 	public static Implementation getPlugin() {
-		return plugin;
-	}
+        return plugin;
+    }
 	
 	/**
-	 * The actual implementation of the Eclipse <b>Plugin</b>.
-	 * <!-- begin-user-doc -->
+     * The actual implementation of the Eclipse <b>Plugin</b>.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static class Implementation extends EclipseUIPlugin {
 		/**
-		 * Creates an instance.
-		 * <!-- begin-user-doc -->
+         * Creates an instance.
+         * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+         * @generated
+         */
 		public Implementation() {
-			super();
-	
-			// Remember the static instance.
-			//
-			plugin = this;
-		}
+            super();
+    
+            // Remember the static instance.
+            //
+            plugin = this;
+        }
 	}
 
 }

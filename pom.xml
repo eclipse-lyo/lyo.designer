@@ -7,12 +7,11 @@
     <packaging>pom</packaging>
 
     <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <tycho.version>1.4.0</tycho.version>
+    	<maven.compiler.release>11</maven.compiler.release>
+        <tycho.version>2.2.0</tycho.version>
         <eclipse.cbi>1.1.7</eclipse.cbi>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <p2.repo>http://download.eclipse.org/releases/oxygen</p2.repo>
+        <p2.repo>http://download.eclipse.org/releases/2020-12</p2.repo>
     </properties>
 
     <modules>
@@ -131,17 +130,7 @@
                         <environment>
                             <os>linux</os>
                             <ws>gtk</ws>
-                            <arch>x86</arch>
-                        </environment>
-                        <environment>
-                            <os>linux</os>
-                            <ws>gtk</ws>
                             <arch>x86_64</arch>
-                        </environment>
-                        <environment>
-                            <os>win32</os>
-                            <ws>win32</ws>
-                            <arch>x86</arch>
                         </environment>
                         <environment>
                             <os>win32</os>

@@ -63,6 +63,7 @@ public class VocabularyConfigurationImpl extends MinimalEObjectImpl.Container im
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public GeneralConfiguration getGeneralConfiguration() {
         return generalConfiguration;
     }
@@ -87,6 +88,7 @@ public class VocabularyConfigurationImpl extends MinimalEObjectImpl.Container im
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setGeneralConfiguration(GeneralConfiguration newGeneralConfiguration) {
         if (newGeneralConfiguration != generalConfiguration) {
             NotificationChain msgs = null;

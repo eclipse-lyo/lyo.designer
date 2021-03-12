@@ -2,12 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.lyo.tools.toolchain.edit;singleton:=true
+Automatic-Module-Name: org.eclipse.lyo.tools.toolchain.edit
 Bundle-Version: 4.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: toolchain.provider.ToolchainEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: toolchain.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.lyo.tools.toolchain.model;visibility:=reexport,

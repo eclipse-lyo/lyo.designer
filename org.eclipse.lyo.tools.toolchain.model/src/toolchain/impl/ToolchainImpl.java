@@ -43,315 +43,322 @@ import vocabulary.Vocabularies;
  */
 public class ToolchainImpl extends MinimalEObjectImpl.Container implements Toolchain {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected static final String NAME_EDEFAULT = "New ToolChain";
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAdaptorInterfaces() <em>Adaptor Interfaces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getAdaptorInterfaces() <em>Adaptor Interfaces</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAdaptorInterfaces()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getAdaptorInterfaces()
+     * @generated
+     * @ordered
+     */
 	protected EList<AdaptorInterface> adaptorInterfaces;
 
 	/**
-	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSpecification()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getSpecification()
+     * @generated
+     * @ordered
+     */
 	protected Specification specification;
 
 	/**
-	 * The cached value of the '{@link #getVocabularies() <em>Vocabularies</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getVocabularies() <em>Vocabularies</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVocabularies()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getVocabularies()
+     * @generated
+     * @ordered
+     */
 	protected Vocabularies vocabularies;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ToolchainImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return ToolchainPackage.Literals.TOOLCHAIN;
-	}
+        return ToolchainPackage.Literals.TOOLCHAIN;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
+     * @generated
+     */
+	@Override
+    public String getName() {
+        return name;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__NAME, oldName, name));
-	}
+     * @generated
+     */
+	@Override
+    public void setName(String newName) {
+        String oldName = name;
+        name = newName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__NAME, oldName, name));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<AdaptorInterface> getAdaptorInterfaces() {
-		if (adaptorInterfaces == null) {
-			adaptorInterfaces = new EObjectContainmentEList<AdaptorInterface>(AdaptorInterface.class, this, ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES);
-		}
-		return adaptorInterfaces;
-	}
+     * @generated
+     */
+	@Override
+    public EList<AdaptorInterface> getAdaptorInterfaces() {
+        if (adaptorInterfaces == null) {
+            adaptorInterfaces = new EObjectContainmentEList<AdaptorInterface>(AdaptorInterface.class, this, ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES);
+        }
+        return adaptorInterfaces;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Specification getSpecification() {
-		return specification;
-	}
+     * @generated
+     */
+	@Override
+    public Specification getSpecification() {
+        return specification;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetSpecification(Specification newSpecification, NotificationChain msgs) {
-		Specification oldSpecification = specification;
-		specification = newSpecification;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__SPECIFICATION, oldSpecification, newSpecification);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+        Specification oldSpecification = specification;
+        specification = newSpecification;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__SPECIFICATION, oldSpecification, newSpecification);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSpecification(Specification newSpecification) {
-		if (newSpecification != specification) {
-			NotificationChain msgs = null;
-			if (specification != null)
-				msgs = ((InternalEObject)specification).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__SPECIFICATION, null, msgs);
-			if (newSpecification != null)
-				msgs = ((InternalEObject)newSpecification).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__SPECIFICATION, null, msgs);
-			msgs = basicSetSpecification(newSpecification, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__SPECIFICATION, newSpecification, newSpecification));
-	}
+     * @generated
+     */
+	@Override
+    public void setSpecification(Specification newSpecification) {
+        if (newSpecification != specification) {
+            NotificationChain msgs = null;
+            if (specification != null)
+                msgs = ((InternalEObject)specification).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__SPECIFICATION, null, msgs);
+            if (newSpecification != null)
+                msgs = ((InternalEObject)newSpecification).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__SPECIFICATION, null, msgs);
+            msgs = basicSetSpecification(newSpecification, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__SPECIFICATION, newSpecification, newSpecification));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Vocabularies getVocabularies() {
-		return vocabularies;
-	}
+     * @generated
+     */
+	@Override
+    public Vocabularies getVocabularies() {
+        return vocabularies;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetVocabularies(Vocabularies newVocabularies, NotificationChain msgs) {
-		Vocabularies oldVocabularies = vocabularies;
-		vocabularies = newVocabularies;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__VOCABULARIES, oldVocabularies, newVocabularies);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+        Vocabularies oldVocabularies = vocabularies;
+        vocabularies = newVocabularies;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__VOCABULARIES, oldVocabularies, newVocabularies);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setVocabularies(Vocabularies newVocabularies) {
-		if (newVocabularies != vocabularies) {
-			NotificationChain msgs = null;
-			if (vocabularies != null)
-				msgs = ((InternalEObject)vocabularies).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__VOCABULARIES, null, msgs);
-			if (newVocabularies != null)
-				msgs = ((InternalEObject)newVocabularies).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__VOCABULARIES, null, msgs);
-			msgs = basicSetVocabularies(newVocabularies, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__VOCABULARIES, newVocabularies, newVocabularies));
-	}
+     * @generated
+     */
+	@Override
+    public void setVocabularies(Vocabularies newVocabularies) {
+        if (newVocabularies != vocabularies) {
+            NotificationChain msgs = null;
+            if (vocabularies != null)
+                msgs = ((InternalEObject)vocabularies).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__VOCABULARIES, null, msgs);
+            if (newVocabularies != null)
+                msgs = ((InternalEObject)newVocabularies).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolchainPackage.TOOLCHAIN__VOCABULARIES, null, msgs);
+            msgs = basicSetVocabularies(newVocabularies, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolchainPackage.TOOLCHAIN__VOCABULARIES, newVocabularies, newVocabularies));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
-				return ((InternalEList<?>)getAdaptorInterfaces()).basicRemove(otherEnd, msgs);
-			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
-				return basicSetSpecification(null, msgs);
-			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
-				return basicSetVocabularies(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
+                return ((InternalEList<?>)getAdaptorInterfaces()).basicRemove(otherEnd, msgs);
+            case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
+                return basicSetSpecification(null, msgs);
+            case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+                return basicSetVocabularies(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ToolchainPackage.TOOLCHAIN__NAME:
-				return getName();
-			case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
-				return getAdaptorInterfaces();
-			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
-				return getSpecification();
-			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
-				return getVocabularies();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case ToolchainPackage.TOOLCHAIN__NAME:
+                return getName();
+            case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
+                return getAdaptorInterfaces();
+            case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
+                return getSpecification();
+            case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+                return getVocabularies();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ToolchainPackage.TOOLCHAIN__NAME:
-				setName((String)newValue);
-				return;
-			case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
-				getAdaptorInterfaces().clear();
-				getAdaptorInterfaces().addAll((Collection<? extends AdaptorInterface>)newValue);
-				return;
-			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
-				setSpecification((Specification)newValue);
-				return;
-			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
-				setVocabularies((Vocabularies)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case ToolchainPackage.TOOLCHAIN__NAME:
+                setName((String)newValue);
+                return;
+            case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
+                getAdaptorInterfaces().clear();
+                getAdaptorInterfaces().addAll((Collection<? extends AdaptorInterface>)newValue);
+                return;
+            case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
+                setSpecification((Specification)newValue);
+                return;
+            case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+                setVocabularies((Vocabularies)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ToolchainPackage.TOOLCHAIN__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
-				getAdaptorInterfaces().clear();
-				return;
-			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
-				setSpecification((Specification)null);
-				return;
-			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
-				setVocabularies((Vocabularies)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case ToolchainPackage.TOOLCHAIN__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
+                getAdaptorInterfaces().clear();
+                return;
+            case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
+                setSpecification((Specification)null);
+                return;
+            case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+                setVocabularies((Vocabularies)null);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ToolchainPackage.TOOLCHAIN__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
-				return adaptorInterfaces != null && !adaptorInterfaces.isEmpty();
-			case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
-				return specification != null;
-			case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
-				return vocabularies != null;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case ToolchainPackage.TOOLCHAIN__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case ToolchainPackage.TOOLCHAIN__ADAPTOR_INTERFACES:
+                return adaptorInterfaces != null && !adaptorInterfaces.isEmpty();
+            case ToolchainPackage.TOOLCHAIN__SPECIFICATION:
+                return specification != null;
+            case ToolchainPackage.TOOLCHAIN__VOCABULARIES:
+                return vocabularies != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuilder result = new StringBuilder(super.toString());
+        result.append(" (name: ");
+        result.append(name);
+        result.append(')');
+        return result.toString();
+    }
 
 } //ToolchainImpl

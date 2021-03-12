@@ -111,7 +111,8 @@ public class MavenProjectConfigurationImpl extends ProjectConfigurationImpl impl
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getGroupId() {
+	@Override
+    public String getGroupId() {
         return groupId;
     }
 
@@ -120,7 +121,8 @@ public class MavenProjectConfigurationImpl extends ProjectConfigurationImpl impl
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setGroupId(String newGroupId) {
+	@Override
+    public void setGroupId(String newGroupId) {
         String oldGroupId = groupId;
         groupId = newGroupId;
         if (eNotificationRequired())
@@ -132,7 +134,8 @@ public class MavenProjectConfigurationImpl extends ProjectConfigurationImpl impl
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getArtifactId() {
+	@Override
+    public String getArtifactId() {
         return artifactId;
     }
 
@@ -141,7 +144,8 @@ public class MavenProjectConfigurationImpl extends ProjectConfigurationImpl impl
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setArtifactId(String newArtifactId) {
+	@Override
+    public void setArtifactId(String newArtifactId) {
         String oldArtifactId = artifactId;
         artifactId = newArtifactId;
         if (eNotificationRequired())
@@ -153,7 +157,8 @@ public class MavenProjectConfigurationImpl extends ProjectConfigurationImpl impl
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public String getVersion() {
+	@Override
+    public String getVersion() {
         return version;
     }
 
@@ -162,7 +167,8 @@ public class MavenProjectConfigurationImpl extends ProjectConfigurationImpl impl
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setVersion(String newVersion) {
+	@Override
+    public void setVersion(String newVersion) {
         String oldVersion = version;
         version = newVersion;
         if (eNotificationRequired())
@@ -256,7 +262,7 @@ public class MavenProjectConfigurationImpl extends ProjectConfigurationImpl impl
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (groupId: ");
         result.append(groupId);
         result.append(", artifactId: ");

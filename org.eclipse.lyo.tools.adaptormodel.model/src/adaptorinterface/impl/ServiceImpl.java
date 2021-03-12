@@ -316,6 +316,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public OSLCServicePersistence getPersistence() {
         return persistence;
     }
@@ -340,6 +341,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setPersistence(OSLCServicePersistence newPersistence) {
         if (newPersistence != persistence) {
             NotificationChain msgs = null;
@@ -533,7 +535,7 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 	public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (serviceNamespace: ");
         result.append(serviceNamespace);
         result.append(", usages: ");

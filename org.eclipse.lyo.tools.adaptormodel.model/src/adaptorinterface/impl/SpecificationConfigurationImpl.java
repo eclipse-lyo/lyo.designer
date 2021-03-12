@@ -75,7 +75,8 @@ public abstract class SpecificationConfigurationImpl extends MinimalEObjectImpl.
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public GeneralConfiguration getGeneralConfiguration() {
+	@Override
+    public GeneralConfiguration getGeneralConfiguration() {
         return generalConfiguration;
     }
 
@@ -99,7 +100,8 @@ public abstract class SpecificationConfigurationImpl extends MinimalEObjectImpl.
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setGeneralConfiguration(GeneralConfiguration newGeneralConfiguration) {
+	@Override
+    public void setGeneralConfiguration(GeneralConfiguration newGeneralConfiguration) {
         if (newGeneralConfiguration != generalConfiguration) {
             NotificationChain msgs = null;
             if (generalConfiguration != null)
@@ -118,7 +120,8 @@ public abstract class SpecificationConfigurationImpl extends MinimalEObjectImpl.
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public ProjectConfiguration getProjectConfiguration() {
+	@Override
+    public ProjectConfiguration getProjectConfiguration() {
         return projectConfiguration;
     }
 
@@ -142,7 +145,8 @@ public abstract class SpecificationConfigurationImpl extends MinimalEObjectImpl.
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public void setProjectConfiguration(ProjectConfiguration newProjectConfiguration) {
+	@Override
+    public void setProjectConfiguration(ProjectConfiguration newProjectConfiguration) {
         if (newProjectConfiguration != projectConfiguration) {
             NotificationChain msgs = null;
             if (projectConfiguration != null)

@@ -163,6 +163,7 @@ public class AdaptorinterfaceActionBarContributor
      */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
+        super.contributeToToolBar(toolBarManager);
         toolBarManager.add(new Separator("adaptorinterface-settings"));
         toolBarManager.add(new Separator("adaptorinterface-additions"));
     }
@@ -199,6 +200,7 @@ public class AdaptorinterfaceActionBarContributor
         //
         submenuManager.addMenuListener
             (new IMenuListener() {
+                 @Override
                  public void menuAboutToShow(IMenuManager menuManager) {
                      menuManager.updateAll(true);
                  }
