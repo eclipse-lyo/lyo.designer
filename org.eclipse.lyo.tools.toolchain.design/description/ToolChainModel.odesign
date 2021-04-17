@@ -2,6 +2,9 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="ToolchainModel" version="12.0.0.2017041100">
   <ownedViewpoints name="ToolchainViewpoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DropDomainSpecification']" name="SpecificationDiagram" initialisation="true" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]" enablePopupBars="true">
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
       <diagramInitialisation/>
       <defaultLayer name="Default">
         <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.range /]" sourceFinderExpression="[diagram.visibleResources()->select(r : Resource | r.resourceProperties->includes(self))/]" domainClass="adaptorinterface.ResourceProperty" useDomainElement="true" reconnections="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.ResourceToReferenceProperty.ReconnectSource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.ResourceToReferenceProperty.ReconnectTarget']">
@@ -540,6 +543,9 @@
       </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ToolchainDiagram" initialisation="true" domainClass="toolchain.Toolchain">
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
       <diagramInitialisation>
         <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
           <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.specification.oclIsUndefined()/]">
@@ -775,6 +781,9 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="AdaptorInterfaceDiagram" domainClass="adaptorinterface.AdaptorInterface">
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="AdaptorInterface.ServiceProviderCatalog" semanticCandidatesExpression="feature:serviceProviderCatalog" domainClass="adaptorinterface.ServiceProviderCatalog">
           <style xsi:type="style:LozengeNodeDescription" labelSize="9" showIcon="false" labelExpression="feature:title" labelPosition="node" resizeKind="NSEW" widthComputationExpression="12" heightComputationExpression="12">
@@ -1399,6 +1408,9 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.DropVocabulary']" name="VocabularyDiagram" initialisation="true" domainClass="vocabulary.Vocabularies" enablePopupBars="true">
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
       <diagramInitialisation/>
       <defaultLayer name="Default">
         <edgeMappings name="Vocabularies.Class.SubClassOf" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.DeleteSubClassOf']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" targetFinderExpression="feature:subClassOf">
@@ -1436,14 +1448,14 @@
           </subContainerMappings>
           <subContainerMappings name="Vocabularies.Vocabulary.Property" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabulary.DeleteProperty']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Vocabularies.EditPropertyLabel']" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.Property" childrenPresentation="List">
             <subNodeMappings name="Vocabularies.Vocabulary.Property.Domain" semanticCandidatesExpression="feature:domain" domainClass="vocabulary.Class">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="['rdfs:domain  ' + name/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql:'rdfs:domain  ' + self.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
             <subNodeMappings name="Vocabularies.Vocabulary.Property.Range" semanticCandidatesExpression="feature:range" domainClass="vocabulary.Class">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="['rdfs:range  ' + name/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql:'rdfs:range  ' + self.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1456,7 +1468,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="Vocabularies.Vocabulary.VocabularyConfiguration" semanticCandidatesExpression="[self.configuration/]" domainClass="vocabulary.VocabularyConfiguration" childrenPresentation="List">
+          <subContainerMappings name="Vocabularies.Vocabulary.VocabularyConfiguration" semanticCandidatesExpression="aql:self.configuration" domainClass="vocabulary.VocabularyConfiguration" childrenPresentation="List">
             <subNodeMappings name="Vocabularies.Vocabulary.VocabularyConfiguration.GeneralConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.GeneralConfiguration">
               <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="General" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1473,14 +1485,14 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[label + ' (' + preferredNamespacePrefix + ')'/]" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/VocabularyIcon.png" widthComputationExpression="40" heightComputationExpression="30">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.label + ' (' + self.preferredNamespacePrefix + ')'" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/VocabularyIcon.png" widthComputationExpression="40" heightComputationExpression="30">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Vocabularies.VocabularyConfiguration" semanticCandidatesExpression="[self.configuration/]" domainClass="vocabulary.VocabularyConfiguration" childrenPresentation="List">
+        <containerMappings name="Vocabularies.VocabularyConfiguration" semanticCandidatesExpression="aql:self.configuration" domainClass="vocabulary.VocabularyConfiguration" childrenPresentation="List">
           <subNodeMappings name="Vocabulary.VocabularyConfiguration.GeneralConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="vocabulary.GeneralConfiguration">
             <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="General" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1504,9 +1516,9 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.Vocabulary" referenceName="vocabularies">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="preferredNamespacePrefix" valueExpression="['vocab' + container.vocabularies->size() /]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="['Vocabulary' + container.vocabularies->size() /]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespaceURI" valueExpression="['http://your.organisation.domain/'+ preferredNamespacePrefix +'#'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="preferredNamespacePrefix" valueExpression="aql:'vocab' + container.vocabularies->size() "/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="aql:'Vocabulary' + container.vocabularies->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespaceURI" valueExpression="aql:'http://your.organisation.domain/'+ preferredNamespacePrefix +'#'"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1598,11 +1610,11 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:Let" variableName="deleteFromModel" valueExpression="service:deleteFromModel()">
                 <subModelOperations xsi:type="tool_1:Switch">
-                  <cases conditionExpression="[deleteFromModel.oclIsUndefined()/]"/>
-                  <cases conditionExpression="[deleteFromModel/]">
+                  <cases conditionExpression="aql:deleteFromModel == null"/>
+                  <cases conditionExpression="aql:deleteFromModel">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </cases>
-                  <cases conditionExpression="[not deleteFromModel/]">
+                  <cases conditionExpression="aql:not deleteFromModel">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:elementView">
                       <subModelOperations xsi:type="tool_1:DeleteView"/>
                     </subModelOperations>
@@ -1638,38 +1650,37 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Config">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateVocabularyConfiguration" label="Vocabulary Configuration" precondition="[self.configuration.oclIsUndefined()/]" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.VocabularyConfiguration'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.VocabularyConfiguration']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateVocabularyConfiguration" label="Vocabulary Configuration" precondition="aql:self.configuration == null" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.VocabularyConfiguration'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.VocabularyConfiguration']">
             <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="javaBasePackageName" computationExpression="[if (container.oclIsTypeOf(Vocabularies)) then 'your.basepackage.name' else '' endif/]"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="filesBasePath" computationExpression="[if (container.oclIsTypeOf(Vocabularies)) then '.' else '' endif/]"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="doNotGenerate" computationExpression="[false/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="javaBasePackageName" computationExpression="aql:if (container.oclIsTypeOf(vocabulary::Vocabularies)) then 'your.basepackage.name' else '' endif"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="filesBasePath" computationExpression="aql:if (container.oclIsTypeOf(vocabulary::Vocabularies)) then '.' else '' endif"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="doNotGenerate" computationExpression="aql:false"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.VocabularyConfiguration" referenceName="configuration" variableName="configuration">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.GeneralConfiguration" referenceName="generalConfiguration" variableName="generalConfiguration">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="javaBasePackageName" valueExpression="[javaBasePackageName/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="filesBasePath" valueExpression="[filesBasePath/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="doNotGenerate" valueExpression="[doNotGenerate/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="javaBasePackageName" valueExpression="var:javaBasePackageName"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="filesBasePath" valueExpression="var:filesBasePath"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="doNotGenerate" valueExpression="var:doNotGenerate"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="generationSetting" valueExpression="[null/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="generationSetting" valueExpression="var:null"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Vocabulary.CreateDefault" label="Default Layer" activeByDefault="true">
-        <containerMappings documentation="Just an empty container to break the transient nature of this layer (for oxygen)."/>
         <toolSections name="Vocabularies.CreateTerms" label="Create">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Vocabularies.CreateClass" label="Class" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='VocabularyDiagram']/@defaultLayer/@containerMappings[name='Vocabularies.Vocabulary']/@subContainerMappings[name='Vocabularies.Vocabulary.Class']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconClass.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.Class" referenceName="classes">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="['Class ' + container.classes->size() /]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Class' + container.classes->size() /]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="aql:'Class ' + container.classes->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Class' + container.classes->size()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1679,8 +1690,8 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.Property" referenceName="properties">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="['Property ' + container.properties->size() /]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Property' + container.properties->size() /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="aql:'Property ' + container.properties->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Property' + container.properties->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1689,6 +1700,9 @@
       </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ShaclSpecificationDiagram" domainClass="adaptorinterface.Specification" rootExpression="[if (self.eClass().name = 'Toolchain') then self.eGet('specification').oclAsType(Specification) else self endif/]" enablePopupBars="true">
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+      <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="Specification.ShaclShapeToReferenceShaclProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ShaclSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specificatio.DeleteShaclShapeToReferenceShaclProperty']" semanticElements="[self.referenceShaclProperties()->select(p : ShaclProperty | p.class->includes(view.targetNode.oclAsType(DNodeList).target.oclAsType(ShaclShape)))/]" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ShaclSpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification.Shacl']/@subContainerMappings[name='Specification.DomainSpecification.ShaclShape']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='ShaclSpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification.Shacl']/@subContainerMappings[name='Specification.DomainSpecification.ShaclShape']" targetFinderExpression="[self.referenceShaclProperties().class /]">
           <conditionnalStyles predicateExpression="[view.semanticElements.oclAsType(ShaclProperty).dataType->exists(dataType : ShaclPropertyDataType | dataType = ShaclPropertyDataType::Resource)/]">
@@ -1980,6 +1994,9 @@
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::shaclSpecificationDiagram"/>
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription" name="sirius_default_rules_properties">
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
     <categories name="Default">
       <pages name="sirius_default_rules_defaultpage" labelExpression="aql:input.emfEditServices(self).getTabName()" semanticCandidateExpression="aql:input.getAllSemanticElements()->reject(e | e.oclIsTypeOf(adaptorinterface::AdaptorInterface) or e.oclIsTypeOf(adaptorinterface::DomainSpecification) or e.oclIsTypeOf(adaptorinterface::Resource) or e.oclIsTypeOf(adaptorinterface::ResourceProperty))" groups="//@extensions.0/@categories.0/@groups.0"/>
       <groups name="sirius_default_rules_defaultgroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="">
@@ -2043,7 +2060,9 @@
     </categories>
   </extensions>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Properties AdaptorInterface">
-    <metamodels href="http://org.eclipse.lyo/oslc4j/adaptorInterface#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
     <categories name="Default Category">
       <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.AdaptorInterface" semanticCandidateExpression="var:self" groups="//@extensions.1/@categories.0/@groups.0"/>
       <groups name="Default Group" labelExpression="Properties" domainClass="adaptorinterface.AdaptorInterface" semanticCandidateExpression="var:self">
@@ -2072,7 +2091,9 @@
     </categories>
   </extensions>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Properties ResourceProperty">
-    <metamodels href="http://org.eclipse.lyo/oslc4j/adaptorInterface#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
     <categories name="Default Category">
       <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.ResourceProperty" semanticCandidateExpression="var:self" groups="//@extensions.2/@categories.0/@groups.0"/>
       <groups name="Default Group" labelExpression="Properties" domainClass="adaptorinterface.ResourceProperty" semanticCandidateExpression="var:self">
@@ -2133,7 +2154,9 @@
     </categories>
   </extensions>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Properties Resource">
-    <metamodels href="http://org.eclipse.lyo/oslc4j/adaptorInterface#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
     <categories name="Default Category">
       <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.Resource" semanticCandidateExpression="var:self" groups="//@extensions.3/@categories.0/@groups.0"/>
       <groups name="Default Group" labelExpression="Properties" domainClass="adaptorinterface.Resource" semanticCandidateExpression="var:self">
@@ -2149,7 +2172,9 @@
     </categories>
   </extensions>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Properties DomainSpecification">
-    <metamodels href="http://org.eclipse.lyo/oslc4j/adaptorInterface#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
+    <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
     <categories name="Default Category">
       <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.DomainSpecification" semanticCandidateExpression="var:self" groups="//@extensions.4/@categories.0/@groups.0"/>
       <groups name="Default Group" labelExpression="Properties" domainClass="adaptorinterface.DomainSpecification" semanticCandidateExpression="var:self">
