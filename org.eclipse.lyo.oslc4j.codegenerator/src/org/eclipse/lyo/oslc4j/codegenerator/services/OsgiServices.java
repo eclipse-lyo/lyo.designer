@@ -19,6 +19,9 @@ import org.osgi.framework.Version;
 public class OsgiServices {
 
 	public String getOSGiBundleVersion() {
+        if (FrameworkUtil.getBundle(getClass()) == null) {
+            return "-1";
+        }
 		Version version = FrameworkUtil.getBundle(getClass()).getVersion();
 		return version.toString();
 	}

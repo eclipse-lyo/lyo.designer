@@ -15,7 +15,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.acceleo.model,
  org.eclipse.acceleo.profiler,
  org.eclipse.acceleo.engine,
- com.google.guava
+ com.google.guava,
+ org.eclipse.lyo.tools.adaptormodel.model,
+ org.eclipse.lyo.tools.toolchain.model,
+ org.eclipse.lyo.tools.vocabulary.model
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true

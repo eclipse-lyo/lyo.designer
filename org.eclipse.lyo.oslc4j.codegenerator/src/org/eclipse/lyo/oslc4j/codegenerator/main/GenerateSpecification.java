@@ -24,6 +24,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
+import adaptorinterface.AdaptorinterfacePackage;
+import toolchain.ToolchainPackage;
+import vocabulary.VocabularyPackage;
+
 /**
  * Entry point of the 'GenerateSpecification' generation module.
  *
@@ -335,7 +339,7 @@ public class GenerateSpecification extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated
+     * @generated not
      */
     @Override
     public void registerPackages(ResourceSet resourceSet) {
@@ -375,6 +379,16 @@ public class GenerateSpecification extends AbstractAcceleoGenerator {
          * 
          * To learn more about Package Registration, have a look at the Acceleo documentation (Help -> Help Contents).
          */
+
+        if (!isInWorkspace(AdaptorinterfacePackage.class)) {
+            resourceSet.getPackageRegistry().put(AdaptorinterfacePackage.eNS_URI, AdaptorinterfacePackage.eINSTANCE);
+        }
+        if (!isInWorkspace(ToolchainPackage.class)) {
+           resourceSet.getPackageRegistry().put(ToolchainPackage.eNS_URI, ToolchainPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(VocabularyPackage.class)) {
+           resourceSet.getPackageRegistry().put(VocabularyPackage.eNS_URI, VocabularyPackage.eINSTANCE);
+        }
     }
 
     /**
