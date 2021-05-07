@@ -102,7 +102,7 @@ private static StorePool storePool;
 // [protected ('StoreInitialise')]
 // [/protected]
 Properties lyoStoreProperties = new Properties();
-String lyoStorePropertiesFile = [anAdaptorInterface.javaClassNameForStorePool()/].class.getResource("[anAdaptorInterface.relativeFileNameForStoreProperties()/]").getFile();
+String lyoStorePropertiesFile = [anAdaptorInterface.javaClassNameForAdaptorManager()/].class.getResource("[anAdaptorInterface.relativeFileNameForStoreProperties()/]").getFile();
 try {
     lyoStoreProperties.load(new FileInputStream(lyoStorePropertiesFile));
 } catch (IOException e) {
