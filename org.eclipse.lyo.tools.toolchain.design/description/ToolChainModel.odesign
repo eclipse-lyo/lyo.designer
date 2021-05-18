@@ -201,7 +201,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Property' + container.resourceProperties->size()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'property' + container.resourceProperties->size()"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::String /]"/>
               </firstModelOperations>
             </initialOperation>
@@ -216,7 +216,7 @@
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::Resource /]"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['relatesTo' + propertyRange.name.toUpperFirst()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:propertyRange.name.toLowerFirst()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -230,7 +230,7 @@
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::LocalResource /]"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['relatesTo' + instance.range.name.toUpperFirst()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:propertyRange.name.toLowerFirst()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -306,7 +306,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="resources" valueExpression="[element /]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.RelatePropertyToResource" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']/@subNodeMappings[name='Specification.DomainSpecification.Resource.LiteralProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.RelatePropertyToResource" elementsToSelect="aql:null" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']/@subNodeMappings[name='Specification.DomainSpecification.Resource.LiteralProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>

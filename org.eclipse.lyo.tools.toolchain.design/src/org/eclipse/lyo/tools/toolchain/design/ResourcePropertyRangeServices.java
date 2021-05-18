@@ -69,15 +69,21 @@ public class ResourcePropertyRangeServices {
         }
 
         @Override
+        protected boolean isResizable()
+        {
+          return true;
+        }
+        
+        @Override
         protected Control createDialogArea(Composite parent) {
             Composite container = (Composite) super.createDialogArea(parent);
             
             Label label = new Label (container, SWT.NONE);
-            label.setText ("You are changing the range of the '" + self.getName() + "' Property. Please choose one of the following alternatives:");
+            label.setText ("You are changing the range of the '" + self.getName() + "' Property." + System.lineSeparator() + "Please choose an alternative:");
             
             Button replaceInRangeButton = new Button(container, SWT.RADIO);
             replaceInRangeButton.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
-            replaceInRangeButton.setText("Replace '" + existingResouce.getName() + "' with '" + newResource.getName() + "' in the range.");
+            replaceInRangeButton.setText("Replace '" + existingResouce.getName() + "' with '" + newResource.getName() + "'.");
             //replaceInRangeButton.setToolTipText("");
             replaceInRangeButton.addSelectionListener(new SelectionAdapter() {
                 @Override
@@ -108,11 +114,5 @@ public class ResourcePropertyRangeServices {
             super.configureShell(newShell);
             newShell.setText("Confirm Decision");
         }
-
-        @Override
-        protected Point getInitialSize() {
-            return new Point(500, 170);
-        }
-
     }
 }
