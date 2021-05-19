@@ -67,6 +67,7 @@ public class ServerConfigurationItemProvider
             addApplicationContextPathPropertyDescriptor(object);
             addServletUrlPatternPropertyDescriptor(object);
             addDoNotRegenerateJspFilesPropertyDescriptor(object);
+            addGenerateJspFilesForOslcUIPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -160,6 +161,28 @@ public class ServerConfigurationItemProvider
     }
 
 	/**
+     * This adds a property descriptor for the Generate Jsp Files For Oslc UI feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addGenerateJspFilesForOslcUIPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ServerConfiguration_generateJspFilesForOslcUI_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ServerConfiguration_generateJspFilesForOslcUI_feature", "_UI_ServerConfiguration_type"),
+                 AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -233,6 +256,7 @@ public class ServerConfigurationItemProvider
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__APPLICATION_CONTEXT_PATH:
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__SERVLET_URL_PATTERN:
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES:
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERAL_CONFIGURATION:

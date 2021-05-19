@@ -251,6 +251,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServerConfiguration/applicationContextPath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServerConfiguration/servletUrlPattern"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServerConfiguration/doNotRegenerateJspFiles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServerConfiguration/generateJspFilesForOslcUI"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ServerConfiguration/generalConfiguration"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ServerConfiguration/projectConfiguration"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ServerConfiguration/authenticationConfiguration"/>

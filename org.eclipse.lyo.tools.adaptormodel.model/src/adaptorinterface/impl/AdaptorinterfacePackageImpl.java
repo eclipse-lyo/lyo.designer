@@ -2124,21 +2124,21 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 	/**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-    public EReference getServerConfiguration_GeneralConfiguration() {
-        return (EReference)serverConfigurationEClass.getEStructuralFeatures().get(4);
+    @Override
+    public EAttribute getServerConfiguration_GenerateJspFilesForOslcUI() {
+        return (EAttribute)serverConfigurationEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
 	@Override
-    public EReference getServerConfiguration_ProjectConfiguration() {
+    public EReference getServerConfiguration_GeneralConfiguration() {
         return (EReference)serverConfigurationEClass.getEStructuralFeatures().get(5);
     }
 
@@ -2148,8 +2148,18 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
 	@Override
-    public EReference getServerConfiguration_AuthenticationConfiguration() {
+    public EReference getServerConfiguration_ProjectConfiguration() {
         return (EReference)serverConfigurationEClass.getEStructuralFeatures().get(6);
+    }
+
+	/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	@Override
+    public EReference getServerConfiguration_AuthenticationConfiguration() {
+        return (EReference)serverConfigurationEClass.getEStructuralFeatures().get(7);
     }
 
 	/**
@@ -2737,6 +2747,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEAttribute(serverConfigurationEClass, SERVER_CONFIGURATION__APPLICATION_CONTEXT_PATH);
         createEAttribute(serverConfigurationEClass, SERVER_CONFIGURATION__SERVLET_URL_PATTERN);
         createEAttribute(serverConfigurationEClass, SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES);
+        createEAttribute(serverConfigurationEClass, SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI);
         createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__GENERAL_CONFIGURATION);
         createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__PROJECT_CONFIGURATION);
         createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION);
@@ -3037,6 +3048,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getServerConfiguration_ApplicationContextPath(), ecorePackage.getEString(), "applicationContextPath", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getServerConfiguration_ServletUrlPattern(), ecorePackage.getEString(), "servletUrlPattern", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getServerConfiguration_DoNotRegenerateJspFiles(), ecorePackage.getEBoolean(), "doNotRegenerateJspFiles", null, 0, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getServerConfiguration_GenerateJspFilesForOslcUI(), ecorePackage.getEBoolean(), "generateJspFilesForOslcUI", null, 0, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getServerConfiguration_GeneralConfiguration(), this.getGeneralConfiguration(), null, "generalConfiguration", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getServerConfiguration_ProjectConfiguration(), this.getProjectConfiguration(), null, "projectConfiguration", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getServerConfiguration_AuthenticationConfiguration(), this.getAuthenticationConfiguration(), null, "authenticationConfiguration", null, 0, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

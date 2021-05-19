@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.ServerConfiguration#getApplicationContextPath <em>Application Context Path</em>}</li>
  *   <li>{@link adaptorinterface.ServerConfiguration#getServletUrlPattern <em>Servlet Url Pattern</em>}</li>
  *   <li>{@link adaptorinterface.ServerConfiguration#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}</li>
+ *   <li>{@link adaptorinterface.ServerConfiguration#isGenerateJspFilesForOslcUI <em>Generate Jsp Files For Oslc UI</em>}</li>
  *   <li>{@link adaptorinterface.ServerConfiguration#getGeneralConfiguration <em>General Configuration</em>}</li>
  *   <li>{@link adaptorinterface.ServerConfiguration#getProjectConfiguration <em>Project Configuration</em>}</li>
  *   <li>{@link adaptorinterface.ServerConfiguration#getAuthenticationConfiguration <em>Authentication Configuration</em>}</li>
@@ -132,6 +133,28 @@ public interface ServerConfiguration extends EObject {
 	void setDoNotRegenerateJspFiles(boolean value);
 
 	/**
+     * Returns the value of the '<em><b>Generate Jsp Files For Oslc UI</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Generate Jsp Files For Oslc UI</em>' attribute.
+     * @see #setGenerateJspFilesForOslcUI(boolean)
+     * @see adaptorinterface.AdaptorinterfacePackage#getServerConfiguration_GenerateJspFilesForOslcUI()
+     * @model
+     * @generated
+     */
+    boolean isGenerateJspFilesForOslcUI();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.ServerConfiguration#isGenerateJspFilesForOslcUI <em>Generate Jsp Files For Oslc UI</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Generate Jsp Files For Oslc UI</em>' attribute.
+     * @see #isGenerateJspFilesForOslcUI()
+     * @generated
+     */
+    void setGenerateJspFilesForOslcUI(boolean value);
+
+    /**
      * Returns the value of the '<em><b>General Configuration</b></em>' containment reference.
      * <!-- begin-user-doc -->
 	 * <p>
