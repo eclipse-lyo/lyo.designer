@@ -141,6 +141,8 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
 [anAdaptorInterface.swaggerImportPackages()
 /]
+[if (anAdaptorInterface.generateJspFilesForOslcUI())]import org.eclipse.lyo.oslc_ui.PreviewFactory;
+[/if]
 // [protected ('imports')]
 // [/protected]
 
@@ -220,7 +222,14 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             // [protected (getResourceMethodName(aResource, false).concat('_setAttributes'))]
             // [/protected]
 
+            [if (anAdaptorInterface.generateJspFilesForOslcUI())]
+            httpServletRequest.setAttribute("aResource", a[javaName(aResource, true)/]);
+            httpServletRequest.setAttribute("resourceTypeName", [javaInterfaceNameForConstants(aResource.definingDomainSpecification()).concat('.').concat(resourceTypeLocalNameConstantName(aResource))/]);
+            httpServletRequest.setAttribute("shapeUri", UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(OslcConstants.PATH_RESOURCE_SHAPES).path([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/]).build());
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceViewForOslcUIJspRelativeFileName(anAdaptorInterface) /]");
+            [else]
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceJspRelativeFileName(aResource, anAdaptorInterface) /]");
+            [/if]
             rd.forward(httpServletRequest,httpServletResponse);
             return;
         }
@@ -237,10 +246,10 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
         ) throws ServletException, IOException, URISyntaxException
     {
         String iconUri = OSLC4JUtils.getPublicURI() + "/images/ui_preview_icon.gif";
-        String smallPreviewHintHeight = "10em";
-        String smallPreviewHintWidth = "45em";
-        String largePreviewHintHeight = "20em";
-        String largePreviewHintWidth = "45em";
+        String smallPreviewHintHeight = "100px";
+        String smallPreviewHintWidth = "300px";
+        String largePreviewHintHeight = "200px";
+        String largePreviewHintWidth = "450px";
 
         // [protected (getResourceCompactMethodName(aResource).concat('_init'))]
         //TODO: adjust the preview height & width values from the default values provided above.
@@ -293,7 +302,23 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             // [protected (getResourceSmallPreviewMethodName(aResource).concat('_setAttributes'))]
             // [/protected]
 
+            [if (anAdaptorInterface.generateJspFilesForOslcUI())]
+            try {
+                httpServletRequest.setAttribute("resourceTitle", a[javaName(aResource, true)/].toString());
+                ArrayList<String> getterMethodNames = new ArrayList<String>(Arrays.asList([for (aProperty: ResourceProperty | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)}->flatten()) separator(', ')]"[javaAttributeGetterMethodName(aProperty, aResource)/]"[/for]));
+                // [protected (getResourceSmallPreviewMethodName(aResource).concat('_setResourceGetterMethods'))]
+                //TODO: modify the set of attributes to show in the preview
+                // [/protected]
+                String oslcPreviewDataSetAsString = PreviewFactory.getPreviewAsJsonString(a[javaName(aResource, true)/], getterMethodNames, false);
+                httpServletRequest.setAttribute("resourcePreviewDataSet", oslcPreviewDataSetAsString);
+            } catch (Exception e) {
+                log.error("Could not handle smallPreview", e);
+                throw new WebApplicationException("Could not handle smallPreview", e);
+            }
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceUiPreviewForOslcUIJspRelativeFileName(anAdaptorInterface) /]");
+            [else]
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceSmallPreviewJspRelativeFileName(aResource, anAdaptorInterface) /]");
+            [/if]
             httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
             addCORSHeaders(httpServletResponse);
             rd.forward(httpServletRequest, httpServletResponse);
@@ -320,7 +345,23 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             // [protected (getResourceLargePreviewMethodName(aResource).concat('_setAttributes'))]
             // [/protected]
 
+            [if (anAdaptorInterface.generateJspFilesForOslcUI())]
+            try {
+                httpServletRequest.setAttribute("resourceTitle", a[javaName(aResource, true)/].toString());
+                ArrayList<String> getterMethodNames = new ArrayList<String>(Arrays.asList([for (aProperty: ResourceProperty | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)}->flatten()) separator(', ')]"[javaAttributeGetterMethodName(aProperty, aResource)/]"[/for]));
+                // [protected (getResourceLargePreviewMethodName(aResource).concat('_setResourceGetterMethods'))]
+                //TODO: modify the set of attributes to show in the preview
+                // [/protected]
+                String oslcPreviewDataSetAsString = PreviewFactory.getPreviewAsJsonString(a[javaName(aResource, true)/], getterMethodNames, true);
+                httpServletRequest.setAttribute("resourcePreviewDataSet", oslcPreviewDataSetAsString);
+            } catch (Exception e) {
+                log.error("Could not handle largePreview", e);
+                throw new WebApplicationException("Could not handle largePreview", e);
+            }
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceUiPreviewForOslcUIJspRelativeFileName(anAdaptorInterface) /]");
+            [else]
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[getResourceLargePreviewJspRelativeFileName(aResource, anAdaptorInterface) /]");
+            [/if]
             httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
             addCORSHeaders(httpServletResponse);
             rd.forward(httpServletRequest, httpServletResponse);

@@ -24,6 +24,7 @@
 
 [template public generateResourceSelectorJsp(aSelectionDialog: Dialog)]
 [if (containingAdaptorInterface(aSelectionDialog).generateJspFile(resourceSelectorJspFullFileName(aSelectionDialog)))]
+[if (not containingAdaptorInterface(aSelectionDialog).generateJspFilesForOslcUI())]
 [file (resourceSelectorJspFullFileName(aSelectionDialog), false, 'UTF-8')]
 [let anAdaptorInterface: AdaptorInterface = containingAdaptorInterface(aSelectionDialog)]
 <%--To avoid the overriding of any manual code changes upon subsequent code generations, disable "Generate JSP Files" option in the Adaptor model.--%>
@@ -95,5 +96,6 @@
 </html>
 [/let]
 [/file]
+[/if]
 [/if]
 [/template]

@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
 /]
-[module generateGetResourceJsp('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+[module generateGetResourceViewForOslcUIJsp('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
@@ -24,10 +24,10 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyToHtml/]
 
-[template public generateGetResourceJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface, defaultJavaClassPackageName : String)]
-[if (contextAdaptorInterface.generateJspFile(getResourceJspFullFileName(aResource, contextAdaptorInterface)))]
-[if (not contextAdaptorInterface.generateJspFilesForOslcUI())]
-[file (getResourceJspFullFileName(aResource, contextAdaptorInterface), false, 'UTF-8')]
+[template public generateGetResourceViewForOslcUIJsp(contextAdaptorInterface : AdaptorInterface)]
+[if (contextAdaptorInterface.generateJspFile(getResourceViewForOslcUIJspFullFileName(contextAdaptorInterface)))]
+[if (contextAdaptorInterface.generateJspFilesForOslcUI())]
+[file (getResourceViewForOslcUIJspFullFileName(contextAdaptorInterface), false, 'UTF-8')]
 <%--To avoid the overriding of any manual code changes upon subsequent code generations, disable "Generate JSP Files" option in the Adaptor model.--%>
 <!DOCTYPE html>
 <%--
@@ -64,14 +64,14 @@
 <%@page import="java.util.Map"%>
 <%@page import="javax.xml.namespace.QName"%>
 <%@page import="javax.ws.rs.core.UriBuilder"%>
-
-<%@page import="[javaClassFullName(aResource, contextAdaptorInterface, null) /]"%>
-<%@page import="[javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), contextAdaptorInterface, defaultJavaClassPackageName)/]"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.model.AbstractResource"%>
 
 <%@ page contentType="text/html" language="java" pageEncoding="UTF-8" %>
 
 <%
-  [javaClassName(aResource)/] a[javaName(aResource, true)/] = ([javaClassName(aResource)/]) request.getAttribute("a[javaName(aResource, true)/]");
+  AbstractResource aResource = (AbstractResource) request.getAttribute("aResource");
+  String resourceTypeName = (String) request.getAttribute("resourceTypeName");
+  URI shapeUri = (URI) request.getAttribute("shapeUri");
 %>
 <html lang="en">
 <head>
@@ -79,7 +79,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title><%= a[javaName(aResource, true)/].toString() %></title>
+  <title><%= aResource.toString() %></title>
 
   <link href="<c:url value="/static/css/bootstrap-4.0.0-beta.min.css"/>" rel="stylesheet">
   <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
@@ -90,6 +90,29 @@
   <script src="<c:url value="/static/js/ui-preview-helper.js"/>"></script>
   <script type="text/javascript">
     $(function () {setupUiPreviewOnPopover($("a.oslc-resource-link"));});
+
+    function setupUiPreview(oslcLinkElements) {
+        oslcLinkElements.popover({
+            container: "body",
+            content: "Loading...",
+            delay: {"show": 120, "hide": 60},
+            html: true,
+            placement: "auto",
+            trigger: "hover"
+        });
+    
+        oslcLinkElements.on("show.bs.popover", function () {
+            var uiElem = $(this);
+            var popoverElem = uiElem.data('bs.popover');
+            getUiPreviewIframe(this.getAttribute("href"), attachIframe, uiElem);
+        })
+    }
+    
+    function attachIframe(iframeTitle, iframeHtml, resourceCompactStructure, uiElem) {
+        uiElem.attr('data-original-title', iframeTitle);
+        uiElem.attr('data-content', iframeHtml);
+        uiElem.data('bs.popover').setContent();
+    }
   </script>
 </head>
 
@@ -107,41 +130,31 @@
 <!-- Begin page content -->
 <div class="container">
     <div class="page-header">
-        <h1>[aResource.name /]: <%= a[javaName(aResource, true)/].toString() %></h1>
+        <h1><%= resourceTypeName %>: <%= aResource.toString() %></h1>
         <%
-        URI shapeUri = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path(OslcConstants.PATH_RESOURCE_SHAPES).path([javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/]).build();
-        Collection<URI> types = a[javaName(aResource, true)/].getTypes();   
+        Collection<URI> types = aResource.getTypes();   
         %>
         <p class="lead">Resource URI:&nbsp;
-        <jsp:include page="[resourceToHtmlJspRelativeFileName(aResource, contextAdaptorInterface)/]"></jsp:include>
+        <a href="<%=aResource.getAbout() %>"><%=aResource.getAbout()%></a>
         </p>
         <p class="lead">Shape:&nbsp;
         <a href="<%=shapeUri%>"><%=shapeUri%></a>
         </p>
         <p class="lead">rdf:type(s):</p>
         <ul>
-        <%for (URI type : a[javaName(aResource, true)/].getTypes()) {%>
+        <%for (URI type : aResource.getTypes()) {%>
         <li><a href="<%=type%>"><%=type%></a></li>
         <%}%>
         </ul>
     </div>
         <h2>Properties</h2>
-        <div>
-          <% Method method = null; %>
-          [for (propertiesCollection: Collection(ResourceProperty) | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)})]
-          [for (aProperty: ResourceProperty | propertiesCollection)]
-          <dl class="row">
-            <% method = [javaClassName(aResource)/].class.getMethod("[javaAttributeGetterMethodName(aProperty, aResource)/]"); %>
-            <dt  class="col-sm-2 text-right"><a href="<%=method.getAnnotation(OslcPropertyDefinition.class).value() %>"><%=method.getAnnotation(OslcName.class).value()%></a></dt>
-            <dd class="col-sm-9">
-            [propertyToHtml(aProperty, aResource, 'a'.concat(javaName(aResource, true)), contextAdaptorInterface) /]
-            </dd>
-          </dl>
-          [/for]
-          [/for]
+        <div id="uiPreviews">
+        <span id="smallUiPreview"></span> <span id="largeUiPreview"></span>
         </div>
+        <div id="uiPreviewIframe"></div>
+
         <%
-        Map<QName, Object> extendedProperties = a[javaName(aResource, true)/].getExtendedProperties();
+        Map<QName, Object> extendedProperties = aResource.getExtendedProperties();
         if (!extendedProperties.isEmpty()) {
         %>
             <h3>Extended Properties</h3>
@@ -171,6 +184,73 @@
       </p>
     </div>
   </footer>
+
+  <script type="text/javascript">
+    var divForUiPreviews = document.getElementById("uiPreviews");
+    var spanForSmallUiPreview = document.getElementById("smallUiPreview");
+    var spanForLargeUiPreview = document.getElementById("largeUiPreview");
+    getUiPreviewIframes("<%= aResource.getAbout() %>", attachIframe, divForUiPreviews);
+    
+    function attachIframe(compactStructure, divForUiPreviews ) {
+        var spanForSmallUiPreview = document.getElementById("smallUiPreview");
+        var spanForLargeUiPreview = document.getElementById("largeUiPreview");
+        var smallPrev = compactStructure.small;
+        var largePrev = compactStructure.large;
+        if (smallPrev !== null) {
+            var a = document.createElement('a');
+            var linkText = document.createTextNode("Small");
+            a.appendChild(linkText);
+            a.title = "Small";
+            a.href = "#";
+            a.onclick = function(){ showPreview(smallPrev); return false; };
+            spanForSmallUiPreview.appendChild(a);
+        }
+        if (largePrev !== null) {
+            var a = document.createElement('a');
+            var linkText = document.createTextNode("Large");
+            a.appendChild(linkText);
+            a.title = "Large";
+            a.href = "#";
+            a.onclick = function(){ showPreview(largePrev); return false; };
+            spanForLargeUiPreview.appendChild(a);
+        }
+        previewToShow = smallPrev ;
+        if (previewToShow == null) {
+            previewToShow = largePrev ;
+        }
+        if (previewToShow !== null) {
+            showPreview(previewToShow);
+        }
+    }
+
+    function showPreview(previewToShow) {
+        var divForUiPreviewIframe = document.getElementById("uiPreviewIframe");
+        var previewIframe = createIframe(previewToShow);        
+        if (divForUiPreviewIframe.childElementCount == 0) {
+            divForUiPreviewIframe.appendChild(previewIframe);
+        }
+        else {
+            divForUiPreviewIframe.replaceChild(previewIframe, divForUiPreviewIframe.childNodes['[0]'/]);
+        }
+    }
+    
+    function createIframe(previewToShow) {
+        var w = previewToShow.width ? previewToShow.width : "45em";
+        var h = previewToShow.height ? previewToShow.height : "11em";
+        var previewIframe = document.createElement("iframe");
+        previewIframe.src = previewToShow.uri;
+        previewIframe.width = w;
+        previewIframe.height = h;
+        previewIframe.frameBorder ="0";
+        previewIframe.scrolling = "0";
+        previewIframe.style.border= "none";
+        previewIframe.style.background = "white";
+        return previewIframe;
+    }
+    
+  </script>
+
+
 </body>
 </html>
 [/file]

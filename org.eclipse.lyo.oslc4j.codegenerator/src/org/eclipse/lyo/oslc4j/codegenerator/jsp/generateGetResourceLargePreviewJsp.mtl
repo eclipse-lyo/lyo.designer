@@ -26,6 +26,7 @@
 
 [template public generateGetResourceLargePreviewJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface, defaultJavaClassPackageName : String)]
 [if (contextAdaptorInterface.generateJspFile(getResourceLargePreviewJspFullFileName(aResource, contextAdaptorInterface)))]
+[if (not contextAdaptorInterface.generateJspFilesForOslcUI())]
 [file (getResourceLargePreviewJspFullFileName(aResource, contextAdaptorInterface), false, 'UTF-8')]
 <%--To avoid the overriding of any manual code changes upon subsequent code generations, disable "Generate JSP Files" option in the Adaptor model.--%>
 <!DOCTYPE html>
@@ -131,5 +132,6 @@ if (!extendedProperties.isEmpty()) {
 </body>
 </html>
 [/file]
+[/if]
 [/if]
 [/template]

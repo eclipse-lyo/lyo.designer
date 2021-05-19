@@ -223,6 +223,14 @@ else
 endif)
 /]
 
+[query public generateJspFilesForOslcUI(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generateJspFilesForOslcUI.oclIsUndefined()) then 
+    false
+else
+    anAdaptorInterface.configuration.generateJspFilesForOslcUI
+endif)
+/]
+
 [query public doNotRegenerateJspFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
 (if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.doNotRegenerateJspFiles.oclIsUndefined()) then 
     false
