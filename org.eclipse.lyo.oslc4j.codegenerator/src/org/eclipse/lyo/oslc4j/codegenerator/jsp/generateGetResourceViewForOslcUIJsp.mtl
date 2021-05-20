@@ -88,32 +88,6 @@
   <script src="<c:url value="/static/js/popper-1.11.0.min.js"/>"></script>
   <script src="<c:url value="/static/js/bootstrap-4.0.0-beta.min.js"/>"></script>
   <script src="<c:url value="/static/js/ui-preview-helper.js"/>"></script>
-  <script type="text/javascript">
-    $(function () {setupUiPreviewOnPopover($("a.oslc-resource-link"));});
-
-    function setupUiPreview(oslcLinkElements) {
-        oslcLinkElements.popover({
-            container: "body",
-            content: "Loading...",
-            delay: {"show": 120, "hide": 60},
-            html: true,
-            placement: "auto",
-            trigger: "hover"
-        });
-    
-        oslcLinkElements.on("show.bs.popover", function () {
-            var uiElem = $(this);
-            var popoverElem = uiElem.data('bs.popover');
-            getUiPreviewIframe(this.getAttribute("href"), attachIframe, uiElem);
-        })
-    }
-    
-    function attachIframe(iframeTitle, iframeHtml, resourceCompactStructure, uiElem) {
-        uiElem.attr('data-original-title', iframeTitle);
-        uiElem.attr('data-content', iframeHtml);
-        uiElem.data('bs.popover').setContent();
-    }
-  </script>
 </head>
 
 <body>
@@ -129,29 +103,70 @@
   </nav>
 <!-- Begin page content -->
 <div class="container">
-    <div class="page-header">
-        <h1><%= resourceTypeName %>: <%= aResource.toString() %></h1>
-        <%
-        Collection<URI> types = aResource.getTypes();   
-        %>
-        <p class="lead">Resource URI:&nbsp;
-        <a href="<%=aResource.getAbout() %>"><%=aResource.getAbout()%></a>
-        </p>
-        <p class="lead">Shape:&nbsp;
-        <a href="<%=shapeUri%>"><%=shapeUri%></a>
-        </p>
-        <p class="lead">rdf:type(s):</p>
-        <ul>
-        <%for (URI type : aResource.getTypes()) {%>
-        <li><a href="<%=type%>"><%=type%></a></li>
-        <%}%>
-        </ul>
-    </div>
-        <h2>Properties</h2>
-        <div id="uiPreviews">
-        <span id="smallUiPreview"></span> <span id="largeUiPreview"></span>
+        <h2>
+            <%= aResource.toString() %>
+            <small class="text-muted"><%= resourceTypeName %></small>
+        </h2>
+        
+        <div class="row mt-3">
+            <div class="col">
+                <h3>Common properties</h3>
+            </div>
         </div>
-        <div id="uiPreviewIframe"></div>
+        <div class="row">
+            <div class="col-2 text-right">
+                <p class="font-weight-bold">Resource URI</p>
+            </div>
+            <div class="col">
+                <a href="<%=aResource.getAbout() %>" class="text-monospace"><%=aResource.getAbout()%></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 text-right">
+                <p class="font-weight-bold">OSLC Shape</p>
+            </div>
+            <div class="col">
+                <p class="text-monospace">
+                    <a href="<%=shapeUri%>"><%=shapeUri%></a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 text-right">
+                <p class="font-weight-bold">Additional RDF Types</p>
+            </div>
+            <div class="col">
+                <ul class="list-unstyled">
+                    <%if (aResource.getTypes() == null || aResource.getTypes().size() == 0) {%>
+                    <li><span class="text-monospace">N/A</span></li>
+
+                    <%}%>
+                    <%for (URI type : aResource.getTypes()) {%>
+                    <li><span class="text-monospace"><%=type%></span></li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <h3>Resource-specific properties</h3>
+            </div>
+        </div>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" id="largeUiPreview">Large</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="smallUiPreview">Small</a>
+          </li>
+        </ul>
+        <div class="container">
+        <div class="row mt-3">
+        <div class="col" id="uiPreviewIframe">
+        </div>
+        </div>
+        </div>
 
         <%
         Map<QName, Object> extendedProperties = aResource.getExtendedProperties();
@@ -186,37 +201,33 @@
   </footer>
 
   <script type="text/javascript">
-    var divForUiPreviews = document.getElementById("uiPreviews");
-    var spanForSmallUiPreview = document.getElementById("smallUiPreview");
-    var spanForLargeUiPreview = document.getElementById("largeUiPreview");
-    getUiPreviewIframes("<%= aResource.getAbout() %>", attachIframe, divForUiPreviews);
+    var largeUiPreview = document.getElementById("largeUiPreview");
+    getUiPreviewIframes("<%= aResource.getAbout() %>", attachIframe, largeUiPreview);
     
-    function attachIframe(compactStructure, divForUiPreviews ) {
-        var spanForSmallUiPreview = document.getElementById("smallUiPreview");
-        var spanForLargeUiPreview = document.getElementById("largeUiPreview");
+    function attachIframe(compactStructure, largeUiPreview ) {
+        var smallUiPreview = document.getElementById("smallUiPreview");
+        var largeUiPreview = document.getElementById("largeUiPreview");
         var smallPrev = compactStructure.small;
         var largePrev = compactStructure.large;
         if (smallPrev !== null) {
-            var a = document.createElement('a');
-            var linkText = document.createTextNode("Small");
-            a.appendChild(linkText);
-            a.title = "Small";
-            a.href = "#";
-            a.onclick = function(){ showPreview(smallPrev); return false; };
-            spanForSmallUiPreview.appendChild(a);
+            smallUiPreview.onclick = function(){ 
+                $(largeUiPreview).removeClass("active");
+                $(smallUiPreview).addClass("active");
+                showPreview(smallPrev); 
+                return false; 
+            };
         }
         if (largePrev !== null) {
-            var a = document.createElement('a');
-            var linkText = document.createTextNode("Large");
-            a.appendChild(linkText);
-            a.title = "Large";
-            a.href = "#";
-            a.onclick = function(){ showPreview(largePrev); return false; };
-            spanForLargeUiPreview.appendChild(a);
+            largeUiPreview.onclick = function(){ 
+                $(smallUiPreview).removeClass("active");
+                $(largeUiPreview).addClass("active");
+                showPreview(largePrev); 
+                return false; 
+            };
         }
-        previewToShow = smallPrev ;
+        previewToShow = largePrev ;
         if (previewToShow == null) {
-            previewToShow = largePrev ;
+            previewToShow = smallPrev ;
         }
         if (previewToShow !== null) {
             showPreview(previewToShow);
@@ -230,7 +241,7 @@
             divForUiPreviewIframe.appendChild(previewIframe);
         }
         else {
-            divForUiPreviewIframe.replaceChild(previewIframe, divForUiPreviewIframe.childNodes['[0]'/]);
+            $(divForUiPreviewIframe).children().replaceWith(previewIframe);
         }
     }
     
