@@ -336,6 +336,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="doNotRegenerateJspFiles"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generateJspFilesForOslcUI"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="generalConfiguration" lowerBound="1"
         eType="#//GeneralConfiguration" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="projectConfiguration" lowerBound="1"

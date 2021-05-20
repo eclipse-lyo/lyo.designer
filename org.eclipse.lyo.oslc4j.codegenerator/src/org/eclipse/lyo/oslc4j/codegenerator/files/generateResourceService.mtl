@@ -323,7 +323,12 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
 
         } else {
+            [if (anAdaptorInterface.generateJspFilesForOslcUI())]
+            httpServletRequest.setAttribute("resourceTypeLabel", "[for (r: Resource | aSelectionDialog.resourceTypes) separator(', ')][r.name/][/for]");
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorForOslcUIJspRelativeFileName(anAdaptorInterface) /]");
+            [else]
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorJspRelativeFileName(aSelectionDialog) /]");
+            [/if]
             rd.forward(httpServletRequest, httpServletResponse);
             return;
         }

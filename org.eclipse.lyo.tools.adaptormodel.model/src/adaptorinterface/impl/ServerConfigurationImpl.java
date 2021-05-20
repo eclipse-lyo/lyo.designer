@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getApplicationContextPath <em>Application Context Path</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getServletUrlPattern <em>Servlet Url Pattern</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#isDoNotRegenerateJspFiles <em>Do Not Regenerate Jsp Files</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#isGenerateJspFilesForOslcUI <em>Generate Jsp Files For Oslc UI</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getGeneralConfiguration <em>General Configuration</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getProjectConfiguration <em>Project Configuration</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getAuthenticationConfiguration <em>Authentication Configuration</em>}</li>
@@ -118,6 +119,26 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	protected boolean doNotRegenerateJspFiles = DO_NOT_REGENERATE_JSP_FILES_EDEFAULT;
 
 	/**
+     * The default value of the '{@link #isGenerateJspFilesForOslcUI() <em>Generate Jsp Files For Oslc UI</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isGenerateJspFilesForOslcUI()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean GENERATE_JSP_FILES_FOR_OSLC_UI_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isGenerateJspFilesForOslcUI() <em>Generate Jsp Files For Oslc UI</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isGenerateJspFilesForOslcUI()
+     * @generated
+     * @ordered
+     */
+    protected boolean generateJspFilesForOslcUI = GENERATE_JSP_FILES_FOR_OSLC_UI_EDEFAULT;
+
+    /**
      * The cached value of the '{@link #getGeneralConfiguration() <em>General Configuration</em>}' containment reference.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -259,6 +280,29 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public boolean isGenerateJspFilesForOslcUI() {
+        return generateJspFilesForOslcUI;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setGenerateJspFilesForOslcUI(boolean newGenerateJspFilesForOslcUI) {
+        boolean oldGenerateJspFilesForOslcUI = generateJspFilesForOslcUI;
+        generateJspFilesForOslcUI = newGenerateJspFilesForOslcUI;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI, oldGenerateJspFilesForOslcUI, generateJspFilesForOslcUI));
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -427,6 +471,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
                 return getServletUrlPattern();
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES:
                 return isDoNotRegenerateJspFiles();
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI:
+                return isGenerateJspFilesForOslcUI();
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERAL_CONFIGURATION:
                 return getGeneralConfiguration();
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
@@ -456,6 +502,9 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
                 return;
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES:
                 setDoNotRegenerateJspFiles((Boolean)newValue);
+                return;
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI:
+                setGenerateJspFilesForOslcUI((Boolean)newValue);
                 return;
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERAL_CONFIGURATION:
                 setGeneralConfiguration((GeneralConfiguration)newValue);
@@ -490,6 +539,9 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES:
                 setDoNotRegenerateJspFiles(DO_NOT_REGENERATE_JSP_FILES_EDEFAULT);
                 return;
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI:
+                setGenerateJspFilesForOslcUI(GENERATE_JSP_FILES_FOR_OSLC_UI_EDEFAULT);
+                return;
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERAL_CONFIGURATION:
                 setGeneralConfiguration((GeneralConfiguration)null);
                 return;
@@ -519,6 +571,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
                 return SERVLET_URL_PATTERN_EDEFAULT == null ? servletUrlPattern != null : !SERVLET_URL_PATTERN_EDEFAULT.equals(servletUrlPattern);
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES:
                 return doNotRegenerateJspFiles != DO_NOT_REGENERATE_JSP_FILES_EDEFAULT;
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI:
+                return generateJspFilesForOslcUI != GENERATE_JSP_FILES_FOR_OSLC_UI_EDEFAULT;
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERAL_CONFIGURATION:
                 return generalConfiguration != null;
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
@@ -547,6 +601,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
         result.append(servletUrlPattern);
         result.append(", doNotRegenerateJspFiles: ");
         result.append(doNotRegenerateJspFiles);
+        result.append(", generateJspFilesForOslcUI: ");
+        result.append(generateJspFilesForOslcUI);
         result.append(')');
         return result.toString();
     }

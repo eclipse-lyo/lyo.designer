@@ -48,11 +48,25 @@ webFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)
 webFilesBasePath(anAdaptorInterface).concatenatePaths(resourceToHtmlJspRelativeFileName(aResource, anAdaptorInterface))
 /]
 
+[query public getResourceViewForOslcUIJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
+webFilesWebappPath(anAdaptorInterface).concatenatePaths('viewResource.jsp').toLower()
+/]
+[query public getResourceViewForOslcUIJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
+webFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceViewForOslcUIJspRelativeFileName(anAdaptorInterface))
+/]
+
 [query public getResourceJspRelativeFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
 webFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)).concat('.jsp').toLower()
 /]
 [query public getResourceJspFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
 webFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceJspRelativeFileName(aResource, anAdaptorInterface))
+/]
+
+[query public getResourceUiPreviewForOslcUIJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
+webFilesWebappPath(anAdaptorInterface).concatenatePaths('uipreview.jsp').toLower()
+/]
+[query public getResourceUiPreviewForOslcUIJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
+webFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceUiPreviewForOslcUIJspRelativeFileName(anAdaptorInterface))
 /]
 
 [query public getResourceSmallPreviewJspRelativeFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
@@ -82,6 +96,16 @@ webFilesWebappPath(containingAdaptorInterface(aCreationDialog)).concatenatePaths
 /]
 [query public resourceCreatorJspFullFileName(aCreationDialog: Dialog) : String =
 webFilesBasePath(containingAdaptorInterface(aCreationDialog)).concatenatePaths(resourceCreatorJspRelativeFileName(aCreationDialog))
+/]
+
+[query private resourceSelectorForOslcUIJspSimpleFileName(anAdaptorInterface : AdaptorInterface) : String =
+'selectiondialog.jsp'
+/]
+[query public resourceSelectorForOslcUIJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
+webFilesWebappPath(anAdaptorInterface).concatenatePaths(resourceSelectorForOslcUIJspSimpleFileName(anAdaptorInterface)).toLower()
+/]
+[query public resourceSelectorForOslcUIJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
+webFilesBasePath(anAdaptorInterface).concatenatePaths(resourceSelectorForOslcUIJspRelativeFileName(anAdaptorInterface))
 /]
 
 [query private resourceSelectorJspSimpleFileName(aSelectionDialog: Dialog) : String =

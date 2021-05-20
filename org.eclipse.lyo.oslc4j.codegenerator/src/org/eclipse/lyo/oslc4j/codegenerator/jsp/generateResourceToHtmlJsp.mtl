@@ -22,6 +22,7 @@
 
 [template public generateResourceToHtmlJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
 [if (contextAdaptorInterface.generateJspFile(resourceToHtmlJspFullFileName(aResource, contextAdaptorInterface)))]
+[if (not contextAdaptorInterface.generateJspFilesForOslcUI())]
 [file (resourceToHtmlJspFullFileName(aResource, contextAdaptorInterface), false, 'UTF-8')]
 <%--To avoid the overriding of any manual code changes upon subsequent code generations, disable "Generate JSP Files" option in the Adaptor model.--%>
 <%--
@@ -66,5 +67,6 @@ else {
 }
 %>
 [/file]
+[/if]
 [/if]
 [/template]

@@ -2138,13 +2138,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES = 3;
 
 	/**
+     * The feature id for the '<em><b>Generate Jsp Files For Oslc UI</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI = 4;
+
+    /**
      * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int SERVER_CONFIGURATION__GENERAL_CONFIGURATION = 4;
+	int SERVER_CONFIGURATION__GENERAL_CONFIGURATION = 5;
 
 	/**
      * The feature id for the '<em><b>Project Configuration</b></em>' containment reference.
@@ -2153,7 +2162,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int SERVER_CONFIGURATION__PROJECT_CONFIGURATION = 5;
+	int SERVER_CONFIGURATION__PROJECT_CONFIGURATION = 6;
 
 	/**
      * The feature id for the '<em><b>Authentication Configuration</b></em>' containment reference.
@@ -2162,7 +2171,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION = 6;
+	int SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION = 7;
 
 	/**
      * The number of structural features of the '<em>Server Configuration</em>' class.
@@ -2171,7 +2180,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int SERVER_CONFIGURATION_FEATURE_COUNT = 7;
+	int SERVER_CONFIGURATION_FEATURE_COUNT = 8;
 
 	/**
      * The number of operations of the '<em>Server Configuration</em>' class.
@@ -2348,6 +2357,15 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int MAVEN_SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES = SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES;
 
 	/**
+     * The feature id for the '<em><b>Generate Jsp Files For Oslc UI</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int MAVEN_SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI = SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI;
+
+    /**
      * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4658,6 +4676,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getServerConfiguration_DoNotRegenerateJspFiles();
 
 	/**
+     * Returns the meta object for the attribute '{@link adaptorinterface.ServerConfiguration#isGenerateJspFilesForOslcUI <em>Generate Jsp Files For Oslc UI</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Generate Jsp Files For Oslc UI</em>'.
+     * @see adaptorinterface.ServerConfiguration#isGenerateJspFilesForOslcUI()
+     * @see #getServerConfiguration()
+     * @generated
+     */
+    EAttribute getServerConfiguration_GenerateJspFilesForOslcUI();
+
+    /**
      * Returns the meta object for the containment reference '{@link adaptorinterface.ServerConfiguration#getGeneralConfiguration <em>General Configuration</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6496,6 +6525,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute SERVER_CONFIGURATION__DO_NOT_REGENERATE_JSP_FILES = eINSTANCE.getServerConfiguration_DoNotRegenerateJspFiles();
 
 		/**
+         * The meta object literal for the '<em><b>Generate Jsp Files For Oslc UI</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute SERVER_CONFIGURATION__GENERATE_JSP_FILES_FOR_OSLC_UI = eINSTANCE.getServerConfiguration_GenerateJspFilesForOslcUI();
+
+        /**
          * The meta object literal for the '<em><b>General Configuration</b></em>' containment reference feature.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
