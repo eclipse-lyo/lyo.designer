@@ -7,118 +7,15 @@
       <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
       <diagramInitialisation/>
       <defaultLayer name="Default">
-        <edgeMappings name="Specification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.range /]" sourceFinderExpression="[diagram.visibleResources()->select(r : Resource | r.resourceProperties->includes(self))/]" domainClass="adaptorinterface.ResourceProperty" useDomainElement="true" reconnections="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.ResourceToReferenceProperty.ReconnectSource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.ResourceToReferenceProperty.ReconnectTarget']">
-          <conditionnalStyles predicateExpression="[self.valueType = ResourcePropertyValueType::Resource/]">
-            <style>
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowCenter()/]">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowEnd()/]">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[not (self.valueType = ResourcePropertyValueType::Resource)/]">
-            <style lineStyle="dot">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowCenter()/]">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowEnd()/]">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-        </edgeMappings>
-        <edgeMappings name="Specification.ResourceToParentResource" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" targetFinderExpression="[self.extends /]">
-          <style targetArrow="InputClosedArrow">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
+        <edgeMappingImports name="Specification.ResourceToReferenceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@edgeMappings[name='DomainSpecification.ResourceToReferenceProperty']"/>
+        <edgeMappingImports name="Specification.ResourceToParentResource" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@edgeMappings[name='DomainSpecification.ResourceToParentResource']"/>
         <containerMappings name="Specification.DomainSpecification" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteDomainSpecification']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DirectEditName']" createElements="false" semanticElements="[Set{self, self.generationSetting}/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveProperty']">
-          <subContainerMappings name="Specification.DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResource']" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.RelatePropertyToResource']" childrenPresentation="List">
-            <subNodeMappings name="Specification.DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty">
-              <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[self.labelAsResourceSubnode(view)/]" labelAlignment="LEFT" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </style>
-            </subNodeMappings>
-            <subNodeMappings name="Specification.DomainSpecification.Resource.ReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceReferencePropertySubnode']" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty">
-              <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[self.labelAsResourceSubnode(view)/]" labelAlignment="LEFT" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
-                <labelFormat>italic</labelFormat>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </style>
-            </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="15" arcHeight="15" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.labelInDomainSpecification(diagram)/]" roundedCorner="true">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Specification.DomainSpecification.Resource" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.DomainSpecification.Resource']">
+            <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.LiteralProperty" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.DomainSpecification.Resource.LiteralProperty']"/>
+            <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.ReferenceProperty" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.DomainSpecification.Resource.LiteralProperty']"/>
           </subContainerMappings>
-          <subContainerMappings name="Specification.DomainSpecification.PropertiesList" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeletePropertiesList']" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveProperty']" childrenPresentation="List">
-            <subNodeMappings name="Specification.DomainSpecification.PropertiesList.Property" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.ResourceProperty">
-              <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="[self.labelInDomainSpecification()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </style>
-            </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Property Constraints">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            </style>
-          </subContainerMappings>
-          <subContainerMappings name="Specification.DomainSpecificationGenerationSetting" semanticCandidatesExpression="[self.generationSetting/]" domainClass="adaptorinterface.GenerationSetting" childrenPresentation="List">
-            <subNodeMappings name="Specification.DomainSpecificationGenerationSetting.Warning" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.GenerationSetting">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="['This property is now deprecated! \n Create a SpecificationConfiguration element, using the toolbar to the right. \n We will migrate the necessary values in the process.'/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </style>
-            </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="(Deprecated) Generation Setting" backgroundStyle="Liquid">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>italic</labelFormat>
-              <labelFormat>underline</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
-          </subContainerMappings>
-          <subContainerMappings name="Specification.DomainSpecification.SpecificationConfiguration" semanticCandidatesExpression="[self.configuration/]" domainClass="adaptorinterface.SpecificationConfiguration" childrenPresentation="List">
-            <subNodeMappings name="Specification.DomainSpecification.SpecificationConfiguration.GeneralConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.GeneralConfiguration">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="General" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </style>
-            </subNodeMappings>
-            <subNodeMappings name="Specification.DomainSpecification.SpecificationConfiguration.ProjectConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.ProjectConfiguration">
-              <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="Project Configuration" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </style>
-            </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Configuration" backgroundStyle="Liquid">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>italic</labelFormat>
-              <labelFormat>underline</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Specification.DomainSpecification.PropertiesList" semanticCandidatesExpression="aql:self" domainClass="adaptorinterface.DomainSpecification" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.DomainSpecification.PropertiesList']">
+            <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.PropertiesList.Property" semanticCandidatesExpression="aql:self.resourceProperties" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.DomainSpecification.PropertiesList']/@subNodeMappings[name='DomainSpecification.DomainSpecification.PropertiesList.Property']"/>
           </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="2" labelSize="9" labelExpression="[self.name + ' (' + self.namespacePrefix.name + ')'/]" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconAdaptor.png" widthComputationExpression="40" heightComputationExpression="30">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -187,7 +84,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResource" label="Resource Shape" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResource" label="Resource Shape" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -196,7 +93,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralProperty" label="Property Constraint (Literal)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralProperty" label="Property Constraint (Literal)" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -206,7 +103,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferenceProperty" label="Property Constraint (Reference)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferenceProperty" label="Property Constraint (Reference)" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select range of the reference property"/>
@@ -220,7 +117,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferenceProperty" label="Property Constraint (Local Reference)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferenceProperty" label="Property Constraint (Local Reference)" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select range of the reference property"/>
@@ -288,7 +185,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveProperty" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveProperty" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -297,7 +194,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[element /]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveResource" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveResource" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -306,7 +203,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="resources" valueExpression="[element /]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.RelatePropertyToResource" elementsToSelect="aql:null" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']/@subNodeMappings[name='Specification.DomainSpecification.Resource.LiteralProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.RelatePropertyToResource" elementsToSelect="aql:null" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -438,7 +335,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Config">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateSpecificationConfiguration" label="Specification Configuration" precondition="[self.configuration.oclIsUndefined()/]" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.SpecificationConfiguration'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.SpecificationConfiguration']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateSpecificationConfiguration" label="Specification Configuration" precondition="[self.configuration.oclIsUndefined()/]" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.SpecificationConfiguration']">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="javaBasePackageName" computationExpression="[if (not container.generationSetting.oclIsUndefined()) then container.generationSetting.javaClassPackageName else (if (container.oclIsTypeOf(Specification)) then 'your.basepackage.name' else '' endif) endif/]"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="filesBasePath" computationExpression="[if (not container.generationSetting.oclIsUndefined()) then container.generationSetting.javaFilesPath.substitute('/src/main/java', '') else (if (container.oclIsTypeOf(Specification)) then '.' else '' endif) endif/]"/>
@@ -469,78 +366,6 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
-      <additionalLayers name="Specification.CreateFromVocabulary" label="Create from Vocabulary - Operations">
-        <containerMappings documentation="Just an empty container to break the transient nature of this layer (for oxygen)."/>
-        <toolSections name="CreateFromVocabulary" label="Create from Vocabulary">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Specification.CreateResourceFromVocabulary" label="Resource Shape" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="classToBeDescribed" candidatesExpression="[loadedVocabularies->collect(v | Set{v}->union(v.oclAsType(vocabulary::Vocabulary).classes))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v | v.oclAsType(vocabulary::Vocabulary).classes->notEmpty() ) /]" childrenExpression="[self.oclAsType(vocabulary::Vocabulary).classes/]" message="Select the rdfs:Class being described"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[classToBeDescribed.oclIsTypeOf(Class)/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Resource" referenceName="resources">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[classToBeDescribed.name/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="describes" valueExpression="[classToBeDescribed/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLiteralPropertyFromVocabulary" label="Property Constraint (Literal)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/literalProperty_icon.png">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyToBeReferenced" candidatesExpression="[loadedVocabularies->collect(v | Set{v}->union(v.oclAsType(vocabulary::Vocabulary).properties))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v | v.oclAsType(vocabulary::Vocabulary).properties->notEmpty() ) /]" childrenExpression="[self.oclAsType(vocabulary::Vocabulary).properties/]" message="Select the rdf:Property being referenced"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[propertyToBeReferenced.oclIsTypeOf(Property)/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[propertyToBeReferenced.name/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::String /]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[propertyToBeReferenced/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateReferencePropertyFromVocabulary" label="Property Constraint (Reference)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/referenceProperty_icon.png">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyToBeReferenced" candidatesExpression="[loadedVocabularies->collect(v | Set{v}->union(v.oclAsType(vocabulary::Vocabulary).properties))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v | v.oclAsType(vocabulary::Vocabulary).properties->notEmpty() ) /]" childrenExpression="[self.oclAsType(vocabulary::Vocabulary).properties/]" message="Select the rdf:Property being referenced"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[propertyToBeReferenced.oclIsTypeOf(Property)/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::Resource /]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[propertyToBeReferenced.name/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[propertyToBeReferenced/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Specification.CreateLocalReferencePropertyFromVocabulary" label="Property Constraint (Local Reference)" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/localReferenceProperty_icon.png">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedVocabularies" computationExpression="service:getLoadedVocabularies()"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyToBeReferenced" candidatesExpression="[loadedVocabularies->collect(v | Set{v}->union(v.oclAsType(vocabulary::Vocabulary).properties))->flatten()->asSet()/]" tree="true" rootExpression="[loadedVocabularies->select(v | v.oclAsType(vocabulary::Vocabulary).properties->notEmpty() ) /]" childrenExpression="[self.oclAsType(vocabulary::Vocabulary).properties/]" message="Select the rdf:Property being referenced"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="propertyRange" candidatesExpression="[container.oclAsType(DomainSpecification).eContainer(Specification).domainSpecifications.resources/]" message="Select range of the reference property"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[propertyToBeReferenced.oclIsTypeOf(Property)/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.ResourceProperty" referenceName="resourceProperties">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="[ResourcePropertyValueType::LocalResource /]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[propertyRange/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[propertyToBeReferenced.name/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="propertyDefinition" valueExpression="[propertyToBeReferenced/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-        </toolSections>
-      </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ToolchainDiagram" initialisation="true" domainClass="toolchain.Toolchain">
       <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
@@ -2047,7 +1872,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="DomainSpecification.DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeleteResource']" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List">
+        <containerMappings name="DomainSpecification.DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeleteResource']" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List">
           <subNodeMappings name="DomainSpecification.DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty">
             <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[self.labelAsResourceSubnode(view)/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
