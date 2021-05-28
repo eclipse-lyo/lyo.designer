@@ -9,12 +9,12 @@
       <defaultLayer name="Default">
         <edgeMappingImports name="Specification.ResourceToReferenceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@edgeMappings[name='DomainSpecification.ResourceToReferenceProperty']"/>
         <edgeMappingImports name="Specification.ResourceToParentResource" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@edgeMappings[name='DomainSpecification.ResourceToParentResource']"/>
-        <containerMappings name="Specification.DomainSpecification" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteDomainSpecification']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DirectEditName']" createElements="false" semanticElements="[Set{self, self.generationSetting}/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveResource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveProperty']">
-          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Specification.DomainSpecification.Resource" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']">
+        <containerMappings name="Specification.DomainSpecification" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteDomainSpecification']" labelDirectEdit="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DirectEditName']" createElements="false" semanticElements="[Set{self, self.generationSetting}/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveResource']">
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Specification.DomainSpecification.Resource" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']">
             <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.LiteralProperty" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.DomainSpecification.Resource.LiteralProperty']"/>
             <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.ReferenceProperty" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.DomainSpecification.Resource.LiteralProperty']"/>
           </subContainerMappings>
-          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Specification.DomainSpecification.PropertiesList" semanticCandidatesExpression="aql:self" domainClass="adaptorinterface.DomainSpecification" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.PropertiesList']">
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Specification.DomainSpecification.PropertiesList" semanticCandidatesExpression="aql:self" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveProperty']" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.PropertiesList']">
             <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.PropertiesList.Property" semanticCandidatesExpression="aql:self.resourceProperties" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.PropertiesList']/@subNodeMappings[name='DomainSpecification.DomainSpecification.PropertiesList.Property']"/>
           </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="2" labelSize="9" labelExpression="[self.name + ' (' + self.namespacePrefix.name + ')'/]" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconAdaptor.png" widthComputationExpression="40" heightComputationExpression="30">
@@ -65,48 +65,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Operations">
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Specification.ResourceToReferenceProperty.ReconnectSource" elementsToSelect="[target/]" reconnectionKind="RECONNECT_SOURCE">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[element/]"/>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
-                  <subModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[element/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Specification.ResourceToReferenceProperty.ReconnectTarget" elementsToSelect="[target/]">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
-                <subModelOperations xsi:type="tool_1:Let" variableName="response" valueExpression="service:element.replaceInRange(source, target)">
-                  <subModelOperations xsi:type="tool_1:Switch">
-                    <cases conditionExpression="[response = -1/]"/>
-                    <cases conditionExpression="[response = 1/]">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[target/]"/>
-                      <subModelOperations xsi:type="tool_1:Unset" featureName="range" elementExpression="[source/]"/>
-                    </cases>
-                    <cases conditionExpression="[response = 0/]">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="range" valueExpression="[target/]"/>
-                    </cases>
-                    <default/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
+        <toolSections name="Operations" reusedTools="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.RelatePropertyToResource']">
           <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.DropDomainSpecification" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
@@ -118,7 +77,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveProperty" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveProperty" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -127,28 +86,13 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[element /]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveResource" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.MoveResource" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="resources" valueExpression="[element /]"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Specification.RelatePropertyToResource" elementsToSelect="aql:null" dragSource="BOTH">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[element/]"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Specification.DirectEditName">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteDomainSpecification">
@@ -177,17 +121,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResourceToLiteralProperty">
-            <element name="element"/>
-            <elementView name="elementView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResourceProperty" computationExpression="[elementView.oclAsType(DEdge).targetNode.oclAsType(DNode).target/]"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResource" computationExpression="[element/]"/>
-            </elementView>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResourceToReferenceProperty">
             <element name="element"/>
             <elementView name="elementView">
@@ -199,46 +132,6 @@
                 <subModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[element/]"/>
               </firstModelOperations>
             </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResourceLiteralPropertySubnode">
-            <element name="element"/>
-            <elementView name="elementView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResourceProperty" computationExpression="[element/]"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResource" computationExpression="[elementView.eContainer().oclAsType(DNodeList).target.oclAsType(Resource)/]"/>
-            </elementView>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[aResource/]">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResourceReferencePropertySubnode">
-            <element name="element"/>
-            <elementView name="elementView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResourceProperty" computationExpression="[element/]"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResource" computationExpression="[elementView.eContainer().oclAsType(DNodeList).target.oclAsType(Resource)/]"/>
-            </elementView>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[aResource/]">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeleteResource">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Specification.DeletePropertiesList" precondition="false">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation/>
           </ownedTools>
           <ownedTools xsi:type="tool_1:PopupMenu" name="SpecificationDiagram.Menu" label="OSLC Lyo Designer">
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.SpecificationMenu.GenerateSpecification" label="Generate Specification Java Code" precondition="[self.oclIsTypeOf(Specification)/]">
@@ -265,6 +158,12 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Specification.DirectEditName">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Config" reusedTools="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.CreateSpecificationConfiguration']"/>
@@ -1737,13 +1636,13 @@
         </create>
       </subItemMappings>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DropDomainSpecification']" name="DomainSpecificationDiagram" initialisation="true" domainClass="adaptorinterface.DomainSpecification" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DomainSpecificationDiagram" initialisation="true" domainClass="adaptorinterface.DomainSpecification" enablePopupBars="true">
       <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
       <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
       <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
       <diagramInitialisation/>
       <defaultLayer name="Default">
-        <edgeMappings name="DomainSpecification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeleteResourceToReferenceProperty']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']" targetFinderExpression="[self.range /]" sourceFinderExpression="[diagram.visibleResources()->select(r : Resource | r.resourceProperties->includes(self))/]" domainClass="adaptorinterface.ResourceProperty" useDomainElement="true" reconnections="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.ResourceToReferenceProperty.ReconnectSource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.ResourceToReferenceProperty.ReconnectTarget']">
+        <edgeMappings name="DomainSpecification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']" targetFinderExpression="[self.range /]" sourceFinderExpression="[diagram.visibleResources()->select(r : Resource | r.resourceProperties->includes(self))/]" domainClass="adaptorinterface.ResourceProperty" useDomainElement="true" reconnections="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.ResourceToReferenceProperty.ReconnectSource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.ResourceToReferenceProperty.ReconnectTarget']">
           <conditionnalStyles predicateExpression="[self.valueType = ResourcePropertyValueType::Resource/]">
             <style>
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1775,7 +1674,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeleteResource']" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List">
+        <containerMappings name="DomainSpecification.Resource" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List">
           <subNodeMappings name="DomainSpecification.DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty">
             <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[self.labelAsResourceSubnode(view)/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1798,7 +1697,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="DomainSpecification.PropertiesList" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeletePropertiesList']" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.MoveProperty']" childrenPresentation="List">
+        <containerMappings name="DomainSpecification.PropertiesList" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeletePropertiesList']" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.DomainSpecification" childrenPresentation="List">
           <subNodeMappings name="DomainSpecification.DomainSpecification.PropertiesList.Property" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.ResourceProperty">
             <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="[self.labelInDomainSpecification()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1929,65 +1828,13 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="DomainSpecification.DropDomainSpecification" dragSource="BOTH">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:CreateView" containerViewExpression="var:newContainerView"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="DomainSpecification.MoveProperty" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.PropertiesList']/@subNodeMappings[name='DomainSpecification.DomainSpecification.PropertiesList.Property']" dragSource="BOTH">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[element /]"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="DomainSpecification.MoveResource" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']" dragSource="BOTH">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="resources" valueExpression="[element /]"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="DomainSpecification.RelatePropertyToResource" elementsToSelect="aql:null" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.DomainSpecification.Resource.LiteralProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.PropertiesList']/@subNodeMappings[name='DomainSpecification.DomainSpecification.PropertiesList.Property']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DomainSpecification.RelatePropertyToResource" elementsToSelect="aql:null" mappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.DomainSpecification.Resource.LiteralProperty'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.PropertiesList']/@subNodeMappings[name='DomainSpecification.DomainSpecification.PropertiesList.Property'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.PropertiesList']/@subNodeMappings[name='Specification.DomainSpecification.PropertiesList.Property'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@containerMappings[name='Specification.DomainSpecification']/@subContainerMappings[name='Specification.DomainSpecification.Resource']/@subNodeMappings[name='Specification.DomainSpecification.Resource.LiteralProperty']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="resourceProperties" valueExpression="[element/]"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="DomainSpecification.DeleteResourceToLiteralProperty">
-            <element name="element"/>
-            <elementView name="elementView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResourceProperty" computationExpression="[elementView.oclAsType(DEdge).targetNode.oclAsType(DNode).target/]"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="aResource" computationExpression="[element/]"/>
-            </elementView>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="DomainSpecification.DeleteResourceToReferenceProperty">
-            <element name="element"/>
-            <elementView name="elementView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceResource" computationExpression="[elementView.sourceNode.oclAsType(DNodeList).target.oclAsType(Resource)/]"/>
-            </elementView>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceResource/]">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[element/]"/>
-              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="DomainSpecification.DeleteResourceLiteralPropertySubnode">
@@ -2014,14 +1861,6 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[aResource/]">
                 <subModelOperations xsi:type="tool_1:Unset" featureName="resourceProperties" elementExpression="[aResourceProperty/]"/>
               </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="DomainSpecification.DeleteResource">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="DomainSpecification.DeletePropertiesList" precondition="false">
