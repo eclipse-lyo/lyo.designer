@@ -17,7 +17,7 @@
 [module domainSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0')/]
 
 [query public visibleResources (diagram : DSemanticDiagram) : Sequence(Resource) =
-(diagram.containers->select(c : DDiagramElementContainer | (Sequence{'Specification.DomainSpecification.Resource', 'DomainSpecification.DomainSpecification.Resource'}->includes(c.actualMapping.name))._and(c.visible)))
+(diagram.containers->select(c : DDiagramElementContainer | (Sequence{'Specification.DomainSpecification.Resource', 'DomainSpecification.Resource'}->includes(c.actualMapping.name))._and(c.visible)))
 	.target.oclAsType(Resource)
 /]
 
