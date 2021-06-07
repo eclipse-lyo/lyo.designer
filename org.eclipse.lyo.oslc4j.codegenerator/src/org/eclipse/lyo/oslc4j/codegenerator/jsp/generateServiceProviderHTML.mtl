@@ -51,12 +51,15 @@
 <%@ page import="org.eclipse.lyo.oslc4j.core.model.CreationFactory" %>
 <%@ page import="org.eclipse.lyo.oslc4j.core.model.ResourceShape" %>
 <%@ page import="org.eclipse.lyo.oslc4j.core.model.QueryCapability" %>
+<%@page import="javax.ws.rs.core.UriBuilder"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.OSLC4JUtils"%>
 
 <%@ page contentType="text/html" language="java" pageEncoding="UTF-8" %>
 
 <%
 ServiceProvider serviceProvider = (ServiceProvider)request.getAttribute("serviceProvider");
 Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
+String catalogUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/catalog/singleton").build().toString();
 %>
 <html lang="en">
 <head>
@@ -76,7 +79,7 @@ Service['[]'/] services = (Service['[]'/])request.getAttribute("services");
     <div class="container">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><%= application.getServletContextName() %></a></li>
-        <li class="nav-item"><a class="nav-link" href="<c:url value="/services/catalog/singleton"/>">Service Provider Catalog</a></li>
+        <li class="nav-item"><a class="nav-link" href="<c:url value="<%= catalogUrl %>"/>">Service Provider Catalog</a></li>
         <li class="nav-item"><a class="nav-link" href="<c:url value="[containingAdaptorInterface(aServiceProvider).swaggerIndexJspRelativeFileName()/]"/>">Swagger UI</a></li>
       </ul>
     </div>

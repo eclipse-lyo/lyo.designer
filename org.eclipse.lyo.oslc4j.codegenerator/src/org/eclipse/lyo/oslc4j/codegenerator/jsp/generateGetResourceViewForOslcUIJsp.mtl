@@ -72,6 +72,7 @@
   AbstractResource aResource = (AbstractResource) request.getAttribute("aResource");
   String resourceTypeName = (String) request.getAttribute("resourceTypeName");
   URI shapeUri = (URI) request.getAttribute("shapeUri");
+  String catalogUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/catalog/singleton").build().toString();
 %>
 <html lang="en">
 <head>
@@ -96,7 +97,7 @@
     <div class="container">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><%= application.getServletContextName() %></a></li>
-        <li class="nav-item"><a class="nav-link" href="<c:url value="/services/catalog/singleton"/>">Service Provider Catalog</a></li>
+        <li class="nav-item"><a class="nav-link" href="<c:url value="<%= catalogUrl %>"/>">Service Provider Catalog</a></li>
         <li class="nav-item"><a class="nav-link" href="<c:url value="[swaggerIndexJspRelativeFileName(contextAdaptorInterface)/]"/>">Swagger UI</a></li>
       </ul>
     </div>

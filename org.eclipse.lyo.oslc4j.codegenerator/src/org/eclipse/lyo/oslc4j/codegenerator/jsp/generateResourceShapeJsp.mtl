@@ -46,11 +46,14 @@
 <%@page import="org.eclipse.lyo.oslc4j.core.model.ResourceShape"%>
 <%@page import="org.eclipse.lyo.oslc4j.core.model.Property"%>
 <%@page import="org.eclipse.lyo.oslc4j.core.model.OslcConstants"%>
+<%@page import="javax.ws.rs.core.UriBuilder"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.OSLC4JUtils"%>
 
 <%@ page contentType="text/html" language="java" pageEncoding="UTF-8" %>
 
 <%
   ResourceShape aResourceShape = (ResourceShape) request.getAttribute("aResourceShape");
+  String catalogUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/catalog/singleton").build().toString();
 %>
 
 <html>
@@ -77,7 +80,7 @@
     <div class="container">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><%= application.getServletContextName() %></a></li>
-        <li class="nav-item"><a class="nav-link" href="<c:url value="/services/catalog/singleton"/>">Service Provider Catalog</a></li>
+        <li class="nav-item"><a class="nav-link" href="<c:url value="<%= catalogUrl %>"/>">Service Provider Catalog</a></li>
         <li class="nav-item"><a class="nav-link" href="<c:url value="[swaggerIndexJspRelativeFileName(anAdaptorInterface)/]"/>">Swagger UI</a></li>
       </ul>
     </div>

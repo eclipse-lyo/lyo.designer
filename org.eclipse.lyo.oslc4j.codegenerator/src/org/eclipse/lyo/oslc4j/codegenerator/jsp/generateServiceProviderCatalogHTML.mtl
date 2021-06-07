@@ -43,11 +43,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog" %>
 <%@ page import="org.eclipse.lyo.oslc4j.core.model.ServiceProvider" %>
+<%@page import="javax.ws.rs.core.UriBuilder"%>
+<%@page import="org.eclipse.lyo.oslc4j.core.OSLC4JUtils"%>
 
 <%@ page contentType="text/html" language="java" pageEncoding="UTF-8" %>
 
 <%
 ServiceProviderCatalog catalog = (ServiceProviderCatalog)request.getAttribute("catalog");
+String catalogUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/catalog/singleton").build().toString();
 %>
 
 <html lang="en">
@@ -71,7 +74,7 @@ ServiceProviderCatalog catalog = (ServiceProviderCatalog)request.getAttribute("c
     <div class="container">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><%= application.getServletContextName() %></a></li>
-        <li class="nav-item"><a class="nav-link" href="<c:url value="/services/catalog/singleton"/>">Service Provider Catalog</a></li>
+        <li class="nav-item"><a class="nav-link" href="<c:url value="<%= catalogUrl %>"/>">Service Provider Catalog</a></li>
         <li class="nav-item"><a class="nav-link" href="<c:url value="[containingAdaptorInterface(aServiceProviderCatalog).swaggerIndexJspRelativeFileName()/]"/>">Swagger UI</a></li>
       </ul>
     </div>
