@@ -131,6 +131,7 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.apache.wink.json4j.JSONException;
 import org.apache.wink.json4j.JSONObject;
+import org.apache.wink.json4j.JSONArray;
 import org.eclipse.lyo.oslc4j.provider.json4j.JsonHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -301,7 +302,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
     public [dialogMethodReturnType(aSelectionDialog, true)/] [dialogMethodName(aSelectionDialog, true)/](
         @QueryParam("terms") final String terms
         [commaSeparate(dialogMethodSignature(aSelectionDialog, true, true), true, false)/]
-        ) throws ServletException, IOException
+        ) throws ServletException, IOException, JSONException
     {
         // [protected (dialogMethodName(aSelectionDialog, true).concat('_init'))]
         // [/protected]
@@ -314,10 +315,18 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             httpServletRequest.setAttribute("terms", terms);
             final List<[dialogMethodResourceType(aSelectionDialog)/]> resources = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[dialogMethodName(aSelectionDialog, true)/](httpServletRequest[commaSeparate(dialogMethodParameterList(aSelectionDialog, true), true, false)/], terms);
             if (resources!= null) {
-                        httpServletRequest.setAttribute("resources", resources);
-                        RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorResultsJspRelativeFileName(aSelectionDialog) /]");
-                        rd.forward(httpServletRequest, httpServletResponse);
-                        return;
+                JSONArray resourceArray = new JSONArray();
+                for ([dialogMethodResourceType(aSelectionDialog)/] resource : resources) {
+                    JSONObject r = new JSONObject();
+                    r.put("oslc:label", resource.toString());
+                    r.put("rdf:resource", resource.getAbout().toString());
+                    // [protected (dialogMethodName(aSelectionDialog, true).concat('_setResponse'))]
+                    // [/protected]
+                    resourceArray.add(r);
+                }
+                JSONObject response = new JSONObject();
+                response.put("oslc:results", resourceArray);
+                return Response.ok(response.write()).build();
             }
             log.error("A empty search should return an empty list and not NULL!");
             throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
@@ -330,7 +339,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorJspRelativeFileName(aSelectionDialog) /]");
             [/if]
             rd.forward(httpServletRequest, httpServletResponse);
-            return;
+            return null;
         }
     }
 
@@ -390,6 +399,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 
         RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceCreatorJspRelativeFileName(aCreationDialog) /]");
         rd.forward(httpServletRequest, httpServletResponse);
+        return null;
     }
 
     /**

@@ -51,7 +51,6 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateCssAndJsFiles/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateResourceCollectionJsp/]
-[import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateFilteredResourceCollectionJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateResourceToHtmlJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateGetResourceViewForOslcUIJsp/]
 [import org::eclipse::lyo::oslc4j::codegenerator::jsp::generateGetResourceJsp/]
@@ -175,7 +174,6 @@
             [if not (allSelectionDialogs->excluding(aSelectionDialog)->exists(anotherSelectionDialog: Dialog |
                     (anotherSelectionDialog.resourceTypes = aSelectionDialog.resourceTypes).
                     _and(allSelectionDialogs->indexOf(anotherSelectionDialog) > allSelectionDialogs->indexOf(aSelectionDialog))))]
-                [aSelectionDialog.generateFilteredResourceCollectionJsp() /]
                 [aSelectionDialog.generateResourceSelectorJsp() /]
             [/if]
         [/let]

@@ -265,7 +265,7 @@ endif
 /]
 
 [query public dialogMethodReturnType(aDialog: Dialog, selectionDialog : Boolean) : String = 
-'void'
+'Response'
 /]
 
 [query public dialogMethodSignature(aDialog: Dialog, selectionDialog : Boolean, forJAXRSMethod : Boolean) : String =  

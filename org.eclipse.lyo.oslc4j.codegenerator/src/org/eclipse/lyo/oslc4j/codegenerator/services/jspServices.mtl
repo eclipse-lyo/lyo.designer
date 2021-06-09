@@ -145,21 +145,6 @@ webFilesWebappPath(anAdaptorInterface).concatenatePaths('resourceShape').concat(
 webFilesBasePath(anAdaptorInterface).concatenatePaths(resourceShapeJspRelativeFileName(anAdaptorInterface))
 /]
 
-[query private resourceSelectorResultsJspSimpleFileName(aSelectionDialog: Dialog) : String =
-(if (aSelectionDialog.usages->size() = 0) then
-    concatenate(aSelectionDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String)).toLower()
-else
-    javaSimpleStringFromUri(aSelectionDialog.usages->first(), true)
-endif)
-.concat('selectorResults').concat('.jsp')
-/]
-[query public resourceSelectorResultsJspRelativeFileName(aSelectionDialog: Dialog) : String =
-webFilesWebappPath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorResultsJspSimpleFileName(aSelectionDialog)).toLower()
-/]
-[query public resourceSelectorResultsJspFullFileName(aSelectionDialog: Dialog) : String =
-webFilesBasePath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorResultsJspRelativeFileName(aSelectionDialog))
-/]
-
 [query public serviceProviderCatalogJspRelativeFileName(aServiceProviderCatalog : ServiceProviderCatalog) : String =
 webFilesWebappPath(containingAdaptorInterface(aServiceProviderCatalog)).concatenatePaths('serviceProviderCatalog').concat('.jsp').toLower()
 /]
