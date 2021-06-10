@@ -36,6 +36,11 @@
         <description>Base URI for the adaptor.</description>
         <param-name>[javaClassPackageNameForAdaptorServletListener(anAdaptorInterface) /].baseurl</param-name>
         <param-value>[anAdaptorInterface.configuration.rootServerBaseUrl/]</param-value>
+        <!-- [protected ('webxml_baseurl')]
+        -->
+        <!-- TODO: Add additional configurations here to avoid them be overrriden upon future re-generation -->
+        <!-- [/protected]
+        -->
     </context-param>
     <!-- [protected ('webxml1')]
     -->
@@ -91,6 +96,11 @@
         <init-param>
             <param-name>swagger.api.basepath</param-name>
             <param-value>[anAdaptorInterface.getServletUrl()/]</param-value>
+            <!-- [protected ('webxml_swagger')]
+            -->
+            <!-- TODO: Add additional configurations here to avoid them be overrriden upon future re-generation -->
+            <!-- [/protected]
+            -->
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>

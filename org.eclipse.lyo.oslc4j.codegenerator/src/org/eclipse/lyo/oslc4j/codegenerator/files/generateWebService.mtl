@@ -141,7 +141,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
 [anAdaptorInterface.swaggerImportPackages()
 /]
-[if (anAdaptorInterface.generateJspFilesForOslcUI())]import org.eclipse.lyo.oslc_ui.PreviewFactory;
+[if (anAdaptorInterface.generateJspFilesForOslcUI())]import org.eclipse.lyo.server.ui.model.PreviewFactory;
 [/if]
 // [protected ('imports')]
 // [/protected]

@@ -214,6 +214,14 @@
             <version>${swagger.version}</version>
         </dependency>
         [/if]
+        [if (anAdaptorInterface.generateJspFilesForOslcUI())]
+        <!-- OSLC-UI dependencies -->
+        <dependency>
+            <groupId>org.eclipse.lyo.server</groupId>
+            <artifactId>oslc-ui-model</artifactId>
+            <version>${version.lyo}</version>
+        </dependency>        
+        [/if]
     </dependencies>
     <!-- [protected ('post_dependencies')]
     -->
