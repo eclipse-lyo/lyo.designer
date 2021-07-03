@@ -437,13 +437,6 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="AdaptorInterface.CRUDService" semanticCandidatesExpression="[webServices/]" domainClass="adaptorinterface.WebService">
-          <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW" shape="ring">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
-        </nodeMappings>
         <nodeMappings name="AdaptorInterface.TrsService" semanticCandidatesExpression="[trsService/]" domainClass="adaptorinterface.TrsService">
           <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="['TRS Service'/]" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -453,13 +446,6 @@
         </nodeMappings>
         <nodeMappings name="AdaptorInterface.Store" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteStore']" semanticCandidatesExpression="[stores/]" domainClass="adaptorinterface.Store">
           <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="['Store'/]" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)->union(self.webServices.resourceTypes)/]" domainClass="adaptorinterface.Resource">
-          <style xsi:type="style:EllipseNodeDescription" labelSize="9" showIcon="false" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -481,7 +467,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="OSLCServiceToManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteOSLCServiceToManagedResource']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.OSLCService']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" targetFinderExpression="[self.creationFactories.resourceTypes->union(self.queryCapabilities.resourceTypes)->union(self.selectionDialogs.resourceTypes)->union(self.creationDialogs.resourceTypes)/]" sourceFinderExpression="aql:self" domainClass="adaptorinterface.Service" useDomainElement="true">
+        <edgeMappings name="OSLCServiceToManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteOSLCServiceToManagedResource']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.OSLCService']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.ManagedResource']" targetFinderExpression="[self.creationFactories.resourceTypes->union(self.queryCapabilities.resourceTypes)->union(self.selectionDialogs.resourceTypes)->union(self.creationDialogs.resourceTypes)/]" sourceFinderExpression="aql:self" domainClass="adaptorinterface.Service" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -489,7 +475,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="WebServiceToManagedResource" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CRUDService']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ManagedResource']" targetFinderExpression="feature:resourceTypes">
+        <edgeMappings name="WebServiceToManagedResource" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.CRUDService']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.ManagedResource']" targetFinderExpression="feature:resourceTypes">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="9">
@@ -505,7 +491,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ServiceToStore" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CRUDService'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.OSLCService']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Store']" targetFinderExpression="[thisEObject.store/]" sourceFinderExpression="[self.eContainer()/]" domainClass="adaptorinterface::ServicePersistence" useDomainElement="true">
+        <edgeMappings name="ServiceToStore" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.CRUDService'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.OSLCService']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.Store']" targetFinderExpression="[thisEObject.store/]" sourceFinderExpression="[self.eContainer()/]" domainClass="adaptorinterface::ServicePersistence" useDomainElement="true">
           <conditionnalStyles predicateExpression="[self.oclIsTypeOf(OSLCServicePersistence)/]">
             <style lineStyle="dot" sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -524,13 +510,10 @@
           </conditionnalStyles>
         </edgeMappings>
         <containerMappings name="AdaptorInterface.GenericRequiredAdaptor" semanticCandidatesExpression="feature:requiredAdaptors" domainClass="adaptorinterface.GenericRequiredAdaptor">
-          <subNodeMappings name="AdaptorInterface.GenericRequiredAdaptor.ConsumedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='AdaptorInterface.DeleteConsumedResource']" semanticCandidatesExpression="[self.servicedResources/]" domainClass="adaptorinterface.Resource">
-            <style xsi:type="style:EllipseNodeDescription" labelSize="9" showIcon="false" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconResource.png" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="5">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
-          </subNodeMappings>
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="AdaptorInterface.GenericRequiredAdaptor.ConsumedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='AdaptorInterface.DeleteConsumedResource']" semanticCandidatesExpression="[self.servicedResources/]" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']">
+            <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.LiteralProperty" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.Resource.LiteralProperty']"/>
+            <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.ReferenceProperty" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.Resource.LiteralProperty']"/>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="9">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -674,6 +657,39 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="AdaptorInterface.ManagedResource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AdaptorInterface.DeleteManagedResource']" semanticCandidatesExpression="[self.serviceProviderCatalog.serviceProviders.services.creationFactories.resourceTypes->union(self.serviceProviderCatalog.serviceProviders.services.queryCapabilities.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.selectionDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.creationDialogs.resourceTypes)->union(self.serviceProviderCatalog.serviceProviders.services.basicCapabilities.resourceTypes)->union(self.webServices.resourceTypes)/]" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']">
+          <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.LiteralProperty" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.Resource.LiteralProperty']"/>
+          <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.ReferenceProperty" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.Resource.LiteralProperty']"/>
+        </containerMappings>
+        <containerMappings name="AdaptorInterface.CRUDService" semanticCandidatesExpression="[webServices/]" domainClass="adaptorinterface.WebService" childrenPresentation="List">
+          <subNodeMappings name="AdaptorInterface.CRUDService.Read" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="aql:if self.read then self  else null endif " domainClass="adaptorinterface.WebService">
+            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="aql:'Read'" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="AdaptorInterface.CRUDService.Update" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="aql:if self.update then self  else null endif " domainClass="adaptorinterface.WebService">
+            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="aql:'Update'" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="AdaptorInterface.CRUDService.Delete" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DomainSpecification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="aql:if self.delete then self  else null endif " domainClass="adaptorinterface.WebService">
+            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="aql:'Delete'" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="aql:self.name">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
         <toolSections name="OSLC Server">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateServiceProviderCatalog" label="Service Provider Catalog" precondition="[self.serviceProviderCatalog.oclIsUndefined()/]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']" extraMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.ServiceProviderCatalog']">
             <variable name="container"/>
@@ -783,33 +799,6 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="hintWidth" valueExpression="['250'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="hintHeight" valueExpression="['250'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateCRUDService" label="CRUD Service" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@nodeMappings[name='AdaptorInterface.CRUDService']">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:Switch">
-                  <cases conditionExpression="[container.serviceProviderCatalog.serviceProviders.services.basicCapabilities->size() > 0/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('The use of WebServices conflicts with existing BasicCapabilities', 'The use of BasicCapabilities is Deprecated! \n It is however not possible to mix WebServices with BasicCapabilities. Consider first replacing existing BasicCapabilities with WebServices. A WebService offers the same features, yet with a much better URL flexibility.')/]"/>
-                  </cases>
-                  <default>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.WebService" referenceName="webServices">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['WebService'+ container.webServices->size()/]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[let userInput : String = self.promptForString('Enter Class Name', 'Enter the name of the service. This name will be denote the Java class name that implement the service method.', self.name) in (if (userInput = null) then name else userInput endif) /]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[name.toLowerFirst()/]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter service relative URL', 'Enter the relative URL pattern for the web service', self.serviceUrlPattern) in (if (userInput = null) then serviceUrlPattern else userInput endif) /]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="['[ResourceType]/{id}'/]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter method relative URL pattern', 'Enter the relative URL pattern for the OSLC resource methods under this web service. You can use [ResourceType] to denote the RDF type of the resource.', self.resourceUrlPattern) in (if (userInput = null) then resourceUrlPattern else userInput endif) /]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
-                    </subModelOperations>
-                  </default>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -926,6 +915,33 @@
             <containerView name="containerView"/>
             <initialOperation/>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AdaptorInterface.CreateCRUDService" label="CRUD Service" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.CRUDService']">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:Switch">
+                  <cases conditionExpression="[container.serviceProviderCatalog.serviceProviders.services.basicCapabilities->size() > 0/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('The use of WebServices conflicts with existing BasicCapabilities', 'The use of BasicCapabilities is Deprecated! \n It is however not possible to mix WebServices with BasicCapabilities. Consider first replacing existing BasicCapabilities with WebServices. A WebService offers the same features, yet with a much better URL flexibility.')/]"/>
+                  </cases>
+                  <default>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.WebService" referenceName="webServices">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['WebService'+ container.webServices->size()/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[let userInput : String = self.promptForString('Enter Class Name', 'Enter the name of the service. This name will be denote the Java class name that implement the service method.', self.name) in (if (userInput = null) then name else userInput endif) /]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[name.toLowerFirst()/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter service relative URL', 'Enter the relative URL pattern for the web service', self.serviceUrlPattern) in (if (userInput = null) then serviceUrlPattern else userInput endif) /]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="['[ResourceType]/{id}'/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter method relative URL pattern', 'Enter the relative URL pattern for the OSLC resource methods under this web service. You can use [ResourceType] to denote the RDF type of the resource.', self.resourceUrlPattern) in (if (userInput = null) then resourceUrlPattern else userInput endif) /]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
+                    </subModelOperations>
+                  </default>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="OSLC Client">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="AdaptorInterface.CreateGenericRequiredAdaptor" label="Generic Required Adaptor" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']">
@@ -940,7 +956,17 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.AddConsumedResource" label="Consumed Resource" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']/@subNodeMappings[name='AdaptorInterface.GenericRequiredAdaptor.ConsumedResource']" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/requiredInterface_icon.png">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteConsumedResource">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.oclAsType(DNodeContainer).target/]">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AdaptorInterface.AddConsumedResource" label="Consumed Resource" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.GenericRequiredAdaptor']/@subContainerMappings[name='AdaptorInterface.GenericRequiredAdaptor.ConsumedResource']">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
               <subVariables xsi:type="tool_1:SelectModelElementVariable" name="consumedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
@@ -949,16 +975,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="servicedResources" valueExpression="[consumedResource/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteConsumedResource">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.oclAsType(DNodeContainer).target/]">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="servicedResources" elementExpression="[element/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
