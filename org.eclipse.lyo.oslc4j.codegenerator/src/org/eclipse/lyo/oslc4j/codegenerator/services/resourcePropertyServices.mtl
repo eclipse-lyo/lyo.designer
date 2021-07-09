@@ -240,7 +240,15 @@ Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())
                                     'Integer.valueOf(' + variable + ')'
                                 else
                                     if(aProperty.valueType.toString() = 'Resource') then
-                                        'new Link(new URI(' + variable + '))'
+                                        if ((not aProperty.representation.oclIsUndefined()) and (aProperty.representation.toString().equalsIgnoreCase('inline'))) then
+                                            if (aProperty.range->size() = 1) then
+                                                'new ' + javaClassName(aProperty.range->first()) + '(new URI(' + variable + '))'
+                                            else
+                                                'new Link(new URI(' + variable + '))'
+                                            endif
+                                        else
+                                            'new Link(new URI(' + variable + '))'
+                                        endif
                                     else
                                         if(aProperty.valueType.toString() = 'LocalResource') then
                                             if (aProperty.range->size() = 1) then
@@ -317,7 +325,15 @@ Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())
                                     'Integer'
                                 else
                                     if(aProperty.valueType.toString() = 'Resource') then
-                                            'Link'
+                                            if ((not aProperty.representation.oclIsUndefined()) and (aProperty.representation.toString().equalsIgnoreCase('inline'))) then
+                                                if (aProperty.range->size() = 1) then
+                                                    javaClassName(aProperty.range->first())
+                                                else
+                                                    'Link'
+                                                endif
+                                            else
+                                                'Link'
+                                            endif
                                     else
                                         if(aProperty.valueType.toString() = 'LocalResource') then
                                             if (aProperty.range->size() = 1) then

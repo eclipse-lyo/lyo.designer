@@ -731,6 +731,33 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AdaptorInterface.CreateCRUDService" label="CRUD Service" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.CRUDService']">
+            <variable name="container">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
+              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:Switch">
+                  <cases conditionExpression="[container.serviceProviderCatalog.serviceProviders.services.basicCapabilities->size() > 0/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('The use of WebServices conflicts with existing BasicCapabilities', 'The use of BasicCapabilities is Deprecated! \n It is however not possible to mix WebServices with BasicCapabilities. Consider first replacing existing BasicCapabilities with WebServices. A WebService offers the same features, yet with a much better URL flexibility.')/]"/>
+                  </cases>
+                  <default>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.WebService" referenceName="webServices">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['WebService'+ container.webServices->size()/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[let userInput : String = self.promptForString('Enter Class Name', 'Enter the name of the service. This name will be denote the Java class name that implement the service method.', self.name) in (if (userInput = null) then name else userInput endif) /]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[name.toLowerFirst()/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter service relative URL', 'Enter the relative URL pattern for the web service', self.serviceUrlPattern) in (if (userInput = null) then serviceUrlPattern else userInput endif) /]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="['[ResourceType]/{id}'/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter method relative URL pattern', 'Enter the relative URL pattern for the OSLC resource methods under this web service. You can use [ResourceType] to denote the RDF type of the resource.', self.resourceUrlPattern) in (if (userInput = null) then resourceUrlPattern else userInput endif) /]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
+                    </subModelOperations>
+                  </default>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="AdaptorInterface.CreateCreationFactory" label="Creation Factory" precondition="[not container.oclIsTypeOf(AdaptorInterface) /]" nodeMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.OSLCService']/@subNodeMappings[name='AdaptorInterface.OSLCService.CreationFactory']">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
@@ -914,33 +941,6 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AdaptorInterface.CreateCRUDService" label="CRUD Service" containerMappings="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@containerMappings[name='AdaptorInterface.CRUDService']">
-            <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="loadedDomainSpecifications" computationExpression="service:getLoadedDomainSpecifications()"/>
-              <subVariables xsi:type="tool_1:SelectModelElementVariable" name="managedResource" candidatesExpression="[loadedDomainSpecifications->collect(ds | Set{ds}->union(ds.oclAsType(adaptorinterface::DomainSpecification).resources))->flatten()->asSet()/]" tree="true" rootExpression="[loadedDomainSpecifications/]" childrenExpression="[self.oclAsType(adaptorinterface::DomainSpecification).resources/]" message="Select the Resouce"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:Switch">
-                  <cases conditionExpression="[container.serviceProviderCatalog.serviceProviders.services.basicCapabilities->size() > 0/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('The use of WebServices conflicts with existing BasicCapabilities', 'The use of BasicCapabilities is Deprecated! \n It is however not possible to mix WebServices with BasicCapabilities. Consider first replacing existing BasicCapabilities with WebServices. A WebService offers the same features, yet with a much better URL flexibility.')/]"/>
-                  </cases>
-                  <default>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.WebService" referenceName="webServices">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['WebService'+ container.webServices->size()/]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[let userInput : String = self.promptForString('Enter Class Name', 'Enter the name of the service. This name will be denote the Java class name that implement the service method.', self.name) in (if (userInput = null) then name else userInput endif) /]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[name.toLowerFirst()/]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter service relative URL', 'Enter the relative URL pattern for the web service', self.serviceUrlPattern) in (if (userInput = null) then serviceUrlPattern else userInput endif) /]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="['[ResourceType]/{id}'/]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceUrlPattern" valueExpression="[let userInput : String = self.promptForString('Enter method relative URL pattern', 'Enter the relative URL pattern for the OSLC resource methods under this web service. You can use [ResourceType] to denote the RDF type of the resource.', self.resourceUrlPattern) in (if (userInput = null) then resourceUrlPattern else userInput endif) /]"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
-                    </subModelOperations>
-                  </default>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="OSLC Client">
