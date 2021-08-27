@@ -146,13 +146,6 @@
                 <module>org.eclipse.lyo.tools.adaptormodel.editor</module>
                 <module>org.eclipse.lyo.tools.adaptormodel.model</module>
 
-                <!-- <module>org.eclipse.lyo.tools.codegenerator.feature</module> -->
-
-                <!-- <module>org.eclipse.lyo.oslc4j.codegenerator</module> -->
-                <!-- <module>org.eclipse.lyo.tools.codegenerator.ui</module> -->
-
-                <!-- <module>org.eclipse.lyo.tools.toolchain.feature</module> -->
-
                 <module>org.eclipse.lyo.tools.toolchain.design</module>
                 <module>org.eclipse.lyo.tools.toolchain.edit</module>
                 <module>org.eclipse.lyo.tools.toolchain.editor</module>
@@ -161,14 +154,6 @@
                 <module>org.eclipse.lyo.tools.vocabulary.editor</module>
                 <module>org.eclipse.lyo.tools.vocabulary.model</module>
                 <module>org.eclipse.lyo.tools.vocabulary.model.edit</module>
-
-                <!-- <module>org.eclipse.lyo.tools.designer.branding</module> -->
-                <!-- <module>org.eclipse.lyo.tools.designer.product</module> -->
-                <!-- <module>org.eclipse.lyo.tools.designer.product.feature</module> -->
-        
-                <!-- <module>org.eclipse.lyo.tools.updatesite</module> -->
-        
-                <!-- <module>org.eclipse.lyo.oslc4j.plugins</module> -->
             </modules>
         </profile>
         <profile>
