@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link adaptorinterface.impl.SpecificationImpl#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.impl.SpecificationImpl#getDomainSpecifications <em>Domain Specifications</em>}</li>
  *   <li>{@link adaptorinterface.impl.SpecificationImpl#getDomainPrefixes <em>Domain Prefixes</em>}</li>
  *   <li>{@link adaptorinterface.impl.SpecificationImpl#getGenerationSetting <em>Generation Setting</em>}</li>
@@ -43,6 +44,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class SpecificationImpl extends MinimalEObjectImpl.Container implements Specification {
 	/**
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
+    protected static final String NAME_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
+    protected String name = NAME_EDEFAULT;
+
+    /**
      * The cached value of the '{@link #getDomainSpecifications() <em>Domain Specifications</em>}' containment reference list.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,6 +123,29 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setName(String newName) {
+        String oldName = name;
+        name = newName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__NAME, oldName, name));
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -245,6 +289,8 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+            case AdaptorinterfacePackage.SPECIFICATION__NAME:
+                return getName();
             case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
                 return getDomainSpecifications();
             case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
@@ -266,6 +312,9 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	@Override
 	public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+            case AdaptorinterfacePackage.SPECIFICATION__NAME:
+                setName((String)newValue);
+                return;
             case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
                 getDomainSpecifications().clear();
                 getDomainSpecifications().addAll((Collection<? extends DomainSpecification>)newValue);
@@ -292,6 +341,9 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	@Override
 	public void eUnset(int featureID) {
         switch (featureID) {
+            case AdaptorinterfacePackage.SPECIFICATION__NAME:
+                setName(NAME_EDEFAULT);
+                return;
             case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
                 getDomainSpecifications().clear();
                 return;
@@ -316,6 +368,8 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	@Override
 	public boolean eIsSet(int featureID) {
         switch (featureID) {
+            case AdaptorinterfacePackage.SPECIFICATION__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
             case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_SPECIFICATIONS:
                 return domainSpecifications != null && !domainSpecifications.isEmpty();
             case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
@@ -326,6 +380,22 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
                 return configuration != null;
         }
         return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy()) return super.toString();
+
+        StringBuilder result = new StringBuilder(super.toString());
+        result.append(" (name: ");
+        result.append(name);
+        result.append(')');
+        return result.toString();
     }
 
 } //SpecificationImpl

@@ -684,21 +684,21 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 	/**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-    public EReference getSpecification_DomainSpecifications() {
-        return (EReference)specificationEClass.getEStructuralFeatures().get(0);
+    @Override
+    public EAttribute getSpecification_Name() {
+        return (EAttribute)specificationEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
 	@Override
-    public EReference getSpecification_DomainPrefixes() {
+    public EReference getSpecification_DomainSpecifications() {
         return (EReference)specificationEClass.getEStructuralFeatures().get(1);
     }
 
@@ -708,7 +708,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
 	@Override
-    public EReference getSpecification_GenerationSetting() {
+    public EReference getSpecification_DomainPrefixes() {
         return (EReference)specificationEClass.getEStructuralFeatures().get(2);
     }
 
@@ -718,8 +718,18 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
 	@Override
-    public EReference getSpecification_Configuration() {
+    public EReference getSpecification_GenerationSetting() {
         return (EReference)specificationEClass.getEStructuralFeatures().get(3);
+    }
+
+	/**
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     */
+	@Override
+    public EReference getSpecification_Configuration() {
+        return (EReference)specificationEClass.getEStructuralFeatures().get(4);
     }
 
 	/**
@@ -2576,6 +2586,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__STORES);
 
         specificationEClass = createEClass(SPECIFICATION);
+        createEAttribute(specificationEClass, SPECIFICATION__NAME);
         createEReference(specificationEClass, SPECIFICATION__DOMAIN_SPECIFICATIONS);
         createEReference(specificationEClass, SPECIFICATION__DOMAIN_PREFIXES);
         createEReference(specificationEClass, SPECIFICATION__GENERATION_SETTING);
@@ -2871,6 +2882,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEReference(getAdaptorInterface_Stores(), this.getStore(), null, "stores", null, 0, -1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(specificationEClass, Specification.class, "Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getSpecification_DomainSpecifications(), this.getDomainSpecification(), null, "domainSpecifications", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         getSpecification_DomainSpecifications().getEKeys().add(this.getDomainSpecification_Name());
         initEReference(getSpecification_DomainPrefixes(), this.getNamespacePrefix(), null, "domainPrefixes", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

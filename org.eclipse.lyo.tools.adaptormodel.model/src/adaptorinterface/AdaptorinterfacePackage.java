@@ -293,13 +293,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SPECIFICATION = 1;
 
 	/**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SPECIFICATION__NAME = 0;
+
+    /**
      * The feature id for the '<em><b>Domain Specifications</b></em>' containment reference list.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int SPECIFICATION__DOMAIN_SPECIFICATIONS = 0;
+	int SPECIFICATION__DOMAIN_SPECIFICATIONS = 1;
 
 	/**
      * The feature id for the '<em><b>Domain Prefixes</b></em>' containment reference list.
@@ -308,7 +317,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int SPECIFICATION__DOMAIN_PREFIXES = 1;
+	int SPECIFICATION__DOMAIN_PREFIXES = 2;
 
 	/**
      * The feature id for the '<em><b>Generation Setting</b></em>' containment reference.
@@ -317,7 +326,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int SPECIFICATION__GENERATION_SETTING = 2;
+	int SPECIFICATION__GENERATION_SETTING = 3;
 
 	/**
      * The feature id for the '<em><b>Configuration</b></em>' containment reference.
@@ -326,7 +335,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int SPECIFICATION__CONFIGURATION = 3;
+	int SPECIFICATION__CONFIGURATION = 4;
 
 	/**
      * The number of structural features of the '<em>Specification</em>' class.
@@ -335,7 +344,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int SPECIFICATION_FEATURE_COUNT = 4;
+	int SPECIFICATION_FEATURE_COUNT = 5;
 
 	/**
      * The number of operations of the '<em>Specification</em>' class.
@@ -3119,6 +3128,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EClass getSpecification();
 
 	/**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Specification#getName <em>Name</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see adaptorinterface.Specification#getName()
+     * @see #getSpecification()
+     * @generated
+     */
+    EAttribute getSpecification_Name();
+
+    /**
      * Returns the meta object for the containment reference list '{@link adaptorinterface.Specification#getDomainSpecifications <em>Domain Specifications</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5319,6 +5339,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EClass SPECIFICATION = eINSTANCE.getSpecification();
 
 		/**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute SPECIFICATION__NAME = eINSTANCE.getSpecification_Name();
+
+        /**
          * The meta object literal for the '<em><b>Domain Specifications</b></em>' containment reference list feature.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link adaptorinterface.Specification#getName <em>Name</em>}</li>
  *   <li>{@link adaptorinterface.Specification#getDomainSpecifications <em>Domain Specifications</em>}</li>
  *   <li>{@link adaptorinterface.Specification#getDomainPrefixes <em>Domain Prefixes</em>}</li>
  *   <li>{@link adaptorinterface.Specification#getGenerationSetting <em>Generation Setting</em>}</li>
@@ -27,6 +28,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Specification extends EObject {
 	/**
+     * Returns the value of the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Name</em>' attribute.
+     * @see #setName(String)
+     * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_Name()
+     * @model
+     * @generated
+     */
+    String getName();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.Specification#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
+     * @see #getName()
+     * @generated
+     */
+    void setName(String value);
+
+    /**
      * Returns the value of the '<em><b>Domain Specifications</b></em>' containment reference list.
      * The list contents are of type {@link adaptorinterface.DomainSpecification}.
      * <!-- begin-user-doc -->
