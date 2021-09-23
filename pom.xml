@@ -9,7 +9,8 @@
     <properties>
     	<maven.compiler.release>11</maven.compiler.release>
         <tycho.version>2.2.0</tycho.version>
-        <eclipse.cbi>1.1.7</eclipse.cbi>
+        <!-- Working on snapshot since 1.1.7 relies on a server that no longer exists. https://bugs.eclipse.org/bugs/show_bug.cgi?id=565644 & https://wiki.eclipse.org/IT_Infrastructure_Doc#macOS_Notarization -->
+        <eclipse.cbi>1.1.8-SNAPSHOT</eclipse.cbi>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <p2.repo>http://download.eclipse.org/releases/2020-12</p2.repo>
     </properties>
@@ -38,9 +39,16 @@
             <url>https://repo.eclipse.org/content/repositories/acceleo-releases/</url>
         </pluginRepository>
         <pluginRepository>
-            <id>cbi</id>
-            <url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
-        </pluginRepository>
+           <id>cbi</id>
+           <url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
+         </pluginRepository>
+         <pluginRepository>
+           <id>cbi-snapshots</id>
+           <url>https://repo.eclipse.org/content/repositories/cbi-snapshots/</url>
+           <snapshots>
+             <enabled>true</enabled>
+           </snapshots>
+         </pluginRepository>
     </pluginRepositories>
 
     <build>
