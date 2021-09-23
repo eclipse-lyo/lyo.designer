@@ -320,7 +320,9 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
                     JSONObject r = new JSONObject();
                     r.put("oslc:label", resource.toString());
                     r.put("rdf:resource", resource.getAbout().toString());
+                    r.put("Label", resource.toString());
                     // [protected (dialogMethodName(aSelectionDialog, true).concat('_setResponse'))]
+                    //TODO: Add any other attributes that are to be displayed in the search result
                     // [/protected]
                     resourceArray.add(r);
                 }
@@ -334,6 +336,10 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
         } else {
             [if (anAdaptorInterface.generateJspFilesForOslcUI())]
             httpServletRequest.setAttribute("resourceTypeLabel", "[for (r: Resource | aSelectionDialog.resourceTypes) separator(', ')][r.name/][/for]");
+            httpServletRequest.setAttribute("fieldsToList", "['[\\"Label\\"]'/]");
+            // [protected (dialogMethodName(aSelectionDialog, true).concat('_setAttribute_fieldsToList'))]
+            //TODO: set the attribute "fieldsToList" to form the list of properties you want displayed in the search result
+            // [/protected]
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorForOslcUIJspRelativeFileName(anAdaptorInterface) /]");
             [else]
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorJspRelativeFileName(aSelectionDialog) /]");
