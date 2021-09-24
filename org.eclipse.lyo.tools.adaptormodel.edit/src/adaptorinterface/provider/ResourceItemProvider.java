@@ -47,6 +47,8 @@ public class ResourceItemProvider
 
             addIdPropertyDescriptor(object);
             addNamePropertyDescriptor(object);
+            addTitlePropertyDescriptor(object);
+            addDescriptionPropertyDescriptor(object);
             addDescribesPropertyDescriptor(object);
             addExtendsPropertyDescriptor(object);
             addResourcePropertiesPropertyDescriptor(object);
@@ -99,6 +101,50 @@ public class ResourceItemProvider
     }
 
 	/**
+     * This adds a property descriptor for the Title feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTitlePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Resource_title_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Resource_title_feature", "_UI_Resource_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE__TITLE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Description feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addDescriptionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Resource_description_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Resource_description_feature", "_UI_Resource_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE__DESCRIPTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the Extends feature.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -204,6 +250,8 @@ public class ResourceItemProvider
         switch (notification.getFeatureID(Resource.class)) {
             case AdaptorinterfacePackage.RESOURCE__ID:
             case AdaptorinterfacePackage.RESOURCE__NAME:
+            case AdaptorinterfacePackage.RESOURCE__TITLE:
+            case AdaptorinterfacePackage.RESOURCE__DESCRIPTION:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

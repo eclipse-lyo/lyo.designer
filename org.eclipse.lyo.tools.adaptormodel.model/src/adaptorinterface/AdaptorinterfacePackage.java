@@ -1005,13 +1005,31 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE__NAME = SHAPE_FEATURE_COUNT + 1;
 
 	/**
+     * The feature id for the '<em><b>Title</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RESOURCE__TITLE = SHAPE_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RESOURCE__DESCRIPTION = SHAPE_FEATURE_COUNT + 3;
+
+    /**
      * The feature id for the '<em><b>Describes</b></em>' reference.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RESOURCE__DESCRIBES = SHAPE_FEATURE_COUNT + 2;
+	int RESOURCE__DESCRIBES = SHAPE_FEATURE_COUNT + 4;
 
 	/**
      * The feature id for the '<em><b>Extends</b></em>' reference list.
@@ -1020,7 +1038,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int RESOURCE__EXTENDS = SHAPE_FEATURE_COUNT + 3;
+	int RESOURCE__EXTENDS = SHAPE_FEATURE_COUNT + 5;
 
 	/**
      * The feature id for the '<em><b>Resource Properties</b></em>' reference list.
@@ -1029,7 +1047,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int RESOURCE__RESOURCE_PROPERTIES = SHAPE_FEATURE_COUNT + 4;
+	int RESOURCE__RESOURCE_PROPERTIES = SHAPE_FEATURE_COUNT + 6;
 
 	/**
      * The number of structural features of the '<em>Resource</em>' class.
@@ -1038,7 +1056,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int RESOURCE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 5;
+	int RESOURCE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 7;
 
 	/**
      * The number of operations of the '<em>Resource</em>' class.
@@ -3724,6 +3742,28 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getResource_Name();
 
 	/**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Resource#getTitle <em>Title</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Title</em>'.
+     * @see adaptorinterface.Resource#getTitle()
+     * @see #getResource()
+     * @generated
+     */
+    EAttribute getResource_Title();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Resource#getDescription <em>Description</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Description</em>'.
+     * @see adaptorinterface.Resource#getDescription()
+     * @see #getResource()
+     * @generated
+     */
+    EAttribute getResource_Description();
+
+    /**
      * Returns the meta object for the reference '{@link adaptorinterface.Resource#getDescribes <em>Describes</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5797,6 +5837,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute RESOURCE__NAME = eINSTANCE.getResource_Name();
 
 		/**
+         * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute RESOURCE__TITLE = eINSTANCE.getResource_Title();
+
+        /**
+         * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute RESOURCE__DESCRIPTION = eINSTANCE.getResource_Description();
+
+        /**
          * The meta object literal for the '<em><b>Describes</b></em>' reference feature.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

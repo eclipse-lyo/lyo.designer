@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getId <em>Id</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourceImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourceImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getDescribes <em>Describes</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getExtends <em>Extends</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getResourceProperties <em>Resource Properties</em>}</li>
@@ -77,6 +79,46 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	protected String name = NAME_EDEFAULT;
 
 	/**
+     * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
+    protected static final String TITLE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
+    protected String title = TITLE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getDescription()
+     * @generated
+     * @ordered
+     */
+    protected static final String DESCRIPTION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getDescription()
+     * @generated
+     * @ordered
+     */
+    protected String description = DESCRIPTION_EDEFAULT;
+
+    /**
      * The cached value of the '{@link #getDescribes() <em>Describes</em>}' reference.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -175,6 +217,52 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setTitle(String newTitle) {
+        String oldTitle = title;
+        title = newTitle;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE__TITLE, oldTitle, title));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setDescription(String newDescription) {
+        String oldDescription = description;
+        description = newDescription;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE__DESCRIPTION, oldDescription, description));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -251,6 +339,10 @@ public class ResourceImpl extends ShapeImpl implements Resource {
                 return getId();
             case AdaptorinterfacePackage.RESOURCE__NAME:
                 return getName();
+            case AdaptorinterfacePackage.RESOURCE__TITLE:
+                return getTitle();
+            case AdaptorinterfacePackage.RESOURCE__DESCRIPTION:
+                return getDescription();
             case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
                 if (resolve) return getDescribes();
                 return basicGetDescribes();
@@ -276,6 +368,12 @@ public class ResourceImpl extends ShapeImpl implements Resource {
                 return;
             case AdaptorinterfacePackage.RESOURCE__NAME:
                 setName((String)newValue);
+                return;
+            case AdaptorinterfacePackage.RESOURCE__TITLE:
+                setTitle((String)newValue);
+                return;
+            case AdaptorinterfacePackage.RESOURCE__DESCRIPTION:
+                setDescription((String)newValue);
                 return;
             case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
                 setDescribes((vocabulary.Class)newValue);
@@ -306,6 +404,12 @@ public class ResourceImpl extends ShapeImpl implements Resource {
             case AdaptorinterfacePackage.RESOURCE__NAME:
                 setName(NAME_EDEFAULT);
                 return;
+            case AdaptorinterfacePackage.RESOURCE__TITLE:
+                setTitle(TITLE_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.RESOURCE__DESCRIPTION:
+                setDescription(DESCRIPTION_EDEFAULT);
+                return;
             case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
                 setDescribes((vocabulary.Class)null);
                 return;
@@ -331,6 +435,10 @@ public class ResourceImpl extends ShapeImpl implements Resource {
                 return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
             case AdaptorinterfacePackage.RESOURCE__NAME:
                 return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case AdaptorinterfacePackage.RESOURCE__TITLE:
+                return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+            case AdaptorinterfacePackage.RESOURCE__DESCRIPTION:
+                return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
             case AdaptorinterfacePackage.RESOURCE__DESCRIBES:
                 return describes != null;
             case AdaptorinterfacePackage.RESOURCE__EXTENDS:
@@ -355,6 +463,10 @@ public class ResourceImpl extends ShapeImpl implements Resource {
         result.append(id);
         result.append(", name: ");
         result.append(name);
+        result.append(", title: ");
+        result.append(title);
+        result.append(", description: ");
+        result.append(description);
         result.append(')');
         return result.toString();
     }
