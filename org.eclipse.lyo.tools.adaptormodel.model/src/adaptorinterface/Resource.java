@@ -15,6 +15,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link adaptorinterface.Resource#getId <em>Id</em>}</li>
  *   <li>{@link adaptorinterface.Resource#getName <em>Name</em>}</li>
+ *   <li>{@link adaptorinterface.Resource#getTitle <em>Title</em>}</li>
+ *   <li>{@link adaptorinterface.Resource#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.Resource#getDescribes <em>Describes</em>}</li>
  *   <li>{@link adaptorinterface.Resource#getExtends <em>Extends</em>}</li>
  *   <li>{@link adaptorinterface.Resource#getResourceProperties <em>Resource Properties</em>}</li>
@@ -78,6 +80,50 @@ public interface Resource extends Shape {
 	void setName(String value);
 
 	/**
+     * Returns the value of the '<em><b>Title</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Title</em>' attribute.
+     * @see #setTitle(String)
+     * @see adaptorinterface.AdaptorinterfacePackage#getResource_Title()
+     * @model
+     * @generated
+     */
+    String getTitle();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.Resource#getTitle <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Title</em>' attribute.
+     * @see #getTitle()
+     * @generated
+     */
+    void setTitle(String value);
+
+    /**
+     * Returns the value of the '<em><b>Description</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Description</em>' attribute.
+     * @see #setDescription(String)
+     * @see adaptorinterface.AdaptorinterfacePackage#getResource_Description()
+     * @model
+     * @generated
+     */
+    String getDescription();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.Resource#getDescription <em>Description</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Description</em>' attribute.
+     * @see #getDescription()
+     * @generated
+     */
+    void setDescription(String value);
+
+    /**
      * Returns the value of the '<em><b>Extends</b></em>' reference list.
      * The list contents are of type {@link adaptorinterface.Resource}.
      * <!-- begin-user-doc -->
