@@ -30,25 +30,21 @@
 
 [template public swaggerImportPackages(anAdaptorInterface: AdaptorInterface)]
 [if (anAdaptorInterface.swaggerDocumentationEnabled())]
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 [/if]
 [/template]
-
-[template public swaggerAnnotation(aWebService: WebService, anAdaptorInterface: AdaptorInterface)]
-[if (anAdaptorInterface.swaggerDocumentationEnabled())]
-@Api(value = "Web Service for {" + [for (aResource: Resource | aWebService.resourceTypes) separator(' + ", " + ') ][javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource) /][/for] + "}")
-[/if]
-[/template]
-
 
 [template public swaggerApiOperationAnnotation(aResource: Resource, method: String, anAdaptorInterface: AdaptorInterface)]
 [if (anAdaptorInterface.swaggerDocumentationEnabled())]
-@ApiOperation(
-    value = "[method/] for resources of type {'" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "'}",
-    notes = "[method/] for resources of type {'" + "<a href=\"" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>" + "'}" +
+@Operation(
+    summary = "[method/] for resources of type {'" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "'}",
+    description = "[method/] for resources of type {'" + "<a href=\"" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>" + "'}" +
         ", with respective resource shapes {'" + "<a href=\"" + "../services/" + OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>" + "'}",
-    produces = ['OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE + ", " + MediaType.TEXT_HTML + ", " + OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML'/]
+    responses = {
+        ['@ApiResponse(content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE), @Content(mediaType = MediaType.TEXT_HTML), @Content(mediaType = OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML)})'/]
+    }
 )
 [/if]
 [/template]
@@ -149,8 +145,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 // [protected ('pre_class_code')]
 // [/protected]
 [JAXRSPathAnnotation(aWebService.serviceUrlPattern()) /]
-[aWebService.swaggerAnnotation(anAdaptorInterface)
-/]public class [javaClassName(aWebService) /]
+public class [javaClassName(aWebService) /]
 {
     @Context private HttpServletRequest httpServletRequest;
     @Context private HttpServletResponse httpServletResponse;

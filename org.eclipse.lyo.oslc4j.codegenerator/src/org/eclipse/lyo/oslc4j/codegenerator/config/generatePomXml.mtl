@@ -45,9 +45,10 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <version.lyo>[mavenProjectConfiguration.lyoVersion/]</version.lyo>
+    <jersey.version>2.25.1</jersey.version>
     [if (swaggerDocumentationEnabled)]
-    <swagger.version>1.5.22</swagger.version>
-    <swagger-ui.version>3.25.0</swagger-ui.version>
+    <swagger.version>2.1.2</swagger.version>
+    <swagger-ui.version>3.52.3</swagger-ui.version>
     [/if]
     <!-- [protected ('properties')]
     -->
@@ -116,12 +117,12 @@
 <dependency>
     <groupId>org.glassfish.jersey.core</groupId>
     <artifactId>jersey-server</artifactId>
-    <version>2.25.1</version>
+    <version>${jersey.version}</version>
 </dependency>
 <dependency>
     <groupId>org.glassfish.jersey.containers</groupId>
     <artifactId>jersey-container-servlet</artifactId>
-    <version>2.25.1</version>
+    <version>${jersey.version}</version>
 </dependency>
 [/if]
 [/template]
@@ -209,9 +210,14 @@
         [if (anAdaptorInterface.swaggerDocumentationEnabled())]
         <!-- Swagger dependencies -->
         <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-jersey2-jaxrs</artifactId>
-            <version>${swagger.version}</version>
+          <groupId>io.swagger.core.v3</groupId>
+          <artifactId>swagger-jaxrs2</artifactId>
+          <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>io.swagger.core.v3</groupId>
+          <artifactId>swagger-jaxrs2-servlet-initializer-v2</artifactId>
+          <version>${swagger.version}</version>
         </dependency>
         [/if]
         [if (anAdaptorInterface.generateJspFilesForOslcUI())]

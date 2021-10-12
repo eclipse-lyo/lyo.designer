@@ -29,25 +29,21 @@
 
 [template public swaggerImportPackages(anAdaptorInterface: AdaptorInterface)]
 [if (anAdaptorInterface.swaggerDocumentationEnabled())]
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 [/if]
 [/template]
-
-[template public swaggerAnnotation(aService: Service, anAdaptorInterface: AdaptorInterface)]
-[if (anAdaptorInterface.swaggerDocumentationEnabled())]
-@Api(value = "OSLC Service for {" + [for (aResource: Resource | aService.servicedResources()->sortedBy(name)) separator(' + ", " + ') ][javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource) /][/for] + "}")
-[/if]
-[/template]
-
 
 [template public swaggerApiOperationAnnotation(capability: String, resources: Set(Resource), produces: String, anAdaptorInterface: AdaptorInterface)]
 [if (anAdaptorInterface.swaggerDocumentationEnabled())]
-@ApiOperation(
-    value = "[capability/] for resources of type {" + [for (aResource: Resource | resources->sortedBy(name)) separator(' + ", " + ') ][javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/][/for] + "}",
-    notes = "[capability/] for resources of type {" + [for (aResource: Resource | resources->sortedBy(name)) separator(' + ", " + ') ]"<a href=\"" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>"[/for] + "}" +
+@Operation(
+    summary = "[capability/] for resources of type {" + [for (aResource: Resource | resources->sortedBy(name)) separator(' + ", " + ') ][javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/][/for] + "}",
+    description = "[capability/] for resources of type {" + [for (aResource: Resource | resources->sortedBy(name)) separator(' + ", " + ') ]"<a href=\"" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>"[/for] + "}" +
         ", with respective resource shapes {" + [for (aResource: Resource | resources->sortedBy(name)) separator(' + ", " + ') ]"<a href=\"" + "../services/" + OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>"[/for] + "}",
-    produces = [produces/]
+    responses = { 
+        [produces/]
+    }
 )
 [/if]
 [/template]
@@ -55,19 +51,19 @@ import io.swagger.annotations.ApiOperation;
 
 [template public swaggerApiOperationAnnotation(aQueryCapability: QueryCapability, anAdaptorInterface: AdaptorInterface)]
 [swaggerApiOperationAnnotation('Query capability', aQueryCapability.resourceTypes,
-    'OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE + ", " + MediaType.TEXT_HTML',
+    '@ApiResponse(content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE), @Content(mediaType = MediaType.TEXT_HTML)})',
     anAdaptorInterface)/]
 [/template]
 
 [template public swaggerApiOperationAnnotation(aCreationFactory: CreationFactory, anAdaptorInterface: AdaptorInterface)]
 [swaggerApiOperationAnnotation('Creation factory', aCreationFactory.resourceTypes,
-    'OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE',
+    '@ApiResponse(content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE)})',
     anAdaptorInterface)/]
 [/template]
 
 [template public swaggerApiOperationAnnotation(aBasicCapability: BasicCapability, aResource: Resource, method: String, anAdaptorInterface: AdaptorInterface)]
 [swaggerApiOperationAnnotation(method, Set {aResource},
-    'OslcMediaType.APPLICATION_RDF_XML + ", " + OslcMediaType.APPLICATION_XML + ", " + OslcMediaType.APPLICATION_JSON + ", " + OslcMediaType.TEXT_TURTLE + ", " + MediaType.TEXT_HTML + ", " + OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML',
+    '@ApiResponse(content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE), @Content(mediaType = MediaType.TEXT_HTML), @Content(mediaType = OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML)})',
     anAdaptorInterface)/]
 [/template]
 
@@ -166,8 +162,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 // [/protected]
 @OslcService([javaInterfaceNameForConstants(aService.domainSpecification)/].[domainSpecificationConstantName(aService.domainSpecification)/])
 [JAXRSPathAnnotation(aService.serviceBaseURI()) /]
-[aService.swaggerAnnotation(anAdaptorInterface)
-/]public class [javaClassName(aService) /]
+public class [javaClassName(aService) /]
 {
     @Context private HttpServletRequest httpServletRequest;
     @Context private HttpServletResponse httpServletResponse;

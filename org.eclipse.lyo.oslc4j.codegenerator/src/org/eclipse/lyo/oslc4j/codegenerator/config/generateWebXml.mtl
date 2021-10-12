@@ -85,26 +85,6 @@
         <url-pattern>[anAdaptorInterface.configuration.servletUrlPattern/]</url-pattern>
     </filter-mapping>
     [/if]
-    [if anAdaptorInterface.swaggerDocumentation]
-    <servlet>
-        <servlet-name>DefaultJaxrsConfig</servlet-name>
-        <servlet-class>io.swagger.jaxrs.config.DefaultJaxrsConfig</servlet-class>
-        <init-param>
-            <param-name>api.version</param-name>
-            <param-value>1.0.0</param-value>
-        </init-param>
-        <init-param>
-            <param-name>swagger.api.basepath</param-name>
-            <param-value>[anAdaptorInterface.getServletUrl()/]</param-value>
-            <!-- [protected ('webxml_swagger')]
-            -->
-            <!-- TODO: Add additional configurations here to avoid them be overrriden upon future re-generation -->
-            <!-- [/protected]
-            -->
-        </init-param>
-        <load-on-startup>2</load-on-startup>
-    </servlet>
-    [/if]
     <!-- [protected ('webxml4')]
     -->
     <!-- TODO: Add additional configurations here to avoid them be overrriden upon future re-generation -->

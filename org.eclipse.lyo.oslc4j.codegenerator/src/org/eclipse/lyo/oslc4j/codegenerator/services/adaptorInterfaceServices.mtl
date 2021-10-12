@@ -51,6 +51,10 @@ JAXRSConcatURISegments(anAdaptorInterface.configuration.rootServerBaseUrl, anAda
 JAXRSConcatURISegments(anAdaptorInterface.getApplicationBaseUrl(), anAdaptorInterface.getServletPath())
 /]
 
+[query public getServletFullPath(anAdaptorInterface : AdaptorInterface) : String = 
+JAXRSConcatURISegments(anAdaptorInterface.configuration.applicationContextPath, anAdaptorInterface.getServletPath())
+/]
+
 [query public authenticationOauthRealm(anAdaptorInterface : AdaptorInterface) : String = 
 anAdaptorInterface.configuration.authenticationConfiguration.oauthRealm
 /]
