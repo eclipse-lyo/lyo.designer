@@ -27,6 +27,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateServiceProviderCatalogSingleton/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorServiceProviderFactory/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorManager/]
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateApplicationBinder/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorResourcesFactory/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorServletListener/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorApplication/]
@@ -90,6 +91,7 @@
 [anAdaptorInterface.generateAdaptorResourcesFactory() /]
 [anAdaptorInterface.serviceProviderCatalog.generateServiceProviderCatalogService() /]
 [anAdaptorInterface.serviceProviderCatalog.generateServiceProviderCatalogSingleton() /]
+[anAdaptorInterface.generateApplicationBinder() /]
 
 [anAdaptorInterface.generateCssAndJsFiles() /]
 [anAdaptorInterface.serviceProviderCatalog.generateServiceProviderCatalogHTML() /]

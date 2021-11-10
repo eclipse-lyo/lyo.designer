@@ -23,17 +23,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 
 
-[comment TODO: we should avoid relying on "eContainer", since objects that come from a composing emf file, will not have the eContainer relationship setup as expected.
-This method should be able to work even for objects that come from a differnet emf file than that containing the AdaptorInterface. 
-You should also question any other use of "eContainer" in this whole project /]
-[query public containingAdaptorInterface(obj : OclAny) : AdaptorInterface =
-(if (not obj.eContainer(AdaptorInterface).oclIsUndefined()) then
-    obj.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
-else
-    null
-endif)
-/]
-
 [comment url patterns in  most cases end with '\*'. But a url-pattern with just '\' may be found for exact matches. /]
 [query public getServletPath(anAdaptorInterface : AdaptorInterface) : String = 
     (if anAdaptorInterface.configuration.servletUrlPattern.endsWith('*') then 
@@ -340,6 +329,23 @@ javaClassPackageNameForAdaptorApplication(anAdaptorInterface).concat('.').concat
 
 [query public javaClassFullFileNameForAdaptorApplication(anAdaptorInterface : AdaptorInterface) : String = 
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorApplication(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForAdaptorApplication(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for ApplicationBinder /]
+[query public javaClassPackageNameForApplicationBinder(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForApplicationBinder(anAdaptorInterface : AdaptorInterface) : String = 
+'ApplicationBinder'
+/]
+
+[query public javaClassFullNameForApplicationBinder(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForApplicationBinder(anAdaptorInterface).concat('.').concat(javaClassNameForApplicationBinder(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForApplicationBinder(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForApplicationBinder(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForApplicationBinder(anAdaptorInterface)).concat('.java')
 /]
 
 [comment Services for AdaptorServletListener /]

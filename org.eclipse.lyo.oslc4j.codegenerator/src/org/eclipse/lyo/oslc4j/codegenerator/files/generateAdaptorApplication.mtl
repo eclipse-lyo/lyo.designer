@@ -129,27 +129,10 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
     // [protected ('class_methods')]
     // [/protected]
 
-    [if (anAdaptorInterface.trsServiceEnabled())]
     @Override
     public Set<Object> getSingletons() {
-        return Collections.singleton(new AbstractBinder() {
-            @Override
-            protected void configure() {
-                bindFactory(new Factory<PagedTrs>() {
-                            @Override
-                            public PagedTrs provide() {
-                                return [anAdaptorInterface.javaClassNameForAdaptorManager()/].getPagedTrs();
-                            }
-
-                            @Override
-                            public void dispose(PagedTrs instance) {
-                            }
-                        }
-                ).to(PagedTrs.class);
-            }
-        });
+        return Collections.singleton(new ApplicationBinder());
     }
-    [/if]
     static
     {
         RESOURCE_CLASSES.addAll(JenaProvidersRegistry.getProviders());

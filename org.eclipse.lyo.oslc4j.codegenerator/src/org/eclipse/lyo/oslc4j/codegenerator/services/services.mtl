@@ -35,6 +35,17 @@ Set{'appendable', 'autocloseable', 'charsequence', 'cloneable', 'comparable', 'i
 ((javaKeywords(aString)->union(javaLangWords(aString)))->includes(aString.toLower()))
 /]
 
+[comment TODO: we should avoid relying on "eContainer", since objects that come from a composing emf file, will not have the eContainer relationship setup as expected.
+This method should be able to work even for objects that come from a differnet emf file than that containing the AdaptorInterface. 
+You should also question any other use of "eContainer" in this whole project /]
+[query public containingAdaptorInterface(obj : OclAny) : AdaptorInterface =
+(if (not obj.eContainer(AdaptorInterface).oclIsUndefined()) then
+    obj.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
+else
+    null
+endif)
+/]
+
 [query public javaBasePackageName(anAdaptorInterface : AdaptorInterface) : String =
 anAdaptorInterface.javaBasePackageName('resources')
 /]

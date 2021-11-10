@@ -187,6 +187,9 @@
 [/if]
 [/template]
 
+[template private additionalDependencies(traceabilityContext : OclAny) post (trim())]
+[/template]
+
 [template public generatePomXml(anAdaptorInterface : AdaptorInterface)]
 [if (not anAdaptorInterface.doNotGenerateProjectFiles())]
 [let mavenProjectConfiguration : MavenProjectConfiguration = anAdaptorInterface.configuration.projectConfiguration]
@@ -207,8 +210,8 @@
         [generalDependencies()/]
         [servletDependencies(true)/]
         [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled(), anAdaptorInterface.trsServiceEnabled(), anAdaptorInterface.storeEnabled())/]
-        [if (anAdaptorInterface.swaggerDocumentationEnabled())]
-        <!-- Swagger dependencies -->
+        [additionalDependencies()
+        /][if (anAdaptorInterface.swaggerDocumentationEnabled())]<!-- Swagger dependencies -->
         <dependency>
           <groupId>io.swagger.core.v3</groupId>
           <artifactId>swagger-jaxrs2</artifactId>
