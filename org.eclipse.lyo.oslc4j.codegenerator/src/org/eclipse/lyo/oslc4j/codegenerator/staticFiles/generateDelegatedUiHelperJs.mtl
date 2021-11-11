@@ -39,6 +39,19 @@
 // [/protected]
 
 //register an addEventListener that handles the response form the Selection DelegatedUI iframe to the parent window.
+//The function passes the message payload without any processing.
+function registerSelectionDUIRawResponseListener(iframeElement, oslcMessageHandler) {
+    window.addEventListener('message', function (e) {
+        var HEADER = "oslc-response:";
+        if (e.source == iframeElement.contentWindow
+                && e.data.indexOf(HEADER) == 0) {
+            var message = e.data;
+            oslcMessageHandler(message);
+        }
+    }, false);
+}
+
+//register an addEventListener that handles the response form the Selection DelegatedUI iframe to the parent window.
 //For each of the selected OSLC resource, the function will call oslcSelectionPresentationFunction with the url and label of that resource.
 function registerSelectionDUIResponseListener(iframeElement, oslcSelectionPreprocessingFunction, oslcSelectionPresentationFunction) {
     window.addEventListener('message', function (e) {
@@ -54,7 +67,6 @@ function registerSelectionDUIResponseListener(iframeElement, oslcSelectionPrepro
         }
     }, false);
 }
-
 
 //register an addEventListener that handles the response form the Creation DelegatedUI iframe to the parent window.
 //For the created OSLC resource, the function will call oslcCreationPresentationFunction with the url and label of that resource.
