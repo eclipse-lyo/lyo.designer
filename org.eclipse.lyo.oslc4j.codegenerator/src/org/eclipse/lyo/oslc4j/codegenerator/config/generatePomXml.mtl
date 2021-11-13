@@ -100,7 +100,7 @@
 </dependency>
 [/template]
 
-[template private servletDependencies(serverImplementation : Boolean)]
+[template private servletDependencies(serverImplementation : Boolean) post (trim())]
 <!-- Servlet dependencies -->
 <dependency>
     <groupId>javax.servlet</groupId>
@@ -127,7 +127,7 @@
 [/if]
 [/template]
 
-[template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean, authenticationEnabled : Boolean, trsServiceEnabled : Boolean, storeEnabled : Boolean)]
+[template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean, authenticationEnabled : Boolean, trsServiceEnabled : Boolean, storeEnabled : Boolean) post (trim())]
 <!-- Lyo dependencies -->
 <dependency>
     <groupId>org.eclipse.lyo.oslc4j.core</groupId>
@@ -187,7 +187,7 @@
 [/if]
 [/template]
 
-[template private additionalDependencies(traceabilityContext : OclAny) post (trim())]
+[template public additionalDependencies(traceabilityContext : OclAny) post (trim())]
 [/template]
 
 [template public generatePomXml(anAdaptorInterface : AdaptorInterface)]
@@ -210,8 +210,9 @@
         [generalDependencies()/]
         [servletDependencies(true)/]
         [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled(), anAdaptorInterface.trsServiceEnabled(), anAdaptorInterface.storeEnabled())/]
-        [additionalDependencies()
-        /][if (anAdaptorInterface.swaggerDocumentationEnabled())]<!-- Swagger dependencies -->
+        [additionalDependencies()/]
+        [if (anAdaptorInterface.swaggerDocumentationEnabled())]
+        <!-- Swagger dependencies -->
         <dependency>
           <groupId>io.swagger.core.v3</groupId>
           <artifactId>swagger-jaxrs2</artifactId>
