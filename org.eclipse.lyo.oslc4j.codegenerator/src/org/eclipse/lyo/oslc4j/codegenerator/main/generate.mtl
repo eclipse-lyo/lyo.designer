@@ -215,6 +215,9 @@
 [/for]
 [/template]
 
+[template public generateOptionals(anAdaptorInterface : AdaptorInterface)]
+[/template]
+
 [template public generate(anAdaptorInterface : AdaptorInterface, targetFolder : String)]
 [comment @main/]
 [setTargetFolder(targetFolder)/]
@@ -244,4 +247,5 @@
     [anAdaptorInterface.generateGetResourceViewForOslcUIJsp() /]
     [anAdaptorInterface.generateResourceSelectorForOslcUIJsp() /]
 [/if]
+[generateOptionals(anAdaptorInterface)/]
 [/template]
