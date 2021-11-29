@@ -79,6 +79,7 @@ import org.eclipse.lyo.oslc4j.provider.json4j.Json4JProvidersRegistry;
 import io.swagger.v3.jaxrs2.integration.resources.AcceptHeaderOpenApiResource;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.servers.Server;
 [/if]
 [if (anAdaptorInterface.authenticationEnabled())]
@@ -116,7 +117,7 @@ import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
  */
 
 [if (anAdaptorInterface.swaggerDocumentationEnabled())]
-@OpenAPIDefinition(servers = @Server(url = "[anAdaptorInterface.getServletFullPath()/]"))
+@OpenAPIDefinition(info = @Info(title = "[anAdaptorInterface.name/]", version = "1.0.0"), servers = @Server(url = "[anAdaptorInterface.getServletFullPath()/]"))
 [/if]
 public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends javax.ws.rs.core.Application {
 

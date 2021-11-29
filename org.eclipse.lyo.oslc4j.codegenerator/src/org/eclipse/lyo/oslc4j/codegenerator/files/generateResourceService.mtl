@@ -145,19 +145,19 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 [template public swaggerApiOperationAnnotation(aQueryCapability: QueryCapability, anAdaptorInterface: AdaptorInterface)]
 [swaggerApiOperationAnnotation('Query capability', aQueryCapability.resourceTypes,
-    '@ApiResponse(content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE), @Content(mediaType = MediaType.TEXT_HTML)})',
+    '@ApiResponse(description = "default response", content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE), @Content(mediaType = MediaType.TEXT_HTML)})',
     anAdaptorInterface)/]
 [/template]
 
 [template public swaggerApiOperationAnnotation(aCreationFactory: CreationFactory, anAdaptorInterface: AdaptorInterface)]
 [swaggerApiOperationAnnotation('Creation factory', aCreationFactory.resourceTypes,
-    '@ApiResponse(content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE)})',
+    '@ApiResponse(description = "default response", content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE)})',
     anAdaptorInterface)/]
 [/template]
 
 [template public swaggerApiOperationAnnotation(aBasicCapability: BasicCapability, aResource: Resource, method: String, anAdaptorInterface: AdaptorInterface)]
 [swaggerApiOperationAnnotation(method, Set {aResource},
-    '@ApiResponse(content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE), @Content(mediaType = MediaType.TEXT_HTML), @Content(mediaType = OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML)})',
+    '@ApiResponse(description = "default response", content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE), @Content(mediaType = MediaType.TEXT_HTML), @Content(mediaType = OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML)})',
     anAdaptorInterface)/]
 [/template]
 

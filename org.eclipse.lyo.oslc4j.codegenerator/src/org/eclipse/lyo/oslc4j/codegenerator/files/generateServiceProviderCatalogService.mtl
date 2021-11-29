@@ -128,7 +128,7 @@ public class [javaClassNameForService(aServiceProviderCatalog) /]
     @GET
     @Path("{serviceProviderCatalogId}") // Required to distinguish from array result.  But, ignored.
     [annotationProducesRDF(containingAdaptorInterface(aServiceProviderCatalog)) /]
-    public ServiceProviderCatalog getServiceProviderCatalog()
+    public ServiceProviderCatalog getServiceProviderCatalog(@PathParam("serviceProviderCatalogId") final String serviceProviderCatalogId)
     {
         ServiceProviderCatalog catalog =  ServiceProviderCatalogSingleton.getServiceProviderCatalog(httpServletRequest);
 
