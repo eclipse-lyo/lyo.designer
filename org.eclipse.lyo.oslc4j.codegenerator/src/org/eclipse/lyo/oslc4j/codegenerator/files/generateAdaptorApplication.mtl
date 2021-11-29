@@ -48,6 +48,7 @@
 package [javaClassPackageNameForAdaptorApplication(anAdaptorInterface) /];
 
 import java.net.URISyntaxException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -98,7 +99,6 @@ import [javaClassFullNameForResourceShapeService(anAdaptorInterface) /];
 [for (aService: Service | anAdaptorInterface.serviceProviders().services) separator(lineSeparator())]import [javaClassFullName(aService) /];[/for]
 [for (aWebService: WebService | anAdaptorInterface.webServices) separator(lineSeparator())]import [javaClassFullName(aWebService) /];[/for]
 [if (anAdaptorInterface.trsServiceEnabled())]
-import java.util.Collections;
 import org.glassfish.hk2.api.Factory;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
