@@ -10,7 +10,9 @@ Lyo Designer is an Eclipse plugin that allows one to graphically model (1) the o
 
 Lyo Designer includes a integrated code generator that synthesizes the model into almost-complete OSLC4J-compliant running implementation.
 
-A short [video demonstration of Lyo Designer](https://www.youtube.com/watch?v=tZxPzlSTdeM).
+A short [video demonstration of Lyo Designer](https://www.youtube.com/watch?v=tZxPzlSTdeM):
+
+[![](./LyoDesignerVideo.png)](https://www.youtube.com/watch?v=tZxPzlSTdeM)
 
 ## Introduction
 
