@@ -12,7 +12,7 @@
     </parent> -->
     <groupId>org.eclipse.lyo.tools</groupId>
     <artifactId>org.eclipse.lyo.oslc4j.plugins</artifactId>
-    <version>4.1.0-SNAPSHOT</version>
+    <version>4.1.0.RC</version>
     <packaging>pom</packaging>
     
     <properties>
@@ -21,7 +21,7 @@
         <eclipse.cbi>1.1.7</eclipse.cbi>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <p2.repo>http://download.eclipse.org/releases/2020-12</p2.repo>
-        <lyo.version>4.1.0-SNAPSHOT</lyo.version>
+        <lyo.version>4.1.0.RC</lyo.version>
     </properties>
     <repositories>
         <repository>
