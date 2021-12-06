@@ -147,6 +147,8 @@
                 <module>org.eclipse.lyo.tools.adaptormodel.model</module>
 
                 <module>org.eclipse.lyo.tools.toolchain.design</module>
+                <module>org.eclipse.lyo.oslc4j.codegenerator</module>
+                <module>org.eclipse.lyo.tools.codegenerator.ui</module>
                 <module>org.eclipse.lyo.tools.toolchain.edit</module>
                 <module>org.eclipse.lyo.tools.toolchain.editor</module>
                 <module>org.eclipse.lyo.tools.toolchain.model</module>
