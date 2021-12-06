@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.lyo.tools.adaptormodel.model;singleton:=true
 Automatic-Module-Name: org.eclipse.lyo.tools.adaptormodel.model
-Bundle-Version: 4.1.0.RELEASE
+Bundle-Version: 4.2.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
