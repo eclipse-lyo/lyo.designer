@@ -20,6 +20,10 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 
+[template public additionalContextInitialization(traceabilityContext : OclAny) post (trim())]
+[/template]
+
+
 [template public generateAdaptorServletListener(anAdaptorInterface : AdaptorInterface)]
 [file (javaClassFullFileNameForAdaptorServletListener(anAdaptorInterface), false, 'UTF-8')]
 // [protected ('Copyright')]
@@ -115,7 +119,7 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
 
         // Establish connection to data backbone etc ...
         [javaClassNameForAdaptorManager(anAdaptorInterface) /].contextInitializeServletListener(servletContextEvent);
-
+        [additionalContextInitialization()/]
         // [protected ('contextInitialized_final')]
         // [/protected]
     }
