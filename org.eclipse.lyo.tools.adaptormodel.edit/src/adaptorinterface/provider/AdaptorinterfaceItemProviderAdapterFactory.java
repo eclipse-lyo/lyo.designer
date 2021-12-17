@@ -781,6 +781,29 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link adaptorinterface.SourceBinding} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected SourceBindingItemProvider sourceBindingItemProvider;
+
+    /**
+     * This creates an adapter for a {@link adaptorinterface.SourceBinding}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createSourceBindingAdapter() {
+        if (sourceBindingItemProvider == null) {
+            sourceBindingItemProvider = new SourceBindingItemProvider(this);
+        }
+
+        return sourceBindingItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link adaptorinterface.OSLCServicePersistence} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -962,6 +985,7 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
         if (mavenSpecificationConfigurationItemProvider != null) mavenSpecificationConfigurationItemProvider.dispose();
         if (storeItemProvider != null) storeItemProvider.dispose();
         if (storeWithAuthenticationItemProvider != null) storeWithAuthenticationItemProvider.dispose();
+        if (sourceBindingItemProvider != null) sourceBindingItemProvider.dispose();
         if (oslcServicePersistenceItemProvider != null) oslcServicePersistenceItemProvider.dispose();
         if (webServicePersistenceItemProvider != null) webServicePersistenceItemProvider.dispose();
     }

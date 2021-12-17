@@ -283,6 +283,15 @@ public interface AdaptorinterfaceFactory extends EFactory {
     StoreWithAuthentication createStoreWithAuthentication();
 
     /**
+     * Returns a new object of class '<em>Source Binding</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Source Binding</em>'.
+     * @generated
+     */
+    SourceBinding createSourceBinding();
+
+    /**
      * Returns a new object of class '<em>OSLC Service Persistence</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

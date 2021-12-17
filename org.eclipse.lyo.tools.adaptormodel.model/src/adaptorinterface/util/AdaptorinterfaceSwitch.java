@@ -274,6 +274,12 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case AdaptorinterfacePackage.SOURCE: {
+                Source source = (Source)theEObject;
+                T result = caseSource(source);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             case AdaptorinterfacePackage.STORE: {
                 Store store = (Store)theEObject;
                 T result = caseStore(store);
@@ -284,6 +290,12 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
                 StoreWithAuthentication storeWithAuthentication = (StoreWithAuthentication)theEObject;
                 T result = caseStoreWithAuthentication(storeWithAuthentication);
                 if (result == null) result = caseStore(storeWithAuthentication);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case AdaptorinterfacePackage.SOURCE_BINDING: {
+                SourceBinding sourceBinding = (SourceBinding)theEObject;
+                T result = caseSourceBinding(sourceBinding);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -762,6 +774,21 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
     }
 
 	/**
+     * Returns the result of interpreting the object as an instance of '<em>Source</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Source</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSource(Source object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Store</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
@@ -788,6 +815,21 @@ public class AdaptorinterfaceSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseStoreWithAuthentication(StoreWithAuthentication object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Source Binding</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Source Binding</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSourceBinding(SourceBinding object) {
         return null;
     }
 

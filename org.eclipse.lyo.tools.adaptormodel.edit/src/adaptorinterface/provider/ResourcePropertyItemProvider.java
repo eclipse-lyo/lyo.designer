@@ -41,8 +41,8 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
             super.getPropertyDescriptors(object);
 
             addIdPropertyDescriptor(object);
-            addTitlePropertyDescriptor(object);
             addNamePropertyDescriptor(object);
+            addTitlePropertyDescriptor(object);
             addDescriptionPropertyDescriptor(object);
             addPropertyDefinitionPropertyDescriptor(object);
             addOccursPropertyDescriptor(object);
@@ -382,8 +382,8 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
 
         switch (notification.getFeatureID(ResourceProperty.class)) {
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ID:
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__OCCURS:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__READ_ONLY:

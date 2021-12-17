@@ -41,6 +41,8 @@ import adaptorinterface.ShaclPropertyDataType;
 import adaptorinterface.ShaclShape;
 import adaptorinterface.Shape;
 import adaptorinterface.ShapeProperty;
+import adaptorinterface.Source;
+import adaptorinterface.SourceBinding;
 import adaptorinterface.Specification;
 import adaptorinterface.SpecificationConfiguration;
 import adaptorinterface.Store;
@@ -299,6 +301,13 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * <!-- end-user-doc -->
      * @generated
      */
+    private EClass sourceEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EClass storeEClass = null;
 
     /**
@@ -307,6 +316,13 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
     private EClass storeWithAuthenticationEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass sourceBindingEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -670,6 +686,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
     @Override
     public EReference getAdaptorInterface_Stores() {
         return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(21);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EReference getAdaptorInterface_Sources() {
+        return (EReference)adaptorInterfaceEClass.getEStructuralFeatures().get(22);
     }
 
     /**
@@ -1074,6 +1100,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EReference getService_SourceBinding() {
+        return (EReference)serviceEClass.getEStructuralFeatures().get(9);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -1160,6 +1196,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
     @Override
     public EReference getWebService_Persistence() {
         return (EReference)webServiceEClass.getEStructuralFeatures().get(7);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EReference getWebService_SourceBinding() {
+        return (EReference)webServiceEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -1309,7 +1355,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      */
 	@Override
     public EAttribute getResourceProperty_Title() {
-        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(1);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(2);
     }
 
 	/**
@@ -1319,7 +1365,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      */
 	@Override
     public EAttribute getResourceProperty_Name() {
-        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(2);
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(1);
     }
 
 	/**
@@ -2298,6 +2344,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
     @Override
+    public EClass getSource() {
+        return sourceEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
     public EClass getStore() {
         return storeEClass;
     }
@@ -2370,6 +2426,26 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
     @Override
     public EAttribute getStoreWithAuthentication_Password() {
         return (EAttribute)storeWithAuthenticationEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EClass getSourceBinding() {
+        return sourceBindingEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EReference getSourceBinding_Source() {
+        return (EReference)sourceBindingEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -2604,6 +2680,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_SEARCH_RESOURCES);
         createEAttribute(adaptorInterfaceEClass, ADAPTOR_INTERFACE__BACKEND_CODE_TEMPLATE_CREATE_RESOURCE);
         createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__STORES);
+        createEReference(adaptorInterfaceEClass, ADAPTOR_INTERFACE__SOURCES);
 
         specificationEClass = createEClass(SPECIFICATION);
         createEAttribute(specificationEClass, SPECIFICATION__NAME);
@@ -2650,6 +2727,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEReference(serviceEClass, SERVICE__BASIC_CAPABILITIES);
         createEAttribute(serviceEClass, SERVICE__USAGES);
         createEReference(serviceEClass, SERVICE__PERSISTENCE);
+        createEReference(serviceEClass, SERVICE__SOURCE_BINDING);
 
         webServiceEClass = createEClass(WEB_SERVICE);
         createEAttribute(webServiceEClass, WEB_SERVICE__NAME);
@@ -2660,6 +2738,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEAttribute(webServiceEClass, WEB_SERVICE__DELETE);
         createEAttribute(webServiceEClass, WEB_SERVICE__UPDATE);
         createEReference(webServiceEClass, WEB_SERVICE__PERSISTENCE);
+        createEReference(webServiceEClass, WEB_SERVICE__SOURCE_BINDING);
 
         trsServiceEClass = createEClass(TRS_SERVICE);
         createEAttribute(trsServiceEClass, TRS_SERVICE__BASE_PAGE_LIMIT);
@@ -2678,8 +2757,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
         resourcePropertyEClass = createEClass(RESOURCE_PROPERTY);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__ID);
-        createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__TITLE);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__NAME);
+        createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__TITLE);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__DESCRIPTION);
         createEReference(resourcePropertyEClass, RESOURCE_PROPERTY__PROPERTY_DEFINITION);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__OCCURS);
@@ -2799,6 +2878,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
         mavenSpecificationConfigurationEClass = createEClass(MAVEN_SPECIFICATION_CONFIGURATION);
 
+        sourceEClass = createEClass(SOURCE);
+
         storeEClass = createEClass(STORE);
         createEAttribute(storeEClass, STORE__DEFAULT_NAMED_GRAPH);
         createEAttribute(storeEClass, STORE__SPARQL_QUERY_ENDPOINT);
@@ -2808,6 +2889,9 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         storeWithAuthenticationEClass = createEClass(STORE_WITH_AUTHENTICATION);
         createEAttribute(storeWithAuthenticationEClass, STORE_WITH_AUTHENTICATION__USERNAME);
         createEAttribute(storeWithAuthenticationEClass, STORE_WITH_AUTHENTICATION__PASSWORD);
+
+        sourceBindingEClass = createEClass(SOURCE_BINDING);
+        createEReference(sourceBindingEClass, SOURCE_BINDING__SOURCE);
 
         servicePersistenceEClass = createEClass(SERVICE_PERSISTENCE);
         createEReference(servicePersistenceEClass, SERVICE_PERSISTENCE__STORE);
@@ -2902,6 +2986,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getAdaptorInterface_BackendCodeTemplate_searchResources(), ecorePackage.getEString(), "backendCodeTemplate_searchResources", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAdaptorInterface_BackendCodeTemplate_createResource(), ecorePackage.getEString(), "backendCodeTemplate_createResource", null, 0, 1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getAdaptorInterface_Stores(), this.getStore(), null, "stores", null, 0, -1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getAdaptorInterface_Sources(), this.getSource(), null, "sources", null, 0, -1, AdaptorInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(specificationEClass, Specification.class, "Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2954,6 +3039,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEReference(getService_BasicCapabilities(), this.getBasicCapability(), null, "basicCapabilities", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getService_Usages(), ecorePackage.getEString(), "usages", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getService_Persistence(), this.getOSLCServicePersistence(), null, "persistence", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getService_SourceBinding(), this.getSourceBinding(), null, "sourceBinding", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(webServiceEClass, WebService.class, "WebService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getWebService_Name(), ecorePackage.getEString(), "name", null, 1, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2964,6 +3050,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getWebService_Delete(), ecorePackage.getEBoolean(), "delete", "false", 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getWebService_Update(), ecorePackage.getEBoolean(), "update", "false", 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getWebService_Persistence(), this.getWebServicePersistence(), null, "persistence", null, 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getWebService_SourceBinding(), this.getSourceBinding(), null, "sourceBinding", null, 0, 1, WebService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(trsServiceEClass, TrsService.class, "TrsService", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTrsService_BasePageLimit(), ecorePackage.getEInt(), "basePageLimit", null, 1, 1, TrsService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2982,8 +3069,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
         initEClass(resourcePropertyEClass, ResourceProperty.class, "ResourceProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getResourceProperty_Id(), ecorePackage.getEString(), "id", null, 1, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getResourceProperty_Title(), ecorePackage.getEString(), "title", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_Name(), ecorePackage.getEString(), "name", null, 1, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getResourceProperty_Title(), ecorePackage.getEString(), "title", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_Description(), ecorePackage.getEString(), "description", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getResourceProperty_PropertyDefinition(), theVocabularyPackage.getProperty(), null, "propertyDefinition", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_Occurs(), this.getResourcePropertyOccurs(), "occurs", "exactlyOne", 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3103,6 +3190,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
         initEClass(mavenSpecificationConfigurationEClass, MavenSpecificationConfiguration.class, "MavenSpecificationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+        initEClass(sourceEClass, Source.class, "Source", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
         initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getStore_DefaultNamedGraph(), ecorePackage.getEString(), "defaultNamedGraph", null, 1, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getStore_SparqlQueryEndpoint(), ecorePackage.getEString(), "sparqlQueryEndpoint", null, 1, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3112,6 +3201,9 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEClass(storeWithAuthenticationEClass, StoreWithAuthentication.class, "StoreWithAuthentication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getStoreWithAuthentication_Username(), ecorePackage.getEString(), "username", null, 1, 1, StoreWithAuthentication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getStoreWithAuthentication_Password(), ecorePackage.getEString(), "password", null, 1, 1, StoreWithAuthentication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(sourceBindingEClass, SourceBinding.class, "SourceBinding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getSourceBinding_Source(), this.getSource(), null, "source", null, 1, 1, SourceBinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(servicePersistenceEClass, ServicePersistence.class, "ServicePersistence", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getServicePersistence_Store(), this.getStore(), null, "store", null, 1, 1, ServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

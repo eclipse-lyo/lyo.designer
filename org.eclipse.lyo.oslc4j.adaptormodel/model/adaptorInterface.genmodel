@@ -81,6 +81,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/backendCodeTemplate_searchResources"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/backendCodeTemplate_createResource"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/stores"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/sources"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//Specification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Specification/name"/>
@@ -127,6 +128,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Service/basicCapabilities"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Service/usages"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Service/persistence"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Service/sourceBinding"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//WebService">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebService/name"/>
@@ -137,6 +139,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebService/delete"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebService/update"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//WebService/persistence"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//WebService/sourceBinding"/>
     </genClasses>
     <genClasses image="false" ecoreClass="adaptorInterface.ecore#//TrsService">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//TrsService/basePageLimit"/>
@@ -154,8 +157,8 @@
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//ResourceProperty">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/title"/>
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/description"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ResourceProperty/propertyDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/occurs"/>
@@ -272,6 +275,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//MavenServerConfiguration/jettyPort"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//MavenSpecificationConfiguration"/>
+    <genClasses image="false" ecoreClass="adaptorInterface.ecore#//Source"/>
     <genClasses ecoreClass="adaptorInterface.ecore#//Store">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Store/defaultNamedGraph"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Store/sparqlQueryEndpoint"/>
@@ -281,6 +285,9 @@
     <genClasses ecoreClass="adaptorInterface.ecore#//StoreWithAuthentication">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//StoreWithAuthentication/username"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//StoreWithAuthentication/password"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adaptorInterface.ecore#//SourceBinding">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//SourceBinding/source"/>
     </genClasses>
     <genClasses image="false" ecoreClass="adaptorInterface.ecore#//ServicePersistence">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ServicePersistence/store"/>

@@ -14,8 +14,8 @@ import vocabulary.Property;
  * </p>
  * <ul>
  *   <li>{@link adaptorinterface.ResourceProperty#getId <em>Id</em>}</li>
- *   <li>{@link adaptorinterface.ResourceProperty#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getName <em>Name</em>}</li>
+ *   <li>{@link adaptorinterface.ResourceProperty#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getPropertyDefinition <em>Property Definition</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getOccurs <em>Occurs</em>}</li>

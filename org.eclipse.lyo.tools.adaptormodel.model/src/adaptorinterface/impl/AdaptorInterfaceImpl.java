@@ -7,6 +7,7 @@ import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.RequiredAdaptor;
 import adaptorinterface.ServerConfiguration;
 import adaptorinterface.ServiceProviderCatalog;
+import adaptorinterface.Source;
 import adaptorinterface.Specification;
 
 import adaptorinterface.Store;
@@ -58,6 +59,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_searchResources <em>Backend Code Template search Resources</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getBackendCodeTemplate_createResource <em>Backend Code Template create Resource</em>}</li>
  *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getStores <em>Stores</em>}</li>
+ *   <li>{@link adaptorinterface.impl.AdaptorInterfaceImpl#getSources <em>Sources</em>}</li>
  * </ul>
  *
  * @generated
@@ -432,6 +434,16 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
      * @ordered
      */
     protected EList<Store> stores;
+
+    /**
+     * The cached value of the '{@link #getSources() <em>Sources</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSources()
+     * @generated
+     * @ordered
+     */
+    protected EList<Source> sources;
 
     /**
      * <!-- begin-user-doc -->
@@ -1018,6 +1030,19 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EList<Source> getSources() {
+        if (sources == null) {
+            sources = new EObjectContainmentEList<Source>(Source.class, this, AdaptorinterfacePackage.ADAPTOR_INTERFACE__SOURCES);
+        }
+        return sources;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -1038,6 +1063,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
                 return basicSetConfiguration(null, msgs);
             case AdaptorinterfacePackage.ADAPTOR_INTERFACE__STORES:
                 return ((InternalEList<?>)getStores()).basicRemove(otherEnd, msgs);
+            case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SOURCES:
+                return ((InternalEList<?>)getSources()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -1094,6 +1121,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
                 return getBackendCodeTemplate_createResource();
             case AdaptorinterfacePackage.ADAPTOR_INTERFACE__STORES:
                 return getStores();
+            case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SOURCES:
+                return getSources();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1176,6 +1205,10 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
                 getStores().clear();
                 getStores().addAll((Collection<? extends Store>)newValue);
                 return;
+            case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SOURCES:
+                getSources().clear();
+                getSources().addAll((Collection<? extends Source>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -1254,6 +1287,9 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
             case AdaptorinterfacePackage.ADAPTOR_INTERFACE__STORES:
                 getStores().clear();
                 return;
+            case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SOURCES:
+                getSources().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -1310,6 +1346,8 @@ public class AdaptorInterfaceImpl extends MinimalEObjectImpl.Container implement
                 return BACKEND_CODE_TEMPLATE_CREATE_RESOURCE_EDEFAULT == null ? backendCodeTemplate_createResource != null : !BACKEND_CODE_TEMPLATE_CREATE_RESOURCE_EDEFAULT.equals(backendCodeTemplate_createResource);
             case AdaptorinterfacePackage.ADAPTOR_INTERFACE__STORES:
                 return stores != null && !stores.isEmpty();
+            case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SOURCES:
+                return sources != null && !sources.isEmpty();
         }
         return super.eIsSet(featureID);
     }

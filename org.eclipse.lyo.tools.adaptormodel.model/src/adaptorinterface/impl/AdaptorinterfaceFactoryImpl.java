@@ -84,6 +84,7 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
             case AdaptorinterfacePackage.MAVEN_SPECIFICATION_CONFIGURATION: return createMavenSpecificationConfiguration();
             case AdaptorinterfacePackage.STORE: return createStore();
             case AdaptorinterfacePackage.STORE_WITH_AUTHENTICATION: return createStoreWithAuthentication();
+            case AdaptorinterfacePackage.SOURCE_BINDING: return createSourceBinding();
             case AdaptorinterfacePackage.OSLC_SERVICE_PERSISTENCE: return createOSLCServicePersistence();
             case AdaptorinterfacePackage.WEB_SERVICE_PERSISTENCE: return createWebServicePersistence();
             default:
@@ -484,6 +485,17 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
     public StoreWithAuthentication createStoreWithAuthentication() {
         StoreWithAuthenticationImpl storeWithAuthentication = new StoreWithAuthenticationImpl();
         return storeWithAuthentication;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public SourceBinding createSourceBinding() {
+        SourceBindingImpl sourceBinding = new SourceBindingImpl();
+        return sourceBinding;
     }
 
     /**
