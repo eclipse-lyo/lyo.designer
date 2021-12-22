@@ -250,21 +250,15 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.18.v20190429</version>
+                <version>10.0.7</version>
                 <configuration>
-                    <webAppConfig>
-                        <contextPath>[mavenServerConfiguration.applicationContextPath/]</contextPath>
-                    </webAppConfig>
-                    <reload>automatic</reload>
-                    <scanIntervalSeconds>5</scanIntervalSeconds>
-                    <systemProperties>
-                        <systemProperty>
-                            <name>jetty.port</name>
-                            <value>[mavenServerConfiguration.jettyPort/]</value>
-                        </systemProperty>
-                    </systemProperties>
-                    <stopKey />
-                    <stopPort />
+                  <webApp>
+                    <contextPath>[mavenServerConfiguration.applicationContextPath/]</contextPath>
+                  </webApp>
+                  <httpConnector>
+                    <port>[mavenServerConfiguration.jettyPort/]</port>
+                  </httpConnector>
+                  <scan>5</scan>
                 </configuration>
             </plugin>
             [if (anAdaptorInterface.swaggerDocumentationEnabled())]
