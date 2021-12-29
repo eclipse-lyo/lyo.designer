@@ -28,8 +28,8 @@ import vocabulary.Property;
  * </p>
  * <ul>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getId <em>Id</em>}</li>
- *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getPropertyDefinition <em>Property Definition</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getOccurs <em>Occurs</em>}</li>
@@ -66,26 +66,6 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
     protected String id = ID_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getTitle()
-     * @generated
-     * @ordered
-     */
-	protected static final String TITLE_EDEFAULT = null;
-
-	/**
-     * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getTitle()
-     * @generated
-     * @ordered
-     */
-	protected String title = TITLE_EDEFAULT;
-
-	/**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,6 +84,26 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
      * @ordered
      */
 	protected String name = NAME_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
+	protected static final String TITLE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
+	protected String title = TITLE_EDEFAULT;
 
 	/**
      * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -602,10 +602,10 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
         switch (featureID) {
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ID:
                 return getId();
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
-                return getTitle();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
                 return getName();
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
+                return getTitle();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
                 return getDescription();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
@@ -643,11 +643,11 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ID:
                 setId((String)newValue);
                 return;
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
-                setTitle((String)newValue);
-                return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
                 setName((String)newValue);
+                return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
+                setTitle((String)newValue);
                 return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
                 setDescription((String)newValue);
@@ -696,11 +696,11 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ID:
                 setId(ID_EDEFAULT);
                 return;
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
-                setTitle(TITLE_EDEFAULT);
-                return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
                 setName(NAME_EDEFAULT);
+                return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
+                setTitle(TITLE_EDEFAULT);
                 return;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
                 setDescription(DESCRIPTION_EDEFAULT);
@@ -746,10 +746,10 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
         switch (featureID) {
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ID:
                 return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
-                return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__NAME:
                 return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__TITLE:
+                return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__DESCRIPTION:
                 return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__PROPERTY_DEFINITION:
@@ -786,10 +786,10 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
         StringBuilder result = new StringBuilder(super.toString());
         result.append(" (id: ");
         result.append(id);
-        result.append(", title: ");
-        result.append(title);
         result.append(", name: ");
         result.append(name);
+        result.append(", title: ");
+        result.append(title);
         result.append(", description: ");
         result.append(description);
         result.append(", occurs: ");

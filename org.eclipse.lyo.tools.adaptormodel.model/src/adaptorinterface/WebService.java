@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.WebService#isDelete <em>Delete</em>}</li>
  *   <li>{@link adaptorinterface.WebService#isUpdate <em>Update</em>}</li>
  *   <li>{@link adaptorinterface.WebService#getPersistence <em>Persistence</em>}</li>
+ *   <li>{@link adaptorinterface.WebService#getSourceBinding <em>Source Binding</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getWebService()
@@ -229,5 +230,27 @@ public interface WebService extends EObject {
      * @generated
      */
     void setPersistence(WebServicePersistence value);
+
+    /**
+     * Returns the value of the '<em><b>Source Binding</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Source Binding</em>' containment reference.
+     * @see #setSourceBinding(SourceBinding)
+     * @see adaptorinterface.AdaptorinterfacePackage#getWebService_SourceBinding()
+     * @model containment="true"
+     * @generated
+     */
+    SourceBinding getSourceBinding();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.WebService#getSourceBinding <em>Source Binding</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Source Binding</em>' containment reference.
+     * @see #getSourceBinding()
+     * @generated
+     */
+    void setSourceBinding(SourceBinding value);
 
 } // WebService

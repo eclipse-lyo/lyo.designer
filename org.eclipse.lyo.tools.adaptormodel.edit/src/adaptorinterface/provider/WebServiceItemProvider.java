@@ -240,6 +240,7 @@ public class WebServiceItemProvider
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.WEB_SERVICE__PERSISTENCE);
+            childrenFeatures.add(AdaptorinterfacePackage.Literals.WEB_SERVICE__SOURCE_BINDING);
         }
         return childrenFeatures;
     }
@@ -304,6 +305,7 @@ public class WebServiceItemProvider
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
+            case AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -325,6 +327,11 @@ public class WebServiceItemProvider
             (createChildParameter
                 (AdaptorinterfacePackage.Literals.WEB_SERVICE__PERSISTENCE,
                  AdaptorinterfaceFactory.eINSTANCE.createWebServicePersistence()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (AdaptorinterfacePackage.Literals.WEB_SERVICE__SOURCE_BINDING,
+                 AdaptorinterfaceFactory.eINSTANCE.createSourceBinding()));
     }
 
 	/**

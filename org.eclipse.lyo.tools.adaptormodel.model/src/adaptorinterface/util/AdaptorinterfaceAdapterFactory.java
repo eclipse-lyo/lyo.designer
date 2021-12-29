@@ -200,12 +200,20 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
                 return createMavenSpecificationConfigurationAdapter();
             }
             @Override
+            public Adapter caseSource(Source object) {
+                return createSourceAdapter();
+            }
+            @Override
             public Adapter caseStore(Store object) {
                 return createStoreAdapter();
             }
             @Override
             public Adapter caseStoreWithAuthentication(StoreWithAuthentication object) {
                 return createStoreWithAuthenticationAdapter();
+            }
+            @Override
+            public Adapter caseSourceBinding(SourceBinding object) {
+                return createSourceBindingAdapter();
             }
             @Override
             public Adapter caseServicePersistence(ServicePersistence object) {
@@ -660,6 +668,20 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
     }
 
 	/**
+     * Creates a new adapter for an object of class '{@link adaptorinterface.Source <em>Source</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see adaptorinterface.Source
+     * @generated
+     */
+    public Adapter createSourceAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for an object of class '{@link adaptorinterface.Store <em>Store</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
@@ -684,6 +706,20 @@ public class AdaptorinterfaceAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createStoreWithAuthenticationAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link adaptorinterface.SourceBinding <em>Source Binding</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see adaptorinterface.SourceBinding
+     * @generated
+     */
+    public Adapter createSourceBindingAdapter() {
         return null;
     }
 

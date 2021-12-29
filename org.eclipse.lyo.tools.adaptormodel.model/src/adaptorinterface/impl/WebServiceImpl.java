@@ -4,6 +4,7 @@ package adaptorinterface.impl;
 
 import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.Resource;
+import adaptorinterface.SourceBinding;
 import adaptorinterface.WebService;
 
 import adaptorinterface.WebServicePersistence;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link adaptorinterface.impl.WebServiceImpl#isDelete <em>Delete</em>}</li>
  *   <li>{@link adaptorinterface.impl.WebServiceImpl#isUpdate <em>Update</em>}</li>
  *   <li>{@link adaptorinterface.impl.WebServiceImpl#getPersistence <em>Persistence</em>}</li>
+ *   <li>{@link adaptorinterface.impl.WebServiceImpl#getSourceBinding <em>Source Binding</em>}</li>
  * </ul>
  *
  * @generated
@@ -178,6 +180,16 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
      * @ordered
      */
     protected WebServicePersistence persistence;
+
+    /**
+     * The cached value of the '{@link #getSourceBinding() <em>Source Binding</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourceBinding()
+     * @generated
+     * @ordered
+     */
+    protected SourceBinding sourceBinding;
 
     /**
      * <!-- begin-user-doc -->
@@ -400,10 +412,57 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
      * @generated
      */
     @Override
+    public SourceBinding getSourceBinding() {
+        return sourceBinding;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetSourceBinding(SourceBinding newSourceBinding, NotificationChain msgs) {
+        SourceBinding oldSourceBinding = sourceBinding;
+        sourceBinding = newSourceBinding;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING, oldSourceBinding, newSourceBinding);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setSourceBinding(SourceBinding newSourceBinding) {
+        if (newSourceBinding != sourceBinding) {
+            NotificationChain msgs = null;
+            if (sourceBinding != null)
+                msgs = ((InternalEObject)sourceBinding).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING, null, msgs);
+            if (newSourceBinding != null)
+                msgs = ((InternalEObject)newSourceBinding).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING, null, msgs);
+            msgs = basicSetSourceBinding(newSourceBinding, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING, newSourceBinding, newSourceBinding));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
                 return basicSetPersistence(null, msgs);
+            case AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING:
+                return basicSetSourceBinding(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -432,6 +491,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
                 return isUpdate();
             case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
                 return getPersistence();
+            case AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING:
+                return getSourceBinding();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -470,6 +531,9 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
             case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
                 setPersistence((WebServicePersistence)newValue);
                 return;
+            case AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING:
+                setSourceBinding((SourceBinding)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -506,6 +570,9 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
             case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
                 setPersistence((WebServicePersistence)null);
                 return;
+            case AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING:
+                setSourceBinding((SourceBinding)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -534,6 +601,8 @@ public class WebServiceImpl extends MinimalEObjectImpl.Container implements WebS
                 return update != UPDATE_EDEFAULT;
             case AdaptorinterfacePackage.WEB_SERVICE__PERSISTENCE:
                 return persistence != null;
+            case AdaptorinterfacePackage.WEB_SERVICE__SOURCE_BINDING:
+                return sourceBinding != null;
         }
         return super.eIsSet(featureID);
     }

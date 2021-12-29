@@ -431,6 +431,7 @@ public class AdaptorInterfaceItemProvider
             childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__CONFIGURATION);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__STORES);
+            childrenFeatures.add(AdaptorinterfacePackage.Literals.ADAPTOR_INTERFACE__SOURCES);
         }
         return childrenFeatures;
     }
@@ -510,6 +511,7 @@ public class AdaptorInterfaceItemProvider
             case AdaptorinterfacePackage.ADAPTOR_INTERFACE__REQUIRED_ADAPTORS:
             case AdaptorinterfacePackage.ADAPTOR_INTERFACE__CONFIGURATION:
             case AdaptorinterfacePackage.ADAPTOR_INTERFACE__STORES:
+            case AdaptorinterfacePackage.ADAPTOR_INTERFACE__SOURCES:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }

@@ -12,6 +12,7 @@ import adaptorinterface.QueryCapability;
 import adaptorinterface.ResourceServiceNamespace;
 import adaptorinterface.Service;
 
+import adaptorinterface.SourceBinding;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -46,6 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getBasicCapabilities <em>Basic Capabilities</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getUsages <em>Usages</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServiceImpl#getPersistence <em>Persistence</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ServiceImpl#getSourceBinding <em>Source Binding</em>}</li>
  * </ul>
  *
  * @generated
@@ -150,6 +152,16 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
      * @ordered
      */
     protected OSLCServicePersistence persistence;
+
+    /**
+     * The cached value of the '{@link #getSourceBinding() <em>Source Binding</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSourceBinding()
+     * @generated
+     * @ordered
+     */
+    protected SourceBinding sourceBinding;
 
     /**
      * <!-- begin-user-doc -->
@@ -358,6 +370,51 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public SourceBinding getSourceBinding() {
+        return sourceBinding;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetSourceBinding(SourceBinding newSourceBinding, NotificationChain msgs) {
+        SourceBinding oldSourceBinding = sourceBinding;
+        sourceBinding = newSourceBinding;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SERVICE__SOURCE_BINDING, oldSourceBinding, newSourceBinding);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setSourceBinding(SourceBinding newSourceBinding) {
+        if (newSourceBinding != sourceBinding) {
+            NotificationChain msgs = null;
+            if (sourceBinding != null)
+                msgs = ((InternalEObject)sourceBinding).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SERVICE__SOURCE_BINDING, null, msgs);
+            if (newSourceBinding != null)
+                msgs = ((InternalEObject)newSourceBinding).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SERVICE__SOURCE_BINDING, null, msgs);
+            msgs = basicSetSourceBinding(newSourceBinding, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SERVICE__SOURCE_BINDING, newSourceBinding, newSourceBinding));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -376,6 +433,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
                 return ((InternalEList<?>)getBasicCapabilities()).basicRemove(otherEnd, msgs);
             case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
                 return basicSetPersistence(null, msgs);
+            case AdaptorinterfacePackage.SERVICE__SOURCE_BINDING:
+                return basicSetSourceBinding(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -407,6 +466,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
                 return getUsages();
             case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
                 return getPersistence();
+            case AdaptorinterfacePackage.SERVICE__SOURCE_BINDING:
+                return getSourceBinding();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -453,6 +514,9 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
             case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
                 setPersistence((OSLCServicePersistence)newValue);
                 return;
+            case AdaptorinterfacePackage.SERVICE__SOURCE_BINDING:
+                setSourceBinding((SourceBinding)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -492,6 +556,9 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
             case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
                 setPersistence((OSLCServicePersistence)null);
                 return;
+            case AdaptorinterfacePackage.SERVICE__SOURCE_BINDING:
+                setSourceBinding((SourceBinding)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -522,6 +589,8 @@ public class ServiceImpl extends MinimalEObjectImpl.Container implements Service
                 return usages != null && !usages.isEmpty();
             case AdaptorinterfacePackage.SERVICE__PERSISTENCE:
                 return persistence != null;
+            case AdaptorinterfacePackage.SERVICE__SOURCE_BINDING:
+                return sourceBinding != null;
         }
         return super.eIsSet(featureID);
     }

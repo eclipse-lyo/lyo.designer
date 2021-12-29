@@ -265,13 +265,22 @@ public interface AdaptorinterfacePackage extends EPackage {
     int ADAPTOR_INTERFACE__STORES = 21;
 
     /**
+     * The feature id for the '<em><b>Sources</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ADAPTOR_INTERFACE__SOURCES = 22;
+
+    /**
      * The number of structural features of the '<em>Adaptor Interface</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int ADAPTOR_INTERFACE_FEATURE_COUNT = 22;
+	int ADAPTOR_INTERFACE_FEATURE_COUNT = 23;
 
 	/**
      * The number of operations of the '<em>Adaptor Interface</em>' class.
@@ -739,13 +748,22 @@ public interface AdaptorinterfacePackage extends EPackage {
     int SERVICE__PERSISTENCE = 8;
 
     /**
+     * The feature id for the '<em><b>Source Binding</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVICE__SOURCE_BINDING = 9;
+
+    /**
      * The number of structural features of the '<em>Service</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int SERVICE_FEATURE_COUNT = 9;
+	int SERVICE_FEATURE_COUNT = 10;
 
 	/**
      * The number of operations of the '<em>Service</em>' class.
@@ -839,13 +857,22 @@ public interface AdaptorinterfacePackage extends EPackage {
     int WEB_SERVICE__PERSISTENCE = 7;
 
     /**
+     * The feature id for the '<em><b>Source Binding</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int WEB_SERVICE__SOURCE_BINDING = 8;
+
+    /**
      * The number of structural features of the '<em>Web Service</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int WEB_SERVICE_FEATURE_COUNT = 8;
+	int WEB_SERVICE_FEATURE_COUNT = 9;
 
 	/**
      * The number of operations of the '<em>Web Service</em>' class.
@@ -1115,22 +1142,22 @@ public interface AdaptorinterfacePackage extends EPackage {
     int RESOURCE_PROPERTY__ID = SHAPE_PROPERTY_FEATURE_COUNT + 0;
 
 	/**
-     * The feature id for the '<em><b>Title</b></em>' attribute.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RESOURCE_PROPERTY__TITLE = SHAPE_PROPERTY_FEATURE_COUNT + 1;
-
-	/**
      * The feature id for the '<em><b>Name</b></em>' attribute.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RESOURCE_PROPERTY__NAME = SHAPE_PROPERTY_FEATURE_COUNT + 2;
+	int RESOURCE_PROPERTY__NAME = SHAPE_PROPERTY_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Title</b></em>' attribute.
+     * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+	int RESOURCE_PROPERTY__TITLE = SHAPE_PROPERTY_FEATURE_COUNT + 2;
 
 	/**
      * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -2493,6 +2520,34 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int MAVEN_SPECIFICATION_CONFIGURATION_OPERATION_COUNT = SPECIFICATION_CONFIGURATION_OPERATION_COUNT + 0;
 
 	/**
+     * The meta object id for the '{@link adaptorinterface.impl.SourceImpl <em>Source</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.impl.SourceImpl
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSource()
+     * @generated
+     */
+    int SOURCE = 33;
+
+    /**
+     * The number of structural features of the '<em>Source</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SOURCE_FEATURE_COUNT = 0;
+
+    /**
+     * The number of operations of the '<em>Source</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SOURCE_OPERATION_COUNT = 0;
+
+    /**
      * The meta object id for the '{@link adaptorinterface.impl.StoreImpl <em>Store</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2500,7 +2555,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getStore()
      * @generated
      */
-    int STORE = 33;
+    int STORE = 34;
 
     /**
      * The feature id for the '<em><b>Default Named Graph</b></em>' attribute.
@@ -2564,7 +2619,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getStoreWithAuthentication()
      * @generated
      */
-    int STORE_WITH_AUTHENTICATION = 34;
+    int STORE_WITH_AUTHENTICATION = 35;
 
     /**
      * The feature id for the '<em><b>Default Named Graph</b></em>' attribute.
@@ -2639,6 +2694,43 @@ public interface AdaptorinterfacePackage extends EPackage {
     int STORE_WITH_AUTHENTICATION_OPERATION_COUNT = STORE_OPERATION_COUNT + 0;
 
     /**
+     * The meta object id for the '{@link adaptorinterface.impl.SourceBindingImpl <em>Source Binding</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.impl.SourceBindingImpl
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSourceBinding()
+     * @generated
+     */
+    int SOURCE_BINDING = 36;
+
+    /**
+     * The feature id for the '<em><b>Source</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SOURCE_BINDING__SOURCE = 0;
+
+    /**
+     * The number of structural features of the '<em>Source Binding</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SOURCE_BINDING_FEATURE_COUNT = 1;
+
+    /**
+     * The number of operations of the '<em>Source Binding</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SOURCE_BINDING_OPERATION_COUNT = 0;
+
+    /**
      * The meta object id for the '{@link adaptorinterface.impl.ServicePersistenceImpl <em>Service Persistence</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2646,7 +2738,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getServicePersistence()
      * @generated
      */
-    int SERVICE_PERSISTENCE = 35;
+    int SERVICE_PERSISTENCE = 37;
 
     /**
      * The feature id for the '<em><b>Store</b></em>' reference.
@@ -2683,7 +2775,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getOSLCServicePersistence()
      * @generated
      */
-    int OSLC_SERVICE_PERSISTENCE = 36;
+    int OSLC_SERVICE_PERSISTENCE = 38;
 
     /**
      * The feature id for the '<em><b>Store</b></em>' reference.
@@ -2756,7 +2848,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getWebServicePersistence()
      * @generated
      */
-    int WEB_SERVICE_PERSISTENCE = 37;
+    int WEB_SERVICE_PERSISTENCE = 39;
 
     /**
      * The feature id for the '<em><b>Store</b></em>' reference.
@@ -2820,7 +2912,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyOccurs()
      * @generated
      */
-	int RESOURCE_PROPERTY_OCCURS = 38;
+	int RESOURCE_PROPERTY_OCCURS = 40;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyValueType <em>Resource Property Value Type</em>}' enum.
@@ -2830,7 +2922,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyValueType()
      * @generated
      */
-	int RESOURCE_PROPERTY_VALUE_TYPE = 39;
+	int RESOURCE_PROPERTY_VALUE_TYPE = 41;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyRepresentation <em>Resource Property Representation</em>}' enum.
@@ -2840,7 +2932,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRepresentation()
      * @generated
      */
-	int RESOURCE_PROPERTY_REPRESENTATION = 40;
+	int RESOURCE_PROPERTY_REPRESENTATION = 42;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyIsMemberProperty <em>Resource Property Is Member Property</em>}' enum.
@@ -2850,7 +2942,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyIsMemberProperty()
      * @generated
      */
-	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 41;
+	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 43;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyMultiValueRepresentation <em>Resource Property Multi Value Representation</em>}' enum.
@@ -2860,7 +2952,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyMultiValueRepresentation()
      * @generated
      */
-	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 42;
+	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 44;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -2870,7 +2962,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
      * @generated
      */
-	int RESOURCE_SERVICE_NAMESPACE = 43;
+	int RESOURCE_SERVICE_NAMESPACE = 45;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ShaclPropertyDataType <em>Shacl Property Data Type</em>}' enum.
@@ -2880,7 +2972,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
      * @generated
      */
-	int SHACL_PROPERTY_DATA_TYPE = 44;
+	int SHACL_PROPERTY_DATA_TYPE = 46;
 
 
 	/**
@@ -3134,6 +3226,17 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      */
     EReference getAdaptorInterface_Stores();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link adaptorinterface.AdaptorInterface#getSources <em>Sources</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Sources</em>'.
+     * @see adaptorinterface.AdaptorInterface#getSources()
+     * @see #getAdaptorInterface()
+     * @generated
+     */
+    EReference getAdaptorInterface_Sources();
 
     /**
      * Returns the meta object for class '{@link adaptorinterface.Specification <em>Specification</em>}'.
@@ -3570,6 +3673,17 @@ public interface AdaptorinterfacePackage extends EPackage {
     EReference getService_Persistence();
 
     /**
+     * Returns the meta object for the containment reference '{@link adaptorinterface.Service#getSourceBinding <em>Source Binding</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Source Binding</em>'.
+     * @see adaptorinterface.Service#getSourceBinding()
+     * @see #getService()
+     * @generated
+     */
+    EReference getService_SourceBinding();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.WebService <em>Web Service</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3666,6 +3780,17 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      */
     EReference getWebService_Persistence();
+
+    /**
+     * Returns the meta object for the containment reference '{@link adaptorinterface.WebService#getSourceBinding <em>Source Binding</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Source Binding</em>'.
+     * @see adaptorinterface.WebService#getSourceBinding()
+     * @see #getWebService()
+     * @generated
+     */
+    EReference getWebService_SourceBinding();
 
     /**
      * Returns the meta object for class '{@link adaptorinterface.TrsService <em>Trs Service</em>}'.
@@ -4886,6 +5011,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EClass getMavenSpecificationConfiguration();
 
 	/**
+     * Returns the meta object for class '{@link adaptorinterface.Source <em>Source</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Source</em>'.
+     * @see adaptorinterface.Source
+     * @generated
+     */
+    EClass getSource();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.Store <em>Store</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4970,6 +5105,27 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      */
     EAttribute getStoreWithAuthentication_Password();
+
+    /**
+     * Returns the meta object for class '{@link adaptorinterface.SourceBinding <em>Source Binding</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Source Binding</em>'.
+     * @see adaptorinterface.SourceBinding
+     * @generated
+     */
+    EClass getSourceBinding();
+
+    /**
+     * Returns the meta object for the reference '{@link adaptorinterface.SourceBinding#getSource <em>Source</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Source</em>'.
+     * @see adaptorinterface.SourceBinding#getSource()
+     * @see #getSourceBinding()
+     * @generated
+     */
+    EReference getSourceBinding_Source();
 
     /**
      * Returns the meta object for class '{@link adaptorinterface.ServicePersistence <em>Service Persistence</em>}'.
@@ -5369,6 +5525,14 @@ public interface AdaptorinterfacePackage extends EPackage {
         EReference ADAPTOR_INTERFACE__STORES = eINSTANCE.getAdaptorInterface_Stores();
 
         /**
+         * The meta object literal for the '<em><b>Sources</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ADAPTOR_INTERFACE__SOURCES = eINSTANCE.getAdaptorInterface_Sources();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.SpecificationImpl <em>Specification</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5701,6 +5865,14 @@ public interface AdaptorinterfacePackage extends EPackage {
         EReference SERVICE__PERSISTENCE = eINSTANCE.getService_Persistence();
 
         /**
+         * The meta object literal for the '<em><b>Source Binding</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVICE__SOURCE_BINDING = eINSTANCE.getService_SourceBinding();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.WebServiceImpl <em>Web Service</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5773,6 +5945,14 @@ public interface AdaptorinterfacePackage extends EPackage {
          * @generated
          */
         EReference WEB_SERVICE__PERSISTENCE = eINSTANCE.getWebService_Persistence();
+
+        /**
+         * The meta object literal for the '<em><b>Source Binding</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference WEB_SERVICE__SOURCE_BINDING = eINSTANCE.getWebService_SourceBinding();
 
         /**
          * The meta object literal for the '{@link adaptorinterface.impl.TrsServiceImpl <em>Trs Service</em>}' class.
@@ -6729,6 +6909,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EClass MAVEN_SPECIFICATION_CONFIGURATION = eINSTANCE.getMavenSpecificationConfiguration();
 
 		/**
+         * The meta object literal for the '{@link adaptorinterface.impl.SourceImpl <em>Source</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.impl.SourceImpl
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSource()
+         * @generated
+         */
+        EClass SOURCE = eINSTANCE.getSource();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.StoreImpl <em>Store</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -6795,6 +6985,24 @@ public interface AdaptorinterfacePackage extends EPackage {
          * @generated
          */
         EAttribute STORE_WITH_AUTHENTICATION__PASSWORD = eINSTANCE.getStoreWithAuthentication_Password();
+
+        /**
+         * The meta object literal for the '{@link adaptorinterface.impl.SourceBindingImpl <em>Source Binding</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.impl.SourceBindingImpl
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSourceBinding()
+         * @generated
+         */
+        EClass SOURCE_BINDING = eINSTANCE.getSourceBinding();
+
+        /**
+         * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SOURCE_BINDING__SOURCE = eINSTANCE.getSourceBinding_Source();
 
         /**
          * The meta object literal for the '{@link adaptorinterface.impl.ServicePersistenceImpl <em>Service Persistence</em>}' class.

@@ -46,6 +46,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stores" upperBound="-1"
         eType="#//Store" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
+        eType="#//Source" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Specification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -117,6 +119,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="persistence" eType="#//OSLCServicePersistence"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceBinding" eType="#//SourceBinding"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WebService">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -131,6 +135,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="update" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="persistence" eType="#//WebServicePersistence"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceBinding" eType="#//SourceBinding"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TrsService" abstract="true">
@@ -366,6 +372,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="jettyPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MavenSpecificationConfiguration" eSuperTypes="#//SpecificationConfiguration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Source" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Store">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultNamedGraph" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -381,6 +388,10 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SourceBinding">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Source"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServicePersistence" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="store" lowerBound="1" eType="#//Store"/>

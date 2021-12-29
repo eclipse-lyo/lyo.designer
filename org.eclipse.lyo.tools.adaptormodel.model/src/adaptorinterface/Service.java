@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.Service#getBasicCapabilities <em>Basic Capabilities</em>}</li>
  *   <li>{@link adaptorinterface.Service#getUsages <em>Usages</em>}</li>
  *   <li>{@link adaptorinterface.Service#getPersistence <em>Persistence</em>}</li>
+ *   <li>{@link adaptorinterface.Service#getSourceBinding <em>Source Binding</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getService()
@@ -208,5 +209,27 @@ public interface Service extends EObject {
      * @generated
      */
     void setPersistence(OSLCServicePersistence value);
+
+    /**
+     * Returns the value of the '<em><b>Source Binding</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Source Binding</em>' containment reference.
+     * @see #setSourceBinding(SourceBinding)
+     * @see adaptorinterface.AdaptorinterfacePackage#getService_SourceBinding()
+     * @model containment="true"
+     * @generated
+     */
+    SourceBinding getSourceBinding();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.Service#getSourceBinding <em>Source Binding</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Source Binding</em>' containment reference.
+     * @see #getSourceBinding()
+     * @generated
+     */
+    void setSourceBinding(SourceBinding value);
 
 } // Service
