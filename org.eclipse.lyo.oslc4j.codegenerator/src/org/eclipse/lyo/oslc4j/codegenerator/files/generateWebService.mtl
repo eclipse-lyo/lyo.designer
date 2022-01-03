@@ -137,7 +137,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
     description = "[method/] for resources of type {'" + "<a href=\"" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>" + "'}" +
         ", with respective resource shapes {'" + "<a href=\"" + "../services/" + OslcConstants.PATH_RESOURCE_SHAPES + "/" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourcePathConstantName(aResource)/] + "\">" + [javaInterfaceNameForConstants(aResource.definingDomainSpecification())/].[resourceTypeLocalNameConstantName(aResource)/] + "</a>" + "'}",
     responses = {
-        ['@ApiResponse(description = "default response", content = {@Content(mediaType = OslcMediaType.APPLICATION_RDF_XML), @Content(mediaType = OslcMediaType.APPLICATION_XML), @Content(mediaType = OslcMediaType.APPLICATION_JSON), @Content(mediaType = OslcMediaType.TEXT_TURTLE), @Content(mediaType = MediaType.TEXT_HTML), @Content(mediaType = OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML)})'/]
+        ['@ApiResponse(description = "default response", content = {
+          @Content(mediaType = OslcMediaType.APPLICATION_RDF_XML),
+          @Content(mediaType = OslcMediaType.APPLICATION_XML),
+          @Content(mediaType = OslcMediaType.APPLICATION_JSON),
+          @Content(mediaType = OslcMediaType.TEXT_TURTLE),
+          @Content(mediaType = MediaType.TEXT_HTML),
+          @Content(mediaType = OslcMediaType.APPLICATION_X_OSLC_COMPACT_XML)
+        })'/]
     }
 )
 [/if]
