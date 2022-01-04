@@ -235,9 +235,26 @@
         [if (anAdaptorInterface.swaggerDocumentationEnabled())]
         <!-- Swagger dependencies -->
         <dependency>
-          <groupId>io.swagger.core.v3</groupId>
-          <artifactId>swagger-jaxrs2</artifactId>
-          <version>${swagger.version}</version>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-jaxrs2</artifactId>
+            <version>${swagger.version}</version>
+            <exclusions>
+                <exclusion>
+                    <!--not using Jakarta yet, duplicates jaxb api from lyo-core-->
+                    <groupId>jakarta.activation</groupId>
+                    <artifactId>jakarta.activation-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <!--not using Jakarta yet, duplicates jaxb api from lyo-core-->
+                    <groupId>jakarta.validation</groupId>
+                    <artifactId>jakarta.validation-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <!--not using Jakarta yet, duplicates jaxb api from lyo-core-->
+                    <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
           <groupId>io.swagger.core.v3</groupId>
