@@ -112,17 +112,38 @@
     <groupId>javax.servlet</groupId>
     <artifactId>jstl</artifactId>
     <version>1.2</version>
+    <scope>provided</scope>
 </dependency>
 [if serverImplementation]
+<dependency>
+    <groupId>javax.inject</groupId>
+    <artifactId>javax.inject</artifactId>
+    <version>1</version>
+</dependency>
 <dependency>
     <groupId>org.glassfish.jersey.core</groupId>
     <artifactId>jersey-server</artifactId>
     <version>${jersey.version}</version>
+    <exclusions>
+        <exclusion>
+            <!--we have a proper javax.inject:javax.inject dependency-->
+            <!--also see https://stackoverflow.com/questions/25212944/why-does-hk2-repackage-everything-->
+            <groupId>org.glassfish.hk2.external</groupId>
+            <artifactId>javax.inject</artifactId>
+        </exclusion>
+    </exclusions>
 </dependency>
 <dependency>
     <groupId>org.glassfish.jersey.containers</groupId>
     <artifactId>jersey-container-servlet</artifactId>
     <version>${jersey.version}</version>
+    <exclusions>
+        <exclusion>
+            <!--we have a proper javax.inject:javax.inject dependency-->
+            <groupId>org.glassfish.hk2.external</groupId>
+            <artifactId>javax.inject</artifactId>
+        </exclusion>
+    </exclusions>
 </dependency>
 [/if]
 [/template]
