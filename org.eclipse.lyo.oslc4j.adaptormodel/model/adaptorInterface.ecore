@@ -178,6 +178,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowedValue" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMemberProperty" eType="#//ResourcePropertyIsMemberProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="additionalConstraints"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResourcePropertyOccurs">
     <eLiterals name="exactlyOne" literal="exactlyOne"/>

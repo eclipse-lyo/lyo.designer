@@ -40,6 +40,7 @@ import vocabulary.Property;
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getMultiValueRepresentation <em>Multi Value Representation</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getAllowedValue <em>Allowed Value</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getIsMemberProperty <em>Is Member Property</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getAdditionalConstraints <em>Additional Constraints</em>}</li>
  * </ul>
  *
  * @generated
@@ -276,6 +277,26 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 	protected ResourcePropertyIsMemberProperty isMemberProperty = IS_MEMBER_PROPERTY_EDEFAULT;
 
 	/**
+     * The default value of the '{@link #getAdditionalConstraints() <em>Additional Constraints</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getAdditionalConstraints()
+     * @generated
+     * @ordered
+     */
+    protected static final String ADDITIONAL_CONSTRAINTS_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getAdditionalConstraints() <em>Additional Constraints</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getAdditionalConstraints()
+     * @generated
+     * @ordered
+     */
+    protected String additionalConstraints = ADDITIONAL_CONSTRAINTS_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -594,6 +615,29 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getAdditionalConstraints() {
+        return additionalConstraints;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setAdditionalConstraints(String newAdditionalConstraints) {
+        String oldAdditionalConstraints = additionalConstraints;
+        additionalConstraints = newAdditionalConstraints;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS, oldAdditionalConstraints, additionalConstraints));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -627,6 +671,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
                 return getAllowedValue();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
                 return getIsMemberProperty();
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
+                return getAdditionalConstraints();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -681,6 +727,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
                 setIsMemberProperty((ResourcePropertyIsMemberProperty)newValue);
                 return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
+                setAdditionalConstraints((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -732,6 +781,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
                 setIsMemberProperty(IS_MEMBER_PROPERTY_EDEFAULT);
                 return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
+                setAdditionalConstraints(ADDITIONAL_CONSTRAINTS_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -770,6 +822,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
                 return allowedValue != null && !allowedValue.isEmpty();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
                 return isMemberProperty != IS_MEMBER_PROPERTY_EDEFAULT;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
+                return ADDITIONAL_CONSTRAINTS_EDEFAULT == null ? additionalConstraints != null : !ADDITIONAL_CONSTRAINTS_EDEFAULT.equals(additionalConstraints);
         }
         return super.eIsSet(featureID);
     }
@@ -806,6 +860,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
         result.append(allowedValue);
         result.append(", isMemberProperty: ");
         result.append(isMemberProperty);
+        result.append(", additionalConstraints: ");
+        result.append(additionalConstraints);
         result.append(')');
         return result.toString();
     }

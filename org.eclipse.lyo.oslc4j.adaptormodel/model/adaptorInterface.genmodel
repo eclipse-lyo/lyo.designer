@@ -169,6 +169,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/multiValueRepresentation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/allowedValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/isMemberProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/additionalConstraints"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//CreationFactory">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//CreationFactory/title"/>

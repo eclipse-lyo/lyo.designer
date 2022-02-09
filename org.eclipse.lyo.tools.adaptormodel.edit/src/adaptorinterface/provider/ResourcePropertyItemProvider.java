@@ -53,6 +53,7 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
             addMultiValueRepresentationPropertyDescriptor(object);
             addAllowedValuePropertyDescriptor(object);
             addIsMemberPropertyPropertyDescriptor(object);
+            addAdditionalConstraintsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -344,6 +345,28 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
     }
 
 	/**
+     * This adds a property descriptor for the Additional Constraints feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addAdditionalConstraintsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_additionalConstraints_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_additionalConstraints_feature", "_UI_ResourceProperty_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This returns ResourceProperty.gif.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -392,6 +415,7 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__MULTI_VALUE_REPRESENTATION:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }
