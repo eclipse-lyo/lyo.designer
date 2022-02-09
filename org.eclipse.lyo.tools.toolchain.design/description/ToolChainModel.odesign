@@ -1613,7 +1613,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:TreeDescription" name="SpecificationTree" titleExpression="Specification Tree Editor" initialisation="true" showOnStartup="true" domainClass="adaptorinterface.Specification">
+    <ownedRepresentations xsi:type="description_2:TreeDescription" name="SpecificationTree" titleExpression="Specification Tree Editor" initialisation="true" domainClass="adaptorinterface.Specification">
       <subItemMappings name="SpecificationTree.DomainSpecification" domainClass="adaptorinterface.DomainSpecification" semanticCandidatesExpression="service:getLoadedDomainSpecifications()">
         <defaultStyle labelExpression="aql:self.name + ' (' + self.namespacePrefix.name + ')'" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconAdaptor.png">
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1683,7 +1683,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="DomainSpecification.Resource" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List">
+        <containerMappings name="DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.DeleteResourceShape']" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List">
           <subNodeMappings name="DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty">
             <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[self.labelAsResourceSubnode(view)/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1898,6 +1898,14 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DomainSpecification.DeleteResourceShape">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Config">
