@@ -83,6 +83,15 @@ public class [anAdaptorInterface.javaClassNameForRootServicesService() /] {
     @GET
     @Produces({ OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML })
     public Response getRootServices() {
+        String about = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("rootservices").build().toString();
+        String serviceProviderCatalog = [anAdaptorInterface.serviceProviderCatalog.javaClassNameForSingleton()/].getUri().toString();
+        String oauthRequestConsumerKeyUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/requestKey").build().toString();
+        String oauthApprovalModuleUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/approveKey").build().toString();
+        String oauthRequestTokenUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/requestToken").build().toString();
+        String oauthUserAuthorizationUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/authorize").build().toString();
+        String oauthAccessTokenUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/accessToken").build().toString();
+        // [protected ('init')]
+        // [/protected]
         String response = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "\n" +
                 "<rdf:Description \n" +
                 "    xmlns:oslc_cm=\"http://open-services.net/xmlns/cm/1.0/\"" + "\n" +
@@ -91,23 +100,27 @@ public class [anAdaptorInterface.javaClassNameForRootServicesService() /] {
                 "    xmlns:dc=\"http://purl.org/dc/terms/\"" + "\n" +
                 "    xmlns:jfs=\"http://jazz.net/xmlns/prod/jazz/jfs/1.0/\"" + "\n" +
                 "    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n" +
-                "    rdf:about=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("rootservices").build().toString() + "\">\n" +
+                "    rdf:about=\"" + about + "\">\n" +
                 "    <dc:title>Root Services</dc:title>" + "\n" +
-                "    <oslc_am:amServiceProviders rdf:resource=\"" + [anAdaptorInterface.serviceProviderCatalog.javaClassNameForSingleton()/].getUri() + "\" />" + "\n" +
-                "    <oslc_rm:rmServiceProviders rdf:resource=\"" + [anAdaptorInterface.serviceProviderCatalog.javaClassNameForSingleton()/].getUri() + "\" />" + "\n" +
-                "    <oslc_cm:cmServiceProviders rdf:resource=\"" + [anAdaptorInterface.serviceProviderCatalog.javaClassNameForSingleton()/].getUri() + "\" />" + "\n" +
+                "    <oslc_am:amServiceProviders rdf:resource=\"" + serviceProviderCatalog + "\" />" + "\n" +
+                "    <oslc_rm:rmServiceProviders rdf:resource=\"" + serviceProviderCatalog + "\" />" + "\n" +
+                "    <oslc_cm:cmServiceProviders rdf:resource=\"" + serviceProviderCatalog + "\" />" + "\n" +
                 "    <jfs:oauthRealmName>" + [anAdaptorInterface.javaClassNameForAuthenticationApplication()/].OAUTH_REALM + "</jfs:oauthRealmName>" + "\n" +
                 "    <jfs:oauthDomain>" + OSLC4JUtils.getPublicURI() + "</jfs:oauthDomain>" + "\n" +
-                "    <jfs:oauthRequestConsumerKeyUrl rdf:resource=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/requestKey").build().toString() + "\"/>" + "\n" +
-                "    <jfs:oauthApprovalModuleUrl rdf:resource=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/approveKey").build().toString() + "\"/>" + "\n" +
-                "    <jfs:oauthRequestTokenUrl rdf:resource=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/requestToken").build().toString() + "\"/>" + "\n" +
-                "    <jfs:oauthUserAuthorizationUrl rdf:resource=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/authorize").build().toString() + "\"/>" + "\n" +
-                "    <jfs:oauthAccessTokenUrl rdf:resource=\"" + UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("oauth/accessToken").build().toString() + "\"/>" + "\n" +
+                "    <jfs:oauthRequestConsumerKeyUrl rdf:resource=\"" + oauthRequestConsumerKeyUrl + "\"/>" + "\n" +
+                "    <jfs:oauthApprovalModuleUrl rdf:resource=\"" + oauthApprovalModuleUrl + "\"/>" + "\n" +
+                "    <jfs:oauthRequestTokenUrl rdf:resource=\"" + oauthRequestTokenUrl + "\"/>" + "\n" +
+                "    <jfs:oauthUserAuthorizationUrl rdf:resource=\"" + oauthUserAuthorizationUrl + "\"/>" + "\n" +
+                "    <jfs:oauthAccessTokenUrl rdf:resource=\"" + oauthAccessTokenUrl + "\"/>" + "\n" +
                 "    </rdf:Description>" + "\n";
+        // [protected ('pre_response')]
+        // [/protected]
         MediaType mediaType = MediaType.valueOf("application/rdf+xml");
         ResponseBuilder builder = Response.ok(response, mediaType);
         builder.type("application/rdf+xml; charset=UTF-8");
         builder.header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
+        // [protected ('final')]
+        // [/protected]
         return builder.build();
     }
 }
