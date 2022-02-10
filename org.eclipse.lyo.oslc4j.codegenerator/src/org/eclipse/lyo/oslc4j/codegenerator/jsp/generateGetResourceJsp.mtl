@@ -1,7 +1,7 @@
 [comment encoding = UTF-8 /]
 [comment
 /*
- * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ * Copyright (c) 2021 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -24,6 +24,8 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyToHtml/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateCssAndJsFiles/]
+
 [template public generateGetResourceJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface, defaultJavaClassPackageName : String)]
 [if (contextAdaptorInterface.generateJspFile(getResourceJspFullFileName(aResource, contextAdaptorInterface)))]
 [if (not contextAdaptorInterface.generateJspFilesForOslcUI())]
@@ -31,7 +33,7 @@
 <%--To avoid the overriding of any manual code changes upon subsequent code generations, disable "Generate JSP Files" option in the Adaptor model.--%>
 <!DOCTYPE html>
 <%--
- Copyright (c) 2020 Contributors to the Eclipse Foundation
+ Copyright (c) 2021 Contributors to the Eclipse Foundation
  
  See the NOTICE file(s) distributed with this work for additional
  information regarding copyright ownership.
@@ -82,12 +84,9 @@
 
   <title><%= a[javaName(aResource, true)/].toString() %></title>
 
-  <link href="<c:url value="/static/css/bootstrap-4.0.0-beta.min.css"/>" rel="stylesheet">
+  [generateBootstrapTags()/]
   <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
 
-  <script src="<c:url value="/static/js/jquery-3.2.1.min.js"/>"></script>
-  <script src="<c:url value="/static/js/popper-1.11.0.min.js"/>"></script>
-  <script src="<c:url value="/static/js/bootstrap-4.0.0-beta.min.js"/>"></script>
   <script src="<c:url value="/static/js/ui-preview-helper.js"/>"></script>
   <script type="text/javascript">
     $(function () {setupUiPreviewOnPopover($("a.oslc-resource-link"));});
@@ -98,8 +97,8 @@
 <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
     <div class="container">
+      <a class="navbar-brand" href="<c:url value="/"/>"><%= application.getServletContextName() %></a>
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><%= application.getServletContextName() %></a></li>
         <li class="nav-item"><a class="nav-link" href="<c:url value="<%= catalogUrl %>"/>">Service Provider Catalog</a></li>
         <li class="nav-item"><a class="nav-link" href="<c:url value="[swaggerIndexJspRelativeFileName(contextAdaptorInterface)/]"/>">Swagger UI</a></li>
       </ul>

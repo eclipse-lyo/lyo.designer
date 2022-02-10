@@ -1,7 +1,7 @@
 [comment encoding = UTF-8 /]
 [comment
 /*
- * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ * Copyright (c) 2022 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -20,13 +20,15 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::staticFiles::generateCssAndJsFiles/]
+
 [template public generateIndexJsp(anAdaptorInterface : AdaptorInterface)]
 [if (anAdaptorInterface.generateJspFile(webFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp')))]
 [file (webFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp'), false, 'UTF-8')]
 <%--To avoid the overriding of any manual code changes upon subsequent code generations, disable "Generate JSP Files" option in the Adaptor model.--%>
 <!DOCTYPE html>
 <%--
- Copyright (c) 2020 Contributors to the Eclipse Foundation
+ Copyright (c) 2022 Contributors to the Eclipse Foundation
  
  See the NOTICE file(s) distributed with this work for additional
  information regarding copyright ownership.
@@ -54,11 +56,8 @@
     <!-- Latest compiled and minified CSS -->
     <title>Adaptor home</title>
 
-    <link href="<c:url value="/static/css/bootstrap-4.0.0-beta.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
-
-    <script src="<c:url value="/static/js/jquery-3.2.1.min.js"/>"></script>
-    <script src="<c:url value="/static/js/bootstrap-4.0.0-beta.min.js"/>"></script>
+  [generateBootstrapTags()/]
+  <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
 </head>
 <body>
 <div class="container">
