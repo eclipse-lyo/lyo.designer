@@ -186,42 +186,62 @@ public class [anAdaptorInterface.javaClassNameForAuthenticationApplication()/] i
 
     @Override
     public boolean isAuthenticated(HttpServletRequest request) {
-        return (null != getApplicationConnectorFromSession(request));
+        boolean auth = (null != getApplicationConnectorFromSession(request));
+        // [protected ('isAuthenticated')]
+        // [/protected]
+        return auth;
     }
 
     @Override
     public boolean isAdminSession(HttpServletRequest request) {
-        return Boolean.TRUE.equals(request.getSession().getAttribute(APPLICATION_CONNECTOR_ADMIN_SESSION_ATTRIBUTE));
+        boolean admin = Boolean.TRUE.equals(request.getSession().getAttribute(APPLICATION_CONNECTOR_ADMIN_SESSION_ATTRIBUTE));
+        // [protected ('isAdminSession')]
+        // [/protected]
+        return admin;
     }
 
     // TODO: instead of saving to a session, consider saving to a cookie, so that
     // the login survives longer than a single web session.
     public void bindApplicationConnectorToSession(HttpServletRequest request, String applicationConnector) {
+        // [protected ('bindApplicationConnectorToSession')]
+        // [/protected]
         request.getSession().setAttribute(APPLICATION_CONNECTOR_SESSION_ATTRIBUTE, applicationConnector);
     }
 
     public String getApplicationConnectorFromSession(HttpServletRequest request) {
+        // [protected ('getApplicationConnectorFromSession')]
+        // [/protected]
         return (String) request.getSession().getAttribute(APPLICATION_CONNECTOR_SESSION_ATTRIBUTE);
     }
 
     public void removeApplicationConnectorFromSession(HttpServletRequest request) {
+        // [protected ('removeApplicationConnectorFromSession')]
+        // [/protected]
         request.getSession().removeAttribute(APPLICATION_CONNECTOR_SESSION_ATTRIBUTE);
     }
 
     public String getApplicationConnector(String oauth1Token) {
+        // [protected ('getApplicationConnector')]
+        // [/protected]
         return oauth1TokenToApplicationConnector.get(oauth1Token);
     }
 
     public void putApplicationConnector(String oauth1Token, String applicationConnector) {
+        // [protected ('putApplicationConnector')]
+        // [/protected]
         oauth1TokenToApplicationConnector.put(oauth1Token, applicationConnector);
     }
 
     public void moveApplicationConnector(String oldOauth1Token, String newOauth1Token) {
+        // [protected ('moveApplicationConnector')]
+        // [/protected]
         String applicationConnector = oauth1TokenToApplicationConnector.remove(oldOauth1Token);
         oauth1TokenToApplicationConnector.put(newOauth1Token, applicationConnector);
     }
 
     public void removeForOauth1Token(String oauth1Token) {
+        // [protected ('removeForOauth1Token')]
+        // [/protected]
         oauth1TokenToApplicationConnector.remove(oauth1Token);
     }
 
@@ -235,10 +255,14 @@ public class [anAdaptorInterface.javaClassNameForAuthenticationApplication()/] i
      * @throws ServletException
      */
     public void sendUnauthorizedResponse(HttpServletResponse response, Exception e) throws IOException, ServletException {
+        // [protected ('sendUnauthorizedResponse_init')]
+        // [/protected]
         // Accept basic access or OAuth authentication.
         response.addHeader(WWW_AUTHENTICATE_HEADER, OAUTH_AUTHENTICATION_CHALLENGE);
         response.addHeader(WWW_AUTHENTICATE_HEADER, BASIC_AUTHENTICATION_CHALLENGE);
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+        // [protected ('sendUnauthorizedResponse_final')]
+        // [/protected]
     }
 }
 [/file]
