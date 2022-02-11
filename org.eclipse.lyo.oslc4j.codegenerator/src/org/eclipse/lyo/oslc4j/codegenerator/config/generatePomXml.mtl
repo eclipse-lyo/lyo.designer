@@ -38,7 +38,7 @@
 <name>[name/]</name>
 [/template]
 
-[template private mavenProperties(mavenProjectConfiguration : MavenProjectConfiguration, swaggerDocumentationEnabled : Boolean)]
+[template private mavenProperties(mavenProjectConfiguration : MavenProjectConfiguration, swaggerDocumentationEnabled : Boolean, serverImplementation : Boolean, mavenServerConfiguration : MavenServerConfiguration)]
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -50,6 +50,11 @@
     [if (swaggerDocumentationEnabled)]
     <swagger.version>2.1.4</swagger.version>
     <swagger-ui.version>3.52.5</swagger-ui.version>
+    [/if]
+    [if (serverImplementation)]
+    <servlet.port>[mavenServerConfiguration.jettyPort/]</servlet.port>
+    <application.contextpath>[mavenServerConfiguration.applicationContextPath/]</application.contextpath>
+    <application.filename>[if (not mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim().isNullOrEmpty())][mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim()/][else][mavenProjectConfiguration.artifactId/][/if]</application.filename>
     [/if]
     <!-- [protected ('properties')]
     -->
@@ -231,7 +236,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     [projectHeader(anAdaptorInterface.name, mavenProjectConfiguration, true)/]
-    [mavenProperties(mavenProjectConfiguration, anAdaptorInterface.swaggerDocumentationEnabled())/]
+    [mavenProperties(mavenProjectConfiguration, anAdaptorInterface.swaggerDocumentationEnabled(), true, mavenServerConfiguration)/]
     [repositories()/]
     <!-- [protected ('pre_dependencies')]
     -->
@@ -281,9 +286,7 @@
     <!-- [/protected]
     -->
     <build>
-        [if (not mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim().isNullOrEmpty())]
-        <finalName>[mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim()/]</finalName>
-        [/if]
+        <finalName>${application.filename}</finalName>
         <plugins>
             <!-- [protected ('plugins')]
             -->
@@ -296,12 +299,46 @@
                 <version>10.0.7</version>
                 <configuration>
                   <webApp>
-                    <contextPath>[mavenServerConfiguration.applicationContextPath/]</contextPath>
+                    <contextPath>${application.contextpath}</contextPath>
                   </webApp>
                   <httpConnector>
-                    <port>[mavenServerConfiguration.jettyPort/]</port>
+                    <port>${servlet.port}</port>
                   </httpConnector>
                   <scan>5</scan>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven3-plugin</artifactId>
+                <version>1.9.9</version>
+                <configuration>
+                    <!--This plugins supports the following containers-->
+                    <container>
+                        <!--These containers are know to work-->
+                        <containerId>tomcat9x</containerId>
+                        <!-- <containerId>jetty10x</containerId> -->
+                        <!-- <containerId>jetty9x</containerId> -->
+                        <!-- <containerId>tomee8x</containerId> -->
+                        <!-- <containerId>payara</containerId> -->
+                        <!-- <containerId>wildfly26x</containerId> -->
+                        <!--These containers are know to fail-->
+                        <!-- Context Root Not Found -->
+                        <!-- <containerId>liberty</containerId> -->
+                    </container>
+                    <configuration>
+                        <properties>
+                            <cargo.servlet.port>${servlet.port}</cargo.servlet.port>
+                        </properties>
+                    </configuration>
+                    <deployables>
+                        <deployable>
+                            <type>war</type>
+                            <location>${project.build.directory}/${project.build.finalName}.war</location>
+                            <properties>
+                                <context>${application.contextpath}</context>
+                            </properties>
+                        </deployable>
+                    </deployables>
                 </configuration>
             </plugin>
             [if (anAdaptorInterface.swaggerDocumentationEnabled())]
@@ -370,7 +407,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     [projectHeader(mavenProjectConfiguration.artifactId, mavenProjectConfiguration, false)/]
-    [mavenProperties(mavenProjectConfiguration, false)/]
+    [mavenProperties(mavenProjectConfiguration, false, false, null)/]
     [repositories()/]
     <!-- [protected ('pre_dependencies')]
     -->
@@ -405,7 +442,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     [projectHeader(aDomainSpecification.name, mavenProjectConfiguration, false)/]
-    [mavenProperties(mavenProjectConfiguration, false)/]
+    [mavenProperties(mavenProjectConfiguration, false, false, null)/]
     [repositories()/]
     <!-- [protected ('pre_dependencies')]
     -->
