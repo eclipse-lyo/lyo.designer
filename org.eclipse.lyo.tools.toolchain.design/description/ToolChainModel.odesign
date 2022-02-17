@@ -1655,7 +1655,7 @@
           <conditionnalStyles predicateExpression="[self.valueType = ResourcePropertyValueType::Resource/]">
             <style>
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowCenter()/]">
+              <centerLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowCenter(view)/]">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
               <endLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowEnd()/]">
@@ -1666,7 +1666,7 @@
           <conditionnalStyles predicateExpression="[not (self.valueType = ResourcePropertyValueType::Resource)/]">
             <style lineStyle="dot">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowCenter()/]">
+              <centerLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowCenter(view)/]">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
               <endLabelStyleDescription showIcon="false" labelExpression="[self.labelAtArrowEnd()/]">
