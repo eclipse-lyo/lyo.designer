@@ -65,8 +65,13 @@ aResource.referenceResourceProperties()
 	+ (if (Sequence{ResourcePropertyOccurs::oneOrMany, ResourcePropertyOccurs::zeroOrMany}->includes(occurs)) then ' []' else '' endif)
 /]
 
-[query public labelAtArrowCenter(aResourceProperty : ResourceProperty) : String =
+[query public labelAtArrowCenter(aResourceProperty : ResourceProperty, propertyView : DEdge) : String =
 (if (aResourceProperty.valueType = ResourcePropertyValueType::LocalResource) then 'Local: ' else '' endif)
++
+(if (aResourceProperty.eContainer(DomainSpecification) = propertyView.sourceNode.oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) 
+    then '' 
+    else aResourceProperty.eContainer(DomainSpecification).namespacePrefix.name  + ':' 
+    endif) 
 + aResourceProperty.name
 /]
 
