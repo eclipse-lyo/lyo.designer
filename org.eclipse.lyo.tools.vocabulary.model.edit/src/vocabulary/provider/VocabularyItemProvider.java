@@ -130,7 +130,7 @@ public class VocabularyItemProvider
                  getString("_UI_PropertyDescriptor_description", "_UI_Vocabulary_description_feature", "_UI_Vocabulary_type"),
                  VocabularyPackage.Literals.VOCABULARY__DESCRIPTION,
                  true,
-                 false,
+                 true,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                  null,

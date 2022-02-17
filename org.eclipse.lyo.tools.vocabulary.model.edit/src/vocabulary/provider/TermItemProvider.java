@@ -127,7 +127,7 @@ public class TermItemProvider
                  getString("_UI_PropertyDescriptor_description", "_UI_Term_comment_feature", "_UI_Term_type"),
                  VocabularyPackage.Literals.TERM__COMMENT,
                  true,
-                 false,
+                 true,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                  null,

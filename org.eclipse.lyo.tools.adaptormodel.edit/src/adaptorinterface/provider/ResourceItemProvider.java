@@ -137,7 +137,7 @@ public class ResourceItemProvider
                  getString("_UI_PropertyDescriptor_description", "_UI_Resource_description_feature", "_UI_Resource_type"),
                  AdaptorinterfacePackage.Literals.RESOURCE__DESCRIPTION,
                  true,
-                 false,
+                 true,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                  null,

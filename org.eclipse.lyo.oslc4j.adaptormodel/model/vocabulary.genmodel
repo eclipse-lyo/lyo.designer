@@ -15,7 +15,7 @@
     <genClasses ecoreClass="vocabulary.ecore#//Vocabulary">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/namespaceURI"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/label"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/description"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/source"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Vocabulary/preferredNamespacePrefix"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference vocabulary.ecore#//Vocabulary/classes"/>
@@ -25,7 +25,7 @@
     <genClasses image="false" ecoreClass="vocabulary.ecore#//Term">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/label"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/comment"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/comment"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute vocabulary.ecore#//Term/seeAlso"/>
     </genClasses>
     <genClasses ecoreClass="vocabulary.ecore#//Class">
