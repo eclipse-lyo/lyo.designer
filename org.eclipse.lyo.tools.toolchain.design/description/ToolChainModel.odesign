@@ -1308,8 +1308,8 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.Class" referenceName="classes">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="aql:'Class ' + container.classes->size()"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Class' + container.classes->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="aql:'Class ' + container.classes->size()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1319,8 +1319,8 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary.Property" referenceName="properties">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'property' + container.properties->size()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="aql:'Property ' + container.properties->size()"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Property' + container.properties->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
