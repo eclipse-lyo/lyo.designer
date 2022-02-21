@@ -17,6 +17,7 @@
 [module adaptorInterfaceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::fileServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
@@ -370,8 +371,24 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAd
 javaBasePackageName(anAdaptorInterface)
 /]
 
-[query public javaClassNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+[query public oldJavaClassNameForResourcesFactoryIsUsed(anAdaptorInterface : AdaptorInterface) : Boolean = 
+fileExists(oldJavaClassFullFileNameForResourcesFactory(anAdaptorInterface))
+/]
+
+[query public oldJavaClassNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
 javaName(anAdaptorInterface, true).concat('ResourcesFactory')
+/]
+
+[query public newJavaClassNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+'ResourcesFactory'
+/]
+
+[query public javaClassNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+(if (oldJavaClassNameForResourcesFactoryIsUsed(anAdaptorInterface)) then
+    oldJavaClassNameForResourcesFactory(anAdaptorInterface)
+else
+    newJavaClassNameForResourcesFactory(anAdaptorInterface)
+endif)
 /]
 
 [query public javaClassFullNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
@@ -382,13 +399,33 @@ javaClassPackageNameForResourcesFactory(anAdaptorInterface).concat('.').concat(j
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForResourcesFactory(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForResourcesFactory(anAdaptorInterface)).concat('.java')
 /]
 
+[query public oldJavaClassFullFileNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForResourcesFactory(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(oldJavaClassNameForResourcesFactory(anAdaptorInterface)).concat('.java')
+/]
+
 [comment Services for AdaptorManager /]
 [query public javaClassPackageNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
 javaBasePackageName(anAdaptorInterface)
 /]
 
-[query public javaClassNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+[query public oldJavaClassNameForAdaptorManagerIsUsed(anAdaptorInterface : AdaptorInterface) : Boolean = 
+fileExists(oldJavaClassFullFileNameForAdaptorManager(anAdaptorInterface))
+/]
+
+[query public oldJavaClassNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
 javaName(anAdaptorInterface, true).concat('Manager')
+/]
+
+[query public newJavaClassNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+'RestDelegate'
+/]
+
+[query public javaClassNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+(if (oldJavaClassNameForAdaptorManagerIsUsed(anAdaptorInterface)) then
+    oldJavaClassNameForAdaptorManager(anAdaptorInterface)
+else
+    newJavaClassNameForAdaptorManager(anAdaptorInterface)
+endif)
 /]
 
 [query public javaClassFullNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
@@ -397,6 +434,10 @@ javaClassPackageNameForAdaptorManager(anAdaptorInterface).concat('.').concat(jav
 
 [query public javaClassFullFileNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorManager(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForAdaptorManager(anAdaptorInterface)).concat('.java')
+/]
+
+[query public oldJavaClassFullFileNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorManager(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(oldJavaClassNameForAdaptorManager(anAdaptorInterface)).concat('.java')
 /]
 
 [comment Services for ResourceShapeService /]

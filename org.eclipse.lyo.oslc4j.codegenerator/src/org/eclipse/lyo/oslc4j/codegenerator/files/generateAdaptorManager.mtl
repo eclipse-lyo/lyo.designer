@@ -67,6 +67,21 @@ endif)
 
 package [javaClassPackageNameForAdaptorManager(anAdaptorInterface) /];
 
+[if oldJavaClassNameForAdaptorManagerIsUsed(anAdaptorInterface)]
+// [protected ('Notice')]
+//Note: The Lyo code generator is migrating the name of this class from '[oldJavaClassNameForAdaptorManager(anAdaptorInterface)/]' to the new shorter name '[newJavaClassNameForAdaptorManager(anAdaptorInterface)/]'.
+//You are still using the old name. The generator will continue to use this old name until you actively trigger the change.
+//To migrate to the new class name:
+//1. Rename your class to [newJavaClassNameForAdaptorManager(anAdaptorInterface)/] 
+//    * Please rename and do not simply create a copy of the file. The generator needs to detect the file deletion in order to activate the name change.
+//2. Regenerate the code. 
+//    * The generator will generate this class with the new name.
+//    * Besides the class name, the code - including the user clode blocks - remain intact.
+//    * All other class references to the new class name are updated.
+//3. Delete this notice
+// [/protected]
+[/if]
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.ServletContextEvent;
 import java.util.List;
