@@ -258,7 +258,7 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenServerConfiguration" referenceName="configuration" variableName="configuration">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="rootServerBaseUrl" valueExpression="['http://localhost:8080/'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="applicationContextPath" valueExpression="['/'.concat(adaptorInterface.name.toLower().replaceAll('\\W+', '-'))/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="servletUrlPattern" valueExpression="['/services/*'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="servletUrlPattern" valueExpression="['/oslc/*'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="jettyPort" valueExpression="['8080'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="doNotRegenerateJspFiles" valueExpression="[doNotRegenerateJspFiles/]"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GeneralConfiguration" referenceName="generalConfiguration" variableName="generalConfiguration">
@@ -339,12 +339,12 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.Specification" referenceName="specification"/>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GenericRequiredAdaptor" referenceName="requiredAdaptors">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['GenericRequiredAdaptor'/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/services/catalog/singleton'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/oslc/catalog/singleton'/]"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenServerConfiguration" referenceName="configuration" variableName="configuration">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="rootServerBaseUrl" valueExpression="['http://localhost:8080/'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="applicationContextPath" valueExpression="['/'.concat(adaptorInterface.name.toLower().replaceAll('\\W+', '-'))/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="servletUrlPattern" valueExpression="['/services/*'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="servletUrlPattern" valueExpression="['/oslc/*'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="jettyPort" valueExpression="['8080'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="doNotRegenerateJspFiles" valueExpression="[doNotRegenerateJspFiles/]"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GeneralConfiguration" referenceName="generalConfiguration" variableName="generalConfiguration">
@@ -955,7 +955,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GenericRequiredAdaptor" referenceName="requiredAdaptors">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Generic Required Adaptor '+container.requiredAdaptors->size()/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/services/catalog/singleton'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="serviceProviderCatalogURI" valueExpression="['http://your.host.com/adaptor/oslc/catalog/singleton'/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -999,7 +999,7 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.MavenServerConfiguration" referenceName="configuration" variableName="configuration">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="rootServerBaseUrl" valueExpression="['http://localhost:8080/'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="applicationContextPath" valueExpression="['/'.concat(adaptorInterface.name.toLower().replaceAll('\\W+', '-'))/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="servletUrlPattern" valueExpression="['/services/*'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="servletUrlPattern" valueExpression="['/oslc/*'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="jettyPort" valueExpression="['8080'/]"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.GeneralConfiguration" referenceName="generalConfiguration" variableName="generalConfiguration">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="javaBasePackageName" valueExpression="[javaBasePackageName/]"/>
