@@ -463,7 +463,7 @@ javaBasePackageName(anAdaptorInterface)
 /]
 
 [query public javaInterfaceNameForAdaptorConstants(anAdaptorInterface : AdaptorInterface) : String = 
-javaName(anAdaptorInterface, true).concat('Constants')
+'ServerConstants'
 /]
 
 [query public javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface : AdaptorInterface) : String = 
