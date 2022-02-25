@@ -359,7 +359,7 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
                  getString("_UI_PropertyDescriptor_description", "_UI_ResourceProperty_additionalConstraints_feature", "_UI_ResourceProperty_type"),
                  AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS,
                  true,
-                 false,
+                 true,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                  null,

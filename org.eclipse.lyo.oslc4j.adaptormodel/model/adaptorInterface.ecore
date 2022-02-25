@@ -157,6 +157,8 @@
         eType="#//Resource"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceProperties" upperBound="-1"
         eType="#//ResourceProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="additionalConstraints"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceProperty" eSuperTypes="#//ShapeProperty">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

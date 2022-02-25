@@ -52,6 +52,7 @@ public class ResourceItemProvider
             addDescribesPropertyDescriptor(object);
             addExtendsPropertyDescriptor(object);
             addResourcePropertiesPropertyDescriptor(object);
+            addAdditionalConstraintsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -189,6 +190,28 @@ public class ResourceItemProvider
     }
 
 	/**
+     * This adds a property descriptor for the Additional Constraints feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addAdditionalConstraintsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Resource_additionalConstraints_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Resource_additionalConstraints_feature", "_UI_Resource_type"),
+                 AdaptorinterfacePackage.Literals.RESOURCE__ADDITIONAL_CONSTRAINTS,
+                 true,
+                 true,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the Describes feature.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -252,6 +275,7 @@ public class ResourceItemProvider
             case AdaptorinterfacePackage.RESOURCE__NAME:
             case AdaptorinterfacePackage.RESOURCE__TITLE:
             case AdaptorinterfacePackage.RESOURCE__DESCRIPTION:
+            case AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

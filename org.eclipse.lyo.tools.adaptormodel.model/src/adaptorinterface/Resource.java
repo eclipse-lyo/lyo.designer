@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link adaptorinterface.Resource#getDescribes <em>Describes</em>}</li>
  *   <li>{@link adaptorinterface.Resource#getExtends <em>Extends</em>}</li>
  *   <li>{@link adaptorinterface.Resource#getResourceProperties <em>Resource Properties</em>}</li>
+ *   <li>{@link adaptorinterface.Resource#getAdditionalConstraints <em>Additional Constraints</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getResource()
@@ -156,6 +157,18 @@ public interface Resource extends Shape {
 	EList<ResourceProperty> getResourceProperties();
 
 	/**
+     * Returns the value of the '<em><b>Additional Constraints</b></em>' attribute list.
+     * The list contents are of type {@link java.lang.String}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Additional Constraints</em>' attribute list.
+     * @see adaptorinterface.AdaptorinterfacePackage#getResource_AdditionalConstraints()
+     * @model
+     * @generated
+     */
+    EList<String> getAdditionalConstraints();
+
+    /**
      * Returns the value of the '<em><b>Describes</b></em>' reference.
      * <!-- begin-user-doc -->
 	 * <p>
