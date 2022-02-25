@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- added an optional "additionalConstraints" multi-line text attribute on Resources and ResourceProperties. The semantics of these properties This results in no code generation changes.
 
 ### Changed
 

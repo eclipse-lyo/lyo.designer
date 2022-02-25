@@ -2140,12 +2140,13 @@
             <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:newValue"/>
           </initialOperation>
         </controls>
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::ResourceProperty propertyDefinition" referenceNameExpression="aql:'propertyDefinition'"/>
         <controls xsi:type="properties:TextAreaDescription" name="adaptorinterface::ResourceProperty description" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('description')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('description'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('description').changeable" valueExpression="aql:self.description">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:newValue"/>
           </initialOperation>
         </controls>
-        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::ResourceProperty propertyDefinition" referenceNameExpression="aql:'propertyDefinition'"/>
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::ResourceProperty range" referenceNameExpression="aql:'range'"/>
         <controls xsi:type="properties:RadioDescription" name="adaptorinterface::ResourceProperty occurs" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('occurs')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('occurs'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('occurs').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('occurs').eType.getEEnumLiteralByLiteral(self.occurs.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('occurs').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:SetValue" featureName="occurs" valueExpression="aql:newValue.instance"/>
@@ -2161,7 +2162,6 @@
             <firstModelOperations xsi:type="tool_1:SetValue" featureName="valueType" valueExpression="aql:newValue.instance"/>
           </initialOperation>
         </controls>
-        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::ResourceProperty range" referenceNameExpression="aql:'range'"/>
         <controls xsi:type="properties:RadioDescription" name="adaptorinterface::ResourceProperty representation" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('representation')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('representation'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('representation').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('representation').eType.getEEnumLiteralByLiteral(self.representation.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('representation').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:SetValue" featureName="representation" valueExpression="aql:newValue.instance"/>
@@ -2176,6 +2176,11 @@
         <controls xsi:type="properties:RadioDescription" name="adaptorinterface::ResourceProperty isMemberProperty" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('isMemberProperty')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('isMemberProperty'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('isMemberProperty').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('isMemberProperty').eType.getEEnumLiteralByLiteral(self.isMemberProperty.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('isMemberProperty').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:SetValue" featureName="isMemberProperty" valueExpression="aql:newValue.instance"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:TextAreaDescription" name="adaptorinterface::ResourceProperty additionalConstraints" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('additionalConstraints')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('additionalConstraints'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('additionalConstraints').changeable" valueExpression="aql:self.additionalConstraints">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="additionalConstraints" valueExpression="var:newValue"/>
           </initialOperation>
         </controls>
       </groups>
@@ -2198,14 +2203,40 @@
             <firstModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="var:newValue"/>
           </initialOperation>
         </controls>
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource describes" referenceNameExpression="aql:'describes'"/>
         <controls xsi:type="properties:TextAreaDescription" name="adaptorinterface::Resource description" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('description')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('description'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('description').changeable" valueExpression="aql:self.description">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:newValue"/>
           </initialOperation>
         </controls>
-        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource describes" referenceNameExpression="aql:'describes'"/>
-        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource extends" referenceNameExpression="aql:'extends'"/>
         <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource resourceProperties" referenceNameExpression="aql:'resourceProperties'"/>
+        <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource extends" referenceNameExpression="aql:'extends'"/>
+        <controls xsi:type="properties:ListDescription" name="adaptorinterface::Resource additionalConstraints" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('additionalConstraints')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('additionalConstraints'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('additionalConstraints').changeable" valueExpression="aql:self.additionalConstraints" displayExpression="var:value">
+          <actions>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Add Additional Constraints">
+                  <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                    <initialOperation/>
+                  </buttons>
+                  <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                    <initialOperation/>
+                  </buttons>
+                  <page name="adaptorinterface::Resource additionalConstraints Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@extensions.3/@categories.0/@groups.0/@controls.6/@actions.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0"/>
+                  <groups name="adaptorinterface::Resource additionalConstraints Group" labelExpression="Group" semanticCandidateExpression="var:self">
+                    <controls xsi:type="properties:TextAreaDescription" name="adaptorinterface::Resource additionalConstraints Text Area">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="additionalConstraints" valueExpression="aql:newValue"/>
+                        </firstModelOperations>
+                      </initialOperation>
+                    </controls>
+                  </groups>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </actions>
+        </controls>
       </groups>
     </categories>
   </extensions>

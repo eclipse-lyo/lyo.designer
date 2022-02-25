@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getDescribes <em>Describes</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getExtends <em>Extends</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getResourceProperties <em>Resource Properties</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourceImpl#getAdditionalConstraints <em>Additional Constraints</em>}</li>
  * </ul>
  *
  * @generated
@@ -149,6 +151,16 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	protected EList<ResourceProperty> resourceProperties;
 
 	/**
+     * The cached value of the '{@link #getAdditionalConstraints() <em>Additional Constraints</em>}' attribute list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getAdditionalConstraints()
+     * @generated
+     * @ordered
+     */
+    protected EList<String> additionalConstraints;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -289,6 +301,19 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EList<String> getAdditionalConstraints() {
+        if (additionalConstraints == null) {
+            additionalConstraints = new EDataTypeUniqueEList<String>(String.class, this, AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS);
+        }
+        return additionalConstraints;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -350,6 +375,8 @@ public class ResourceImpl extends ShapeImpl implements Resource {
                 return getExtends();
             case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
                 return getResourceProperties();
+            case AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS:
+                return getAdditionalConstraints();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -386,6 +413,10 @@ public class ResourceImpl extends ShapeImpl implements Resource {
                 getResourceProperties().clear();
                 getResourceProperties().addAll((Collection<? extends ResourceProperty>)newValue);
                 return;
+            case AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS:
+                getAdditionalConstraints().clear();
+                getAdditionalConstraints().addAll((Collection<? extends String>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -419,6 +450,9 @@ public class ResourceImpl extends ShapeImpl implements Resource {
             case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
                 getResourceProperties().clear();
                 return;
+            case AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS:
+                getAdditionalConstraints().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -445,6 +479,8 @@ public class ResourceImpl extends ShapeImpl implements Resource {
                 return extends_ != null && !extends_.isEmpty();
             case AdaptorinterfacePackage.RESOURCE__RESOURCE_PROPERTIES:
                 return resourceProperties != null && !resourceProperties.isEmpty();
+            case AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS:
+                return additionalConstraints != null && !additionalConstraints.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -467,6 +503,8 @@ public class ResourceImpl extends ShapeImpl implements Resource {
         result.append(title);
         result.append(", description: ");
         result.append(description);
+        result.append(", additionalConstraints: ");
+        result.append(additionalConstraints);
         result.append(')');
         return result.toString();
     }

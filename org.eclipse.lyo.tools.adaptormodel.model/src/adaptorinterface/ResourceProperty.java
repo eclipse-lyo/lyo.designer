@@ -26,6 +26,7 @@ import vocabulary.Property;
  *   <li>{@link adaptorinterface.ResourceProperty#getMultiValueRepresentation <em>Multi Value Representation</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getAllowedValue <em>Allowed Value</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getIsMemberProperty <em>Is Member Property</em>}</li>
+ *   <li>{@link adaptorinterface.ResourceProperty#getAdditionalConstraints <em>Additional Constraints</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getResourceProperty()
@@ -368,5 +369,27 @@ public interface ResourceProperty extends ShapeProperty {
      * @generated
      */
 	void setIsMemberProperty(ResourcePropertyIsMemberProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Additional Constraints</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Additional Constraints</em>' attribute.
+     * @see #setAdditionalConstraints(String)
+     * @see adaptorinterface.AdaptorinterfacePackage#getResourceProperty_AdditionalConstraints()
+     * @model
+     * @generated
+     */
+    String getAdditionalConstraints();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.ResourceProperty#getAdditionalConstraints <em>Additional Constraints</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Additional Constraints</em>' attribute.
+     * @see #getAdditionalConstraints()
+     * @generated
+     */
+    void setAdditionalConstraints(String value);
 
 } // ResourceProperty
