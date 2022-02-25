@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Added
-
+- added an optional "additionalConstraints" multi-line text attribute on Resources and ResourceProperties. 
 ### Changed
 
 - `LYO_BASE` is replaced with `LYO_BASEURL`. To override the Base URL of the adaptor, use the `baseurl` property. This release makes the use of this property consistent and check the `LYO_BASEURL` environment variable instead of `LYO_BASE`.
