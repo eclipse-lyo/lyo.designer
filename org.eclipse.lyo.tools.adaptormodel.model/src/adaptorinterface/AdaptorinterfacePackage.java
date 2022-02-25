@@ -1077,13 +1077,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE__RESOURCE_PROPERTIES = SHAPE_FEATURE_COUNT + 6;
 
 	/**
+     * The feature id for the '<em><b>Additional Constraints</b></em>' attribute list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RESOURCE__ADDITIONAL_CONSTRAINTS = SHAPE_FEATURE_COUNT + 7;
+
+    /**
      * The number of structural features of the '<em>Resource</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RESOURCE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 7;
+	int RESOURCE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 8;
 
 	/**
      * The number of operations of the '<em>Resource</em>' class.
@@ -1250,13 +1259,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = SHAPE_PROPERTY_FEATURE_COUNT + 12;
 
 	/**
+     * The feature id for the '<em><b>Additional Constraints</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS = SHAPE_PROPERTY_FEATURE_COUNT + 13;
+
+    /**
      * The number of structural features of the '<em>Resource Property</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RESOURCE_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 13;
+	int RESOURCE_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 14;
 
 	/**
      * The number of operations of the '<em>Resource Property</em>' class.
@@ -3922,6 +3940,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getResource_ResourceProperties();
 
 	/**
+     * Returns the meta object for the attribute list '{@link adaptorinterface.Resource#getAdditionalConstraints <em>Additional Constraints</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute list '<em>Additional Constraints</em>'.
+     * @see adaptorinterface.Resource#getAdditionalConstraints()
+     * @see #getResource()
+     * @generated
+     */
+    EAttribute getResource_AdditionalConstraints();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.ResourceProperty <em>Resource Property</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4075,6 +4104,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getResourceProperty_IsMemberProperty();
 
 	/**
+     * Returns the meta object for the attribute '{@link adaptorinterface.ResourceProperty#getAdditionalConstraints <em>Additional Constraints</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Additional Constraints</em>'.
+     * @see adaptorinterface.ResourceProperty#getAdditionalConstraints()
+     * @see #getResourceProperty()
+     * @generated
+     */
+    EAttribute getResourceProperty_AdditionalConstraints();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.CreationFactory <em>Creation Factory</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6057,6 +6097,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference RESOURCE__RESOURCE_PROPERTIES = eINSTANCE.getResource_ResourceProperties();
 
 		/**
+         * The meta object literal for the '<em><b>Additional Constraints</b></em>' attribute list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute RESOURCE__ADDITIONAL_CONSTRAINTS = eINSTANCE.getResource_AdditionalConstraints();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.ResourcePropertyImpl <em>Resource Property</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6171,6 +6219,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute RESOURCE_PROPERTY__IS_MEMBER_PROPERTY = eINSTANCE.getResourceProperty_IsMemberProperty();
 
 		/**
+         * The meta object literal for the '<em><b>Additional Constraints</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS = eINSTANCE.getResourceProperty_AdditionalConstraints();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.CreationFactoryImpl <em>Creation Factory</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
