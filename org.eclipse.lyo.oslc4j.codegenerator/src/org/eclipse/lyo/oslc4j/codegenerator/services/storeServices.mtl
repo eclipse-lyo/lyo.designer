@@ -94,6 +94,7 @@ import javax.ws.rs.core.Response.Status;
 [template public storeClassAttributes(anAdaptorInterface: AdaptorInterface)]
 [if (anAdaptorInterface.storeEnabled())]
 private static StorePool storePool;
+private static [anAdaptorInterface.javaClassNameForResourcesFactory()/] resourcesFactory;
 [/if]
 [/template]
 
@@ -129,6 +130,8 @@ userName = lyoStoreProperties.getProperty("username");
 password = lyoStoreProperties.getProperty("password");
 [/if]
 storePool = new [anAdaptorInterface.javaClassNameForStorePool()/](initialPoolSize, defaultNamedGraph, sparqlQueryEndpoint, sparqlUpdateEndpoint, userName, password);
+resourcesFactory = new [anAdaptorInterface.javaClassNameForResourcesFactory()/](OSLC4JUtils.getServletURI());
+
 // [protected ('StoreFinalize')]
 // [/protected]
 [/if]
@@ -139,7 +142,7 @@ storePool = new [anAdaptorInterface.javaClassNameForStorePool()/](initialPoolSiz
 // [protected (aResource.getResourceMethodName(true).concat('_storeInit'))]
 // [/protected]
 Store store = storePool.getStore();
-URI uri = [aWebService.containingAdaptorInterface().javaClassNameForResourcesFactory()/].[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
+URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
 try {
     aResource = store.getResource(storePool.getDefaultNamedGraphUri(), uri, [getResourceMethodResourceType(aResource)/].class);
 } catch (NoSuchElementException e) {
@@ -161,7 +164,7 @@ try {
 // [protected (aResource.updateResourceMethodName().concat('_storeInit'))]
 // [/protected]
 Store store = storePool.getStore();
-URI uri = [aWebService.containingAdaptorInterface().javaClassNameForResourcesFactory()/].[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
+URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
 if (!store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
     log.error("Cannot update a resource that does not already exists: '" + uri + "'");
     throw new WebApplicationException("Cannot update a resource that does not already exists: '" + uri + "'", Status.NOT_FOUND);
@@ -186,7 +189,7 @@ updatedResource = aResource;
 // [protected (aResource.deleteResourceMethodName().concat('_storeInit'))]
 // [/protected]
 Store store = storePool.getStore();
-URI uri = [aWebService.containingAdaptorInterface().javaClassNameForResourcesFactory()/].[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
+URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
 if (!store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
     log.error("Cannot delete a resource that does not already exists: '" + uri + "'");
     throw new WebApplicationException("Cannot delete a resource that does not already exists: '" + uri + "'", Status.NOT_FOUND);
