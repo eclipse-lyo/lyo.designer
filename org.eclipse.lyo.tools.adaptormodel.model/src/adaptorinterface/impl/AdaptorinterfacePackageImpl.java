@@ -48,6 +48,9 @@ import adaptorinterface.SpecificationConfiguration;
 import adaptorinterface.Store;
 import adaptorinterface.StoreWithAuthentication;
 import adaptorinterface.TrsService;
+import adaptorinterface.UserSettings;
+import adaptorinterface.UserSettingsViewLabelAs;
+import adaptorinterface.UserSettingsViewPrefixes;
 import adaptorinterface.WebService;
 import adaptorinterface.WebServicePersistence;
 import org.eclipse.emf.ecore.EAttribute;
@@ -347,6 +350,13 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass userSettingsEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -395,6 +405,20 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	private EEnum shaclPropertyDataTypeEEnum = null;
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EEnum userSettingsViewPrefixesEEnum = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EEnum userSettingsViewLabelAsEEnum = null;
+
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
      * package URI value.
@@ -760,6 +784,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EReference getSpecification_UserSettings() {
+        return (EReference)specificationEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -859,6 +893,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EReference getDomainSpecification_ImpliedVocabulary() {
+        return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(9);
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -1340,6 +1384,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EAttribute getResource_VocabularyComment() {
+        return (EAttribute)resourceEClass.getEStructuralFeatures().get(8);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -1486,6 +1540,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
     @Override
     public EAttribute getResourceProperty_AdditionalConstraints() {
         return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(13);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EAttribute getResourceProperty_VocabularyComment() {
+        return (EAttribute)resourcePropertyEClass.getEStructuralFeatures().get(14);
     }
 
     /**
@@ -2580,6 +2644,36 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EClass getUserSettings() {
+        return userSettingsEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EAttribute getUserSettings_ViewPrefixes() {
+        return (EAttribute)userSettingsEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EAttribute getUserSettings_ViewLabelAs() {
+        return (EAttribute)userSettingsEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -2650,6 +2744,26 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EEnum getUserSettingsViewPrefixes() {
+        return userSettingsViewPrefixesEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EEnum getUserSettingsViewLabelAs() {
+        return userSettingsViewLabelAsEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -2708,6 +2822,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEReference(specificationEClass, SPECIFICATION__DOMAIN_PREFIXES);
         createEReference(specificationEClass, SPECIFICATION__GENERATION_SETTING);
         createEReference(specificationEClass, SPECIFICATION__CONFIGURATION);
+        createEReference(specificationEClass, SPECIFICATION__USER_SETTINGS);
 
         domainSpecificationEClass = createEClass(DOMAIN_SPECIFICATION);
         createEAttribute(domainSpecificationEClass, DOMAIN_SPECIFICATION__NAME);
@@ -2719,6 +2834,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__CONFIGURATION);
         createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__SHACL_SHAPES);
         createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__SHACL_PROPERTIES);
+        createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY);
 
         namespacePrefixEClass = createEClass(NAMESPACE_PREFIX);
         createEAttribute(namespacePrefixEClass, NAMESPACE_PREFIX__NAME);
@@ -2775,6 +2891,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEReference(resourceEClass, RESOURCE__EXTENDS);
         createEReference(resourceEClass, RESOURCE__RESOURCE_PROPERTIES);
         createEAttribute(resourceEClass, RESOURCE__ADDITIONAL_CONSTRAINTS);
+        createEAttribute(resourceEClass, RESOURCE__VOCABULARY_COMMENT);
 
         resourcePropertyEClass = createEClass(RESOURCE_PROPERTY);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__ID);
@@ -2791,6 +2908,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__ALLOWED_VALUE);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__IS_MEMBER_PROPERTY);
         createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS);
+        createEAttribute(resourcePropertyEClass, RESOURCE_PROPERTY__VOCABULARY_COMMENT);
 
         creationFactoryEClass = createEClass(CREATION_FACTORY);
         createEAttribute(creationFactoryEClass, CREATION_FACTORY__TITLE);
@@ -2929,6 +3047,10 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEAttribute(webServicePersistenceEClass, WEB_SERVICE_PERSISTENCE__DELETE);
         createEAttribute(webServicePersistenceEClass, WEB_SERVICE_PERSISTENCE__UPDATE);
 
+        userSettingsEClass = createEClass(USER_SETTINGS);
+        createEAttribute(userSettingsEClass, USER_SETTINGS__VIEW_PREFIXES);
+        createEAttribute(userSettingsEClass, USER_SETTINGS__VIEW_LABEL_AS);
+
         // Create enums
         resourcePropertyOccursEEnum = createEEnum(RESOURCE_PROPERTY_OCCURS);
         resourcePropertyValueTypeEEnum = createEEnum(RESOURCE_PROPERTY_VALUE_TYPE);
@@ -2937,6 +3059,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         resourcePropertyMultiValueRepresentationEEnum = createEEnum(RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION);
         resourceServiceNamespaceEEnum = createEEnum(RESOURCE_SERVICE_NAMESPACE);
         shaclPropertyDataTypeEEnum = createEEnum(SHACL_PROPERTY_DATA_TYPE);
+        userSettingsViewPrefixesEEnum = createEEnum(USER_SETTINGS_VIEW_PREFIXES);
+        userSettingsViewLabelAsEEnum = createEEnum(USER_SETTINGS_VIEW_LABEL_AS);
     }
 
 	/**
@@ -3018,6 +3142,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         getSpecification_DomainPrefixes().getEKeys().add(this.getNamespacePrefix_Name());
         initEReference(getSpecification_GenerationSetting(), this.getGenerationSetting(), null, "generationSetting", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getSpecification_Configuration(), this.getSpecificationConfiguration(), null, "configuration", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSpecification_UserSettings(), this.getUserSettings(), null, "userSettings", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(domainSpecificationEClass, DomainSpecification.class, "DomainSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDomainSpecification_Name(), ecorePackage.getEString(), "name", null, 1, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3033,6 +3158,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         getDomainSpecification_ShaclShapes().getEKeys().add(this.getShaclShape_Name());
         initEReference(getDomainSpecification_ShaclProperties(), this.getShaclProperty(), null, "shaclProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         getDomainSpecification_ShaclProperties().getEKeys().add(this.getShaclProperty_Name());
+        initEReference(getDomainSpecification_ImpliedVocabulary(), theVocabularyPackage.getVocabulary(), null, "impliedVocabulary", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        getDomainSpecification_ImpliedVocabulary().getEKeys().add(theVocabularyPackage.getVocabulary_Label());
 
         initEClass(namespacePrefixEClass, NamespacePrefix.class, "NamespacePrefix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getNamespacePrefix_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamespacePrefix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3089,6 +3216,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEReference(getResource_Extends(), this.getResource(), null, "extends", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getResource_ResourceProperties(), this.getResourceProperty(), null, "resourceProperties", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResource_AdditionalConstraints(), ecorePackage.getEString(), "additionalConstraints", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getResource_VocabularyComment(), ecorePackage.getEString(), "vocabularyComment", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(resourcePropertyEClass, ResourceProperty.class, "ResourceProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getResourceProperty_Id(), ecorePackage.getEString(), "id", null, 1, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3105,6 +3233,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getResourceProperty_AllowedValue(), ecorePackage.getEString(), "allowedValue", null, 0, -1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_IsMemberProperty(), this.getResourcePropertyIsMemberProperty(), "isMemberProperty", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getResourceProperty_AdditionalConstraints(), ecorePackage.getEString(), "additionalConstraints", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getResourceProperty_VocabularyComment(), ecorePackage.getEString(), "vocabularyComment", null, 0, 1, ResourceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(creationFactoryEClass, CreationFactory.class, "CreationFactory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getCreationFactory_Title(), ecorePackage.getEString(), "title", null, 1, 1, CreationFactory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3243,6 +3372,10 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getWebServicePersistence_Delete(), ecorePackage.getEBoolean(), "delete", "false", 1, 1, WebServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getWebServicePersistence_Update(), ecorePackage.getEBoolean(), "update", "false", 1, 1, WebServicePersistence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+        initEClass(userSettingsEClass, UserSettings.class, "UserSettings", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getUserSettings_ViewPrefixes(), this.getUserSettingsViewPrefixes(), "viewPrefixes", "whenNecessary", 0, 1, UserSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getUserSettings_ViewLabelAs(), this.getUserSettingsViewLabelAs(), "viewLabelAs", "vocabulary", 0, 1, UserSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
         // Initialize enums and add enum literals
         initEEnum(resourcePropertyOccursEEnum, ResourcePropertyOccurs.class, "ResourcePropertyOccurs");
         addEEnumLiteral(resourcePropertyOccursEEnum, ResourcePropertyOccurs.EXACTLY_ONE);
@@ -3291,6 +3424,14 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.DOUBLE);
         addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.FLOAT);
         addEEnumLiteral(shaclPropertyDataTypeEEnum, ShaclPropertyDataType.INTEGER);
+
+        initEEnum(userSettingsViewPrefixesEEnum, UserSettingsViewPrefixes.class, "UserSettingsViewPrefixes");
+        addEEnumLiteral(userSettingsViewPrefixesEEnum, UserSettingsViewPrefixes.WHEN_NECESSARY);
+        addEEnumLiteral(userSettingsViewPrefixesEEnum, UserSettingsViewPrefixes.ALWAYS);
+
+        initEEnum(userSettingsViewLabelAsEEnum, UserSettingsViewLabelAs.class, "UserSettingsViewLabelAs");
+        addEEnumLiteral(userSettingsViewLabelAsEEnum, UserSettingsViewLabelAs.SHAPE);
+        addEEnumLiteral(userSettingsViewLabelAsEEnum, UserSettingsViewLabelAs.VOCABULARY);
 
         // Create resource
         createResource(eNS_URI);

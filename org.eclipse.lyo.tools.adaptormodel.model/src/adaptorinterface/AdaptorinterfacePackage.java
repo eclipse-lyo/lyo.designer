@@ -347,13 +347,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SPECIFICATION__CONFIGURATION = 4;
 
 	/**
+     * The feature id for the '<em><b>User Settings</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SPECIFICATION__USER_SETTINGS = 5;
+
+    /**
      * The number of structural features of the '<em>Specification</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int SPECIFICATION_FEATURE_COUNT = 5;
+	int SPECIFICATION_FEATURE_COUNT = 6;
 
 	/**
      * The number of operations of the '<em>Specification</em>' class.
@@ -456,13 +465,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int DOMAIN_SPECIFICATION__SHACL_PROPERTIES = 8;
 
 	/**
+     * The feature id for the '<em><b>Implied Vocabulary</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY = 9;
+
+    /**
      * The number of structural features of the '<em>Domain Specification</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int DOMAIN_SPECIFICATION_FEATURE_COUNT = 9;
+	int DOMAIN_SPECIFICATION_FEATURE_COUNT = 10;
 
 	/**
      * The number of operations of the '<em>Domain Specification</em>' class.
@@ -1086,13 +1104,22 @@ public interface AdaptorinterfacePackage extends EPackage {
     int RESOURCE__ADDITIONAL_CONSTRAINTS = SHAPE_FEATURE_COUNT + 7;
 
     /**
+     * The feature id for the '<em><b>Vocabulary Comment</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RESOURCE__VOCABULARY_COMMENT = SHAPE_FEATURE_COUNT + 8;
+
+    /**
      * The number of structural features of the '<em>Resource</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RESOURCE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 8;
+	int RESOURCE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 9;
 
 	/**
      * The number of operations of the '<em>Resource</em>' class.
@@ -1268,13 +1295,22 @@ public interface AdaptorinterfacePackage extends EPackage {
     int RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS = SHAPE_PROPERTY_FEATURE_COUNT + 13;
 
     /**
+     * The feature id for the '<em><b>Vocabulary Comment</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RESOURCE_PROPERTY__VOCABULARY_COMMENT = SHAPE_PROPERTY_FEATURE_COUNT + 14;
+
+    /**
      * The number of structural features of the '<em>Resource Property</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RESOURCE_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 14;
+	int RESOURCE_PROPERTY_FEATURE_COUNT = SHAPE_PROPERTY_FEATURE_COUNT + 15;
 
 	/**
      * The number of operations of the '<em>Resource Property</em>' class.
@@ -2923,6 +2959,52 @@ public interface AdaptorinterfacePackage extends EPackage {
     int WEB_SERVICE_PERSISTENCE_OPERATION_COUNT = SERVICE_PERSISTENCE_OPERATION_COUNT + 0;
 
     /**
+     * The meta object id for the '{@link adaptorinterface.impl.UserSettingsImpl <em>User Settings</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.impl.UserSettingsImpl
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getUserSettings()
+     * @generated
+     */
+    int USER_SETTINGS = 40;
+
+    /**
+     * The feature id for the '<em><b>View Prefixes</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int USER_SETTINGS__VIEW_PREFIXES = 0;
+
+    /**
+     * The feature id for the '<em><b>View Label As</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int USER_SETTINGS__VIEW_LABEL_AS = 1;
+
+    /**
+     * The number of structural features of the '<em>User Settings</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int USER_SETTINGS_FEATURE_COUNT = 2;
+
+    /**
+     * The number of operations of the '<em>User Settings</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int USER_SETTINGS_OPERATION_COUNT = 0;
+
+    /**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2930,7 +3012,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyOccurs()
      * @generated
      */
-	int RESOURCE_PROPERTY_OCCURS = 40;
+	int RESOURCE_PROPERTY_OCCURS = 41;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyValueType <em>Resource Property Value Type</em>}' enum.
@@ -2940,7 +3022,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyValueType()
      * @generated
      */
-	int RESOURCE_PROPERTY_VALUE_TYPE = 41;
+	int RESOURCE_PROPERTY_VALUE_TYPE = 42;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyRepresentation <em>Resource Property Representation</em>}' enum.
@@ -2950,7 +3032,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRepresentation()
      * @generated
      */
-	int RESOURCE_PROPERTY_REPRESENTATION = 42;
+	int RESOURCE_PROPERTY_REPRESENTATION = 43;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyIsMemberProperty <em>Resource Property Is Member Property</em>}' enum.
@@ -2960,7 +3042,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyIsMemberProperty()
      * @generated
      */
-	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 43;
+	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 44;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyMultiValueRepresentation <em>Resource Property Multi Value Representation</em>}' enum.
@@ -2970,7 +3052,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyMultiValueRepresentation()
      * @generated
      */
-	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 44;
+	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 45;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -2980,7 +3062,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
      * @generated
      */
-	int RESOURCE_SERVICE_NAMESPACE = 45;
+	int RESOURCE_SERVICE_NAMESPACE = 46;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ShaclPropertyDataType <em>Shacl Property Data Type</em>}' enum.
@@ -2990,10 +3072,31 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
      * @generated
      */
-	int SHACL_PROPERTY_DATA_TYPE = 46;
+	int SHACL_PROPERTY_DATA_TYPE = 47;
 
 
 	/**
+     * The meta object id for the '{@link adaptorinterface.UserSettingsViewPrefixes <em>User Settings View Prefixes</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.UserSettingsViewPrefixes
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getUserSettingsViewPrefixes()
+     * @generated
+     */
+    int USER_SETTINGS_VIEW_PREFIXES = 48;
+
+    /**
+     * The meta object id for the '{@link adaptorinterface.UserSettingsViewLabelAs <em>User Settings View Label As</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.UserSettingsViewLabelAs
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getUserSettingsViewLabelAs()
+     * @generated
+     */
+    int USER_SETTINGS_VIEW_LABEL_AS = 49;
+
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.AdaptorInterface <em>Adaptor Interface</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3322,6 +3425,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getSpecification_Configuration();
 
 	/**
+     * Returns the meta object for the containment reference '{@link adaptorinterface.Specification#getUserSettings <em>User Settings</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>User Settings</em>'.
+     * @see adaptorinterface.Specification#getUserSettings()
+     * @see #getSpecification()
+     * @generated
+     */
+    EReference getSpecification_UserSettings();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.DomainSpecification <em>Domain Specification</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3431,6 +3545,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getDomainSpecification_ShaclProperties();
 
 	/**
+     * Returns the meta object for the containment reference '{@link adaptorinterface.DomainSpecification#getImpliedVocabulary <em>Implied Vocabulary</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Implied Vocabulary</em>'.
+     * @see adaptorinterface.DomainSpecification#getImpliedVocabulary()
+     * @see #getDomainSpecification()
+     * @generated
+     */
+    EReference getDomainSpecification_ImpliedVocabulary();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.NamespacePrefix <em>Namespace Prefix</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3951,6 +4076,17 @@ public interface AdaptorinterfacePackage extends EPackage {
     EAttribute getResource_AdditionalConstraints();
 
     /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Resource#getVocabularyComment <em>Vocabulary Comment</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Vocabulary Comment</em>'.
+     * @see adaptorinterface.Resource#getVocabularyComment()
+     * @see #getResource()
+     * @generated
+     */
+    EAttribute getResource_VocabularyComment();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.ResourceProperty <em>Resource Property</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4113,6 +4249,17 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @generated
      */
     EAttribute getResourceProperty_AdditionalConstraints();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.ResourceProperty#getVocabularyComment <em>Vocabulary Comment</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Vocabulary Comment</em>'.
+     * @see adaptorinterface.ResourceProperty#getVocabularyComment()
+     * @see #getResourceProperty()
+     * @generated
+     */
+    EAttribute getResourceProperty_VocabularyComment();
 
     /**
      * Returns the meta object for class '{@link adaptorinterface.CreationFactory <em>Creation Factory</em>}'.
@@ -5286,6 +5433,38 @@ public interface AdaptorinterfacePackage extends EPackage {
     EAttribute getWebServicePersistence_Update();
 
     /**
+     * Returns the meta object for class '{@link adaptorinterface.UserSettings <em>User Settings</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>User Settings</em>'.
+     * @see adaptorinterface.UserSettings
+     * @generated
+     */
+    EClass getUserSettings();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.UserSettings#getViewPrefixes <em>View Prefixes</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>View Prefixes</em>'.
+     * @see adaptorinterface.UserSettings#getViewPrefixes()
+     * @see #getUserSettings()
+     * @generated
+     */
+    EAttribute getUserSettings_ViewPrefixes();
+
+    /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.UserSettings#getViewLabelAs <em>View Label As</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>View Label As</em>'.
+     * @see adaptorinterface.UserSettings#getViewLabelAs()
+     * @see #getUserSettings()
+     * @generated
+     */
+    EAttribute getUserSettings_ViewLabelAs();
+
+    /**
      * Returns the meta object for enum '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5356,6 +5535,26 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EEnum getShaclPropertyDataType();
 
 	/**
+     * Returns the meta object for enum '{@link adaptorinterface.UserSettingsViewPrefixes <em>User Settings View Prefixes</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for enum '<em>User Settings View Prefixes</em>'.
+     * @see adaptorinterface.UserSettingsViewPrefixes
+     * @generated
+     */
+    EEnum getUserSettingsViewPrefixes();
+
+    /**
+     * Returns the meta object for enum '{@link adaptorinterface.UserSettingsViewLabelAs <em>User Settings View Label As</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for enum '<em>User Settings View Label As</em>'.
+     * @see adaptorinterface.UserSettingsViewLabelAs
+     * @generated
+     */
+    EEnum getUserSettingsViewLabelAs();
+
+    /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5623,6 +5822,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference SPECIFICATION__CONFIGURATION = eINSTANCE.getSpecification_Configuration();
 
 		/**
+         * The meta object literal for the '<em><b>User Settings</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SPECIFICATION__USER_SETTINGS = eINSTANCE.getSpecification_UserSettings();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.DomainSpecificationImpl <em>Domain Specification</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5705,6 +5912,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference DOMAIN_SPECIFICATION__SHACL_PROPERTIES = eINSTANCE.getDomainSpecification_ShaclProperties();
 
 		/**
+         * The meta object literal for the '<em><b>Implied Vocabulary</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY = eINSTANCE.getDomainSpecification_ImpliedVocabulary();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.NamespacePrefixImpl <em>Namespace Prefix</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6105,6 +6320,14 @@ public interface AdaptorinterfacePackage extends EPackage {
         EAttribute RESOURCE__ADDITIONAL_CONSTRAINTS = eINSTANCE.getResource_AdditionalConstraints();
 
         /**
+         * The meta object literal for the '<em><b>Vocabulary Comment</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute RESOURCE__VOCABULARY_COMMENT = eINSTANCE.getResource_VocabularyComment();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.ResourcePropertyImpl <em>Resource Property</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6225,6 +6448,14 @@ public interface AdaptorinterfacePackage extends EPackage {
          * @generated
          */
         EAttribute RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS = eINSTANCE.getResourceProperty_AdditionalConstraints();
+
+        /**
+         * The meta object literal for the '<em><b>Vocabulary Comment</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute RESOURCE_PROPERTY__VOCABULARY_COMMENT = eINSTANCE.getResourceProperty_VocabularyComment();
 
         /**
          * The meta object literal for the '{@link adaptorinterface.impl.CreationFactoryImpl <em>Creation Factory</em>}' class.
@@ -7155,6 +7386,32 @@ public interface AdaptorinterfacePackage extends EPackage {
         EAttribute WEB_SERVICE_PERSISTENCE__UPDATE = eINSTANCE.getWebServicePersistence_Update();
 
         /**
+         * The meta object literal for the '{@link adaptorinterface.impl.UserSettingsImpl <em>User Settings</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.impl.UserSettingsImpl
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getUserSettings()
+         * @generated
+         */
+        EClass USER_SETTINGS = eINSTANCE.getUserSettings();
+
+        /**
+         * The meta object literal for the '<em><b>View Prefixes</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute USER_SETTINGS__VIEW_PREFIXES = eINSTANCE.getUserSettings_ViewPrefixes();
+
+        /**
+         * The meta object literal for the '<em><b>View Label As</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute USER_SETTINGS__VIEW_LABEL_AS = eINSTANCE.getUserSettings_ViewLabelAs();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.ResourcePropertyOccurs <em>Resource Property Occurs</em>}' enum.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7223,6 +7480,26 @@ public interface AdaptorinterfacePackage extends EPackage {
          * @generated
          */
 		EEnum SHACL_PROPERTY_DATA_TYPE = eINSTANCE.getShaclPropertyDataType();
+
+        /**
+         * The meta object literal for the '{@link adaptorinterface.UserSettingsViewPrefixes <em>User Settings View Prefixes</em>}' enum.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.UserSettingsViewPrefixes
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getUserSettingsViewPrefixes()
+         * @generated
+         */
+        EEnum USER_SETTINGS_VIEW_PREFIXES = eINSTANCE.getUserSettingsViewPrefixes();
+
+        /**
+         * The meta object literal for the '{@link adaptorinterface.UserSettingsViewLabelAs <em>User Settings View Label As</em>}' enum.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.UserSettingsViewLabelAs
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getUserSettingsViewLabelAs()
+         * @generated
+         */
+        EEnum USER_SETTINGS_VIEW_LABEL_AS = eINSTANCE.getUserSettingsViewLabelAs();
 
 	}
 

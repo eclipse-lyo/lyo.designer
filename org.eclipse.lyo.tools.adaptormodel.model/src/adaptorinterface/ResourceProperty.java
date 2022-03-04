@@ -27,6 +27,7 @@ import vocabulary.Property;
  *   <li>{@link adaptorinterface.ResourceProperty#getAllowedValue <em>Allowed Value</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getIsMemberProperty <em>Is Member Property</em>}</li>
  *   <li>{@link adaptorinterface.ResourceProperty#getAdditionalConstraints <em>Additional Constraints</em>}</li>
+ *   <li>{@link adaptorinterface.ResourceProperty#getVocabularyComment <em>Vocabulary Comment</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getResourceProperty()
@@ -391,5 +392,30 @@ public interface ResourceProperty extends ShapeProperty {
      * @generated
      */
     void setAdditionalConstraints(String value);
+
+    /**
+     * Returns the value of the '<em><b>Vocabulary Comment</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * 
+     * <!-- end-model-doc -->
+     * @return the value of the '<em>Vocabulary Comment</em>' attribute.
+     * @see #setVocabularyComment(String)
+     * @see adaptorinterface.AdaptorinterfacePackage#getResourceProperty_VocabularyComment()
+     * @model
+     * @generated
+     */
+    String getVocabularyComment();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.ResourceProperty#getVocabularyComment <em>Vocabulary Comment</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Vocabulary Comment</em>' attribute.
+     * @see #getVocabularyComment()
+     * @generated
+     */
+    void setVocabularyComment(String value);
 
 } // ResourceProperty

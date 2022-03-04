@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import vocabulary.Vocabulary;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,6 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getShaclShapes <em>Shacl Shapes</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getShaclProperties <em>Shacl Properties</em>}</li>
+ *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getImpliedVocabulary <em>Implied Vocabulary</em>}</li>
  * </ul>
  *
  * @generated
@@ -161,6 +163,16 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	protected EList<ShaclProperty> shaclProperties;
 
 	/**
+     * The cached value of the '{@link #getImpliedVocabulary() <em>Implied Vocabulary</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getImpliedVocabulary()
+     * @generated
+     * @ordered
+     */
+    protected Vocabulary impliedVocabulary;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -409,6 +421,51 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Vocabulary getImpliedVocabulary() {
+        return impliedVocabulary;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetImpliedVocabulary(Vocabulary newImpliedVocabulary, NotificationChain msgs) {
+        Vocabulary oldImpliedVocabulary = impliedVocabulary;
+        impliedVocabulary = newImpliedVocabulary;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY, oldImpliedVocabulary, newImpliedVocabulary);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setImpliedVocabulary(Vocabulary newImpliedVocabulary) {
+        if (newImpliedVocabulary != impliedVocabulary) {
+            NotificationChain msgs = null;
+            if (impliedVocabulary != null)
+                msgs = ((InternalEObject)impliedVocabulary).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY, null, msgs);
+            if (newImpliedVocabulary != null)
+                msgs = ((InternalEObject)newImpliedVocabulary).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY, null, msgs);
+            msgs = basicSetImpliedVocabulary(newImpliedVocabulary, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY, newImpliedVocabulary, newImpliedVocabulary));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -427,6 +484,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
                 return ((InternalEList<?>)getShaclShapes()).basicRemove(otherEnd, msgs);
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
                 return ((InternalEList<?>)getShaclProperties()).basicRemove(otherEnd, msgs);
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
+                return basicSetImpliedVocabulary(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -458,6 +517,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
                 return getShaclShapes();
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
                 return getShaclProperties();
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
+                return getImpliedVocabulary();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -502,6 +563,9 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
                 getShaclProperties().clear();
                 getShaclProperties().addAll((Collection<? extends ShaclProperty>)newValue);
                 return;
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
+                setImpliedVocabulary((Vocabulary)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -541,6 +605,9 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
                 getShaclProperties().clear();
                 return;
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
+                setImpliedVocabulary((Vocabulary)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -571,6 +638,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
                 return shaclShapes != null && !shaclShapes.isEmpty();
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
                 return shaclProperties != null && !shaclProperties.isEmpty();
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
+                return impliedVocabulary != null;
         }
         return super.eIsSet(featureID);
     }

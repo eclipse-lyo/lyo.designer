@@ -54,6 +54,7 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
             addAllowedValuePropertyDescriptor(object);
             addIsMemberPropertyPropertyDescriptor(object);
             addAdditionalConstraintsPropertyDescriptor(object);
+            addVocabularyCommentPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -367,6 +368,28 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Vocabulary Comment feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addVocabularyCommentPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ResourceProperty_vocabularyComment_feature"),
+                 getString("_UI_ResourceProperty_vocabularyComment_description"),
+                 AdaptorinterfacePackage.Literals.RESOURCE_PROPERTY__VOCABULARY_COMMENT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This returns ResourceProperty.gif.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -416,6 +439,7 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ALLOWED_VALUE:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__IS_MEMBER_PROPERTY:
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__VOCABULARY_COMMENT:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

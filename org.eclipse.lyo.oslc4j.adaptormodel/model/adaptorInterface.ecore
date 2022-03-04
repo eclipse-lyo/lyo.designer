@@ -59,6 +59,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//SpecificationConfiguration"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="userSettings" eType="#//UserSettings"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -78,6 +80,8 @@
         eType="#//ShaclShape" containment="true" eKeys="#//ShaclShape/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="shaclProperties" upperBound="-1"
         eType="#//ShaclProperty" containment="true" eKeys="#//ShaclProperty/name"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="impliedVocabulary" eType="ecore:EClass vocabulary.ecore#//Vocabulary"
+        containment="true" eKeys="vocabulary.ecore#//Vocabulary/label"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamespacePrefix">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -159,6 +163,7 @@
         eType="#//ResourceProperty"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="additionalConstraints"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vocabularyComment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceProperty" eSuperTypes="#//ShapeProperty">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -182,6 +187,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMemberProperty" eType="#//ResourcePropertyIsMemberProperty"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="additionalConstraints"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vocabularyComment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResourcePropertyOccurs">
     <eLiterals name="exactlyOne" literal="exactlyOne"/>
@@ -417,5 +423,19 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="update" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UserSettingsViewPrefixes">
+    <eLiterals name="whenNecessary" literal="whenNecessary"/>
+    <eLiterals name="always" value="1" literal="always"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UserSettingsViewLabelAs">
+    <eLiterals name="shape" literal="shape"/>
+    <eLiterals name="vocabulary" value="1" literal="vocabulary"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UserSettings">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewPrefixes" eType="#//UserSettingsViewPrefixes"
+        defaultValueLiteral="whenNecessary"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewLabelAs" eType="#//UserSettingsViewLabelAs"
+        defaultValueLiteral="vocabulary"/>
   </eClassifiers>
 </ecore:EPackage>

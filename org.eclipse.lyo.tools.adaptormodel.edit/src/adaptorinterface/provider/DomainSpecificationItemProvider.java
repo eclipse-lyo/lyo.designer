@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import vocabulary.VocabularyFactory;
 
 /**
  * This is the item provider adapter for a {@link adaptorinterface.DomainSpecification} object.
@@ -158,6 +159,7 @@ public class DomainSpecificationItemProvider
             childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__CONFIGURATION);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__SHACL_SHAPES);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__SHACL_PROPERTIES);
+            childrenFeatures.add(AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY);
         }
         return childrenFeatures;
     }
@@ -223,6 +225,7 @@ public class DomainSpecificationItemProvider
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__CONFIGURATION:
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_SHAPES:
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -269,6 +272,11 @@ public class DomainSpecificationItemProvider
             (createChildParameter
                 (AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__SHACL_PROPERTIES,
                  AdaptorinterfaceFactory.eINSTANCE.createShaclProperty()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (AdaptorinterfacePackage.Literals.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY,
+                 VocabularyFactory.eINSTANCE.createVocabulary()));
     }
 
 	/**

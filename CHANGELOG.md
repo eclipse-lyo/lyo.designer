@@ -4,6 +4,8 @@
 
 ### Added
 - added an optional "additionalConstraints" multi-line text attribute on Resources and ResourceProperties. The semantics of these properties This results in no code generation changes.
+- Introducing a user setting that allows one to view Shapes or Vocabularies terms in the Specification models.
+
 
 ### Changed
 

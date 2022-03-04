@@ -58,6 +58,14 @@
       <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/Float"/>
       <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//ShaclPropertyDataType/Integer"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="adaptorInterface.ecore#//UserSettingsViewPrefixes">
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//UserSettingsViewPrefixes/whenNecessary"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//UserSettingsViewPrefixes/always"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="adaptorInterface.ecore#//UserSettingsViewLabelAs">
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//UserSettingsViewLabelAs/shape"/>
+      <genEnumLiterals ecoreEnumLiteral="adaptorInterface.ecore#//UserSettingsViewLabelAs/vocabulary"/>
+    </genEnums>
     <genClasses ecoreClass="adaptorInterface.ecore#//AdaptorInterface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/serviceProviderCatalog"/>
@@ -89,6 +97,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Specification/domainPrefixes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Specification/generationSetting"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Specification/configuration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Specification/userSettings"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//DomainSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//DomainSpecification/name"/>
@@ -100,6 +109,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/configuration"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/shaclShapes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/shaclProperties"/>
+      <genFeatures documentation="" property="None" children="true" createChild="true"
+          propertyDescription="For Resources and Resource Properties that do not explicitly refer to a Vocabulary Term, use this Vocabulary (namespace, prefix, etc) instead of those from the Domain Specification."
+          ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/impliedVocabulary"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//NamespacePrefix">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//NamespacePrefix/name"/>
@@ -155,6 +167,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Resource/extends"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Resource/resourceProperties"/>
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Resource/additionalConstraints"/>
+      <genFeatures documentation="" createChild="false" propertyDescription="For Resources and Resource Properties that do not explicitly refer to a Vocabulary Term, use this Vocabulary comment"
+          ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Resource/vocabularyComment"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//ResourceProperty">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/id"/>
@@ -171,6 +185,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/allowedValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/isMemberProperty"/>
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/additionalConstraints"/>
+      <genFeatures documentation="" createChild="false" propertyDescription="For Resources and Resource Properties that do not explicitly refer to a Vocabulary Term, use this Vocabulary comment"
+          ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ResourceProperty/vocabularyComment"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//CreationFactory">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//CreationFactory/title"/>
@@ -304,6 +320,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebServicePersistence/read"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebServicePersistence/delete"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//WebServicePersistence/update"/>
+    </genClasses>
+    <genClasses ecoreClass="adaptorInterface.ecore#//UserSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//UserSettings/viewPrefixes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//UserSettings/viewLabelAs"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

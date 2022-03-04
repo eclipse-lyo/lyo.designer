@@ -106,6 +106,7 @@ public class SpecificationItemProvider
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__DOMAIN_PREFIXES);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__GENERATION_SETTING);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__CONFIGURATION);
+            childrenFeatures.add(AdaptorinterfacePackage.Literals.SPECIFICATION__USER_SETTINGS);
         }
         return childrenFeatures;
     }
@@ -168,6 +169,7 @@ public class SpecificationItemProvider
             case AdaptorinterfacePackage.SPECIFICATION__DOMAIN_PREFIXES:
             case AdaptorinterfacePackage.SPECIFICATION__GENERATION_SETTING:
             case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
+            case AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -204,6 +206,11 @@ public class SpecificationItemProvider
             (createChildParameter
                 (AdaptorinterfacePackage.Literals.SPECIFICATION__CONFIGURATION,
                  AdaptorinterfaceFactory.eINSTANCE.createMavenSpecificationConfiguration()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (AdaptorinterfacePackage.Literals.SPECIFICATION__USER_SETTINGS,
+                 AdaptorinterfaceFactory.eINSTANCE.createUserSettings()));
     }
 
 	/**

@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.Specification#getDomainPrefixes <em>Domain Prefixes</em>}</li>
  *   <li>{@link adaptorinterface.Specification#getGenerationSetting <em>Generation Setting</em>}</li>
  *   <li>{@link adaptorinterface.Specification#getConfiguration <em>Configuration</em>}</li>
+ *   <li>{@link adaptorinterface.Specification#getUserSettings <em>User Settings</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getSpecification()
@@ -132,5 +133,27 @@ public interface Specification extends EObject {
      * @generated
      */
 	void setConfiguration(SpecificationConfiguration value);
+
+    /**
+     * Returns the value of the '<em><b>User Settings</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>User Settings</em>' containment reference.
+     * @see #setUserSettings(UserSettings)
+     * @see adaptorinterface.AdaptorinterfacePackage#getSpecification_UserSettings()
+     * @model containment="true"
+     * @generated
+     */
+    UserSettings getUserSettings();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.Specification#getUserSettings <em>User Settings</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>User Settings</em>' containment reference.
+     * @see #getUserSettings()
+     * @generated
+     */
+    void setUserSettings(UserSettings value);
 
 } // Specification
