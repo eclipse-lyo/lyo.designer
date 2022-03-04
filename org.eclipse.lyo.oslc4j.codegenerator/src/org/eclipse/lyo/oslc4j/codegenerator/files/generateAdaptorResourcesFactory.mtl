@@ -43,32 +43,27 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [for (aBasicCapability: BasicCapability | basicCapabilities(anAdaptorInterface, aResource))]
 [let methodSuffix: String = (if (basicCapabilities(anAdaptorInterface, aResource)->size() = 1) then '' else basicCapabilities(anAdaptorInterface, aResource)->indexOf(aBasicCapability).toString() endif)]
 [if (basicCapabilities(anAdaptorInterface, aResource)->indexOf(aBasicCapability) = 1)]
-public static [javaClassName(aResource)/] create[javaName(aResource, true)/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/])
-{
+public [javaClassName(aResource)/] create[javaName(aResource, true)/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/]) {
     return new [javaClassName(aResource)/](constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aBasicCapability), false, false)/]));
 }
 [/if]
 
-public static URI constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/])
-{
-    String basePath = OSLC4JUtils.getServletURI();
+public URI constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/]) {
     Map<String, Object> pathParameters = new HashMap<String, Object>();
     [for (instanceCompositeID: String | aResource.instanceCompositeID(aBasicCapability))]
     pathParameters.put("[instanceCompositeID /]", [instanceCompositeID /]);
     [/for]
     String instanceURI = "[aResource.instanceURI(aBasicCapability) /]";
 
-    final UriBuilder builder = UriBuilder.fromUri(basePath);
+    final UriBuilder builder = UriBuilder.fromUri(this.basePath);
     return builder.path(instanceURI).buildFromMap(pathParameters);
 }
 
-public static Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, true)/] final String label)
-{
+public Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, true)/] final String label) {
     return new Link(constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aBasicCapability), false, false)/]), label);
 }
 
-public static Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/])
-{
+public Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/]) {
     return new Link(constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aBasicCapability), false, false)/]));
 }
 [/let]
@@ -76,32 +71,27 @@ public static Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([
 
 [for (aWebService: WebService | webServices(anAdaptorInterface, aResource))]
 [if (webServices(anAdaptorInterface, aResource)->indexOf(aWebService) = 1)]
-public static [javaClassName(aResource)/] create[javaName(aResource, true)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/])
-{
+public [javaClassName(aResource)/] create[javaName(aResource, true)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/]) {
     return new [javaClassName(aResource)/]([constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]));
 }
 [/if]
 
-public static URI [constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/])
-{
-    String basePath = OSLC4JUtils.getServletURI();
+public URI [constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/]) {
     Map<String, Object> pathParameters = new HashMap<String, Object>();
     [for (instanceCompositeID: String | aResource.instanceCompositeID(aWebService))]
     pathParameters.put("[instanceCompositeID /]", [instanceCompositeID /]);
     [/for]
     String instanceURI = "[aResource.instanceURI(aWebService) /]";
 
-    final UriBuilder builder = UriBuilder.fromUri(basePath);
+    final UriBuilder builder = UriBuilder.fromUri(this.basePath);
     return builder.path(instanceURI).buildFromMap(pathParameters);
 }
 
-public static Link [constructLinkMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, true)/] final String label)
-{
+public Link [constructLinkMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, true)/] final String label) {
     return new Link([constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]), label);
 }
 
-public static Link [constructLinkMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/])
-{
+public Link [constructLinkMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/]) {
     return new Link([constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]));
 }
 [/for]
@@ -149,9 +139,15 @@ package [javaClassPackageNameForResourcesFactory(anAdaptorInterface) /];
 
 public class [javaClassNameForResourcesFactory(anAdaptorInterface) /] {
 
+    private String basePath;
+
     // [protected ('class_attributes')]
     // [/protected]
-    
+
+    public [javaClassNameForResourcesFactory(anAdaptorInterface)/](String basePath) {
+        this.basePath = basePath;
+    }
+
     // [protected ('class_methods')]
     // [/protected]
 
