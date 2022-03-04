@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link adaptorinterface.Resource#getExtends <em>Extends</em>}</li>
  *   <li>{@link adaptorinterface.Resource#getResourceProperties <em>Resource Properties</em>}</li>
  *   <li>{@link adaptorinterface.Resource#getAdditionalConstraints <em>Additional Constraints</em>}</li>
+ *   <li>{@link adaptorinterface.Resource#getVocabularyComment <em>Vocabulary Comment</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getResource()
@@ -167,6 +168,31 @@ public interface Resource extends Shape {
      * @generated
      */
     EList<String> getAdditionalConstraints();
+
+    /**
+     * Returns the value of the '<em><b>Vocabulary Comment</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * 
+     * <!-- end-model-doc -->
+     * @return the value of the '<em>Vocabulary Comment</em>' attribute.
+     * @see #setVocabularyComment(String)
+     * @see adaptorinterface.AdaptorinterfacePackage#getResource_VocabularyComment()
+     * @model
+     * @generated
+     */
+    String getVocabularyComment();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.Resource#getVocabularyComment <em>Vocabulary Comment</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Vocabulary Comment</em>' attribute.
+     * @see #getVocabularyComment()
+     * @generated
+     */
+    void setVocabularyComment(String value);
 
     /**
      * Returns the value of the '<em><b>Describes</b></em>' reference.

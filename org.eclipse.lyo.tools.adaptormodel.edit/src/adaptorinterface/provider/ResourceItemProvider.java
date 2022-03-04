@@ -53,6 +53,7 @@ public class ResourceItemProvider
             addExtendsPropertyDescriptor(object);
             addResourcePropertiesPropertyDescriptor(object);
             addAdditionalConstraintsPropertyDescriptor(object);
+            addVocabularyCommentPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -212,6 +213,28 @@ public class ResourceItemProvider
     }
 
     /**
+     * This adds a property descriptor for the Vocabulary Comment feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addVocabularyCommentPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Resource_vocabularyComment_feature"),
+                 getString("_UI_Resource_vocabularyComment_description"),
+                 AdaptorinterfacePackage.Literals.RESOURCE__VOCABULARY_COMMENT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the Describes feature.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -276,6 +299,7 @@ public class ResourceItemProvider
             case AdaptorinterfacePackage.RESOURCE__TITLE:
             case AdaptorinterfacePackage.RESOURCE__DESCRIPTION:
             case AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS:
+            case AdaptorinterfacePackage.RESOURCE__VOCABULARY_COMMENT:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

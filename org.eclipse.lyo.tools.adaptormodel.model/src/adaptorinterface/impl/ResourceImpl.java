@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getExtends <em>Extends</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getResourceProperties <em>Resource Properties</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourceImpl#getAdditionalConstraints <em>Additional Constraints</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourceImpl#getVocabularyComment <em>Vocabulary Comment</em>}</li>
  * </ul>
  *
  * @generated
@@ -159,6 +160,26 @@ public class ResourceImpl extends ShapeImpl implements Resource {
      * @ordered
      */
     protected EList<String> additionalConstraints;
+
+    /**
+     * The default value of the '{@link #getVocabularyComment() <em>Vocabulary Comment</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getVocabularyComment()
+     * @generated
+     * @ordered
+     */
+    protected static final String VOCABULARY_COMMENT_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getVocabularyComment() <em>Vocabulary Comment</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getVocabularyComment()
+     * @generated
+     * @ordered
+     */
+    protected String vocabularyComment = VOCABULARY_COMMENT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -314,6 +335,29 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getVocabularyComment() {
+        return vocabularyComment;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setVocabularyComment(String newVocabularyComment) {
+        String oldVocabularyComment = vocabularyComment;
+        vocabularyComment = newVocabularyComment;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE__VOCABULARY_COMMENT, oldVocabularyComment, vocabularyComment));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -377,6 +421,8 @@ public class ResourceImpl extends ShapeImpl implements Resource {
                 return getResourceProperties();
             case AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS:
                 return getAdditionalConstraints();
+            case AdaptorinterfacePackage.RESOURCE__VOCABULARY_COMMENT:
+                return getVocabularyComment();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -417,6 +463,9 @@ public class ResourceImpl extends ShapeImpl implements Resource {
                 getAdditionalConstraints().clear();
                 getAdditionalConstraints().addAll((Collection<? extends String>)newValue);
                 return;
+            case AdaptorinterfacePackage.RESOURCE__VOCABULARY_COMMENT:
+                setVocabularyComment((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -453,6 +502,9 @@ public class ResourceImpl extends ShapeImpl implements Resource {
             case AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS:
                 getAdditionalConstraints().clear();
                 return;
+            case AdaptorinterfacePackage.RESOURCE__VOCABULARY_COMMENT:
+                setVocabularyComment(VOCABULARY_COMMENT_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -481,6 +533,8 @@ public class ResourceImpl extends ShapeImpl implements Resource {
                 return resourceProperties != null && !resourceProperties.isEmpty();
             case AdaptorinterfacePackage.RESOURCE__ADDITIONAL_CONSTRAINTS:
                 return additionalConstraints != null && !additionalConstraints.isEmpty();
+            case AdaptorinterfacePackage.RESOURCE__VOCABULARY_COMMENT:
+                return VOCABULARY_COMMENT_EDEFAULT == null ? vocabularyComment != null : !VOCABULARY_COMMENT_EDEFAULT.equals(vocabularyComment);
         }
         return super.eIsSet(featureID);
     }
@@ -505,6 +559,8 @@ public class ResourceImpl extends ShapeImpl implements Resource {
         result.append(description);
         result.append(", additionalConstraints: ");
         result.append(additionalConstraints);
+        result.append(", vocabularyComment: ");
+        result.append(vocabularyComment);
         result.append(')');
         return result.toString();
     }

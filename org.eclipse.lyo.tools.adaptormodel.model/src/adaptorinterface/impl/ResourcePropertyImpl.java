@@ -41,6 +41,7 @@ import vocabulary.Property;
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getAllowedValue <em>Allowed Value</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getIsMemberProperty <em>Is Member Property</em>}</li>
  *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getAdditionalConstraints <em>Additional Constraints</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ResourcePropertyImpl#getVocabularyComment <em>Vocabulary Comment</em>}</li>
  * </ul>
  *
  * @generated
@@ -295,6 +296,26 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
      * @ordered
      */
     protected String additionalConstraints = ADDITIONAL_CONSTRAINTS_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getVocabularyComment() <em>Vocabulary Comment</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getVocabularyComment()
+     * @generated
+     * @ordered
+     */
+    protected static final String VOCABULARY_COMMENT_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getVocabularyComment() <em>Vocabulary Comment</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getVocabularyComment()
+     * @generated
+     * @ordered
+     */
+    protected String vocabularyComment = VOCABULARY_COMMENT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -638,6 +659,29 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getVocabularyComment() {
+        return vocabularyComment;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setVocabularyComment(String newVocabularyComment) {
+        String oldVocabularyComment = vocabularyComment;
+        vocabularyComment = newVocabularyComment;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.RESOURCE_PROPERTY__VOCABULARY_COMMENT, oldVocabularyComment, vocabularyComment));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -673,6 +717,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
                 return getIsMemberProperty();
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
                 return getAdditionalConstraints();
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__VOCABULARY_COMMENT:
+                return getVocabularyComment();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -730,6 +776,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
                 setAdditionalConstraints((String)newValue);
                 return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__VOCABULARY_COMMENT:
+                setVocabularyComment((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -784,6 +833,9 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
                 setAdditionalConstraints(ADDITIONAL_CONSTRAINTS_EDEFAULT);
                 return;
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__VOCABULARY_COMMENT:
+                setVocabularyComment(VOCABULARY_COMMENT_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -824,6 +876,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
                 return isMemberProperty != IS_MEMBER_PROPERTY_EDEFAULT;
             case AdaptorinterfacePackage.RESOURCE_PROPERTY__ADDITIONAL_CONSTRAINTS:
                 return ADDITIONAL_CONSTRAINTS_EDEFAULT == null ? additionalConstraints != null : !ADDITIONAL_CONSTRAINTS_EDEFAULT.equals(additionalConstraints);
+            case AdaptorinterfacePackage.RESOURCE_PROPERTY__VOCABULARY_COMMENT:
+                return VOCABULARY_COMMENT_EDEFAULT == null ? vocabularyComment != null : !VOCABULARY_COMMENT_EDEFAULT.equals(vocabularyComment);
         }
         return super.eIsSet(featureID);
     }
@@ -862,6 +916,8 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
         result.append(isMemberProperty);
         result.append(", additionalConstraints: ");
         result.append(additionalConstraints);
+        result.append(", vocabularyComment: ");
+        result.append(vocabularyComment);
         result.append(')');
         return result.toString();
     }

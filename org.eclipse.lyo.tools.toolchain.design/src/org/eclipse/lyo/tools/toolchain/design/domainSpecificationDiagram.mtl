@@ -14,15 +14,29 @@
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
 /]
-[module domainSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0')/]
+[module domainSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
+
+[import org::eclipse::lyo::tools::toolchain::design::DomainSpecificationVocabulary/]
+[import org::eclipse::lyo::tools::toolchain::design::ResourceShapeVocabulary/]
+[import org::eclipse::lyo::tools::toolchain::design::ResourcePropertyShapeVocabulary/]
+
+[query public userSettingsAlwaysViewPrefixes (e : EObject) : Boolean =
+(if (e.eContainer(Specification).userSettings.oclIsUndefined()) 
+    then false 
+    else e.eContainer(Specification).userSettings.viewPrefixes = UserSettingsViewPrefixes::always
+endif)
+/]
+
+[query public userSettingsViewLabelAsShape (e : EObject) : Boolean =
+(if (e.eContainer(Specification).userSettings.oclIsUndefined()) 
+    then true 
+    else e.eContainer(Specification).userSettings.viewLabelAs = UserSettingsViewLabelAs::shape
+endif)
+/]
 
 [query public visibleResources (diagram : DSemanticDiagram) : Sequence(Resource) =
 (diagram.containers->select(c : DDiagramElementContainer | (Sequence{'Specification.DomainSpecification.Resource', 'DomainSpecification.Resource'}->includes(c.actualMapping.name))._and(c.visible)))
 	.target.oclAsType(Resource)
-/]
-
-[query public isLiteral(aResourceProperty : ResourceProperty) : Boolean =
-not Sequence{ResourcePropertyValueType::Resource, ResourcePropertyValueType::LocalResource}->includes(aResourceProperty.valueType)
 /]
 
 [query public literalResourceProperties(aResource : Resource) : Set(ResourceProperty) =
@@ -47,57 +61,85 @@ aResource.referenceResourceProperties()
 /]
 
 
-[query public labelAsResourceSubnode(aResourceProperty : ResourceProperty, propertyView : DDiagramElement) : String =
-(if (aResourceProperty.eContainer(DomainSpecification) = propertyView.eContainer().oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) 
-	then '' 
-	else aResourceProperty.eContainer(DomainSpecification).namespacePrefix.name  + ':' 
-	endif) 
-+ aResourceProperty.labelInDomainSpecification()
+[comment Always show the prefix, since prefix no longer depend on the domainSpec. It relates to the vocab.
+What would the logic look like otherwise /]
+[query public labelAsResourceSubnode(aResourceProperty : ResourceProperty, sourceResource : Resource) : String =
+(if (aResourceProperty.userSettingsViewLabelAsShape())  then 
+    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+        not (aResourceProperty.eContainer(DomainSpecification) = sourceResource.eContainer(DomainSpecification))) 
+        then aResourceProperty.toString(true, true, true) 
+        else aResourceProperty.toString(true, false, true)
+    endif)
+else 
+    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+        not (aResourceProperty.deducePropertyDefinition_namespaceURI() = sourceResource.deduceDescribes_namespaceURI()))
+        then aResourceProperty.toString(false, true, true) 
+        else aResourceProperty.toString(false, false, true)
+    endif)
+endif)
 /]
 
 [query public labelInDomainSpecification(aResourceProperty : ResourceProperty) : String =
-	name 
-	+ ': '
-	+ (if (aResourceProperty.isLiteral()) 
-		then valueType 
-		else (if (range->size() = 0) then 'Resource' else range->first().name + (if (range->size() > 1) then '++' else '' endif) endif) 
-		endif)
-	+ (if (Sequence{ResourcePropertyOccurs::oneOrMany, ResourcePropertyOccurs::zeroOrMany}->includes(occurs)) then ' []' else '' endif)
+(if (aResourceProperty.userSettingsViewLabelAsShape())  then 
+    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+        false) 
+        then aResourceProperty.toString(true, true, true) 
+        else aResourceProperty.toString(true, false, true)
+    endif)
+else 
+    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+        not (aResourceProperty.deducePropertyDefinition_namespaceURI() = aResourceProperty.eContainer(DomainSpecification).deduceVocabulary_namespaceURI())) 
+        then aResourceProperty.toString(false, true, true) 
+        else aResourceProperty.toString(false, false, true)
+    endif)
+endif)
 /]
 
-[query public labelAtArrowCenter(aResourceProperty : ResourceProperty, propertyView : DEdge) : String =
+[query public labelAtArrowCenter(aResourceProperty : ResourceProperty, sourceResource : Resource) : String =
 (if (aResourceProperty.valueType = ResourcePropertyValueType::LocalResource) then 'Local: ' else '' endif)
 +
-(if (aResourceProperty.eContainer(DomainSpecification) = propertyView.sourceNode.oclAsType(DNodeList).target.oclAsType(Resource).eContainer(DomainSpecification)) 
-    then '' 
-    else aResourceProperty.eContainer(DomainSpecification).namespacePrefix.name  + ':' 
-    endif) 
-+ aResourceProperty.name
+(if (aResourceProperty.userSettingsViewLabelAsShape())  then 
+    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+        not (aResourceProperty.eContainer(DomainSpecification) = sourceResource.eContainer(DomainSpecification))) 
+        then aResourceProperty.toString(true, true, false) 
+        else aResourceProperty.toString(true, false, false)
+    endif)
+else 
+    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+        not (aResourceProperty.deducePropertyDefinition_namespaceURI() = sourceResource.deduceDescribes_namespaceURI()))
+        then aResourceProperty.toString(false, true, false) 
+        else aResourceProperty.toString(false, false, false)
+    endif)
+endif)
 /]
 
 [query public labelAtArrowEnd(aResourceProperty : ResourceProperty) : String =
-	(if (aResourceProperty.occurs = ResourcePropertyOccurs::exactlyOne) 
-		then '1' 
-	else if (aResourceProperty.occurs = ResourcePropertyOccurs::zeroOrOne) 
-		then '0..1' 
-	else if (aResourceProperty.occurs = ResourcePropertyOccurs::zeroOrMany) 
-		then '0..*' 
-	else if (aResourceProperty.occurs = ResourcePropertyOccurs::oneOrMany) 
-		then '1..*' 
-	else '???' 
-	endif endif endif endif)
+    aResourceProperty.cardinalityRepresentation()
 /]
 
 [comment If at least one parent resource is not visible in the diagram, show textually the parent resources.
 Show at least the first invisible parent resource./]
 [query public labelInDomainSpecification(aResource : Resource, diagram : DSemanticDiagram) : String =
 let invisibleParentResources : OrderedSet(Resource) = aResource.extends->select(parent : Resource | not(visibleResources(diagram)->includes(parent))) in
-aResource.name +
-    (if (invisibleParentResources->size() = 0)
-    then
-        ''
-    else
-        (lineSeparator() + 'extends: ' + invisibleParentResources->first().name) +
-        (if (invisibleParentResources->size() > 1) then ' & ...' else '' endif)
+(if (aResource.userSettingsViewLabelAsShape())  then 
+    (if (aResource.userSettingsAlwaysViewPrefixes() or
+        false) 
+        then aResource.toString(true, true) 
+        else aResource.toString(true, false)
     endif)
+else 
+    (if (aResource.userSettingsAlwaysViewPrefixes() or
+        not (aResource.deduceDescribes_namespaceURI() = aResource.eContainer(DomainSpecification).deduceVocabulary_namespaceURI())) 
+        then aResource.toString(false, true) 
+        else aResource.toString(false, false)
+    endif)
+endif)
++
+(if (invisibleParentResources->size() = 0)
+then
+    ''
+else
+    (lineSeparator() + 'extends: ' + invisibleParentResources->first().toString(false, true)) +
+    (if (invisibleParentResources->size() > 1) then ' & ...' else '' endif)
+endif)
 /]
