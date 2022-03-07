@@ -19,6 +19,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::storeServices/]
 
 [template public additionalContextInitialization(traceabilityContext : OclAny) post (trim())]
 [/template]
@@ -32,6 +33,8 @@ import java.util.NoSuchElementException;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
+import java.util.ArrayList;
+import java.net.URI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,6 +46,14 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
+
+[if (anAdaptorInterface.storeEnabled())][anAdaptorInterface.storeImports()/][/if]
+[if (anAdaptorInterface.trsServiceEnabled())]
+import org.eclipse.lyo.oslc4j.trs.server.InmemPagedTrs;
+import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
+import org.eclipse.lyo.oslc4j.trs.server.PagedTrsFactory;
+import org.eclipse.lyo.oslc4j.trs.server.TrsEventHandler;
+[/if]
 
 // [protected ('imports')]
 // [/protected]
@@ -79,12 +90,32 @@ package [javaClassPackageNameForAdaptorServletListener(anAdaptorInterface) /];
 public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] implements ServletContextListener  {
     private static final Logger logger = LoggerFactory.getLogger([javaClassNameForAdaptorServletListener(anAdaptorInterface)/].class);
 
+    [anAdaptorInterface.storeClassAttributes()/]
+    [if (anAdaptorInterface.trsServiceEnabled())]
+    private static PagedTrs pagedTrs;
+    private static TrsEventHandler trsEventHandler;
+    [/if]
     // [protected ('class_attributes')]
     // [/protected]
 
     public ServletListener() {
         super();
     }
+
+    [if (anAdaptorInterface.trsServiceEnabled())]
+    public static PagedTrs getPagedTrs() {
+        return pagedTrs;
+    }
+
+    public static TrsEventHandler getTrsEventHandler() {
+        return trsEventHandler;
+    }
+
+    // [protected ('trsMethods')]
+    // TODO Use one of these methods to update the PagedTrs service, when appropriate.
+    // trsEventHandler.['[onCreated|onModified|onDeleted]'/]();
+    // [/protected]
+    [/if]
 
     @Override
     public void contextInitialized(final ServletContextEvent servletContextEvent)
@@ -120,8 +151,26 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
 
         logger.info("servletListner contextInitialized.");
 
-        // Establish connection to data backbone etc ...
-        [javaClassNameForAdaptorManager(anAdaptorInterface) /].contextInitializeServletListener(servletContextEvent);
+        // [protected ('contextInitialized_mid')]
+        // TODO Implement code to establish connection to data backbone etc ...
+        // [/protected]
+        [if (anAdaptorInterface.storeEnabled())]
+        [anAdaptorInterface.storeInitialization()/]
+        [/if]
+        [if (anAdaptorInterface.trsServiceEnabled())]
+        // [protected ('TRSInitialise')]
+        // [/protected]
+        ArrayList<URI> uris = new ArrayList<URI>();
+        // [protected ('TRSInitialBase')]
+        //TODO: Provide the initial list of URIs to populate the TRS log with
+        // [/protected]
+        InmemPagedTrs temp = new PagedTrsFactory().getInmemPagedTrs([anAdaptorInterface.trsService.basePageLimit/], [anAdaptorInterface.trsService.changeLogPageLimit/], uris);
+        pagedTrs = temp;
+        trsEventHandler = temp;
+        // [protected ('TRSFinalize')]
+        // [/protected]
+        [/if]
+
         [additionalContextInitialization()/]
         // [protected ('contextInitialized_final')]
         // [/protected]
@@ -134,7 +183,9 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
         // [/protected]
 
         // Shutdown connections to data backbone etc...
-        [javaClassNameForAdaptorManager(anAdaptorInterface) /].contextDestroyServletListener(servletContextEvent);
+        // [protected ('contextDestroyed_mid')]
+        // TODO Implement code to shutdown connections to data backbone etc...
+        // [/protected]
 
         [additionalContextDestroyed()/]
         // [protected ('contextDestroyed_final')]

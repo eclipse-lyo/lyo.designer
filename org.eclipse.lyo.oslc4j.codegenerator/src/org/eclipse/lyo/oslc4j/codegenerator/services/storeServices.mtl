@@ -107,7 +107,7 @@ String lyoStorePropertiesFile = [anAdaptorInterface.javaClassNameForAdaptorManag
 try {
     lyoStoreProperties.load(new FileInputStream(lyoStorePropertiesFile));
 } catch (IOException e) {
-    log.error("Failed to initialize Store. properties file for Store configuration could not be loaded.", e);
+    logget.error("Failed to initialize Store. properties file for Store configuration could not be loaded.", e);
     throw new RuntimeException(e);
 }
 
@@ -120,7 +120,7 @@ try {
     sparqlQueryEndpoint = new URI(lyoStoreProperties.getProperty("sparqlQueryEndpoint"));
     sparqlUpdateEndpoint = new URI(lyoStoreProperties.getProperty("sparqlUpdateEndpoint"));
 } catch (URISyntaxException e) {
-    log.error("Failed to initialize Store. One of the configuration property ('defaultNamedGraph' or 'sparqlQueryEndpoint' or 'sparqlUpdateEndpoint') is not a valid URI.", e);
+    logger.error("Failed to initialize Store. One of the configuration property ('defaultNamedGraph' or 'sparqlQueryEndpoint' or 'sparqlUpdateEndpoint') is not a valid URI.", e);
     throw new RuntimeException(e);
 }
 String userName = null;

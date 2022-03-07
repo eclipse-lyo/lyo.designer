@@ -101,7 +101,7 @@ import [javaClassFullName(aServiceProvider) /];
 [for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name))]
 import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
-[anAdaptorInterface.storeImports()/]
+[if (anAdaptorInterface.storeEnabled())][anAdaptorInterface.storeImports()/][/if]
 [if (anAdaptorInterface.trsServiceEnabled())]
 import org.eclipse.lyo.oslc4j.trs.server.InmemPagedTrs;
 import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
@@ -120,60 +120,19 @@ public class [javaClassNameForAdaptorManager(anAdaptorInterface) /] {
 
     private static final Logger log = LoggerFactory.getLogger([anAdaptorInterface.javaClassNameForAdaptorManager()/].class);
 
-    [anAdaptorInterface.storeClassAttributes()/]
-    [if (anAdaptorInterface.trsServiceEnabled())]
-    private static PagedTrs pagedTrs;
-    private static TrsEventHandler trsEventHandler;
-    [/if]
     // [protected ('class_attributes')]
     // [/protected]
     
-    [if (anAdaptorInterface.trsServiceEnabled())]
-    public static PagedTrs getPagedTrs() {
-        return pagedTrs;
-    }
-
-    public static TrsEventHandler getTrsEventHandler() {
-        return trsEventHandler;
-    }
-
-    // [protected ('trsMethods')]
-    // TODO Use one of these methods to update the PagedTrs service, when appropriate.
-    // trsEventHandler.['[onCreated|onModified|onDeleted]'/]();
-    // [/protected]
-    [/if]
     [backendCode(anAdaptorInterface.backendCodeTemplate_classMethods)/]
     // [protected ('class_methods')]
     // [/protected]
 
-    public static void contextInitializeServletListener(final ServletContextEvent servletContextEvent)
-    {
-        [backendCode(anAdaptorInterface.backendCodeTemplate_servletListenerInitialize)/]
-        // [protected ('contextInitializeServletListener')]
-        // TODO Implement code to establish connection to data backbone etc ...
-        // [/protected]
-        [anAdaptorInterface.storeInitialization()/]
-        [if (anAdaptorInterface.trsServiceEnabled())]
-        // [protected ('TRSInitialise')]
-        // [/protected]
-        ArrayList<URI> uris = new ArrayList<URI>();
-        // [protected ('TRSInitialBase')]
-        //TODO: Provide the initial list of URIs to populate the TRS log with
-        // [/protected]
-        InmemPagedTrs temp = new PagedTrsFactory().getInmemPagedTrs([anAdaptorInterface.trsService.basePageLimit/], [anAdaptorInterface.trsService.changeLogPageLimit/], uris);
-        pagedTrs = temp;
-        trsEventHandler = temp;
-        // [protected ('TRSFinalize')]
-        // [/protected]
-        [/if]
+    private static void contextInitializeServletListener(final ServletContextEvent servletContextEvent) {
+    //This method is no longer in use. Migrate any user code blocks to the class [javaClassNameForAdaptorServletListener(anAdaptorInterface)/]
     }
 
-    public static void contextDestroyServletListener(ServletContextEvent servletContextEvent) 
-    {
-        [backendCode(anAdaptorInterface.backendCodeTemplate_servletListenerDestroy)/]
-        // [protected ('contextDestroyed')]
-        // TODO Implement code to shutdown connections to data backbone etc...
-        // [/protected]
+    private static void contextDestroyServletListener(ServletContextEvent servletContextEvent)  {
+    //This method is no longer in use. Migrate any user code blocks to the class [javaClassNameForAdaptorServletListener(anAdaptorInterface)/]
     }
 
     [for (aServiceProvider: ServiceProvider | anAdaptorInterface.serviceProviders())]
