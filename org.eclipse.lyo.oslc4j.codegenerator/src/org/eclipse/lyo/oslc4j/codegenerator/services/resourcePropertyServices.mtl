@@ -35,7 +35,7 @@ not (Sequence{'URI'}->includes(aProperty.valueType.toString()))
 
 [query public resourcePropertyDefinitionNamespace(aResourceProperty: ResourceProperty) : String =
 (if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
-    javaInterfaceNameForConstants(aResourceProperty.definingDomainSpecification()).concat('.').concat(domainSpecificationNamespaceConstantName(aResourceProperty.definingDomainSpecification()))
+    javaInterfaceNameForConstants(aResourceProperty.definingDomainSpecification()).concat('.').concat(domainSpecificationImplicitVocabularyNamespaceConstantName(aResourceProperty.definingDomainSpecification()))
 else
     javaInterfaceNameForConstants(aResourceProperty.propertyDefinition.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResourceProperty.propertyDefinition.definingVocabulary()))
 endif)

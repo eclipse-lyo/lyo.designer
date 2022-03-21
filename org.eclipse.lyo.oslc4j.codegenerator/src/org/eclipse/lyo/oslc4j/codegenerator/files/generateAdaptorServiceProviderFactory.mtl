@@ -147,7 +147,7 @@ public class [javaClassNameForFactory(aServiceProvider) /]
             new PrefixDefinition(OslcConstants.RDF_NAMESPACE_PREFIX, new URI(OslcConstants.RDF_NAMESPACE)),
             new PrefixDefinition(OslcConstants.RDFS_NAMESPACE_PREFIX, new URI(OslcConstants.RDFS_NAMESPACE)),
             [for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(aServiceProvider)->sortedBy(name)) separator(','.concat(lineSeparator()))]
-            new PrefixDefinition([javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespacePrefixConstantName(aDomainSpecification) /], new URI([javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespaceConstantName(aDomainSpecification) /]))
+            new PrefixDefinition([javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aDomainSpecification) /], new URI([javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification) /]))
             [/for]
         };
         serviceProvider.setPrefixDefinitions(prefixDefinitions);

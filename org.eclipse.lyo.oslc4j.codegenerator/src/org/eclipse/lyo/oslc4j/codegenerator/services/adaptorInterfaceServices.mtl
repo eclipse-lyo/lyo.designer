@@ -476,7 +476,7 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaInterfacePackageNameF
 
 [query public resourceTypeNamespace(aResource: Resource) : String =
 (if (aResource.describes.oclIsUndefined()) then
-    domainSpecificationNamespaceConstantName(aResource.definingDomainSpecification())
+    domainSpecificationImplicitVocabularyNamespaceConstantName(aResource.definingDomainSpecification())
 else
     javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResource.describes.definingVocabulary()))
 endif)
@@ -484,9 +484,9 @@ endif)
 
 [query public resourceTypeLocalName(aResource: Resource) : String =
 (if (aResource.describes.oclIsUndefined()) then
-    aResource.name
+    '"'.concat(aResource.name).concat('"')
 else
-    aResource.describes.name
+    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(classConstantName(aResource.describes))
 endif)
 /]
 
@@ -498,12 +498,28 @@ javaConstantString(aDomainSpecification.name)
 javaConstantName(aDomainSpecification).concat('_DOMAIN')
 /]
 
-[query public domainSpecificationNamespaceConstantName(aDomainSpecification : DomainSpecification) : String = 
+[query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification : DomainSpecification) : String = 
 javaConstantName(aDomainSpecification).concat('_NAMSPACE')
 /]
 
-[query public domainSpecificationNamespacePrefixConstantName(aDomainSpecification : DomainSpecification) : String = 
+[query public domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aDomainSpecification : DomainSpecification) : String = 
 javaConstantName(aDomainSpecification).concat('_NAMSPACE_PREFIX')
+/]
+
+[query public domainSpecificationImplicitVocabularyNamespaceValue(aDomainSpecification : DomainSpecification) : String = 
+(if (aDomainSpecification.impliedVocabulary.oclIsUndefined()) then
+    aDomainSpecification.namespaceURI
+else
+    aDomainSpecification.impliedVocabulary.namespaceURI
+endif)
+/]
+
+[query public domainSpecificationImplicitVocabularyNamespacePrefixValue(aDomainSpecification : DomainSpecification) : String = 
+(if (aDomainSpecification.impliedVocabulary.oclIsUndefined()) then
+    aDomainSpecification.namespacePrefix.name
+else
+    aDomainSpecification.impliedVocabulary.preferredNamespacePrefix
+endif)
 /]
 
 [comment Services for RequiredAdaptor /]

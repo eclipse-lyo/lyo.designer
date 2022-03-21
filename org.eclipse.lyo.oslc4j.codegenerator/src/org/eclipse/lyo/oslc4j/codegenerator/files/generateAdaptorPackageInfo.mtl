@@ -14,11 +14,12 @@
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
 /]
-[module generateAdaptorPackageInfo('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+[module generateAdaptorPackageInfo('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
@@ -49,7 +50,8 @@
     @OslcNamespaceDefinition(prefix = OslcConstants.OSLC_DATA_NAMESPACE_PREFIX,           namespaceURI = OslcConstants.OSLC_DATA_NAMESPACE),
     @OslcNamespaceDefinition(prefix = OslcConstants.RDF_NAMESPACE_PREFIX,                 namespaceURI = OslcConstants.RDF_NAMESPACE),
     @OslcNamespaceDefinition(prefix = OslcConstants.RDFS_NAMESPACE_PREFIX,                namespaceURI = OslcConstants.RDFS_NAMESPACE),
-[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(','.concat(lineSeparator()))]    @OslcNamespaceDefinition(prefix = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespacePrefixConstantName(aDomainSpecification) /], namespaceURI = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationNamespaceConstantName(aDomainSpecification) /])[/for]
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(','.concat(lineSeparator()))]    @OslcNamespaceDefinition(prefix = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aDomainSpecification) /], namespaceURI = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification) /])[/for]
+[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)->sortedBy(name)) separator(','.concat(lineSeparator()))]    @OslcNamespaceDefinition(prefix = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyPreferredNamespacePrefixConstantName(aVocabulary) /], namespaceURI = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyNamespaceConstantName(aVocabulary) /])[/for]
 })
 package [javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface) /];
 
