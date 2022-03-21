@@ -1685,14 +1685,14 @@
         </edgeMappings>
         <containerMappings name="DomainSpecification.Resource" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.DeleteResourceShape']" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List">
           <subNodeMappings name="DomainSpecification.Resource.LiteralProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="[self.propertiesAsSubnodes()/]" domainClass="adaptorinterface.ResourceProperty">
-            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[self.labelAsResourceSubnode(view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource))/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[let r : Resource = view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource) in self.labelAsResourceSubnode(r)/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="DomainSpecification.Resource.ReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.DeleteResourceReferencePropertySubnode']" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty">
-            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[self.labelAsResourceSubnode(view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource))/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[let r : Resource = view.eContainer().oclAsType(DNodeList).target.oclAsType(Resource) in self.labelAsResourceSubnode(r)/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2020,9 +2020,9 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ResourcePropertyRangeServices"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::domainSpecificationDiagram"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::shaclSpecificationDiagram"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ResourcePropertyShapeVocabulary"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ResourceShapeVocabulary"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.DomainSpecificationVocabulary"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ResourceShapeVocabulary"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.DomainSpecificationVocabulary"/>
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription" name="sirius_default_rules_properties">
     <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>

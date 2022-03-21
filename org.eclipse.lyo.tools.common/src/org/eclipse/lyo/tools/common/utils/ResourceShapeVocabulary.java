@@ -11,15 +11,15 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
-package org.eclipse.lyo.tools.toolchain.design;
+package org.eclipse.lyo.tools.common.utils;
+
+import java.net.URI;
 
 import javax.xml.namespace.QName;
 
 import adaptorinterface.DomainSpecification;
 import adaptorinterface.Resource;
 import adaptorinterface.ResourceProperty;
-import adaptorinterface.ResourcePropertyOccurs;
-import adaptorinterface.ResourcePropertyValueType;
 import vocabulary.Vocabulary;
 
 public class ResourceShapeVocabulary {
@@ -34,7 +34,8 @@ public class ResourceShapeVocabulary {
         }
         DomainSpecification ds = (DomainSpecification)self.eContainer();
         DomainSpecificationVocabulary vocab = new DomainSpecificationVocabulary();
-        return new QName(vocab.deduceVocabulary(ds).getNamespaceURI(), self.getName(), vocab.deduceVocabulary(ds).getPrefix());
+        QName deducedVocabulary = vocab.deduceVocabulary(ds);
+        return new QName(deducedVocabulary.getNamespaceURI(), self.getName(), deducedVocabulary.getPrefix());
     }
 
     public String deduceDescribes_namespaceURI (Resource self) {
@@ -45,6 +46,23 @@ public class ResourceShapeVocabulary {
     }
     public String deduceDescribes_prefix (Resource self) {
         return deduceDescribes(self).getPrefix();
+    }
+
+    public String deduceDescribesComment(Resource self) {
+        if (null != self.getDescribes()) {
+            return self.getDescribes().getComment();
+        }
+        return self.getVocabularyComment();
+    }
+
+    public URI deduceDescribes_URI (Resource self) {
+        //I Cannot use UriBuilder to construct the URI since the "#" in the paths gets lost.
+        //return UriBuilder.fromUri(v.getNamespaceURI()).path(resource.getDescribes().getName()).build().toString();
+        return URI.create(deduceDescribes_namespaceURI(self) + deduceDescribes_localPart(self));
+    }
+
+    public URI getResourceShapeURI(Resource self) {
+        return java.net.URI.create(((DomainSpecification)self.eContainer()).getNamespaceURI() + self.getName());
     }
 
     public String toString (Resource self, Boolean withShapeLabel, Boolean withPrefix) {

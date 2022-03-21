@@ -1,0 +1,7 @@
+[comment encoding = UTF-8 /]
+[module generate('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+
+
+[template public generateElement(anAdaptorInterface : AdaptorInterface)]
+
+[/template]

@@ -18,6 +18,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.lyo.oslc4j.codegenerator,
  org.eclipse.swt,
  org.eclipse.lyo.tools.toolchain.model,
- org.eclipse.lyo.tools.codegenerator.ui
+ org.eclipse.lyo.tools.codegenerator.ui,
+ org.eclipse.lyo.tools.common
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11

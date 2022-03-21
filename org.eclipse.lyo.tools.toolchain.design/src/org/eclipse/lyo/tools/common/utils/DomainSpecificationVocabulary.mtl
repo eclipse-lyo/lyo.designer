@@ -1,0 +1,19 @@
+[comment encoding = UTF-8 /]
+[module DomainSpecificationVocabulary('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[query public DomainSpecificationVocabulary(anOclAny: OclAny) : OclVoid
+	= invoke('org.eclipse.lyo.tools.common.utils.DomainSpecificationVocabulary', 'DomainSpecificationVocabulary()', Sequence{})
+/]
+
+[query public deduceVocabulary_namespaceURI(arg0 : DomainSpecification) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.DomainSpecificationVocabulary', 'deduceVocabulary_namespaceURI(adaptorinterface.DomainSpecification)', Sequence{arg0})
+/]
+
+[query public deduceVocabulary_localPart(arg0 : DomainSpecification) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.DomainSpecificationVocabulary', 'deduceVocabulary_localPart(adaptorinterface.DomainSpecification)', Sequence{arg0})
+/]
+
+[query public deduceVocabulary_prefix(arg0 : DomainSpecification) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.DomainSpecificationVocabulary', 'deduceVocabulary_prefix(adaptorinterface.DomainSpecification)', Sequence{arg0})
+/]
+

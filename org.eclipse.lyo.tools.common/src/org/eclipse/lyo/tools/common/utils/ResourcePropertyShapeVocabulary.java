@@ -11,9 +11,15 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
-package org.eclipse.lyo.tools.toolchain.design;
+package org.eclipse.lyo.tools.common.utils;
+
+import java.net.URI;
 
 import javax.xml.namespace.QName;
+
+import org.eclipse.lyo.oslc4j.core.model.Occurs;
+import org.eclipse.lyo.oslc4j.core.model.Representation;
+import org.eclipse.lyo.oslc4j.core.model.ValueType;
 
 import adaptorinterface.DomainSpecification;
 import adaptorinterface.Resource;
@@ -44,7 +50,8 @@ public class ResourcePropertyShapeVocabulary {
         }
         DomainSpecification ds = (DomainSpecification)self.eContainer();
         DomainSpecificationVocabulary vocab = new DomainSpecificationVocabulary();
-        return new QName(vocab.deduceVocabulary(ds).getNamespaceURI(), self.getName(), vocab.deduceVocabulary(ds).getPrefix());
+        QName deducedVocabulary = vocab.deduceVocabulary(ds);
+        return new QName(deducedVocabulary.getNamespaceURI(), self.getName(), deducedVocabulary.getPrefix());
     }
 
     public String deducePropertyDefinition_namespaceURI (ResourceProperty self) {
@@ -57,7 +64,23 @@ public class ResourcePropertyShapeVocabulary {
         return deducePropertyDefinition(self).getPrefix();
     }
 
+    public String deducePropertyDefinitionComment(ResourceProperty self) {
+        if (null != self.getPropertyDefinition()) {
+            return self.getPropertyDefinition().getComment();
+        }
+        return self.getVocabularyComment();
+    }
 
+    public URI deducePropertyDefinition_URI (ResourceProperty self) {
+        //I Cannot use UriBuilder to construct the URI since the "#" in the paths gets lost.
+        //return UriBuilder.fromUri(v.getNamespaceURI()).path(resource.getDescribes().getName()).build().toString();
+        return URI.create(deducePropertyDefinition_namespaceURI(self) + deducePropertyDefinition_localPart(self));
+    }
+
+    public URI getPropertyShapeURI(ResourceProperty self) {
+        return java.net.URI.create(((DomainSpecification)self.eContainer()).getNamespaceURI() + self.getName());
+    }
+    
     public boolean isLiteral (ResourceProperty self) {
         return 
                 self.getValueType().compareTo(ResourcePropertyValueType.LOCAL_RESOURCE) != 0 
@@ -72,19 +95,84 @@ public class ResourcePropertyShapeVocabulary {
                 ;
     }
 
-    public String cardinalityRepresentation (ResourceProperty self) {
+    public Occurs oslcCardinality (ResourceProperty self) {
         switch (self.getOccurs()) {
         case EXACTLY_ONE:
-            return "1";
-        case ZERO_OR_ONE:
-            return "0..1";
-        case ZERO_OR_MANY:
-            return "0..*";
+            return Occurs.ExactlyOne;
         case ONE_OR_MANY:
-            return "1..*";
+            return Occurs.OneOrMany;
+        case ZERO_OR_MANY:
+            return Occurs.ZeroOrMany;
+        case ZERO_OR_ONE:
+            return Occurs.ZeroOrOne;
         default:
-            return "*..*";
+            return Occurs.ExactlyOne;
         }
+    }
+
+    public ValueType oslcValueType (ResourceProperty self) {
+        switch (self.getValueType()) {
+        case BOOLEAN:
+            return ValueType.Boolean;
+        case DATE_TIME:
+            return ValueType.DateTime;
+        case DOUBLE:
+            return ValueType.Double;
+        case FLOAT:
+            return ValueType.Float;
+        case INTEGER:
+            return ValueType.Integer;
+        case LOCAL_RESOURCE:
+            return ValueType.LocalResource;
+        case RESOURCE:
+            return ValueType.Resource;
+        case STRING:
+            return ValueType.String;
+        case URI:
+            return ValueType.Resource;
+        case XML_LITERAL:
+            return ValueType.XMLLiteral;
+        default:
+            return ValueType.String;
+        }
+    }
+    
+    
+    //TODO: What to do with EITHER, and NA?
+    public Representation oslcRepresentation (ResourceProperty self) {
+        switch(self.getRepresentation()) {
+        case REFERENCE:
+            return Representation.Reference;
+        case INLINE:
+            return Representation.Inline;
+        case EITHER:
+            return null;
+        case NA:
+            return null;
+        default:
+            return Representation.Reference;
+        }
+    }
+
+    public String cardinalityRepresentation (ResourceProperty self, Boolean numeric) {
+        if (numeric) {
+            switch (self.getOccurs()) {
+            case EXACTLY_ONE:
+                return "[1]";
+            case ZERO_OR_ONE:
+                return "[0..1]";
+            case ZERO_OR_MANY:
+                return "[0..*]";
+            case ONE_OR_MANY:
+                return "[1..*]";
+            default:
+                return "[*..*]";
+            }
+        }
+        else {
+            return oslcCardinality(self).name();
+        }
+        
     }
     
     public String toString (ResourceProperty self, Boolean withShapeLabel, Boolean withPrefix, Boolean withConstraints) {
@@ -100,20 +188,21 @@ public class ResourcePropertyShapeVocabulary {
             
         }
         if (withConstraints) {
+            s+= " : ";
             if (isLiteral(self)) {
-                s+= " " + self.getValueType().getName();
+                s+= self.getValueType().getName();
             }
             else {
                 if (self.getRange().size() == 0) {
-                    s += " Resource";
+                    s += "Resource";
                 }
                 else {
-                    s+= " " + self.getRange().get(0).getName() + (self.getRange().size() > 1 ? "++" : "");
+                    s+= self.getRange().get(0).getName() + (self.getRange().size() > 1 ? "++" : "");
                 }
             }
             
             if (isCardinalityMany(self)) {
-                s+= " []";
+                s+= "[]";
             }
         }
         return s;

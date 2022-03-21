@@ -1,0 +1,35 @@
+[comment encoding = UTF-8 /]
+[module ResourcePropertyShapeVocabulary('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[query public ResourcePropertyShapeVocabulary(anOclAny: OclAny) : OclVoid
+	= invoke('org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary', 'ResourcePropertyShapeVocabulary()', Sequence{})
+/]
+
+[query public deducePropertyDefinition_namespaceURI(arg0 : ResourceProperty) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary', 'deducePropertyDefinition_namespaceURI(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public deducePropertyDefinition_localPart(arg0 : ResourceProperty) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary', 'deducePropertyDefinition_localPart(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public deducePropertyDefinition_prefix(arg0 : ResourceProperty) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary', 'deducePropertyDefinition_prefix(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public isLiteral(arg0 : ResourceProperty) : Boolean
+	= invoke('org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary', 'isLiteral(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public isCardinalityMany(arg0 : ResourceProperty) : Boolean
+	= invoke('org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary', 'isCardinalityMany(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public cardinalityRepresentation(arg0 : ResourceProperty, arg1 : Boolean) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary', 'cardinalityRepresentation(adaptorinterface.ResourceProperty, java.lang.Boolean)', Sequence{arg0, arg1})
+/]
+
+[query public toString(arg0 : ResourceProperty, arg1 : Boolean, arg2 : Boolean, arg3 : Boolean) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary', 'toString(adaptorinterface.ResourceProperty, java.lang.Boolean, java.lang.Boolean, java.lang.Boolean)', Sequence{arg0, arg1, arg2, arg3})
+/]
+

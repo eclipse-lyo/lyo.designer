@@ -11,15 +11,11 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
-package org.eclipse.lyo.tools.toolchain.design;
+package org.eclipse.lyo.tools.common.utils;
 
 import javax.xml.namespace.QName;
 
 import adaptorinterface.DomainSpecification;
-import adaptorinterface.Resource;
-import adaptorinterface.ResourceProperty;
-import adaptorinterface.ResourcePropertyOccurs;
-import adaptorinterface.ResourcePropertyValueType;
 import vocabulary.Vocabulary;
 
 public class DomainSpecificationVocabulary {

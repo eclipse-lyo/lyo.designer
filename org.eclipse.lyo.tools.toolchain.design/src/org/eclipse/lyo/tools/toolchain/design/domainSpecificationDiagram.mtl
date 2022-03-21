@@ -16,9 +16,9 @@
 /]
 [module domainSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
-[import org::eclipse::lyo::tools::toolchain::design::DomainSpecificationVocabulary/]
-[import org::eclipse::lyo::tools::toolchain::design::ResourceShapeVocabulary/]
-[import org::eclipse::lyo::tools::toolchain::design::ResourcePropertyShapeVocabulary/]
+[import org::eclipse::lyo::tools::common::utils::DomainSpecificationVocabulary/]
+[import org::eclipse::lyo::tools::common::utils::ResourceShapeVocabulary/]
+[import org::eclipse::lyo::tools::common::utils::ResourcePropertyShapeVocabulary/]
 
 [query public userSettingsAlwaysViewPrefixes (e : EObject) : Boolean =
 (if (e.eContainer(Specification).userSettings.oclIsUndefined()) 
@@ -114,7 +114,7 @@ endif)
 /]
 
 [query public labelAtArrowEnd(aResourceProperty : ResourceProperty) : String =
-    aResourceProperty.cardinalityRepresentation()
+    aResourceProperty.cardinalityRepresentation(true)
 /]
 
 [comment If at least one parent resource is not visible in the diagram, show textually the parent resources.
