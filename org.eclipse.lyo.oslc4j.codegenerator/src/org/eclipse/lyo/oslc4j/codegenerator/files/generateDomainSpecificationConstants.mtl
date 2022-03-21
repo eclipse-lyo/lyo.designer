@@ -24,9 +24,9 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 
 [template public generateResourceConstants(aResource : Resource)]
-public static String [resourcePathConstantName(aResource)/] = "[javaString(aResource.name, '', false)/]";
+public static String [resourcePathConstantName(aResource)/] = "[javaString(aResource.name, '', false)/]";  //the relative path of the resource shape URL.
 public static String [resourceTypeNamespaceConstantName(aResource)/] = [resourceTypeNamespace(aResource)/]; //namespace of the rdfs:class the resource describes
-public static String [resourceTypeLocalNameConstantName(aResource)/] = "[resourceTypeLocalName(aResource)/]"; //localName of the rdfs:class the resource describes
+public static String [resourceTypeLocalNameConstantName(aResource)/] = [resourceTypeLocalName(aResource)/]; //localName of the rdfs:class the resource describes
 public static String [resourceTypeConstantName(aResource)/] = [resourceTypeNamespaceConstantName(aResource)/] + [resourceTypeLocalNameConstantName(aResource)/]; //fullname of the rdfs:class the resource describes
 [/template]
 
@@ -63,9 +63,9 @@ public interface [javaInterfaceNameForConstants(aDomainSpecification) /]
     // [protected ('user constants')]
     // [/protected]
 
-    public static String [domainSpecificationConstantName(aDomainSpecification)/] = "[aDomainSpecification.namespaceURI/]";
-    public static String [domainSpecificationNamespaceConstantName(aDomainSpecification)/] = "[aDomainSpecification.namespaceURI/]";
-    public static String [domainSpecificationNamespacePrefixConstantName(aDomainSpecification)/] = "[aDomainSpecification.namespacePrefix.name/]";
+    public static String [domainSpecificationConstantName(aDomainSpecification)/] = "[aDomainSpecification.name/]";
+    public static String [domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification)/] = "[domainSpecificationImplicitVocabularyNamespaceValue(aDomainSpecification)/]"; //Vocabulary namespace for the resources and resource properties, when no explicit vocabulary (describes, or propertyDefinition) is defined 
+    public static String [domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aDomainSpecification)/] = "[domainSpecificationImplicitVocabularyNamespacePrefixValue(aDomainSpecification)/]"; //Vocabulary prefix for the resources and resource properties, when no explicit vocabulary (describes, or propertyDefinition) is defined
 
     [for (aResource: Resource | aDomainSpecification.resources->sortedBy(name))]
     [generateResourceConstants(aResource) /]
