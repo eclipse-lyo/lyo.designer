@@ -172,7 +172,7 @@ package [javaClassPackageName(aService) /];
 
 // [protected ('pre_class_code')]
 // [/protected]
-@OslcService([javaInterfaceNameForConstants(aService.domainSpecification)/].[domainSpecificationConstantName(aService.domainSpecification)/])
+@OslcService([javaInterfaceNameForConstants(aService.domainSpecification)/].[domainSpecificationImplicitVocabularyNamespaceConstantName(aService.domainSpecification)/])
 [JAXRSPathAnnotation(aService.serviceBaseURI()) /]
 public class [javaClassName(aService) /]
 {
