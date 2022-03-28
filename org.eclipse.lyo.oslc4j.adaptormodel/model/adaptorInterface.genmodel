@@ -66,10 +66,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/specification"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/requiredAdaptors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//AdaptorInterface/configuration"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/javaClassBaseNamespace"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/javaFilesBasePath"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/jspFilesBasePath"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/javascriptFilesBasePath"/>
+      <genFeatures createChild="false" propertyDescription="This property is deprecated. \n Please do the following \n (1) Create a ServerConfiguration element instead."
+          ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/javaClassBaseNamespace"/>
+      <genFeatures createChild="false" propertyDescription="This property is deprecated. \n Please do the following \n (1) Create a ServerConfiguration element instead."
+          ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/javaFilesBasePath"/>
+      <genFeatures createChild="false" propertyDescription="This property is deprecated. \n Please do the following \n (1) Create a ServerConfiguration element instead."
+          ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/jspFilesBasePath"/>
+      <genFeatures createChild="false" propertyDescription="This property is deprecated. \n Please do the following \n (1) Create a ServerConfiguration element instead."
+          ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/javascriptFilesBasePath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/swaggerDocumentation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/backendCodeTemplate_classImports"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//AdaptorInterface/backendCodeTemplate_classMethods"/>

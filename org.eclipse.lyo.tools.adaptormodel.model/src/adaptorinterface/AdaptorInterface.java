@@ -150,7 +150,7 @@ public interface AdaptorInterface extends EObject {
      * @return the value of the '<em>Java Class Base Namespace</em>' attribute.
      * @see #setJavaClassBaseNamespace(String)
      * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_JavaClassBaseNamespace()
-     * @model required="true"
+     * @model
      * @generated
      */
 	String getJavaClassBaseNamespace();
@@ -202,7 +202,7 @@ public interface AdaptorInterface extends EObject {
      * @return the value of the '<em>Java Files Base Path</em>' attribute.
      * @see #setJavaFilesBasePath(String)
      * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_JavaFilesBasePath()
-     * @model required="true"
+     * @model
      * @generated
      */
 	String getJavaFilesBasePath();
@@ -228,7 +228,7 @@ public interface AdaptorInterface extends EObject {
      * @return the value of the '<em>Jsp Files Base Path</em>' attribute.
      * @see #setJspFilesBasePath(String)
      * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_JspFilesBasePath()
-     * @model required="true"
+     * @model
      * @generated
      */
 	String getJspFilesBasePath();
@@ -254,7 +254,7 @@ public interface AdaptorInterface extends EObject {
      * @return the value of the '<em>Javascript Files Base Path</em>' attribute.
      * @see #setJavascriptFilesBasePath(String)
      * @see adaptorinterface.AdaptorinterfacePackage#getAdaptorInterface_JavascriptFilesBasePath()
-     * @model required="true"
+     * @model
      * @generated
      */
 	String getJavascriptFilesBasePath();

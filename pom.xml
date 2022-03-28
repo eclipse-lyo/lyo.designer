@@ -171,6 +171,7 @@
             </activation>
             <modules>
                 <module>org.eclipse.lyo.oslc4j.plugins</module>
+                <module>org.eclipse.lyo.tools.preferences</module>
                 <module>org.eclipse.lyo.tools.common</module>
 
                 <module>org.eclipse.lyo.oslc4j.adaptormodel</module>
