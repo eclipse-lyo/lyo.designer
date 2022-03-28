@@ -27,6 +27,7 @@
   - `src/main/webapp/static/js/popper-1.11.0.min.js`
 
 ### Fixed
+- Deprecated properties no longer cause errors when validating.
 
 ---
 
