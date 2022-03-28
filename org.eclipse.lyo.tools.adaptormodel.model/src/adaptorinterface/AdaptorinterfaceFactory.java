@@ -310,15 +310,6 @@ public interface AdaptorinterfaceFactory extends EFactory {
     WebServicePersistence createWebServicePersistence();
 
     /**
-     * Returns a new object of class '<em>User Settings</em>'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return a new object of class '<em>User Settings</em>'.
-     * @generated
-     */
-    UserSettings createUserSettings();
-
-    /**
      * Returns a new object of class '<em>Web Service</em>'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

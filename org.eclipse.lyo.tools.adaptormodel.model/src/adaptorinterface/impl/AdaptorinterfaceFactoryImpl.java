@@ -87,7 +87,6 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
             case AdaptorinterfacePackage.SOURCE_BINDING: return createSourceBinding();
             case AdaptorinterfacePackage.OSLC_SERVICE_PERSISTENCE: return createOSLCServicePersistence();
             case AdaptorinterfacePackage.WEB_SERVICE_PERSISTENCE: return createWebServicePersistence();
-            case AdaptorinterfacePackage.USER_SETTINGS: return createUserSettings();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -115,10 +114,6 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
                 return createResourceServiceNamespaceFromString(eDataType, initialValue);
             case AdaptorinterfacePackage.SHACL_PROPERTY_DATA_TYPE:
                 return createShaclPropertyDataTypeFromString(eDataType, initialValue);
-            case AdaptorinterfacePackage.USER_SETTINGS_VIEW_PREFIXES:
-                return createUserSettingsViewPrefixesFromString(eDataType, initialValue);
-            case AdaptorinterfacePackage.USER_SETTINGS_VIEW_LABEL_AS:
-                return createUserSettingsViewLabelAsFromString(eDataType, initialValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -146,10 +141,6 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
                 return convertResourceServiceNamespaceToString(eDataType, instanceValue);
             case AdaptorinterfacePackage.SHACL_PROPERTY_DATA_TYPE:
                 return convertShaclPropertyDataTypeToString(eDataType, instanceValue);
-            case AdaptorinterfacePackage.USER_SETTINGS_VIEW_PREFIXES:
-                return convertUserSettingsViewPrefixesToString(eDataType, instanceValue);
-            case AdaptorinterfacePackage.USER_SETTINGS_VIEW_LABEL_AS:
-                return convertUserSettingsViewLabelAsToString(eDataType, instanceValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -531,17 +522,6 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public UserSettings createUserSettings() {
-        UserSettingsImpl userSettings = new UserSettingsImpl();
-        return userSettings;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -681,46 +661,6 @@ public class AdaptorinterfaceFactoryImpl extends EFactoryImpl implements Adaptor
     }
 
 	/**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public UserSettingsViewPrefixes createUserSettingsViewPrefixesFromString(EDataType eDataType, String initialValue) {
-        UserSettingsViewPrefixes result = UserSettingsViewPrefixes.get(initialValue);
-        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-        return result;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public String convertUserSettingsViewPrefixesToString(EDataType eDataType, Object instanceValue) {
-        return instanceValue == null ? null : instanceValue.toString();
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public UserSettingsViewLabelAs createUserSettingsViewLabelAsFromString(EDataType eDataType, String initialValue) {
-        UserSettingsViewLabelAs result = UserSettingsViewLabelAs.get(initialValue);
-        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-        return result;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public String convertUserSettingsViewLabelAsToString(EDataType eDataType, Object instanceValue) {
-        return instanceValue == null ? null : instanceValue.toString();
-    }
-
-    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated

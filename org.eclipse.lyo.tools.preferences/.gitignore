@@ -1,0 +1,7 @@
+/bin
+tasks/generate.xml
+tasks/generateSpecification.xml
+!.project
+!.classpath
+!.settings/
+/target/

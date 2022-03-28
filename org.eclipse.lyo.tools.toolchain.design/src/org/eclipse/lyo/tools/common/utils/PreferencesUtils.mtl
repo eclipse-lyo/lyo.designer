@@ -1,0 +1,11 @@
+[comment encoding = UTF-8 /]
+[module PreferencesUtils('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[query public userPreferenceAlwaysViewPrefixes(anOclAny: OclAny) : Boolean
+	= invoke('org.eclipse.lyo.tools.preferences.Utils', 'userPreferenceAlwaysViewPrefixes()', Sequence{})
+/]
+
+[query public userPreferenceViewLabelsAsShape(anOclAny: OclAny) : Boolean
+	= invoke('org.eclipse.lyo.tools.preferences.Utils', 'userPreferenceViewLabelsAsShape()', Sequence{})
+/]
+

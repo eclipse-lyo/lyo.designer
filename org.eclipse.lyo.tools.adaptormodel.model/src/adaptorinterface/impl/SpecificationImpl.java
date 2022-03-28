@@ -9,7 +9,6 @@ import adaptorinterface.NamespacePrefix;
 import adaptorinterface.Specification;
 
 import adaptorinterface.SpecificationConfiguration;
-import adaptorinterface.UserSettings;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -39,7 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link adaptorinterface.impl.SpecificationImpl#getDomainPrefixes <em>Domain Prefixes</em>}</li>
  *   <li>{@link adaptorinterface.impl.SpecificationImpl#getGenerationSetting <em>Generation Setting</em>}</li>
  *   <li>{@link adaptorinterface.impl.SpecificationImpl#getConfiguration <em>Configuration</em>}</li>
- *   <li>{@link adaptorinterface.impl.SpecificationImpl#getUserSettings <em>User Settings</em>}</li>
  * </ul>
  *
  * @generated
@@ -106,16 +104,6 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 	protected SpecificationConfiguration configuration;
 
 	/**
-     * The cached value of the '{@link #getUserSettings() <em>User Settings</em>}' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getUserSettings()
-     * @generated
-     * @ordered
-     */
-    protected UserSettings userSettings;
-
-    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -275,51 +263,6 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
 
 	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public UserSettings getUserSettings() {
-        return userSettings;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public NotificationChain basicSetUserSettings(UserSettings newUserSettings, NotificationChain msgs) {
-        UserSettings oldUserSettings = userSettings;
-        userSettings = newUserSettings;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS, oldUserSettings, newUserSettings);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
-        }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public void setUserSettings(UserSettings newUserSettings) {
-        if (newUserSettings != userSettings) {
-            NotificationChain msgs = null;
-            if (userSettings != null)
-                msgs = ((InternalEObject)userSettings).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS, null, msgs);
-            if (newUserSettings != null)
-                msgs = ((InternalEObject)newUserSettings).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS, null, msgs);
-            msgs = basicSetUserSettings(newUserSettings, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS, newUserSettings, newUserSettings));
-    }
-
-    /**
-     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -334,8 +277,6 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
                 return basicSetGenerationSetting(null, msgs);
             case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
                 return basicSetConfiguration(null, msgs);
-            case AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS:
-                return basicSetUserSettings(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -358,8 +299,6 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
                 return getGenerationSetting();
             case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
                 return getConfiguration();
-            case AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS:
-                return getUserSettings();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -390,9 +329,6 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
             case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
                 setConfiguration((SpecificationConfiguration)newValue);
                 return;
-            case AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS:
-                setUserSettings((UserSettings)newValue);
-                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -420,9 +356,6 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
             case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
                 setConfiguration((SpecificationConfiguration)null);
                 return;
-            case AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS:
-                setUserSettings((UserSettings)null);
-                return;
         }
         super.eUnset(featureID);
     }
@@ -445,8 +378,6 @@ public class SpecificationImpl extends MinimalEObjectImpl.Container implements S
                 return generationSetting != null;
             case AdaptorinterfacePackage.SPECIFICATION__CONFIGURATION:
                 return configuration != null;
-            case AdaptorinterfacePackage.SPECIFICATION__USER_SETTINGS:
-                return userSettings != null;
         }
         return super.eIsSet(featureID);
     }

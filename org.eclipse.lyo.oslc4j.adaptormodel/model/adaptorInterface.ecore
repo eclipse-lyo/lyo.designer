@@ -59,8 +59,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//SpecificationConfiguration"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="userSettings" eType="#//UserSettings"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -423,19 +421,5 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="update" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="UserSettingsViewPrefixes">
-    <eLiterals name="whenNecessary" literal="whenNecessary"/>
-    <eLiterals name="always" value="1" literal="always"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="UserSettingsViewLabelAs">
-    <eLiterals name="shape" literal="shape"/>
-    <eLiterals name="vocabulary" value="1" literal="vocabulary"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UserSettings">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewPrefixes" eType="#//UserSettingsViewPrefixes"
-        defaultValueLiteral="whenNecessary"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewLabelAs" eType="#//UserSettingsViewLabelAs"
-        defaultValueLiteral="vocabulary"/>
   </eClassifiers>
 </ecore:EPackage>

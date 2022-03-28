@@ -19,20 +19,7 @@
 [import org::eclipse::lyo::tools::common::utils::DomainSpecificationVocabulary/]
 [import org::eclipse::lyo::tools::common::utils::ResourceShapeVocabulary/]
 [import org::eclipse::lyo::tools::common::utils::ResourcePropertyShapeVocabulary/]
-
-[query public userSettingsAlwaysViewPrefixes (e : EObject) : Boolean =
-(if (e.eContainer(Specification).userSettings.oclIsUndefined()) 
-    then false 
-    else e.eContainer(Specification).userSettings.viewPrefixes = UserSettingsViewPrefixes::always
-endif)
-/]
-
-[query public userSettingsViewLabelAsShape (e : EObject) : Boolean =
-(if (e.eContainer(Specification).userSettings.oclIsUndefined()) 
-    then true 
-    else e.eContainer(Specification).userSettings.viewLabelAs = UserSettingsViewLabelAs::shape
-endif)
-/]
+[import org::eclipse::lyo::tools::common::utils::PreferencesUtils/]
 
 [query public visibleResources (diagram : DSemanticDiagram) : Sequence(Resource) =
 (diagram.containers->select(c : DDiagramElementContainer | (Sequence{'Specification.DomainSpecification.Resource', 'DomainSpecification.Resource'}->includes(c.actualMapping.name))._and(c.visible)))
@@ -64,14 +51,14 @@ aResource.referenceResourceProperties()
 [comment Always show the prefix, since prefix no longer depend on the domainSpec. It relates to the vocab.
 What would the logic look like otherwise /]
 [query public labelAsResourceSubnode(aResourceProperty : ResourceProperty, sourceResource : Resource) : String =
-(if (aResourceProperty.userSettingsViewLabelAsShape())  then 
-    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+(if (aResourceProperty.userPreferenceViewLabelsAsShape())  then 
+    (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
         not (aResourceProperty.eContainer(DomainSpecification) = sourceResource.eContainer(DomainSpecification))) 
         then aResourceProperty.toString(true, true, true) 
         else aResourceProperty.toString(true, false, true)
     endif)
 else 
-    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+    (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
         not (aResourceProperty.deducePropertyDefinition_namespaceURI() = sourceResource.deduceDescribes_namespaceURI()))
         then aResourceProperty.toString(false, true, true) 
         else aResourceProperty.toString(false, false, true)
@@ -80,14 +67,14 @@ endif)
 /]
 
 [query public labelInDomainSpecification(aResourceProperty : ResourceProperty) : String =
-(if (aResourceProperty.userSettingsViewLabelAsShape())  then 
-    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+(if (aResourceProperty.userPreferenceViewLabelsAsShape())  then 
+    (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
         false) 
         then aResourceProperty.toString(true, true, true) 
         else aResourceProperty.toString(true, false, true)
     endif)
 else 
-    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+    (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
         not (aResourceProperty.deducePropertyDefinition_namespaceURI() = aResourceProperty.eContainer(DomainSpecification).deduceVocabulary_namespaceURI())) 
         then aResourceProperty.toString(false, true, true) 
         else aResourceProperty.toString(false, false, true)
@@ -98,14 +85,14 @@ endif)
 [query public labelAtArrowCenter(aResourceProperty : ResourceProperty, sourceResource : Resource) : String =
 (if (aResourceProperty.valueType = ResourcePropertyValueType::LocalResource) then 'Local: ' else '' endif)
 +
-(if (aResourceProperty.userSettingsViewLabelAsShape())  then 
-    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+(if (aResourceProperty.userPreferenceViewLabelsAsShape())  then 
+    (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
         not (aResourceProperty.eContainer(DomainSpecification) = sourceResource.eContainer(DomainSpecification))) 
         then aResourceProperty.toString(true, true, false) 
         else aResourceProperty.toString(true, false, false)
     endif)
 else 
-    (if (aResourceProperty.userSettingsAlwaysViewPrefixes() or
+    (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
         not (aResourceProperty.deducePropertyDefinition_namespaceURI() = sourceResource.deduceDescribes_namespaceURI()))
         then aResourceProperty.toString(false, true, false) 
         else aResourceProperty.toString(false, false, false)
@@ -121,14 +108,14 @@ endif)
 Show at least the first invisible parent resource./]
 [query public labelInDomainSpecification(aResource : Resource, diagram : DSemanticDiagram) : String =
 let invisibleParentResources : OrderedSet(Resource) = aResource.extends->select(parent : Resource | not(visibleResources(diagram)->includes(parent))) in
-(if (aResource.userSettingsViewLabelAsShape())  then 
-    (if (aResource.userSettingsAlwaysViewPrefixes() or
+(if (aResource.userPreferenceViewLabelsAsShape())  then 
+    (if (aResource.userPreferenceAlwaysViewPrefixes() or
         false) 
         then aResource.toString(true, true) 
         else aResource.toString(true, false)
     endif)
 else 
-    (if (aResource.userSettingsAlwaysViewPrefixes() or
+    (if (aResource.userPreferenceAlwaysViewPrefixes() or
         not (aResource.deduceDescribes_namespaceURI() = aResource.eContainer(DomainSpecification).deduceVocabulary_namespaceURI())) 
         then aResource.toString(false, true) 
         else aResource.toString(false, false)

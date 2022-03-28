@@ -850,29 +850,6 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link adaptorinterface.UserSettings} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected UserSettingsItemProvider userSettingsItemProvider;
-
-    /**
-     * This creates an adapter for a {@link adaptorinterface.UserSettings}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createUserSettingsAdapter() {
-        if (userSettingsItemProvider == null) {
-            userSettingsItemProvider = new UserSettingsItemProvider(this);
-        }
-
-        return userSettingsItemProvider;
-    }
-
-    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1011,7 +988,6 @@ public class AdaptorinterfaceItemProviderAdapterFactory extends Adaptorinterface
         if (sourceBindingItemProvider != null) sourceBindingItemProvider.dispose();
         if (oslcServicePersistenceItemProvider != null) oslcServicePersistenceItemProvider.dispose();
         if (webServicePersistenceItemProvider != null) webServicePersistenceItemProvider.dispose();
-        if (userSettingsItemProvider != null) userSettingsItemProvider.dispose();
     }
 
 }
