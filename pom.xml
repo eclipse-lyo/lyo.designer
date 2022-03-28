@@ -146,6 +146,9 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
+                <module>org.eclipse.lyo.tools.preferences</module>
+                <module>org.eclipse.lyo.tools.common</module>
+
                 <module>org.eclipse.lyo.oslc4j.adaptormodel</module>
 
                 <module>org.eclipse.lyo.tools.adaptormodel.edit</module>
