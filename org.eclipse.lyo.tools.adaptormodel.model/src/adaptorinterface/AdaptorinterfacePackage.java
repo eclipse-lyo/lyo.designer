@@ -456,13 +456,13 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int DOMAIN_SPECIFICATION__SHACL_PROPERTIES = 8;
 
 	/**
-     * The feature id for the '<em><b>Implied Vocabulary</b></em>' containment reference.
+     * The feature id for the '<em><b>Default Vocabulary</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY = 9;
+    int DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY = 9;
 
     /**
      * The number of structural features of the '<em>Domain Specification</em>' class.
@@ -3458,15 +3458,15 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getDomainSpecification_ShaclProperties();
 
 	/**
-     * Returns the meta object for the containment reference '{@link adaptorinterface.DomainSpecification#getImpliedVocabulary <em>Implied Vocabulary</em>}'.
+     * Returns the meta object for the containment reference '{@link adaptorinterface.DomainSpecification#getDefaultVocabulary <em>Default Vocabulary</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the containment reference '<em>Implied Vocabulary</em>'.
-     * @see adaptorinterface.DomainSpecification#getImpliedVocabulary()
+     * @return the meta object for the containment reference '<em>Default Vocabulary</em>'.
+     * @see adaptorinterface.DomainSpecification#getDefaultVocabulary()
      * @see #getDomainSpecification()
      * @generated
      */
-    EReference getDomainSpecification_ImpliedVocabulary();
+    EReference getDomainSpecification_DefaultVocabulary();
 
     /**
      * Returns the meta object for class '{@link adaptorinterface.NamespacePrefix <em>Namespace Prefix</em>}'.
@@ -5765,12 +5765,12 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference DOMAIN_SPECIFICATION__SHACL_PROPERTIES = eINSTANCE.getDomainSpecification_ShaclProperties();
 
 		/**
-         * The meta object literal for the '<em><b>Implied Vocabulary</b></em>' containment reference feature.
+         * The meta object literal for the '<em><b>Default Vocabulary</b></em>' containment reference feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        EReference DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY = eINSTANCE.getDomainSpecification_ImpliedVocabulary();
+        EReference DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY = eINSTANCE.getDomainSpecification_DefaultVocabulary();
 
         /**
          * The meta object literal for the '{@link adaptorinterface.impl.NamespacePrefixImpl <em>Namespace Prefix</em>}' class.

@@ -864,7 +864,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
     @Override
-    public EReference getDomainSpecification_ImpliedVocabulary() {
+    public EReference getDomainSpecification_DefaultVocabulary() {
         return (EReference)domainSpecificationEClass.getEStructuralFeatures().get(9);
     }
 
@@ -2749,7 +2749,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__CONFIGURATION);
         createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__SHACL_SHAPES);
         createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__SHACL_PROPERTIES);
-        createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY);
+        createEReference(domainSpecificationEClass, DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY);
 
         namespacePrefixEClass = createEClass(NAMESPACE_PREFIX);
         createEAttribute(namespacePrefixEClass, NAMESPACE_PREFIX__NAME);
@@ -3066,8 +3066,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         getDomainSpecification_ShaclShapes().getEKeys().add(this.getShaclShape_Name());
         initEReference(getDomainSpecification_ShaclProperties(), this.getShaclProperty(), null, "shaclProperties", null, 0, -1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         getDomainSpecification_ShaclProperties().getEKeys().add(this.getShaclProperty_Name());
-        initEReference(getDomainSpecification_ImpliedVocabulary(), theVocabularyPackage.getVocabulary(), null, "impliedVocabulary", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getDomainSpecification_ImpliedVocabulary().getEKeys().add(theVocabularyPackage.getVocabulary_Label());
+        initEReference(getDomainSpecification_DefaultVocabulary(), theVocabularyPackage.getVocabulary(), null, "defaultVocabulary", null, 0, 1, DomainSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        getDomainSpecification_DefaultVocabulary().getEKeys().add(theVocabularyPackage.getVocabulary_Label());
 
         initEClass(namespacePrefixEClass, NamespacePrefix.class, "NamespacePrefix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getNamespacePrefix_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamespacePrefix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

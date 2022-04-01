@@ -24,8 +24,8 @@ public class DomainSpecificationVocabulary {
     }
 
     public QName deduceVocabulary(DomainSpecification self) {
-        if (null != self.getImpliedVocabulary()) {
-            Vocabulary v = (Vocabulary)self.getImpliedVocabulary();
+        if (null != self.getDefaultVocabulary()) {
+            Vocabulary v = (Vocabulary)self.getDefaultVocabulary();
             return new QName(v.getNamespaceURI(), v.getLabel(), v.getPreferredNamespacePrefix());
         }
         return new QName(self.getNamespaceURI(), self.getName(), self.getNamespacePrefix().getName());

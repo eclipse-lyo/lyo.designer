@@ -76,7 +76,7 @@
         eType="#//ShaclShape" containment="true" eKeys="#//ShaclShape/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="shaclProperties" upperBound="-1"
         eType="#//ShaclProperty" containment="true" eKeys="#//ShaclProperty/name"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="impliedVocabulary" eType="ecore:EClass vocabulary.ecore#//Vocabulary"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultVocabulary" eType="ecore:EClass vocabulary.ecore#//Vocabulary"
         containment="true" eKeys="vocabulary.ecore#//Vocabulary/label"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamespacePrefix">

@@ -2258,7 +2258,7 @@
     <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
     <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
     <categories name="Default Category">
-      <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.DomainSpecification" semanticCandidateExpression="var:self" groups="//@extensions.4/@categories.0/@groups.0"/>
+      <pages name="Default Page" labelExpression="aql:input.emfEditServices(self).getTabName()" domainClass="adaptorinterface.DomainSpecification" semanticCandidateExpression="var:self" groups="//@extensions.4/@categories.0/@groups.0 //@extensions.4/@categories.0/@groups.1"/>
       <groups name="Default Group" labelExpression="Properties" domainClass="adaptorinterface.DomainSpecification" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:TextDescription" name="adaptorinterface::DomainSpecification name" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('name')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('name'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('name').changeable" valueExpression="aql:self.name">
           <initialOperation>
@@ -2287,6 +2287,51 @@
             </firstModelOperations>
           </initialOperation>
           <conditionalStyles preconditionExpression="aql:self.eClass().getEStructuralFeature('name').lowerBound = 1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
+        </controls>
+        <controls xsi:type="properties:ButtonDescription" name="adaptorinterface::DomainSpecification defaultVocabulary Create" labelExpression="aql:'Default Vocabulary'" helpExpression="For Resources and Resource Properties that do not explicitly refer to a Vocabulary Term, define a default Vocabulary (name, namespace URI and prefix). If not defined, the name, namespace URI and prefix of the the Domain Specification is used instead." isEnabledExpression="aql:self.defaultVocabulary == null" buttonLabelExpression="aql:'Create'">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="vocabulary::Vocabulary" referenceName="defaultVocabulary">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.defaultVocabulary">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="aql:self.eContainer().oclAsType(adaptorinterface::DomainSpecification).name + '_Vocab'"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespaceURI" valueExpression="aql:self.eContainer().oclAsType(adaptorinterface::DomainSpecification).namespaceURI"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="preferredNamespacePrefix" valueExpression="aql:'v_' + self.eContainer().oclAsType(adaptorinterface::DomainSpecification).namespacePrefix.name"/>
+                </subModelOperations>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </controls>
+      </groups>
+      <groups name="Default Vocabulary" labelExpression="Default Vocabulary" domainClass="vocabulary::Vocabulary" semanticCandidateExpression="aql:self.defaultVocabulary">
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::DomainSpecification impliedVocabulary Label" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('label')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('label'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('label').changeable" valueExpression="aql:self.label">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="var:newValue"/>
+          </initialOperation>
+          <conditionalStyles preconditionExpression="aql:self.eClass().getEStructuralFeature('label').lowerBound = 1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
+        </controls>
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::DomainSpecification impliedVocabulary  namespaceURI" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('namespaceURI')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('namespaceURI'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('namespaceURI').changeable" valueExpression="aql:self.namespaceURI">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="namespaceURI" valueExpression="var:newValue"/>
+          </initialOperation>
+          <conditionalStyles preconditionExpression="aql:self.eClass().getEStructuralFeature('namespaceURI').lowerBound = 1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
+        </controls>
+        <controls xsi:type="properties:TextDescription" name="adaptorinterface::DomainSpecification impliedVocabulary  preferredNamespacePrefix" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('preferredNamespacePrefix')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('preferredNamespacePrefix'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('preferredNamespacePrefix').changeable" valueExpression="aql:self.preferredNamespacePrefix">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="preferredNamespacePrefix" valueExpression="var:newValue"/>
+          </initialOperation>
+          <conditionalStyles preconditionExpression="aql:self.eClass().getEStructuralFeature('preferredNamespacePrefix').lowerBound = 1">
             <style>
               <labelFontFormat>bold</labelFontFormat>
             </style>

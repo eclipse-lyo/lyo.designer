@@ -507,18 +507,18 @@ javaConstantName(aDomainSpecification).concat('_NAMSPACE_PREFIX')
 /]
 
 [query public domainSpecificationImplicitVocabularyNamespaceValue(aDomainSpecification : DomainSpecification) : String = 
-(if (aDomainSpecification.impliedVocabulary.oclIsUndefined()) then
+(if (aDomainSpecification.defaultVocabulary.oclIsUndefined()) then
     aDomainSpecification.namespaceURI
 else
-    aDomainSpecification.impliedVocabulary.namespaceURI
+    aDomainSpecification.defaultVocabulary.namespaceURI
 endif)
 /]
 
 [query public domainSpecificationImplicitVocabularyNamespacePrefixValue(aDomainSpecification : DomainSpecification) : String = 
-(if (aDomainSpecification.impliedVocabulary.oclIsUndefined()) then
+(if (aDomainSpecification.defaultVocabulary.oclIsUndefined()) then
     aDomainSpecification.namespacePrefix.name
 else
-    aDomainSpecification.impliedVocabulary.preferredNamespacePrefix
+    aDomainSpecification.defaultVocabulary.preferredNamespacePrefix
 endif)
 /]
 

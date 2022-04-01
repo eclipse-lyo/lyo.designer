@@ -46,7 +46,7 @@ import vocabulary.Vocabulary;
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getShaclShapes <em>Shacl Shapes</em>}</li>
  *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getShaclProperties <em>Shacl Properties</em>}</li>
- *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getImpliedVocabulary <em>Implied Vocabulary</em>}</li>
+ *   <li>{@link adaptorinterface.impl.DomainSpecificationImpl#getDefaultVocabulary <em>Default Vocabulary</em>}</li>
  * </ul>
  *
  * @generated
@@ -163,14 +163,14 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
 	protected EList<ShaclProperty> shaclProperties;
 
 	/**
-     * The cached value of the '{@link #getImpliedVocabulary() <em>Implied Vocabulary</em>}' containment reference.
+     * The cached value of the '{@link #getDefaultVocabulary() <em>Default Vocabulary</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getImpliedVocabulary()
+     * @see #getDefaultVocabulary()
      * @generated
      * @ordered
      */
-    protected Vocabulary impliedVocabulary;
+    protected Vocabulary defaultVocabulary;
 
     /**
      * <!-- begin-user-doc -->
@@ -425,8 +425,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
      * @generated
      */
     @Override
-    public Vocabulary getImpliedVocabulary() {
-        return impliedVocabulary;
+    public Vocabulary getDefaultVocabulary() {
+        return defaultVocabulary;
     }
 
     /**
@@ -434,11 +434,11 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
      * <!-- end-user-doc -->
      * @generated
      */
-    public NotificationChain basicSetImpliedVocabulary(Vocabulary newImpliedVocabulary, NotificationChain msgs) {
-        Vocabulary oldImpliedVocabulary = impliedVocabulary;
-        impliedVocabulary = newImpliedVocabulary;
+    public NotificationChain basicSetDefaultVocabulary(Vocabulary newDefaultVocabulary, NotificationChain msgs) {
+        Vocabulary oldDefaultVocabulary = defaultVocabulary;
+        defaultVocabulary = newDefaultVocabulary;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY, oldImpliedVocabulary, newImpliedVocabulary);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY, oldDefaultVocabulary, newDefaultVocabulary);
             if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
@@ -450,18 +450,18 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
      * @generated
      */
     @Override
-    public void setImpliedVocabulary(Vocabulary newImpliedVocabulary) {
-        if (newImpliedVocabulary != impliedVocabulary) {
+    public void setDefaultVocabulary(Vocabulary newDefaultVocabulary) {
+        if (newDefaultVocabulary != defaultVocabulary) {
             NotificationChain msgs = null;
-            if (impliedVocabulary != null)
-                msgs = ((InternalEObject)impliedVocabulary).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY, null, msgs);
-            if (newImpliedVocabulary != null)
-                msgs = ((InternalEObject)newImpliedVocabulary).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY, null, msgs);
-            msgs = basicSetImpliedVocabulary(newImpliedVocabulary, msgs);
+            if (defaultVocabulary != null)
+                msgs = ((InternalEObject)defaultVocabulary).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY, null, msgs);
+            if (newDefaultVocabulary != null)
+                msgs = ((InternalEObject)newDefaultVocabulary).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptorinterfacePackage.DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY, null, msgs);
+            msgs = basicSetDefaultVocabulary(newDefaultVocabulary, msgs);
             if (msgs != null) msgs.dispatch();
         }
         else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY, newImpliedVocabulary, newImpliedVocabulary));
+            eNotify(new ENotificationImpl(this, Notification.SET, AdaptorinterfacePackage.DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY, newDefaultVocabulary, newDefaultVocabulary));
     }
 
     /**
@@ -484,8 +484,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
                 return ((InternalEList<?>)getShaclShapes()).basicRemove(otherEnd, msgs);
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
                 return ((InternalEList<?>)getShaclProperties()).basicRemove(otherEnd, msgs);
-            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
-                return basicSetImpliedVocabulary(null, msgs);
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY:
+                return basicSetDefaultVocabulary(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -517,8 +517,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
                 return getShaclShapes();
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
                 return getShaclProperties();
-            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
-                return getImpliedVocabulary();
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY:
+                return getDefaultVocabulary();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -563,8 +563,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
                 getShaclProperties().clear();
                 getShaclProperties().addAll((Collection<? extends ShaclProperty>)newValue);
                 return;
-            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
-                setImpliedVocabulary((Vocabulary)newValue);
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY:
+                setDefaultVocabulary((Vocabulary)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -605,8 +605,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
                 getShaclProperties().clear();
                 return;
-            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
-                setImpliedVocabulary((Vocabulary)null);
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY:
+                setDefaultVocabulary((Vocabulary)null);
                 return;
         }
         super.eUnset(featureID);
@@ -638,8 +638,8 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
                 return shaclShapes != null && !shaclShapes.isEmpty();
             case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__SHACL_PROPERTIES:
                 return shaclProperties != null && !shaclProperties.isEmpty();
-            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__IMPLIED_VOCABULARY:
-                return impliedVocabulary != null;
+            case AdaptorinterfacePackage.DOMAIN_SPECIFICATION__DEFAULT_VOCABULARY:
+                return defaultVocabulary != null;
         }
         return super.eIsSet(featureID);
     }

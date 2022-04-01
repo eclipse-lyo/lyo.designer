@@ -104,9 +104,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/configuration"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/shaclShapes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/shaclProperties"/>
-      <genFeatures documentation="" property="None" children="true" createChild="true"
-          propertyDescription="For Resources and Resource Properties that do not explicitly refer to a Vocabulary Term, use this Vocabulary (namespace, prefix, etc) instead of those from the Domain Specification."
-          ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/impliedVocabulary"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription="For Resources and Resource Properties that do not explicitly refer to a Vocabulary Term, define a default Vocabulary (name, namespace URI and prefix). If not defined, the name, namespace URI and prefix of the the Domain Specification is used instead."
+          ecoreFeature="ecore:EReference adaptorInterface.ecore#//DomainSpecification/defaultVocabulary"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//NamespacePrefix">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//NamespacePrefix/name"/>

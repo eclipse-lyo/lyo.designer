@@ -25,7 +25,7 @@ import vocabulary.Vocabulary;
  *   <li>{@link adaptorinterface.DomainSpecification#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getShaclShapes <em>Shacl Shapes</em>}</li>
  *   <li>{@link adaptorinterface.DomainSpecification#getShaclProperties <em>Shacl Properties</em>}</li>
- *   <li>{@link adaptorinterface.DomainSpecification#getImpliedVocabulary <em>Implied Vocabulary</em>}</li>
+ *   <li>{@link adaptorinterface.DomainSpecification#getDefaultVocabulary <em>Default Vocabulary</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification()
@@ -228,28 +228,25 @@ public interface DomainSpecification extends EObject {
 	EList<ShaclProperty> getShaclProperties();
 
     /**
-     * Returns the value of the '<em><b>Implied Vocabulary</b></em>' containment reference.
+     * Returns the value of the '<em><b>Default Vocabulary</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * <!-- begin-model-doc -->
-     * 
-     * <!-- end-model-doc -->
-     * @return the value of the '<em>Implied Vocabulary</em>' containment reference.
-     * @see #setImpliedVocabulary(Vocabulary)
-     * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_ImpliedVocabulary()
+     * @return the value of the '<em>Default Vocabulary</em>' containment reference.
+     * @see #setDefaultVocabulary(Vocabulary)
+     * @see adaptorinterface.AdaptorinterfacePackage#getDomainSpecification_DefaultVocabulary()
      * @model containment="true" keys="label"
      * @generated
      */
-    Vocabulary getImpliedVocabulary();
+    Vocabulary getDefaultVocabulary();
 
     /**
-     * Sets the value of the '{@link adaptorinterface.DomainSpecification#getImpliedVocabulary <em>Implied Vocabulary</em>}' containment reference.
+     * Sets the value of the '{@link adaptorinterface.DomainSpecification#getDefaultVocabulary <em>Default Vocabulary</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Implied Vocabulary</em>' containment reference.
-     * @see #getImpliedVocabulary()
+     * @param value the new value of the '<em>Default Vocabulary</em>' containment reference.
+     * @see #getDefaultVocabulary()
      * @generated
      */
-    void setImpliedVocabulary(Vocabulary value);
+    void setDefaultVocabulary(Vocabulary value);
 
 } // DomainSpecification
