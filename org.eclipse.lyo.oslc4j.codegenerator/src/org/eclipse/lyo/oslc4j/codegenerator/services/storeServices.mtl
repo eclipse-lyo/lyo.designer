@@ -141,8 +141,10 @@ resourcesFactory = new [anAdaptorInterface.javaClassNameForResourcesFactory()/](
 [if (aWebService.persisted() and aWebService.persistence.read)]
 // [protected (aResource.getResourceMethodName(true).concat('_storeInit'))]
 // [/protected]
-Store store = storePool.getStore();
 URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
+// [protected (aResource.getResourceMethodName(true).concat('_storeSetUri'))]
+// [/protected]
+Store store = storePool.getStore();
 try {
     aResource = store.getResource(storePool.getDefaultNamedGraphUri(), uri, [getResourceMethodResourceType(aResource)/].class);
 } catch (NoSuchElementException e) {
@@ -163,8 +165,10 @@ try {
 [if (aWebService.persisted() and aWebService.persistence.update)]
 // [protected (aResource.updateResourceMethodName().concat('_storeInit'))]
 // [/protected]
-Store store = storePool.getStore();
 URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
+// [protected (aResource.updateResourceMethodName().concat('_storeSetUri'))]
+// [/protected]
+Store store = storePool.getStore();
 if (!store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
     log.error("Cannot update a resource that does not already exists: '" + uri + "'");
     throw new WebApplicationException("Cannot update a resource that does not already exists: '" + uri + "'", Status.NOT_FOUND);
@@ -188,8 +192,10 @@ updatedResource = aResource;
 [if (aWebService.persisted() and aWebService.persistence.delete)]
 // [protected (aResource.deleteResourceMethodName().concat('_storeInit'))]
 // [/protected]
-Store store = storePool.getStore();
 URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
+// [protected (aResource.deleteResourceMethodName().concat('_storeSetUri'))]
+// [/protected]
+Store store = storePool.getStore();
 if (!store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
     log.error("Cannot delete a resource that does not already exists: '" + uri + "'");
     throw new WebApplicationException("Cannot delete a resource that does not already exists: '" + uri + "'", Status.NOT_FOUND);
