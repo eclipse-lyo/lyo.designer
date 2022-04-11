@@ -2219,11 +2219,11 @@
         </controls>
         <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource resourceProperties" referenceNameExpression="aql:'resourceProperties'"/>
         <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="adaptorinterface::Resource extends" referenceNameExpression="aql:'extends'"/>
-        <controls xsi:type="properties:ListDescription" name="adaptorinterface::Resource additionalConstraints" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('additionalConstraints')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('additionalConstraints'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('additionalConstraints').changeable" valueExpression="aql:self.additionalConstraints" displayExpression="var:value">
-          <actions>
+        <controls xsi:type="properties:ListDescription" name="adaptorinterface::Resource additionalConstraints" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('additionalConstraints')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('additionalConstraints'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('additionalConstraints').changeable" valueExpression="aql:self.additionalConstraints->union(Sequence{''})" displayExpression="var:value">
+          <actions imageExpression="org.eclipse.sirius.diagram.ui/icons/Add_16x16.gif">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Add Additional Constraints">
+                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Add/Edit Additional Constraints">
                   <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                     <initialOperation/>
                   </buttons>
@@ -2232,14 +2232,27 @@
                   </buttons>
                   <page name="adaptorinterface::Resource additionalConstraints Page" semanticCandidateExpression="var:self" groups="//@extensions.3/@categories.0/@groups.0/@controls.6/@actions.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0"/>
                   <groups name="adaptorinterface::Resource additionalConstraints Group" labelExpression="Add Additional Constraints" semanticCandidateExpression="var:self">
-                    <controls xsi:type="properties:TextAreaDescription" name="adaptorinterface::Resource additionalConstraints Text Area">
+                    <controls xsi:type="properties:TextAreaDescription" name="adaptorinterface::Resource additionalConstraints Text Area" lineCount="3" valueExpression="aql:selection->first() ">
                       <initialOperation>
-                        <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="additionalConstraints" valueExpression="aql:newValue"/>
+                        <firstModelOperations xsi:type="tool_1:Let" variableName="selectedConstraint" valueExpression="aql:selection->first()">
+                          <subModelOperations xsi:type="tool_1:Let" variableName="insertionPosition" valueExpression="aql:if (selectedConstraint = null) then 1 else self.additionalConstraints->indexOf(selectedConstraint) +1 endif">
+                            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(self.eClass().getEStructuralFeature('additionalConstraints'), self.additionalConstraints->insertAt(insertionPosition, newValue)->excluding(selectedConstraint))"/>
+                          </subModelOperations>
                         </firstModelOperations>
                       </initialOperation>
                     </controls>
                   </groups>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </actions>
+          <actions imageExpression="org.eclipse.sirius.diagram.ui/icons/Delete_16x16.gif">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:For" expression="aql:self.additionalConstraints" iteratorName="additionalConstraint">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:selection->first() = additionalConstraint">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(self.eClass().getEStructuralFeature('additionalConstraints'), self.additionalConstraints->excluding(additionalConstraint))"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
