@@ -128,7 +128,8 @@
                                         Java and all Java-based trademarks are trademarks of Oracle Corporation in the United States, other countries, or both.
                                     </license>
                                     <artifacts>
-                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-core:${lyo.version}</id>
+                                        <artifact>
+                                            <id>org.eclipse.lyo.oslc4j.core:oslc4j-core:${lyo.version}</id>
                                             <!-- 2020-09-30 Jad: We need to exclude some items, since they are already part of an eclipse installation.
                                              Adding them might mean upgrading/downgrading these plugins, which leads to problems with other plugin installations. -->
                                             <excludes>
@@ -136,35 +137,37 @@
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
                                             <instructionsProperties>
-											    <property>
-											        <name>-noee</name>
-											        <value>true</value>
-											    </property>
-											</instructionsProperties>
+                                                <property>
+                                                    <name>-noee</name>
+                                                    <value>true</value>
+                                                </property>
+                                            </instructionsProperties>
                                         </artifact>
-                                        <artifact><id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${lyo.version}</id>
+                                        <artifact>
+                                            <id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${lyo.version}</id>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
                                             <instructionsProperties>
-											    <property>
-											        <name>-noee</name>
-											        <value>true</value>
-											    </property>
-											</instructionsProperties>
+                                                <property>
+                                                    <name>-noee</name>
+                                                    <value>true</value>
+                                                </property>
+                                            </instructionsProperties>
                                         </artifact>
-                                        <artifact><id>org.eclipse.lyo.core.query:oslc-query:${lyo.version}</id>
+                                        <artifact>
+                                        <id>org.eclipse.lyo.core.query:oslc-query:${lyo.version}</id>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
                                             <instructionsProperties>
-											    <property>
-											        <name>-noee</name>
-											        <value>true</value>
-											    </property>
-											</instructionsProperties>
+                                                <property>
+                                                    <name>-noee</name>
+                                                    <value>true</value>
+                                                </property>
+                                            </instructionsProperties>
                                         </artifact>
                                      </artifacts>
                                 </feature>
@@ -239,17 +242,18 @@
                                         Java and all Java-based trademarks are trademarks of Oracle Corporation in the United States, other countries, or both.
                                     </license>
                                     <artifacts>
-                                        <artifact><id>org.eclipse.lyo.clients:oslc-client:${lyo.version}</id>
+                                        <artifact>
+                                            <id>org.eclipse.lyo.clients:oslc-client:${lyo.version}</id>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
                                             <instructionsProperties>
-											    <property>
-											        <name>-noee</name>
-											        <value>true</value>
-											    </property>
-											</instructionsProperties>
+                                                <property>
+                                                    <name>-noee</name>
+                                                    <value>true</value>
+                                                </property>
+                                            </instructionsProperties>
                                         </artifact>
                                     </artifacts>
                                 </feature>
@@ -324,7 +328,8 @@
                                         Java and all Java-based trademarks are trademarks of Oracle Corporation in the United States, other countries, or both.
                                     </license>
                                     <artifacts>
-                                        <artifact><id>org.eclipse.lyo.store:store-core:${lyo.version}</id>
+                                        <artifact>
+                                            <id>org.eclipse.lyo.store:store-core:${lyo.version}</id>
                                             <!-- 2020-09-30 Jad: We need to exclude some items, since they are already part of an eclipse installation.
                                              Adding them might mean upgrading/downgrading these plugins, which leads to problems with other plugin installations. -->
                                             <excludes>
@@ -337,11 +342,11 @@
                                                 <exclude>com.google.code.findbugs:::</exclude>
                                             </excludes>
                                             <instructionsProperties>
-											    <property>
-											        <name>-noee</name>
-											        <value>true</value>
-											    </property>
-											</instructionsProperties>
+                                                <property>
+                                                    <name>-noee</name>
+                                                    <value>true</value>
+                                                </property>
+                                            </instructionsProperties>
                                         </artifact>
                                      </artifacts>
                                 </feature>
