@@ -168,6 +168,15 @@
             </modules>
         </profile>
         <profile>
+            <id>plugins-only</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>org.eclipse.lyo.oslc4j.plugins</module>
+            </modules>
+        </profile>
+        <profile>
             <id>default</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
