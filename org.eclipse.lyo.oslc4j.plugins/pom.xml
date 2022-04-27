@@ -20,7 +20,7 @@
         <tycho.version>2.2.0</tycho.version>
         <eclipse.cbi>1.1.7</eclipse.cbi>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <p2.repo>http://download.eclipse.org/releases/2020-12</p2.repo>
+        <p2.repo>http://download.eclipse.org/releases/2021-09</p2.repo>
         <lyo.version>5.0.0-SNAPSHOT</lyo.version>
     </properties>
     <repositories>
