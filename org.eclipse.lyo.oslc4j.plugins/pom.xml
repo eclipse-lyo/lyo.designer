@@ -133,22 +133,19 @@
                                             <!-- 2020-09-30 Jad: We need to exclude some items, since they are already part of an eclipse installation.
                                              Adding them might mean upgrading/downgrading these plugins, which leads to problems with other plugin installations. -->
                                             <excludes>
-                                                <exclude>org.apache.httpcomponents:httpcore::</exclude>
-                                                <exclude>org.apache.httpcomponents:httpclient::</exclude>
+                                                <exclude>com.google.code.gson:::</exclude>
                                             </excludes>
                                         </artifact>
                                         <artifact>
                                             <id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${lyo.version}</id>
                                             <excludes>
-                                                <exclude>org.apache.httpcomponents:httpcore::</exclude>
-                                                <exclude>org.apache.httpcomponents:httpclient::</exclude>
+                                                <exclude>com.google.code.gson:::</exclude>
                                             </excludes>
                                         </artifact>
                                         <artifact>
                                         <id>org.eclipse.lyo.core.query:oslc-query:${lyo.version}</id>
                                             <excludes>
-                                                <exclude>org.apache.httpcomponents:httpcore::</exclude>
-                                                <exclude>org.apache.httpcomponents:httpclient::</exclude>
+                                                <exclude>com.google.code.gson:::</exclude>
                                             </excludes>
                                         </artifact>
                                      </artifacts>
@@ -227,8 +224,7 @@
                                         <artifact>
                                             <id>org.eclipse.lyo.clients:oslc-client:${lyo.version}</id>
                                             <excludes>
-                                                <exclude>org.apache.httpcomponents:httpcore::</exclude>
-                                                <exclude>org.apache.httpcomponents:httpclient::</exclude>
+                                                <exclude>com.google.code.gson:::</exclude>
                                             </excludes>
                                         </artifact>
                                     </artifacts>
@@ -309,13 +305,12 @@
                                             <!-- 2020-09-30 Jad: We need to exclude some items, since they are already part of an eclipse installation.
                                              Adding them might mean upgrading/downgrading these plugins, which leads to problems with other plugin installations. -->
                                             <excludes>
-                                                <exclude>org.apache.httpcomponents:httpcore::</exclude>
-                                                <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                                 <exclude>com.google.guava:::</exclude>
                                                 <exclude>xml-apis:xml-apis::</exclude>
                                                 <exclude>com.google.errorprone:::</exclude>
                                                 <exclude>com.google.j2objc:::</exclude>
                                                 <exclude>com.google.code.findbugs:::</exclude>
+                                                <exclude>com.google.code.gson:::</exclude>
                                             </excludes>
                                         </artifact>
                                      </artifacts>

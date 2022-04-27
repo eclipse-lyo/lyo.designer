@@ -12,7 +12,7 @@
         <eclipse.cbi>1.3.2</eclipse.cbi>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <p2.repo>http://download.eclipse.org/releases/2022-03</p2.repo>
-        <lyo.repo>https://download.eclipse.org/lyo/bundle/p2/edge/</lyo.repo>
+        <lyo.repo>file:org.eclipse.lyo.oslc4j.plugins/target/repository</lyo.repo>
     </properties>
     <repositories>
         <repository>
