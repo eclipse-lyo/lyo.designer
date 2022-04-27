@@ -20,7 +20,7 @@
         <tycho.version>2.2.0</tycho.version>
         <eclipse.cbi>1.1.7</eclipse.cbi>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <p2.repo>http://download.eclipse.org/releases/2021-09</p2.repo>
+        <p2.repo>http://download.eclipse.org/releases/2022-03</p2.repo>
         <lyo.version>5.0.0-SNAPSHOT</lyo.version>
     </properties>
     <repositories>
@@ -136,12 +136,6 @@
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
-                                            <instructionsProperties>
-                                                <property>
-                                                    <name>-noee</name>
-                                                    <value>true</value>
-                                                </property>
-                                            </instructionsProperties>
                                         </artifact>
                                         <artifact>
                                             <id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${lyo.version}</id>
@@ -149,12 +143,6 @@
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
-                                            <instructionsProperties>
-                                                <property>
-                                                    <name>-noee</name>
-                                                    <value>true</value>
-                                                </property>
-                                            </instructionsProperties>
                                         </artifact>
                                         <artifact>
                                         <id>org.eclipse.lyo.core.query:oslc-query:${lyo.version}</id>
@@ -162,12 +150,6 @@
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
-                                            <instructionsProperties>
-                                                <property>
-                                                    <name>-noee</name>
-                                                    <value>true</value>
-                                                </property>
-                                            </instructionsProperties>
                                         </artifact>
                                      </artifacts>
                                 </feature>
@@ -248,12 +230,6 @@
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                             </excludes>
-                                            <instructionsProperties>
-                                                <property>
-                                                    <name>-noee</name>
-                                                    <value>true</value>
-                                                </property>
-                                            </instructionsProperties>
                                         </artifact>
                                     </artifacts>
                                 </feature>
@@ -341,12 +317,6 @@
                                                 <exclude>com.google.j2objc:::</exclude>
                                                 <exclude>com.google.code.findbugs:::</exclude>
                                             </excludes>
-                                            <instructionsProperties>
-                                                <property>
-                                                    <name>-noee</name>
-                                                    <value>true</value>
-                                                </property>
-                                            </instructionsProperties>
                                         </artifact>
                                      </artifacts>
                                 </feature>
