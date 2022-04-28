@@ -15,6 +15,7 @@
 - Upgraded the frontend libraries from Bootstrap v4.0.0-beta to v4.2.1.
 
 - Replaced class methods with instead methods on the ResourcesFactory class.
+- Building Lyodesigner based on Eclipse 2022-03, and the corresponding versions of Sirius and Acceleo.
 
 ### Deprecated
 
