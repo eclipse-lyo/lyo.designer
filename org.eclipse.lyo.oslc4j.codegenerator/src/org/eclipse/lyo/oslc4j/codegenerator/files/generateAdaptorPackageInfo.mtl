@@ -56,7 +56,7 @@
 ]    @OslcNamespaceDefinition(prefix = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aDomainSpecification) /], namespaceURI = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification) /])[/for][if 
         (relevantVocabularies(anAdaptorInterface)->size() > 0)],
 [/if]
-[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)->sortedBy(name)) separator(','.concat(lineSeparator()))
+[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)->sortedBy(preferredNamespacePrefix)) separator(','.concat(lineSeparator()))
 ]    @OslcNamespaceDefinition(prefix = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyPreferredNamespacePrefixConstantName(aVocabulary) /], namespaceURI = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyNamespaceConstantName(aVocabulary) /])[/for]
 })
 package [javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface) /];
@@ -66,7 +66,7 @@ import org.eclipse.lyo.oslc4j.core.annotation.OslcSchema;
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
 
 [for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];[/for]
-[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, anAdaptorInterface, null) /];[/for]
+[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)->sortedBy(preferredNamespacePrefix)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, anAdaptorInterface, null) /];[/for]
 
 [/file]
 [/template]

@@ -51,6 +51,7 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.Optional;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -256,7 +257,6 @@ public class [anAdaptorInterface.javaClassNameForAuthenticationApplication()/] i
      *
      * @param response an error response
      * @param e        Exception with error message
-     * @param authChallenge OAuth challenge
      * @throws IOException
      * @throws ServletException
      */
