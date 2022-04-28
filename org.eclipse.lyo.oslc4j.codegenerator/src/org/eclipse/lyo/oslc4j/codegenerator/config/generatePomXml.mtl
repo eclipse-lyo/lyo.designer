@@ -273,7 +273,7 @@
             <groupId>org.eclipse.lyo.server</groupId>
             <artifactId>oslc-ui-model</artifactId>
             <version>${version.lyo}</version>
-        </dependency>        
+        </dependency>
         [/if]
         <!-- [protected ('dependencies_final')]
         -->
