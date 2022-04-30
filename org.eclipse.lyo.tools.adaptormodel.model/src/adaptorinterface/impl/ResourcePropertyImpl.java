@@ -19,6 +19,14 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import vocabulary.Property;
 
+import vocabulary.Vocabulary;
+import java.net.URI;
+import javax.xml.namespace.QName;
+import adaptorinterface.DomainSpecification;
+import org.eclipse.lyo.oslc4j.core.model.Occurs;
+import org.eclipse.lyo.oslc4j.core.model.Representation;
+import org.eclipse.lyo.oslc4j.core.model.ValueType;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Resource Property</b></em>'.
@@ -326,6 +334,163 @@ public class ResourcePropertyImpl extends ShapePropertyImpl implements ResourceP
         super();
     }
 
+	
+    /**
+     * <p>
+     * get the PropertyDefinition.
+     * The definition is either explicitly defined in the model as a Vocabulary Property term, or
+     * implied by constructing it from the Property shape.
+     * </p>
+     *
+     * @param self
+     *            The ResourceProperty that is in question.
+     */
+    @Override
+    public QName deducePropertyDefinition() {
+        if (null != this.getPropertyDefinition()) {
+            Vocabulary v = (Vocabulary)this.getPropertyDefinition().eContainer();
+            return new QName(v.getNamespaceURI(), this.getPropertyDefinition().getName(), v.getPreferredNamespacePrefix());
+        }
+        DomainSpecification ds = (DomainSpecification)this.eContainer();
+        QName deducedVocabulary = ds.deduceVocabulary();
+        return new QName(deducedVocabulary.getNamespaceURI(), this.getName(), deducedVocabulary.getPrefix());
+    }
+
+    @Override
+    public URI deducePropertyDefinitionAsUri () {
+        //I Cannot use UriBuilder to construct the URI since the "#" in the paths gets lost.
+        //return UriBuilder.fromUri(v.getNamespaceURI()).path(resource.getDescribes().getName()).build().toString();
+        QName qName = deducePropertyDefinition();
+        return URI.create(qName.getNamespaceURI() + qName.getLocalPart());
+    }
+
+    @Override
+    public String deducePropertyDefinitionComment() {
+        if (null != this.getPropertyDefinition()) {
+            return this.getPropertyDefinition().getComment();
+        }
+        return this.getVocabularyComment();
+    }
+
+    @Override
+    public URI getPropertyShapeURI() {
+        return java.net.URI.create(((DomainSpecification)this.eContainer()).getNamespaceURI() + this.getName());
+    }
+
+    @Override
+    public boolean isCardinalityMany () {
+        return 
+                this.getOccurs().compareTo(ResourcePropertyOccurs.EXACTLY_ONE) != 0 
+                && this.getOccurs().compareTo(ResourcePropertyOccurs.ZERO_OR_ONE) != 0 
+                ;
+    }
+
+    @Override
+    public boolean isLiteral () {
+        return 
+                this.getValueType().compareTo(ResourcePropertyValueType.LOCAL_RESOURCE) != 0 
+                && this.getValueType().compareTo(ResourcePropertyValueType.RESOURCE) != 0 
+                ;
+    }
+
+    @Override
+    public Occurs oslcCardinality () {
+        switch (this.getOccurs()) {
+        case EXACTLY_ONE:
+            return Occurs.ExactlyOne;
+        case ONE_OR_MANY:
+            return Occurs.OneOrMany;
+        case ZERO_OR_MANY:
+            return Occurs.ZeroOrMany;
+        case ZERO_OR_ONE:
+            return Occurs.ZeroOrOne;
+        default:
+            return Occurs.ExactlyOne;
+        }
+    }
+    
+    @Override
+    public ValueType oslcValueType () {
+        switch (this.getValueType()) {
+        case BOOLEAN:
+            return ValueType.Boolean;
+        case DATE_TIME:
+            return ValueType.DateTime;
+        case DOUBLE:
+            return ValueType.Double;
+        case FLOAT:
+            return ValueType.Float;
+        case INTEGER:
+            return ValueType.Integer;
+        case LOCAL_RESOURCE:
+            return ValueType.LocalResource;
+        case RESOURCE:
+            return ValueType.Resource;
+        case STRING:
+            return ValueType.String;
+        case URI:
+            return ValueType.Resource;
+        case XML_LITERAL:
+            return ValueType.XMLLiteral;
+        default:
+            return ValueType.String;
+        }
+    }
+    
+    
+    //TODO: What to do with EITHER, and NA?
+   @Override
+   public Representation oslcRepresentation () {
+        switch(this.getRepresentation()) {
+        case REFERENCE:
+            return Representation.Reference;
+        case INLINE:
+            return Representation.Inline;
+        case EITHER:
+            return null;
+        case NA:
+            return null;
+        default:
+            return Representation.Reference;
+        }
+    }
+
+    @Override
+    public String toString (Boolean withShapeLabel, Boolean withPrefix, Boolean withConstraints) {
+        String s = "";
+        if (withShapeLabel) {
+            DomainSpecification ds = (DomainSpecification)this.eContainer();
+            s += (withPrefix ? ds.getNamespacePrefix().getName() + ":" : "");
+            s += this.getName();
+        }
+        else {
+            s += (withPrefix ? this.deducePropertyDefinition().getPrefix() + ":" : "");
+            s += this.deducePropertyDefinition().getLocalPart();
+            
+        }
+        if (withConstraints) {
+            s+= " : ";
+            if (this.isLiteral()) {
+                s+= this.getValueType().getName();
+            }
+            else {
+                if (this.getRange().size() == 0) {
+                    s += "Resource";
+                }
+                else {
+                    s+= this.getRange().get(0).getName() + (this.getRange().size() > 1 ? "++" : "");
+                }
+            }
+            
+            if (this.isCardinalityMany()) {
+                s+= "[]";
+            }
+        }
+        return s;
+    }
+
+
+	
 	/**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

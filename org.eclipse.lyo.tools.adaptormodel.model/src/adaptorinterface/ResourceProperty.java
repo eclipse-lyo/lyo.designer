@@ -2,6 +2,12 @@ package adaptorinterface;
 
 
 import org.eclipse.emf.common.util.EList;
+import java.net.URI;
+import javax.xml.namespace.QName;
+import org.eclipse.lyo.oslc4j.core.model.Occurs;
+import org.eclipse.lyo.oslc4j.core.model.Representation;
+import org.eclipse.lyo.oslc4j.core.model.ValueType;
+
 import vocabulary.Property;
 
 /**
@@ -35,6 +41,18 @@ import vocabulary.Property;
  * @generated
  */
 public interface ResourceProperty extends ShapeProperty {
+    
+    QName deducePropertyDefinition();
+    URI deducePropertyDefinitionAsUri ();
+    String deducePropertyDefinitionComment();
+    URI getPropertyShapeURI();
+    boolean isCardinalityMany ();
+    boolean isLiteral ();
+    Occurs oslcCardinality ();
+    ValueType oslcValueType ();
+    Representation oslcRepresentation ();
+    String toString (Boolean withShapeLabel, Boolean withPrefix, Boolean withConstraints);
+
 	/**
      * Returns the value of the '<em><b>Id</b></em>' attribute.
      * <!-- begin-user-doc -->

@@ -25,7 +25,7 @@
             <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.SpecificationConfiguration.GeneralConfiguration" semanticCandidatesExpression="aql:self.generalConfiguration" domainClass="adaptorinterface.GeneralConfiguration" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.SpecificationConfiguration']/@subNodeMappings[name='SpecificationConfiguration.GeneralConfiguration']"/>
             <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.SpecificationConfiguration.ProjectConfiguration" semanticCandidatesExpression="aql:self.projectConfiguration" domainClass="adaptorinterface.ProjectConfiguration" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.SpecificationConfiguration']/@subNodeMappings[name='SpecificationConfiguration.ProjectConfiguration']"/>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="2" labelSize="9" labelExpression="[self.name + ' (' + self.namespacePrefix.name + ')'/]" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconAdaptor.png" widthComputationExpression="40" heightComputationExpression="30">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="2" labelSize="9" labelExpression="aql:self.name + ' (' + self.namespacePrefix.name + ')'" iconPath="/org.eclipse.lyo.tools.toolchain.design/images/IconAdaptor.png" widthComputationExpression="40" heightComputationExpression="30">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -60,14 +60,14 @@
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[specs.oclAsType(Specification)/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:specs.oclAsType(Specification)">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.NamespacePrefix" referenceName="domainPrefixes" variableName="newNamespacePrefix">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['nsp' + specs.domainPrefixes->size() /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'nsp' + specs.domainPrefixes->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.DomainSpecification" referenceName="domainSpecifications">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Domain' + specs.domainSpecifications->size() /]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespaceURI" valueExpression="['http://your.organisation.domain/'+ newNamespacePrefix.name +'#'/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespacePrefix" valueExpression="[newNamespacePrefix /]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Domain' + specs.domainSpecifications->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespaceURI" valueExpression="aql:'http://your.organisation.domain/'+ newNamespacePrefix.name +'#'"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namespacePrefix" valueExpression="aql:newNamespacePrefix"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1645,13 +1645,13 @@
       <diagramInitialisation/>
       <defaultLayer name="Default">
         <nodeMappings name="DomainSpecification.ResourcePropertyHidden" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.DeleteResourceLiteralPropertySubnode']" semanticCandidatesExpression="aql:null" domainClass="adaptorinterface.ResourceProperty">
-          <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="[''/]" labelAlignment="LEFT" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelSize="9" showIcon="false" labelExpression="aql:''" labelAlignment="LEFT" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="DomainSpecification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']" targetFinderExpression="[self.range /]" sourceFinderExpression="[diagram.visibleResources()->select(r : Resource | r.resourceProperties->includes(self))/]" domainClass="adaptorinterface.ResourceProperty" useDomainElement="true" reconnections="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.ResourceToReferenceProperty.ReconnectSource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.ResourceToReferenceProperty.ReconnectTarget']">
+        <edgeMappings name="DomainSpecification.ResourceToReferenceProperty" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.DeleteResourceToReferenceProperty']" sourceMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']" targetMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']" targetFinderExpression="aql:self.range" sourceFinderExpression="[diagram.visibleResources()->select(r : Resource | r.resourceProperties->includes(self))/]" domainClass="adaptorinterface.ResourceProperty" useDomainElement="true" reconnections="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.ResourceToReferenceProperty.ReconnectSource'] //@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.ResourceToReferenceProperty.ReconnectTarget']">
           <conditionnalStyles predicateExpression="[self.valueType = ResourcePropertyValueType::Resource/]">
             <style>
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2013,16 +2013,14 @@
       </additionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::queries"/>
-    <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::DialogInputServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.DialogInputServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.EmfResourcesLoaderService"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ConfirmDeletionServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ResourcePropertyRangeServices"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::domainSpecificationDiagram"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::shaclSpecificationDiagram"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ResourcePropertyShapeVocabulary"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ResourceShapeVocabulary"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.DomainSpecificationVocabulary"/>
+    <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::common::utils::ShapeVocabularyUtils"/>
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription" name="sirius_default_rules_properties">
     <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>

@@ -7,6 +7,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import vocabulary.Vocabulary;
 
+import javax.xml.namespace.QName;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Domain Specification</b></em>'.
@@ -33,7 +35,10 @@ import vocabulary.Vocabulary;
  * @generated
  */
 public interface DomainSpecification extends EObject {
-	/**
+
+    QName deduceVocabulary();
+    
+    /**
      * Returns the value of the '<em><b>Name</b></em>' attribute.
      * <!-- begin-user-doc -->
 	 * <p>

@@ -16,9 +16,7 @@
 /]
 [module domainSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
-[import org::eclipse::lyo::tools::common::utils::DomainSpecificationVocabulary/]
-[import org::eclipse::lyo::tools::common::utils::ResourceShapeVocabulary/]
-[import org::eclipse::lyo::tools::common::utils::ResourcePropertyShapeVocabulary/]
+[import org::eclipse::lyo::tools::common::utils::ShapeVocabularyUtils/]
 [import org::eclipse::lyo::tools::common::utils::PreferencesUtils/]
 
 [query public visibleResources (diagram : DSemanticDiagram) : Sequence(Resource) =
@@ -101,7 +99,7 @@ endif)
 /]
 
 [query public labelAtArrowEnd(aResourceProperty : ResourceProperty) : String =
-    aResourceProperty.cardinalityRepresentation(true)
+    aResourceProperty.occurs.toStringNumeric()
 /]
 
 [comment If at least one parent resource is not visible in the diagram, show textually the parent resources.
