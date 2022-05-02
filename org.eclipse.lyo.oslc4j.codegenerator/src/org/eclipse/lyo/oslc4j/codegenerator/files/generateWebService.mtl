@@ -63,6 +63,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -165,6 +166,7 @@ public class [javaClassName(aWebService) /]
     @Context private HttpServletRequest httpServletRequest;
     @Context private HttpServletResponse httpServletResponse;
     @Context private UriInfo uriInfo;
+    @Inject  private [anAdaptorInterface.javaClassNameForAdaptorManager()/] delegate;
 
     private static final Logger log = LoggerFactory.getLogger([javaClassName(aWebService)/].class);
 
@@ -201,12 +203,12 @@ public class [javaClassName(aWebService) /]
         // [protected ('getResource_init')]
         // [/protected]
 
-        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = delegate.[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
 
         if (a[javaName(aResource, true)/] != null) {
             // [protected (getResourceMethodName(aResource, true))]
             // [/protected]
-            httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](a[javaName(aResource, true)/]));
+            httpServletResponse.setHeader("ETag", delegate.[getResourceETagMethodName(aResource)/](a[javaName(aResource, true)/]));
             httpServletResponse.addHeader([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2);
             return a[javaName(aResource, true)/];
         }
@@ -225,7 +227,7 @@ public class [javaClassName(aWebService) /]
         // [protected (getResourceMethodName(aResource, false).concat('_init'))]
         // [/protected]
 
-        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = delegate.[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
 
         if (a[javaName(aResource, true)/] != null) {
             httpServletRequest.setAttribute("a[javaName(aResource, true)/]", a[javaName(aResource, true)/]);
@@ -265,7 +267,7 @@ public class [javaClassName(aWebService) /]
         //TODO: adjust the preview height & width values from the default values provided above.
         // [/protected]
 
-        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = delegate.[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
 
         if (a[javaName(aResource, true)/] != null) {
             final Compact compact = new Compact();
@@ -305,7 +307,7 @@ public class [javaClassName(aWebService) /]
         // [protected (getResourceSmallPreviewMethodName(aResource).concat('_init'))]
         // [/protected]
 
-        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = delegate.[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
 
         if (a[javaName(aResource, true)/] != null) {
             httpServletRequest.setAttribute("a[javaName(aResource, true)/]", a[javaName(aResource, true)/]);
@@ -348,7 +350,7 @@ public class [javaClassName(aWebService) /]
         // [protected (getResourceLargePreviewMethodName(aResource).concat('_init'))]
         // [/protected]
 
-        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+        final [getResourceMethodResourceType(aResource)/] a[javaName(aResource, true)/] = delegate.[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
 
         if (a[javaName(aResource, true)/] != null) {
             httpServletRequest.setAttribute("a[javaName(aResource, true)/]", a[javaName(aResource, true)/]);
@@ -393,12 +395,12 @@ public class [javaClassName(aWebService) /]
     {
         // [protected (deleteResourceMethodName(aResource).concat('_init'))]
         // [/protected]
-        final [deleteResourceMethodResourceType(aResource)/] aResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+        final [deleteResourceMethodResourceType(aResource)/] aResource = delegate.[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
 
         if (aResource != null) {
             // [protected (deleteResourceMethodName(aResource))]
             // [/protected]
-            boolean deleted = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[deleteResourceMethodName(aResource)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+            boolean deleted = delegate.[deleteResourceMethodName(aResource)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
             if (deleted)
                 return Response.ok().header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
             else
@@ -423,16 +425,16 @@ public class [javaClassName(aWebService) /]
     {
         // [protected (updateResourceMethodName(aResource).concat('_init'))]
         // [/protected]
-        final [updateResourceMethodResourceType(aResource)/] originalResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+        final [updateResourceMethodResourceType(aResource)/] originalResource = delegate.[getResourceMethodName(aResource, true)/](httpServletRequest[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
 
         if (originalResource != null) {
-            final String originalETag = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](originalResource);
+            final String originalETag = delegate.[getResourceETagMethodName(aResource)/](originalResource);
 
             if ((eTagHeader == null) || (originalETag.equals(eTagHeader))) {
                 // [protected (updateResourceMethodName(aResource))]
                 // [/protected]
-                final [updateResourceMethodResourceType(aResource)/] updatedResource = [javaClassNameForAdaptorManager(anAdaptorInterface) /].[updateResourceMethodName(aResource)/](httpServletRequest, aResource[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
-                httpServletResponse.setHeader("ETag", [javaClassNameForAdaptorManager(anAdaptorInterface) /].[getResourceETagMethodName(aResource)/](updatedResource));
+                final [updateResourceMethodResourceType(aResource)/] updatedResource = delegate.[updateResourceMethodName(aResource)/](httpServletRequest, aResource[commaSeparate(instanceMethodParameterList(aResource, aWebService), true, false)/]);
+                httpServletResponse.setHeader("ETag", delegate.[getResourceETagMethodName(aResource)/](updatedResource));
                 return Response.ok().header([javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].HDR_OSLC_VERSION, [javaInterfaceNameForAdaptorConstants(anAdaptorInterface)/].OSLC_VERSION_V2).build();
             }
             else {

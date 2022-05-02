@@ -73,13 +73,19 @@ javaClassPackageNameForStorePool(anAdaptorInterface).concat('.').concat(javaClas
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForStorePool(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForStorePool(anAdaptorInterface)).concat('.java')
 /]
 
-[template public storeImports(anAdaptorInterface: AdaptorInterface)]
+[template public storeImportsForBinder(anAdaptorInterface: AdaptorInterface)]
 [if (anAdaptorInterface.storeEnabled())]
 import java.net.URI;
 import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import org.eclipse.lyo.store.StorePool;
+[/if]
+[/template]
+
+[template public storeImportsForDelegate(anAdaptorInterface: AdaptorInterface)]
+[if (anAdaptorInterface.storeEnabled())]
 import java.util.NoSuchElementException;
 import org.eclipse.lyo.store.ModelUnmarshallingException;
 import org.eclipse.lyo.store.Store;
@@ -87,14 +93,6 @@ import org.eclipse.lyo.store.StorePool;
 import org.eclipse.lyo.store.StoreAccessException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response.Status;
-
-[/if]
-[/template]
-
-[template public storeClassAttributes(anAdaptorInterface: AdaptorInterface)]
-[if (anAdaptorInterface.storeEnabled())]
-private static StorePool storePool;
-private static [anAdaptorInterface.javaClassNameForResourcesFactory()/] resourcesFactory;
 [/if]
 [/template]
 
@@ -103,7 +101,7 @@ private static [anAdaptorInterface.javaClassNameForResourcesFactory()/] resource
 // [protected ('StoreInitialise')]
 // [/protected]
 Properties lyoStoreProperties = new Properties();
-String lyoStorePropertiesFile = [anAdaptorInterface.javaClassNameForAdaptorManager()/].class.getResource("[anAdaptorInterface.relativeFileNameForStoreProperties()/]").getFile();
+String lyoStorePropertiesFile = [anAdaptorInterface.javaClassNameForApplicationBinder()/].class.getResource("[anAdaptorInterface.relativeFileNameForStoreProperties()/]").getFile();
 try {
     lyoStoreProperties.load(new FileInputStream(lyoStorePropertiesFile));
 } catch (IOException e) {
@@ -129,11 +127,10 @@ String password = null;
 userName = lyoStoreProperties.getProperty("username");
 password = lyoStoreProperties.getProperty("password");
 [/if]
-storePool = new [anAdaptorInterface.javaClassNameForStorePool()/](initialPoolSize, defaultNamedGraph, sparqlQueryEndpoint, sparqlUpdateEndpoint, userName, password);
-resourcesFactory = new [anAdaptorInterface.javaClassNameForResourcesFactory()/](OSLC4JUtils.getServletURI());
-
+StorePool storePool = new [anAdaptorInterface.javaClassNameForStorePool()/](initialPoolSize, defaultNamedGraph, sparqlQueryEndpoint, sparqlUpdateEndpoint, userName, password);
 // [protected ('StoreFinalize')]
 // [/protected]
+return storePool;
 [/if]
 [/template]
 
