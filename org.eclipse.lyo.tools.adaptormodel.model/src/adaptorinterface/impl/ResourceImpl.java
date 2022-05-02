@@ -19,6 +19,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import java.net.URI;
+import javax.xml.namespace.QName;
+import adaptorinterface.DomainSpecification;
+import vocabulary.Vocabulary;
+
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Resource</b></em>'.
@@ -189,6 +195,56 @@ public class ResourceImpl extends ShapeImpl implements Resource {
 	protected ResourceImpl() {
         super();
     }
+
+    @Override
+    public QName deduceDescribes() {
+        if (null != this.getDescribes()) {
+            Vocabulary v = (Vocabulary)this.getDescribes().eContainer();
+            return new QName(v.getNamespaceURI(), this.getDescribes().getName(), v.getPreferredNamespacePrefix());
+        }
+        DomainSpecification ds = (DomainSpecification)this.eContainer();
+        QName deducedVocabulary = ds.deduceVocabulary();
+        return new QName(deducedVocabulary.getNamespaceURI(), this.getName(), deducedVocabulary.getPrefix());
+    }
+
+    @Override
+    public URI deduceDescribesAsUri () {
+        //I Cannot use UriBuilder to construct the URI since the "#" in the paths gets lost.
+        //return UriBuilder.fromUri(v.getNamespaceURI()).path(resource.getDescribes().getName()).build().toString();
+        QName qName = deduceDescribes();
+        return URI.create(qName.getNamespaceURI() + qName.getLocalPart());
+    }
+
+
+    @Override
+    public String deduceDescribesComment() {
+        if (null != this.getDescribes()) {
+            return this.getDescribes().getComment();
+        }
+        return this.getVocabularyComment();
+    }
+
+    @Override
+    public URI getResourceShapeURI() {
+        return java.net.URI.create(((DomainSpecification)this.eContainer()).getNamespaceURI() + this.getName());
+    }
+    
+    @Override
+    public String toString (Boolean withShapeLabel, Boolean withPrefix) {
+        String s = "";
+        if (withShapeLabel) {
+            DomainSpecification ds = (DomainSpecification)this.eContainer();
+            s += (withPrefix ? ds.getNamespacePrefix().getName() + ":" : "");
+            s += this.getName();
+        }
+        else {
+            s += (withPrefix ? this.deduceDescribes().getPrefix() + ":" : "");
+            s += this.deduceDescribes().getLocalPart();
+            
+        }
+        return s;
+    }
+
 
 	/**
      * <!-- begin-user-doc -->

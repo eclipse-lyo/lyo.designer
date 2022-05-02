@@ -4,6 +4,9 @@ package adaptorinterface;
 
 import org.eclipse.emf.common.util.EList;
 
+import java.net.URI;
+import javax.xml.namespace.QName;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Resource</b></em>'.
@@ -29,6 +32,13 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Resource extends Shape {
+    
+    QName deduceDescribes();
+    URI deduceDescribesAsUri ();
+    String deduceDescribesComment();
+    URI getResourceShapeURI();
+    String toString (Boolean withShapeLabel, Boolean withPrefix);
+    
 	/**
      * Returns the value of the '<em><b>Id</b></em>' attribute.
      * <!-- begin-user-doc -->

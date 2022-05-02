@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import vocabulary.Vocabulary;
 
+import javax.xml.namespace.QName;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Domain Specification</b></em>'.
@@ -181,6 +183,17 @@ public class DomainSpecificationImpl extends MinimalEObjectImpl.Container implem
         super();
     }
 
+    @Override
+    public QName deduceVocabulary() {
+        if (null != this.getDefaultVocabulary()) {
+            Vocabulary v = (Vocabulary)this.getDefaultVocabulary();
+            return new QName(v.getNamespaceURI(), v.getLabel(), v.getPreferredNamespacePrefix());
+        }
+        return new QName(this.getNamespaceURI(), this.getName(), this.getNamespacePrefix().getName());
+    }
+	
+	
+	
 	/**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

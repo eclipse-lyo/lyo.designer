@@ -140,6 +140,22 @@ public enum ResourcePropertyOccurs implements Enumerator {
      */
 	public static final List<ResourcePropertyOccurs> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
+    public String toStringNumeric () {
+        switch (this) {
+        case EXACTLY_ONE:
+            return "[1]";
+        case ZERO_OR_ONE:
+            return "[0..1]";
+        case ZERO_OR_MANY:
+            return "[0..*]";
+        case ONE_OR_MANY:
+            return "[1..*]";
+        default:
+            return "[*..*]";
+        }
+    }
+    
+
 	/**
      * Returns the '<em><b>Resource Property Occurs</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->

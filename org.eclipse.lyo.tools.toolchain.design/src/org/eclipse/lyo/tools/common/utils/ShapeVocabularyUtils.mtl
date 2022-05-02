@@ -1,0 +1,63 @@
+[comment encoding = UTF-8 /]
+[module ShapeVocabularyUtils('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[query public ShapeVocabularyUtils(anOclAny: OclAny) : OclVoid
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'ShapeVocabularyUtils()', Sequence{})
+/]
+
+[query public deduceVocabulary_namespaceURI(arg0 : DomainSpecification) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'deduceVocabulary_namespaceURI(adaptorinterface.DomainSpecification)', Sequence{arg0})
+/]
+
+[query public deduceVocabulary_localPart(arg0 : DomainSpecification) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'deduceVocabulary_localPart(adaptorinterface.DomainSpecification)', Sequence{arg0})
+/]
+
+[query public deduceVocabulary_prefix(arg0 : DomainSpecification) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'deduceVocabulary_prefix(adaptorinterface.DomainSpecification)', Sequence{arg0})
+/]
+
+[query public deduceDescribes_namespaceURI(arg0 : Resource) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'deduceDescribes_namespaceURI(adaptorinterface.Resource)', Sequence{arg0})
+/]
+
+[query public deduceDescribes_localPart(arg0 : Resource) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'deduceDescribes_localPart(adaptorinterface.Resource)', Sequence{arg0})
+/]
+
+[query public deduceDescribes_prefix(arg0 : Resource) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'deduceDescribes_prefix(adaptorinterface.Resource)', Sequence{arg0})
+/]
+
+[query public toString(arg0 : Resource, arg1 : Boolean, arg2 : Boolean) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'toString(adaptorinterface.Resource, java.lang.Boolean, java.lang.Boolean)', Sequence{arg0, arg1, arg2})
+/]
+
+[query public deducePropertyDefinition_namespaceURI(arg0 : ResourceProperty) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'deducePropertyDefinition_namespaceURI(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public deducePropertyDefinition_localPart(arg0 : ResourceProperty) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'deducePropertyDefinition_localPart(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public deducePropertyDefinition_prefix(arg0 : ResourceProperty) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'deducePropertyDefinition_prefix(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public isLiteral(arg0 : ResourceProperty) : Boolean
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'isLiteral(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public isCardinalityMany(arg0 : ResourceProperty) : Boolean
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'isCardinalityMany(adaptorinterface.ResourceProperty)', Sequence{arg0})
+/]
+
+[query public toString(arg0 : ResourceProperty, arg1 : Boolean, arg2 : Boolean, arg3 : Boolean) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'toString(adaptorinterface.ResourceProperty, java.lang.Boolean, java.lang.Boolean, java.lang.Boolean)', Sequence{arg0, arg1, arg2, arg3})
+/]
+
+[query public toStringNumeric(arg0 : ResourcePropertyOccurs) : String
+	= invoke('org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils', 'toStringNumeric(adaptorinterface.ResourcePropertyOccurs)', Sequence{arg0})
+/]
+
