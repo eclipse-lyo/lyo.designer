@@ -19,6 +19,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::services::storeServices/]
 
 [template public generateClassHeader(anAdaptorInterface : AdaptorInterface)]
 // [protected ('Copyright')]
@@ -40,16 +41,24 @@
 [/template]
 
 [template public generateImports(anAdaptorInterface : AdaptorInterface)]
+import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.glassfish.hk2.api.Factory;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
-[if (anAdaptorInterface.trsServiceEnabled())]
-import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
-import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
-[/if]
+import javax.inject.Singleton;
 
+import [anAdaptorInterface.javaClassFullNameForAdaptorManager()/];
+import [anAdaptorInterface.javaClassFullNameForResourcesFactory()/];
+[if (anAdaptorInterface.storeEnabled())][anAdaptorInterface.storeImportsForBinder()/][/if]
+[if (anAdaptorInterface.trsServiceEnabled())
+]import org.eclipse.lyo.oslc4j.trs.server.InmemPagedTrs;
+import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
+import org.eclipse.lyo.oslc4j.trs.server.PagedTrsFactory;
+import org.eclipse.lyo.oslc4j.trs.server.TrsEventHandler;
+[/if]
+import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 // [protected ('imports')]
 // [/protected]
 [/template]
@@ -59,22 +68,51 @@ import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
 protected void configure() {
     log.info("HK2 contract binding start");
 
+    bindAsContract([anAdaptorInterface.javaClassNameForAdaptorManager()/].class).in(Singleton.class);
+    bindFactory(new ResourcesFactoryFactory()).to([anAdaptorInterface.javaClassNameForResourcesFactory()/].class).in(Singleton.class);
+
+    [if (anAdaptorInterface.storeEnabled())]
+    bindFactory(new StorePoolFactory()).to(StorePool.class).in(Singleton.class);
+    [/if]
     [if (anAdaptorInterface.trsServiceEnabled())]
-    bindFactory(new TRSFactory()).to(PagedTrs.class);
+    // [protected ('TRSInitialise')]
+    // [/protected]
+    ArrayList<URI> uris = new ArrayList<URI>();
+    // [protected ('TRSInitialBase')]
+    //TODO: Provide the initial list of URIs to populate the TRS log with
+    // [/protected]
+    InmemPagedTrs inmemTrs = new PagedTrsFactory().getInmemPagedTrs([anAdaptorInterface.trsService.basePageLimit/], [anAdaptorInterface.trsService.changeLogPageLimit/], uris);
+    bind(inmemTrs).to(TrsEventHandler.class);
+    bind(inmemTrs).to(PagedTrs.class);
+    // [protected ('TRSFinalize')]
+    // [/protected]
     [/if]
 }
 [/template]
 
-[template public generateTRSFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
-[if (anAdaptorInterface.trsServiceEnabled())]
-private final class TRSFactory implements Factory<PagedTrs> {
+[template public generateResourcesFactoryFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
+private final class ResourcesFactoryFactory implements Factory<[anAdaptorInterface.javaClassNameForResourcesFactory()/]> {
     @Override
-    public PagedTrs provide() {
-        return [anAdaptorInterface.javaClassNameForAdaptorManager()/].getPagedTrs();
+    public [anAdaptorInterface.javaClassNameForResourcesFactory()/] provide() {
+        return new [anAdaptorInterface.javaClassNameForResourcesFactory()/](OSLC4JUtils.getServletURI());
     }
 
     @Override
-    public void dispose(PagedTrs instance) {
+    public void dispose([anAdaptorInterface.javaClassNameForResourcesFactory()/] instance) {
+    }
+}
+[/template]
+
+[template public generateStorePoolFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
+[if (anAdaptorInterface.storeEnabled())]
+private final class StorePoolFactory implements Factory<StorePool> {
+    @Override
+    public StorePool provide() {
+        [anAdaptorInterface.storeInitialization()/]
+    }
+
+    @Override
+    public void dispose(StorePool instance) {
     }
 }
 [/if]
@@ -107,8 +145,8 @@ public class [javaClassNameForApplicationBinder(anAdaptorInterface) /] extends A
     }
 
     [generateConfigureMethod(anAdaptorInterface)/]
-
-    [generateTRSFactory(anAdaptorInterface)/]
+    [generateResourcesFactoryFactory(anAdaptorInterface)/]
+    [generateStorePoolFactory(anAdaptorInterface)/]
 }
 [/file]
 [/template]

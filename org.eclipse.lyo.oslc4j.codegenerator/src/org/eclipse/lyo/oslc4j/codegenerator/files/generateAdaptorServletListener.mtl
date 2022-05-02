@@ -120,8 +120,9 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
 
         logger.info("servletListner contextInitialized.");
 
-        // Establish connection to data backbone etc ...
-        [javaClassNameForAdaptorManager(anAdaptorInterface) /].contextInitializeServletListener(servletContextEvent);
+        // [protected ('contextInitialized_mid')]
+        // TODO Implement code to establish connection to data backbone etc ...
+        // [/protected]
         [additionalContextInitialization()/]
         // [protected ('contextInitialized_final')]
         // [/protected]
@@ -131,14 +132,9 @@ public class [javaClassNameForAdaptorServletListener(anAdaptorInterface) /] impl
     public void contextDestroyed(ServletContextEvent servletContextEvent)
     {
         // [protected ('contextDestroyed_init')]
+        // TODO Implement code to shutdown connections to data backbone etc...
         // [/protected]
-
-        // Shutdown connections to data backbone etc...
-        [javaClassNameForAdaptorManager(anAdaptorInterface) /].contextDestroyServletListener(servletContextEvent);
-
         [additionalContextDestroyed()/]
-        // [protected ('contextDestroyed_final')]
-        // [/protected]
     }
 
     // [protected ('class_methods')]
