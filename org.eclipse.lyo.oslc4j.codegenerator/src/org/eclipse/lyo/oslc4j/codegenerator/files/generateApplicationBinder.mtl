@@ -106,9 +106,72 @@ private final class ResourcesFactoryFactory implements Factory<[anAdaptorInterfa
 [template public generateStorePoolFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
 [if (anAdaptorInterface.storeEnabled())]
 private final class StorePoolFactory implements Factory<StorePool> {
+
+    private Optional<String> getPropertyFromEnvironment(String envKey) {
+        final Map<String, String> env = System.getenv();
+        if(env.containsKey(envKey)) {
+            log.info("Found env variable with key {}", envKey);
+            return Optional.of(env.get(envKey));
+        }
+        return Optional.empty();
+    }
+
+    private Optional<String> getPropertyFromFile(Properties properties, String key) {
+        if(properties.containsKey(key)) {
+            log.info("Found property with key {}", key);
+            return Optional.of(properties.getProperty(key));
+        }
+        return Optional.empty();
+    }
+
+    private StorePool initializeStorePool() {
+        //For each store configuration setting, first try to load it from an environment variable.
+        //If no such variable exists, try to load from the properties file - if such a file exists.
+        //Raise an exception of any of the necessary settings are missing from both the environment and properties file.
+        Properties lyoStoreProperties = new Properties();
+        URL lyoStorePropertiesFile = [anAdaptorInterface.javaClassNameForApplicationBinder()/].class.getResource("[anAdaptorInterface.relativeFileNameForStoreProperties()/]");
+        try {
+            if (null != lyoStorePropertiesFile) {
+                lyoStoreProperties.load(new FileInputStream(lyoStorePropertiesFile.getFile()));
+            }
+            else {
+                log.info("Failed to read properties file for Store configuration. Hopefully, settings are available via Environment variables.");
+            }
+        } catch (FileNotFoundException | SecurityException e) {
+            log.info("Failed to read properties file for Store configuration. Hopefully, settings are available via Environment variables.", e);
+        }
+        catch (IOException e) {
+            log.error("Failed to initialize Store. properties file for Store configuration could not be loaded.", e);
+            throw new RuntimeException(e);
+        }        
+
+        int initialPoolSize = Integer.parseInt(getPropertyFromEnvironment("LYO_STORE_INITIAL_POOL_SIZE")
+                .orElseGet(() -> getPropertyFromFile(lyoStoreProperties, "initialPoolSize").orElseThrow()));
+        URI defaultNamedGraph = URI.create(getPropertyFromEnvironment("LYO_STORE_DEFAULT_NAMED_GRAPH")
+                .orElseGet(() -> getPropertyFromFile(lyoStoreProperties, "defaultNamedGraph").orElseThrow()));
+        URI sparqlQueryEndpoint = URI.create(getPropertyFromEnvironment("LYO_STORE_SPARQL_QUERY_ENDPOINT")
+                .orElseGet(() -> getPropertyFromFile(lyoStoreProperties, "sparqlQueryEndpoint").orElseThrow()));
+        URI sparqlUpdateEndpoint = URI.create(getPropertyFromEnvironment("LYO_STORE_SPARQL_UPDATE_ENDPOINT")
+                .orElseGet(() -> getPropertyFromFile(lyoStoreProperties, "sparqlUpdateEndpoint").orElseThrow()));
+
+        String userName = null;
+        String password = null;
+        [if (anAdaptorInterface.oneAndOnlyStore().oclIsTypeOf(StoreWithAuthentication))]
+        userName = lyoStoreProperties.getProperty("username");
+        password = lyoStoreProperties.getProperty("password");
+        [/if]
+        [anAdaptorInterface.javaClassNameForStorePool()/] storePool = new [anAdaptorInterface.javaClassNameForStorePool()/](initialPoolSize, defaultNamedGraph, sparqlQueryEndpoint, sparqlUpdateEndpoint, userName, password);
+        return storePool;
+    }
+
     @Override
     public StorePool provide() {
-        [anAdaptorInterface.storeInitialization()/]
+        // [protected ('StoreInitialise')]
+        // [/protected]
+        StorePool storePool = initializeStorePool();
+        // [protected ('StoreFinalize')]
+        // [/protected]
+        return storePool;
     }
 
     @Override

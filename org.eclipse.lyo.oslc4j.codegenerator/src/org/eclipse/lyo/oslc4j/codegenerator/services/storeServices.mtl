@@ -76,9 +76,14 @@ javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForSt
 [template public storeImportsForBinder(anAdaptorInterface: AdaptorInterface)]
 [if (anAdaptorInterface.storeEnabled())]
 import java.net.URI;
+import java.net.URL;
+import java.util.Optional;
+import java.util.Map;
 import java.util.Properties;
+import java.io.FileNotFoundException;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.SecurityException;
 import java.net.URISyntaxException;
 import org.eclipse.lyo.store.StorePool;
 [/if]
@@ -86,6 +91,7 @@ import org.eclipse.lyo.store.StorePool;
 
 [template public storeImportsForDelegate(anAdaptorInterface: AdaptorInterface)]
 [if (anAdaptorInterface.storeEnabled())]
+import java.net.URI;
 import java.util.NoSuchElementException;
 import org.eclipse.lyo.store.ModelUnmarshallingException;
 import org.eclipse.lyo.store.Store;
@@ -93,44 +99,6 @@ import org.eclipse.lyo.store.StorePool;
 import org.eclipse.lyo.store.StoreAccessException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response.Status;
-[/if]
-[/template]
-
-[template public storeInitialization(anAdaptorInterface: AdaptorInterface)]
-[if (anAdaptorInterface.storeEnabled())]
-// [protected ('StoreInitialise')]
-// [/protected]
-Properties lyoStoreProperties = new Properties();
-String lyoStorePropertiesFile = [anAdaptorInterface.javaClassNameForApplicationBinder()/].class.getResource("[anAdaptorInterface.relativeFileNameForStoreProperties()/]").getFile();
-try {
-    lyoStoreProperties.load(new FileInputStream(lyoStorePropertiesFile));
-} catch (IOException e) {
-    log.error("Failed to initialize Store. properties file for Store configuration could not be loaded.", e);
-    throw new RuntimeException(e);
-}
-
-int initialPoolSize = Integer.parseInt(lyoStoreProperties.getProperty("initialPoolSize"));
-URI defaultNamedGraph;
-URI sparqlQueryEndpoint;
-URI sparqlUpdateEndpoint;
-try {
-    defaultNamedGraph = new URI(lyoStoreProperties.getProperty("defaultNamedGraph"));
-    sparqlQueryEndpoint = new URI(lyoStoreProperties.getProperty("sparqlQueryEndpoint"));
-    sparqlUpdateEndpoint = new URI(lyoStoreProperties.getProperty("sparqlUpdateEndpoint"));
-} catch (URISyntaxException e) {
-    log.error("Failed to initialize Store. One of the configuration property ('defaultNamedGraph' or 'sparqlQueryEndpoint' or 'sparqlUpdateEndpoint') is not a valid URI.", e);
-    throw new RuntimeException(e);
-}
-String userName = null;
-String password = null;
-[if (anAdaptorInterface.oneAndOnlyStore().oclIsTypeOf(StoreWithAuthentication))]
-userName = lyoStoreProperties.getProperty("username");
-password = lyoStoreProperties.getProperty("password");
-[/if]
-StorePool storePool = new [anAdaptorInterface.javaClassNameForStorePool()/](initialPoolSize, defaultNamedGraph, sparqlQueryEndpoint, sparqlUpdateEndpoint, userName, password);
-// [protected ('StoreFinalize')]
-// [/protected]
-return storePool;
 [/if]
 [/template]
 

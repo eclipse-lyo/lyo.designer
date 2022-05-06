@@ -17,6 +17,7 @@
 - Replaced class methods with instead methods on the ResourcesFactory class.
 - Building Lyodesigner based on Eclipse 2022-03, and the corresponding versions of Sirius and Acceleo.
 - Using depedency injection for Manager, Store and TRS classes
+- Provide flexibility to for Store properties to be set via the Environment.
 
 ### Deprecated
 
