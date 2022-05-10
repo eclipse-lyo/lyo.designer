@@ -157,8 +157,10 @@ private final class StorePoolFactory implements Factory<StorePool> {
         String userName = null;
         String password = null;
         [if (anAdaptorInterface.oneAndOnlyStore().oclIsTypeOf(StoreWithAuthentication))]
-        userName = lyoStoreProperties.getProperty("username");
-        password = lyoStoreProperties.getProperty("password");
+        userName = getPropertyFromEnvironment("LYO_STORE_USERNAME")
+                .orElseGet(() -> getPropertyFromFile(lyoStoreProperties, "username").orElseThrow());
+        password = getPropertyFromEnvironment("LYO_STORE_PASSWORD")
+                .orElseGet(() -> getPropertyFromFile(lyoStoreProperties, "password").orElseThrow());
         [/if]
         [anAdaptorInterface.javaClassNameForStorePool()/] storePool = new [anAdaptorInterface.javaClassNameForStorePool()/](initialPoolSize, defaultNamedGraph, sparqlQueryEndpoint, sparqlUpdateEndpoint, userName, password);
         return storePool;
