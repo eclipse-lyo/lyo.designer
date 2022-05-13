@@ -91,7 +91,7 @@ protected void configure() {
 [/template]
 
 [template public generateResourcesFactoryFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
-private final class ResourcesFactoryFactory implements Factory<[anAdaptorInterface.javaClassNameForResourcesFactory()/]> {
+private static final class ResourcesFactoryFactory implements Factory<[anAdaptorInterface.javaClassNameForResourcesFactory()/]> {
     @Override
     public [anAdaptorInterface.javaClassNameForResourcesFactory()/] provide() {
         return new [anAdaptorInterface.javaClassNameForResourcesFactory()/](OSLC4JUtils.getServletURI());
@@ -105,7 +105,7 @@ private final class ResourcesFactoryFactory implements Factory<[anAdaptorInterfa
 
 [template public generateStorePoolFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
 [if (anAdaptorInterface.storeEnabled())]
-private final class StorePoolFactory implements Factory<StorePool> {
+private static final class StorePoolFactory implements Factory<StorePool> {
 
     private Optional<String> getPropertyFromEnvironment(String envKey) {
         final Map<String, String> env = System.getenv();
