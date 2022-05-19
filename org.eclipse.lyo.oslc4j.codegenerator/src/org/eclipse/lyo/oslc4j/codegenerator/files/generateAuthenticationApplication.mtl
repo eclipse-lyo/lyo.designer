@@ -260,7 +260,7 @@ public class [anAdaptorInterface.javaClassNameForAuthenticationApplication()/] i
      * @throws IOException
      * @throws ServletException
      */
-    public void sendUnauthorizedResponse(HttpServletResponse response, Exception e) throws IOException, ServletException {
+    public void sendUnauthorizedResponse(HttpServletRequest request, HttpServletResponse response, Exception e) throws IOException, ServletException {
         // [protected ('sendUnauthorizedResponse_init')]
         // [/protected]
         // Accept basic access or OAuth authentication.
