@@ -94,19 +94,20 @@ import org.eclipse.lyo.oslc4j.core.model.ResourceShapeFactory;
 
 import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), contextAdaptorInterface, defaultJavaClassPackageName)/];
 [if (not aResource.directParentResource().oclIsUndefined())]import [javaClassFullName(aResource.directParentResource(), contextAdaptorInterface, defaultJavaClassPackageName) /];[/if]
-[for (r: Resource | aResource.interfaceResources()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
-[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
+[for (r: Resource | aResource.interfaceResources()->sortedBy(name))]import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];
+[/for]
+[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name))]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface, defaultJavaClassPackageName) /];
+[/for]
 [for (aVocabulary: Vocabulary | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))->asSet()
         ->select(p: ResourceProperty | not (p.propertyDefinition.oclIsUndefined()))
         ->collect(p: ResourceProperty | p.propertyDefinition.definingVocabulary())
-        ->flatten()->asSet()->sortedBy(label)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
-
+        ->flatten()->asSet()->sortedBy(label))]import [javaInterfaceFullNameForConstants(aVocabulary, contextAdaptorInterface, defaultJavaClassPackageName) /];
+[/for]
 [for (r: Resource | allProperties(aResource)
     ->select(p: ResourceProperty | Sequence{'Resource', 'LocalResource'}->includes(p.valueType.toString()))
     ->collect(p: ResourceProperty | p.range)->flatten()->asSet()
-    ->sortedBy(name)) separator(lineSeparator())]
-import [javaClassFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
-
+    ->sortedBy(name))]import [javaClassFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];
+[/for]
 // [protected ('imports')]
 // [/protected]
 [/template]
@@ -220,8 +221,7 @@ public void add[javaAttributeName(aProperty, aResource).toUpperFirst()/](final [
 [/for]
 [/template]
 
-[template public generateGetters(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
-[for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+[template public generateGetter(aProperty: ResourceProperty, aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
 // [protected ('getterAnnotation:'.concat(javaAttributeName(aProperty, aResource)))]
 // [/protected]
 [if (not (nameAnnotation(aProperty) = ''))]
@@ -266,12 +266,9 @@ public [javaAttributeTypeDeclaration(aProperty) /] [javaAttributeGetterMethodNam
     // [/protected]
     return [javaAttributeName(aProperty, aResource) /];
 }
-
-[/for]
 [/template]
 
-[template public generateSetters(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
-[for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+[template public generateSetter(aProperty: ResourceProperty, aResource : Resource)]
 // [protected ('setterAnnotation:'.concat(javaAttributeName(aProperty, aResource)))]
 // [/protected]
 public void [javaAttributeSetterMethodName(aProperty, aResource)/](final [javaAttributeTypeDeclaration(aProperty) /] [javaName(aProperty, false)/] )
@@ -287,12 +284,9 @@ public void [javaAttributeSetterMethodName(aProperty, aResource)/](final [javaAt
 [else]
     this.[javaAttributeName(aProperty, aResource) /] = [javaName(aProperty, false)/];
 [/if]
-
     // [protected ('setterFinalize:'.concat(javaAttributeName(aProperty, aResource)))]
     // [/protected]
 }
-
-[/for]
 [/template]
 
 [template public generateResource(aResource : Resource, contextAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
@@ -316,8 +310,14 @@ public void [javaAttributeSetterMethodName(aProperty, aResource)/](final [javaAt
     [generateResourceShapeMethods(aResource, contextAdaptorInterface)/]
     [generateToStringMethods(aResource, contextAdaptorInterface)/]
     [generateAddToAttributeMethods(aResource, contextAdaptorInterface)/]
-    [generateGetters(aResource, contextAdaptorInterface)/]
-    [generateSetters(aResource, contextAdaptorInterface)/]
+    [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+    [generateGetter(aProperty, aResource, contextAdaptorInterface)/]
+
+    [/for]
+    [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+    [generateSetter(aProperty, aResource)/]
+
+    [/for]
 }
 [/file]
 [/if]

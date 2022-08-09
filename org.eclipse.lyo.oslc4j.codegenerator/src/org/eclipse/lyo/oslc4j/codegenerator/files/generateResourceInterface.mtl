@@ -81,18 +81,18 @@ import org.eclipse.lyo.oslc4j.core.model.Representation;
 import org.eclipse.lyo.oslc4j.core.model.ValueType;
 
 import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), contextAdaptorInterface, defaultJavaClassPackageName)/];
-[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
+[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name))]import [javaInterfaceFullNameForConstants(aDomainSpecification, contextAdaptorInterface, defaultJavaClassPackageName) /];
+[/for]
 [for (aVocabulary: Vocabulary | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))->asSet()
         ->select(p: ResourceProperty | not (p.propertyDefinition.oclIsUndefined()))
         ->collect(p: ResourceProperty | p.propertyDefinition.definingVocabulary())
-        ->flatten()->asSet()->sortedBy(label)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
-
+        ->flatten()->asSet()->sortedBy(label))]import [javaInterfaceFullNameForConstants(aVocabulary, contextAdaptorInterface, defaultJavaClassPackageName) /];
+[/for]
 [for (r: Resource | allProperties(aResource)
     ->select(p: ResourceProperty | Sequence{'Resource', 'LocalResource'}->includes(p.valueType.toString()))
     ->collect(p: ResourceProperty | p.range)->flatten()->asSet()
-    ->sortedBy(name)) separator(lineSeparator())]
-import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];[/for]
-
+    ->sortedBy(name))]import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];
+[/for]
 // [protected ('imports')]
 // [/protected]
 
