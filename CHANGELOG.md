@@ -18,6 +18,7 @@
 - Building Lyodesigner based on Eclipse 2022-03, and the corresponding versions of Sirius and Acceleo.
 - Using depedency injection for Manager, Store and TRS classes
 - Provide flexibility to for Store properties to be set via the Environment.
+- Changing the way Resource and ResourceProperty items are represented in dialogs. We include prefixes to make their identification easier.
 
 ### Deprecated
 
@@ -31,6 +32,7 @@
 
 ### Fixed
 - Deprecated properties no longer cause errors when validating.
+- generating PackageInfo schema annotations in the correct packages/folders where the resource classes are defined.
 
 ---
 
