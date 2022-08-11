@@ -26,6 +26,11 @@ aProperty.eContainer(DomainSpecification)
 aResource.eContainer(DomainSpecification)
 /]
 
+[query public javaInterfaceFullFolderNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String = 
+    javaFilesBasePath(aDomainSpecification, anAdaptorInterface, defaultJavaFullFilesPath)
+    .concatenatePaths(javaInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
+/]
+
 [query public javaInterfacePackageNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
 javaPackageName(aDomainSpecification, anAdaptorInterface, defaultJavaPackageName)
 /]
@@ -38,9 +43,8 @@ javaString(aDomainSpecification.namespacePrefix.name, 'oslc', true).concat('Doma
 javaInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultJavaPackageName).concat('.').concat(javaInterfaceNameForConstants(aDomainSpecification))
 /]
 
-[query public javaInterfaceFullFileNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String = 
-    javaFilesBasePath(aDomainSpecification, anAdaptorInterface, defaultJavaFullFilesPath)
-    .concatenatePaths(javaInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
+[query public javaInterfaceFullFileNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String =
+    javaInterfaceFullFolderNameForConstants(aDomainSpecification, anAdaptorInterface, defaultJavaFullFilesPath, defaultJavaPackageName)
     .concatenatePaths(javaInterfaceNameForConstants(aDomainSpecification))
     .concat('.java')
 /]

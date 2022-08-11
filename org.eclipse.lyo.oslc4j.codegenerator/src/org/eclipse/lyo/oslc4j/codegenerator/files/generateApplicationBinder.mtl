@@ -53,7 +53,8 @@ import [anAdaptorInterface.javaClassFullNameForAdaptorManager()/];
 import [anAdaptorInterface.javaClassFullNameForResourcesFactory()/];
 [if (anAdaptorInterface.storeEnabled())][anAdaptorInterface.storeImportsForBinder()/][/if]
 [if (anAdaptorInterface.trsServiceEnabled())
-]import org.eclipse.lyo.oslc4j.trs.server.InmemPagedTrs;
+]import java.net.URI;
+import org.eclipse.lyo.oslc4j.trs.server.InmemPagedTrs;
 import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
 import org.eclipse.lyo.oslc4j.trs.server.PagedTrsFactory;
 import org.eclipse.lyo.oslc4j.trs.server.TrsEventHandler;

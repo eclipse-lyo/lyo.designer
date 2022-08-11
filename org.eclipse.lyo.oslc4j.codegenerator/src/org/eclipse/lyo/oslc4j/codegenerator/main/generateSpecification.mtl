@@ -22,7 +22,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
-
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorPackageInfo/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateDomainSpecificationConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateVocabularyConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateResource/]
@@ -41,24 +41,38 @@ aSpecification.configuration.oclIsUndefined()
 [template public generateSpecification(aSpecification : Specification)]
 [comment @main/]
 [if (canGenerate(aSpecification))]
+[let defaultJavaFilesPath : String = aSpecification.configuration.generalConfiguration.filesBasePath]
+[let defaultJavaClassPackageName : String = aSpecification.configuration.generalConfiguration.javaBasePackageName]
     [aSpecification.generateLicenseFiles() /] 
-    [aSpecification.generateConfigFiles(null, aSpecification.configuration.generalConfiguration.filesBasePath) /]
+    [aSpecification.generateConfigFiles(null, defaultJavaFilesPath) /]
+
+    [let resources: Set(Resource) = aSpecification.relevantResources()->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject)))]
+    [let uniqueFolderPaths: Set(String) = resources->collect(r: Resource | r.javaClassFullFolderName(null, defaultJavaFilesPath, defaultJavaClassPackageName))->asSet()]
+    [for (uniqueFolderPath: String | uniqueFolderPaths)]
+        [let resourcesOnSameFolderPath: Set(Resource) = resources->select(r: Resource | r.javaClassFullFolderName(null, defaultJavaFilesPath, defaultJavaClassPackageName) = uniqueFolderPath)]
+        [generateAdaptorPackageInfo(resourcesOnSameFolderPath, null, defaultJavaFilesPath, defaultJavaClassPackageName)/]
+        [/let]
+    [/for]
+    [/let]
+    [/let]
 
     [for (aDomainSpecification: DomainSpecification | aSpecification.relevantDomainSpecifications()
         ->select(d: DomainSpecification | aSpecification.generateIfFromImportedModels(d.oclAsType(EObject))))]
-        [aDomainSpecification.generateDomainSpecificationConstants(null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName)/]
-        [aDomainSpecification.generateConfigFiles(null, aSpecification.configuration.generalConfiguration.filesBasePath)/]
+        [aDomainSpecification.generateDomainSpecificationConstants(null, defaultJavaFilesPath, defaultJavaClassPackageName)/]
+        [aDomainSpecification.generateConfigFiles(null, defaultJavaFilesPath)/]
     [/for]
 
     [for (aVocabulary: Vocabulary | aSpecification.relevantVocabularies()
         ->select(v: Vocabulary | aSpecification.generateIfFromImportedModels(v.oclAsType(EObject))))]
-        [aVocabulary.generateVocabularyConstants(null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName)/]
+        [aVocabulary.generateVocabularyConstants(null, defaultJavaFilesPath, defaultJavaClassPackageName)/]
     [/for]
 
     [for (aResource: Resource | aSpecification.relevantResources()
         ->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject))))]
-        [aResource.generateResource(null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName) /]
-        [aResource.generateResourceInterface(null, null, aSpecification.configuration.generalConfiguration.filesBasePath, aSpecification.configuration.generalConfiguration.javaBasePackageName) /]
+        [aResource.generateResource(null, defaultJavaFilesPath, defaultJavaClassPackageName) /]
+        [aResource.generateResourceInterface(null, null, defaultJavaFilesPath, defaultJavaClassPackageName) /]
     [/for]
+[/let]
+[/let]
 [/if]
 [/template]

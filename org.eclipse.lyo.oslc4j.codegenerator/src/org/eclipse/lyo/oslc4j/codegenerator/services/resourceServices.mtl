@@ -135,6 +135,11 @@ javaString(aResource.name, aResource.definingDomainSpecification().namespacePref
 javaName(aResource, false)
 /]
 
+[query public javaClassFullFolderName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String =
+    javaFilesBasePath(aResource.definingDomainSpecification(), anAdaptorInterface, defaultJavaFullFilesPath)
+    .concatenatePaths(javaClassPackageName(aResource, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
+/]
+
 [query public javaClassPackageName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
 javaPackageName(aResource.definingDomainSpecification(), anAdaptorInterface, defaultJavaPackageName)
 /]
@@ -148,8 +153,7 @@ javaClassPackageName(aResource, anAdaptorInterface, defaultJavaPackageName).conc
 /]
 
 [query public javaClassFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String =
-    javaFilesBasePath(aResource.definingDomainSpecification(), anAdaptorInterface, defaultJavaFullFilesPath)
-    .concatenatePaths(javaClassPackageName(aResource, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
+    javaClassFullFolderName(aResource, anAdaptorInterface, defaultJavaFullFilesPath, defaultJavaPackageName)
     .concatenatePaths(javaClassName(aResource))
     .concat('.java')
 /]
@@ -167,8 +171,7 @@ javaInterfacePackageName(aResource, anAdaptorInterface, defaultJavaPackageName).
 /]
 
 [query public javaInterfaceFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String = 
-    javaFilesBasePath(aResource.definingDomainSpecification(), anAdaptorInterface, defaultJavaFullFilesPath)
-    .concatenatePaths(javaInterfacePackageName(aResource, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
+    javaClassFullFolderName(aResource, anAdaptorInterface, defaultJavaFullFilesPath, defaultJavaPackageName)
     .concatenatePaths(javaInterfaceName(aResource))
     .concat('.java')
 /]

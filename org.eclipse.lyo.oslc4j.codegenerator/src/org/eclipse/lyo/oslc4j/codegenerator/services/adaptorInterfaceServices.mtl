@@ -289,15 +289,6 @@ javaClassPackageNameForRootServicesService(anAdaptorInterface).concat('.').conca
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForRootServicesService(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForRootServicesService(anAdaptorInterface)).concat('.java')
 /]
 
-[comment Services for AdaptorPackageInfo /]
-[query public javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface : AdaptorInterface) : String = 
-javaBasePackageName(anAdaptorInterface).concat('.resources')
-/]
-
-[query public javaClassFullFileNameForAdaptorPackageInfo(anAdaptorInterface : AdaptorInterface) : String = 
-javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat('package-info').concat('.java')
-/]
-
 [comment Services for ClientOnlyMainApplication /]
 [query public javaClassPackageNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
 javaBasePackageName(anAdaptorInterface)
@@ -474,11 +465,27 @@ javaInterfacePackageNameForAdaptorConstants(anAdaptorInterface).concat('.').conc
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaInterfacePackageNameForAdaptorConstants(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaInterfaceNameForAdaptorConstants(anAdaptorInterface)).concat('.java')
 /]
 
+[query public resourceTypeJavaInterfaceFullNameForConstants(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), anAdaptorInterface, defaultJavaPackageName)
+else
+    javaInterfaceFullNameForConstants(aResource.describes.definingVocabulary(), anAdaptorInterface, defaultJavaPackageName)
+endif)
+/]
+
 [query public resourceTypeNamespace(aResource: Resource) : String =
 (if (aResource.describes.oclIsUndefined()) then
-    domainSpecificationImplicitVocabularyNamespaceConstantName(aResource.definingDomainSpecification())
+    javaInterfaceNameForConstants(aResource.definingDomainSpecification()).concat('.').concat(domainSpecificationImplicitVocabularyNamespaceConstantName(aResource.definingDomainSpecification()))
 else
     javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResource.describes.definingVocabulary()))
+endif)
+/]
+
+[query public resourceTypePrefix(aResource: Resource) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    javaInterfaceNameForConstants(aResource.definingDomainSpecification()).concat('.').concat(domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aResource.definingDomainSpecification()))
+else
+    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(vocabularyPreferredNamespacePrefixConstantName(aResource.describes.definingVocabulary()))
 endif)
 /]
 

@@ -50,10 +50,11 @@ endif)
 /]
 
 [query public resourceUrlPattern (aResource: Resource, aWebService: WebService) : String = 
+let resourceTypeLocalName : String = (if (aResource.describes.oclIsUndefined()) then aResource.name else aResource.describes.name endif) in
 (if (not aWebService.resourceUrlPattern.oclIsUndefined())._and(not aWebService.resourceUrlPattern.equalsIgnoreCase('')) then
-    aWebService.resourceUrlPattern.substituteAll('[ResourceType]', resourceTypeLocalName(aResource))
+    aWebService.resourceUrlPattern.substituteAll('[ResourceType]', resourceTypeLocalName)
 else
-    resourceTypeLocalName(aResource)
+    resourceTypeLocalName
 	.concat('/{id}')
 endif)
 /]

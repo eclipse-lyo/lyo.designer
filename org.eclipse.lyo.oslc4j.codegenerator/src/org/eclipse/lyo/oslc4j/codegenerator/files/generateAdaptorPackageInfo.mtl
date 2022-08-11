@@ -25,8 +25,9 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderCatalogServices/]
 
-[template public generateAdaptorPackageInfo(anAdaptorInterface : AdaptorInterface)]
-[file (javaClassFullFileNameForAdaptorPackageInfo(anAdaptorInterface), false, 'UTF-8')]
+[template public generateAdaptorPackageInfo(resourcesOnSameFolderPath: Set(Resource), contextAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
+[file (resourcesOnSameFolderPath->any(true).javaClassFullFolderName(contextAdaptorInterface, defaultJavaFilesPath, defaultJavaClassPackageName).concat('/').concat('package-info').concat('.java'), false, 'UTF-8')]
+[let uniqueNamespaces: Set(String) = resourcesOnSameFolderPath->collect(r: Resource | r.resourceTypeNamespace())->asSet()]
 // [protected ('Copyright')]
 /*
  * Copyright (c) 2020 Contributors to the Eclipse Foundation
@@ -49,24 +50,19 @@
     @OslcNamespaceDefinition(prefix = OslcConstants.OSLC_CORE_NAMESPACE_PREFIX,           namespaceURI = OslcConstants.OSLC_CORE_NAMESPACE),
     @OslcNamespaceDefinition(prefix = OslcConstants.OSLC_DATA_NAMESPACE_PREFIX,           namespaceURI = OslcConstants.OSLC_DATA_NAMESPACE),
     @OslcNamespaceDefinition(prefix = OslcConstants.RDF_NAMESPACE_PREFIX,                 namespaceURI = OslcConstants.RDF_NAMESPACE),
-    @OslcNamespaceDefinition(prefix = OslcConstants.RDFS_NAMESPACE_PREFIX,                namespaceURI = OslcConstants.RDFS_NAMESPACE)[if 
-        (relevantDomainSpecifications(anAdaptorInterface)->size() > 0)],
-[/if]
-[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(','.concat(lineSeparator()))
-]    @OslcNamespaceDefinition(prefix = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aDomainSpecification) /], namespaceURI = [javaInterfaceNameForConstants(aDomainSpecification)/].[domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification) /])[/for][if 
-        (relevantVocabularies(anAdaptorInterface)->size() > 0)],
-[/if]
-[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)->sortedBy(preferredNamespacePrefix)) separator(','.concat(lineSeparator()))
-]    @OslcNamespaceDefinition(prefix = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyPreferredNamespacePrefixConstantName(aVocabulary) /], namespaceURI = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyNamespaceConstantName(aVocabulary) /])[/for]
+    @OslcNamespaceDefinition(prefix = OslcConstants.RDFS_NAMESPACE_PREFIX,                namespaceURI = OslcConstants.RDFS_NAMESPACE),
+[for (uniqueNamespace: String | uniqueNamespaces)] 
+    @OslcNamespaceDefinition(prefix = [resourcesOnSameFolderPath->any(r : Resource | r.resourceTypeNamespace() = uniqueNamespace).resourceTypePrefix()/], namespaceURI = [uniqueNamespace/]),
+[/for]
 })
-package [javaClassPackageNameForAdaptorPackageInfo(anAdaptorInterface) /];
+package [resourcesOnSameFolderPath->any(true).javaClassPackageName(contextAdaptorInterface, defaultJavaClassPackageName)/];
 
 import org.eclipse.lyo.oslc4j.core.annotation.OslcNamespaceDefinition;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcSchema;
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
-
-[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];[/for]
-[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)->sortedBy(preferredNamespacePrefix)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, anAdaptorInterface, null) /];[/for]
-
+[for (uniqueNamespace: String | uniqueNamespaces)] 
+import [resourcesOnSameFolderPath->any(r : Resource | r.resourceTypeNamespace() = uniqueNamespace).resourceTypeJavaInterfaceFullNameForConstants(contextAdaptorInterface, defaultJavaClassPackageName)/];
+[/for]
+[/let]
 [/file]
 [/template]
