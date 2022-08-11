@@ -3,6 +3,7 @@
 package adaptorinterface.provider;
 
 
+import adaptorinterface.DomainSpecification;
 import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.Resource;
 
@@ -271,14 +272,27 @@ public class ResourceItemProvider
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
+     * 
      */
 	@Override
 	public String getText(Object object) {
-        String label = ((Resource)object).getName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_Resource_type") :
-            getString("_UI_Resource_type") + " " + label;
+        Resource r = (Resource)object;
+        String name = r.getName();
+        if (null == name || 0 == name.length()) {
+            name = "<missing_name>";
+        }
+
+        String prefix = null;
+        DomainSpecification ds = (DomainSpecification)r.eContainer();
+        if (null != ds.getNamespacePrefix()) {
+            prefix = ds.getNamespacePrefix().getName();
+        }
+        if (null == prefix || 0 == prefix.length()) {
+            prefix = "<missing_prefix>";
+        }
+        
+        String label = prefix + ":" + name;
+        return getString("_UI_Resource_type") + " " + label;
     }
 	
 

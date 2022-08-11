@@ -1,6 +1,7 @@
 package adaptorinterface.provider;
 
 
+import adaptorinterface.DomainSpecification;
 import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.ResourceProperty;
 import java.util.Collection;
@@ -404,14 +405,27 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
+     * 
      */
 	@Override
 	public String getText(Object object) {
-        String label = ((ResourceProperty)object).getName();
-        return label == null || label.length() == 0 ?
-            getString("_UI_ResourceProperty_type") :
-            getString("_UI_ResourceProperty_type") + " " + label;
+        ResourceProperty p = (ResourceProperty)object;
+        String name = p.getName();
+        if (null == name || 0 == name.length()) {
+            name = "<missing_name>";
+        }
+
+        String prefix = null;
+        DomainSpecification ds = (DomainSpecification)p.eContainer();
+        if (null != ds.getNamespacePrefix()) {
+            prefix = ds.getNamespacePrefix().getName();
+        }
+        if (null == prefix || 0 == prefix.length()) {
+            prefix = "<missing_prefix>";
+        }
+        
+        String label = prefix + ":" + name;
+        return getString("_UI_ResourceProperty_type") + " " + label;
     }
 	
 
