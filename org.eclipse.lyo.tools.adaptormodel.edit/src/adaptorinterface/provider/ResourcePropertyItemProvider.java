@@ -417,13 +417,17 @@ public class ResourcePropertyItemProvider extends ShapePropertyItemProvider {
 
         String prefix = null;
         DomainSpecification ds = (DomainSpecification)p.eContainer();
-        if (null != ds.getNamespacePrefix()) {
-            prefix = ds.getNamespacePrefix().getName();
+        if (null == ds) { //This happens in rare occasions when the aird file got corrupt. Good to deal with anyway.
+            prefix = "<missing_domain>";
         }
-        if (null == prefix || 0 == prefix.length()) {
-            prefix = "<missing_prefix>";
+        else {
+            if (null != ds.getNamespacePrefix()) {
+                prefix = ds.getNamespacePrefix().getName();
+            }
+            if (null == prefix || 0 == prefix.length()) {
+                prefix = "<missing_prefix>";
+            }
         }
-        
         String label = prefix + ":" + name;
         return getString("_UI_ResourceProperty_type") + " " + label;
     }
