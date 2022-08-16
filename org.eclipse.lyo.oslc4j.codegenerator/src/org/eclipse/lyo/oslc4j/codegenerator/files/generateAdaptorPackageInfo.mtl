@@ -51,18 +51,18 @@
     @OslcNamespaceDefinition(prefix = OslcConstants.OSLC_DATA_NAMESPACE_PREFIX,           namespaceURI = OslcConstants.OSLC_DATA_NAMESPACE),
     @OslcNamespaceDefinition(prefix = OslcConstants.RDF_NAMESPACE_PREFIX,                 namespaceURI = OslcConstants.RDF_NAMESPACE),
     @OslcNamespaceDefinition(prefix = OslcConstants.RDFS_NAMESPACE_PREFIX,                namespaceURI = OslcConstants.RDFS_NAMESPACE),
-[for (uniqueNamespace: String | uniqueNamespaces)] 
-    @OslcNamespaceDefinition(prefix = [resourcesOnSameFolderPath->any(r : Resource | r.resourceTypeNamespace() = uniqueNamespace).resourceTypePrefix()/], namespaceURI = [uniqueNamespace/]),
-[/for]
+[for (uniqueNamespace: String | uniqueNamespaces)][let theResource: Resource = resourcesOnSameFolderPath->any(r : Resource | r.resourceTypeNamespace() = uniqueNamespace)]
+    @OslcNamespaceDefinition(prefix = [theResource.resourceTypePrefix()/], namespaceURI = [uniqueNamespace/]),
+[/let][/for]
 })
 package [resourcesOnSameFolderPath->any(true).javaClassPackageName(contextAdaptorInterface, defaultJavaClassPackageName)/];
 
 import org.eclipse.lyo.oslc4j.core.annotation.OslcNamespaceDefinition;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcSchema;
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
-[for (uniqueNamespace: String | uniqueNamespaces)] 
-import [resourcesOnSameFolderPath->any(r : Resource | r.resourceTypeNamespace() = uniqueNamespace).resourceTypeJavaInterfaceFullNameForConstants(contextAdaptorInterface, defaultJavaClassPackageName)/];
-[/for]
+[for (uniqueNamespace: String | uniqueNamespaces)][let theResource: Resource = resourcesOnSameFolderPath->any(r : Resource | r.resourceTypeNamespace() = uniqueNamespace)]
+import [theResource.resourceTypeJavaInterfaceFullNameForConstants(contextAdaptorInterface, defaultJavaClassPackageName)/];
+[/let][/for]
 [/let]
 [/file]
 [/template]
