@@ -70,7 +70,7 @@ protected void configure() {
     log.info("HK2 contract binding start");
 
     bindAsContract([anAdaptorInterface.javaClassNameForAdaptorManager()/].class).in(Singleton.class);
-    bindFactory(new ResourcesFactoryFactory()).to([anAdaptorInterface.javaClassNameForResourcesFactory()/].class).in(Singleton.class);
+    bindFactory(ResourcesFactoryFactory.class).to([anAdaptorInterface.javaClassNameForResourcesFactory()/].class).in(Singleton.class);
 
     [if (anAdaptorInterface.storeEnabled())]
     bindFactory(new StorePoolFactory()).to(StorePool.class).in(Singleton.class);
@@ -92,7 +92,7 @@ protected void configure() {
 [/template]
 
 [template public generateResourcesFactoryFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
-private final class ResourcesFactoryFactory implements Factory<[anAdaptorInterface.javaClassNameForResourcesFactory()/]> {
+private static class ResourcesFactoryFactory implements Factory<[anAdaptorInterface.javaClassNameForResourcesFactory()/]> {
     @Override
     public [anAdaptorInterface.javaClassNameForResourcesFactory()/] provide() {
         return new [anAdaptorInterface.javaClassNameForResourcesFactory()/](OSLC4JUtils.getServletURI());
