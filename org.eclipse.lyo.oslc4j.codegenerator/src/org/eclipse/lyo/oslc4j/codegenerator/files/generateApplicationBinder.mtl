@@ -73,7 +73,7 @@ protected void configure() {
     bindFactory(ResourcesFactoryFactory.class).to([anAdaptorInterface.javaClassNameForResourcesFactory()/].class).in(Singleton.class);
 
     [if (anAdaptorInterface.storeEnabled())]
-    bindFactory(new StorePoolFactory()).to(StorePool.class).in(Singleton.class);
+    bindFactory(StorePoolFactory.class).to(StorePool.class).in(Singleton.class);
     [/if]
     [if (anAdaptorInterface.trsServiceEnabled())]
     // [protected ('TRSInitialise')]
@@ -92,7 +92,7 @@ protected void configure() {
 [/template]
 
 [template public generateResourcesFactoryFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
-private static class ResourcesFactoryFactory implements Factory<[anAdaptorInterface.javaClassNameForResourcesFactory()/]> {
+static class ResourcesFactoryFactory implements Factory<[anAdaptorInterface.javaClassNameForResourcesFactory()/]> {
     @Override
     public [anAdaptorInterface.javaClassNameForResourcesFactory()/] provide() {
         return new [anAdaptorInterface.javaClassNameForResourcesFactory()/](OSLC4JUtils.getServletURI());
@@ -106,7 +106,7 @@ private static class ResourcesFactoryFactory implements Factory<[anAdaptorInterf
 
 [template public generateStorePoolFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
 [if (anAdaptorInterface.storeEnabled())]
-private final class StorePoolFactory implements Factory<StorePool> {
+static class StorePoolFactory implements Factory<StorePool> {
 
     private Optional<String> getPropertyFromEnvironment(String envKey) {
         final Map<String, String> env = System.getenv();
