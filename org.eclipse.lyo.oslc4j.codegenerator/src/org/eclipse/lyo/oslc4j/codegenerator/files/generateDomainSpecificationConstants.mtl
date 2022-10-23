@@ -63,6 +63,11 @@ public interface [javaInterfaceNameForConstants(aDomainSpecification) /]
     // [protected ('user constants')]
     // [/protected]
 
+    /**
+     * @deprecated use {@link [javaInterfaceNameForConstants(aDomainSpecification)/]#[domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification)/]} or {@link [javaInterfaceNameForConstants(aDomainSpecification)/]#[domainSpecificationConstantName(aDomainSpecification)/]} instead
+     */
+    @Deprecated(since = "5.0.1")
+    public static String [domainSpecificationDeprecatedConstantName(aDomainSpecification)/] = "[domainSpecificationImplicitVocabularyNamespaceValue(aDomainSpecification)/]";
     public static String [domainSpecificationConstantName(aDomainSpecification)/] = "[aDomainSpecification.name/]";
     public static String [domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification)/] = "[domainSpecificationImplicitVocabularyNamespaceValue(aDomainSpecification)/]"; //Vocabulary namespace for the resources and resource properties, when no explicit vocabulary (describes, or propertyDefinition) is defined 
     public static String [domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aDomainSpecification)/] = "[domainSpecificationImplicitVocabularyNamespacePrefixValue(aDomainSpecification)/]"; //Vocabulary prefix for the resources and resource properties, when no explicit vocabulary (describes, or propertyDefinition) is defined

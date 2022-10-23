@@ -501,8 +501,12 @@ endif)
 javaConstantString(aDomainSpecification.name)
 /]
 
-[query public domainSpecificationConstantName(aDomainSpecification : DomainSpecification) : String = 
+[query public domainSpecificationDeprecatedConstantName(aDomainSpecification : DomainSpecification) : String = 
 javaConstantName(aDomainSpecification).concat('_DOMAIN')
+/]
+
+[query public domainSpecificationConstantName(aDomainSpecification : DomainSpecification) : String = 
+javaConstantName(aDomainSpecification).concat('_DOMAIN_Name')
 /]
 
 [query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification : DomainSpecification) : String = 
