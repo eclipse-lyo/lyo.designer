@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.lyo.tools.toolchain.edit;singleton:=true
 Automatic-Module-Name: org.eclipse.lyo.tools.toolchain.edit
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 5.0.0.Final
 Bundle-ClassPath: .
 Bundle-Activator: toolchain.provider.ToolchainEditPlugin$Implementation
 Bundle-Vendor: %providerName
