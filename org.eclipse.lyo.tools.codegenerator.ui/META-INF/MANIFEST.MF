@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Acceleo Codegenerator Module IDE Plug-in
 Bundle-SymbolicName: org.eclipse.lyo.tools.codegenerator.ui;singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 5.0.0.Final
 Bundle-Activator: org.eclipse.lyo.tools.codegenerator.ui.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.ui,
