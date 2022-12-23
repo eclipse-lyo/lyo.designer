@@ -156,9 +156,6 @@
     [aResource.generateResource(anAdaptorInterface, null, null) /]
     [aResource.generateResourceInterface(anAdaptorInterface, anAdaptorInterface, null, null) /]
 [/for]
-[for (aResource: Resource | relevantResources(anAdaptorInterface))]
-    [aResource.generateResourceToHtmlJsp(anAdaptorInterface) /]
-[/for]
 [/template]
 
 [template public generateForServiceProviders(anAdaptorInterface : AdaptorInterface)]
@@ -167,7 +164,11 @@
     [aServiceProvider.generateServiceProviderService()/]
     [aServiceProvider.generateAdaptorServiceProviderFactory() /]
     [aServiceProvider.generateServiceProviderHTML() /]
+[/for]
+[/template]
 
+[template public generateForServices(anAdaptorInterface : AdaptorInterface)]
+[for (aServiceProvider: ServiceProvider | anAdaptorInterface.serviceProviders())]
     [for (aService: Service | aServiceProvider.services)]
         [aService.generateResourceService()/]
 
@@ -212,6 +213,7 @@
         [aResource.generateGetResourceSmallPreviewJsp(anAdaptorInterface, anAdaptorInterface, null) /]
         [aResource.generateGetResourceLargePreviewJsp(anAdaptorInterface, anAdaptorInterface, null) /]
     [/if]
+    [aResource.generateResourceToHtmlJsp(anAdaptorInterface) /]
 [/for]
 [/template]
 
@@ -227,6 +229,14 @@
 [/for]
 [/template]
 
+[template public generateForOslcUI(anAdaptorInterface : AdaptorInterface)]
+[if (anAdaptorInterface.generateJspFilesForOslcUI())]
+    [anAdaptorInterface.generateGetResourceUiPreviewForOslcUIJsp(anAdaptorInterface, null) /]
+    [anAdaptorInterface.generateGetResourceViewForOslcUIJsp() /]
+    [anAdaptorInterface.generateResourceSelectorForOslcUIJsp() /]
+[/if]
+[/template]
+
 [template public generateOptionals(anAdaptorInterface : AdaptorInterface)]
 [/template]
 
@@ -237,6 +247,7 @@
 [if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined())]
     [generateForServiceProviderCatalog(anAdaptorInterface)/]
     [generateForServiceProviders(anAdaptorInterface)/]
+    [generateForServices(anAdaptorInterface)/]
 [else]
     [generateClientOnlyMainApplication(anAdaptorInterface)/]
 [/if]
@@ -256,9 +267,7 @@
 [generateForRelevantResources(anAdaptorInterface)/]
 [generateForRequiredAdaptors(anAdaptorInterface)/]
 [if (anAdaptorInterface.generateJspFilesForOslcUI())]
-    [anAdaptorInterface.generateGetResourceUiPreviewForOslcUIJsp(anAdaptorInterface, null) /]
-    [anAdaptorInterface.generateGetResourceViewForOslcUIJsp() /]
-    [anAdaptorInterface.generateResourceSelectorForOslcUIJsp() /]
+    [generateForOslcUI(anAdaptorInterface)/]
 [/if]
 [generateOptionals(anAdaptorInterface)/]
 [/template]

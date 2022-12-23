@@ -41,7 +41,6 @@
 [/template]
 
 [template public generateImports(anAdaptorInterface : AdaptorInterface)]
-import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.glassfish.hk2.api.Factory;
@@ -54,6 +53,7 @@ import [anAdaptorInterface.javaClassFullNameForResourcesFactory()/];
 [if (anAdaptorInterface.storeEnabled())][anAdaptorInterface.storeImportsForBinder()/][/if]
 [if (anAdaptorInterface.trsServiceEnabled())
 ]import java.net.URI;
+import java.util.ArrayList;
 import org.eclipse.lyo.oslc4j.trs.server.InmemPagedTrs;
 import org.eclipse.lyo.oslc4j.trs.server.PagedTrs;
 import org.eclipse.lyo.oslc4j.trs.server.PagedTrsFactory;
@@ -69,25 +69,22 @@ import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 protected void configure() {
     log.info("HK2 contract binding start");
 
+    // [protected ('ConfigureInitialise')]
+    // [/protected]
     bindAsContract([anAdaptorInterface.javaClassNameForAdaptorManager()/].class).in(Singleton.class);
     bindFactory(ResourcesFactoryFactory.class).to([anAdaptorInterface.javaClassNameForResourcesFactory()/].class).in(Singleton.class);
 
     [if (anAdaptorInterface.storeEnabled())]
     bindFactory(StorePoolFactory.class).to(StorePool.class).in(Singleton.class);
     [/if]
+
     [if (anAdaptorInterface.trsServiceEnabled())]
-    // [protected ('TRSInitialise')]
-    // [/protected]
-    ArrayList<URI> uris = new ArrayList<URI>();
-    // [protected ('TRSInitialBase')]
-    //TODO: Provide the initial list of URIs to populate the TRS log with
-    // [/protected]
-    InmemPagedTrs inmemTrs = new PagedTrsFactory().getInmemPagedTrs([anAdaptorInterface.trsService.basePageLimit/], [anAdaptorInterface.trsService.changeLogPageLimit/], uris);
-    bind(inmemTrs).to(TrsEventHandler.class);
-    bind(inmemTrs).to(PagedTrs.class);
-    // [protected ('TRSFinalize')]
-    // [/protected]
+    bindFactory(InmemTrsEventHandlerFactory.class).to(TrsEventHandler.class).in(Singleton.class);
+    bindFactory(InmemPagedTrsFactory.class).to(PagedTrs.class).in(Singleton.class);
     [/if]
+
+    // [protected ('ConfigureFinalize')]
+    // [/protected]
 }
 [/template]
 
@@ -103,6 +100,50 @@ static class ResourcesFactoryFactory implements Factory<[anAdaptorInterface.java
     }
 }
 [/template]
+
+[template public generateTrsFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
+[if (anAdaptorInterface.trsServiceEnabled())]
+static class InmemTrsEventHandlerFactory implements Factory<TrsEventHandler> {
+    // [protected ('TrsEventHandlerInitialise')]
+    // [/protected]
+
+    @Override
+    public TrsEventHandler provide() {
+        ArrayList<URI> uris = new ArrayList<URI>();
+        // [protected ('TrsEventHandlerInitialBase')]
+        //TODO: Provide the initial list of URIs to populate the TRS log with
+        // [/protected]
+
+        InmemPagedTrs inmemTrs = new PagedTrsFactory().getInmemPagedTrs([anAdaptorInterface.trsService.basePageLimit/], [anAdaptorInterface.trsService.changeLogPageLimit/], uris);
+        return inmemTrs;
+    }
+
+    @Override
+    public void dispose(TrsEventHandler instance) {
+        // [protected ('TrsEventHandlerDispose')]
+        // [/protected]
+    }
+}
+
+static class InmemPagedTrsFactory implements Factory<PagedTrs> {
+    @Inject TrsEventHandler trsEventHandler;
+
+    @Override
+    public PagedTrs provide() {
+        // [protected ('PagedTrsInitialise')]
+        // [/protected]
+        return (InmemPagedTrs) trsEventHandler;
+    }
+
+    @Override
+    public void dispose(PagedTrs instance) {
+        // [protected ('PagedTrsDispose')]
+        // [/protected]
+    }
+}
+[/if]
+[/template]
+
 
 [template public generateStorePoolFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
 [if (anAdaptorInterface.storeEnabled())]
@@ -213,6 +254,7 @@ public class [javaClassNameForApplicationBinder(anAdaptorInterface) /] extends A
     [generateConfigureMethod(anAdaptorInterface)/]
     [generateResourcesFactoryFactory(anAdaptorInterface)/]
     [generateStorePoolFactory(anAdaptorInterface)/]
+    [generateTrsFactory(anAdaptorInterface)/]
 }
 [/file]
 [/template]
