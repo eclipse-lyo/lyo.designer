@@ -322,6 +322,7 @@
     <eLiterals name="Float" value="8" literal="Float"/>
     <eLiterals name="Integer" value="9" literal="Integer"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AuthenticationConfiguration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="applicationName" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -359,6 +360,8 @@
         eType="#//ProjectConfiguration" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="authenticationConfiguration"
         eType="#//AuthenticationConfiguration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configurations" upperBound="-1"
+        eType="#//Configuration" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SpecificationConfiguration" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="generalConfiguration" lowerBound="1"

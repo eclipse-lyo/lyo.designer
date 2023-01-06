@@ -2,6 +2,7 @@
  */
 package adaptorinterface;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.ServerConfiguration#getGeneralConfiguration <em>General Configuration</em>}</li>
  *   <li>{@link adaptorinterface.ServerConfiguration#getProjectConfiguration <em>Project Configuration</em>}</li>
  *   <li>{@link adaptorinterface.ServerConfiguration#getAuthenticationConfiguration <em>Authentication Configuration</em>}</li>
+ *   <li>{@link adaptorinterface.ServerConfiguration#getConfigurations <em>Configurations</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getServerConfiguration()
@@ -231,5 +233,17 @@ public interface ServerConfiguration extends EObject {
      * @generated
      */
 	void setAuthenticationConfiguration(AuthenticationConfiguration value);
+
+    /**
+     * Returns the value of the '<em><b>Configurations</b></em>' containment reference list.
+     * The list contents are of type {@link adaptorinterface.Configuration}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Configurations</em>' containment reference list.
+     * @see adaptorinterface.AdaptorinterfacePackage#getServerConfiguration_Configurations()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Configuration> getConfigurations();
 
 } // ServerConfiguration

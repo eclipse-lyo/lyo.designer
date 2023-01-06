@@ -4,18 +4,23 @@ package adaptorinterface.impl;
 
 import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.AuthenticationConfiguration;
+import adaptorinterface.Configuration;
 import adaptorinterface.GeneralConfiguration;
 import adaptorinterface.ProjectConfiguration;
 import adaptorinterface.ServerConfiguration;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,6 +38,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getGeneralConfiguration <em>General Configuration</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getProjectConfiguration <em>Project Configuration</em>}</li>
  *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getAuthenticationConfiguration <em>Authentication Configuration</em>}</li>
+ *   <li>{@link adaptorinterface.impl.ServerConfigurationImpl#getConfigurations <em>Configurations</em>}</li>
  * </ul>
  *
  * @generated
@@ -169,6 +175,16 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	protected AuthenticationConfiguration authenticationConfiguration;
 
 	/**
+     * The cached value of the '{@link #getConfigurations() <em>Configurations</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getConfigurations()
+     * @generated
+     * @ordered
+     */
+    protected EList<Configuration> configurations;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -439,6 +455,19 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EList<Configuration> getConfigurations() {
+        if (configurations == null) {
+            configurations = new EObjectContainmentEList<Configuration>(Configuration.class, this, AdaptorinterfacePackage.SERVER_CONFIGURATION__CONFIGURATIONS);
+        }
+        return configurations;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -451,6 +480,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
                 return basicSetProjectConfiguration(null, msgs);
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
                 return basicSetAuthenticationConfiguration(null, msgs);
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__CONFIGURATIONS:
+                return ((InternalEList<?>)getConfigurations()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -479,6 +510,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
                 return getProjectConfiguration();
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
                 return getAuthenticationConfiguration();
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__CONFIGURATIONS:
+                return getConfigurations();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -488,7 +521,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
      * @generated
      */
-	@Override
+	@SuppressWarnings("unchecked")
+    @Override
 	public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__ROOT_SERVER_BASE_URL:
@@ -514,6 +548,10 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
                 return;
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
                 setAuthenticationConfiguration((AuthenticationConfiguration)newValue);
+                return;
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__CONFIGURATIONS:
+                getConfigurations().clear();
+                getConfigurations().addAll((Collection<? extends Configuration>)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -551,6 +589,9 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
                 setAuthenticationConfiguration((AuthenticationConfiguration)null);
                 return;
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__CONFIGURATIONS:
+                getConfigurations().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -579,6 +620,8 @@ public class ServerConfigurationImpl extends MinimalEObjectImpl.Container implem
                 return projectConfiguration != null;
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
                 return authenticationConfiguration != null;
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__CONFIGURATIONS:
+                return configurations != null && !configurations.isEmpty();
         }
         return super.eIsSet(featureID);
     }

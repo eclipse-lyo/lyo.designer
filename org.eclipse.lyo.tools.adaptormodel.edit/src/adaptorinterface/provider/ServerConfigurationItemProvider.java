@@ -197,6 +197,7 @@ public class ServerConfigurationItemProvider
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__GENERAL_CONFIGURATION);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__PROJECT_CONFIGURATION);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION);
+            childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVER_CONFIGURATION__CONFIGURATIONS);
         }
         return childrenFeatures;
     }
@@ -262,6 +263,7 @@ public class ServerConfigurationItemProvider
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__GENERAL_CONFIGURATION:
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__PROJECT_CONFIGURATION:
             case AdaptorinterfacePackage.SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION:
+            case AdaptorinterfacePackage.SERVER_CONFIGURATION__CONFIGURATIONS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }

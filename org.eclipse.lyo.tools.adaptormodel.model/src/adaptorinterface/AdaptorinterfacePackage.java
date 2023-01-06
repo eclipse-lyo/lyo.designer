@@ -2035,6 +2035,34 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SHACL_PROPERTY_OPERATION_COUNT = SHAPE_PROPERTY_OPERATION_COUNT + 0;
 
 	/**
+     * The meta object id for the '{@link adaptorinterface.impl.ConfigurationImpl <em>Configuration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see adaptorinterface.impl.ConfigurationImpl
+     * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getConfiguration()
+     * @generated
+     */
+    int CONFIGURATION = 25;
+
+    /**
+     * The number of structural features of the '<em>Configuration</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CONFIGURATION_FEATURE_COUNT = 0;
+
+    /**
+     * The number of operations of the '<em>Configuration</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CONFIGURATION_OPERATION_COUNT = 0;
+
+    /**
      * The meta object id for the '{@link adaptorinterface.impl.AuthenticationConfigurationImpl <em>Authentication Configuration</em>}' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2042,7 +2070,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getAuthenticationConfiguration()
      * @generated
      */
-	int AUTHENTICATION_CONFIGURATION = 25;
+	int AUTHENTICATION_CONFIGURATION = 26;
 
 	/**
      * The feature id for the '<em><b>Application Name</b></em>' attribute.
@@ -2088,7 +2116,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getGeneralConfiguration()
      * @generated
      */
-	int GENERAL_CONFIGURATION = 26;
+	int GENERAL_CONFIGURATION = 27;
 
 	/**
      * The feature id for the '<em><b>Do Not Generate</b></em>' attribute.
@@ -2152,7 +2180,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getProjectConfiguration()
      * @generated
      */
-	int PROJECT_CONFIGURATION = 27;
+	int PROJECT_CONFIGURATION = 28;
 
 	/**
      * The feature id for the '<em><b>Do Not Generate Project Configuration Files</b></em>' attribute.
@@ -2198,7 +2226,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getServerConfiguration()
      * @generated
      */
-	int SERVER_CONFIGURATION = 28;
+	int SERVER_CONFIGURATION = 29;
 
 	/**
      * The feature id for the '<em><b>Root Server Base Url</b></em>' attribute.
@@ -2273,13 +2301,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION = 7;
 
 	/**
+     * The feature id for the '<em><b>Configurations</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_CONFIGURATION__CONFIGURATIONS = 8;
+
+    /**
      * The number of structural features of the '<em>Server Configuration</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int SERVER_CONFIGURATION_FEATURE_COUNT = 8;
+	int SERVER_CONFIGURATION_FEATURE_COUNT = 9;
 
 	/**
      * The number of operations of the '<em>Server Configuration</em>' class.
@@ -2298,7 +2335,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSpecificationConfiguration()
      * @generated
      */
-	int SPECIFICATION_CONFIGURATION = 29;
+	int SPECIFICATION_CONFIGURATION = 30;
 
 	/**
      * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
@@ -2344,7 +2381,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenProjectConfiguration()
      * @generated
      */
-	int MAVEN_PROJECT_CONFIGURATION = 30;
+	int MAVEN_PROJECT_CONFIGURATION = 31;
 
 	/**
      * The feature id for the '<em><b>Do Not Generate Project Configuration Files</b></em>' attribute.
@@ -2417,7 +2454,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenServerConfiguration()
      * @generated
      */
-	int MAVEN_SERVER_CONFIGURATION = 31;
+	int MAVEN_SERVER_CONFIGURATION = 32;
 
 	/**
      * The feature id for the '<em><b>Root Server Base Url</b></em>' attribute.
@@ -2492,6 +2529,15 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int MAVEN_SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION = SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION;
 
 	/**
+     * The feature id for the '<em><b>Configurations</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int MAVEN_SERVER_CONFIGURATION__CONFIGURATIONS = SERVER_CONFIGURATION__CONFIGURATIONS;
+
+    /**
      * The feature id for the '<em><b>Jetty Port</b></em>' attribute.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2526,7 +2572,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getMavenSpecificationConfiguration()
      * @generated
      */
-	int MAVEN_SPECIFICATION_CONFIGURATION = 32;
+	int MAVEN_SPECIFICATION_CONFIGURATION = 33;
 
 	/**
      * The feature id for the '<em><b>General Configuration</b></em>' containment reference.
@@ -2572,7 +2618,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSource()
      * @generated
      */
-    int SOURCE = 33;
+    int SOURCE = 34;
 
     /**
      * The number of structural features of the '<em>Source</em>' class.
@@ -2600,7 +2646,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getStore()
      * @generated
      */
-    int STORE = 34;
+    int STORE = 35;
 
     /**
      * The feature id for the '<em><b>Default Named Graph</b></em>' attribute.
@@ -2664,7 +2710,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getStoreWithAuthentication()
      * @generated
      */
-    int STORE_WITH_AUTHENTICATION = 35;
+    int STORE_WITH_AUTHENTICATION = 36;
 
     /**
      * The feature id for the '<em><b>Default Named Graph</b></em>' attribute.
@@ -2746,7 +2792,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getSourceBinding()
      * @generated
      */
-    int SOURCE_BINDING = 36;
+    int SOURCE_BINDING = 37;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference.
@@ -2783,7 +2829,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getServicePersistence()
      * @generated
      */
-    int SERVICE_PERSISTENCE = 37;
+    int SERVICE_PERSISTENCE = 38;
 
     /**
      * The feature id for the '<em><b>Store</b></em>' reference.
@@ -2820,7 +2866,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getOSLCServicePersistence()
      * @generated
      */
-    int OSLC_SERVICE_PERSISTENCE = 38;
+    int OSLC_SERVICE_PERSISTENCE = 39;
 
     /**
      * The feature id for the '<em><b>Store</b></em>' reference.
@@ -2893,7 +2939,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getWebServicePersistence()
      * @generated
      */
-    int WEB_SERVICE_PERSISTENCE = 39;
+    int WEB_SERVICE_PERSISTENCE = 40;
 
     /**
      * The feature id for the '<em><b>Store</b></em>' reference.
@@ -2957,7 +3003,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyOccurs()
      * @generated
      */
-	int RESOURCE_PROPERTY_OCCURS = 40;
+	int RESOURCE_PROPERTY_OCCURS = 41;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyValueType <em>Resource Property Value Type</em>}' enum.
@@ -2967,7 +3013,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyValueType()
      * @generated
      */
-	int RESOURCE_PROPERTY_VALUE_TYPE = 41;
+	int RESOURCE_PROPERTY_VALUE_TYPE = 42;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyRepresentation <em>Resource Property Representation</em>}' enum.
@@ -2977,7 +3023,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyRepresentation()
      * @generated
      */
-	int RESOURCE_PROPERTY_REPRESENTATION = 42;
+	int RESOURCE_PROPERTY_REPRESENTATION = 43;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyIsMemberProperty <em>Resource Property Is Member Property</em>}' enum.
@@ -2987,7 +3033,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyIsMemberProperty()
      * @generated
      */
-	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 43;
+	int RESOURCE_PROPERTY_IS_MEMBER_PROPERTY = 44;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourcePropertyMultiValueRepresentation <em>Resource Property Multi Value Representation</em>}' enum.
@@ -2997,7 +3043,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourcePropertyMultiValueRepresentation()
      * @generated
      */
-	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 44;
+	int RESOURCE_PROPERTY_MULTI_VALUE_REPRESENTATION = 45;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ResourceServiceNamespace <em>Resource Service Namespace</em>}' enum.
@@ -3007,7 +3053,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getResourceServiceNamespace()
      * @generated
      */
-	int RESOURCE_SERVICE_NAMESPACE = 45;
+	int RESOURCE_SERVICE_NAMESPACE = 46;
 
 	/**
      * The meta object id for the '{@link adaptorinterface.ShaclPropertyDataType <em>Shacl Property Data Type</em>}' enum.
@@ -3017,7 +3063,7 @@ public interface AdaptorinterfacePackage extends EPackage {
      * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getShaclPropertyDataType()
      * @generated
      */
-	int SHACL_PROPERTY_DATA_TYPE = 46;
+	int SHACL_PROPERTY_DATA_TYPE = 47;
 
 
 	/**
@@ -4789,6 +4835,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getShaclProperty_Class();
 
 	/**
+     * Returns the meta object for class '{@link adaptorinterface.Configuration <em>Configuration</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Configuration</em>'.
+     * @see adaptorinterface.Configuration
+     * @generated
+     */
+    EClass getConfiguration();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.AuthenticationConfiguration <em>Authentication Configuration</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5005,6 +5061,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EReference getServerConfiguration_AuthenticationConfiguration();
 
 	/**
+     * Returns the meta object for the containment reference list '{@link adaptorinterface.ServerConfiguration#getConfigurations <em>Configurations</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Configurations</em>'.
+     * @see adaptorinterface.ServerConfiguration#getConfigurations()
+     * @see #getServerConfiguration()
+     * @generated
+     */
+    EReference getServerConfiguration_Configurations();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.SpecificationConfiguration <em>Specification Configuration</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6793,6 +6860,16 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference SHACL_PROPERTY__CLASS = eINSTANCE.getShaclProperty_Class();
 
 		/**
+         * The meta object literal for the '{@link adaptorinterface.impl.ConfigurationImpl <em>Configuration</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see adaptorinterface.impl.ConfigurationImpl
+         * @see adaptorinterface.impl.AdaptorinterfacePackageImpl#getConfiguration()
+         * @generated
+         */
+        EClass CONFIGURATION = eINSTANCE.getConfiguration();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.AuthenticationConfigurationImpl <em>Authentication Configuration</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6961,6 +7038,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EReference SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION = eINSTANCE.getServerConfiguration_AuthenticationConfiguration();
 
 		/**
+         * The meta object literal for the '<em><b>Configurations</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_CONFIGURATION__CONFIGURATIONS = eINSTANCE.getServerConfiguration_Configurations();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.SpecificationConfigurationImpl <em>Specification Configuration</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

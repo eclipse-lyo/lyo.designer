@@ -6,6 +6,7 @@ import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.AdaptorinterfacePackage;
 import adaptorinterface.AuthenticationConfiguration;
 import adaptorinterface.BasicCapability;
+import adaptorinterface.Configuration;
 import adaptorinterface.CreationFactory;
 import adaptorinterface.Dialog;
 import adaptorinterface.DomainSpecification;
@@ -241,6 +242,13 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 	private EClass shaclPropertyEClass = null;
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass configurationEClass = null;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -2090,6 +2098,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EClass getConfiguration() {
+        return configurationEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -2289,6 +2307,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EReference getServerConfiguration_Configurations() {
+        return (EReference)serverConfigurationEClass.getEStructuralFeatures().get(8);
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -2895,6 +2923,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEAttribute(shaclPropertyEClass, SHACL_PROPERTY__DATA_TYPE);
         createEReference(shaclPropertyEClass, SHACL_PROPERTY__CLASS);
 
+        configurationEClass = createEClass(CONFIGURATION);
+
         authenticationConfigurationEClass = createEClass(AUTHENTICATION_CONFIGURATION);
         createEAttribute(authenticationConfigurationEClass, AUTHENTICATION_CONFIGURATION__APPLICATION_NAME);
         createEAttribute(authenticationConfigurationEClass, AUTHENTICATION_CONFIGURATION__OAUTH_REALM);
@@ -2918,6 +2948,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__GENERAL_CONFIGURATION);
         createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__PROJECT_CONFIGURATION);
         createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__AUTHENTICATION_CONFIGURATION);
+        createEReference(serverConfigurationEClass, SERVER_CONFIGURATION__CONFIGURATIONS);
 
         specificationConfigurationEClass = createEClass(SPECIFICATION_CONFIGURATION);
         createEReference(specificationConfigurationEClass, SPECIFICATION_CONFIGURATION__GENERAL_CONFIGURATION);
@@ -3213,6 +3244,8 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEAttribute(getShaclProperty_DataType(), this.getShaclPropertyDataType(), "dataType", null, 0, 1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getShaclProperty_Class(), this.getShaclShape(), null, "class", null, 0, -1, ShaclProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+        initEClass(configurationEClass, Configuration.class, "Configuration", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
         initEClass(authenticationConfigurationEClass, AuthenticationConfiguration.class, "AuthenticationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getAuthenticationConfiguration_ApplicationName(), ecorePackage.getEString(), "applicationName", null, 1, 1, AuthenticationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAuthenticationConfiguration_OauthRealm(), ecorePackage.getEString(), "oauthRealm", null, 1, 1, AuthenticationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3236,6 +3269,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEReference(getServerConfiguration_GeneralConfiguration(), this.getGeneralConfiguration(), null, "generalConfiguration", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getServerConfiguration_ProjectConfiguration(), this.getProjectConfiguration(), null, "projectConfiguration", null, 1, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getServerConfiguration_AuthenticationConfiguration(), this.getAuthenticationConfiguration(), null, "authenticationConfiguration", null, 0, 1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getServerConfiguration_Configurations(), this.getConfiguration(), null, "configurations", null, 0, -1, ServerConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(specificationConfigurationEClass, SpecificationConfiguration.class, "SpecificationConfiguration", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getSpecificationConfiguration_GeneralConfiguration(), this.getGeneralConfiguration(), null, "generalConfiguration", null, 1, 1, SpecificationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
