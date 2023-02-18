@@ -289,7 +289,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//MavenServerConfiguration/jettyPort"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//MavenSpecificationConfiguration"/>
-    <genClasses image="false" ecoreClass="adaptorInterface.ecore#//Source"/>
+    <genClasses image="false" ecoreClass="adaptorInterface.ecore#//Source">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Source/name"/>
+    </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//Store">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Store/defaultNamedGraph"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//Store/sparqlQueryEndpoint"/>

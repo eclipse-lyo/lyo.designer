@@ -2432,6 +2432,16 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
      * @generated
      */
     @Override
+    public EAttribute getSource_Name() {
+        return (EAttribute)sourceEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
     public EClass getStore() {
         return storeEClass;
     }
@@ -2965,6 +2975,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         mavenSpecificationConfigurationEClass = createEClass(MAVEN_SPECIFICATION_CONFIGURATION);
 
         sourceEClass = createEClass(SOURCE);
+        createEAttribute(sourceEClass, SOURCE__NAME);
 
         storeEClass = createEClass(STORE);
         createEAttribute(storeEClass, STORE__DEFAULT_NAMED_GRAPH);
@@ -3286,6 +3297,7 @@ public class AdaptorinterfacePackageImpl extends EPackageImpl implements Adaptor
         initEClass(mavenSpecificationConfigurationEClass, MavenSpecificationConfiguration.class, "MavenSpecificationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(sourceEClass, Source.class, "Source", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSource_Name(), ecorePackage.getEString(), "name", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getStore_DefaultNamedGraph(), ecorePackage.getEString(), "defaultNamedGraph", null, 1, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

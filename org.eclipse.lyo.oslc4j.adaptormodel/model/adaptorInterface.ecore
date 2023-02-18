@@ -381,7 +381,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="jettyPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MavenSpecificationConfiguration" eSuperTypes="#//SpecificationConfiguration"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Source" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Source" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Store">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultNamedGraph" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -104,6 +104,16 @@ anAdaptorInterface.serviceProviders()->select(aServiceProvider : ServiceProvider
 anAdaptorInterface.webServices->select(aWebService : WebService | aWebService.resourceTypes->includes(aResource))
 /]
 
+[comment return the set of Services that have aResource as a managed resource./]
+[query public services(anAdaptorInterface : AdaptorInterface, aResource: Resource) : OrderedSet(Service) = 
+anAdaptorInterface.serviceProviders().services->select(aService : Service |
+    anAdaptorInterface.queryCapabilities(aResource)->notEmpty() or
+    anAdaptorInterface.creationFactories(aResource)->notEmpty() or
+    anAdaptorInterface.selectionDialogs(aResource)->notEmpty() or
+    anAdaptorInterface.creationDialogs(aResource)->notEmpty() or
+    anAdaptorInterface.basicCapabilities(aResource)->notEmpty() )->asOrderedSet()
+/]
+
 [comment return the set of QueryCapabilities whose managed resources is the same as "resources", without any consideration for order./]
 [query public queryCapabilities(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(QueryCapability) = 
 anAdaptorInterface.serviceProviders().services.queryCapabilities->select(aQueryCapability : QueryCapability | aQueryCapability.resourceTypes->asBag() = resources)

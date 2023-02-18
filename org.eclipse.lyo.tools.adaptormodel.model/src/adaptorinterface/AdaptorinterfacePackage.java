@@ -2621,13 +2621,22 @@ public interface AdaptorinterfacePackage extends EPackage {
     int SOURCE = 34;
 
     /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SOURCE__NAME = 0;
+
+    /**
      * The number of structural features of the '<em>Source</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int SOURCE_FEATURE_COUNT = 0;
+    int SOURCE_FEATURE_COUNT = 1;
 
     /**
      * The number of operations of the '<em>Source</em>' class.
@@ -5188,6 +5197,17 @@ public interface AdaptorinterfacePackage extends EPackage {
     EClass getSource();
 
     /**
+     * Returns the meta object for the attribute '{@link adaptorinterface.Source#getName <em>Name</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see adaptorinterface.Source#getName()
+     * @see #getSource()
+     * @generated
+     */
+    EAttribute getSource_Name();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.Store <em>Store</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7142,6 +7162,14 @@ public interface AdaptorinterfacePackage extends EPackage {
          * @generated
          */
         EClass SOURCE = eINSTANCE.getSource();
+
+        /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute SOURCE__NAME = eINSTANCE.getSource_Name();
 
         /**
          * The meta object literal for the '{@link adaptorinterface.impl.StoreImpl <em>Store</em>}' class.
