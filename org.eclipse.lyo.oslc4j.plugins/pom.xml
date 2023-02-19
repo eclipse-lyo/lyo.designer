@@ -138,7 +138,39 @@
                                             </excludes>
                                         </artifact>
                                         <artifact>
+                                            <id>org.eclipse.lyo.oslc4j.core:lyo-core-settings:${lyo.version}</id>
+                                            <excludes>
+                                                <exclude>org.apache.httpcomponents:httpcore::</exclude>
+                                                <exclude>org.apache.httpcomponents:httpclient::</exclude>
+                                                <exclude>com.google.code.gson:::</exclude>
+                                            </excludes>
+                                        </artifact>
+                                        <artifact>
+                                            <id>org.eclipse.lyo.oslc4j.core:lyo-core-model:${lyo.version}</id>
+                                            <excludes>
+                                                <exclude>org.apache.httpcomponents:httpcore::</exclude>
+                                                <exclude>org.apache.httpcomponents:httpclient::</exclude>
+                                                <exclude>com.google.code.gson:::</exclude>
+                                            </excludes>
+                                        </artifact>
+                                        <artifact>
+                                            <id>org.eclipse.lyo.oslc4j.core:oslc4j-utils:${lyo.version}</id>
+                                            <excludes>
+                                                <exclude>org.apache.httpcomponents:httpcore::</exclude>
+                                                <exclude>org.apache.httpcomponents:httpclient::</exclude>
+                                                <exclude>com.google.code.gson:::</exclude>
+                                            </excludes>
+                                        </artifact>
+                                        <artifact>
                                             <id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${lyo.version}</id>
+                                            <excludes>
+                                                <exclude>org.apache.httpcomponents:httpcore::</exclude>
+                                                <exclude>org.apache.httpcomponents:httpclient::</exclude>
+                                                <exclude>com.google.code.gson:::</exclude>
+                                            </excludes>
+                                        </artifact>
+                                        <artifact>
+                                            <id>org.eclipse.lyo.oslc4j.core:oslc4j-json4j-provider:${lyo.version}</id>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
