@@ -47,21 +47,28 @@ aResource.referenceResourceProperties()
 
 
 [comment Always show the prefix, since prefix no longer depend on the domainSpec. It relates to the vocab.
-What would the logic look like otherwise /]
+What would the logic look like otherwise 
+There seems to be sometimes cases when the containingDomainSpecification is null. need to deal with it/]
 [query public labelAsResourceSubnode(aResourceProperty : ResourceProperty, containingDomainSpecification : DomainSpecification) : String =
-(if (aResourceProperty.userPreferenceViewLabelsAsShape())  then 
-    (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
-        not (aResourceProperty.eContainer(DomainSpecification) = containingDomainSpecification)) 
-        then aResourceProperty.toString(true, true, true) 
-        else aResourceProperty.toString(true, false, true)
-    endif)
-else 
-    (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
-        not (aResourceProperty.deducePropertyDefinition_namespaceURI() = containingDomainSpecification.deduceVocabulary_namespaceURI()))
-        then aResourceProperty.toString(false, true, true) 
-        else aResourceProperty.toString(false, false, true)
-    endif)
+(if (null = containingDomainSpecification) 
+    then  
+        aResourceProperty.toString(true, true, true)
+    else 
+        (if (aResourceProperty.userPreferenceViewLabelsAsShape())  then 
+            (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
+                not (aResourceProperty.eContainer(DomainSpecification) = containingDomainSpecification)) 
+                then aResourceProperty.toString(true, true, true) 
+                else aResourceProperty.toString(true, false, true)
+            endif)
+        else 
+            (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
+                not (aResourceProperty.deducePropertyDefinition_namespaceURI() = containingDomainSpecification.deduceVocabulary_namespaceURI()))
+                then aResourceProperty.toString(false, true, true) 
+                else aResourceProperty.toString(false, false, true)
+            endif)
+        endif)
 endif)
+
 /]
 
 [query public labelInDomainSpecification(aResourceProperty : ResourceProperty) : String =
