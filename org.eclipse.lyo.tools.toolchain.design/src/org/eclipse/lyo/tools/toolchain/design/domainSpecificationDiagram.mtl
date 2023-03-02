@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
 /]
-[module domainSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[module domainSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0')/]
 
 [import org::eclipse::lyo::tools::common::utils::ShapeVocabularyUtils/]
 [import org::eclipse::lyo::tools::common::utils::PreferencesUtils/]
@@ -48,16 +48,16 @@ aResource.referenceResourceProperties()
 
 [comment Always show the prefix, since prefix no longer depend on the domainSpec. It relates to the vocab.
 What would the logic look like otherwise /]
-[query public labelAsResourceSubnode(aResourceProperty : ResourceProperty, sourceResource : Resource) : String =
+[query public labelAsResourceSubnode(aResourceProperty : ResourceProperty, containingDomainSpecification : DomainSpecification) : String =
 (if (aResourceProperty.userPreferenceViewLabelsAsShape())  then 
     (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
-        not (aResourceProperty.eContainer(DomainSpecification) = sourceResource.eContainer(DomainSpecification))) 
+        not (aResourceProperty.eContainer(DomainSpecification) = containingDomainSpecification)) 
         then aResourceProperty.toString(true, true, true) 
         else aResourceProperty.toString(true, false, true)
     endif)
 else 
     (if (aResourceProperty.userPreferenceAlwaysViewPrefixes() or
-        not (aResourceProperty.deducePropertyDefinition_namespaceURI() = sourceResource.deduceDescribes_namespaceURI()))
+        not (aResourceProperty.deducePropertyDefinition_namespaceURI() = containingDomainSpecification.deduceVocabulary_namespaceURI()))
         then aResourceProperty.toString(false, true, true) 
         else aResourceProperty.toString(false, false, true)
     endif)

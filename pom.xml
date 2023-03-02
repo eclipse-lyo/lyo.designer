@@ -44,6 +44,10 @@
             <url>https://repo.eclipse.org/content/repositories/acceleo-releases/</url>
         </pluginRepository>
         <pluginRepository>
+            <id>Sirius</id>
+            <url>https://repo.eclipse.org/content/repositories/sirius/</url>
+        </pluginRepository>
+        <pluginRepository>
            <id>cbi</id>
            <url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
          </pluginRepository>
