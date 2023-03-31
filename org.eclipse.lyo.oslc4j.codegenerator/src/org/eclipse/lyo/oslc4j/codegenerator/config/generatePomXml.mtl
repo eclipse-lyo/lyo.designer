@@ -223,7 +223,10 @@
 [/if]
 [/template]
 
-[template public additionalDependencies(traceabilityContext : OclAny) post (trim())]
+[template public additionalDependencies(anAdaptorInterface : AdaptorInterface) post (trim())]
+[/template]
+
+[template public additionalPlugins(anAdaptorInterface : AdaptorInterface) post (trim())]
 [/template]
 
 [template public generatePomXml(anAdaptorInterface : AdaptorInterface)]
@@ -246,7 +249,7 @@
         [generalDependencies()/]
         [servletDependencies(true)/]
         [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled(), anAdaptorInterface.trsServiceEnabled(), anAdaptorInterface.storeEnabled())/]
-        [additionalDependencies()/]
+        [anAdaptorInterface.additionalDependencies()/]
         [if (anAdaptorInterface.swaggerDocumentationEnabled())]
         <!-- Swagger dependencies -->
         <dependency>
@@ -385,6 +388,7 @@
                 </configuration>
             </plugin>
             [/if]
+        [anAdaptorInterface.additionalPlugins()/]
         </plugins>
     </build>
     <!-- [protected ('post_build')]
