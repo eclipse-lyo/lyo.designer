@@ -204,6 +204,11 @@
 </dependency>
 [/if]
 [if authenticationEnabled]
+[authenticationDependencies()/]
+[/if]
+[/template]
+
+[template public authenticationDependencies(traceabilityContext : OclAny) post (trim())]
 <dependency>
     <groupId>org.eclipse.lyo.server</groupId>
     <artifactId>oauth-core</artifactId>
@@ -220,7 +225,6 @@
     <version>${version.lyo}</version>
     <type>war</type>
 </dependency>
-[/if]
 [/template]
 
 [template public additionalDependencies(anAdaptorInterface : AdaptorInterface) post (trim())]

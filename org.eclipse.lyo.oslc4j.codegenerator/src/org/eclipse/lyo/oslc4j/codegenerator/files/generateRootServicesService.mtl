@@ -21,6 +21,33 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::jspServices/]
 
+
+[template public generateImports(anAdaptorInterface : AdaptorInterface)]
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
+import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
+import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
+import [anAdaptorInterface.serviceProviderCatalog.javaClassFullNameForSingleton() /];
+[anAdaptorInterface.generateAuthenticationImports()/];
+
+// [protected ('imports')]
+// [/protected]
+[/template]
+
+[template public generateAuthenticationImports(anAdaptorInterface : AdaptorInterface)]
+import [anAdaptorInterface.javaClassFullNameForAuthenticationApplication()/];
+[/template]
+
 [template public generateRootServicesService(anAdaptorInterface : AdaptorInterface)]
 [if (anAdaptorInterface.authenticationEnabled())]
 [file (anAdaptorInterface.javaClassFullFileNameForRootServicesService(), false, 'UTF-8')]
@@ -43,25 +70,7 @@
 
 package [anAdaptorInterface.javaClassPackageNameForRootServicesService()/];
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
-import javax.ws.rs.core.UriBuilder;
-import javax.ws.rs.core.UriInfo;
-import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
-import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
-import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
-import [anAdaptorInterface.javaClassFullNameForAuthenticationApplication()/];
-import [anAdaptorInterface.serviceProviderCatalog.javaClassFullNameForSingleton() /];
-
-// [protected ('imports')]
-// [/protected]
+[generateImports(anAdaptorInterface)/]
 
 /**
  * Jazz Root Services Service, see:
@@ -105,7 +114,7 @@ public class [anAdaptorInterface.javaClassNameForRootServicesService() /] {
                 "    <oslc_am:amServiceProviders rdf:resource=\"" + serviceProviderCatalog + "\" />" + "\n" +
                 "    <oslc_rm:rmServiceProviders rdf:resource=\"" + serviceProviderCatalog + "\" />" + "\n" +
                 "    <oslc_cm:cmServiceProviders rdf:resource=\"" + serviceProviderCatalog + "\" />" + "\n" +
-                "    <jfs:oauthRealmName>" + [anAdaptorInterface.javaClassNameForAuthenticationApplication()/].OAUTH_REALM + "</jfs:oauthRealmName>" + "\n" +
+                "    <jfs:oauthRealmName>" + [anAdaptorInterface.javaClassNameForAuthenticationApplication()/].getApplication().getRealm(httpServletRequest) + "</jfs:oauthRealmName>" + "\n" +
                 "    <jfs:oauthDomain>" + OSLC4JUtils.getPublicURI() + "</jfs:oauthDomain>" + "\n" +
                 "    <jfs:oauthRequestConsumerKeyUrl rdf:resource=\"" + oauthRequestConsumerKeyUrl + "\"/>" + "\n" +
                 "    <jfs:oauthApprovalModuleUrl rdf:resource=\"" + oauthApprovalModuleUrl + "\"/>" + "\n" +
