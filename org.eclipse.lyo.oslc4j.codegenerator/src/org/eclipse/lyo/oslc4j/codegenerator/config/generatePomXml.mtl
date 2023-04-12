@@ -64,6 +64,9 @@
 </properties>
 [/template]
 
+[template public additionalRepositories(traceabilityContext : OclAny) post (trim())]
+[/template]
+
 [template private repositories(traceabilityContext : OclAny)]
 <repositories>
     <!-- [protected ('repositories')]
@@ -79,6 +82,7 @@
             <enabled>false</enabled>
         </releases>
     </repository>
+    [additionalRepositories()/]
 </repositories>
 [/template]
 
