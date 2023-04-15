@@ -26,7 +26,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderCatalogServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::osgiServices/]
 
-[template public additionalResourceClasses(traceabilityContext : OclAny) post (trim())]
+[template public additionalResourceClasses(anAdaptorInterface : AdaptorInterface) post (trim())]
 [/template]
 
 [template public generateAdaptorApplication(anAdaptorInterface : AdaptorInterface)]
@@ -178,7 +178,7 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
         // TRS Server resources
         RESOURCE_CLASSES.add(TrackedResourceSetService.class);
         [/if]
-        [additionalResourceClasses()/]
+        [anAdaptorInterface.additionalResourceClasses()/]
         // [protected ('Custom Resource Classes')]
         // [/protected]
 
