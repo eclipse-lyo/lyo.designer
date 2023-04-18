@@ -525,22 +525,22 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="AdaptorInterface.ServerConfiguration" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='AdaptorInterface.DeleteServerConfiguration']" semanticCandidatesExpression="[self.configuration/]" domainClass="adaptorinterface.ServerConfiguration" childrenPresentation="List">
-          <subNodeMappings name="AdaptorInterface.ServerConfiguration.GeneralConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.GeneralConfiguration">
+        <containerMappings name="AdaptorInterface.ServerConfiguration" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='AdaptorInterface.DeleteConfiguration']" semanticCandidatesExpression="[self.configuration/]" domainClass="adaptorinterface.ServerConfiguration" childrenPresentation="List">
+          <subNodeMappings name="AdaptorInterface.ServerConfiguration.GeneralConfiguration" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='AdaptorInterface.DeleteConfiguration']" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.GeneralConfiguration">
             <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="General" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="AdaptorInterface.ServerConfiguration.ServerConfiguration" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.ServerConfiguration">
+          <subNodeMappings name="AdaptorInterface.ServerConfiguration.ServerConfiguration" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='AdaptorInterface.DeleteConfiguration']" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.ServerConfiguration">
             <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="Server Configuration" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="AdaptorInterface.ServerConfiguration.ProjectConfiguration" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.ProjectConfiguration">
+          <subNodeMappings name="AdaptorInterface.ServerConfiguration.ProjectConfiguration" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='AdaptorInterfaceDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='AdaptorInterface.DeleteConfiguration']" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.ProjectConfiguration">
             <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="Project Configuration" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1027,7 +1027,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteServerConfiguration">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AdaptorInterface.DeleteConfiguration">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
