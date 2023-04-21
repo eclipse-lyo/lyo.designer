@@ -173,6 +173,7 @@ public class ServiceProviderItemProvider
             super.getChildrenFeatures(object);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVICE_PROVIDER__PUBLISHER);
             childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVICE_PROVIDER__SERVICES);
+            childrenFeatures.add(AdaptorinterfacePackage.Literals.SERVICE_PROVIDER__SOURCE_BINDING);
         }
         return childrenFeatures;
     }
@@ -236,6 +237,7 @@ public class ServiceProviderItemProvider
                 return;
             case AdaptorinterfacePackage.SERVICE_PROVIDER__PUBLISHER:
             case AdaptorinterfacePackage.SERVICE_PROVIDER__SERVICES:
+            case AdaptorinterfacePackage.SERVICE_PROVIDER__SOURCE_BINDING:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -262,6 +264,11 @@ public class ServiceProviderItemProvider
             (createChildParameter
                 (AdaptorinterfacePackage.Literals.SERVICE_PROVIDER__SERVICES,
                  AdaptorinterfaceFactory.eINSTANCE.createService()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (AdaptorinterfacePackage.Literals.SERVICE_PROVIDER__SOURCE_BINDING,
+                 AdaptorinterfaceFactory.eINSTANCE.createSourceBinding()));
     }
 
 	/**

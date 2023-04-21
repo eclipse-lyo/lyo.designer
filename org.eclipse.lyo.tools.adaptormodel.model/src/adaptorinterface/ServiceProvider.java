@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link adaptorinterface.ServiceProvider#getServices <em>Services</em>}</li>
  *   <li>{@link adaptorinterface.ServiceProvider#getServiceNamespace <em>Service Namespace</em>}</li>
  *   <li>{@link adaptorinterface.ServiceProvider#getInstanceID <em>Instance ID</em>}</li>
+ *   <li>{@link adaptorinterface.ServiceProvider#getSourceBinding <em>Source Binding</em>}</li>
  * </ul>
  *
  * @see adaptorinterface.AdaptorinterfacePackage#getServiceProvider()
@@ -173,5 +174,27 @@ public interface ServiceProvider extends EObject {
      * @generated
      */
 	void setInstanceID(String value);
+
+    /**
+     * Returns the value of the '<em><b>Source Binding</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Source Binding</em>' containment reference.
+     * @see #setSourceBinding(SourceBinding)
+     * @see adaptorinterface.AdaptorinterfacePackage#getServiceProvider_SourceBinding()
+     * @model containment="true"
+     * @generated
+     */
+    SourceBinding getSourceBinding();
+
+    /**
+     * Sets the value of the '{@link adaptorinterface.ServiceProvider#getSourceBinding <em>Source Binding</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Source Binding</em>' containment reference.
+     * @see #getSourceBinding()
+     * @generated
+     */
+    void setSourceBinding(SourceBinding value);
 
 } // ServiceProvider

@@ -123,6 +123,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ServiceProvider/services"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServiceProvider/serviceNamespace"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adaptorInterface.ecore#//ServiceProvider/instanceID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//ServiceProvider/sourceBinding"/>
     </genClasses>
     <genClasses ecoreClass="adaptorInterface.ecore#//Service">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adaptorInterface.ecore#//Service/domainSpecification"/>

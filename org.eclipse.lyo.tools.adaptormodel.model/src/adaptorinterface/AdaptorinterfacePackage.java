@@ -648,13 +648,22 @@ public interface AdaptorinterfacePackage extends EPackage {
 	int SERVICE_PROVIDER__INSTANCE_ID = 5;
 
 	/**
+     * The feature id for the '<em><b>Source Binding</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVICE_PROVIDER__SOURCE_BINDING = 6;
+
+    /**
      * The number of structural features of the '<em>Service Provider</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int SERVICE_PROVIDER_FEATURE_COUNT = 6;
+	int SERVICE_PROVIDER_FEATURE_COUNT = 7;
 
 	/**
      * The number of operations of the '<em>Service Provider</em>' class.
@@ -3675,6 +3684,17 @@ public interface AdaptorinterfacePackage extends EPackage {
 	EAttribute getServiceProvider_InstanceID();
 
 	/**
+     * Returns the meta object for the containment reference '{@link adaptorinterface.ServiceProvider#getSourceBinding <em>Source Binding</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Source Binding</em>'.
+     * @see adaptorinterface.ServiceProvider#getSourceBinding()
+     * @see #getServiceProvider()
+     * @generated
+     */
+    EReference getServiceProvider_SourceBinding();
+
+    /**
      * Returns the meta object for class '{@link adaptorinterface.Service <em>Service</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5978,6 +5998,14 @@ public interface AdaptorinterfacePackage extends EPackage {
 		EAttribute SERVICE_PROVIDER__INSTANCE_ID = eINSTANCE.getServiceProvider_InstanceID();
 
 		/**
+         * The meta object literal for the '<em><b>Source Binding</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVICE_PROVIDER__SOURCE_BINDING = eINSTANCE.getServiceProvider_SourceBinding();
+
+        /**
          * The meta object literal for the '{@link adaptorinterface.impl.ServiceImpl <em>Service</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

@@ -99,6 +99,8 @@
         upperBound="-1" eType="#//Service" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceBinding" eType="#//SourceBinding"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Service">
     <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecification" lowerBound="1"
