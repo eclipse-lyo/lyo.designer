@@ -374,12 +374,14 @@ endif)
     concatenatePaths(leftURISegment, rightURISegment)
 /]
 
+[comment if the leftSegment is empty or "/", then we take the rightSegment as is.
+We don't strip the rightSegment, because we want to keep the starting / - if it exists. /]
 [query public concatenatePaths (leftSegment : String, rightSegment : String) : String =
 (if (stripURISegmentEnd(leftSegment).size() = 0) then
-    stripURISegmentStart(rightSegment)
+    rightSegment
 else
     (if (stripURISegmentStart(rightSegment).size() = 0) then
-        stripURISegmentEnd(leftSegment)
+        leftSegment
     else
         stripURISegmentEnd(leftSegment).concat('/').concat(stripURISegmentStart(rightSegment))
     endif)
