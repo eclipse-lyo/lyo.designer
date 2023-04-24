@@ -38,7 +38,7 @@ import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
 import [anAdaptorInterface.serviceProviderCatalog.javaClassFullNameForSingleton() /];
-[anAdaptorInterface.generateAuthenticationImports()/];
+[anAdaptorInterface.generateAuthenticationImports()/]
 
 // [protected ('imports')]
 // [/protected]
