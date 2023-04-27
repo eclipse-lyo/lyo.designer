@@ -16,7 +16,7 @@
           <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.ResourcePropertyHidden" semanticCandidatesExpression="aql:null" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.PropertiesList']/@subNodeMappings[name='DomainSpecification.PropertiesList.Property']"/>
           <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Specification.DomainSpecification.Resource" semanticCandidatesExpression="aql:self.resources" domainClass="adaptorinterface.Resource" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.RelatePropertyToResource']" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']">
             <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.LiteralProperty" semanticCandidatesExpression="[self.literalResourceProperties()/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.Resource.LiteralProperty']"/>
-            <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.ReferenceProperty" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.Resource.LiteralProperty']"/>
+            <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.Resource.ReferenceProperty" semanticCandidatesExpression="[self.referencePropertiesAsSubnodes(diagram)/]" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.Resource']/@subNodeMappings[name='DomainSpecification.Resource.ReferenceProperty']"/>
           </subContainerMappings>
           <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Specification.DomainSpecification.PropertiesList" semanticCandidatesExpression="aql:self" domainClass="adaptorinterface.DomainSpecification" dropDescriptions="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='SpecificationDiagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Specification.MoveProperty']" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.PropertiesList']">
             <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Specification.DomainSpecification.PropertiesList.Property" semanticCandidatesExpression="aql:self.resourceProperties" domainClass="adaptorinterface.ResourceProperty" importedMapping="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@containerMappings[name='DomainSpecification.PropertiesList']/@subNodeMappings[name='DomainSpecification.PropertiesList.Property']"/>
@@ -1706,19 +1706,29 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="DomainSpecification.PropertiesList" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.DeletePropertiesList']" semanticCandidatesExpression="[self/]" domainClass="adaptorinterface.DomainSpecification" childrenPresentation="List">
-          <subNodeMappings name="DomainSpecification.PropertiesList.Property" semanticCandidatesExpression="feature:eAllContents" domainClass="adaptorinterface.ResourceProperty">
-            <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="[self.labelInDomainSpecification()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
+        <containerMappings name="DomainSpecification.PropertiesList" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.DeletePropertiesList']" semanticCandidatesExpression="aql:self" domainClass="adaptorinterface.DomainSpecification" childrenPresentation="List">
+          <subNodeMappings name="DomainSpecification.PropertiesList.Property" semanticCandidatesExpression="aql:self.resourceProperties" domainClass="adaptorinterface.ResourceProperty">
+            <conditionnalStyles predicateExpression="[self.isLiteral()/]">
+              <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="[self.labelInDomainSpecification()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[not self.isLiteral()/]">
+              <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="[self.labelInDomainSpecification()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>italic</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </conditionnalStyles>
           </subNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Property Constraints">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
