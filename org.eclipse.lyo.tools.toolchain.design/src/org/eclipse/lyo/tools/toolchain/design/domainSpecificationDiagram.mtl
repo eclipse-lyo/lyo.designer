@@ -32,19 +32,12 @@ aResource.resourceProperties->select(p : ResourceProperty | p.isLiteral())
 aResource.resourceProperties->select(p : ResourceProperty | not p.isLiteral())
 /]
 
-[comment We want to list all literal properties. We also want to list reference properties whose range is not set (since they cannot be shown as an arrow, pointing to nowhere) /]
-[query public propertiesAsSubnodes(aResource : Resource) : Set(ResourceProperty) =
-aResource.resourceProperties->select(p : ResourceProperty | 
-		(p.isLiteral())
-		 or ((not p.isLiteral()) and (p.range->size() = 0)))
-/]
-
-[comment We want to list reference properties that have range resources not visible in the diagram (since they cannot be shown as an arrow, pointing to nowhere) /]
+[comment We want to list reference properties that either (a) have range resources not visible in the diagram (since they cannot be shown as an arrow, pointing to nowhere) 
+or (b) reference properties whose range is not set (since they cannot be shown as an arrow, pointing to nowhere) /]
 [query public referencePropertiesAsSubnodes(aResource : Resource, diagram : DSemanticDiagram) : Set(ResourceProperty) =
 aResource.referenceResourceProperties()
-	->select(p : ResourceProperty | not visibleResources(diagram)->includesAll(p.range))
+	->select(p : ResourceProperty | (p.range->size() = 0) or (not visibleResources(diagram)->includesAll(p.range)))
 /]
-
 
 [comment Always show the prefix, since prefix no longer depend on the domainSpec. It relates to the vocab.
 What would the logic look like otherwise 
