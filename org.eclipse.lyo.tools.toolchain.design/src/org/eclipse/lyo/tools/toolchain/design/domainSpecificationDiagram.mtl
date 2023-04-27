@@ -20,8 +20,7 @@
 [import org::eclipse::lyo::tools::common::utils::PreferencesUtils/]
 
 [query public visibleResources (diagram : DSemanticDiagram) : Sequence(Resource) =
-(diagram.containers->select(c : DDiagramElementContainer | (Sequence{'Specification.DomainSpecification.Resource', 'DomainSpecification.Resource'}->includes(c.actualMapping.name))._and(c.visible)))
-	.target.oclAsType(Resource)
+(diagram.containers->select(c : DDiagramElementContainer | c.visible and c.target.oclIsTypeOf(Resource))).target.oclAsType(Resource)
 /]
 
 [query public literalResourceProperties(aResource : Resource) : Set(ResourceProperty) =
