@@ -185,7 +185,7 @@
         <toolSections name="Config" reusedTools="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='DomainSpecification.CreateSpecificationConfiguration']"/>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ToolchainDiagram" initialisation="true" domainClass="toolchain.Toolchain">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ToolchainDiagram" initialisation="true" domainClass="toolchain.Toolchain" enablePopupBars="true">
       <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>
       <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/toolchain.ecore#/"/>
       <metamodel href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/vocabulary.ecore#/"/>
@@ -809,8 +809,8 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['SelectionDialog'+container.selectionDialogs->size()/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="[instance.title/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="dialogURI" valueExpression="['selector'/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintWidth" valueExpression="['250'/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintHeight" valueExpression="['250'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintWidth" valueExpression="['750'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintHeight" valueExpression="['750'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -828,8 +828,8 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="title" valueExpression="['CreationDialog'+container.creationDialogs->size()/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="label" valueExpression="[instance.title/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="dialogURI" valueExpression="['creator'/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintWidth" valueExpression="['250'/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintHeight" valueExpression="['250'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintWidth" valueExpression="['750'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="hintHeight" valueExpression="['750'/]"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceTypes" valueExpression="[managedResource/]"/>
                 </subModelOperations>
               </firstModelOperations>
