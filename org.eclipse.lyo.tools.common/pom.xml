@@ -17,6 +17,18 @@
 		<version.acceleo>3.6.4</version.acceleo>
 	</properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.acceleo</groupId>
+            <artifactId>org.eclipse.acceleo.maven</artifactId>
+            <version>${version.acceleo}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.acceleo</groupId>
+            <artifactId>org.eclipse.acceleo.engine</artifactId>
+            <version>3.5.1.201409021433</version>
+        </dependency>
+    </dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -55,6 +67,7 @@
 						<packageToRegister>toolchain.ToolchainPackage</packageToRegister>
 						<packageToRegister>vocabulary.VocabularyPackage</packageToRegister>
 					</packagesToRegister>
+                    <uriHandler>org.eclipse.acceleo.maven.AcceleoURIHandler</uriHandler>
 				</configuration>
 			</plugin>
 		</plugins>

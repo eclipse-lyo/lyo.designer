@@ -11,7 +11,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
-package org.eclipse.lyo.tools.toolchain.design;
+package org.eclipse.lyo.tools.common.utils;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;

@@ -17,38 +17,18 @@
 		<version.acceleo>3.6.4</version.acceleo>
 	</properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.lyo.tools</groupId>
-			<artifactId>org.eclipse.lyo.oslc4j.adaptormodel</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.lyo.tools</groupId>
-			<artifactId>org.eclipse.lyo.tools.adaptormodel.model</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.lyo.tools</groupId>
-			<artifactId>org.eclipse.lyo.tools.toolchain.model</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.lyo.tools</groupId>
-			<artifactId>org.eclipse.lyo.tools.vocabulary.model</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.lyo.tools</groupId>
-			<artifactId>org.eclipse.lyo.tools.toolchain.edit</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.lyo.tools</groupId>
-			<artifactId>org.eclipse.lyo.tools.toolchain.editor</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.acceleo</groupId>
+            <artifactId>org.eclipse.acceleo.maven</artifactId>
+            <version>${version.acceleo}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.acceleo</groupId>
+            <artifactId>org.eclipse.acceleo.engine</artifactId>
+            <version>3.5.1.201409021433</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
@@ -79,6 +59,7 @@
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.adaptormodel.model/target/org.eclipse.lyo.tools.adaptormodel.model-${project.parent.version}.jar</jar>
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.toolchain.model/target/org.eclipse.lyo.tools.toolchain.model-${project.parent.version}.jar</jar>
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.vocabulary.model/target/org.eclipse.lyo.tools.vocabulary.model-${project.parent.version}.jar</jar>
+							<jar>${project.basedir}/../org.eclipse.lyo.tools.common/target/org.eclipse.lyo.tools.common-${project.parent.version}.jar</jar>
                             <jar>p2.eclipse-plugin:org.eclipse.sirius.diagram.model</jar>
 						</jars>
 					</acceleoProject>
@@ -90,6 +71,7 @@
 						<packageToRegister>toolchain.ToolchainPackage</packageToRegister>
 						<packageToRegister>vocabulary.VocabularyPackage</packageToRegister>
 					</packagesToRegister>
+                    <uriHandler>org.eclipse.acceleo.maven.AcceleoURIHandler</uriHandler>
 				</configuration>
 			</plugin>
 		</plugins>

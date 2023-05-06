@@ -16,19 +16,15 @@
 /]
 [module DialogInputServices('http://www.eclipse.org/emf/2002/Ecore')/]
 
-[query public DialogInputServices(anOclAny: OclAny) : OclVoid
-	= invoke('org.eclipse.lyo.tools.toolchain.design.DialogInputServices', 'DialogInputServices()', Sequence{})
-/]
-
 [query public showMessage(arg0 : EObject, arg1 : String, arg2 : String) : String
-    = invoke('org.eclipse.lyo.tools.toolchain.design.DialogInputServices', 'showMessage(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.String)', Sequence{arg0, arg1, arg2})
+    = invoke('org.eclipse.lyo.tools.common.utils.DialogInputServices', 'showMessage(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.String)', Sequence{arg0, arg1, arg2})
 /]
 
 [query public promptForString(arg0 : EObject, arg1 : String, arg2 : String, arg3 : String) : String
-	= invoke('org.eclipse.lyo.tools.toolchain.design.DialogInputServices', 'promptForString(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.String, java.lang.String)', Sequence{arg0, arg1, arg2, arg3})
+	= invoke('org.eclipse.lyo.tools.common.utils.DialogInputServices', 'promptForString(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.String, java.lang.String)', Sequence{arg0, arg1, arg2, arg3})
 /]
 
 [query public promptForFolder(arg0 : EObject, arg1 : String, arg2 : String, arg3 : String) : String
-    = invoke('org.eclipse.lyo.tools.toolchain.design.DialogInputServices', 'promptForFolder(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.String, java.lang.String)', Sequence{arg0, arg1, arg2, arg3})
+    = invoke('org.eclipse.lyo.tools.common.utils.DialogInputServices', 'promptForFolder(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.String, java.lang.String)', Sequence{arg0, arg1, arg2, arg3})
 /]
 

@@ -149,16 +149,16 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
                   <subModelOperations xsi:type="tool_1:Switch">
                     <cases conditionExpression="[not self.generationConfigurationComplete()/]">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('Generation Configuration is missing or incomplete', 'The specification generation configuration is missing or incomplete. Create a SpecificationConfiguration element, using the toolbar to the right. Make sure all its properties are set.')/]"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.showMessage('Generation Configuration is missing or incomplete', 'The specification generation configuration is missing or incomplete. Create a SpecificationConfiguration element, using the toolbar to the right. Make sure all its properties are set.')"/>
                     </cases>
                     <cases conditionExpression="[self.configuration.generalConfiguration.doNotGenerate/]">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('Cannot Generate', 'You have activated the &quot;Do Not Generate&quot; flag on this specification. Nothing will be generated. Disable this flag if you need to generate.')/]"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.showMessage('Cannot Generate', 'You have activated the &quot;Do Not Generate&quot; flag on this specification. Nothing will be generated. Disable this flag if you need to generate.')"/>
                     </cases>
                     <cases conditionExpression="[self.generationConfigurationNeedsMigration()/]">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('Generation Configuration needs migration', 'The generation configuration of this specification or one of its domains needs migration. See note in red.')/]"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.showMessage('Generation Configuration needs migration', 'The generation configuration of this specification or one of its domains needs migration. See note in red.')"/>
                     </cases>
                     <cases conditionExpression="[self.isNullOrEmpty(self.configuration.generalConfiguration.filesBasePath)/]">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('HELLO', 'HELLO')/]"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql: self.showMessage('HELLO', 'HELLO')"/>
                     </cases>
                     <default>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:generateSpecification()"/>
@@ -746,7 +746,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:Switch">
                   <cases conditionExpression="[container.serviceProviderCatalog.serviceProviders.services.basicCapabilities->size() > 0/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('The use of WebServices conflicts with existing BasicCapabilities', 'The use of BasicCapabilities is Deprecated! \n It is however not possible to mix WebServices with BasicCapabilities. Consider first replacing existing BasicCapabilities with WebServices. A WebService offers the same features, yet with a much better URL flexibility.')/]"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql: self.showMessage('The use of WebServices conflicts with existing BasicCapabilities', 'The use of BasicCapabilities is Deprecated! \n It is however not possible to mix WebServices with BasicCapabilities. Consider first replacing existing BasicCapabilities with WebServices. A WebService offers the same features, yet with a much better URL flexibility.')"/>
                   </cases>
                   <default>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adaptorinterface.WebService" referenceName="webServices">
@@ -1601,7 +1601,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
                   <subModelOperations xsi:type="tool_1:Switch">
                     <cases conditionExpression="[self.generationSetting.oclIsUndefined() or self.generationSetting.javaFilesPath.oclIsUndefined() or self.generationSetting.javaClassPackageName.oclIsUndefined() or self.generationSetting.javaFilesPath.trim().equalsIgnoreCase('') or self.generationSetting.javaClassPackageName.trim().equalsIgnoreCase('')/]">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.showMessage('Generation Settings are missing', 'The specification generation settings are missing. Right click and select the &quot;Set Java Generation Settings&quot; command')/]"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql: self.showMessage('Generation Settings are missing', 'The specification generation settings are missing. Right click and select the &quot;Set Java Generation Settings&quot; command')"/>
                     </cases>
                     <default>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:generateSpecification()"/>
@@ -1709,14 +1709,14 @@
         </containerMappings>
         <containerMappings name="DomainSpecification.PropertiesList" deletionDescription="//@ownedViewpoints[name='ToolchainViewpoint']/@ownedRepresentations[name='DomainSpecificationDiagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DomainSpecification.DeletePropertiesList']" semanticCandidatesExpression="aql:self" domainClass="adaptorinterface.DomainSpecification" childrenPresentation="List">
           <subNodeMappings name="DomainSpecification.PropertiesList.Property" semanticCandidatesExpression="aql:self.resourceProperties" domainClass="adaptorinterface.ResourceProperty">
-            <conditionnalStyles predicateExpression="[self.isLiteral()/]">
+            <conditionnalStyles predicateExpression="aql:self.isLiteral()">
               <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="[self.labelInDomainSpecification()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[not self.isLiteral()/]">
+            <conditionnalStyles predicateExpression="aql: not self.isLiteral()">
               <style xsi:type="style:BundledImageDescription" labelSize="9" showIcon="false" labelExpression="[self.labelInDomainSpecification()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>italic</labelFormat>
@@ -2024,14 +2024,15 @@
       </additionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::queries"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.DialogInputServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.EmfResourcesLoaderService"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.DialogInputServices"/>
+    <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::DialogInputServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.EmfResourcesLoaderService"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ConfirmDeletionServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.toolchain.design.ResourcePropertyRangeServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ConfirmDeletionServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ResourcePropertyRangeServices"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::domainSpecificationDiagram"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::shaclSpecificationDiagram"/>
-    <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::common::utils::ShapeVocabularyUtils"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ShapeVocabularyUtils"/>
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription" name="sirius_default_rules_properties">
     <metamodels href="../../org.eclipse.lyo.oslc4j.adaptormodel/model/adaptorInterface.ecore#/"/>

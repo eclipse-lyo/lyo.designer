@@ -17,11 +17,15 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.acceleo.engine,
  com.google.guava,
  org.eclipse.lyo.tools.toolchain.model,
- org.eclipse.lyo.oslc4j.core.oslc4j-core
+ org.eclipse.lyo.oslc4j.core.oslc4j-core,
+ org.eclipse.ui,
+ org.eclipse.swt,
+ org.eclipse.sirius
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
-Export-Package: org.eclipse.lyo.tools.common.utils
+Export-Package: org.eclipse.lyo.tools.common.common,
+ org.eclipse.lyo.tools.common.utils
 Bundle-ClassPath: bin/,
  .
 

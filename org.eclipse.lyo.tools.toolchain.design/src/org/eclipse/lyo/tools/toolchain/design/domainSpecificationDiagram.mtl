@@ -16,8 +16,8 @@
 /]
 [module domainSpecificationDiagram ('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/sirius/diagram/1.1.0')/]
 
-[import org::eclipse::lyo::tools::common::utils::ShapeVocabularyUtils/]
-[import org::eclipse::lyo::tools::common::utils::PreferencesUtils/]
+[import org::eclipse::lyo::tools::toolchain::design::ShapeVocabularyUtils/]
+[import org::eclipse::lyo::tools::toolchain::design::PreferencesUtils/]
 
 [query public visibleResources (diagram : DSemanticDiagram) : Sequence(Resource) =
 (diagram.containers->select(c : DDiagramElementContainer | c.visible and c.target.oclIsTypeOf(Resource))).target.oclAsType(Resource)
