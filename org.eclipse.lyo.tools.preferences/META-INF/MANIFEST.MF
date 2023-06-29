@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.lyo.tools.preferences
 Bundle-SymbolicName: org.eclipse.lyo.tools.preferences;singleton:=true
-Bundle-Version: 5.0.1.qualifier
+Bundle-Version: 5.1.1.Final
 Bundle-Activator: org.eclipse.lyo.tools.preferences.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
