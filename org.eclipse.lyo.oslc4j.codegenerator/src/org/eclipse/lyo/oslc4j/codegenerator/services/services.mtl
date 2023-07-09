@@ -337,14 +337,14 @@ mavenProjectConfiguration.groupId.concat(':').concat(mavenProjectConfiguration.a
 
 [template public mavenArtifactAsDependency(mavenProjectConfiguration : MavenProjectConfiguration)]
 <dependency>
-	[mavenProjectConfiguration.mavenArtifactAsHeader()/]
+    [mavenProjectConfiguration.mavenArtifactAsHeader()/]
 </dependency>
 [/template]
 
 [comment 
 return "aSpecification.configuration.projectConfiguration" - if it exists. if not, return null
 /]
-[query public getRelevantMavenProjectConfiguration(aSpecification: Specification) : MavenProjectConfiguration =
+[query public getMavenProjectConfiguration(aSpecification: Specification) : MavenProjectConfiguration =
 (if (aSpecification.configuration.oclIsUndefined()) then 
     null
 else
@@ -359,12 +359,12 @@ endif)
 [comment 
 return "aDomainSpecification.configuration.projectConfiguration" - if it exists. if not, return the containing Spec's
 /]
-[query public getRelevantMavenProjectConfiguration(aDomainSpecification: DomainSpecification) : MavenProjectConfiguration =
+[query public getMavenProjectConfiguration(aDomainSpecification: DomainSpecification) : MavenProjectConfiguration =
 (if (aDomainSpecification.configuration.oclIsUndefined()) then 
-    aDomainSpecification.eContainer(Specification).getRelevantMavenProjectConfiguration()
+    aDomainSpecification.eContainer(Specification).getMavenProjectConfiguration()
 else
     (if aDomainSpecification.configuration.projectConfiguration.oclIsUndefined() then 
-	    aDomainSpecification.eContainer(Specification).getRelevantMavenProjectConfiguration()
+	    aDomainSpecification.eContainer(Specification).getMavenProjectConfiguration()
     else
         aDomainSpecification.configuration.projectConfiguration
     endif)
@@ -372,38 +372,38 @@ endif)
 /]
 
 [query public mavenFullyQualifiedArtifactName(aDomainSpecification: DomainSpecification) : String = 
-(if not aDomainSpecification.getRelevantMavenProjectConfiguration().oclIsUndefined() then 
-	aDomainSpecification.getRelevantMavenProjectConfiguration().mavenFullyQualifiedArtifactName()
+(if not aDomainSpecification.getMavenProjectConfiguration().oclIsUndefined() then 
+	aDomainSpecification.getMavenProjectConfiguration().mavenFullyQualifiedArtifactName()
 else
 	''
 endif)
 /]
 [template public mavenArtifactAsHeader(aDomainSpecification: DomainSpecification)]
-[if (not aDomainSpecification.getRelevantMavenProjectConfiguration().oclIsUndefined())]
-[aDomainSpecification.getRelevantMavenProjectConfiguration().mavenArtifactAsHeader()/]
+[if (not aDomainSpecification.getMavenProjectConfiguration().oclIsUndefined())]
+[aDomainSpecification.getMavenProjectConfiguration().mavenArtifactAsHeader()/]
 [/if]
 [/template]
 [template public mavenArtifactAsDependency(aDomainSpecification: DomainSpecification)]
-[if (not aDomainSpecification.getRelevantMavenProjectConfiguration().oclIsUndefined())]
-[aDomainSpecification.getRelevantMavenProjectConfiguration().mavenArtifactAsDependency()/]
+[if (not aDomainSpecification.getMavenProjectConfiguration().oclIsUndefined())]
+[aDomainSpecification.getMavenProjectConfiguration().mavenArtifactAsDependency()/]
 [/if]
 [/template]
 
 [query public mavenFullyQualifiedArtifactName(aSpecification: Specification) : String = 
-(if not aSpecification.getRelevantMavenProjectConfiguration().oclIsUndefined() then 
-	aSpecification.getRelevantMavenProjectConfiguration().mavenFullyQualifiedArtifactName()
+(if not aSpecification.getMavenProjectConfiguration().oclIsUndefined() then 
+	aSpecification.getMavenProjectConfiguration().mavenFullyQualifiedArtifactName()
 else
 	''
 endif)
 /]
 [template public mavenArtifactAsHeader(aSpecification: Specification)]
-[if (not aSpecification.getRelevantMavenProjectConfiguration().oclIsUndefined())]
-[aSpecification.getRelevantMavenProjectConfiguration().mavenArtifactAsHeader()/]
+[if (not aSpecification.getMavenProjectConfiguration().oclIsUndefined())]
+[aSpecification.getMavenProjectConfiguration().mavenArtifactAsHeader()/]
 [/if]
 [/template]
 [template public mavenArtifactAsDependency(aSpecification: Specification)]
-[if (not aSpecification.getRelevantMavenProjectConfiguration().oclIsUndefined())]
-[aSpecification.getRelevantMavenProjectConfiguration().mavenArtifactAsDependency()/]
+[if (not aSpecification.getMavenProjectConfiguration().oclIsUndefined())]
+[aSpecification.getMavenProjectConfiguration().mavenArtifactAsDependency()/]
 [/if]
 [/template]
 

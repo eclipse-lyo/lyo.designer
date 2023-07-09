@@ -233,20 +233,20 @@
 If multiple DSs share the same maven dependency, we group them into 1.
 /]
 [template public domainSpecificationDependencies(anAdaptorInterface : AdaptorInterface) post (trim())]
-[for (dependency: String | anAdaptorInterface.relevantDomainSpecifications()
-    ->select(o: DomainSpecification | not anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject)))
-	->collect(ds: DomainSpecification |  ds.mavenArtifactAsDependency())
-	->asOrderedSet()
-	)]
+[for (dependency: String | 
+    anAdaptorInterface.relevantDomainSpecifications()->select(o: DomainSpecification | not anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject)))
+    ->collect(ds: DomainSpecification |  ds.mavenArtifactAsDependency())
+    ->asOrderedSet()
+    )]
 [dependency/]
 [/for]
 [/template]
 [template public domainSpecificationDependencies(aSpecification : Specification) post (trim())]
-[for (dependency: String | aSpecification.relevantDomainSpecifications()
-    ->select(o: DomainSpecification | not aSpecification.generateIfFromImportedModels(o.oclAsType(EObject)))
-	->collect(ds: DomainSpecification |  ds.mavenArtifactAsDependency())
-	->asOrderedSet()
-	)]
+[for (dependency: String | 
+    aSpecification.relevantDomainSpecifications()->select(o: DomainSpecification | not aSpecification.generateIfFromImportedModels(o.oclAsType(EObject)))
+    ->collect(ds: DomainSpecification |  ds.mavenArtifactAsDependency())
+    ->asOrderedSet()
+    )]
 [dependency/]
 [/for]
 [/template]
