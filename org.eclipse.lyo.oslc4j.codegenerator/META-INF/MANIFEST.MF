@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Toolchain Code Generator
 Bundle-SymbolicName: org.eclipse.lyo.oslc4j.codegenerator
-Bundle-Version: 5.0.1.qualifier
+Bundle-Version: 5.2.0.qualifier
 Bundle-Activator: org.eclipse.lyo.oslc4j.codegenerator.Activator
 Bundle-Vendor: Eclipse Lyo
 Require-Bundle: org.eclipse.core.runtime,

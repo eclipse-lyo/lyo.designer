@@ -45,23 +45,35 @@ JAXRSConcatURISegments(anAdaptorInterface.getApplicationBaseUrl(), anAdaptorInte
 JAXRSConcatURISegments(anAdaptorInterface.configuration.applicationContextPath, anAdaptorInterface.getServletPath())
 /]
 
-[query public authenticationOauthRealm(anAdaptorInterface : AdaptorInterface) : String = 
-anAdaptorInterface.configuration.authenticationConfiguration.oauthRealm
-/]
-
-[query public authenticationApplicationName(anAdaptorInterface : AdaptorInterface) : String = 
-anAdaptorInterface.configuration.authenticationConfiguration.applicationName
+[query public getAuthenticationConfiguration(anAdaptorInterface : AdaptorInterface) : AuthenticationConfiguration = 
+(if (anAdaptorInterface.configuration.oclIsUndefined()) then 
+    null
+else
+    (if anAdaptorInterface.configuration.authenticationConfiguration.oclIsUndefined() then 
+        null
+    else
+        anAdaptorInterface.configuration.authenticationConfiguration
+    endif)
+endif)
 /]
 
 [query public authenticationEnabled(anAdaptorInterface : AdaptorInterface) : Boolean = 
-(if (anAdaptorInterface.configuration.oclIsUndefined()) then 
-    false
+not anAdaptorInterface.getAuthenticationConfiguration().oclIsUndefined()
+/]
+
+[query public authenticationOauthRealm(anAdaptorInterface : AdaptorInterface) : String = 
+(if anAdaptorInterface.authenticationEnabled() then 
+    anAdaptorInterface.getAuthenticationConfiguration().oauthRealm
 else
-    (if anAdaptorInterface.configuration.authenticationConfiguration.oclIsUndefined() then 
-        false
-    else
-        true
-    endif)
+    null
+endif)
+/]
+
+[query public authenticationApplicationName(anAdaptorInterface : AdaptorInterface) : String = 
+(if anAdaptorInterface.authenticationEnabled() then 
+    anAdaptorInterface.getAuthenticationConfiguration().applicationName
+else
+    null
 endif)
 /]
 
