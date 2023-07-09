@@ -10,7 +10,7 @@
 
 
 ### Changed
-
+- generate the necessary maven dependencies for domain models that (a) are imported into the adaptor model yet (b) the adaptor is configured to not generate code from imported models. In such scenario, the maven dependency for the domain is necessary.
 - `LYO_BASE` is replaced with `LYO_BASEURL`. To override the Base URL of the adaptor, use the `baseurl` property. This release makes the use of this property consistent and check the `LYO_BASEURL` environment variable instead of `LYO_BASE`.
 - Upgraded the frontend libraries from Bootstrap v4.0.0-beta to v4.2.1.
 

@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
 /]
-[module generatePomXml('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+[module generatePomXml('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://www.eclipse.org/emf/2002/Ecore')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceServices/]
@@ -31,9 +31,7 @@
 <!-- TODO: Add additional header properties here to avoid them be overridden upon future re-generation -->
 <!-- [/protected]
 -->
-<groupId>[mavenProjectConfiguration.groupId/]</groupId>
-<artifactId>[mavenProjectConfiguration.artifactId/]</artifactId>
-<version>[mavenProjectConfiguration.version/]</version>
+[mavenProjectConfiguration.mavenArtifactAsHeader()/]
 <packaging>[if serverImplementation]war[else]jar[/if]</packaging>
 <name>[name/]</name>
 [/template]
@@ -231,6 +229,28 @@
 </dependency>
 [/template]
 
+[comment collect the DS whose code is NOT to be generated - yet they are imported.
+If multiple DSs share the same maven dependency, we group them into 1.
+/]
+[template public domainSpecificationDependencies(anAdaptorInterface : AdaptorInterface) post (trim())]
+[for (dependency: String | 
+    anAdaptorInterface.relevantDomainSpecifications()->select(o: DomainSpecification | not anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject)))
+    ->collect(ds: DomainSpecification |  ds.mavenArtifactAsDependency())
+    ->asOrderedSet()
+    )]
+[dependency/]
+[/for]
+[/template]
+[template public domainSpecificationDependencies(aSpecification : Specification) post (trim())]
+[for (dependency: String | 
+    aSpecification.relevantDomainSpecifications()->select(o: DomainSpecification | not aSpecification.generateIfFromImportedModels(o.oclAsType(EObject)))
+    ->collect(ds: DomainSpecification |  ds.mavenArtifactAsDependency())
+    ->asOrderedSet()
+    )]
+[dependency/]
+[/for]
+[/template]
+
 [template public additionalDependencies(anAdaptorInterface : AdaptorInterface) post (trim())]
 [/template]
 
@@ -257,6 +277,7 @@
         [generalDependencies()/]
         [servletDependencies(true)/]
         [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled(), anAdaptorInterface.trsServiceEnabled(), anAdaptorInterface.storeEnabled())/]
+        [anAdaptorInterface.domainSpecificationDependencies()/]
         [anAdaptorInterface.additionalDependencies()/]
         [if (anAdaptorInterface.swaggerDocumentationEnabled())]
         <!-- Swagger dependencies -->
@@ -429,6 +450,7 @@
         [generalDependencies()/]
         [servletDependencies(false)/]
         [lyoDependencies(false, false, false, false, false)/]
+        [aSpecification.domainSpecificationDependencies()/]
         <!-- [protected ('dependencies_final')]
         -->
         <!-- TODO: Add additional dependencies here to avoid them be overridden upon future re-generation -->
