@@ -332,6 +332,9 @@ If multiple DSs share the same maven dependency, we group them into 1.
                 <configuration>
                   <webApp>
                     <contextPath>${application.contextpath}</contextPath>
+                    <_initParams>
+                        <org.eclipse.jetty.servlet.Default.useFileMappedBuffer>false</org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
+                    </_initParams>
                   </webApp>
                   <httpConnector>
                     <port>${servlet.port}</port>
