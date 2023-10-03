@@ -12,7 +12,7 @@
     </parent> -->
     <groupId>org.eclipse.lyo.tools</groupId>
     <artifactId>org.eclipse.lyo.oslc4j.plugins</artifactId>
-    <version>5.2.0-SNAPSHOT</version>
+    <version>6.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     
     <properties>
@@ -20,7 +20,7 @@
         <tycho.version>2.2.0</tycho.version>
         <eclipse.cbi>1.1.7</eclipse.cbi>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lyo.version>5.2.0-SNAPSHOT</lyo.version>
+        <lyo.version>5.1.1.Final</lyo.version>
     </properties>
     <repositories>
         <repository>
