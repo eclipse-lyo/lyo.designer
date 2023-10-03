@@ -7,6 +7,7 @@
 - Introducing a user setting that allows one to view Shapes or Vocabularies terms in the Specification models.
 - Creating a common library that defines the relation between domains and vocab.
 - Introducing User Preferences through a Windows->Preferences page. Specifically, the current settings allow user to choose whether Domain Specifications should show Vocabulary or Shape terms.
+- Generate for JDK 17 or 11, depending on whether Lyo Version 6.x.x or below is chosen.
 
 
 ### Changed
