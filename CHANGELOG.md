@@ -20,6 +20,7 @@
 - Using depedency injection for Manager, Store and TRS classes
 - Provide flexibility to for Store properties to be set via the Environment.
 - Changing the way Resource and ResourceProperty items are represented in dialogs. We include prefixes to make their identification easier.
+- Protect initServerProviders() method
 
 ### Deprecated
 
