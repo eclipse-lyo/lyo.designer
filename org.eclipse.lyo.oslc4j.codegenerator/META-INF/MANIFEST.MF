@@ -20,6 +20,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: org.eclipse.lyo.oslc4j.codegenerator.files,
+ org.eclipse.lyo.oslc4j.codegenerator.config,
+ org.eclipse.lyo.oslc4j.codegenerator.jsp,
+ org.eclipse.lyo.oslc4j.codegenerator.staticFiles,
  org.eclipse.lyo.oslc4j.codegenerator.main,
  org.eclipse.lyo.oslc4j.codegenerator.services
 Bundle-ClassPath: bin/,
