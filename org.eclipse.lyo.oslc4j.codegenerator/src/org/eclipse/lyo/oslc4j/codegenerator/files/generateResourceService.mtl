@@ -110,7 +110,7 @@ import org.eclipse.lyo.oslc4j.core.model.AbstractResource;
 
 import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
 import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
-[for (aDomainSpecification: DomainSpecification | (aService.servicedResources().definingDomainSpecification()->union(Set{aService.domainSpecification}))->sortedBy(name)))]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];
+[for (aDomainSpecification: DomainSpecification | (aService.servicedResources().definingDomainSpecification()->union(Set{aService.domainSpecification}))->sortedBy(name))]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];
 [/for]
 import [javaClassFullNameForSingleton(anAdaptorInterface.serviceProviderCatalog) /];
 [for (aResource: Resource | aService.relevantResources()->sortedBy(name))]
