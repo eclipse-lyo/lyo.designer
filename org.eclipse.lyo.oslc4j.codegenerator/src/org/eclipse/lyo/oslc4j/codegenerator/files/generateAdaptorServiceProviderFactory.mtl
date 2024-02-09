@@ -63,8 +63,10 @@ import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 
 import [javaClassFullName(aServiceProvider) /];
 
-[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];[/for]
-[for (aService: Service | aServiceProvider.services) separator(lineSeparator())]import [javaClassFullName(aService) /];[/for]
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name))]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];
+[/for]
+[for (aService: Service | aServiceProvider.services)]import [javaClassFullName(aService) /];
+[/for]
 
 // [protected ('imports')]
 // [/protected]

@@ -78,10 +78,14 @@ import [javaClassFullNameForService(aServiceProvider)/];
 [/for]
 import [javaClassFullNameForResourceShapeService(anAdaptorInterface) /];
 
-[for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaClassFullName(aResource, anAdaptorInterface, null) /];[/for]
-[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];[/for]
-[for (aService: Service | anAdaptorInterface.serviceProviders().services) separator(lineSeparator())]import [javaClassFullName(aService) /];[/for]
-[for (aWebService: WebService | anAdaptorInterface.webServices) separator(lineSeparator())]import [javaClassFullName(aWebService) /];[/for]
+[for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name))]import [javaClassFullName(aResource, anAdaptorInterface, null) /];
+[/for]
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)->sortedBy(name))]import [javaInterfaceFullNameForConstants(aDomainSpecification, anAdaptorInterface, null) /];
+[/for]
+[for (aService: Service | anAdaptorInterface.serviceProviders().services)]import [javaClassFullName(aService) /];
+[/for]
+[for (aWebService: WebService | anAdaptorInterface.webServices)]import [javaClassFullName(aWebService) /];
+[/for]
 [if (anAdaptorInterface.trsServiceEnabled())]
 import org.eclipse.lyo.oslc4j.trs.server.service.TrackedResourceSetService;
 [/if]
