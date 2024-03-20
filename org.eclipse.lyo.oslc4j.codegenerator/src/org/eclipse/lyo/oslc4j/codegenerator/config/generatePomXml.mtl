@@ -52,9 +52,9 @@ endif)
     <maven.compiler.target>[javaVersion(mavenProjectConfiguration.lyoVersion)/]</maven.compiler.target>
     <maven.compiler.release>[javaVersion(mavenProjectConfiguration.lyoVersion)/]</maven.compiler.release>
     <version.lyo>[mavenProjectConfiguration.lyoVersion/]</version.lyo>
-    <jersey.version>2.35</jersey.version>
+    <jersey.version>3.1.5</jersey.version>
     [if (swaggerDocumentationEnabled)]
-    <swagger.version>2.2.7</swagger.version>
+    <swagger.version>2.2.20</swagger.version>
     <swagger-ui.version>3.52.5</swagger-ui.version>
     [/if]
     [if (serverImplementation)]
@@ -111,9 +111,9 @@ endif)
 [template private servletDependencies(serverImplementation : Boolean) post (trim())]
 <!-- Servlet dependencies -->
 <dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>3.1.0</version>
+    <groupId>jakarta.servlet</groupId>
+    <artifactId>jakarta.servlet-api</artifactId>
+    <version>6.0.0</version>
     <scope>provided</scope>
 </dependency>
 <dependency>
@@ -167,7 +167,7 @@ endif)
 <dependency>
     <groupId>org.glassfish.jaxb</groupId>
     <artifactId>jaxb-runtime</artifactId>
-    <version>4.0.2</version>
+    <version>4.0.5</version>
     <scope>runtime</scope>
 </dependency>
 [/if]
@@ -291,7 +291,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
         <!-- Swagger dependencies -->
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-jaxrs2</artifactId>
+            <artifactId>swagger-jaxrs2-jakarta</artifactId>
             <version>${swagger.version}</version>
             <exclusions>
                 <exclusion>
@@ -303,7 +303,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
         </dependency>
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-jaxrs2-servlet-initializer-v2</artifactId>
+            <artifactId>swagger-jaxrs2-servlet-initializer-v2-jakarta</artifactId>
             <version>${swagger.version}</version>
         </dependency>
         [/if]
@@ -334,9 +334,9 @@ If multiple DSs share the same maven dependency, we group them into 1.
             <!-- [/protected]
             -->
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>10.0.7</version>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-maven-plugin</artifactId>
+                <version>12.0.7</version>
                 <configuration>
                   <webApp>
                     <contextPath>${application.contextpath}</contextPath>
