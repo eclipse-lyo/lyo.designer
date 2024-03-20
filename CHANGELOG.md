@@ -21,6 +21,7 @@
 - Provide flexibility to for Store properties to be set via the Environment.
 - Changing the way Resource and ResourceProperty items are represented in dialogs. We include prefixes to make their identification easier.
 - Protect initServerProviders() method
+- Migrated from Javax to Jakarta packages, including upgrade to Jersey 3.1.5
 
 ### Deprecated
 
