@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.lyo.tools.toolchain.model;singleton:=true
 Automatic-Module-Name: org.eclipse.lyo.tools.toolchain.model
-Bundle-Version: 6.0.0.qualifier
+Bundle-Version: 6.0.0.Alpha1
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
