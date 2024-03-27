@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.lyo.tools.vocabulary.model.edit;singleton:=true
 Automatic-Module-Name: org.eclipse.lyo.tools.vocabulary.model.edit
-Bundle-Version: 6.0.0.Alpha1
+Bundle-Version: 6.0.0.Alpha2
 Bundle-ClassPath: .
 Bundle-Activator: vocabulary.provider.VocabularyEditPlugin$Implementation
 Bundle-Vendor: %providerName
