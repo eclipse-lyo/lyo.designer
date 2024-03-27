@@ -11,6 +11,8 @@
 
 
 ### Changed
+- (**Breaking change**) Migrated from Javax to Jakarta packages 
+- upgrade to Jersey 3.1.5
 - generate the necessary maven dependencies for domain models that (a) are imported into the adaptor model yet (b) the adaptor is configured to not generate code from imported models. In such scenario, the maven dependency for the domain is necessary.
 - `LYO_BASE` is replaced with `LYO_BASEURL`. To override the Base URL of the adaptor, use the `baseurl` property. This release makes the use of this property consistent and check the `LYO_BASEURL` environment variable instead of `LYO_BASE`.
 - Upgraded the frontend libraries from Bootstrap v4.0.0-beta to v4.2.1.
@@ -21,12 +23,13 @@
 - Provide flexibility to for Store properties to be set via the Environment.
 - Changing the way Resource and ResourceProperty items are represented in dialogs. We include prefixes to make their identification easier.
 - Protect initServerProviders() method
-- Migrated from Javax to Jakarta packages, including upgrade to Jersey 3.1.5
 
 ### Deprecated
 
 ### Removed
 
+- (**Breaking change**) Removed support for Java 11.
+- (**Breaking change**) Removed support for Java EE and Jakarta EE 8.
 - The CSS and JS assets from Bootstrap are no longer bundled. The following files should be removed from the generated codebase:
   - `src/main/webapp/static/css/bootstrap-4.0.0-beta.min.css`
   - `src/main/webapp/static/js/bootstrap-4.0.0-beta.min.js`
