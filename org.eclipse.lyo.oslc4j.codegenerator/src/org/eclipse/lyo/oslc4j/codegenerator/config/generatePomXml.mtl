@@ -92,6 +92,42 @@ endif)
 </repositories>
 [/template]
 
+[template public additionalProfiles(traceabilityContext : OclAny) post (trim())]
+[/template]
+
+[template private profiles(traceabilityContext : OclAny)]
+</profiles>
+    <!-- [protected ('profiles')]
+    -->
+    <!-- TODO: Add additional profiles here to avoid them be overridden upon future re-generation -->
+    <!-- [/protected]
+    -->
+    <profile>
+    <!-- some servlet containers (Tomcat) does not ship with a JSTL impl
+    In such cases, run with this profile-->
+        <id>with-jstl-impl</id>
+        <dependencies>
+          <!-- [protected ('profile_dependencies')]
+          -->
+          <!-- TODO: Add additional dependencies to this profile here to avoid them be overridden upon future re-generation -->
+          <!-- [/protected]
+          -->
+          <dependency>
+              <groupId>jakarta.servlet.jsp.jstl</groupId>
+              <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+              <version>3.0.0</version>
+          </dependency>
+          <dependency>
+              <groupId>org.glassfish.web</groupId>
+              <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+              <version>3.0.1</version>
+          </dependency>
+        </dependencies>
+    </profile>
+    [additionalProfiles()/]
+</profiles>
+[/template]
+
 [template private generalDependencies(traceabilityContext : OclAny)]
 <!-- Specific dependencies -->
 <!-- [protected ('dependencies')]
@@ -108,7 +144,7 @@ endif)
 </dependency>
 [/template]
 
-[template private servletDependencies(serverImplementation : Boolean) post (trim())]
+[template private servletDependencies(traceabilityContext : OclAny) post (trim())]
 <!-- Servlet dependencies -->
 <dependency>
     <groupId>jakarta.servlet</groupId>
@@ -120,14 +156,16 @@ endif)
     <groupId>jakarta.servlet.jsp.jstl</groupId>
     <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
     <version>3.0.0</version>
+    <!--When running with the jetty-maven-plugin, you 
+    get warnings about jsp classes being scanned from multiple locations.
+    adding the "provided" scope avoids these warnings.-->
+    <scope>provided</scope>
 </dependency>
-[if serverImplementation]
 <dependency>
     <groupId>org.glassfish.hk2.external</groupId>
     <artifactId>jakarta.inject</artifactId>
     <version>2.6.1</version>
 </dependency>
-
 <dependency>
     <groupId>org.glassfish.jersey.core</groupId>
     <artifactId>jersey-server</artifactId>
@@ -170,7 +208,6 @@ endif)
     <version>4.0.5</version>
     <scope>runtime</scope>
 </dependency>
-[/if]
 [/template]
 
 [template private lyoDependencies(serverImplementation : Boolean, clientImplementation : Boolean, authenticationEnabled : Boolean, trsServiceEnabled : Boolean, storeEnabled : Boolean) post (trim())]
@@ -277,13 +314,14 @@ If multiple DSs share the same maven dependency, we group them into 1.
     [projectHeader(anAdaptorInterface.name, mavenProjectConfiguration, true)/]
     [mavenProperties(mavenProjectConfiguration, anAdaptorInterface.swaggerDocumentationEnabled(), true, mavenServerConfiguration)/]
     [repositories()/]
+    [profiles()/]
     <!-- [protected ('pre_dependencies')]
     -->
     <!-- [/protected]
     -->
     <dependencies>
         [generalDependencies()/]
-        [servletDependencies(true)/]
+        [servletDependencies()/]
         [lyoDependencies(true, not anAdaptorInterface.requiredAdaptors->isEmpty(), anAdaptorInterface.authenticationEnabled(), anAdaptorInterface.trsServiceEnabled(), anAdaptorInterface.storeEnabled())/]
         [anAdaptorInterface.domainSpecificationDependencies()/]
         [anAdaptorInterface.additionalDependencies()/]
@@ -334,9 +372,9 @@ If multiple DSs share the same maven dependency, we group them into 1.
             <!-- [/protected]
             -->
             <plugin>
-                <groupId>org.eclipse.jetty.ee10</groupId>
-                <artifactId>jetty-ee10-maven-plugin</artifactId>
-                <version>12.0.7</version>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>11.0.20</version>
                 <configuration>
                   <webApp>
                     <contextPath>${application.contextpath}</contextPath>
@@ -353,15 +391,13 @@ If multiple DSs share the same maven dependency, we group them into 1.
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven3-plugin</artifactId>
-                <version>1.10.6</version>
+                <version>1.10.12</version>
                 <configuration>
                     <!--This plugins supports the following containers-->
                     <container>
                         <!--These containers are know to work-->
-                        <containerId>tomcat9x</containerId>
-                        <!-- <containerId>jetty10x</containerId> -->
-                        <!-- <containerId>jetty9x</containerId> -->
-                        <!-- <containerId>tomee8x</containerId> -->
+                        <containerId>tomcat10x</containerId>
+                        <containerId>jetty12x</containerId>
                         <!-- <containerId>payara</containerId> -->
                         <!-- <containerId>wildfly26x</containerId> -->
                         <!--These containers are know to fail-->
@@ -459,7 +495,6 @@ If multiple DSs share the same maven dependency, we group them into 1.
     -->
     <dependencies>
         [generalDependencies()/]
-        [servletDependencies(false)/]
         [lyoDependencies(false, false, false, false, false)/]
         [aSpecification.domainSpecificationDependencies()/]
         <!-- [protected ('dependencies_final')]
@@ -495,7 +530,6 @@ If multiple DSs share the same maven dependency, we group them into 1.
     -->
     <dependencies>
         [generalDependencies()/]
-        [servletDependencies(false)/]
         [lyoDependencies(false, false, false, false, false)/]
         <!-- [protected ('dependencies_final')]
         -->
