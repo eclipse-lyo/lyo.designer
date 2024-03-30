@@ -16,10 +16,13 @@
     <packaging>pom</packaging>
     
     <properties>
-    	<maven.compiler.release>11</maven.compiler.release>
-        <tycho.version>2.2.0</tycho.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.release>17</maven.compiler.release>
+        <tycho.version>4.0.6</tycho.version>
         <eclipse.cbi>1.1.7</eclipse.cbi>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lyo.version>5.1.1.Final</lyo.version>
     </properties>
     <repositories>

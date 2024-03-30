@@ -8,7 +8,7 @@ Bundle-ClassPath: .
 Bundle-Activator: vocabulary.provider.VocabularyEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: vocabulary.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.lyo.tools.vocabulary.model;visibility:=reexport,

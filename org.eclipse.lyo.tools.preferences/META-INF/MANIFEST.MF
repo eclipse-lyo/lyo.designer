@@ -6,7 +6,7 @@ Bundle-Version: 6.0.0.qualifier
 Bundle-Activator: org.eclipse.lyo.tools.preferences.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: org.eclipse.lyo.tools.preferences
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.lyo.tools.preferences

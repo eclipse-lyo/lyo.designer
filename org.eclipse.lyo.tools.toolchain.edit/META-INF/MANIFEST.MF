@@ -8,7 +8,7 @@ Bundle-ClassPath: .
 Bundle-Activator: toolchain.provider.ToolchainEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: toolchain.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.lyo.tools.toolchain.model;visibility:=reexport,
