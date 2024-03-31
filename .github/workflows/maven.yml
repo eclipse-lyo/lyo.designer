@@ -32,6 +32,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     - name: Build Lyo bundles
-      run: mvnw -B -f pom.xml package -P plugins-only
+      run: ./mvnw -B -f pom.xml package -P plugins-only
     - name: Build Lyo Designer
-      run: mvnw -B -f pom.xml package
+      run: ./mvnw -B -f pom.xml package
