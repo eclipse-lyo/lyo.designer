@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
-        java-version: '17'
+        java-version: '21'
     - name: Restore Maven M2 cache
       uses: actions/cache@v4
       with:
