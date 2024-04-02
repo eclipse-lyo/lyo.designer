@@ -60,7 +60,6 @@
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.toolchain.model/target/org.eclipse.lyo.tools.toolchain.model-${project.parent.version}.jar</jar>
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.vocabulary.model/target/org.eclipse.lyo.tools.vocabulary.model-${project.parent.version}.jar</jar>
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.common/target/org.eclipse.lyo.tools.common-${project.parent.version}.jar</jar>
-                            <jar>p2.eclipse-plugin:org.eclipse.sirius.diagram.model</jar>
 						</jars>
 					</acceleoProject>
 					<packagesToRegister>

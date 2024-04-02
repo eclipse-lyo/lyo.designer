@@ -1,3 +1,6 @@
+# Tycho
+.polyglot.build.properties
+
 # Maven
 /target/
 
