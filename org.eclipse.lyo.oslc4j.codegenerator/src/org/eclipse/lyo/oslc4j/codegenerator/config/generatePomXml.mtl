@@ -96,7 +96,7 @@ endif)
 [/template]
 
 [template private profiles(traceabilityContext : OclAny)]
-</profiles>
+<profiles>
     <!-- [protected ('profiles')]
     -->
     <!-- TODO: Add additional profiles here to avoid them be overridden upon future re-generation -->
