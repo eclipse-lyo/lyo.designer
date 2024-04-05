@@ -97,8 +97,8 @@ import org.eclipse.lyo.store.ModelUnmarshallingException;
 import org.eclipse.lyo.store.Store;
 import org.eclipse.lyo.store.StorePool;
 import org.eclipse.lyo.store.StoreAccessException;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response.Status;
 [/if]
 [/template]
 

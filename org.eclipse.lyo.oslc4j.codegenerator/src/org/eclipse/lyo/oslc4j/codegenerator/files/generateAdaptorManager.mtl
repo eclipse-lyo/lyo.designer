@@ -82,9 +82,9 @@ package [javaClassPackageNameForAdaptorManager(anAdaptorInterface) /];
 // [/protected]
 [/if]
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.ServletContextEvent;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletContextEvent;
 import java.util.List;
 import java.util.ArrayList;
 import org.slf4j.Logger;
