@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.lyo.tools.adaptormodel.editor;singleton:=true
 Automatic-Module-Name: org.eclipse.lyo.tools.adaptormodel.editor
-Bundle-Version: 6.0.0.CR
+Bundle-Version: 6.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: adaptorinterface.presentation.AdaptorInterfaceEditorPlugin$Implementation
 Bundle-Vendor: %providerName
