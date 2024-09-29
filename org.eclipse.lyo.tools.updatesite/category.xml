@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.eclipse.lyo.tools.codegenerator.feature_6.0.0.Final.jar" id="org.eclipse.lyo.tools.codegenerator.feature" version="6.0.0.Final">
+   <feature url="features/org.eclipse.lyo.tools.codegenerator.feature_7.0.0.SNAPSHOT.jar" id="org.eclipse.lyo.tools.codegenerator.feature" version="7.0.0.SNAPSHOT">
       <category name="org.eclipse.lyo.tools.category"/>
    </feature>
-   <feature url="features/org.eclipse.lyo.tools.toolchain.feature_6.0.0.Final.jar" id="org.eclipse.lyo.tools.toolchain.feature" version="6.0.0.Final">
+   <feature url="features/org.eclipse.lyo.tools.toolchain.feature_7.0.0.SNAPSHOT.jar" id="org.eclipse.lyo.tools.toolchain.feature" version="7.0.0.SNAPSHOT">
       <category name="org.eclipse.lyo.tools.category"/>
    </feature>
    <category-def name="org.eclipse.lyo.tools.category" label="Lyo Toolchain Designer"/>

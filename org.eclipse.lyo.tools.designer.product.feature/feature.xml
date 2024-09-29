@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.lyo.tools.designer.product.feature"
       label="Lyo Toolchain Designer Product Feature"
-      version="6.0.0.Final"
+      version="7.0.0.SNAPSHOT"
       provider-name="Eclipse Lyo">
 
    <description url="https://www.eclipse.org/lyo/">

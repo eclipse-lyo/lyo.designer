@@ -1,5 +1,17 @@
 # Eclipse Lyo Designer Changelog
 
+## [7.0.0.SNAPSHOT]
+
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
 ## [6.0.0.Final]
 
 ### Added

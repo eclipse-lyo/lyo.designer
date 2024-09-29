@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ToolChainModel.design
 Bundle-SymbolicName: org.eclipse.lyo.tools.toolchain.design;singleton:=true
-Bundle-Version: 6.0.0.Final
+Bundle-Version: 7.0.0.SNAPSHOT
 Bundle-Activator: ToolChainModel.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
