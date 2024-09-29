@@ -1,6 +1,6 @@
 # Eclipse Lyo Designer Changelog
 
-## [6.0.0-SNAPSHOT]
+## [6.0.0.Final]
 
 ### Added
 - Generate for JDK 17 or 11, depending on whether Lyo Version 6.x.x or below is chosen.
