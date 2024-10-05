@@ -1,6 +1,6 @@
 # Eclipse Lyo Designer Changelog
 
-## [7.0.0.SNAPSHOT]
+## [7.0.0-SNAPSHOT]
 
 ### Added
 

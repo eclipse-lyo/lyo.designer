@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.eclipse.lyo.tools</groupId>
 		<artifactId>tools-parent</artifactId>
-		<version>7.0.0.SNAPSHOT</version>
+		<version>7.0.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>tools-updatesite</artifactId>
