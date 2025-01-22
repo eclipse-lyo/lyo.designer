@@ -80,14 +80,6 @@ endif)
     <!-- TODO: Add additional repositories here to avoid them be overridden upon future re-generation -->
     <!-- [/protected]
     -->
-    <repository>
-        <id>lyo-snapshots</id>
-        <name>Eclipse Lyo Snapshots</name>
-        <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
-        <releases>
-            <enabled>false</enabled>
-        </releases>
-    </repository>
     [additionalRepositories()/]
 </repositories>
 [/template]
