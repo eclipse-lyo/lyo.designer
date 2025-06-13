@@ -6,6 +6,8 @@
 
 ### Changed
 
+- All OPTIONS requests are not exempted from the authentication filter (to let the CORS preflight requests in).
+
 ### Deprecated
 
 ### Removed
