@@ -52,9 +52,7 @@ endif)
     <maven.compiler.target>[javaVersion(mavenProjectConfiguration.lyoVersion)/]</maven.compiler.target>
     <maven.compiler.release>[javaVersion(mavenProjectConfiguration.lyoVersion)/]</maven.compiler.release>
     <version.lyo>[mavenProjectConfiguration.lyoVersion/]</version.lyo>
-    <jersey.version>3.1.10</jersey.version>
     [if (swaggerDocumentationEnabled)]
-    <swagger.version>2.2.28</swagger.version>
     <swagger-ui.version>5.18.2</swagger-ui.version>
     [/if]
     [if (serverImplementation)]
@@ -115,12 +113,10 @@ endif)
           <dependency>
               <groupId>jakarta.servlet.jsp.jstl</groupId>
               <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-              <version>3.0.0</version>
           </dependency>
           <dependency>
               <groupId>org.glassfish.web</groupId>
               <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-              <version>3.0.1</version>
           </dependency>
         </dependencies>
     </profile>
@@ -139,7 +135,6 @@ endif)
 <dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-simple</artifactId>
-    <version>2.0.17</version>
     <scope>runtime</scope>
 </dependency>
 [/template]
@@ -149,13 +144,11 @@ endif)
 <dependency>
     <groupId>jakarta.servlet</groupId>
     <artifactId>jakarta.servlet-api</artifactId>
-    <version>6.0.0</version>
     <scope>provided</scope>
 </dependency>
 <dependency>
     <groupId>jakarta.servlet.jsp.jstl</groupId>
     <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-    <version>3.0.0</version>
     <!--When running with the jetty-maven-plugin, you 
     get warnings about jsp classes being scanned from multiple locations.
     adding the "provided" scope avoids these warnings.-->
@@ -164,7 +157,6 @@ endif)
 <dependency>
     <groupId>org.glassfish.jersey.core</groupId>
     <artifactId>jersey-server</artifactId>
-    <version>${jersey.version}</version>
     <exclusions>
         <exclusion>
             <!--we have a proper javax.inject:javax.inject dependency-->
@@ -177,7 +169,6 @@ endif)
 <dependency>
     <groupId>org.glassfish.jersey.containers</groupId>
     <artifactId>jersey-container-servlet</artifactId>
-    <version>${jersey.version}</version>
     <exclusions>
         <exclusion>
             <!--we have a proper javax.inject:javax.inject dependency-->
@@ -189,18 +180,15 @@ endif)
 <dependency>
     <groupId>org.glassfish.jersey.media</groupId>
     <artifactId>jersey-media-multipart</artifactId>
-    <version>${jersey.version}</version>
 </dependency>
 <dependency>
     <groupId>org.glassfish.jersey.inject</groupId>
     <artifactId>jersey-hk2</artifactId>
-    <version>${jersey.version}</version>
 </dependency>
 
 <dependency>
     <groupId>org.glassfish.jaxb</groupId>
     <artifactId>jaxb-runtime</artifactId>
-    <version>4.0.5</version>
     <scope>runtime</scope>
 </dependency>
 [/template]
@@ -210,31 +198,26 @@ endif)
 <dependency>
     <groupId>org.eclipse.lyo.oslc4j.core</groupId>
     <artifactId>oslc4j-core</artifactId>
-    <version>${version.lyo}</version>
 </dependency>
 [if serverImplementation]
 <dependency>
     <groupId>org.eclipse.lyo.oslc4j.core</groupId>
     <artifactId>oslc4j-jena-provider</artifactId>
-    <version>${version.lyo}</version>
 </dependency>
 <dependency>
     <groupId>org.eclipse.lyo.oslc4j.core</groupId>
     <artifactId>oslc4j-json4j-provider</artifactId>
-    <version>${version.lyo}</version>
 </dependency>
 [if trsServiceEnabled]
 <dependency>
     <groupId>org.eclipse.lyo.trs</groupId>
     <artifactId>trs-server</artifactId>
-    <version>${version.lyo}</version>
 </dependency>
 [/if]
 [if storeEnabled]
 <dependency>
     <groupId>org.eclipse.lyo.store</groupId>
     <artifactId>store-core</artifactId>
-    <version>${version.lyo}</version>
 </dependency>
 [/if]
 [/if]
@@ -242,7 +225,6 @@ endif)
 <dependency>
     <groupId>org.eclipse.lyo.clients</groupId>
     <artifactId>oslc-client</artifactId>
-    <version>${version.lyo}</version>
 </dependency>
 [/if]
 [if authenticationEnabled]
@@ -254,17 +236,14 @@ endif)
 <dependency>
     <groupId>org.eclipse.lyo.server</groupId>
     <artifactId>oauth-core</artifactId>
-    <version>${version.lyo}</version>
 </dependency>
 <dependency>
     <groupId>org.eclipse.lyo.server</groupId>
     <artifactId>oauth-consumer-store</artifactId>
-    <version>${version.lyo}</version>
 </dependency>
 <dependency>
     <groupId>org.eclipse.lyo.server</groupId>
     <artifactId>oauth-webapp</artifactId>
-    <version>${version.lyo}</version>
     <type>war</type>
 </dependency>
 [/template]
@@ -314,6 +293,17 @@ If multiple DSs share the same maven dependency, we group them into 1.
     -->
     <!-- [/protected]
     -->
+   <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>org.eclipse.lyo</groupId>
+          <artifactId>lyo-bom</artifactId>
+          <version>${version.lyo}</version>
+          <scope>import</scope>
+          <type>pom</type>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
     <dependencies>
         [generalDependencies()/]
         [servletDependencies()/]
@@ -325,7 +315,6 @@ If multiple DSs share the same maven dependency, we group them into 1.
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-jaxrs2-jakarta</artifactId>
-            <version>${swagger.version}</version>
             <exclusions>
                 <exclusion>
                     <!--should be <provided>-->
@@ -337,7 +326,6 @@ If multiple DSs share the same maven dependency, we group them into 1.
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-jaxrs2-servlet-initializer-v2-jakarta</artifactId>
-            <version>${swagger.version}</version>
         </dependency>
         [/if]
         [if (anAdaptorInterface.generateJspFilesForOslcUI())]
@@ -345,7 +333,6 @@ If multiple DSs share the same maven dependency, we group them into 1.
         <dependency>
             <groupId>org.eclipse.lyo.server</groupId>
             <artifactId>oslc-ui-model</artifactId>
-            <version>${version.lyo}</version>
         </dependency>
         [/if]
         <!-- [protected ('dependencies_final')]
