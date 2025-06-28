@@ -150,8 +150,7 @@ public void getHtmlServiceProvider(@PathParam("someId") final String someId)
     try {
         ServiceProviderCatalog catalog = ServiceProviderCatalogSingleton.getServiceProviderCatalog(httpServletRequest);
 
-        if (catalog !=null )
-        {
+        if (catalog !=null ) {
             httpServletRequest.setAttribute("catalog",catalog);
             // [protected ('getHtmlServiceProvider_setAttributes')]
             // [/protected]
