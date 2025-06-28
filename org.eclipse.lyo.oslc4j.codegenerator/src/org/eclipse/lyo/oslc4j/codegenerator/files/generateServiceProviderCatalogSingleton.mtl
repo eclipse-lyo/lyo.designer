@@ -292,8 +292,9 @@ public class [javaClassNameForSingleton(aServiceProviderCatalog) /]
                 }
             }
             [/for]
+        } catch (WebApplicationException e) {
+            throw e;
         } catch (Exception e) {
-            e.printStackTrace();
             throw new WebApplicationException(e,Status.INTERNAL_SERVER_ERROR);
         }
     }
