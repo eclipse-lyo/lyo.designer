@@ -40,80 +40,134 @@
 
 //Setup a popover on each of the oslcLinkElements, where the popover content is an iframe presenting the OSLC UI-Preview.
 function setupUiPreviewOnPopover(oslcLinkElements) {
-  // Destroy any existing popovers first
-  oslcLinkElements.popover('dispose');
+  // Convert NodeList to Array if needed
+  const elements = Array.from(oslcLinkElements);
 
-  // Initialize popovers with improved settings
-  oslcLinkElements.popover({
-    container: "body",
-    content: "Loading...",
-    delay: {
-      "show": 120,
-      "hide": 200  // Increased hide delay to reduce flickering
-    },
-    html: true,
-    placement: "auto",
-    trigger: "hover",
-    boundary: 'window',  // Ensures proper positioning relative to viewport
-    popperConfig: {
-      modifiers: {
-        preventOverflow: {
-          boundariesElement: 'viewport'
-        }
-      }
+  // Destroy any existing popovers first
+  elements.forEach(element => {
+    const existingPopover = bootstrap.Popover.getInstance(element);
+    if (existingPopover) {
+      existingPopover.dispose();
     }
   });
 
-  // Add CSS to prevent pointer events on popover
-  $("<style>")
-    .prop("type", "text/css")
-    .html(`
-                .popover {
-                    pointer-events: none;
-                }
-                .popover-body {
-                    pointer-events: auto;
-                }
-            `)
-    .appendTo("head");
+  // Add CSS to improve popover styling and ensure proper sizing
+  if (!document.getElementById('ui-preview-styles')) {
+    const style = document.createElement('style');
+    style.id = 'ui-preview-styles';
+    style.textContent = `
+      .ui-preview-popover {
+        pointer-events: auto;
+        max-width: 90vw;
+        width: 600px;
+        height: auto;
+        z-index: 1070;
+      }
+      .ui-preview-popover .popover-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        font-weight: 600;
+        padding: 8px 12px;
+        margin: 0;
+        display: block !important;
+        flex-shrink: 0;
+      }
+      .ui-preview-popover .popover-body {
+        pointer-events: auto;
+        padding: 8px;
+        height: 450px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .ui-preview-popover .popover-body iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+        display: block;
+        flex: 1;
+        border-radius: 4px;
+      }
+      .ui-preview-popover .popover-arrow {
+        position: absolute;
+      }
+      a.oslc-resource-link:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 
-  // Modified event handler with debouncing
-  let loadingTimeout;
-  oslcLinkElements.on("show.bs.popover", function (e) {
-    const uiElem = $(this);
-    const popoverElem = uiElem.data('bs.popover');
+  // Initialize Bootstrap 5 popovers
+  elements.forEach(element => {
+    const popover = new bootstrap.Popover(element, {
+      container: document.body,
+      content: 'Loading...',
+      html: true,
+      placement: 'auto',
+      trigger: 'hover focus',
+      delay: { show: 150, hide: 100 },
+      customClass: 'ui-preview-popover',
+      sanitize: false, // Allow iframe content
+      fallbackPlacements: ['['top', 'bottom', 'left', 'right'[']']
+    });
 
-    // Clear any pending loading timeout
-    clearTimeout(loadingTimeout);
+    // Event handlers for Bootstrap 5
+    element.addEventListener('show.bs.popover', function() {
+      const href = this.getAttribute('href');
+      if (href) {
+        getUiPreviewIframes(href, attachIframeToHyperlinkElement, {
+          element: element,
+          popover: popover
+        });
+      }
+    });
 
-    // Set new timeout for loading
-    loadingTimeout = setTimeout(() => {
-      getUiPreviewIframes(
-        this.getAttribute("href"),
-        attachIframeToHyperlinkElement,
-        uiElem
-      );
-    }, 50);  // Small delay to prevent multiple rapid loads
-  });
-
-  // Clean up on hide
-  oslcLinkElements.on("hide.bs.popover", function () {
-    clearTimeout(loadingTimeout);
+    element.addEventListener('shown.bs.popover', function() {
+      // Ensure popover is properly positioned after content loads
+      popover.update();
+    });
   });
 }
 
-function attachIframeToHyperlinkElement(compactStructure, uiElem) {
-  uiElem.attr('data-original-title', compactStructure.title);
-  var preview = compactStructure.small;
-  var w = preview.width ? preview.width : "450em";
-  var h = preview.height ? preview.height : "100em";
-  var w = '100%';
-  var h = '100%';
-  var iframeHtml = "<iframe src='" + preview.uri + "' ";
-  iframeHtml += " style='border:0px; height:" + h + "; width:" + w + "; overflow: hidden'";
-  iframeHtml += "></iframe>";
-  uiElem.attr('data-content', iframeHtml);
-  uiElem.data('bs.popover').setContent();
+function attachIframeToHyperlinkElement(compactStructure, params) {
+  const { element, popover } = params;
+  
+  if (compactStructure === "Error") {
+    element.setAttribute('data-bs-original-title', 'Error loading preview');
+    element.setAttribute('data-bs-content', '<p class="text-danger">Unable to load preview</p>');
+    popover.setContent({
+      '.popover-header': 'Error',
+      '.popover-body': '<p class="text-danger">Unable to load preview</p>'
+    });
+    return;
+  }
+
+  const title = compactStructure.title || 'Resource Preview';
+  const preview = compactStructure.small || compactStructure.large;
+  
+  if (!preview || !preview.uri) {
+    element.setAttribute('data-bs-original-title', title);
+    element.setAttribute('data-bs-content', '<p class="text-muted">No preview available</p>');
+    popover.setContent({
+      '.popover-header': title,
+      '.popover-body': '<p class="text-muted">No preview available</p>'
+    });
+    return;
+  }
+
+  const iframeHtml = `<iframe src="${preview.uri}" style="border: 0; width: 100%; height: 100%; min-height: 400px;" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>`;
+  
+  element.setAttribute('data-bs-original-title', title);
+  element.setAttribute('data-bs-content', iframeHtml);
+  
+  // Update popover content
+  popover.setContent({
+    '.popover-header': title,
+    '.popover-body': iframeHtml
+  });
 }
 
 //Perform an asynch GET request to obtain the resource's UI-Preview information (an OSLC Compact resource).
