@@ -111,7 +111,7 @@ function setupUiPreviewOnPopover(oslcLinkElements) {
       delay: { show: 150, hide: 100 },
       customClass: 'ui-preview-popover',
       sanitize: false, // Allow iframe content
-      fallbackPlacements: ['['top', 'bottom', 'left', 'right'[']']
+      fallbackPlacements: ['['/]'top', 'bottom', 'left', 'right'[']'/]
     });
 
     // Event handlers for Bootstrap 5
