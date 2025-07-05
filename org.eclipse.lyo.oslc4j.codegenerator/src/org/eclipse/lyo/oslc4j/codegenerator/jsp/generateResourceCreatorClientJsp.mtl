@@ -71,7 +71,7 @@
   <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="<c:url value="/"/>"><%= application.getServletContextName() %></a>
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link" href="<c:url value="<%= catalogUrl %>"/>">Service Provider Catalog</a></li>
         <li class="nav-item"><a class="nav-link" href="<c:url value="[swaggerIndexJspRelativeFileName(anAdaptorInterface)/]"/>">Swagger UI</a></li>
       </ul>
@@ -121,7 +121,7 @@
 </footer>
 
 <script type="text/javascript">
-    $(function () {
+    document.addEventListener('DOMContentLoaded', function() {
         registerCreationDUIResponseListener(document.getElementById("delegatedUI"), resetPreviousCreation, presentOslcCreation);
 
         function presentOslcCreation(resourceUrl, resourceLabel) {
@@ -135,7 +135,7 @@
             var li = document.createElement("LI");
             li.appendChild(hyperlinkElement); 
             document.querySelector('#results ul').appendChild(li);
-            setupUiPreviewOnPopover($("a.oslc-resource-link"));
+            setupUiPreviewOnPopover(document.querySelectorAll("a.oslc-resource-link"));
         }
 
         function resetPreviousCreation() {

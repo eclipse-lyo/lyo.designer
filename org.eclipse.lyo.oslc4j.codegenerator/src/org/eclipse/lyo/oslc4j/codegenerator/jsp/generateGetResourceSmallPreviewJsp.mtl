@@ -115,7 +115,7 @@ if (!extendedProperties.isEmpty()) {
         Object value = entry.getValue();
     %>
     <dl class="row">
-        <dt  class="col-sm-2 text-right"><a href="<%=key.getNamespaceURI() + key.getLocalPart() %>"><%=key.getLocalPart()%></a></dt>
+        <dt  class="col-sm-2 text-end"><a href="<%=key.getNamespaceURI() + key.getLocalPart() %>"><%=key.getLocalPart()%></a></dt>
         <dd class="col-sm-9"><%= value.toString()%></dd>
     </dl>
     <%

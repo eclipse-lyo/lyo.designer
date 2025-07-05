@@ -89,7 +89,9 @@
 
   <script src="<c:url value="/static/js/ui-preview-helper.js"/>"></script>
   <script type="text/javascript">
-    $(function () {setupUiPreviewOnPopover($("a.oslc-resource-link"));});
+    document.addEventListener('DOMContentLoaded', function() {
+      setupUiPreviewOnPopover(document.querySelectorAll("a.oslc-resource-link"));
+    });
   </script>
 </head>
 
@@ -98,7 +100,7 @@
   <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="<c:url value="/"/>"><%= application.getServletContextName() %></a>
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link" href="<c:url value="<%= catalogUrl %>"/>">Service Provider Catalog</a></li>
         <li class="nav-item"><a class="nav-link" href="<c:url value="[swaggerIndexJspRelativeFileName(contextAdaptorInterface)/]"/>">Swagger UI</a></li>
       </ul>
@@ -132,7 +134,7 @@
           [for (aProperty: ResourceProperty | propertiesCollection)]
           <dl class="row">
             <% method = [javaClassName(aResource)/].class.getMethod("[javaAttributeGetterMethodName(aProperty, aResource)/]"); %>
-            <dt  class="col-sm-2 text-right"><a href="<%=method.getAnnotation(OslcPropertyDefinition.class).value() %>"><%=method.getAnnotation(OslcName.class).value()%></a></dt>
+            <dt  class="col-sm-2 text-end"><a href="<%=method.getAnnotation(OslcPropertyDefinition.class).value() %>"><%=method.getAnnotation(OslcName.class).value()%></a></dt>
             <dd class="col-sm-9">
             [propertyToHtml(aProperty, aResource, 'a'.concat(javaName(aResource, true)), contextAdaptorInterface) /]
             </dd>
@@ -153,7 +155,7 @@
                 Object value = entry.getValue();
             %>
             <dl class="row">
-                <dt  class="col-sm-2 text-right"><a href="<%=key.getNamespaceURI() + key.getLocalPart() %>"><%=key.getLocalPart()%></a></dt>
+                <dt  class="col-sm-2 text-end"><a href="<%=key.getNamespaceURI() + key.getLocalPart() %>"><%=key.getLocalPart()%></a></dt>
                 <dd class="col-sm-9"><%= value.toString()%></dd>
             </dl>
             <%
