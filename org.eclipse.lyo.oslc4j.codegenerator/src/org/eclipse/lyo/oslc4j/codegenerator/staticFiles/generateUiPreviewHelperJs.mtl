@@ -89,85 +89,126 @@ function setupUiPreviewOnPopover(oslcLinkElements) {
         flex: 1;
         border-radius: 4px;
       }
-      .ui-preview-popover .popover-arrow {
-        position: absolute;
-      }
-      a.oslc-resource-link:hover {
-        text-decoration: underline;
-        cursor: pointer;
-      }
     `;
     document.head.appendChild(style);
   }
 
-  // Initialize Bootstrap 5 popovers
+ // Initialize Bootstrap 5 popovers
   elements.forEach(element => {
+    let loadingTimeout;
+    let hideTimeout;
+    let isPopoverShown = false;
+    
     const popover = new bootstrap.Popover(element, {
-      container: document.body,
-      content: 'Loading...',
+      container: "body",
+      content: "Loading preview...",
+      title: "Resource Preview",  // Default title that will be replaced
+      delay: {
+        "show": 300,    // Increased show delay to prevent flickering
+        "hide": 0       // No automatic hide delay - we'll handle it manually
+      },
       html: true,
-      placement: 'auto',
-      trigger: 'hover focus',
-      delay: { show: 150, hide: 100 },
-      customClass: 'ui-preview-popover',
-      sanitize: false, // Allow iframe content
-      fallbackPlacements: ['['/]'top', 'bottom', 'left', 'right'[']'/]
+      placement: "auto",
+      trigger: "manual",  // Use manual trigger to have better control
+      boundary: 'viewport',
+      customClass: 'ui-preview-popover'
     });
 
-    // Event handlers for Bootstrap 5
-    element.addEventListener('show.bs.popover', function() {
-      const href = this.getAttribute('href');
-      if (href) {
-        getUiPreviewIframes(href, attachIframeToHyperlinkElement, {
-          element: element,
-          popover: popover
-        });
-      }
-    });
+    // Function to show popover
+    const showPopover = () => {
+      if (isPopoverShown) return;
+      
+      clearTimeout(loadingTimeout);
+      clearTimeout(hideTimeout);
+      
+      loadingTimeout = setTimeout(() => {
+        if (!isPopoverShown) {
+          popover.show();
+          isPopoverShown = true;
+          
+          // Set up popover hover handlers after it's shown
+          setTimeout(() => {
+            const popoverElement = document.querySelector('.popover.ui-preview-popover');
+            if (popoverElement) {
+              popoverElement.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+              });
+              
+              popoverElement.addEventListener('mouseleave', () => {
+                hidePopover();
+              });
+            }
+          }, 10);
+          
+          // Load content after showing
+          getUiPreviewIframes(
+            element.getAttribute("href"),
+            attachIframeToHyperlinkElement,
+            element
+          );
+        }
+      }, 300);
+    };
 
-    element.addEventListener('shown.bs.popover', function() {
-      // Ensure popover is properly positioned after content loads
-      popover.update();
-    });
+    // Function to hide popover
+    const hidePopover = () => {
+      clearTimeout(loadingTimeout);
+      clearTimeout(hideTimeout);
+      
+      hideTimeout = setTimeout(() => {
+        if (isPopoverShown) {
+          popover.hide();
+          isPopoverShown = false;
+        }
+      }, 200);  // Small delay to allow mouse movement to popover
+    };
+
+    // Mouse enter handler for the link
+    element.addEventListener("mouseenter", showPopover);
+
+    // Mouse leave handler for the link
+    element.addEventListener("mouseleave", hidePopover);
+
+    // Allow normal click behavior - don't prevent default when popover is shown
+    // This allows users to click through to the resource even if popover is open
   });
 }
 
-function attachIframeToHyperlinkElement(compactStructure, params) {
-  const { element, popover } = params;
+function attachIframeToHyperlinkElement(compactStructure, uiElem) {
+  var preview = compactStructure.small;
   
-  if (compactStructure === "Error") {
-    element.setAttribute('data-bs-original-title', 'Error loading preview');
-    element.setAttribute('data-bs-content', '<p class="text-danger">Unable to load preview</p>');
-    popover.setContent({
-      '.popover-header': 'Error',
-      '.popover-body': '<p class="text-danger">Unable to load preview</p>'
-    });
-    return;
-  }
+  // Create iframe with fixed dimensions that work well in the popover
+  var iframeHtml = "<iframe src='" + preview.uri + "' ";
+  iframeHtml += " style='border: none; width: 100%; height: 100%; display: block;'";
+  iframeHtml += " title='Resource Preview'></iframe>";
 
-  const title = compactStructure.title || 'Resource Preview';
-  const preview = compactStructure.small || compactStructure.large;
-  
-  if (!preview || !preview.uri) {
-    element.setAttribute('data-bs-original-title', title);
-    element.setAttribute('data-bs-content', '<p class="text-muted">No preview available</p>');
-    popover.setContent({
-      '.popover-header': title,
-      '.popover-body': '<p class="text-muted">No preview available</p>'
-    });
-    return;
-  }
+  // Get the Bootstrap 5 popover instance and update content
+  const popoverInstance = bootstrap.Popover.getInstance(uiElem);
+  if (popoverInstance) {
+    // Update the popover configuration with new content and title
+    popoverInstance._config.content = iframeHtml;
+    popoverInstance._config.title = compactStructure.title || "Resource Preview";
 
-  const iframeHtml = `<iframe src="${preview.uri}" style="border: 0; width: 100%; height: 100%; min-height: 400px;" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>`;
-  
-  element.setAttribute('data-bs-original-title', title);
-  element.setAttribute('data-bs-content', iframeHtml);
-  
-  // Update popover content
-  popover.setContent({
-    '.popover-header': title,
-    '.popover-body': iframeHtml
-  });
+    // If popover is currently shown, update its content immediately
+    const popoverElement = document.querySelector('.popover.ui-preview-popover');
+    if (popoverElement) {
+      const popoverBody = popoverElement.querySelector('.popover-body');
+      if (popoverBody) {
+        popoverBody.innerHTML = iframeHtml;
+      }
+      
+      // Ensure header is visible and properly styled
+      let popoverHeader = popoverElement.querySelector('.popover-header');
+      if (!popoverHeader) {
+        // Create header if it doesn't exist
+        popoverHeader = document.createElement('div');
+        popoverHeader.className = 'popover-header';
+        popoverElement.insertBefore(popoverHeader, popoverBody);
+      }
+      popoverHeader.textContent = compactStructure.title || "Resource Preview";
+      popoverHeader.style.display = 'block';
+    }
+  }
 }
 
 //Perform an asynch GET request to obtain the resource's UI-Preview information (an OSLC Compact resource).
