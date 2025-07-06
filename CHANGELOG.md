@@ -21,7 +21,7 @@
 ### Fixed
 
 - "Jumping" of the preview dialogs was fixed along with them quickly disappearing before you could scroll them 
-
+- If your code throws a WebApplicationException, generated code will not wrap it in another 500 WebApplicationException and instead re-throw it directly
 
 ## [6.0.0.Final]
 
