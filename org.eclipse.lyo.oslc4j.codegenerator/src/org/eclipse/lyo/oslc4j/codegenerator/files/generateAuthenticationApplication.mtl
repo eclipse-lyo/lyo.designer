@@ -64,8 +64,10 @@ import org.eclipse.lyo.server.oauth.core.token.LRUCache;
 import org.eclipse.lyo.server.oauth.core.AuthenticationException;
 
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 // [protected ('pre_class_code')]
 // [/protected]

@@ -44,8 +44,10 @@ import jakarta.ws.rs.core.UriBuilder;
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public generateAdaptorServletListener(anAdaptorInterface : AdaptorInterface)]

@@ -65,8 +65,10 @@ import org.apache.jena.rdf.model.Model;
 [for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name)) separator(lineSeparator())]import [javaClassFullName(aResource, anAdaptorInterface, null) /];[/for]
 [for (aRequiredAdaptor: RequiredAdaptor | anAdaptorInterface.requiredAdaptors) separator(lineSeparator())]import [javaClassFullNameForClient(aRequiredAdaptor, anAdaptorInterface) /];[/for]
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 // [protected ('pre_class_code')]
 // [/protected]

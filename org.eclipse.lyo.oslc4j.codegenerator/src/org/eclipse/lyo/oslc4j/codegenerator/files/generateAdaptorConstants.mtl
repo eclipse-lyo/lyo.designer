@@ -45,8 +45,10 @@ package [javaInterfacePackageNameForAdaptorConstants(anAdaptorInterface) /];
 
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 public interface [javaInterfaceNameForAdaptorConstants(anAdaptorInterface) /]
 {

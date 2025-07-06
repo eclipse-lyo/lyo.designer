@@ -71,8 +71,10 @@ import [javaInterfaceFullNameForAdaptorConstants(containingAdaptorInterface(aSer
 import [javaClassFullNameForAdaptorManager(containingAdaptorInterface(aServiceProviderCatalog)) /];
 import [javaClassFullNameForSingleton(aServiceProviderCatalog) /];
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public getServiceProviderCatalogs(aServiceProviderCatalog : ServiceProviderCatalog)]

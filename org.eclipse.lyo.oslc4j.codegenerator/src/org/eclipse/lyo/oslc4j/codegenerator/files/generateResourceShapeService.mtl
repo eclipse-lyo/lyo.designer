@@ -75,8 +75,10 @@ import io.swagger.v3.oas.annotations.Operation;
 [/if]
 import [javaClassFullNameForAdaptorApplication(anAdaptorInterface)/];
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 // [protected ('pre_class_code')]
 // [/protected]

@@ -108,8 +108,10 @@ import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(
     ->collect(p: ResourceProperty | p.range)->flatten()->asSet()
     ->sortedBy(name))]import [javaClassFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];
 [/for]
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public generatePreClassCode(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]

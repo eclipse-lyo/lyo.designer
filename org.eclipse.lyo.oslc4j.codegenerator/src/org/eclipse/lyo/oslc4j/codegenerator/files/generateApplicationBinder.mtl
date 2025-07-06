@@ -60,8 +60,10 @@ import org.eclipse.lyo.oslc4j.trs.server.PagedTrsFactory;
 import org.eclipse.lyo.oslc4j.trs.server.TrsEventHandler;
 [/if]
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public generateConfigureMethod(anAdaptorInterface : AdaptorInterface) post (trim())]

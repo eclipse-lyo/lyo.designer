@@ -108,8 +108,10 @@ import org.eclipse.lyo.oslc4j.trs.server.TrsEventHandler;
 [/if]
 
 [backendCode(anAdaptorInterface.backendCodeTemplate_classImports)/]
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 // [protected ('pre_class_code')]
 // [/protected]

@@ -93,8 +93,10 @@ import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(
     ->collect(p: ResourceProperty | p.range)->flatten()->asSet()
     ->sortedBy(name))]import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];
 [/for]
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 [namespaceAnnotation(aResource)/]
 [nameAnnotation(aResource)/]

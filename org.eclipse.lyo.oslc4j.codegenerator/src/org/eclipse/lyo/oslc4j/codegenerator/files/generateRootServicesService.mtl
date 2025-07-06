@@ -40,8 +40,10 @@ import [javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface) /];
 import [anAdaptorInterface.serviceProviderCatalog.javaClassFullNameForSingleton() /];
 [anAdaptorInterface.generateAuthenticationImports()/]
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public generateAuthenticationImports(anAdaptorInterface : AdaptorInterface)]

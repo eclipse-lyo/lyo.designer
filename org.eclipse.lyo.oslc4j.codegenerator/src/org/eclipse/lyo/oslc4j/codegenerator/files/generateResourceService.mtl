@@ -118,8 +118,10 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
 [anAdaptorInterface.swaggerImportPackages()
 /]
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/let]
 [/template]
 

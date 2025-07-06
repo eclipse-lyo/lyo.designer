@@ -68,8 +68,10 @@ import [javaClassFullName(aServiceProvider) /];
 [for (aService: Service | aServiceProvider.services)]import [javaClassFullName(aService) /];
 [/for]
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 public class [javaClassNameForFactory(aServiceProvider) /]
 {

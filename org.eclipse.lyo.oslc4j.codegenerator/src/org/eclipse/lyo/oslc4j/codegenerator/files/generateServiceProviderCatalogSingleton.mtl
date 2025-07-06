@@ -64,8 +64,10 @@ import [javaClassFullNameForAdaptorManager(containingAdaptorInterface(aServicePr
 import [javaClassFullName(aServiceProvider) /];
 [/for]
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public generateClassAttributes(aServiceProviderCatalog : ServiceProviderCatalog)]

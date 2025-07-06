@@ -51,8 +51,10 @@ package [javaInterfacePackageNameForConstants(aVocabulary, anAdaptorInterface, d
 
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 public interface [javaInterfaceNameForConstants(aVocabulary) /]
 {

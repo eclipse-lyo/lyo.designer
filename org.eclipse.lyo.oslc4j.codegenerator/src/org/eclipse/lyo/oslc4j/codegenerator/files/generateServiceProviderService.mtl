@@ -69,8 +69,10 @@ import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import [javaClassFullNameForAdaptorManager(containingAdaptorInterface(aServiceProvider)) /];
 import [javaClassFullNameForSingleton(containingServiceProviderCatalog(aServiceProvider)) /];
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public getServiceProviders(aServiceProvider : ServiceProvider)]

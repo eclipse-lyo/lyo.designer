@@ -118,8 +118,10 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 /]
 [if (anAdaptorInterface.generateJspFilesForOslcUI())]import org.eclipse.lyo.server.ui.model.PreviewFactory;
 [/if]
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/let]
 [/template]
 
