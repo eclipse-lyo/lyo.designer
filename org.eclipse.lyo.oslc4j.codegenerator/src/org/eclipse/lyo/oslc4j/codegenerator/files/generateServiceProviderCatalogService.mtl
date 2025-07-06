@@ -41,6 +41,7 @@
 [/template]
 
 [template public generateImports(aServiceProviderCatalog : ServiceProviderCatalog)]
+// spotless:off
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -73,6 +74,7 @@ import [javaClassFullNameForSingleton(aServiceProviderCatalog) /];
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public getServiceProviderCatalogs(aServiceProviderCatalog : ServiceProviderCatalog)]

@@ -45,6 +45,7 @@
 
 package [javaClassPackageNameForFactory(aServiceProvider) /];
 
+// spotless:off
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Date;
@@ -70,6 +71,7 @@ import [javaClassFullName(aServiceProvider) /];
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 public class [javaClassNameForFactory(aServiceProvider) /]
 {

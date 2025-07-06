@@ -46,6 +46,7 @@
 
 package [anAdaptorInterface.javaClassPackageNameForAuthenticationApplication()/];
 
+// spotless:off
 import java.util.Base64;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Optional;
@@ -66,6 +67,7 @@ import org.eclipse.lyo.server.oauth.core.AuthenticationException;
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 // [protected ('pre_class_code')]
 // [/protected]

@@ -52,11 +52,13 @@ public static String [resourceTypeConstantName(aResource)/] = [resourceTypeNames
 
 package [javaInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultJavaClassPackageName) /];
 
+// spotless:off
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
 [for (aVocabulary: Vocabulary | relevantVocabularies(aDomainSpecification)->sortedBy(label)) separator(lineSeparator())]import [javaInterfaceFullNameForConstants(aVocabulary, anAdaptorInterface, defaultJavaClassPackageName) /];[/for]
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 public interface [javaInterfaceNameForConstants(aDomainSpecification) /]
 {

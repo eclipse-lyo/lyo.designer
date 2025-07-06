@@ -27,6 +27,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::osgiServices/]
 
 [template public generateImports(anAdaptorInterface : AdaptorInterface)]
+// spotless:off
 import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.HashMap;
@@ -92,6 +93,7 @@ import org.eclipse.lyo.oslc4j.trs.server.service.TrackedResourceSetService;
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public additionalResourceClasses(anAdaptorInterface : AdaptorInterface) post (trim())]

@@ -23,6 +23,7 @@
 
 
 [template public generateImports(anAdaptorInterface : AdaptorInterface)]
+// spotless:off
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.GET;
@@ -42,6 +43,7 @@ import [anAdaptorInterface.serviceProviderCatalog.javaClassFullNameForSingleton(
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public generateAuthenticationImports(anAdaptorInterface : AdaptorInterface)]

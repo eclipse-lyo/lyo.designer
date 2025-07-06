@@ -27,6 +27,7 @@
 [/template]
 
 [template public generateImports(anAdaptorInterface : AdaptorInterface)]
+// spotless:off
 import java.net.MalformedURLException;
 import java.util.NoSuchElementException;
 import java.util.Locale;
@@ -46,6 +47,7 @@ import [javaClassFullNameForAdaptorManager(anAdaptorInterface) /];
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public generateAdaptorServletListener(anAdaptorInterface : AdaptorInterface)]
