@@ -48,6 +48,7 @@
 
 [template public generateImports(aService : Service) post (trim())]
 [let anAdaptorInterface: AdaptorInterface = containingAdaptorInterface(aService)]
+// spotless:off
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
@@ -118,7 +119,6 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
 [anAdaptorInterface.swaggerImportPackages()
 /]
-// spotless:off
 // [protected ('imports')]
 // [/protected]
 // spotless:on

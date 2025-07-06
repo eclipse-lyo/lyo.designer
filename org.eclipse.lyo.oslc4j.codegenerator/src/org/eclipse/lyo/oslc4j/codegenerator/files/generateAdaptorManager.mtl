@@ -82,6 +82,7 @@ package [javaClassPackageNameForAdaptorManager(anAdaptorInterface) /];
 // [/protected]
 [/if]
 
+// spotless:off
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.ServletContextEvent;
@@ -108,7 +109,6 @@ import org.eclipse.lyo.oslc4j.trs.server.TrsEventHandler;
 [/if]
 
 [backendCode(anAdaptorInterface.backendCodeTemplate_classImports)/]
-// spotless:off
 // [protected ('imports')]
 // [/protected]
 // spotless:on

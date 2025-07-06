@@ -49,6 +49,7 @@
 
 [template public generateImports(aWebService : WebService) post (trim())]
 [let anAdaptorInterface: AdaptorInterface = containingAdaptorInterface(aWebService)]
+// spotless:off
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
@@ -118,7 +119,6 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 /]
 [if (anAdaptorInterface.generateJspFilesForOslcUI())]import org.eclipse.lyo.server.ui.model.PreviewFactory;
 [/if]
-// spotless:off
 // [protected ('imports')]
 // [/protected]
 // spotless:on

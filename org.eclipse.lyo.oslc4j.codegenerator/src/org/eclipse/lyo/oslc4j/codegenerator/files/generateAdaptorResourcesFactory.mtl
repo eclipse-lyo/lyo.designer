@@ -23,6 +23,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::adaptorInterfaceServices/]
 
 [template public generateImports(anAdaptorInterface : AdaptorInterface)]
+// spotless:off
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -35,7 +36,6 @@ import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
 import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/for]
 
-// spotless:off
 // [protected ('imports')]
 // [/protected]
 // spotless:on

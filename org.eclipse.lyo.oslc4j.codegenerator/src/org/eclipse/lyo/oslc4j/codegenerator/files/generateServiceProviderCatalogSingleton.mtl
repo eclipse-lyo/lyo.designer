@@ -41,6 +41,7 @@
 [/template]
 
 [template public generateImports(aServiceProviderCatalog : ServiceProviderCatalog)]
+// spotless:off
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.SortedMap;
@@ -64,7 +65,6 @@ import [javaClassFullNameForAdaptorManager(containingAdaptorInterface(aServicePr
 import [javaClassFullName(aServiceProvider) /];
 [/for]
 
-// spotless:off
 // [protected ('imports')]
 // [/protected]
 // spotless:on

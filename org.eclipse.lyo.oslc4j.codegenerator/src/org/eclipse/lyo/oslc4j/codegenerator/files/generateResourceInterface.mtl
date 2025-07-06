@@ -45,6 +45,7 @@
 
 package [javaInterfacePackageName(aResource, contextAdaptorInterface, defaultJavaClassPackageName) /];
 
+// spotless:off
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -93,7 +94,6 @@ import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(
     ->collect(p: ResourceProperty | p.range)->flatten()->asSet()
     ->sortedBy(name))]import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];
 [/for]
-// spotless:off
 // [protected ('imports')]
 // [/protected]
 // spotless:on
