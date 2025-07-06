@@ -4,15 +4,24 @@
 
 ### Added
 
+- Support for Lyo BOM (allows to remove most of the dependency versions needed to run a Jersey-based OSLC Lyo server)
+- Spotless guards around imports to allow applying Maven Spotless on generated code
+- Root services URI is now prominently displayed on the home page for convenience
+- Adaptors now print a large "ECLIPSE LYO" banner on startup for easy identification in the logs, especially when running multliple containers via Docker Compose
+
 ### Changed
 
 - All OPTIONS requests are not exempted from the authentication filter (to let the CORS preflight requests in).
+- Bootstrap in templates was upgraded from v4 to v5 
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+- "Jumping" of the preview dialogs was fixed along with them quickly disappearing before you could scroll them 
+
 
 ## [6.0.0.Final]
 

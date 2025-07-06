@@ -49,10 +49,12 @@ public static String [classTypeConstantName(aClass)/] = [vocabularyNamespaceCons
 
 package [javaInterfacePackageNameForConstants(aVocabulary, anAdaptorInterface, defaultJavaClassPackageName) /];
 
+// spotless:off
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 public interface [javaInterfaceNameForConstants(aVocabulary) /]
 {

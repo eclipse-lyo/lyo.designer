@@ -44,6 +44,7 @@
 
 package [javaClassPackageNameForClient(aRequiredAdaptor, anAdaptorInterface) /];
 
+// spotless:off
 import jakarta.ws.rs.core.Response;
 import org.eclipse.lyo.client.OSLCConstants;
 import org.eclipse.lyo.client.OslcClient;
@@ -54,6 +55,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 
 // [protected ('pre_class_code')]

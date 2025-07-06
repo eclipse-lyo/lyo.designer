@@ -53,6 +53,7 @@ package [javaClassPackageName(aResource, contextAdaptorInterface, defaultJavaCla
 [/template]
 
 [template public generateImports(aResource : Resource, contextAdaptorInterface : AdaptorInterface, defaultJavaClassPackageName : String)]
+// spotless:off
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -110,6 +111,7 @@ import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(
 [/for]
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/template]
 
 [template public generatePreClassCode(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]

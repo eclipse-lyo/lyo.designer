@@ -43,8 +43,10 @@
 
 package [javaClassPackageName(aServiceProvider) /];
 
+// spotless:off
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 // [protected ('pre_class_code')]
 // [/protected]

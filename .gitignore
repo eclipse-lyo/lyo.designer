@@ -1,5 +1,6 @@
 # Tycho
-.polyglot.build.properties
+.polyglot.*
+.tycho-consumer-pom.xml
 
 # Maven
 /target/

@@ -41,6 +41,7 @@
 
 package [javaClassPackageNameForResourceShapeService(anAdaptorInterface) /];
 
+// spotless:off
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
@@ -77,6 +78,7 @@ import [javaClassFullNameForAdaptorApplication(anAdaptorInterface)/];
 
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 
 // [protected ('pre_class_code')]
 // [/protected]

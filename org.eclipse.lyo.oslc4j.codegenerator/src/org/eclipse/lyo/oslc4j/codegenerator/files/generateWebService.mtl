@@ -49,6 +49,7 @@
 
 [template public generateImports(aWebService : WebService) post (trim())]
 [let anAdaptorInterface: AdaptorInterface = containingAdaptorInterface(aWebService)]
+// spotless:off
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
@@ -120,6 +121,7 @@ import [javaClassFullName(aResource, anAdaptorInterface, null) /];
 [/if]
 // [protected ('imports')]
 // [/protected]
+// spotless:on
 [/let]
 [/template]
 
