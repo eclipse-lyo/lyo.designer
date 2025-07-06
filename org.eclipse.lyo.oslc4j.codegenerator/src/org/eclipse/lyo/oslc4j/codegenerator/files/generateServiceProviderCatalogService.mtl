@@ -149,22 +149,22 @@ public ServiceProviderCatalog getServiceProviderCatalog(@PathParam("serviceProvi
 @Produces(MediaType.TEXT_HTML)
 public void getHtmlServiceProvider(@PathParam("someId") final String someId)
 {
-    ServiceProviderCatalog catalog = ServiceProviderCatalogSingleton.getServiceProviderCatalog(httpServletRequest);
+    try {
+        ServiceProviderCatalog catalog = ServiceProviderCatalogSingleton.getServiceProviderCatalog(httpServletRequest);
 
-    if (catalog !=null )
-    {
-        httpServletRequest.setAttribute("catalog",catalog);
-        // [protected ('getHtmlServiceProvider_setAttributes')]
-        // [/protected]
+        if (catalog !=null ) {
+            httpServletRequest.setAttribute("catalog",catalog);
+            // [protected ('getHtmlServiceProvider_setAttributes')]
+            // [/protected]
 
-        RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[serviceProviderCatalogJspRelativeFileName() /]");
-        try {
+            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[serviceProviderCatalogJspRelativeFileName() /]");
             rd.forward(httpServletRequest, httpServletResponse);
             return;
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new WebApplicationException(e);
         }
+    } catch (WebApplicationException e) {
+        throw e;
+    } catch (Exception e) {
+        throw new WebApplicationException(e, Status.INTERNAL_SERVER_ERROR);
     }
 }
 [/template]
