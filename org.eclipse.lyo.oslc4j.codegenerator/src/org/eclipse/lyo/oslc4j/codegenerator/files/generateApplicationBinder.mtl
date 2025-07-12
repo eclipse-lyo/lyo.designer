@@ -278,7 +278,7 @@ public class [javaClassNameForApplicationBinder(anAdaptorInterface) /] extends A
             try {
                 servletUrlPattern = getServletUrlPattern(context, servletName);
             } catch (Exception e1) {
-                logger.error("servletListner encountered problems identifying the servlet URL pattern.", e1);
+                logger.error("servletListener encountered problems identifying the servlet URL pattern.", e1);
             }
             String corsFriendsString = getConfigurationProperty("cors.friends", "", context, ServletListener.class);
             this.instance = new LyoGeneratedAppConfig(baseUrl, servletUrlPattern, Set.of(corsFriendsString.split(";")));
