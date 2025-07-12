@@ -294,6 +294,22 @@ javaClassPackageNameForCredentialsFilter(anAdaptorInterface).concat('.').concat(
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForCredentialsFilter(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForCredentialsFilter(anAdaptorInterface)).concat('.java')
 /]
 
+[query public javaClassPackageNameForCorsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForCorsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+'CorsFilter'
+/]
+
+[query public javaClassFullNameForCorsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForCorsFilter(anAdaptorInterface).concat('.').concat(javaClassNameForCorsFilter(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForCorsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForCorsFilter(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForCorsFilter(anAdaptorInterface)).concat('.java')
+/]
+
 [comment Services for RootServicesService/]
 [query public javaClassPackageNameForRootServicesService(anAdaptorInterface : AdaptorInterface) : String = 
 javaBasePackageName(anAdaptorInterface).concat('.services')
