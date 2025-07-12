@@ -26,8 +26,8 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderCatalogServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::osgiServices/]
 
-[template public generateAdaptorConfigurationRecord(resourcesOnSameFolderPath: Set(Resource), contextAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
-[file (resourcesOnSameFolderPath->any(true).javaClassFullFolderName(contextAdaptorInterface, defaultJavaFilesPath, defaultJavaClassPackageName).concat('/').concat('LyoGeneratedAppConfig').concat('.java'), false, 'UTF-8')]
+[template public generateAdaptorConfigurationRecord(contextAdaptorInterface : AdaptorInterface)]
+[file (javaFilesBasePath(contextAdaptorInterface).concatenatePaths(javaClassPackageNameForCorsFilter(contextAdaptorInterface).substituteAll('.', '/')).concat('/').concat('LyoGeneratedAppConfig').concat('.java'), false, 'UTF-8')]
 // [protected ('Copyright')]
 /*
  * Copyright (c) 2025 Contributors to the Eclipse Foundation

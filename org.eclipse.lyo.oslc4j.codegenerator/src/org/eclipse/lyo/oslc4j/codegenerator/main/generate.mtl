@@ -82,6 +82,7 @@
 [anAdaptorInterface.generateAdaptorConstants() /]
 [anAdaptorInterface.specification.generateConfigFiles(anAdaptorInterface, null) /]
 [anAdaptorInterface.generateConfigFiles() /]
+[anAdaptorInterface.generateAdaptorConfigurationRecord()/]
 [anAdaptorInterface.generateCorsFilter()/]
 [/template]
 
