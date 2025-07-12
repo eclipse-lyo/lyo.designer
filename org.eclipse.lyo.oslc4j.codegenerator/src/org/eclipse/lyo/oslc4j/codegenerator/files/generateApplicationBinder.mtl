@@ -47,11 +47,16 @@ import org.slf4j.LoggerFactory;
 import org.glassfish.hk2.api.Factory;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.core.UriBuilder;
+import jakarta.servlet.ServletContext;
 
 import [anAdaptorInterface.javaClassFullNameForAdaptorManager()/];
 import [anAdaptorInterface.javaClassFullNameForResourcesFactory()/];
+import static [javaClassFullNameForAdaptorServletListener(anAdaptorInterface)/].getConfigurationProperty;
+import static [javaClassFullNameForAdaptorServletListener(anAdaptorInterface)/].getServletUrlPattern;
+import java.util.Set;
 [if (anAdaptorInterface.storeEnabled())][anAdaptorInterface.storeImportsForBinder()/][/if]
 [if (anAdaptorInterface.trsServiceEnabled())
 ]import java.net.URI;
