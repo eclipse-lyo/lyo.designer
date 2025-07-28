@@ -47,10 +47,16 @@ import org.slf4j.LoggerFactory;
 import org.glassfish.hk2.api.Factory;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import jakarta.ws.rs.core.UriBuilder;
+import jakarta.servlet.ServletContext;
 
 import [anAdaptorInterface.javaClassFullNameForAdaptorManager()/];
 import [anAdaptorInterface.javaClassFullNameForResourcesFactory()/];
+import static [javaClassFullNameForAdaptorServletListener(anAdaptorInterface)/].getConfigurationProperty;
+import static [javaClassFullNameForAdaptorServletListener(anAdaptorInterface)/].getServletUrlPattern;
+import java.util.Set;
 [if (anAdaptorInterface.storeEnabled())][anAdaptorInterface.storeImportsForBinder()/][/if]
 [if (anAdaptorInterface.trsServiceEnabled())
 ]import java.net.URI;
@@ -73,6 +79,8 @@ protected void configure() {
 
     // [protected ('ConfigureInitialise')]
     // [/protected]
+    bindFactory(LyoConfigurationFactory.class)
+            .to(LyoGeneratedAppConfig.class);
     bindAsContract([anAdaptorInterface.javaClassNameForAdaptorManager()/].class).in(Singleton.class);
     bindFactory(ResourcesFactoryFactory.class).to([anAdaptorInterface.javaClassNameForResourcesFactory()/].class).in(Singleton.class);
 
@@ -255,6 +263,53 @@ public class [javaClassNameForApplicationBinder(anAdaptorInterface) /] extends A
 
     [generateConfigureMethod(anAdaptorInterface)/]
     [generateResourcesFactoryFactory(anAdaptorInterface)/]
+
+    public static class LyoConfigurationFactory implements Factory<LyoGeneratedAppConfig> {
+        private static final Logger logger = LoggerFactory.getLogger(LyoConfigurationFactory.class);
+
+        private final LyoGeneratedAppConfig instance;
+
+        @Inject
+        public LyoConfigurationFactory(ServletContext context) {
+            // TODO: refactor to avoid duplication with contextInitialized()
+            String basePathKey = "baseurl";
+            String fallbackBase = "http://localhost:8080";
+            String servletName = "JAX-RS Servlet";
+
+            String basePathProperty = getConfigurationProperty(basePathKey, fallbackBase, context, ServletListener.class);
+            UriBuilder builder = UriBuilder.fromUri(basePathProperty);
+            String baseUrl = builder.path(context.getContextPath()).build().toString();
+            String servletUrlPattern = "services/";
+            try {
+                servletUrlPattern = getServletUrlPattern(context, servletName);
+            } catch (Exception e1) {
+                logger.error("servletListener encountered problems identifying the servlet URL pattern.", e1);
+            }
+
+            String corsFriendsString = getConfigurationProperty("cors.friends", "", context, ServletListener.class);
+            Set<String> corsFriends;
+            if (corsFriendsString == null || corsFriendsString.isEmpty()) {
+                corsFriends = Set.of();
+            } else {
+                corsFriends = java.util.Arrays.stream(corsFriendsString.split(";"))
+                    .map(String::trim)
+                    .filter(s -> !s.isEmpty())
+                    .collect(java.util.stream.Collectors.toSet());
+            }
+            this.instance = new LyoGeneratedAppConfig(baseUrl, servletUrlPattern, corsFriends);
+        }
+
+        @Override
+        public LyoGeneratedAppConfig provide() {
+            return instance;
+        }
+
+        @Override
+        public void dispose(LyoGeneratedAppConfig instance) {
+            // Noop
+        }
+    }
+
     [generateStorePoolFactory(anAdaptorInterface)/]
     [generateTrsFactory(anAdaptorInterface)/]
 }
