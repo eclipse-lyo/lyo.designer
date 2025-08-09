@@ -29,7 +29,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorManager/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateApplicationBinder/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorResourcesFactory/]
-[import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorConfigurationRecord/]
+[import org::eclipse::lyo::oslc4j::codegenerator::files::generateLyoAppConfiguration/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorServletListener/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateAdaptorApplication/]
 [import org::eclipse::lyo::oslc4j::codegenerator::files::generateClientOnlyMainApplication/]
@@ -82,7 +82,7 @@
 [anAdaptorInterface.generateAdaptorConstants() /]
 [anAdaptorInterface.specification.generateConfigFiles(anAdaptorInterface, null) /]
 [anAdaptorInterface.generateConfigFiles() /]
-[anAdaptorInterface.generateAdaptorConfigurationRecord()/]
+[anAdaptorInterface.generateLyoAppConfiguration()/]
 [anAdaptorInterface.generateCorsFilter()/]
 [/template]
 

@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
 /]
-[module generateAdaptorConfigurationRecord('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')]
+[module generateLyoAppConfiguration('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::resourceServices/]
@@ -26,8 +26,8 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::serviceProviderCatalogServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::services::osgiServices/]
 
-[template public generateAdaptorConfigurationRecord(contextAdaptorInterface : AdaptorInterface)]
-[file (javaFilesBasePath(contextAdaptorInterface).concatenatePaths(javaClassPackageNameForCorsFilter(contextAdaptorInterface).substituteAll('.', '/')).concat('/').concat('LyoGeneratedAppConfig').concat('.java'), false, 'UTF-8')]
+[template public generateLyoAppConfiguration(anAdaptorInterface : AdaptorInterface)]
+[file (javaClassFullFileNameForLyoAppConfiguration(anAdaptorInterface), false, 'UTF-8')]
 // [protected ('Copyright')]
 /*
  * Copyright (c) 2025 Contributors to the Eclipse Foundation
@@ -45,11 +45,11 @@
  */
 // [/protected]
 
-package [javaClassPackageNameForApplicationBinder(contextAdaptorInterface) /];
+package [javaClassPackageNameForLyoAppConfiguration(anAdaptorInterface)/];
 
 import java.util.Set;
 
-public record LyoGeneratedAppConfig(String baseUrl, String servletPath, Set<String> corsFriends) {
+public record [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/](String baseUrl, String servletPath, Set<String> corsFriends) {
 }
 [/file]
 [/template]
