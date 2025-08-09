@@ -378,6 +378,23 @@ javaClassPackageNameForApplicationBinder(anAdaptorInterface).concat('.').concat(
 javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForApplicationBinder(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForApplicationBinder(anAdaptorInterface)).concat('.java')
 /]
 
+[comment Services for LyoAppConfiguration /]
+[query public javaClassPackageNameForLyoAppConfiguration(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForLyoAppConfiguration(anAdaptorInterface : AdaptorInterface) : String = 
+'LyoAppConfiguration'
+/]
+
+[query public javaClassFullNameForLyoAppConfiguration(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForLyoAppConfiguration(anAdaptorInterface).concat('.').concat(javaClassNameForLyoAppConfiguration(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForLyoAppConfiguration(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForLyoAppConfiguration(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForLyoAppConfiguration(anAdaptorInterface)).concat('.java')
+/]
+
 [comment Services for AdaptorServletListener /]
 [query public javaClassPackageNameForAdaptorServletListener(anAdaptorInterface : AdaptorInterface) : String = 
 javaBasePackageName(anAdaptorInterface).concat('.servlet')

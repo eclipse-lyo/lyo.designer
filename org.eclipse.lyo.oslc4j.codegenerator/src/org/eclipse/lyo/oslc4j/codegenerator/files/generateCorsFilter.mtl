@@ -74,7 +74,7 @@ public class [anAdaptorInterface.javaClassNameForCorsFilter() /] implements Cont
     // [/protected]
 
     @Inject
-    private LyoGeneratedAppConfig config;
+    private [anAdaptorInterface.javaClassNameForLyoAppConfiguration()/] config;
 
     // [protected ('class_methods')]
     // [/protected]
