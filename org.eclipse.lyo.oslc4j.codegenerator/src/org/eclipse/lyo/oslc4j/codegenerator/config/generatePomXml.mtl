@@ -457,7 +457,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
                 </configuration>
             </plugin>
             [/if]
-        [anAdaptorInterface.additionalPlugins()/]
+            [anAdaptorInterface.additionalPlugins()/]
         </plugins>
     </build>
     <!-- [protected ('post_build')]
