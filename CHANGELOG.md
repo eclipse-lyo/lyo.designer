@@ -11,6 +11,7 @@
 
 ### Changed
 
+- Generate for JDK 21 when using Lyo SDK 7.0.0.
 - All OPTIONS requests are not exempted from the authentication filter (to let the CORS preflight requests in).
 - CORS support was reworked to work on all adaptor endpoints (not just Delegated UI dialogs), to support authentication correctly, and to allow CORS support be restricted to a few "CORS friend" origins.
 - Bootstrap in templates was upgraded from v4 to v5 
