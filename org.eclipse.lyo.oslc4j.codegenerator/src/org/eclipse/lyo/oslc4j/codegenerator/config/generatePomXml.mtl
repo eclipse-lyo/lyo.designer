@@ -26,7 +26,11 @@
 
 [query public javaVersion(lyoVersion: String) : String =
 (if (lyoVersion.first(1).toInteger() > 5) then 
-    '17'
+  (if (lyoVersion.first(1).toInteger() > 6) then 
+      '21'
+  else
+      '17'
+  endif)
 else
     '11'
 endif)
@@ -48,12 +52,10 @@ endif)
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.compiler.source>[javaVersion(mavenProjectConfiguration.lyoVersion)/]</maven.compiler.source>
-    <maven.compiler.target>[javaVersion(mavenProjectConfiguration.lyoVersion)/]</maven.compiler.target>
     <maven.compiler.release>[javaVersion(mavenProjectConfiguration.lyoVersion)/]</maven.compiler.release>
     <version.lyo>[mavenProjectConfiguration.lyoVersion/]</version.lyo>
     [if (swaggerDocumentationEnabled)]
-    <swagger-ui.version>5.18.2</swagger-ui.version>
+    <swagger-ui.version>5.27.0</swagger-ui.version>
     [/if]
     [if (serverImplementation)]
     <servlet.port>[mavenServerConfiguration.jettyPort/]</servlet.port>
@@ -88,14 +90,6 @@ endif)
         <snapshots>
             <enabled>true</enabled>
         </snapshots>
-    </repository>
-    <repository>
-        <id>lyo-snapshots</id>
-        <name>Eclipse Lyo Snapshots</name>
-        <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
-        <releases>
-            <enabled>false</enabled>
-        </releases>
     </repository>
     [additionalRepositories()/]
 </repositories>
@@ -384,7 +378,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven3-plugin</artifactId>
-                <version>1.10.16</version>
+                <version>1.10.20</version>
                 <configuration>
                     <!--This plugins supports the following containers-->
                     <container>
