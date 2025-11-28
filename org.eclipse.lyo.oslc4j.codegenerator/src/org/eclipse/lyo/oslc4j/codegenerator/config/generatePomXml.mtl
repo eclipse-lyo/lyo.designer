@@ -62,6 +62,7 @@ endif)
     <application.contextpath>[mavenServerConfiguration.applicationContextPath/]</application.contextpath>
     <application.filename>[if (not mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim().isNullOrEmpty())][mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim()/][else][mavenProjectConfiguration.artifactId/][/if]</application.filename>
     [/if]
+    [additionalMavenProperties()/]
     <!-- [protected ('properties')]
     -->
     <!-- TODO: Add additional properties here to avoid them be overridden upon future re-generation -->
@@ -71,6 +72,9 @@ endif)
 [/template]
 
 [template public additionalRepositories(traceabilityContext : OclAny) post (trim())]
+[/template]
+
+[template public additionalMavenProperties(traceabilityContext : OclAny) post (trim())]
 [/template]
 
 [template private repositories(traceabilityContext : OclAny)]
@@ -452,6 +456,10 @@ If multiple DSs share the same maven dependency, we group them into 1.
             </plugin>
             [/if]
             [anAdaptorInterface.additionalPlugins()/]
+            <!-- [protected ('plugins')]
+            -->
+            <!-- [/protected]
+            -->
         </plugins>
     </build>
     <!-- [protected ('post_build')]
