@@ -357,7 +357,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
     <build>
         <finalName>${application.filename}</finalName>
         <plugins>
-            <!-- [protected ('plugins')]
+            <!-- [protected ('plugins_start')]
             -->
             <!-- TODO: Add additional plugins here to avoid them be overridden upon future re-generation -->
             <!-- [/protected]
@@ -466,7 +466,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
             </plugin>
             [/if]
             [anAdaptorInterface.additionalPlugins()/]
-            <!-- [protected ('plugins')]
+            <!-- [protected ('plugins_final')]
             -->
             <!-- [/protected]
             -->
