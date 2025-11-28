@@ -363,6 +363,16 @@ If multiple DSs share the same maven dependency, we group them into 1.
             <!-- [/protected]
             -->
             <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.14.1</version>
+              <configuration>
+                <compilerArgument>
+                  -Xlint:fallthrough,unchecked,removal,deprecation,dep-ann,varargs,overloads,serial,try,finally
+                </compilerArgument>
+              </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>11.0.20</version>
