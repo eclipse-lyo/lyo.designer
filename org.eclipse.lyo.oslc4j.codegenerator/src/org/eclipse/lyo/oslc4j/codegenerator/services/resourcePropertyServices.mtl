@@ -228,7 +228,7 @@ Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())
                     'new URI(' + variable + ')'
                 else
                     if(aProperty.valueType.toString() = 'Boolean') then
-                        'new Boolean(' + variable + ')'
+                        'Boolean.valueOf(' + variable + ')'
                     else
                         if(aProperty.valueType.toString() = 'Double') then
                             'Double.valueOf(' + variable + ')'
