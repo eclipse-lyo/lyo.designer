@@ -73,3 +73,22 @@ aClass.javaName(true).toUpperCase()
 [query public classTypeConstantName(aClass : Class) : String = 
 'TYPE_'.concat(aClass.javaName(true).toUpperCase())
 /]
+
+[query public propertyConstantName(aProperty : Property) : String = 
+aProperty.javaName(true).toUpperCase().concat('_PROP')
+/]
+
+[query public propertyNameConstantName(aProperty : Property) : String = 
+aProperty.javaName(true).toUpperCase()
+/]
+
+[query public javaVocabularyClassName(aVocabulary: Vocabulary) : String =
+javaString(aVocabulary.preferredNamespacePrefix, 'oslc', true)
+/]
+
+[query public javaVocabularyFullFileName(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultJavaFullFilesPath : String, defaultJavaPackageName : String) : String = 
+    javaFilesBasePath(aVocabulary, anAdaptorInterface, defaultJavaFullFilesPath)
+    .concatenatePaths(javaInterfacePackageNameForConstants(aVocabulary, anAdaptorInterface, defaultJavaPackageName).substituteAll('.', '/'))
+    .concatenatePaths(javaVocabularyClassName(aVocabulary))
+    .concat('.java')
+/]
