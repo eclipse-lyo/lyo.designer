@@ -23,8 +23,18 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 
 [template public generateClassConstants(aClass : Class)]
+/**
+ * [aClass.comment/]
+ * @deprecated Use {@link [javaVocabularyClassName(aClass.definingVocabulary())/]#[classConstantName(aClass)/]} instead.
+ */
+@Deprecated
 public static String [classConstantName(aClass)/] = "[aClass.javaName(true)/]";
-public static String [classTypeConstantName(aClass)/] = [vocabularyNamespaceConstantName(aClass.definingVocabulary())/] + [classConstantName(aClass)/];
+/**
+ * [aClass.comment/]
+ * @deprecated Use {@link [javaVocabularyClassName(aClass.definingVocabulary())/]#[classConstantName(aClass)/]} instead.
+ */
+@Deprecated
+public static String [classTypeConstantName(aClass)/] = [javaVocabularyClassName(aClass.definingVocabulary())/].[classConstantName(aClass)/];
 [/template]
 
 [template public generateVocabularyConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
@@ -100,26 +110,62 @@ public class [javaVocabularyClassName(aVocabulary) /]
 {
     private static final ConcurrentHashMap<String, QName> CACHE = new ConcurrentHashMap<>();
 
-    public static final String [vocabularyNamespaceConstantName(aVocabulary)/] = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyNamespaceConstantName(aVocabulary)/];
-    public static final String [vocabularyPreferredNamespacePrefixConstantName(aVocabulary)/] = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyPreferredNamespacePrefixConstantName(aVocabulary)/];
+    public static final String NS = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyNamespaceConstantName(aVocabulary)/];
+    public static final String PREFIX = [javaInterfaceNameForConstants(aVocabulary)/].[vocabularyPreferredNamespacePrefixConstantName(aVocabulary)/];
 
+    // static class
     private [javaVocabularyClassName(aVocabulary) /]() {}
-
-    private static QName get(String local) {
-        return CACHE.computeIfAbsent(local, l -> new QName([vocabularyNamespaceConstantName(aVocabulary)/], l));
-    }
 
     public static QName of(String local) { return get(local); }
 
     [for (aClass: Class | aVocabulary.classes->sortedBy(name))]
-    public static final String [classConstantName(aClass)/] = [javaInterfaceNameForConstants(aVocabulary)/].[classConstantName(aClass)/];
-    public static final String [classTypeConstantName(aClass)/] = [javaInterfaceNameForConstants(aVocabulary)/].[classTypeConstantName(aClass)/];
+    [if (aClass.comment = 'archaic')]
+    /**
+     * @deprecated RDF model attribute is marked 'archaic'
+     */
+    @Deprecated
+    [/if]
+    [if (aClass.comment <> 'archaic' and aClass.comment.size() > 0)]
+    /**
+     * [aClass.comment/]
+     */
+    [/if]
+    public static final String [classConstantName(aClass)/] = NS + "[aClass.name/]";
     [/for]
 
     [for (aProperty: Property | aVocabulary.properties->sortedBy(name))]
-    public static final String [propertyConstantName(aProperty)/] = [vocabularyNamespaceConstantName(aVocabulary)/] + "[aProperty.name/]";
+    [if (aProperty.comment = 'archaic')]
+    /**
+     * @deprecated RDF model attribute is marked 'archaic'
+     */
+    @Deprecated
+    [/if]
+    [if (aProperty.comment <> 'archaic' and aProperty.comment.size() > 0)]
+    /**
+     * [aProperty.comment/]
+     */
+    [/if]
+    public static final String [propertyConstantName(aProperty)/] = NS + "[aProperty.name/]";
+    [/for]
+
+    [for (aProperty: Property | aVocabulary.properties->sortedBy(name))]
+    [if (aProperty.comment = 'archaic')]
+    /**
+     * @deprecated RDF model attribute is marked 'archaic'
+     */
+    @Deprecated
+    [/if]
+    [if (aProperty.comment <> 'archaic' and aProperty.comment.size() > 0)]
+    /**
+     * [aProperty.comment/]
+     */
+    [/if]
     public static QName [aProperty.javaName(false)/]() { return get("[aProperty.name/]"); }
     [/for]
+
+    private static QName get(String local) {
+        return CACHE.computeIfAbsent(local, l -> new QName(NS, l));
+    }
 }
 [/file]
 [/if]

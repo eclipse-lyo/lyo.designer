@@ -67,7 +67,7 @@ javaConstantName(aVocabulary).concat('_NAMSPACE_PREFIX')
 /]
 
 [query public classConstantName(aClass : Class) : String = 
-aClass.javaName(true).toUpperCase()
+aClass.javaName(true).toUpperCase().concat('_CLASS')
 /]
 
 [query public classTypeConstantName(aClass : Class) : String = 
