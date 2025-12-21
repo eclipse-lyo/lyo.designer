@@ -19,7 +19,10 @@ import org.osgi.framework.Version;
 public class OsgiServices {
 
 	public String getOSGiBundleVersion() {
-		Version version = FrameworkUtil.getBundle(getClass()).getVersion();
+		// When run outside OSGi (e.g., shaded CLI) FrameworkUtil returns null
+		Version version = FrameworkUtil.getBundle(getClass()) != null
+				? FrameworkUtil.getBundle(getClass()).getVersion()
+				: Version.emptyVersion;
 		return version.toString();
 	}
 }

@@ -27,9 +27,12 @@
     </properties>
     <repositories>
         <repository>
-            <id>lyo-snapshots</id>
-            <name>Eclipse Lyo Snapshots</name>
-            <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
+            <name>Central Portal Snapshots</name>
+            <id>central-portal-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -47,6 +50,13 @@
                 <groupId>org.reficio</groupId>
                 <artifactId>p2-maven-plugin</artifactId>
                 <version>2.0.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>biz.aQute.bnd</groupId>
+                        <artifactId>biz.aQute.bndlib</artifactId>
+                        <version>7.0.0</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>default-cli</id>
@@ -57,6 +67,59 @@
                         <configuration>
                             <!-- 2020-08-25 Jad: Why am I skipInvalidArtifacts? Otherwise, the script unnecessarily fails for dependencies of type pom. Namely, apache-jena-libs-->
                             <skipInvalidArtifacts>true</skipInvalidArtifacts>
+                            <artifacts>
+                                <artifact>
+                                    <id>org.eclipse.lyo.oslc4j.core:oslc4j-core:${lyo.version}</id>
+                                    <override>true</override>
+                                    <instructions>
+                                        <!-- Force EE metadata to Java 21 so p2 publishes osgi.ee properly. -->
+                                        <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                        <_runee>JavaSE-21</_runee>
+                                        <_noee>true</_noee>
+                                        <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                    </instructions>
+                                </artifact>
+                                <artifact>
+                                    <id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${lyo.version}</id>
+                                    <override>true</override>
+                                    <instructions>
+                                        <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                        <_runee>JavaSE-21</_runee>
+                                        <_noee>true</_noee>
+                                        <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                    </instructions>
+                                </artifact>
+                                <artifact>
+                                    <id>org.eclipse.lyo.core.query:oslc-query:${lyo.version}</id>
+                                    <override>true</override>
+                                    <instructions>
+                                        <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                        <_runee>JavaSE-21</_runee>
+                                        <_noee>true</_noee>
+                                        <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                    </instructions>
+                                </artifact>
+                                <artifact>
+                                    <id>org.eclipse.lyo.clients:oslc-client:${lyo.version}</id>
+                                    <override>true</override>
+                                    <instructions>
+                                        <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                        <_runee>JavaSE-21</_runee>
+                                        <_noee>true</_noee>
+                                        <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                    </instructions>
+                                </artifact>
+                                <artifact>
+                                    <id>org.eclipse.lyo.store:store-core:${lyo.version}</id>
+                                    <override>true</override>
+                                    <instructions>
+                                        <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                        <_runee>JavaSE-21</_runee>
+                                        <_noee>true</_noee>
+                                        <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                    </instructions>
+                                </artifact>
+                            </artifacts>
                             <categoryFileURL>${basedir}/category.xml</categoryFileURL>
                             <featureDefinitions>
                                 <feature>
@@ -134,6 +197,13 @@
                                             <id>org.eclipse.lyo.oslc4j.core:oslc4j-core:${lyo.version}</id>
                                             <!-- 2020-09-30 Jad: We need to exclude some items, since they are already part of an eclipse installation.
                                              Adding them might mean upgrading/downgrading these plugins, which leads to problems with other plugin installations. -->
+                                            <instructions>
+                                                <!-- Force EE metadata to Java 21 so p2 publishes osgi.ee properly. -->
+                                                <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                                <_runee>JavaSE-21</_runee>
+                                                <_noee>true</_noee>
+                                                <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                            </instructions>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
@@ -142,6 +212,13 @@
                                         </artifact>
                                         <artifact>
                                             <id>org.eclipse.lyo.oslc4j.core:oslc4j-jena-provider:${lyo.version}</id>
+                                            <instructions>
+                                                <!-- Force EE metadata to Java 21 so p2 publishes osgi.ee properly. -->
+                                                <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                                <_runee>JavaSE-21</_runee>
+                                                <_noee>true</_noee>
+                                                <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                            </instructions>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
@@ -150,6 +227,13 @@
                                         </artifact>
                                         <artifact>
                                         	<id>org.eclipse.lyo.core.query:oslc-query:${lyo.version}</id>
+                                            <instructions>
+                                                <!-- Force EE metadata to Java 21 so p2 publishes osgi.ee properly. -->
+                                                <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                                <_runee>JavaSE-21</_runee>
+                                                <_noee>true</_noee>
+                                                <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                            </instructions>
                                             <excludes>
                                                 <exclude>org.apache.httpcomponents:httpcore::</exclude>
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
@@ -236,6 +320,13 @@
                                                 <exclude>org.apache.httpcomponents:httpclient::</exclude>
                                                 <exclude>com.google.code.gson:::</exclude>
                                             </excludes>
+                                            <instructions>
+                                                <!-- Force EE metadata to Java 21 so p2 publishes osgi.ee properly. -->
+                                                <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                                <_runee>JavaSE-21</_runee>
+                                                <_noee>true</_noee>
+                                                <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                            </instructions>
                                         </artifact>
                                     </artifacts>
                                 </feature>
@@ -324,6 +415,13 @@
                                                 <exclude>com.google.j2objc:::</exclude>
                                                 <exclude>com.google.code.findbugs:::</exclude>
                                             </excludes>
+                                            <instructions>
+                                                <!-- Force EE metadata to Java 21 so p2 publishes osgi.ee properly. -->
+                                                <Bundle-RequiredExecutionEnvironment>JavaSE-21</Bundle-RequiredExecutionEnvironment>
+                                                <_runee>JavaSE-21</_runee>
+                                                <_noee>true</_noee>
+                                                <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version&gt;=21))"</Require-Capability>
+                                            </instructions>
                                         </artifact>
                                      </artifacts>
                                 </feature>

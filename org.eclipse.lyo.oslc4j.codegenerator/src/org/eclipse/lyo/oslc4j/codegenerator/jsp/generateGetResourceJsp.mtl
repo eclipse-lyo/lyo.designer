@@ -130,8 +130,7 @@
         <h2>Properties</h2>
         <div>
           <% Method method = null; %>
-          [for (propertiesCollection: Collection(ResourceProperty) | Sequence{aResource.resourceProperties, inheritedProperties(aResource), interfaceProperties(aResource)})]
-          [for (aProperty: ResourceProperty | propertiesCollection)]
+          [for (aProperty: ResourceProperty | Sequence{aResource.resourceProperties->asSequence(), inheritedProperties(aResource)->asSequence(), interfaceProperties(aResource)->asSequence()}->flatten())]
           <dl class="row">
             <% method = [javaClassName(aResource)/].class.getMethod("[javaAttributeGetterMethodName(aProperty, aResource)/]"); %>
             <dt  class="col-sm-2 text-end"><a href="<%=method.getAnnotation(OslcPropertyDefinition.class).value() %>"><%=method.getAnnotation(OslcName.class).value()%></a></dt>
@@ -139,7 +138,6 @@
             [propertyToHtml(aProperty, aResource, 'a'.concat(javaName(aResource, true)), contextAdaptorInterface) /]
             </dd>
           </dl>
-          [/for]
           [/for]
         </div>
         <%

@@ -66,7 +66,7 @@ public class GenerateAll {
 	 *             Thrown when the output cannot be saved.
 	 * @generated
 	 */
-	public GenerateAll(URI modelURI, File targetFolder, List<? extends Object> arguments) throws IOException {
+	public GenerateAll(URI modelURI, File targetFolder, List<?> arguments) throws IOException {
 		generator = new Generate(modelURI, targetFolder, arguments);
 		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
 				"org.eclipse.lyo.oslc4j.codegenerator",
@@ -78,7 +78,7 @@ public class GenerateAll {
 		this.targetFolder = targetFolder;
 	}
 
-	public GenerateAll(AdaptorInterface adaptorInterface, File targetFolder, List<? extends Object> arguments) throws IOException {
+	public GenerateAll(AdaptorInterface adaptorInterface, File targetFolder, List<?> arguments) throws IOException {
 		generator = new Generate(adaptorInterface, targetFolder, arguments);
 		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
 				"org.eclipse.lyo.oslc4j.codegenerator",
@@ -90,7 +90,7 @@ public class GenerateAll {
 		this.targetFolder = targetFolder;
 	}
 
-	public GenerateAll(Specification specification, File targetFolder, List<? extends Object> arguments) throws IOException {
+	public GenerateAll(Specification specification, File targetFolder, List<?> arguments) throws IOException {
 		generator = new GenerateSpecification(specification, targetFolder, arguments);
 		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
 				"org.eclipse.lyo.oslc4j.codegenerator",

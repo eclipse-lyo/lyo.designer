@@ -14,7 +14,7 @@
 	<packaging>eclipse-plugin</packaging>
 
 	<properties>
-		<version.acceleo>3.6.4</version.acceleo>
+		<version.acceleo>3.6.0-SNAPSHOT</version.acceleo>
 	</properties>
 
 	<dependencies>
@@ -33,6 +33,11 @@
             <artifactId>org.eclipse.lyo.tools.vocabulary.model</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+		<dependency>
+			<groupId>org.eclipse.lyo.tools</groupId>
+			<artifactId>org.eclipse.lyo.tools.toolchain.model</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
 
 
 		<dependency>
@@ -43,7 +48,7 @@
 		<dependency>
 			<groupId>org.eclipse.acceleo</groupId>
 			<artifactId>org.eclipse.acceleo.engine</artifactId>
-			<version>3.5.1.201409021433</version>
+			<version>${version.acceleo}</version>
 		</dependency>
 	</dependencies>
 
@@ -51,41 +56,152 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.eclipse.acceleo</groupId>
-				<artifactId>org.eclipse.acceleo.maven</artifactId>
-				<version>${version.acceleo}</version>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>acceleo-compile</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<useBinaryResources>false</useBinaryResources>
-					<usePlatformResourcePath>true</usePlatformResourcePath>
-					<acceleoProject>
-						<root>${project.basedir}</root>
-						<entries>
-							<entry>
-								<input>src</input>
-								<output>target/classes</output>
-							</entry>
-						</entries>
-						<jars>
-							<jar>${project.basedir}/../org.eclipse.lyo.tools.adaptormodel.model/target/org.eclipse.lyo.tools.adaptormodel.model-${project.parent.version}.jar</jar>
-							<jar>${project.basedir}/../org.eclipse.lyo.tools.vocabulary.model/target/org.eclipse.lyo.tools.vocabulary.model-${project.parent.version}.jar</jar>
-						</jars>
-					</acceleoProject>
-					<packagesToRegister>
-						<!-- For more information, please visit http://wiki.eclipse.org/Acceleo/Maven -->
-						<packageToRegister>adaptorinterface.AdaptorinterfacePackage</packageToRegister>
-                        <packageToRegister>vocabulary.VocabularyPackage</packageToRegister>
-					</packagesToRegister>
-				</configuration>
-			</plugin>
+					<plugin>
+						<groupId>org.eclipse.acceleo</groupId>
+						<artifactId>org.eclipse.acceleo.maven</artifactId>
+						<version>${version.acceleo}</version>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>acceleo-compile</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<useBinaryResources>false</useBinaryResources>
+							<usePlatformResourcePath>true</usePlatformResourcePath>
+							<acceleoProject>
+								<root>${project.basedir}</root>
+								<entries>
+									<entry>
+										<input>src</input>
+										<output>target/classes</output>
+									</entry>
+								</entries>
+								<jars>
+									<jar>${project.basedir}/../org.eclipse.lyo.tools.adaptormodel.model/target/org.eclipse.lyo.tools.adaptormodel.model-${project.parent.version}.jar</jar>
+									<jar>${project.basedir}/../org.eclipse.lyo.tools.vocabulary.model/target/org.eclipse.lyo.tools.vocabulary.model-${project.parent.version}.jar</jar>
+									<jar>${project.basedir}/../org.eclipse.lyo.tools.toolchain.model/target/org.eclipse.lyo.tools.toolchain.model-${project.parent.version}.jar</jar>
+								</jars>
+							</acceleoProject>
+							<packagesToRegister>
+								<!-- For more information, please visit http://wiki.eclipse.org/Acceleo/Maven -->
+								<packageToRegister>org.eclipse.emf.ecore.EcorePackage</packageToRegister>
+								<packageToRegister>org.eclipse.emf.ecore.xml.type.XMLTypePackage</packageToRegister>
+								<packageToRegister>adaptorinterface.AdaptorinterfacePackage</packageToRegister>
+								<packageToRegister>vocabulary.VocabularyPackage</packageToRegister>
+								<packageToRegister>toolchain.ToolchainPackage</packageToRegister>
+							</packagesToRegister>
+						</configuration>
+					</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>cli-fat-jar</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.eclipse.emf</groupId>
+					<artifactId>org.eclipse.emf.common</artifactId>
+					<version>2.12.0</version>
+				</dependency>
+				<dependency>
+					<groupId>org.eclipse.emf</groupId>
+					<artifactId>org.eclipse.emf.ecore</artifactId>
+					<version>2.12.0</version>
+				</dependency>
+				<dependency>
+					<groupId>org.eclipse.emf</groupId>
+					<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+					<version>2.12.0</version>
+				</dependency>
+				<dependency>
+					<groupId>org.eclipse.ocl</groupId>
+					<artifactId>org.eclipse.ocl</artifactId>
+					<version>3.4.2.v20140725-2242</version>
+				</dependency>
+				<dependency>
+					<groupId>org.eclipse.ocl</groupId>
+					<artifactId>org.eclipse.ocl.ecore</artifactId>
+					<version>3.3.100.v20140610-0641</version>
+				</dependency>
+				<dependency>
+					<groupId>org.eclipse.platform</groupId>
+					<artifactId>org.eclipse.core.runtime</artifactId>
+					<version>3.24.0</version>
+				</dependency>
+				<dependency>
+					<groupId>org.eclipse.platform</groupId>
+					<artifactId>org.eclipse.equinox.registry</artifactId>
+					<version>3.10.0</version>
+				</dependency>
+				<dependency>
+					<groupId>org.eclipse.platform</groupId>
+					<artifactId>org.eclipse.equinox.common</artifactId>
+					<version>3.20.300</version>
+				</dependency>
+				<dependency>
+					<groupId>org.eclipse.platform</groupId>
+					<artifactId>org.eclipse.osgi</artifactId>
+					<version>3.24.0</version>
+				</dependency>
+				<dependency>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+					<version>31.1-jre</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-shade-plugin</artifactId>
+						<version>3.5.3</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>shade</goal>
+								</goals>
+								<configuration>
+									<artifactSet>
+										<excludes>
+											<!-- Prefer platform versions over legacy Acceleo-bundled ones to avoid class conflicts -->
+											<exclude>org.eclipse.acceleo:org.eclipse.core.runtime</exclude>
+											<exclude>org.eclipse.acceleo:org.eclipse.core.contenttype</exclude>
+											<exclude>org.eclipse.acceleo:org.eclipse.core.resources</exclude>
+											<exclude>org.eclipse.acceleo:org.eclipse.equinox.common</exclude>
+										</excludes>
+									</artifactSet>
+									<shadedArtifactAttached>true</shadedArtifactAttached>
+									<shadedClassifierName>cli</shadedClassifierName>
+									<createDependencyReducedPom>false</createDependencyReducedPom>
+									<filters>
+										<filter>
+											<artifact>*:*</artifact>
+											<excludes>
+												<exclude>META-INF/*.SF</exclude>
+												<exclude>META-INF/*.DSA</exclude>
+												<exclude>META-INF/*.RSA</exclude>
+											</excludes>
+										</filter>
+									</filters>
+									<transformers>
+										<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+											<mainClass>org.eclipse.lyo.oslc4j.codegenerator.main.Generate</mainClass>
+										</transformer>
+									</transformers>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

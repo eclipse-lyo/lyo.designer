@@ -14,7 +14,7 @@
     <packaging>eclipse-plugin</packaging>
 
     <properties>
-        <version.acceleo>3.6.4</version.acceleo>
+        <version.acceleo>3.6.0-SNAPSHOT</version.acceleo>
     </properties>
 
     <dependencies>
@@ -26,7 +26,7 @@
         <dependency>
             <groupId>org.eclipse.acceleo</groupId>
             <artifactId>org.eclipse.acceleo.engine</artifactId>
-            <version>3.5.1.201409021433</version>
+			<version>${version.acceleo}</version>
         </dependency>
     </dependencies>
 

@@ -22,7 +22,15 @@ import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+
+import adaptorinterface.AdaptorInterface;
+import adaptorinterface.AdaptorinterfacePackage;
+import toolchain.ToolchainPackage;
+import vocabulary.VocabularyPackage;
 
 /**
  * Entry point of the 'Generate' generation module.
@@ -33,21 +41,21 @@ public class Generate extends AbstractAcceleoGenerator {
     /**
      * The name of the module.
      *
-     * @generated
+    * @generated NOT
      */
     public static final String MODULE_FILE_NAME = "/org/eclipse/lyo/oslc4j/codegenerator/main/generate";
     
     /**
      * The name of the templates that are to be generated.
      *
-     * @generated
+    * @generated NOT
      */
     public static final String[] TEMPLATE_NAMES = { "generate" };
     
     /**
      * The list of properties files from the launch parameters (Launch configuration).
      *
-     * @generated
+    * @generated NOT
      */
     private List<String> propertiesFiles = new ArrayList<String>();
 
@@ -63,10 +71,16 @@ public class Generate extends AbstractAcceleoGenerator {
      * {@link #getGenerationListeners()}.
      * </p>
      *
-     * @generated
+    * @generated NOT
      */
     public Generate() {
         // Empty implementation
+    }
+
+    // Convenience overload for callers that already have an AdaptorInterface model in memory.
+    public Generate(AdaptorInterface adaptorInterface, File targetFolder,
+            List<?> arguments) throws IOException {
+        this((EObject) adaptorInterface, targetFolder, arguments);
     }
 
     /**
@@ -86,7 +100,7 @@ public class Generate extends AbstractAcceleoGenerator {
      * @generated NOT
      */
     public Generate(URI modelURI, File targetFolder,
-            List<? extends Object> arguments) throws IOException {
+            List<?> arguments) throws IOException {
         //initialize(modelURI, targetFolder, arguments);
         initialize(modelURI, targetFolder, new ArrayList<String>() {{add(targetFolder.getAbsolutePath());}});
     }
@@ -108,7 +122,7 @@ public class Generate extends AbstractAcceleoGenerator {
      * @generated NOT
      */
     public Generate(EObject model, File targetFolder,
-            List<? extends Object> arguments) throws IOException {
+            List<?> arguments) throws IOException {
         //initialize(model, targetFolder, arguments);
         initialize(model, targetFolder, new ArrayList<String>() {{add(targetFolder.getAbsolutePath());}});
     }
@@ -118,7 +132,7 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @param args
      *            Arguments of the generation.
-     * @generated
+    * @generated NOT
      */
     public static void main(String[] args) {
         try {
@@ -173,7 +187,7 @@ public class Generate extends AbstractAcceleoGenerator {
      *            This will be used to display progress information to the user.
      * @throws IOException
      *             This will be thrown if any of the output files cannot be saved to disk.
-     * @generated
+    * @generated NOT
      */
     @Override
     public void doGenerate(Monitor monitor) throws IOException {
@@ -208,7 +222,7 @@ public class Generate extends AbstractAcceleoGenerator {
      * If this generator needs to listen to text generation events, listeners can be returned from here.
      * 
      * @return List of listeners that are to be notified when text is generated through this launch.
-     * @generated
+    * @generated NOT
      */
     @Override
     public List<IAcceleoTextGenerationListener> getGenerationListeners() {
@@ -241,11 +255,12 @@ public class Generate extends AbstractAcceleoGenerator {
      * </p>
      * 
      * @return The generation strategy that is to be used for generations launched through this launcher.
-     * @generated
+    * @generated NOT
      */
     @Override
     public IAcceleoGenerationStrategy getGenerationStrategy() {
-        return super.getGenerationStrategy();
+        // Force synchronization to keep protected "Start of user code" sections intact on regeneration.
+        return new SynchronizingDefaultStrategy();
     }
     
     /**
@@ -253,7 +268,7 @@ public class Generate extends AbstractAcceleoGenerator {
      * We expect this name not to contain file extension, and the module to be located beside the launcher.
      * 
      * @return The name of the module that is to be launched.
-     * @generated
+    * @generated NOT
      */
     @Override
     public String getModuleName() {
@@ -267,7 +282,7 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @return The list of properties file we need to add to the generation context.
      * @see java.util.ResourceBundle#getBundle(String)
-     * @generated
+    * @generated NOT
      */
     @Override
     public List<String> getProperties() {
@@ -337,7 +352,7 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated
+     * @generated NOT
      */
     @Override
     public void registerPackages(ResourceSet resourceSet) {
@@ -345,38 +360,16 @@ public class Generate extends AbstractAcceleoGenerator {
         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
         }
-        
-        /*
-         * If you want to change the content of this method, do NOT forget to change the "@generated"
-         * tag in the Javadoc of this method to "@generated NOT". Without this new tag, any compilation
-         * of the Acceleo module with the main template that has caused the creation of this class will
-         * revert your modifications.
-         */
-        
-        /*
-         * If you need additional package registrations, you can register them here. The following line
-         * (in comment) is an example of the package registration for UML.
-         * 
-         * You can use the method  "isInWorkspace(Class c)" to check if the package that you are about to
-         * register is in the workspace.
-         * 
-         * To register a package properly, please follow the following conventions:
-         *
-         * If the package is located in another plug-in, already installed in Eclipse. The following content should
-         * have been generated at the beginning of this method. Do not register the package using this mechanism if
-         * the metamodel is located in the workspace.
-         *  
-         * if (!isInWorkspace(UMLPackage.class)) {
-         *     // The normal package registration if your metamodel is in a plugin.
-         *     resourceSet.getPackageRegistry().put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
-         * }
-         * 
-         * If the package is located in another project in your workspace, the plugin containing the package has not
-         * been register by EMF and Acceleo should register it automatically. If you want to use the generator in
-         * stand alone, the regular registration (seen a couple lines before) is needed.
-         * 
-         * To learn more about Package Registration, have a look at the Acceleo documentation (Help -> Help Contents).
-         */
+
+        // Some Acceleo flows expect XMLType to be registered; initialize it to avoid NPEs during compilation.
+        if (!isInWorkspace(XMLTypePackage.class)) {
+            resourceSet.getPackageRegistry().put(XMLTypePackage.eNS_URI, XMLTypePackage.eINSTANCE);
+        }
+
+        // Register Lyo model packages so standalone CLI runs can load .toolchain, adaptor, and vocabulary models.
+        resourceSet.getPackageRegistry().put(AdaptorinterfacePackage.eNS_URI, AdaptorinterfacePackage.eINSTANCE);
+        resourceSet.getPackageRegistry().put(VocabularyPackage.eNS_URI, VocabularyPackage.eINSTANCE);
+        resourceSet.getPackageRegistry().put(ToolchainPackage.eNS_URI, ToolchainPackage.eINSTANCE);
     }
 
     /**
@@ -384,34 +377,17 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated
+     * @generated NOT
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
         super.registerResourceFactories(resourceSet);
-        /*
-         * If you want to change the content of this method, do NOT forget to change the "@generated"
-         * tag in the Javadoc of this method to "@generated NOT". Without this new tag, any compilation
-         * of the Acceleo module with the main template that has caused the creation of this class will
-         * revert your modifications.
-         */
-        
-        /*
-         * TODO If you need additional resource factories registrations, you can register them here. the following line
-         * (in comment) is an example of the resource factory registration.
-         *
-         * If you want to use the generator in stand alone, the resource factory registration will be required.
-         *  
-         * To learn more about the registration of Resource Factories, have a look at the Acceleo documentation (Help -> Help Contents). 
-         */ 
-        
-        // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(XyzResource.FILE_EXTENSION, XyzResource.Factory.INSTANCE);
-        
-        /*
-         * Some metamodels require a very complex setup for standalone usage. For example, if you want to use a generator
-         * targetting UML models in standalone, you NEED to use the following:
-         */ 
-        // UMLResourcesUtil.init(resourceSet)
+
+        // Ensure XMI is used for .toolchain and fallback resource creation when running outside Eclipse.
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+                .put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+                .put("toolchain", new XMIResourceFactoryImpl());
     }
     
 }
