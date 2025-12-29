@@ -215,7 +215,7 @@ resourceConstantName(aResource).concat('_TYPE')
 [query public resourceShapeAnnotation(aResource : Resource) : String = 
 '@OslcResourceShape('
 .concat('title = "').concat((if (aResource.title.oclIsUndefined()) then (aResource.name.concat(' Shape')) else (aResource.title) endif)).concat('"')
-.concat((if (not aResource.description.oclIsUndefined()) then (', description = "'.concat(escapeForJavaString(aResource.description)).concat('"')) else ('') endif))
+.concat((if (not aResource.description.oclIsUndefined()) then (', description = "'.concat(aResource.description.escapeForJavaString()).concat('"')) else ('') endif))
 .concat(', describes = ').concat(javaInterfaceNameForConstants(aResource.definingDomainSpecification())).concat('.').concat(resourceTypeConstantName(aResource))
 .concat(')')
 /]

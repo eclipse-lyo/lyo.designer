@@ -65,7 +65,7 @@ endif)
 
 [query public descriptionAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.description.oclIsUndefined()) then
-    '@OslcDescription("'.concat(escapeForJavaString(aProperty.description)).concat('")')
+    '@OslcDescription("'.concat(aProperty.description.escapeForJavaString()).concat('")')
 else
     ''
 endif)
