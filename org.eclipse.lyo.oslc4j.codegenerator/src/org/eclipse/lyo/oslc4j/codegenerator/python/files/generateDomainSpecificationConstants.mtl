@@ -1,0 +1,20 @@
+[comment encoding = UTF-8 /]
+[module generateDomainSpecificationConstants('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
+
+[template public generateDomainSpecificationConstants(aDomainSpecification : DomainSpecification, traceabilityContext : OclAny, defaultFilesPath : String, defaultPackageName : String)]
+[file (aDomainSpecification.pythonInterfaceFullFileNameForConstants(null, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
+import rdflib
+from oslc4py_client.Link import Link
+
+# [protected ('imports')]
+# [/protected]
+
+[aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/] = rdflib.Namespace("[aDomainSpecification.namespaceURI/]")
+
+# [protected ('constants')]
+# [/protected]
+[/file]
+[/template]

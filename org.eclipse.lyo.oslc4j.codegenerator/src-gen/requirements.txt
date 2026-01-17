@@ -1,0 +1,2 @@
+oslc4py-client
+rdflib

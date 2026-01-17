@@ -1,0 +1,185 @@
+[comment encoding = UTF-8 /]
+[module resourceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
+
+[query public generate(aResource: Resource) : Boolean = 
+    not aResource.definingDomainSpecification().doNotGenerate()
+/]
+
+[query public directParentResource(aResource: Resource) : Resource =
+    (if (aResource.extends->notEmpty()) then 
+        aResource.extends->first()
+    else
+        null
+    endif)
+/]
+
+[query public parentResources(aResource: Resource) : Set(Resource) =
+    (if (directParentResource(aResource)->notEmpty()) then 
+        directParentResource(aResource)->union(parentResources(directParentResource(aResource)))
+    else
+        Set{}
+    endif)
+/]
+
+[query public allExtendingResources(aResource: Resource) : OrderedSet(Resource) =
+	aResource.extends
+	->union(
+			aResource.extends->collectNested(r:Resource | allExtendingResources(r))->flatten()->asOrderedSet()
+			)
+	->asOrderedSet()
+/]
+
+[query public interfaceResources(aResource: Resource) : OrderedSet(Resource) =
+	((directInterfaceResources(aResource)
+	->union(
+			directInterfaceResources(aResource)->collectNested(r:Resource | allExtendingResources(r))->flatten()->asOrderedSet()
+			)
+	->asOrderedSet())
+	- parentResources(aResource))
+	->asOrderedSet()
+/]
+
+[query private directInterfaceResources(aResource: Resource) : OrderedSet(Resource) =
+	(if (aResource.extends->size() > 1) then 
+        aResource.extends->subOrderedSet(2, aResource.extends->size())
+    else
+        OrderedSet{}
+    endif)
+
+/]
+
+[query public directlyRelatedResources(aResource: Resource) : Set(Resource) =
+	(aResource.resourceProperties->collect(p : ResourceProperty | p.range))->flatten()->asSet()
+	->union(
+		aResource.extends
+	)->flatten()->asSet()
+/]
+
+[query private allRelatedResources(aResource: Resource, alreadyAnalysed : Set(Resource), depth : Integer) : Set(Resource) =
+let drr : Set(Resource) = directlyRelatedResources(aResource),
+	newAlreadyAnalysed : Set(Resource) = (Set{aResource}->union(drr))->union(alreadyAnalysed),
+	toAnalyse : Set(Resource) =  drr - alreadyAnalysed in 
+
+	(if (depth > 20) then 
+        drr - alreadyAnalysed 
+    else
+		toAnalyse->collect(r : Resource | 
+			allRelatedResources(r, newAlreadyAnalysed, depth+1)
+			->union(directlyRelatedResources(r))
+			->union(Set{r})
+		)->flatten()->asSet()
+    endif)
+/]
+
+[query public allRelatedResources(aResource: Resource) : Set(Resource) =
+let arr : Set(Resource) = allRelatedResources(aResource, Set{}, 1),
+	leftOut : Set(Resource) = arr->collect(r : Resource | directlyRelatedResources(r) - arr)->flatten()->asSet()
+in
+	arr
+	->union(leftOut)
+	->union(leftOut->collect(r : Resource | allRelatedResources(r, arr->union(Set{r}), 1))->flatten()->asSet())
+/]
+
+[query public allProperties(aResource: Resource) : Sequence(ResourceProperty) = 
+((aResource.resourceProperties->asSequence())
+	->union(inheritedProperties(aResource))
+	->union(interfaceProperties(aResource))
+)
+/]
+
+[query public inheritedProperties(aResource: Resource) : Sequence(ResourceProperty) = 
+    (if (not aResource.directParentResource().oclIsUndefined()) then 
+        (aResource.directParentResource().resourceProperties->asSequence())->union(inheritedProperties(aResource.directParentResource()))
+    else
+        Sequence{}
+    endif)
+/]
+
+[query public interfaceProperties(aResource: Resource) : Sequence(ResourceProperty) =
+	aResource.interfaceResources().resourceProperties
+/]
+
+[query public pythonName(aResource: Resource) : String = 
+pythonString(aResource.name, aResource.definingDomainSpecification().namespacePrefix.name, true)
+/]
+
+[query public pythonClassFullFolderName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
+    pythonFilesBasePath(aResource.definingDomainSpecification(), anAdaptorInterface, defaultFilesPath)
+    .concatenatePaths(pythonClassPackageName(aResource, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))
+/]
+
+[query public pythonClassPackageName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String = 
+pythonPackageName(aResource.definingDomainSpecification(), anAdaptorInterface, defaultPackageName)
+/]
+
+[query public pythonClassName(aResource: Resource) : String = 
+pythonName(aResource)
+/]
+
+[query public pythonClassFullName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String = 
+pythonClassPackageName(aResource, anAdaptorInterface, defaultPackageName).concat('.').concat(pythonClassName(aResource))
+/]
+
+[query public pythonClassFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
+    pythonClassFullFolderName(aResource, anAdaptorInterface, defaultFilesPath, defaultPackageName)
+    .concatenatePaths(pythonClassName(aResource))
+    .concat('.py')
+/]
+
+[query public resourceConstantName(aResource : Resource) : String = 
+pythonConstantString(aResource.name)
+/]
+
+[query public resourcePathConstantName(aResource : Resource) : String = 
+resourceConstantName(aResource).concat('_PATH')
+/]
+
+[query public resourceTypeNamespaceConstantName(aResource : Resource) : String = 
+resourceConstantName(aResource).concat('_NAMESPACE')
+/]
+
+[query public resourceTypeLocalNameConstantName(aResource : Resource) : String = 
+resourceConstantName(aResource).concat('_LOCALNAME')
+/]
+
+[query public resourceTypeConstantName(aResource : Resource) : String = 
+resourceConstantName(aResource).concat('_TYPE')
+/]
+
+[query public pythonAttributeName(aProperty: ResourceProperty) : String =
+    pythonAttributeNameString(aProperty.name)
+/]
+
+[query private pythonAttributeNameString(aString : String) : String =
+    aString.replaceAll('([a-z])([A-Z]+)', '$1_$2').toLower()
+/]
+
+[query public pythonAttributeName(aProperty: ResourceProperty, aResource : Resource) : String =
+    pythonAttributeName(aProperty)
+/]
+
+
+[query public pythonNamespaceAnnotation(aResource: Resource) : String =
+'@oslc_namespace('
+.concat(aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName())
+.concat(')')
+/]
+
+[query public pythonNameAnnotation(aResource: Resource) : String =
+'@oslc_name("'
+.concat(aResource.name)
+.concat('")')
+/]
+
+[query public pythonResourceShapeAnnotation(aResource: Resource) : String =
+'@oslc_resource_shape(describes='
+.concat(aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName())
+.concat('["')
+.concat(aResource.name)
+.concat('"], title="')
+.concat(if (aResource.title.oclIsUndefined()) then aResource.name.concat(' Shape') else aResource.title endif)
+.concat('")')
+/]

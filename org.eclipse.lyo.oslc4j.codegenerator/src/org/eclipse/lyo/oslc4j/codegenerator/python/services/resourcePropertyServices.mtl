@@ -1,0 +1,197 @@
+[comment encoding = UTF-8 /]
+[module resourcePropertyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
+
+[query public pythonName(aProperty: ResourceProperty, toUpperFirst : Boolean) : String =
+pythonString(aProperty.name, aProperty.definingDomainSpecification().namespacePrefix.name, toUpperFirst)
+/]
+
+[query public hasOSLCSupportedValueType(aProperty: ResourceProperty) : Boolean =
+not (Sequence{'URI'}->includes(aProperty.valueType.toString()))
+/]
+
+[query public resourcePropertyDefinitionNamespace(aResourceProperty: ResourceProperty) : String =
+(if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
+    pythonInterfaceNameForConstants(aResourceProperty.definingDomainSpecification()).concat('.').concat(domainSpecificationImplicitVocabularyNamespaceConstantName(aResourceProperty.definingDomainSpecification()))
+else
+    pythonInterfaceNameForConstants(aResourceProperty.propertyDefinition.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResourceProperty.propertyDefinition.definingVocabulary()))
+endif)
+/]
+
+[query public resourcePropertyDefinitionLocalName(aResourceProperty: ResourceProperty) : String =
+(if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
+    '"'.concat(aResourceProperty.name).concat('"')
+else
+    '"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
+endif)
+/]
+
+[query public nameAnnotation(aProperty: ResourceProperty) : String =
+'@oslc_name('
+.concat(resourcePropertyDefinitionLocalName(aProperty))
+.concat(')')
+/]
+
+[query public propertyDefinitionAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
+'@oslc_property_definition('
+.concat(resourcePropertyDefinitionNamespace(aProperty))
+.concat('[') 
+.concat(resourcePropertyDefinitionLocalName(aProperty))
+.concat('])')
+/]
+
+[query public descriptionAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.description.oclIsUndefined()) then
+    '@oslc_description("'.concat(aProperty.description).concat('")')
+else
+    ''
+endif)
+/]
+
+[query public occursAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.occurs.oclIsUndefined()) then
+    if (aProperty.occurs = ResourcePropertyOccurs::exactlyOne) then
+        '@oslc_occurs(Occurs.EXACTLY_ONE)'
+    else
+        if (aProperty.occurs = ResourcePropertyOccurs::zeroOrOne) then
+            '@oslc_occurs(Occurs.ZERO_OR_ONE)'
+        else
+            if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany) then
+                '@oslc_occurs(Occurs.ZERO_OR_MANY)'
+            else
+                if (aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
+                    '@oslc_occurs(Occurs.ONE_OR_MANY)'
+                else
+                    ''
+                endif
+            endif
+        endif
+    endif
+else
+    ''
+endif)
+/]
+
+[query public valueTypeAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.valueType.oclIsUndefined()) then
+    if (hasOSLCSupportedValueType(aProperty)) then
+        if (aProperty.valueType.toString() = 'XMLLiteral') then
+             '@oslc_value_type("XMLLiteral")'
+        else
+             '@oslc_value_type(ValueType.'.concat(aProperty.valueType.toString()).concat(')')
+        endif
+    else
+        ''
+    endif
+else
+    ''
+endif)
+/]
+
+[query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
+(if (aProperty.range->size() > 0) then
+    '@oslc_range('
+        .concat(concatenate(aProperty.range->collect(aRange : Resource | pythonInterfaceNameForConstants(aRange.definingDomainSpecification()).concat('[').concat(resourceTypeConstantName(aRange)).concat(']')), ', '))
+        .concat(')')
+else
+    ''
+endif)
+/]
+
+[query public readOnlyAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.readOnly.oclIsUndefined()) then
+    '@oslc_read_only('.concat(if aProperty.readOnly then 'True' else 'False' endif).concat(')')
+else
+    ''
+endif)
+/]
+
+
+[query public pythonAttributeTypeDeclaration(aProperty: ResourceProperty) : String =
+    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
+        'Set['.concat(pythonAttributeBaseType(aProperty)).concat(']')
+    else
+        pythonAttributeBaseType(aProperty)
+    endif)
+/]
+
+[query public pythonAttributeBaseType(aProperty: ResourceProperty) : String =
+    (if (aProperty.valueType.toString() = 'String') then
+        'str'
+    else
+        if (aProperty.valueType.toString() = 'XMLLiteral') then
+             'str'
+        else
+            if(aProperty.valueType.toString() = 'DateTime') then
+                'datetime'
+            else
+                if(aProperty.valueType.toString() = 'URI') then
+                    'str'
+                else
+                    if(aProperty.valueType.toString() = 'Boolean') then
+                        'bool'
+                    else
+                        if(aProperty.valueType.toString() = 'Double') then
+                            'float'
+                        else
+                            if(aProperty.valueType.toString() = 'Float') then
+                                'float'
+                            else
+                                if(aProperty.valueType.toString() = 'Integer') then
+                                    'int'
+                                else
+                                    if(aProperty.valueType.toString() = 'Resource') then
+                                            if ((not aProperty.representation.oclIsUndefined()) and (aProperty.representation.toString().equalsIgnoreCase('inline'))) then
+                                                if (aProperty.range->size() = 1) then
+                                                    pythonClassName(aProperty.range->first())
+                                                else
+                                                    'Link'
+                                                endif
+                                            else
+                                                'Link'
+                                            endif
+                                    else
+                                        if(aProperty.valueType.toString() = 'LocalResource') then
+                                            if (aProperty.range->size() = 1) then
+                                                pythonClassName(aProperty.range->first())
+                                            else
+                                                'Link'
+                                            endif
+                                        else
+                                            ''
+                                        endif
+                                    endif
+                                endif
+                            endif
+                        endif
+                    endif
+                endif
+            endif
+        endif
+    endif)
+/]
+
+[query public pythonAttributeInitialConstruction(aProperty: ResourceProperty) : String =
+    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
+        'set()'
+    else
+        'None'
+    endif)
+/]
+
+[query public pythonAttributeName(aProperty: ResourceProperty, aResource: Resource) : String =
+    pythonAttributeName(aProperty)
+/]
+
+[query public pythonAttributeGetterMethodName(aProperty: ResourceProperty, aResource: Resource) : String =
+    pythonAttributeName(aProperty, aResource)
+/]
+
+[query public pythonAttributeSetterMethodName(aProperty: ResourceProperty, aResource: Resource) : String =
+    pythonAttributeName(aProperty, aResource)
+/]

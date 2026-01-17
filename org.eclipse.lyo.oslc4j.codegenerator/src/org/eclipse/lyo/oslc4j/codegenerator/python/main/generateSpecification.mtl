@@ -1,0 +1,60 @@
+[comment encoding = UTF-8 /]
+[module generateSpecification('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary','http://www.eclipse.org/emf/2002/Ecore')]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourcePropertyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateAdaptorPackageInfo/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateDomainSpecificationConstants/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateVocabularyConstants/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateResource/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateLicenseFiles/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::config::generateConfigFiles/]
+
+[query public canGenerate(aSpecification : Specification) : Boolean = 
+not(
+aSpecification.configuration.oclIsUndefined()
+ or(aSpecification.configuration.generalConfiguration.filesBasePath.isNullOrEmpty())
+ or(aSpecification.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty())
+)
+/]
+
+[template public generateSpecification(aSpecification : Specification)]
+[comment @main/]
+[if (canGenerate(aSpecification))]
+[let defaultFilesPath : String = aSpecification.configuration.generalConfiguration.filesBasePath]
+[let defaultPackageName : String = aSpecification.configuration.generalConfiguration.javaBasePackageName]
+    [aSpecification.generateLicenseFiles() /] 
+    [aSpecification.generateConfigFiles(null, defaultFilesPath) /]
+
+    [let resources: Set(Resource) = aSpecification.relevantResources()->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject)))]
+    [let uniqueFolderPaths: Set(String) = resources->collect(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName))->asSet()]
+    [for (uniqueFolderPath: String | uniqueFolderPaths)]
+        [let resourcesOnSameFolderPath: Set(Resource) = resources->select(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName) = uniqueFolderPath)]
+        [generateAdaptorPackageInfo(resourcesOnSameFolderPath, null, defaultFilesPath, defaultPackageName)/]
+        [/let]
+    [/for]
+    [/let]
+    [/let]
+
+    [for (aDomainSpecification: DomainSpecification | aSpecification.relevantDomainSpecifications()
+        ->select(d: DomainSpecification | aSpecification.generateIfFromImportedModels(d.oclAsType(EObject))))]
+        [aDomainSpecification.generateDomainSpecificationConstants(null, defaultFilesPath, defaultPackageName)/]
+    [/for]
+
+    [for (aVocabulary: Vocabulary | aSpecification.relevantVocabularies()
+        ->select(v: Vocabulary | aSpecification.generateIfFromImportedModels(v.oclAsType(EObject))))]
+        [aVocabulary.generateVocabularyConstants(null, defaultFilesPath, defaultPackageName)/]
+    [/for]
+
+    [for (aResource: Resource | aSpecification.relevantResources()
+        ->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject))))]
+        [aResource.generateResource(null, defaultFilesPath, defaultPackageName) /]
+    [/for]
+[/let]
+[/let]
+[/if]
+[/template]

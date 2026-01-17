@@ -1,0 +1,4 @@
+[comment encoding = UTF-8 /]
+[module generateResourceInterface('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+[template public generateResourceInterface(aResource : Resource, traceabilityContext : OclAny, traceabilityContext2 : OclAny, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]
+[/template]

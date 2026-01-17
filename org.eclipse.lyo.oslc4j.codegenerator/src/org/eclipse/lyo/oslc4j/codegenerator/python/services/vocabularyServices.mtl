@@ -1,0 +1,35 @@
+[comment encoding = UTF-8 /]
+[module vocabularyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+
+[query public definingVocabulary(aProperty: Property) : Vocabulary =
+aProperty.eContainer(Vocabulary)
+/]
+
+[query public definingVocabulary(aClass: Class) : Vocabulary =
+aClass.eContainer(Vocabulary)
+/]
+
+[query public pythonInterfaceNameForConstants(aVocabulary: Vocabulary) : String =
+aVocabulary.preferredNamespacePrefix.toLower().concat('_vocabulary_constants')
+/]
+
+[query public pythonInterfacePackageNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String =
+pythonPackageName(aVocabulary, anAdaptorInterface, defaultPackageName)
+/]
+
+[query public vocabularyNamespaceConstantName(aVocabulary : Vocabulary) : String = 
+'NS_'.concat(aVocabulary.preferredNamespacePrefix.toUpperCase())
+/]
+
+[query public pythonInterfaceFullNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String = 
+pythonInterfacePackageNameForConstants(aVocabulary, anAdaptorInterface, defaultPackageName).concat('.').concat(pythonInterfaceNameForConstants(aVocabulary))
+/]
+
+[query public pythonInterfaceFullFileNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String = 
+    pythonFilesBasePath(aVocabulary, anAdaptorInterface, defaultFilesPath)
+    .concatenatePaths(pythonInterfacePackageNameForConstants(aVocabulary, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))
+    .concatenatePaths(pythonInterfaceNameForConstants(aVocabulary))
+    .concat('.py')
+/]
