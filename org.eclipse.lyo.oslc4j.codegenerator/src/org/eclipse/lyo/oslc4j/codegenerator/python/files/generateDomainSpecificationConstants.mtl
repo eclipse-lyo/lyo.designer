@@ -7,7 +7,6 @@
 [template public generateDomainSpecificationConstants(aDomainSpecification : DomainSpecification, traceabilityContext : OclAny, defaultFilesPath : String, defaultPackageName : String)]
 [file (aDomainSpecification.pythonInterfaceFullFileNameForConstants(null, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
 import rdflib
-from oslc4py_client.Link import Link
 
 # [protected ('imports')]
 # [/protected]

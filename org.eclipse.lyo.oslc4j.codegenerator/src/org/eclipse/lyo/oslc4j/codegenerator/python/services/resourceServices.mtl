@@ -183,3 +183,15 @@ resourceConstantName(aResource).concat('_TYPE')
 .concat(if (aResource.title.oclIsUndefined()) then aResource.name.concat(' Shape') else aResource.title endif)
 .concat('")')
 /]
+
+[query public hasDateTimeProperty(aResource: Resource) : Boolean =
+    allProperties(aResource)->exists(p | p.valueType.toString() = 'DateTime')
+/]
+
+[query public hasSetProperty(aResource: Resource) : Boolean =
+    allProperties(aResource)->exists(p | Sequence{'zeroOrMany', 'oneOrMany'}->includes(p.occurs.toString()))
+/]
+
+[query public hasLinkProperty(aResource: Resource) : Boolean =
+    allProperties(aResource)->exists(p | Sequence{'Resource', 'LocalResource'}->includes(p.valueType.toString()))
+/]

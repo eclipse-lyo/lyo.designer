@@ -27,12 +27,12 @@
 [/template]
 
 [template public generateImports(aResource : Resource, defaultPackageName : String)]
-from datetime import datetime
-from typing import Set
+[if (hasDateTimeProperty(aResource))]from datetime import datetime[/if]
+[if (hasSetProperty(aResource))]from typing import Set[/if]
 from oslc4py_client.annotation_types.Occurs import Occurs
 from oslc4py_client.annotation_types.ValueType import ValueType
 from oslc4py_client.OSLCResource import OSLCResource
-from oslc4py_client.Link import Link
+[if (hasLinkProperty(aResource))]from oslc4py_client.Link import Link[/if]
 from oslc4py_client.decorators import oslc_description, oslc_name, oslc_namespace, oslc_occurs, oslc_property_definition, oslc_resource_shape, oslc_value_type, oslc_range, oslc_read_only
 
 [for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name))]
