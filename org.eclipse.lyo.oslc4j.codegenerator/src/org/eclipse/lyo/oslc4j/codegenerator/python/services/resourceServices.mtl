@@ -185,7 +185,7 @@ resourceConstantName(aResource).concat('_TYPE')
 
 [query public pythonNameAnnotation(aResource: Resource) : String =
 '@oslc_name("'
-.concat(aResource.name)
+.concat(if (aResource.describes.oclIsUndefined()) then aResource.name.substituteAll(' ', '') else aResource.describes.name.substituteAll(' ', '') endif)
 .concat('")')
 /]
 
@@ -193,7 +193,7 @@ resourceConstantName(aResource).concat('_TYPE')
 '@oslc_resource_shape(describes='
 .concat(aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName())
 .concat('["')
-.concat(aResource.name)
+.concat(if (aResource.describes.oclIsUndefined()) then aResource.name.substituteAll(' ', '') else aResource.describes.name.substituteAll(' ', '') endif)
 .concat('"], title="')
 .concat(if (aResource.title.oclIsUndefined()) then aResource.name.concat(' Shape') else aResource.title endif)
 .concat('")')
