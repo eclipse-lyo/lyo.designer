@@ -50,7 +50,7 @@ from oslc4py_client.OSLCResource import OSLCResource
 [if (hasLinkProperty(aResource))]from oslc4py_client.Link import Link[/if]
 from oslc4py_client.decorators import oslc_description, oslc_name, oslc_namespace, oslc_occurs, oslc_property_definition, oslc_resource_shape, oslc_value_type, oslc_range, oslc_read_only
 
-[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name))]
+[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->union(Set{aResource.definingDomainSpecification()})->flatten()->asSet()->sortedBy(name))]
 from [aDomainSpecification.pythonInterfacePackageNameForConstants(null, defaultPackageName)/].[aDomainSpecification.pythonInterfaceNameForConstants()/] import [aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/]
 [/for]
 [for (aVocabulary: Vocabulary | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))->asSet()
@@ -60,7 +60,10 @@ from [aDomainSpecification.pythonInterfacePackageNameForConstants(null, defaultP
 from [aVocabulary.pythonInterfacePackageNameForConstants(null, defaultPackageName)/].[aVocabulary.pythonInterfaceNameForConstants()/] import [aVocabulary.vocabularyNamespaceConstantName()/]
 [/for]
 [for (r: Resource | allProperties(aResource)
-    ->select(p: ResourceProperty | Sequence{'Resource', 'LocalResource'}->includes(p.valueType.toString()))
+    ->select(p: ResourceProperty |
+        (p.valueType.toString() = 'LocalResource' and p.range->size() = 1) or
+        (p.valueType.toString() = 'Resource' and not p.representation.oclIsUndefined() and p.representation.toString().equalsIgnoreCase('inline') and p.range->size() = 1)
+    )
     ->collect(p: ResourceProperty | p.range)->flatten()->asSet()
     ->sortedBy(name))]
 [if (r <> aResource)]

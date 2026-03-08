@@ -34,7 +34,7 @@ not (Sequence{'URI'}->includes(aProperty.valueType.toString()))
 (if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
     pythonInterfaceNameForConstants(aResourceProperty.definingDomainSpecification()).concat('.').concat(domainSpecificationImplicitVocabularyNamespaceConstantName(aResourceProperty.definingDomainSpecification()))
 else
-    pythonInterfaceNameForConstants(aResourceProperty.propertyDefinition.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResourceProperty.propertyDefinition.definingVocabulary()))
+    vocabularyNamespaceConstantName(aResourceProperty.propertyDefinition.definingVocabulary())
 endif)
 /]
 
@@ -98,7 +98,7 @@ endif)
         if (aProperty.valueType.toString() = 'XMLLiteral') then
              '@oslc_value_type("XMLLiteral")'
         else
-             '@oslc_value_type(ValueType.'.concat(aProperty.valueType.toString()).concat(')')
+             '@oslc_value_type(ValueType.'.concat(aProperty.valueType.toString().toUpper()).concat(')')
         endif
     else
         ''
