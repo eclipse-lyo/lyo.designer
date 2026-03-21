@@ -35,16 +35,16 @@ aSpecification.domainSpecifications->union(
 /]
 
 [comment same/]
-[query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
-relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
-    relevantVocabularies(aDomainSpecification)
-)->flatten()->asSet()
-/]
-
-[comment same/]
 [query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
 aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
 ->union(
     aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
 )->asSet()
+/]
+
+[comment same/]
+[query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
+relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
+    relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
 /]

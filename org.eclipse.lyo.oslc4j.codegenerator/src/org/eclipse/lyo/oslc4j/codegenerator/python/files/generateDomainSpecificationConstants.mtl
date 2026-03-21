@@ -20,7 +20,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 
 [template public generateDomainSpecificationConstants(aDomainSpecification : DomainSpecification, defaultFilesPath : String, defaultPackageName : String)]
-[file (aDomainSpecification.pythonInterfaceFullFileNameForConstants(null, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
+[file (aDomainSpecification.pythonFullFileNameForConstants(null, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
 import rdflib
 
 # [protected ('imports')]

@@ -51,13 +51,13 @@ from oslc4py_client.OSLCResource import OSLCResource
 from oslc4py_client.decorators import oslc_description, oslc_name, oslc_namespace, oslc_occurs, oslc_property_definition, oslc_resource_shape, oslc_value_type, oslc_range, oslc_read_only
 
 [for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->union(Set{aResource.definingDomainSpecification()})->flatten()->asSet()->sortedBy(name))]
-from [aDomainSpecification.pythonInterfacePackageNameForConstants(null, defaultPackageName)/].[aDomainSpecification.pythonInterfaceNameForConstants()/] import [aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/]
+from [aDomainSpecification.pythonPackageNameForConstants(null, defaultPackageName)/].[aDomainSpecification.pythonNameForConstants()/] import [aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/]
 [/for]
 [for (aVocabulary: Vocabulary | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))->asSet()
         ->select(p: ResourceProperty | not (p.propertyDefinition.oclIsUndefined()))
         ->collect(p: ResourceProperty | p.propertyDefinition.definingVocabulary())
         ->flatten()->asSet()->sortedBy(label))]
-from [aVocabulary.pythonInterfacePackageNameForConstants(null, defaultPackageName)/].[aVocabulary.pythonInterfaceNameForConstants()/] import [aVocabulary.vocabularyNamespaceConstantName()/]
+from [aVocabulary.pythonPackageNameForConstants(null, defaultPackageName)/].[aVocabulary.pythonNameForConstants()/] import [aVocabulary.vocabularyNamespaceConstantName()/]
 [/for]
 [for (r: Resource | allProperties(aResource)
     ->select(p: ResourceProperty |

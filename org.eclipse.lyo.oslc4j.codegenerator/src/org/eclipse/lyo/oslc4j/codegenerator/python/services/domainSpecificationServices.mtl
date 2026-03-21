@@ -22,30 +22,31 @@
 aProperty.eContainer(DomainSpecification)
 /]
 
+[comment same/]
 [query public definingDomainSpecification(aResource: Resource) : DomainSpecification =
 aResource.eContainer(DomainSpecification)
 /]
 
-[query public pythonInterfaceFullFolderNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String = 
+[query public pythonFullFolderNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
     pythonFilesBasePath(aDomainSpecification, anAdaptorInterface, defaultFilesPath)
-    .concatenatePaths(pythonInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))
+    .concatenatePaths(pythonPackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))
 /]
 
-[query public pythonInterfacePackageNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String = 
+[query public pythonPackageNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String =
 pythonPackageName(aDomainSpecification, anAdaptorInterface, defaultPackageName)
 /]
 
-[query public pythonInterfaceNameForConstants(aDomainSpecification: DomainSpecification) : String =
+[query public pythonNameForConstants(aDomainSpecification: DomainSpecification) : String =
 aDomainSpecification.namespacePrefix.name.toLower().concat('_constants')
 /]
 
-[query public pythonInterfaceFullNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String = 
-pythonInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultPackageName).concat('.').concat(pythonInterfaceNameForConstants(aDomainSpecification))
+[query public pythonFullNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String =
+pythonPackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultPackageName).concat('.').concat(pythonNameForConstants(aDomainSpecification))
 /]
 
-[query public pythonInterfaceFullFileNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String = 
-    pythonInterfaceFullFolderNameForConstants(aDomainSpecification, anAdaptorInterface, defaultFilesPath, defaultPackageName)
-    .concatenatePaths(pythonInterfaceNameForConstants(aDomainSpecification))
+[query public pythonFullFileNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
+    pythonFullFolderNameForConstants(aDomainSpecification, anAdaptorInterface, defaultFilesPath, defaultPackageName)
+    .concatenatePaths(pythonNameForConstants(aDomainSpecification))
     .concat('.py')
 /]
 

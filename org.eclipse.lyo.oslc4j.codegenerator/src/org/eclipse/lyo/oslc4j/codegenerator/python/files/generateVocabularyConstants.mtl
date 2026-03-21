@@ -20,7 +20,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
 
 [template public generateVocabularyConstants(aVocabulary : Vocabulary, traceabilityContext : OclAny, defaultFilesPath : String, defaultPackageName : String)]
-[file (aVocabulary.pythonInterfaceFullFileNameForConstants(null, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
+[file (aVocabulary.pythonFullFileNameForConstants(null, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
 import rdflib
 
 # [protected ('imports')]
