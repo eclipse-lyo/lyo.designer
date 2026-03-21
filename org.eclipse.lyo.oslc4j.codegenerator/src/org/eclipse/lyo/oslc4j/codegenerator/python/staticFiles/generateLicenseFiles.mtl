@@ -21,6 +21,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateEDLV10HTML/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateEPLV10HTML/]
 
+[comment same/]
 [template public generateLicenseFiles(traceabilityContext : OclAny)]
 [traceabilityContext.generateNoticeHTML() /]
 [traceabilityContext.generateEDLV10HTML() /]

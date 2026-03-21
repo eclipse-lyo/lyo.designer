@@ -66,6 +66,7 @@
 
 /]
 
+[comment same/]
 [query public directlyRelatedResources(aResource: Resource) : Set(Resource) =
 	(aResource.resourceProperties->collect(p : ResourceProperty | p.range))->flatten()->asSet()
 	->union(
@@ -73,6 +74,7 @@
 	)->flatten()->asSet()
 /]
 
+[comment same/]
 [query private allRelatedResources(aResource: Resource, alreadyAnalysed : Set(Resource), depth : Integer) : Set(Resource) =
 let drr : Set(Resource) = directlyRelatedResources(aResource),
 	newAlreadyAnalysed : Set(Resource) = (Set{aResource}->union(drr))->union(alreadyAnalysed),
@@ -89,6 +91,7 @@ let drr : Set(Resource) = directlyRelatedResources(aResource),
     endif)
 /]
 
+[comment same/]
 [query public allRelatedResources(aResource: Resource) : Set(Resource) =
 let arr : Set(Resource) = allRelatedResources(aResource, Set{}, 1),
 	leftOut : Set(Resource) = arr->collect(r : Resource | directlyRelatedResources(r) - arr)->flatten()->asSet()
@@ -121,6 +124,7 @@ in
 pythonString(aResource.name, aResource.definingDomainSpecification().namespacePrefix.name, true)
 /]
 
+[comment same but may want to keep separated for customization in future /]
 [query public pythonClassFullFolderName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
     pythonFilesBasePath(aResource.definingDomainSpecification(), anAdaptorInterface, defaultFilesPath)
     .concatenatePaths(pythonClassPackageName(aResource, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))

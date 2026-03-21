@@ -177,20 +177,22 @@ aVocabulary.filesBasePath(anAdaptorInterface, default).concatenatePaths(pythonFi
     not (anAdaptorInterface.eResource() = obj.eResource())
 /]
 
+[comment same/]
 [query public isFromImportedModels(aSpecification: Specification, obj : EObject) : Boolean = 
     not (aSpecification.eResource() = obj.eResource())
 /]
-
+[comment same/]
 [query public generateIfFromImportedModels(anAdaptorInterface : AdaptorInterface, obj : EObject) : Boolean = 
     not anAdaptorInterface.doNotGenerateFromImportedModels() 
     or (not anAdaptorInterface.isFromImportedModels(obj))
 /]
 
+[comment same/]
 [query public generateIfFromImportedModels(aSpecification: Specification, obj : EObject) : Boolean = 
     not aSpecification.doNotGenerateFromImportedModels() 
     or (not aSpecification.isFromImportedModels(obj))
 /]
-
+[comment same/]
 [query public doNotGenerateFromImportedModels(anAdaptorInterface : AdaptorInterface) : Boolean = 
 (if (anAdaptorInterface.configuration.oclIsUndefined())._or(anAdaptorInterface.configuration.generalConfiguration.doNotGenerateFromImportedModels.oclIsUndefined()) then 
     false
@@ -199,6 +201,7 @@ else
 endif)
 /]
 
+[comment same/]
 [query public doNotGenerateFromImportedModels(aSpecification: Specification) : Boolean = 
 (if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.doNotGenerateFromImportedModels.oclIsUndefined()) then 
     false
@@ -207,7 +210,7 @@ else
 endif)
 /]
 
-
+[comment same/]
 [query public doNotGenerateProjectFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
 (if (anAdaptorInterface.configuration.oclIsUndefined()) then 
     true
@@ -219,6 +222,7 @@ else
     endif)
 endif)
 /]
+[comment same/]
 [query public doNotGenerateProjectFiles(aSpecification : Specification) : Boolean = 
 (if (aSpecification.configuration.oclIsUndefined()) then 
     true
@@ -230,6 +234,7 @@ else
     endif)
 endif)
 /]
+[comment same/]
 [query public doNotGenerateProjectFiles(aDomainSpecification : DomainSpecification) : Boolean = 
 (if (aDomainSpecification.configuration.oclIsUndefined()) then 
     true
@@ -242,6 +247,7 @@ else
 endif)
 /]
 
+[comment same/]
 [query public doNotGenerate(aSpecification: Specification) : Boolean = 
 (if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
     false
@@ -250,6 +256,7 @@ else
 endif)
 /]
 
+[comment same/]
 [query public doNotGenerate(vocabularies: Vocabularies) : Boolean = 
 (if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
     false
@@ -258,6 +265,7 @@ else
 endif)
 /]
 
+[comment same/]
 [query public doNotGenerate(aDomainSpecification: DomainSpecification) : Boolean = 
 (if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
     aDomainSpecification.eContainer(Specification).doNotGenerate()
@@ -266,6 +274,7 @@ else
 endif)
 /]
 
+[comment same/]
 [query public doNotGenerate(aVocabulary: Vocabulary) : Boolean = 
 (if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
     aVocabulary.eContainer(Vocabularies).doNotGenerate()
@@ -274,6 +283,7 @@ else
 endif)
 /]
 
+[comment same/]
 [query private stripURISegmentEnd(URISegment : String) : String =
 (if (URISegment.size() = 0) then
      URISegment
@@ -286,6 +296,7 @@ else
 endif)
 /]
 
+[comment same/]
 [query private stripURISegmentStart(URISegment : String) : String =
 (if (URISegment.size() = 0) then
      URISegment
@@ -298,7 +309,7 @@ else
 endif)
 /]
 
-
+[comment same/]
 [query public concatenatePaths (leftSegment : String, rightSegment : String) : String =
 (if (stripURISegmentEnd(leftSegment).size() = 0) then
     rightSegment

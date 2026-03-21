@@ -21,23 +21,27 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
 
+[comment same/]
 [query public relevantResources(aSpecification : Specification) : Set(Resource) =
     (aSpecification.domainSpecifications.resources
     ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
 /]
 
+[comment same/]
 [query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
 aSpecification.domainSpecifications->union(
     relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
 )
 /]
 
+[comment same/]
 [query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
 relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
     relevantVocabularies(aDomainSpecification)
 )->flatten()->asSet()
 /]
 
+[comment same/]
 [query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
 aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
 ->union(

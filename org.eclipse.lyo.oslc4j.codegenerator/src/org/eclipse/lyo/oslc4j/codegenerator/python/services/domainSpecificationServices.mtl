@@ -26,16 +26,17 @@ aProperty.eContainer(DomainSpecification)
 aResource.eContainer(DomainSpecification)
 /]
 
-[query public pythonInterfaceNameForConstants(aDomainSpecification: DomainSpecification) : String =
-aDomainSpecification.namespacePrefix.name.toLower().concat('_constants')
+[query public pythonInterfaceFullFolderNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String = 
+    pythonFilesBasePath(aDomainSpecification, anAdaptorInterface, defaultFilesPath)
+    .concatenatePaths(pythonInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))
 /]
 
 [query public pythonInterfacePackageNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String = 
 pythonPackageName(aDomainSpecification, anAdaptorInterface, defaultPackageName)
 /]
 
-[query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification: DomainSpecification) : String = 
-'NS_'.concat(aDomainSpecification.namespacePrefix.name.toUpperCase())
+[query public pythonInterfaceNameForConstants(aDomainSpecification: DomainSpecification) : String =
+aDomainSpecification.namespacePrefix.name.toLower().concat('_constants')
 /]
 
 [query public pythonInterfaceFullNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String = 
@@ -43,8 +44,12 @@ pythonInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface,
 /]
 
 [query public pythonInterfaceFullFileNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String = 
-    pythonFilesBasePath(aDomainSpecification, anAdaptorInterface, defaultFilesPath)
-    .concatenatePaths(pythonInterfacePackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))
+    pythonInterfaceFullFolderNameForConstants(aDomainSpecification, anAdaptorInterface, defaultFilesPath, defaultPackageName)
     .concatenatePaths(pythonInterfaceNameForConstants(aDomainSpecification))
     .concat('.py')
+/]
+
+[comment todo: move to adaptorInterfaceServices /]
+[query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification: DomainSpecification) : String = 
+'NS_'.concat(aDomainSpecification.namespacePrefix.name.toUpperCase())
 /]

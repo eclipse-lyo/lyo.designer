@@ -29,6 +29,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateLicenseFiles/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::config::generateConfigFiles/]
 
+[comment same/]
 [query public canGenerate(aSpecification : Specification) : Boolean = 
 not(
 aSpecification.configuration.oclIsUndefined()
@@ -49,7 +50,7 @@ aSpecification.configuration.oclIsUndefined()
     [let uniqueFolderPaths: Set(String) = resources->collect(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName))->asSet()]
     [for (uniqueFolderPath: String | uniqueFolderPaths)]
         [let resourcesOnSameFolderPath: Set(Resource) = resources->select(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName) = uniqueFolderPath)]
-        [generateAdaptorPackageInfo(resourcesOnSameFolderPath, null, defaultFilesPath, defaultPackageName)/]
+        [generateAdaptorPackageInit(resourcesOnSameFolderPath, defaultFilesPath, defaultPackageName)/]
         [/let]
     [/for]
     [/let]
@@ -57,7 +58,7 @@ aSpecification.configuration.oclIsUndefined()
 
     [for (aDomainSpecification: DomainSpecification | aSpecification.relevantDomainSpecifications()
         ->select(d: DomainSpecification | aSpecification.generateIfFromImportedModels(d.oclAsType(EObject))))]
-        [aDomainSpecification.generateDomainSpecificationConstants(null, defaultFilesPath, defaultPackageName)/]
+        [aDomainSpecification.generateDomainSpecificationConstants(defaultFilesPath, defaultPackageName)/]
     [/for]
 
     [for (aVocabulary: Vocabulary | aSpecification.relevantVocabularies()

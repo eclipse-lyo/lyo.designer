@@ -18,6 +18,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 
+[comment todo: remove unused parameters /]
 [template public generateConfigFiles(aSpecification : Specification, traceabilityContext : OclAny, defaultFilesPath : String)]
 [file ('requirements.txt', false, 'UTF-8')]
 oslc4py-client
