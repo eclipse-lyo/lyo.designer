@@ -117,6 +117,16 @@ def __init__(self, **kwargs):
     [generateInstanceAttributes(aResource)/]
 [/template]
 
+[template public generateAddToAttributeMethods(aResource : Resource)]
+[for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+    [if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))]
+def add_[pythonAttributeName(aProperty, aResource)/](self, value: [pythonAttributeBaseType(aProperty) /]):
+    self.[pythonAttributeName(aProperty, aResource) /].add(value)
+
+    [/if]
+[/for]
+[/template]
+
 [template public generatePropertyMethods(aResource : Resource)]
 [for (aProperty: ResourceProperty | allProperties(aResource))]
 @property
@@ -174,6 +184,7 @@ def [aProperty.pythonAttributeSetterMethodName(aResource)/](self, value: [aPrope
     [generateClassAttributes(aResource)/]
     [generateClassMethods(aResource)/]
     [generateConnectors(aResource)/]
+    [generateAddToAttributeMethods(aResource)/]
     [generatePropertyMethods(aResource)/]
 [/file]
 [/if]
