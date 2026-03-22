@@ -62,6 +62,7 @@
 	->asOrderedSet()
 /]
 
+[comment same/]
 [query private directInterfaceResources(aResource: Resource) : OrderedSet(Resource) =
 	(if (aResource.extends->size() > 1) then 
         aResource.extends->subOrderedSet(2, aResource.extends->size())

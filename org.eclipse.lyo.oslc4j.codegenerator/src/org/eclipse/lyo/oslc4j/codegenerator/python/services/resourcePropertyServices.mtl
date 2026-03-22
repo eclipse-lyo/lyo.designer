@@ -120,6 +120,22 @@ else
 endif)
 /]
 
+[query public rdfCollectionTypeAnnotation(aProperty: ResourceProperty) : String =
+(if ((not aProperty.multiValueRepresentation.oclIsUndefined()) and (not aProperty.occurs.oclIsUndefined())) then
+    if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany or aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
+        if (aProperty.multiValueRepresentation = ResourcePropertyMultiValueRepresentation::rdfList) then
+            '@oslc_rdf_collection_type("List", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")'
+        else
+            ''
+        endif
+    else
+        ''
+    endif
+else
+    ''
+endif)
+/]
+
 [query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
 (if (aProperty.range->size() > 0) then
    	'@oslc_range('
@@ -158,6 +174,13 @@ else
 endif
 /]
 
+[query public allowedValuesAnnotation(aProperty: ResourceProperty) : String =
+(if (aProperty.allowedValue->size() > 0) then
+    '@oslc_allowed_values(["'.concat(concatenate((aProperty.allowedValue)->asSequence(), '", "')).concat('"])')
+else
+    ''
+endif)
+/]
 
 [query public pythonAttributeTypeDeclaration(aProperty: ResourceProperty) : String =
     (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
