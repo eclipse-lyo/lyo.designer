@@ -19,10 +19,12 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 
+[comment same/]
 [query public generate(aResource: Resource) : Boolean = 
     not aResource.definingDomainSpecification().doNotGenerate()
 /]
 
+[comment same/]
 [query public directParentResource(aResource: Resource) : Resource =
     (if (aResource.extends->notEmpty()) then 
         aResource.extends->first()
@@ -31,6 +33,7 @@
     endif)
 /]
 
+[comment same/]
 [query public parentResources(aResource: Resource) : Set(Resource) =
     (if (directParentResource(aResource)->notEmpty()) then 
         directParentResource(aResource)->union(parentResources(directParentResource(aResource)))
@@ -39,6 +42,7 @@
     endif)
 /]
 
+[comment same/]
 [query public allExtendingResources(aResource: Resource) : OrderedSet(Resource) =
 	aResource.extends
 	->union(
@@ -47,6 +51,7 @@
 	->asOrderedSet()
 /]
 
+[comment same/]
 [query public interfaceResources(aResource: Resource) : OrderedSet(Resource) =
 	((directInterfaceResources(aResource)
 	->union(
@@ -101,6 +106,7 @@ in
 	->union(leftOut->collect(r : Resource | allRelatedResources(r, arr->union(Set{r}), 1))->flatten()->asSet())
 /]
 
+[comment same/]
 [query public allProperties(aResource: Resource) : Sequence(ResourceProperty) = 
 ((aResource.resourceProperties->asSequence())
 	->union(inheritedProperties(aResource))
@@ -108,6 +114,7 @@ in
 )
 /]
 
+[comment same/]
 [query public inheritedProperties(aResource: Resource) : Sequence(ResourceProperty) = 
     (if (not aResource.directParentResource().oclIsUndefined()) then 
         (aResource.directParentResource().resourceProperties->asSequence())->union(inheritedProperties(aResource.directParentResource()))
@@ -116,6 +123,7 @@ in
     endif)
 /]
 
+[comment same/]
 [query public interfaceProperties(aResource: Resource) : Sequence(ResourceProperty) =
 	aResource.interfaceResources().resourceProperties
 /]
@@ -124,7 +132,6 @@ in
 pythonString(aResource.name, aResource.definingDomainSpecification().namespacePrefix.name, true)
 /]
 
-[comment same but may want to keep separated for customization in future /]
 [query public pythonClassFullFolderName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
     pythonFilesBasePath(aResource.definingDomainSpecification(), anAdaptorInterface, defaultFilesPath)
     .concatenatePaths(pythonClassPackageName(aResource, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))

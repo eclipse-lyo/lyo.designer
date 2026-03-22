@@ -95,11 +95,7 @@ endif)
 [query public valueTypeAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.valueType.oclIsUndefined()) then
     if (hasOSLCSupportedValueType(aProperty)) then
-        if (aProperty.valueType.toString() = 'XMLLiteral') then
-             '@oslc_value_type("XMLLiteral")'
-        else
-             '@oslc_value_type(ValueType.'.concat(aProperty.valueType.toString().toUpper()).concat(')')
-        endif
+        '@oslc_value_type(ValueType.'.concat(aProperty.valueType.toString().toUpper()).concat(')')
     else
         ''
     endif
@@ -110,7 +106,7 @@ endif)
 
 [query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
 (if (aProperty.range->size() > 0) then
-    '@oslc_range('
+   	'@oslc_range('
         .concat(concatenate(aProperty.range->collect(aRange : Resource | aRange.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName().concat('["').concat(if (aRange.describes.oclIsUndefined()) then aRange.name.substituteAll(' ', '') else aRange.describes.name.substituteAll(' ', '') endif).concat('"]')), ', '))
         .concat(')')
 else
