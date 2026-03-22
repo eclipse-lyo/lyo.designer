@@ -46,9 +46,10 @@
 [if (hasSetProperty(aResource))]from typing import Set[/if]
 from oslc4py_client.annotation_types.Occurs import Occurs
 from oslc4py_client.annotation_types.ValueType import ValueType
+from oslc4py_client.annotation_types.Representation import Representation
 from oslc4py_client.OSLCResource import OSLCResource
 [if (hasLinkProperty(aResource))]from oslc4py_client.Link import Link[/if]
-from oslc4py_client.decorators import oslc_description, oslc_name, oslc_namespace, oslc_occurs, oslc_property_definition, oslc_resource_shape, oslc_value_type, oslc_range, oslc_read_only
+from oslc4py_client.decorators import oslc_description, oslc_name, oslc_namespace, oslc_rdf_collection_type, oslc_occurs, oslc_property_definition, oslc_resource_shape, oslc_value_type, oslc_representation, oslc_range, oslc_read_only, oslc_title, oslc_member_property, oslc_allowed_values
 
 [for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->union(Set{aResource.definingDomainSpecification()})->flatten()->asSet()->sortedBy(name))]
 from [aDomainSpecification.pythonPackageNameForConstants(null, defaultPackageName)/].[aDomainSpecification.pythonNameForConstants()/] import [aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/]
@@ -141,11 +142,15 @@ def add_[pythonAttributeName(aProperty, aResource)/](self, value: [pythonAttribu
 [if (not (descriptionAnnotation(aProperty) = ''))]
 [descriptionAnnotation(aProperty)/]
 [/if]
+[comment todo: add rdfCollectionTypeAnnotation /]
 [if (not (occursAnnotation(aProperty) = ''))]
 [occursAnnotation(aProperty)/]
 [/if]
 [if (not (valueTypeAnnotation(aProperty) = ''))]
 [valueTypeAnnotation(aProperty)/]
+[/if]
+[if (not (representationAnnotation(aProperty) = ''))]
+[representationAnnotation(aProperty)/]
 [/if]
 [if (not (rangeAnnotation(aProperty, aResource, null)= ''))]
 [rangeAnnotation(aProperty, aResource, null)/]
@@ -153,6 +158,11 @@ def add_[pythonAttributeName(aProperty, aResource)/](self, value: [pythonAttribu
 [if (not (readOnlyAnnotation(aProperty) = ''))]
 [readOnlyAnnotation(aProperty)/]
 [/if]
+[if (not (titleAnnotation(aProperty)= ''))]
+[titleAnnotation(aProperty)/]
+[/if]
+[comment todo: add member propery annotation/]
+[comment todo: add allowed values anntation /]
 def [aProperty.pythonAttributeGetterMethodName(aResource)/](self):
     # [protected ('getterInit:'.concat(pythonAttributeName(aProperty, aResource)))]
     # [/protected]

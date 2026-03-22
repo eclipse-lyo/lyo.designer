@@ -104,6 +104,22 @@ else
 endif)
 /]
 
+[query public representationAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.representation.oclIsUndefined()) then
+    if (not aProperty.representation.toString().equalsIgnoreCase('n_a')) then
+        if (not aProperty.representation.toString().equalsIgnoreCase('either')) then
+            '@oslc_representation(Representation.'.concat(aProperty.representation.toString().toUpper()).concat(')')
+        else
+            ''
+        endif
+    else
+        ''
+    endif
+else
+    ''
+endif)
+/]
+
 [query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
 (if (aProperty.range->size() > 0) then
    	'@oslc_range('
@@ -122,6 +138,13 @@ else
 endif)
 /]
 
+[query public titleAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.title.oclIsUndefined()) then
+    '@oslc_title("'.concat(aProperty.title).concat('")')
+else
+    ''
+endif)
+/]
 
 [query public pythonAttributeTypeDeclaration(aProperty: ResourceProperty) : String =
     (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
