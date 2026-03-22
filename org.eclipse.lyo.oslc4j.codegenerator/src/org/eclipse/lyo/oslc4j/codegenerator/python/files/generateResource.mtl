@@ -51,6 +51,9 @@ from oslc4py_client.OSLCResource import OSLCResource
 [if (hasLinkProperty(aResource))]from oslc4py_client.Link import Link[/if]
 from oslc4py_client.decorators import oslc_description, oslc_name, oslc_namespace, oslc_rdf_collection_type, oslc_occurs, oslc_property_definition, oslc_resource_shape, oslc_value_type, oslc_representation, oslc_range, oslc_read_only, oslc_title, oslc_member_property, oslc_allowed_values
 
+[if (not aResource.directParentResource().oclIsUndefined() and aResource.directParentResource() <> aResource)]
+from [aResource.directParentResource().pythonClassPackageName(null, defaultPackageName)/].[aResource.directParentResource().pythonClassName()/] import [aResource.directParentResource().pythonClassName()/]
+[/if]
 [for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->union(Set{aResource.definingDomainSpecification()})->flatten()->asSet()->sortedBy(name))]
 from [aDomainSpecification.pythonPackageNameForConstants(null, defaultPackageName)/].[aDomainSpecification.pythonNameForConstants()/] import [aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/]
 [/for]
@@ -60,7 +63,7 @@ from [aDomainSpecification.pythonPackageNameForConstants(null, defaultPackageNam
         ->flatten()->asSet()->sortedBy(label))]
 from [aVocabulary.pythonPackageNameForConstants(null, defaultPackageName)/].[aVocabulary.pythonNameForConstants()/] import [aVocabulary.vocabularyNamespaceConstantName()/]
 [/for]
-[for (r: Resource | allProperties(aResource)
+[for (r: Resource | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))
     ->select(p: ResourceProperty |
         (p.valueType.toString() = 'LocalResource' and p.range->size() = 1) or
         (p.valueType.toString() = 'Resource' and not p.representation.oclIsUndefined() and p.representation.toString().equalsIgnoreCase('inline') and p.range->size() = 1)
@@ -89,11 +92,11 @@ from [r.pythonClassPackageName(null, defaultPackageName)/].[r.pythonClassName()/
 [/template]
 
 [template public generateClassDeclaration(aResource : Resource)]
-class [aResource.pythonClassName()/](OSLCResource):
+class [aResource.pythonClassName()/]([if (aResource.directParentResource().oclIsUndefined())]OSLCResource[else][pythonClassName(aResource.directParentResource())/][/if]):
 [/template]
 
 [template public generateInstanceAttributes(aResource : Resource)]
-[for (aProperty: ResourceProperty | allProperties(aResource))]
+[for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
 # [protected ('attributeAnnotation:'.concat(pythonAttributeName(aProperty, aResource)))]
 # [/protected]
 self._[aProperty.pythonAttributeName(aResource)/] = [aProperty.pythonAttributeInitialConstruction()/]
@@ -110,7 +113,7 @@ self._[aProperty.pythonAttributeName(aResource)/] = [aProperty.pythonAttributeIn
 # [/protected]
 [/template]
 
-[template public generateConnectors(aResource : Resource)]
+[template public generateConstructor(aResource : Resource)]
 def __init__(self, **kwargs):
     super().__init__(**kwargs)
     # [protected ('constructor')]
@@ -198,13 +201,13 @@ def [aProperty.pythonAttributeSetterMethodName(aResource)/](self, value: [aPrope
 [generateClassDeclaration(aResource)/]
     [generateClassAttributes(aResource)/]
     [generateClassMethods(aResource)/]
-    [generateConnectors(aResource)/]
+    [generateConstructor(aResource)/]
     [generateAddToAttributeMethods(aResource)/]
-    [for (aProperty: ResourceProperty | allProperties(aResource))]
+    [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
     [generateGetter(aProperty, aResource)/]
     
     [/for]
-    [for (aProperty: ResourceProperty | allProperties(aResource))]
+    [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
     [generateSetter(aProperty, aResource)/]
     
     [/for]
