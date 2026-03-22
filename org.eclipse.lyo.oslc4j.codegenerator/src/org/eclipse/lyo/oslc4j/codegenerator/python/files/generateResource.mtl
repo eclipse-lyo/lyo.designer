@@ -161,7 +161,9 @@ def add_[pythonAttributeName(aProperty, aResource)/](self, value: [pythonAttribu
 [if (not (titleAnnotation(aProperty)= ''))]
 [titleAnnotation(aProperty)/]
 [/if]
-[comment todo: add member propery annotation/]
+[if (not (isMemberPropertyAnnotation(aProperty)= ''))]
+[isMemberPropertyAnnotation(aProperty)/]
+[/if]
 [comment todo: add allowed values anntation /]
 def [aProperty.pythonAttributeGetterMethodName(aResource)/](self):
     # [protected ('getterInit:'.concat(pythonAttributeName(aProperty, aResource)))]

@@ -146,6 +146,19 @@ else
 endif)
 /]
 
+[query public isMemberPropertyAnnotation(aProperty: ResourceProperty) : String =
+if (aProperty.isMemberProperty.toString().equalsIgnoreCase('true')) then
+    '@oslc_member_property(True)'
+else
+    if (aProperty.isMemberProperty.toString().equalsIgnoreCase('false')) then
+        '@oslc_member_property(False)'
+    else
+        ''
+    endif
+endif
+/]
+
+
 [query public pythonAttributeTypeDeclaration(aProperty: ResourceProperty) : String =
     (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
         'Set['.concat(pythonAttributeBaseType(aProperty)).concat(']')
