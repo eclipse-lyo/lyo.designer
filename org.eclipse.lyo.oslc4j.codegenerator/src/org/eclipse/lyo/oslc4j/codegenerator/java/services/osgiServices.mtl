@@ -17,6 +17,6 @@
 [module osgiServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
 
 [query public getOSGiBundleVersion(anOclAny: OclAny) : String
-	= invoke('org.eclipse.lyo.oslc4j.codegenerator.services.OsgiServices', 'getOSGiBundleVersion()', Sequence{})
+	= invoke('org.eclipse.lyo.oslc4j.codegenerator.java.services.OsgiServices', 'getOSGiBundleVersion()', Sequence{})
 /]
 
