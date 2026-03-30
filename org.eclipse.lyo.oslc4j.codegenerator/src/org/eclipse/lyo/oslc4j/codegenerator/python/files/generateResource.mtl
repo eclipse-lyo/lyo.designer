@@ -51,17 +51,14 @@ from oslc4py_client.OSLCResource import OSLCResource
 [if (hasLinkProperty(aResource))]from oslc4py_client.Link import Link[/if]
 from oslc4py_client.decorators import oslc_description, oslc_name, oslc_namespace, oslc_rdf_collection_type, oslc_occurs, oslc_property_definition, oslc_resource_shape, oslc_value_type, oslc_representation, oslc_range, oslc_read_only, oslc_title, oslc_member_property, oslc_allowed_values
 
-[if (not aResource.directParentResource().oclIsUndefined() and aResource.directParentResource() <> aResource)]
-from [aResource.directParentResource().pythonClassPackageName(null, defaultPackageName)/].[aResource.directParentResource().pythonClassName()/] import [aResource.directParentResource().pythonClassName()/]
-[/if]
-[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->union(Set{aResource.definingDomainSpecification()})->flatten()->asSet()->sortedBy(name))]
-from [aDomainSpecification.pythonPackageNameForConstants(null, defaultPackageName)/].[aDomainSpecification.pythonNameForConstants()/] import [aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/]
+from [aResource.definingDomainSpecification().pythonPackageNameForConstants(null, defaultPackageName)/].[aResource.definingDomainSpecification().pythonNameForConstants()/] import [aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName()/]
+[if (not aResource.directParentResource().oclIsUndefined() and aResource.directParentResource() <> aResource)]from [aResource.directParentResource().pythonClassPackageName(null, defaultPackageName)/].[aResource.directParentResource().pythonClassName()/] import [aResource.directParentResource().pythonClassName()/][/if]
+[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name))]from [aDomainSpecification.pythonPackageNameForConstants(null, defaultPackageName)/].[aDomainSpecification.pythonNameForConstants()/] import [aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/]
 [/for]
 [for (aVocabulary: Vocabulary | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))->asSet()
         ->select(p: ResourceProperty | not (p.propertyDefinition.oclIsUndefined()))
         ->collect(p: ResourceProperty | p.propertyDefinition.definingVocabulary())
-        ->flatten()->asSet()->sortedBy(label))]
-from [aVocabulary.pythonPackageNameForConstants(null, defaultPackageName)/].[aVocabulary.pythonNameForConstants()/] import [aVocabulary.vocabularyNamespaceConstantName()/]
+        ->flatten()->asSet()->sortedBy(label))]from [aVocabulary.pythonPackageNameForConstants(null, defaultPackageName)/].[aVocabulary.pythonNameForConstants()/] import [aVocabulary.vocabularyNamespaceConstantName()/]
 [/for]
 [for (r: Resource | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))
     ->select(p: ResourceProperty |
