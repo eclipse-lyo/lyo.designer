@@ -19,13 +19,13 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
-Export-Package: org.eclipse.lyo.oslc4j.codegenerator.config,
- org.eclipse.lyo.oslc4j.codegenerator.files,
- org.eclipse.lyo.oslc4j.codegenerator.jsp,
- org.eclipse.lyo.oslc4j.codegenerator.main,
+Export-Package: org.eclipse.lyo.oslc4j.codegenerator.java.files,
+ org.eclipse.lyo.oslc4j.codegenerator.java.config,
+ org.eclipse.lyo.oslc4j.codegenerator.java.jsp,
+ org.eclipse.lyo.oslc4j.codegenerator.java.staticFiles,
+ org.eclipse.lyo.oslc4j.codegenerator.java.main,
+ org.eclipse.lyo.oslc4j.codegenerator.java.services,
  org.eclipse.lyo.oslc4j.codegenerator.python.main,
- org.eclipse.lyo.oslc4j.codegenerator.services,
- org.eclipse.lyo.oslc4j.codegenerator.staticFiles
 Bundle-ClassPath: bin/,
  .
 
