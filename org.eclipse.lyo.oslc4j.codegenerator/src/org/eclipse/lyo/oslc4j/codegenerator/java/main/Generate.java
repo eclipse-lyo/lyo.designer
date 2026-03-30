@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.lyo.oslc4j.codegenerator.main;
+package org.eclipse.lyo.oslc4j.codegenerator.java.main;
 
 import java.io.File;
 import java.io.IOException;

@@ -11,7 +11,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
-package org.eclipse.lyo.oslc4j.codegenerator.services;
+package org.eclipse.lyo.oslc4j.codegenerator.java.services;
 
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.Version;
