@@ -1,0 +1,618 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module adaptorInterfaceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::fileServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceProviderServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::vocabularyServices/]
+
+
+[comment url patterns in  most cases end with '\*'. But a url-pattern with just '\' may be found for exact matches. /]
+[query public getServletPath(anAdaptorInterface : AdaptorInterface) : String = 
+    (if anAdaptorInterface.configuration.servletUrlPattern.endsWith('*') then 
+        anAdaptorInterface.configuration.servletUrlPattern.substring(1, anAdaptorInterface.configuration.servletUrlPattern.size()-1)
+    else
+        anAdaptorInterface.configuration.servletUrlPattern
+    endif)
+/]
+
+[query public getApplicationBaseUrl(anAdaptorInterface : AdaptorInterface) : String = 
+JAXRSConcatURISegments(anAdaptorInterface.configuration.rootServerBaseUrl, anAdaptorInterface.configuration.applicationContextPath)
+/]
+
+[query public getServletUrl(anAdaptorInterface : AdaptorInterface) : String = 
+JAXRSConcatURISegments(anAdaptorInterface.getApplicationBaseUrl(), anAdaptorInterface.getServletPath())
+/]
+
+[query public getServletFullPath(anAdaptorInterface : AdaptorInterface) : String = 
+JAXRSConcatURISegments(anAdaptorInterface.configuration.applicationContextPath, anAdaptorInterface.getServletPath())
+/]
+
+[query public getAuthenticationConfiguration(anAdaptorInterface : AdaptorInterface) : AuthenticationConfiguration = 
+(if (anAdaptorInterface.configuration.oclIsUndefined()) then 
+    null
+else
+    (if anAdaptorInterface.configuration.authenticationConfiguration.oclIsUndefined() then 
+        null
+    else
+        anAdaptorInterface.configuration.authenticationConfiguration
+    endif)
+endif)
+/]
+
+[query public authenticationEnabled(anAdaptorInterface : AdaptorInterface) : Boolean = 
+not anAdaptorInterface.getAuthenticationConfiguration().oclIsUndefined()
+/]
+
+[query public authenticationOauthRealm(anAdaptorInterface : AdaptorInterface) : String = 
+(if anAdaptorInterface.authenticationEnabled() then 
+    anAdaptorInterface.getAuthenticationConfiguration().oauthRealm
+else
+    null
+endif)
+/]
+
+[query public authenticationApplicationName(anAdaptorInterface : AdaptorInterface) : String = 
+(if anAdaptorInterface.authenticationEnabled() then 
+    anAdaptorInterface.getAuthenticationConfiguration().applicationName
+else
+    null
+endif)
+/]
+
+[query public swaggerDocumentationEnabled(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if anAdaptorInterface.swaggerDocumentation.oclIsUndefined() then
+    false
+else
+    anAdaptorInterface.swaggerDocumentation
+endif)
+/]
+
+[query public trsServiceEnabled(anAdaptorInterface : AdaptorInterface) : Boolean = 
+not anAdaptorInterface.trsService.oclIsUndefined()
+/]
+
+[query public javaName(anAdaptorInterface : AdaptorInterface, toUpperFirst : Boolean) : String = 
+javaString(anAdaptorInterface.name, 'oslc', toUpperFirst)
+/]
+
+[query public serviceProviders(anAdaptorInterface : AdaptorInterface) : Sequence(ServiceProvider) = 
+(if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined()) then
+	anAdaptorInterface.serviceProviderCatalog.serviceProviders
+else
+	Sequence{}
+endif)
+/]
+
+[query public managingServiceProviders(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Set(ServiceProvider) = 
+anAdaptorInterface.serviceProviders()->select(aServiceProvider : ServiceProvider | 
+            aServiceProvider.services.queryCapabilities->exists(aQueryCapability : QueryCapability | aQueryCapability.resourceTypes->includes(aResource))
+                ._or(aServiceProvider.services.basicCapabilities->exists(aBasicCapability : BasicCapability | aBasicCapability.resourceTypes->includes(aResource)))
+                ._or(aServiceProvider.services.creationFactories->exists(aCreationFactory : CreationFactory | aCreationFactory.resourceTypes->includes(aResource)))
+                ._or(aServiceProvider.services.selectionDialogs->exists(aDialog : Dialog | aDialog.resourceTypes->includes(aResource)))
+                ._or(aServiceProvider.services.creationDialogs->exists(aDialog : Dialog | aDialog.resourceTypes->includes(aResource)))
+            )->asSet()
+/]
+
+[comment return the set of WebServices that have aResource as a managed resource./]
+[query public webServices(anAdaptorInterface : AdaptorInterface, aResource: Resource) : OrderedSet(WebService) = 
+anAdaptorInterface.webServices->select(aWebService : WebService | aWebService.resourceTypes->includes(aResource))
+/]
+
+[comment return the set of Services that have aResource as a managed resource./]
+[query public services(anAdaptorInterface : AdaptorInterface, aResource: Resource) : OrderedSet(Service) = 
+anAdaptorInterface.serviceProviders().services->select(aService : Service |
+    anAdaptorInterface.queryCapabilities(aResource)->notEmpty() or
+    anAdaptorInterface.creationFactories(aResource)->notEmpty() or
+    anAdaptorInterface.selectionDialogs(aResource)->notEmpty() or
+    anAdaptorInterface.creationDialogs(aResource)->notEmpty() or
+    anAdaptorInterface.basicCapabilities(aResource)->notEmpty() )->asOrderedSet()
+/]
+
+[comment return the set of QueryCapabilities whose managed resources is the same as "resources", without any consideration for order./]
+[query public queryCapabilities(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(QueryCapability) = 
+anAdaptorInterface.serviceProviders().services.queryCapabilities->select(aQueryCapability : QueryCapability | aQueryCapability.resourceTypes->asBag() = resources)
+/]
+
+[query public queryCapabilities(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(QueryCapability) = 
+anAdaptorInterface.serviceProviders().services.queryCapabilities->select(aQueryCapability : QueryCapability | aQueryCapability.resourceTypes->includes(aResource))
+/]
+
+[comment return the set of BasicCapabilities whose managed resources is the same as "resources", without any consideration for order./]
+[query public basicCapabilities(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(BasicCapability) = 
+anAdaptorInterface.serviceProviders().services.basicCapabilities->select(aBasicCapability : BasicCapability | aBasicCapability.resourceTypes->asBag() = resources)
+/]
+
+[query public basicCapabilities(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(BasicCapability) = 
+anAdaptorInterface.serviceProviders().services.basicCapabilities->select(aBasicCapability : BasicCapability | aBasicCapability.resourceTypes->includes(aResource))
+/]
+
+[comment return the set of CreationFactories whose managed resources is the same as "resources", without any consideration for order./]
+[query public creationFactories(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(CreationFactory) = 
+anAdaptorInterface.serviceProviders().services.creationFactories->select(aCreationFactory : CreationFactory | aCreationFactory.resourceTypes->asBag() = resources)
+/]
+
+[query public creationFactories(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(CreationFactory) = 
+anAdaptorInterface.serviceProviders().services.creationFactories->select(aCreationFactory : CreationFactory | aCreationFactory.resourceTypes->includes(aResource))
+/]
+
+[comment return the set of SelectionDialogs whose managed resources is the same as "resources", without any consideration for order./]
+[query public selectionDialogs(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(Dialog) = 
+anAdaptorInterface.serviceProviders().services.selectionDialogs->select(aDialog : Dialog | aDialog.resourceTypes->asBag() = resources)
+/]
+
+[query public selectionDialogs(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(Dialog) = 
+anAdaptorInterface.serviceProviders().services.selectionDialogs->select(aDialog : Dialog | aDialog.resourceTypes->includes(aResource))
+/]
+
+[comment return the set of CreationDialogs whose managed resources is the same as "resources", without any consideration for order./]
+[query public creationDialogs(anAdaptorInterface : AdaptorInterface, resources: Bag(Resource)) : Sequence(Dialog) = 
+anAdaptorInterface.serviceProviders().services.creationDialogs->select(aDialog : Dialog | aDialog.resourceTypes->asBag() = resources)
+/]
+
+[query public creationDialogs(anAdaptorInterface : AdaptorInterface, aResource: Resource) : Sequence(Dialog) = 
+anAdaptorInterface.serviceProviders().services.creationDialogs->select(aDialog : Dialog | aDialog.resourceTypes->includes(aResource))
+/]
+
+[query public servicedResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider | 
+	servicedResources(aServiceProvider)
+)->flatten()->asSet()
+->union(
+	anAdaptorInterface.webServices->collectNested(aWebService : WebService | 
+		servicedResources(aWebService)
+	)->flatten()->asSet()
+)
+/]
+
+[query public relevantResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider | 
+	relevantResources(aServiceProvider)
+)->flatten()->asSet()
+->union(
+	anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor | 
+		relevantResources(aRequiredAdaptor)
+	)->flatten()->asSet()
+)
+->union(
+	anAdaptorInterface.webServices->collectNested(aWebService : WebService | 
+		relevantResources(aWebService)
+	)->flatten()->asSet()
+)
+/]
+
+[query public relevantResources(aSpecification : Specification) : Set(Resource) =
+    (aSpecification.domainSpecifications.resources
+    ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
+/]
+
+[query public servicedResources(aWebService: WebService) : Set(Resource) = 
+aWebService.resourceTypes->asSet()
+/]
+
+[query public relevantResources(aWebService: WebService) : Set(Resource) =
+    (servicedResources(aWebService)
+    ->union(servicedResources(aWebService).allRelatedResources()))->flatten()->asSet()
+/]
+
+[query public relevantDomainSpecifications(aWebService: WebService) : Set(DomainSpecification) =
+relevantResources(aWebService)->collectNested(aResource : Resource | 
+    definingDomainSpecification(aResource)
+    ->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
+)->flatten()->asSet()
+/]
+
+[query public relevantDomainSpecifications(anAdaptorInterface : AdaptorInterface) : Set(DomainSpecification) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider | 
+	relevantDomainSpecifications(aServiceProvider)
+)->flatten()->asSet()
+->union(
+	anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor | 
+		relevantDomainSpecifications(aRequiredAdaptor)
+	)->flatten()->asSet()
+)
+->union(
+    anAdaptorInterface.webServices->collectNested(aWebService: WebService | 
+        relevantDomainSpecifications(aWebService)
+    )->flatten()->asSet()
+)
+/]
+
+[query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
+aSpecification.domainSpecifications->union(
+    relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
+)
+/]
+
+[query public relevantVocabularies(anAdaptorInterface : AdaptorInterface) : Set(Vocabulary) =
+anAdaptorInterface.relevantDomainSpecifications()->collectNested(aDomainSpecification : DomainSpecification | 
+    relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
+/]
+
+[query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
+aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
+->union(
+    aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
+)->asSet()
+/]
+
+[query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
+relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
+    relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
+/]
+
+[comment Services for AuthenticationApplication/]
+[query public javaClassPackageNameForAuthenticationApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.auth')
+/]
+
+[query public javaClassNameForAuthenticationApplication(anAdaptorInterface : AdaptorInterface) : String = 
+'AuthenticationApplication'
+/]
+
+[query public javaClassFullNameForAuthenticationApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForAuthenticationApplication(anAdaptorInterface).concat('.').concat(javaClassNameForAuthenticationApplication(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForAuthenticationApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAuthenticationApplication(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForAuthenticationApplication(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for CredentialsFilter/]
+[query public javaClassPackageNameForCredentialsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForCredentialsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+'CredentialsFilter'
+/]
+
+[query public javaClassFullNameForCredentialsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForCredentialsFilter(anAdaptorInterface).concat('.').concat(javaClassNameForCredentialsFilter(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForCredentialsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForCredentialsFilter(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForCredentialsFilter(anAdaptorInterface)).concat('.java')
+/]
+
+[query public javaClassPackageNameForCorsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForCorsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+'CorsFilter'
+/]
+
+[query public javaClassFullNameForCorsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForCorsFilter(anAdaptorInterface).concat('.').concat(javaClassNameForCorsFilter(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForCorsFilter(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForCorsFilter(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForCorsFilter(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for RootServicesService/]
+[query public javaClassPackageNameForRootServicesService(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.services')
+/]
+
+[query public javaClassNameForRootServicesService(anAdaptorInterface : AdaptorInterface) : String = 
+'RootServicesService'
+/]
+
+[query public javaClassFullNameForRootServicesService(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForRootServicesService(anAdaptorInterface).concat('.').concat(javaClassNameForRootServicesService(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForRootServicesService(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForRootServicesService(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForRootServicesService(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for ClientOnlyMainApplication /]
+[query public javaClassPackageNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface)
+/]
+
+[query public javaClassNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
+'OslcMainApplication'
+/]
+
+[query public javaClassFullNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForClientOnlyMainApplication(anAdaptorInterface).concat('.').concat(javaClassNameForClientOnlyMainApplication(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForClientOnlyMainApplication(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForClientOnlyMainApplication(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for AdaptorApplication /]
+[query public javaClassPackageNameForAdaptorApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForAdaptorApplication(anAdaptorInterface : AdaptorInterface) : String = 
+'Application'
+/]
+
+[query public javaClassFullNameForAdaptorApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForAdaptorApplication(anAdaptorInterface).concat('.').concat(javaClassNameForAdaptorApplication(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForAdaptorApplication(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorApplication(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForAdaptorApplication(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for ApplicationBinder /]
+[query public javaClassPackageNameForApplicationBinder(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForApplicationBinder(anAdaptorInterface : AdaptorInterface) : String = 
+'ApplicationBinder'
+/]
+
+[query public javaClassFullNameForApplicationBinder(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForApplicationBinder(anAdaptorInterface).concat('.').concat(javaClassNameForApplicationBinder(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForApplicationBinder(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForApplicationBinder(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForApplicationBinder(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for LyoAppConfiguration /]
+[query public javaClassPackageNameForLyoAppConfiguration(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForLyoAppConfiguration(anAdaptorInterface : AdaptorInterface) : String = 
+'LyoAppConfiguration'
+/]
+
+[query public javaClassFullNameForLyoAppConfiguration(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForLyoAppConfiguration(anAdaptorInterface).concat('.').concat(javaClassNameForLyoAppConfiguration(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForLyoAppConfiguration(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForLyoAppConfiguration(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForLyoAppConfiguration(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for AdaptorServletListener /]
+[query public javaClassPackageNameForAdaptorServletListener(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.servlet')
+/]
+
+[query public javaClassNameForAdaptorServletListener(anAdaptorInterface : AdaptorInterface) : String = 
+'ServletListener'
+/]
+
+[query public javaClassFullNameForAdaptorServletListener(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForAdaptorServletListener(anAdaptorInterface).concat('.').concat(javaClassNameForAdaptorServletListener(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForAdaptorServletListener(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorServletListener(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForAdaptorServletListener(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for ResourcesFactory /]
+[query public javaClassPackageNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface)
+/]
+
+[query public oldJavaClassNameForResourcesFactoryIsUsed(anAdaptorInterface : AdaptorInterface) : Boolean = 
+fileExists(oldJavaClassFullFileNameForResourcesFactory(anAdaptorInterface))
+/]
+
+[query public oldJavaClassNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaName(anAdaptorInterface, true).concat('ResourcesFactory')
+/]
+
+[query public newJavaClassNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+'ResourcesFactory'
+/]
+
+[query public javaClassNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+(if (oldJavaClassNameForResourcesFactoryIsUsed(anAdaptorInterface)) then
+    oldJavaClassNameForResourcesFactory(anAdaptorInterface)
+else
+    newJavaClassNameForResourcesFactory(anAdaptorInterface)
+endif)
+/]
+
+[query public javaClassFullNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForResourcesFactory(anAdaptorInterface).concat('.').concat(javaClassNameForResourcesFactory(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForResourcesFactory(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForResourcesFactory(anAdaptorInterface)).concat('.java')
+/]
+
+[query public oldJavaClassFullFileNameForResourcesFactory(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForResourcesFactory(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(oldJavaClassNameForResourcesFactory(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for AdaptorManager /]
+[query public javaClassPackageNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface)
+/]
+
+[query public oldJavaClassNameForAdaptorManagerIsUsed(anAdaptorInterface : AdaptorInterface) : Boolean = 
+fileExists(oldJavaClassFullFileNameForAdaptorManager(anAdaptorInterface))
+/]
+
+[query public oldJavaClassNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+javaName(anAdaptorInterface, true).concat('Manager')
+/]
+
+[query public newJavaClassNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+'RestDelegate'
+/]
+
+[query public javaClassNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+(if (oldJavaClassNameForAdaptorManagerIsUsed(anAdaptorInterface)) then
+    oldJavaClassNameForAdaptorManager(anAdaptorInterface)
+else
+    newJavaClassNameForAdaptorManager(anAdaptorInterface)
+endif)
+/]
+
+[query public javaClassFullNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForAdaptorManager(anAdaptorInterface).concat('.').concat(javaClassNameForAdaptorManager(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorManager(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForAdaptorManager(anAdaptorInterface)).concat('.java')
+/]
+
+[query public oldJavaClassFullFileNameForAdaptorManager(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForAdaptorManager(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(oldJavaClassNameForAdaptorManager(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for ResourceShapeService /]
+[query public javaClassPackageNameForResourceShapeService(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface).concat('.services')
+/]
+
+[query public javaClassNameForResourceShapeService(anAdaptorInterface : AdaptorInterface) : String = 
+'ResourceShapeService'
+/]
+
+[query public javaClassFullNameForResourceShapeService(anAdaptorInterface : AdaptorInterface) : String = 
+javaClassPackageNameForResourceShapeService(anAdaptorInterface).concat('.').concat(javaClassNameForResourceShapeService(anAdaptorInterface))
+/]
+
+[query public javaClassFullFileNameForResourceShapeService(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaClassPackageNameForResourceShapeService(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaClassNameForResourceShapeService(anAdaptorInterface)).concat('.java')
+/]
+
+[comment Services for AdaptorConstants /]
+[query public javaInterfacePackageNameForAdaptorConstants(anAdaptorInterface : AdaptorInterface) : String = 
+javaBasePackageName(anAdaptorInterface)
+/]
+
+[query public javaInterfaceNameForAdaptorConstants(anAdaptorInterface : AdaptorInterface) : String = 
+'ServerConstants'
+/]
+
+[query public javaInterfaceFullNameForAdaptorConstants(anAdaptorInterface : AdaptorInterface) : String = 
+javaInterfacePackageNameForAdaptorConstants(anAdaptorInterface).concat('.').concat(javaInterfaceNameForAdaptorConstants(anAdaptorInterface))
+/]
+
+[query public javaInterfaceFullFileNameForAdaptorConstants(anAdaptorInterface : AdaptorInterface) : String = 
+javaFilesBasePath(anAdaptorInterface).concatenatePaths(javaInterfacePackageNameForAdaptorConstants(anAdaptorInterface).substituteAll('.', '/')).concat('/').concat(javaInterfaceNameForAdaptorConstants(anAdaptorInterface)).concat('.java')
+/]
+
+[query public resourceTypeJavaInterfaceFullNameForConstants(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(), anAdaptorInterface, defaultJavaPackageName)
+else
+    javaInterfaceFullNameForConstants(aResource.describes.definingVocabulary(), anAdaptorInterface, defaultJavaPackageName)
+endif)
+/]
+
+[query public resourceTypeNamespace(aResource: Resource) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    javaInterfaceNameForConstants(aResource.definingDomainSpecification()).concat('.').concat(domainSpecificationImplicitVocabularyNamespaceConstantName(aResource.definingDomainSpecification()))
+else
+    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResource.describes.definingVocabulary()))
+endif)
+/]
+
+[query public resourceTypePrefix(aResource: Resource) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    javaInterfaceNameForConstants(aResource.definingDomainSpecification()).concat('.').concat(domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aResource.definingDomainSpecification()))
+else
+    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(vocabularyPreferredNamespacePrefixConstantName(aResource.describes.definingVocabulary()))
+endif)
+/]
+
+[query public resourceTypeLocalName(aResource: Resource) : String =
+(if (aResource.describes.oclIsUndefined()) then
+    '"'.concat(aResource.name).concat('"')
+else
+    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(classConstantName(aResource.describes))
+endif)
+/]
+
+[query public javaConstantName(aDomainSpecification : DomainSpecification) : String = 
+javaConstantString(aDomainSpecification.name)
+/]
+
+[query public domainSpecificationDeprecatedConstantName(aDomainSpecification : DomainSpecification) : String = 
+javaConstantName(aDomainSpecification).concat('_DOMAIN')
+/]
+
+[query public domainSpecificationConstantName(aDomainSpecification : DomainSpecification) : String = 
+javaConstantName(aDomainSpecification).concat('_DOMAIN_NAME')
+/]
+
+[query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification : DomainSpecification) : String = 
+javaConstantName(aDomainSpecification).concat('_NAMSPACE')
+/]
+
+[query public domainSpecificationImplicitVocabularyNamespacePrefixConstantName(aDomainSpecification : DomainSpecification) : String = 
+javaConstantName(aDomainSpecification).concat('_NAMSPACE_PREFIX')
+/]
+
+[query public domainSpecificationImplicitVocabularyNamespaceValue(aDomainSpecification : DomainSpecification) : String = 
+(if (aDomainSpecification.defaultVocabulary.oclIsUndefined()) then
+    aDomainSpecification.namespaceURI
+else
+    aDomainSpecification.defaultVocabulary.namespaceURI
+endif)
+/]
+
+[query public domainSpecificationImplicitVocabularyNamespacePrefixValue(aDomainSpecification : DomainSpecification) : String = 
+(if (aDomainSpecification.defaultVocabulary.oclIsUndefined()) then
+    aDomainSpecification.namespacePrefix.name
+else
+    aDomainSpecification.defaultVocabulary.preferredNamespacePrefix
+endif)
+/]
+
+[comment Services for RequiredAdaptor /]
+[query public servicedResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
+if (aRequiredAdaptor.oclIsTypeOf(GenericRequiredAdaptor)) then
+	servicedResourcesForGenericRequiredAdaptor(aRequiredAdaptor.oclAsType(GenericRequiredAdaptor))
+else
+	servicedResourcesForModelledRequiredAdaptor(aRequiredAdaptor.oclAsType(ModelledRequiredAdaptor))
+endif
+/]
+
+[query private servicedResourcesForGenericRequiredAdaptor(aGenericRequiredAdaptor : GenericRequiredAdaptor) : Set(Resource) =
+aGenericRequiredAdaptor.servicedResources
+/]
+
+[query private servicedResourcesForModelledRequiredAdaptor(aModelledRequiredAdaptor : ModelledRequiredAdaptor) : Set(Resource) =
+servicedResources(aModelledRequiredAdaptor.adaptorInterface)
+/]
+
+[query public relevantResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
+servicedResources(aRequiredAdaptor)
+->union(servicedResources(aRequiredAdaptor)->collectNested(aResource : Resource | aResource.allRelatedResources())->flatten()->asSet())
+/]
+
+[query public relevantDomainSpecifications(aRequiredAdaptor : RequiredAdaptor) : Set(DomainSpecification) =
+relevantResources(aRequiredAdaptor)->collectNested(aResource : Resource | 
+	definingDomainSpecification(aResource)
+	->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
+)->flatten()->asSet()
+/]
