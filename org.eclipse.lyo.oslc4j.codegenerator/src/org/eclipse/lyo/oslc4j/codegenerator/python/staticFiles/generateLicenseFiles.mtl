@@ -15,15 +15,12 @@
  */
 /]
 [module generateLicenseFiles('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::staticFiles::generateLicenseFiles/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::staticFiles::generateNoticeHTML/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::staticFiles::generateEDLV10HTML/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateNoticeHTML/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateEDLV10HTML/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateEPLV10HTML/]
 
-[comment same/]
-[template public generateLicenseFiles(traceabilityContext : OclAny)]
-[traceabilityContext.generateNoticeHTML() /]
-[traceabilityContext.generateEDLV10HTML() /]
-[traceabilityContext.generateEPLV10HTML() /]
-[/template]

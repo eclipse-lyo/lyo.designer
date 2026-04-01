@@ -15,6 +15,7 @@
  */
 /]
 [module services('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
 
 [query private javaKeywords(traceabilityContext : OclAny) : Set(String) =
 Set{'abstract', 'continue', 'for', 'new', 'switch', 'assert', 'default', 'goto', 'package', 'synchronized', 'boolean', 'do',
@@ -33,17 +34,6 @@ Set{'appendable', 'autocloseable', 'charsequence', 'cloneable', 'comparable', 'i
 
 [query private isJavaSpecialWord(aString : String) : Boolean =
 ((javaKeywords(aString)->union(javaLangWords(aString)))->includes(aString.toLower()))
-/]
-
-[comment TODO: we should avoid relying on "eContainer", since objects that come from a composing emf file, will not have the eContainer relationship setup as expected.
-This method should be able to work even for objects that come from a differnet emf file than that containing the AdaptorInterface. 
-You should also question any other use of "eContainer" in this whole project /]
-[query public containingAdaptorInterface(obj : OclAny) : AdaptorInterface =
-(if (not obj.eContainer(AdaptorInterface).oclIsUndefined()) then
-    obj.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
-else
-    null
-endif)
 /]
 
 [query public javaBasePackageName(anAdaptorInterface : AdaptorInterface) : String =
@@ -206,42 +196,6 @@ anAdaptorInterface.filesBasePath().concatenatePaths(webFilesRelativePath())
 '/'.concat(anAdaptorInterface.javaBasePackageName()).substituteAll('.', '/')
 /]
 
-[query public isFromImportedModels(anAdaptorInterface : AdaptorInterface, obj : EObject) : Boolean = 
-    not (anAdaptorInterface.eResource() = obj.eResource())
-/]
-
-[query public isFromImportedModels(aSpecification: Specification, obj : EObject) : Boolean = 
-    not (aSpecification.eResource() = obj.eResource())
-/]
-
-[comment unlike other "do not generate" flags, doNotGenerateFromImportedModels is not recursive.
-We only read the top level "doNotGenerateFromImportedModels" and decide whether objects from any imported model (direct or indirect) will be generated./]
-[query public generateIfFromImportedModels(anAdaptorInterface : AdaptorInterface, obj : EObject) : Boolean = 
-    not anAdaptorInterface.doNotGenerateFromImportedModels() 
-    or (not anAdaptorInterface.isFromImportedModels(obj))
-/]
-
-[query public generateIfFromImportedModels(aSpecification: Specification, obj : EObject) : Boolean = 
-    not aSpecification.doNotGenerateFromImportedModels() 
-    or (not aSpecification.isFromImportedModels(obj))
-/]
-
-[query public doNotGenerateFromImportedModels(anAdaptorInterface : AdaptorInterface) : Boolean = 
-(if (anAdaptorInterface.configuration.oclIsUndefined())._or(anAdaptorInterface.configuration.generalConfiguration.doNotGenerateFromImportedModels.oclIsUndefined()) then 
-    false
-else
-    anAdaptorInterface.configuration.generalConfiguration.doNotGenerateFromImportedModels
-endif)
-/]
-
-[query public doNotGenerateFromImportedModels(aSpecification: Specification) : Boolean = 
-(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.doNotGenerateFromImportedModels.oclIsUndefined()) then 
-    false
-else
-    aSpecification.configuration.generalConfiguration.doNotGenerateFromImportedModels
-endif)
-/]
-
 [query public generateJspFilesForOslcUI(anAdaptorInterface : AdaptorInterface) : Boolean = 
 (if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generateJspFilesForOslcUI.oclIsUndefined()) then 
     false
@@ -255,73 +209,6 @@ endif)
     false
 else
     anAdaptorInterface.configuration.doNotRegenerateJspFiles
-endif)
-/]
-
-[comment We do not generate if the model does not contain a projectSetting, since we won't know how to. We need all the parameters to produce valid files/]
-[query public doNotGenerateProjectFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
-(if (anAdaptorInterface.configuration.oclIsUndefined()) then 
-    true
-else
-    (if anAdaptorInterface.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
-        false
-    else
-        anAdaptorInterface.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
-    endif)
-endif)
-/]
-[query public doNotGenerateProjectFiles(aSpecification : Specification) : Boolean = 
-(if (aSpecification.configuration.oclIsUndefined()) then 
-    true
-else
-    (if aSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
-        false
-    else
-        aSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
-    endif)
-endif)
-/]
-[query public doNotGenerateProjectFiles(aDomainSpecification : DomainSpecification) : Boolean = 
-(if (aDomainSpecification.configuration.oclIsUndefined()) then 
-    true
-else
-    (if aDomainSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
-        false
-    else
-        aDomainSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
-    endif)
-endif)
-/]
-
-[query public doNotGenerate(aSpecification: Specification) : Boolean = 
-(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
-    false
-else
-    aSpecification.configuration.generalConfiguration.doNotGenerate
-endif)
-/]
-
-[query public doNotGenerate(vocabularies: Vocabularies) : Boolean = 
-(if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
-    false
-else
-    vocabularies.configuration.generalConfiguration.doNotGenerate
-endif)
-/]
-
-[query public doNotGenerate(aDomainSpecification: DomainSpecification) : Boolean = 
-(if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
-    aDomainSpecification.eContainer(Specification).doNotGenerate()
-else
-    aDomainSpecification.configuration.generalConfiguration.doNotGenerate
-endif)
-/]
-
-[query public doNotGenerate(aVocabulary: Vocabulary) : Boolean = 
-(if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
-    aVocabulary.eContainer(Vocabularies).doNotGenerate()
-else
-    aVocabulary.configuration.generalConfiguration.doNotGenerate
 endif)
 /]
 
@@ -436,54 +323,8 @@ uriSegment.tokenize('}')
     ->collect(token : String | token.substring(token.index('{')+1))
 /]
 
-[query private stripURISegmentEnd(URISegment : String) : String =
-(if (URISegment.size() = 0) then
-     URISegment
-else
-    (if (URISegment.size() = 1) then
-         (if (URISegment.endsWith('/')) then '' else URISegment endif)
-    else
-        URISegment.substring(1, URISegment.size()-(if (URISegment.endsWith('/')) then 1 else 0 endif))
-    endif)
-endif)
-/]
-
-[query private stripURISegmentStart(URISegment : String) : String =
-(if (URISegment.size() = 0) then
-     URISegment
-else
-    (if (URISegment.size() = 1) then
-         (if (URISegment.startsWith('/')) then '' else URISegment endif)
-    else
-        URISegment.substring((if (URISegment.startsWith('/')) then 2 else 1 endif), URISegment.size())
-    endif)
-endif)
-/]
-
 [query public JAXRSConcatURISegments(leftURISegment : String, rightURISegment : String) : String =
     concatenatePaths(leftURISegment, rightURISegment)
-/]
-
-[comment if the leftSegment is empty or "/", then we take the rightSegment as is.
-We don't strip the rightSegment, because we want to keep the starting / - if it exists. /]
-[query public concatenatePaths (leftSegment : String, rightSegment : String) : String =
-(if (stripURISegmentEnd(leftSegment).size() = 0) then
-    rightSegment
-else
-    (if (stripURISegmentStart(rightSegment).size() = 0) then
-        leftSegment
-    else
-        stripURISegmentEnd(leftSegment).concat('/').concat(stripURISegmentStart(rightSegment))
-    endif)
-endif)
-/]
-
-[query public commaSeparate(commaSeparatedString : String, prependIfNotEmpty : Boolean, appendIfNotEmpty : Boolean) : String =
-(if prependIfNotEmpty._and(commaSeparatedString.size() > 0) then ', ' else ''endif)
-.concat(commaSeparatedString)
-.concat(
-(if appendIfNotEmpty._and(commaSeparatedString.size() > 0) then ' ,' else ''endif)
-)
 /]
 
 [query public javaSimpleStringFromUri(uriString: String, toUpperFirst : Boolean) : String =
@@ -506,30 +347,6 @@ concatenate(
 let base : String = (if (isJavaSpecialWord(aString)) then prefixIfNecessary.concat(javaString(aString).toUpperFirst()) else javaString(aString) endif)
 in 
 if (toUpperFirst) then base.toUpperFirst() else base.toLowerFirst() endif
-/]
-
-[query public concatenate (aStringSequence : Sequence(String)) : String =
-(if (aStringSequence->size() = 0) then
-    ''
-else
-    (if (aStringSequence->size() = 1) then
-        aStringSequence->at(1)
-    else
-        (if (aStringSequence->size() = 2) then
-            aStringSequence->at(1).concat(aStringSequence->at(2))
-        else
-            aStringSequence->at(1).concat(aStringSequence->at(2)).concat(concatenate(aStringSequence->subSequence(3, aStringSequence->size())))
-        endif)
-    endif)
-endif)
-/]
-
-[query public concatenate (aStringSequence : Sequence(String), separatorString : String) : String =
-    concatenate(aStringSequence->sep(separatorString).oclAsType(String))
-/]
-
-[query public isNullOrEmpty (aString : String) : Boolean =
-(aString.oclIsUndefined())._or(aString.trim().equalsIgnoreCase(''))
 /]
 
 [query public annotationConsumesRDF(ai: AdaptorInterface) : String =

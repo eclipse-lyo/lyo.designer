@@ -15,16 +15,10 @@
  */
 /]
 [module vocabularyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::vocabularyServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
-
-[query public definingVocabulary(aProperty: Property) : Vocabulary =
-aProperty.eContainer(Vocabulary)
-/]
-
-[query public definingVocabulary(aClass: Class) : Vocabulary =
-aClass.eContainer(Vocabulary)
-/]
 
 [query public javaInterfacePackageNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultJavaPackageName : String) : String = 
 javaPackageName(aVocabulary, anAdaptorInterface, defaultJavaPackageName)

@@ -15,6 +15,11 @@
  */
 /]
 [module adaptorInterfaceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::resourceServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::fileServices/]
@@ -22,7 +27,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceProviderServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::vocabularyServices/]
-
 
 [comment url patterns in  most cases end with '\*'. But a url-pattern with just '\' may be found for exact matches. /]
 [query public getServletPath(anAdaptorInterface : AdaptorInterface) : String = 
@@ -198,11 +202,6 @@ anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceP
 )
 /]
 
-[query public relevantResources(aSpecification : Specification) : Set(Resource) =
-    (aSpecification.domainSpecifications.resources
-    ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
-/]
-
 [query public servicedResources(aWebService: WebService) : Set(Resource) = 
 aWebService.resourceTypes->asSet()
 /]
@@ -235,27 +234,8 @@ anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceP
 )
 /]
 
-[query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
-aSpecification.domainSpecifications->union(
-    relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
-)
-/]
-
 [query public relevantVocabularies(anAdaptorInterface : AdaptorInterface) : Set(Vocabulary) =
 anAdaptorInterface.relevantDomainSpecifications()->collectNested(aDomainSpecification : DomainSpecification | 
-    relevantVocabularies(aDomainSpecification)
-)->flatten()->asSet()
-/]
-
-[query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
-aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
-->union(
-    aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
-)->asSet()
-/]
-
-[query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
-relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
     relevantVocabularies(aDomainSpecification)
 )->flatten()->asSet()
 /]

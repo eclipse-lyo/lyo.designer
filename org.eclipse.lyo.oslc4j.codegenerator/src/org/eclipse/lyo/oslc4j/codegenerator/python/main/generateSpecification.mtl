@@ -15,6 +15,9 @@
  */
 /]
 [module generateSpecification('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary','http://www.eclipse.org/emf/2002/Ecore')]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::staticFiles::generateLicenseFiles/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
