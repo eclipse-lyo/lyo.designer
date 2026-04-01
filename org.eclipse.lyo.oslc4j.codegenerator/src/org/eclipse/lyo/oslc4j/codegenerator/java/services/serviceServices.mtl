@@ -15,7 +15,6 @@
  */
 /]
 [module serviceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
-[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]

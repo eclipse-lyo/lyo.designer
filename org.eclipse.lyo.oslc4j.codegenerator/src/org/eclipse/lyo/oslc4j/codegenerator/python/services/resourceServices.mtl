@@ -15,11 +15,119 @@
  */
 /]
 [module resourceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
-[import org::eclipse::lyo::oslc4j::codegenerator::common::services::domainSpecificationServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::common::services::resourceServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
+
+[comment same/]
+[query public generate(aResource: Resource) : Boolean = 
+    not aResource.definingDomainSpecification().doNotGenerate()
+/]
+
+[comment same/]
+[query public directParentResource(aResource: Resource) : Resource =
+    (if (aResource.extends->notEmpty()) then 
+        aResource.extends->first()
+    else
+        null
+    endif)
+/]
+
+[comment same/]
+[query public parentResources(aResource: Resource) : Set(Resource) =
+    (if (directParentResource(aResource)->notEmpty()) then 
+        directParentResource(aResource)->union(parentResources(directParentResource(aResource)))
+    else
+        Set{}
+    endif)
+/]
+
+[comment same/]
+[query public allExtendingResources(aResource: Resource) : OrderedSet(Resource) =
+	aResource.extends
+	->union(
+			aResource.extends->collectNested(r:Resource | allExtendingResources(r))->flatten()->asOrderedSet()
+			)
+	->asOrderedSet()
+/]
+
+[comment same/]
+[query public interfaceResources(aResource: Resource) : OrderedSet(Resource) =
+	((directInterfaceResources(aResource)
+	->union(
+			directInterfaceResources(aResource)->collectNested(r:Resource | allExtendingResources(r))->flatten()->asOrderedSet()
+			)
+	->asOrderedSet())
+	- parentResources(aResource))
+	->asOrderedSet()
+/]
+
+[comment same/]
+[query private directInterfaceResources(aResource: Resource) : OrderedSet(Resource) =
+	(if (aResource.extends->size() > 1) then 
+        aResource.extends->subOrderedSet(2, aResource.extends->size())
+    else
+        OrderedSet{}
+    endif)
+
+/]
+
+[comment same/]
+[query public directlyRelatedResources(aResource: Resource) : Set(Resource) =
+	(aResource.resourceProperties->collect(p : ResourceProperty | p.range))->flatten()->asSet()
+	->union(
+		aResource.extends
+	)->flatten()->asSet()
+/]
+
+[comment same/]
+[query private allRelatedResources(aResource: Resource, alreadyAnalysed : Set(Resource), depth : Integer) : Set(Resource) =
+let drr : Set(Resource) = directlyRelatedResources(aResource),
+	newAlreadyAnalysed : Set(Resource) = (Set{aResource}->union(drr))->union(alreadyAnalysed),
+	toAnalyse : Set(Resource) =  drr - alreadyAnalysed in 
+
+	(if (depth > 20) then 
+        drr - alreadyAnalysed 
+    else
+		toAnalyse->collect(r : Resource | 
+			allRelatedResources(r, newAlreadyAnalysed, depth+1)
+			->union(directlyRelatedResources(r))
+			->union(Set{r})
+		)->flatten()->asSet()
+    endif)
+/]
+
+[comment same/]
+[query public allRelatedResources(aResource: Resource) : Set(Resource) =
+let arr : Set(Resource) = allRelatedResources(aResource, Set{}, 1),
+	leftOut : Set(Resource) = arr->collect(r : Resource | directlyRelatedResources(r) - arr)->flatten()->asSet()
+in
+	arr
+	->union(leftOut)
+	->union(leftOut->collect(r : Resource | allRelatedResources(r, arr->union(Set{r}), 1))->flatten()->asSet())
+/]
+
+[comment same/]
+[query public allProperties(aResource: Resource) : Sequence(ResourceProperty) = 
+((aResource.resourceProperties->asSequence())
+	->union(inheritedProperties(aResource))
+	->union(interfaceProperties(aResource))
+)
+/]
+
+[comment same/]
+[query public inheritedProperties(aResource: Resource) : Sequence(ResourceProperty) = 
+    (if (not aResource.directParentResource().oclIsUndefined()) then 
+        (aResource.directParentResource().resourceProperties->asSequence())->union(inheritedProperties(aResource.directParentResource()))
+    else
+        Sequence{}
+    endif)
+/]
+
+[comment same/]
+[query public interfaceProperties(aResource: Resource) : Sequence(ResourceProperty) =
+	aResource.interfaceResources().resourceProperties
+/]
 
 [query public pythonName(aResource: Resource) : String = 
 pythonString(aResource.name, aResource.definingDomainSpecification().namespacePrefix.name, true)
@@ -79,6 +187,7 @@ resourceConstantName(aResource).concat('_TYPE')
 [query public pythonAttributeName(aProperty: ResourceProperty, aResource : Resource) : String =
     pythonAttributeName(aProperty)
 /]
+
 
 [query public pythonNamespaceAnnotation(aResource: Resource) : String =
 '@oslc_namespace('
