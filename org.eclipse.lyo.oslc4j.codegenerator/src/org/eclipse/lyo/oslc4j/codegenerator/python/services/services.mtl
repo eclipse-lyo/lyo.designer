@@ -15,6 +15,7 @@
  */
 /]
 [module services('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
 
 [query private pythonKeywords(traceabilityContext : OclAny) : Set(String) =
 Set{'False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'}
@@ -172,118 +173,6 @@ aDomainSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths
 aVocabulary.filesBasePath(anAdaptorInterface, default).concatenatePaths(pythonFilesRelativePath())
 /]
 
-
-[query public isFromImportedModels(anAdaptorInterface : AdaptorInterface, obj : EObject) : Boolean = 
-    not (anAdaptorInterface.eResource() = obj.eResource())
-/]
-
-[comment same/]
-[query public isFromImportedModels(aSpecification: Specification, obj : EObject) : Boolean = 
-    not (aSpecification.eResource() = obj.eResource())
-/]
-[comment same/]
-[query public generateIfFromImportedModels(anAdaptorInterface : AdaptorInterface, obj : EObject) : Boolean = 
-    not anAdaptorInterface.doNotGenerateFromImportedModels() 
-    or (not anAdaptorInterface.isFromImportedModels(obj))
-/]
-
-[comment same/]
-[query public generateIfFromImportedModels(aSpecification: Specification, obj : EObject) : Boolean = 
-    not aSpecification.doNotGenerateFromImportedModels() 
-    or (not aSpecification.isFromImportedModels(obj))
-/]
-[comment same/]
-[query public doNotGenerateFromImportedModels(anAdaptorInterface : AdaptorInterface) : Boolean = 
-(if (anAdaptorInterface.configuration.oclIsUndefined())._or(anAdaptorInterface.configuration.generalConfiguration.doNotGenerateFromImportedModels.oclIsUndefined()) then 
-    false
-else
-    anAdaptorInterface.configuration.generalConfiguration.doNotGenerateFromImportedModels
-endif)
-/]
-
-[comment same/]
-[query public doNotGenerateFromImportedModels(aSpecification: Specification) : Boolean = 
-(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.doNotGenerateFromImportedModels.oclIsUndefined()) then 
-    false
-else
-    aSpecification.configuration.generalConfiguration.doNotGenerateFromImportedModels
-endif)
-/]
-
-[comment same/]
-[query public doNotGenerateProjectFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
-(if (anAdaptorInterface.configuration.oclIsUndefined()) then 
-    true
-else
-    (if anAdaptorInterface.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
-        false
-    else
-        anAdaptorInterface.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
-    endif)
-endif)
-/]
-[comment same/]
-[query public doNotGenerateProjectFiles(aSpecification : Specification) : Boolean = 
-(if (aSpecification.configuration.oclIsUndefined()) then 
-    true
-else
-    (if aSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
-        false
-    else
-        aSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
-    endif)
-endif)
-/]
-[comment same/]
-[query public doNotGenerateProjectFiles(aDomainSpecification : DomainSpecification) : Boolean = 
-(if (aDomainSpecification.configuration.oclIsUndefined()) then 
-    true
-else
-    (if aDomainSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
-        false
-    else
-        aDomainSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
-    endif)
-endif)
-/]
-
-[comment same/]
-[query public doNotGenerate(aSpecification: Specification) : Boolean = 
-(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
-    false
-else
-    aSpecification.configuration.generalConfiguration.doNotGenerate
-endif)
-/]
-
-[comment same/]
-[query public doNotGenerate(vocabularies: Vocabularies) : Boolean = 
-(if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
-    false
-else
-    vocabularies.configuration.generalConfiguration.doNotGenerate
-endif)
-/]
-
-[comment same/]
-[query public doNotGenerate(aDomainSpecification: DomainSpecification) : Boolean = 
-(if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
-    aDomainSpecification.eContainer(Specification).doNotGenerate()
-else
-    aDomainSpecification.configuration.generalConfiguration.doNotGenerate
-endif)
-/]
-
-[comment same/]
-[query public doNotGenerate(aVocabulary: Vocabulary) : Boolean = 
-(if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.doNotGenerate.oclIsUndefined()) then 
-    aVocabulary.eContainer(Vocabularies).doNotGenerate()
-else
-    aVocabulary.configuration.generalConfiguration.doNotGenerate
-endif)
-/]
-
-[comment same/]
 [query private stripURISegmentEnd(URISegment : String) : String =
 (if (URISegment.size() = 0) then
      URISegment
@@ -296,7 +185,6 @@ else
 endif)
 /]
 
-[comment same/]
 [query private stripURISegmentStart(URISegment : String) : String =
 (if (URISegment.size() = 0) then
      URISegment
@@ -309,7 +197,6 @@ else
 endif)
 /]
 
-[comment same/]
 [query public concatenatePaths (leftSegment : String, rightSegment : String) : String =
 (if (stripURISegmentEnd(leftSegment).size() = 0) then
     rightSegment
@@ -320,14 +207,6 @@ else
         stripURISegmentEnd(leftSegment).concat('/').concat(stripURISegmentStart(rightSegment))
     endif)
 endif)
-/]
-
-[query public commaSeparate(commaSeparatedString : String, prependIfNotEmpty : Boolean, appendIfNotEmpty : Boolean) : String =
-(if prependIfNotEmpty._and(commaSeparatedString.size() > 0) then ', ' else ''endif)
-.concat(commaSeparatedString)
-.concat(
-(if appendIfNotEmpty._and(commaSeparatedString.size() > 0) then ' ,' else ''endif)
-)
 /]
 
 [query public pythonSimpleStringFromUri(uriString: String, toUpperFirst : Boolean) : String =
@@ -350,29 +229,5 @@ concatenate(
 let base : String = (if (isPythonSpecialWord(aString)) then prefixIfNecessary.concat(pythonString(aString).toUpperFirst()) else pythonString(aString) endif)
 in 
 if (toUpperFirst) then base.toUpperFirst() else base.toLowerFirst() endif
-/]
-
-[query public concatenate (aStringSequence : Sequence(String)) : String =
-(if (aStringSequence->size() = 0) then
-    ''
-else
-    (if (aStringSequence->size() = 1) then
-        aStringSequence->at(1)
-    else
-        (if (aStringSequence->size() = 2) then
-            aStringSequence->at(1).concat(aStringSequence->at(2))
-        else
-            aStringSequence->at(1).concat(aStringSequence->at(2)).concat(concatenate(aStringSequence->subSequence(3, aStringSequence->size())))
-        endif)
-    endif)
-endif)
-/]
-
-[query public concatenate (aStringSequence : Sequence(String), separatorString : String) : String =
-    concatenate(aStringSequence->sep(separatorString).oclAsType(String))
-/]
-
-[query public isNullOrEmpty (aString : String) : Boolean =
-(aString.oclIsUndefined())._or(aString.trim().equalsIgnoreCase(''))
 /]
 

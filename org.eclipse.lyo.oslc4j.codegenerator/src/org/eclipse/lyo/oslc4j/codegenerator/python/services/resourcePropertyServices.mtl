@@ -15,6 +15,10 @@
  */
 /]
 [module resourcePropertyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::resourcePropertyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::domainSpecificationServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
@@ -35,14 +39,6 @@ not (Sequence{'URI'}->includes(aProperty.valueType.toString()))
     domainSpecificationImplicitVocabularyNamespaceConstantName(aResourceProperty.definingDomainSpecification())
 else
     vocabularyNamespaceConstantName(aResourceProperty.propertyDefinition.definingVocabulary())
-endif)
-/]
-
-[query public resourcePropertyDefinitionLocalName(aResourceProperty: ResourceProperty) : String =
-(if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
-    '"'.concat(aResourceProperty.name).concat('"')
-else
-    '"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
 endif)
 /]
 
