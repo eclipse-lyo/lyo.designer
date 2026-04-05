@@ -16,8 +16,6 @@
 /]
 [module generateApplicationBinder('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::storeServices/]
 

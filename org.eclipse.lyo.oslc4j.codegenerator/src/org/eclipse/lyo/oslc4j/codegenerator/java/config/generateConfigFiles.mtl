@@ -17,7 +17,6 @@
 [module generateConfigFiles('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::config::generatePomXml/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::config::generateWebXml/]
 

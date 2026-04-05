@@ -22,7 +22,6 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
 
 [comment TODO: we should avoid relying on "eContainer", since objects that come from a composing emf file, will not have the eContainer relationship setup as expected.
 This method should be able to work even for objects that come from a differnet emf file than that containing the AdaptorInterface. 

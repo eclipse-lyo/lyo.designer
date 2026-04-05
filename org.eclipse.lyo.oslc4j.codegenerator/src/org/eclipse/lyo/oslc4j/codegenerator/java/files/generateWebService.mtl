@@ -29,7 +29,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceProviderCatalogServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::jsp::generateGetResourceJsp/]
 
 [template public generateClassHeader(aWebService : WebService) post (trim())]
 // [protected ('Copyright')]

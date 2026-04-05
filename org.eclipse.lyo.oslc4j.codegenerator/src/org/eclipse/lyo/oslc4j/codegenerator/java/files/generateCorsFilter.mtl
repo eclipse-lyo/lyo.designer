@@ -16,15 +16,7 @@
 /]
 [module generateCorsFilter('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::webServiceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceProviderServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceProviderCatalogServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::osgiServices/]
 
 [template public generateImports(anAdaptorInterface : AdaptorInterface)]
 // spotless:off

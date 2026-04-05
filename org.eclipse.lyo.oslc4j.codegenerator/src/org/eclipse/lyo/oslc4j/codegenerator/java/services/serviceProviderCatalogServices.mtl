@@ -18,7 +18,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 
 [query public containingServiceProviderCatalog(obj : OclAny) : ServiceProviderCatalog =
 obj.eContainer(ServiceProviderCatalog)

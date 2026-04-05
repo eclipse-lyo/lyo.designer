@@ -19,9 +19,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::jspServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 
 [template public generateResourceSelectorJsp(aSelectionDialog: Dialog)]
 [if (containingAdaptorInterface(aSelectionDialog).generateJspFile(resourceSelectorJspFullFileName(aSelectionDialog)))]

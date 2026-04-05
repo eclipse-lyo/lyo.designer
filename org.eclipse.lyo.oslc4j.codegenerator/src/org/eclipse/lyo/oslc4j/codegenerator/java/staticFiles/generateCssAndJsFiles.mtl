@@ -16,7 +16,6 @@
 /]
 [module generateCssAndJsFiles('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::staticFiles::generateAdaptorCss/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::staticFiles::generateUiPreviewHelperJs/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::staticFiles::generateDelegatedUiHelperJs/]

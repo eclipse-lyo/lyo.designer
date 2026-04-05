@@ -16,7 +16,6 @@
 /]
 [module generateConfigFiles('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 
 [comment todo: remove unused parameters /]
 [template public generateConfigFiles(aSpecification : Specification, traceabilityContext : OclAny, defaultFilesPath : String)]

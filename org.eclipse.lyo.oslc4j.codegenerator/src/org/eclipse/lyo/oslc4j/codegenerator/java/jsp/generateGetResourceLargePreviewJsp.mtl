@@ -26,7 +26,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::jspServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourcePropertyToHtml/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::staticFiles::generateCssAndJsFiles/]
 
 [template public generateGetResourceLargePreviewJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface, defaultJavaClassPackageName : String)]
 [if (contextAdaptorInterface.generateJspFile(getResourceLargePreviewJspFullFileName(aResource, contextAdaptorInterface)))]

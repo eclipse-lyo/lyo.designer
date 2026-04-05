@@ -16,7 +16,6 @@
 /]
 [module generateSwaggerIndexJsp('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::jspServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 

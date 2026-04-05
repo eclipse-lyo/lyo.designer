@@ -16,11 +16,9 @@
 /]
 [module generateAdaptorClient('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::requiredAdaptorServices/]
 
 [template public generateAdaptorClient(aRequiredAdaptor: RequiredAdaptor, anAdaptorInterface : AdaptorInterface)]

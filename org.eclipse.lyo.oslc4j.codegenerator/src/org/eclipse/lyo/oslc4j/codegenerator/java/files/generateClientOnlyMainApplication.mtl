@@ -17,13 +17,11 @@
 [module generateClientOnlyMainApplication('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::adaptorInterfaceServices/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::requiredAdaptorServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceProviderServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceProviderCatalogServices/]
 
 [template public generateClientOnlyMainApplication(anAdaptorInterface : AdaptorInterface)]
 [file (javaClassFullFileNameForClientOnlyMainApplication(anAdaptorInterface), false, 'UTF-8')]

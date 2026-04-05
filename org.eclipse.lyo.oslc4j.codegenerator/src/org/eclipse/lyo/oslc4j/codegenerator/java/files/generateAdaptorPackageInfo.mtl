@@ -16,14 +16,10 @@
 /]
 [module generateAdaptorPackageInfo('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::vocabularyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceProviderServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceProviderCatalogServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::osgiServices/]
 
 [template public generateAdaptorPackageInfo(resourcesOnSameFolderPath: Set(Resource), contextAdaptorInterface : AdaptorInterface, defaultJavaFilesPath : String, defaultJavaClassPackageName : String)]

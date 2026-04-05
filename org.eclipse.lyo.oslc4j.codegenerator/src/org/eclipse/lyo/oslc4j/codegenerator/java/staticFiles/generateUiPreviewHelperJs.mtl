@@ -17,7 +17,6 @@
 [module generateUiPreviewHelperJs('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::jspServices/]
 
 [template public generateUiPreviewHelperJs(anAdaptorInterface : AdaptorInterface)]
 [file (webFilesBasePath(anAdaptorInterface).concat('/static/js/ui-preview-helper.js') , false, 'UTF-8')]

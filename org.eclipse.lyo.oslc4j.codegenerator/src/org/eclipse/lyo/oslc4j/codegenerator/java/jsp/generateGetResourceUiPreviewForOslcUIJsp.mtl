@@ -17,12 +17,7 @@
 [module generateGetResourceUiPreviewForOslcUIJsp('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourcePropertyServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::jspServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourcePropertyToHtml/]
 
 [template public generateGetResourceUiPreviewForOslcUIJsp(contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface, defaultJavaClassPackageName : String)]
 [if (contextAdaptorInterface.generateJspFile(getResourceUiPreviewForOslcUIJspFullFileName(contextAdaptorInterface)))]

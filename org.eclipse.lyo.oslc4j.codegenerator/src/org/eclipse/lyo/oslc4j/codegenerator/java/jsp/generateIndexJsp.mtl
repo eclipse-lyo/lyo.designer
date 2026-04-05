@@ -19,9 +19,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::jspServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::staticFiles::generateCssAndJsFiles/]
 
 [template public generateIndexJsp(anAdaptorInterface : AdaptorInterface)]
 [if (anAdaptorInterface.generateJspFile(webFilesBasePath(anAdaptorInterface).concatenatePaths('index.jsp')))]

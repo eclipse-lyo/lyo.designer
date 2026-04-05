@@ -19,12 +19,8 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::adaptorInterfaceServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::storeServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::vocabularyServices/]
 
 [query public javaVersion(lyoVersion: String) : String =
 (if (lyoVersion.first(1).toInteger() > 5) then 

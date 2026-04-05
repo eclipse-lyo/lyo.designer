@@ -17,7 +17,6 @@
 [module generateAdaptorCss('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::jspServices/]
 
 [template public generateAdaptorCss(anAdaptorInterface : AdaptorInterface)]
 [file (webFilesBasePath(anAdaptorInterface).concat('/static/css/adaptor.css') , false, 'UTF-8')]

@@ -16,8 +16,6 @@
 /]
 [module generateAdaptorServletListener('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 
 [template public additionalContextInitialization(traceabilityContext : OclAny) post (trim())]

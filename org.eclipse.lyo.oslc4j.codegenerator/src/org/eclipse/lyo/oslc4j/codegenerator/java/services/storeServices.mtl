@@ -20,7 +20,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::services::webServiceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
 
 [comment We assume a single store per adaptor. The Sirius model ensures that. 
 But the EMF model allows multiple stores, since this could potentially be of interest in future./]
