@@ -47,7 +47,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::java::files::generateResourceInterface/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::files::generateResourceService/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::files::generateWebService/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::staticFiles::generateLicenseFiles/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::java::files::generateRootServicesService/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::files::generateCorsFilter/]

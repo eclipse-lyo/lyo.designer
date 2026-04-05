@@ -24,12 +24,10 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourcePropertyServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateAdaptorPackageInfo/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateDomainSpecificationConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateVocabularyConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateResource/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateLicenseFiles/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::config::generateConfigFiles/]
 
 [comment same/]

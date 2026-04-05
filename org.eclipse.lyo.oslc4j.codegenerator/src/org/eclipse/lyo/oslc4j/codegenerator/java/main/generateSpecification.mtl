@@ -30,7 +30,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::java::files::generateVocabularyConstants/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::files::generateResource/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::files::generateResourceInterface/]
-[import org::eclipse::lyo::oslc4j::codegenerator::java::staticFiles::generateLicenseFiles/]
 [import org::eclipse::lyo::oslc4j::codegenerator::java::config::generateConfigFiles/]
 
 [query public canGenerate(aSpecification : Specification) : Boolean = 
