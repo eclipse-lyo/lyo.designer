@@ -25,6 +25,13 @@
                icon="icons/default.gif"
                label="Generate Complete Toolchain Java Code"
                menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
+         <action
+               class="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGeneratePythonCodeAction"
+               enablesFor="+"
+               id="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGeneratePythonCodeAction"
+               icon="icons/default.gif"
+               label="Generate Client-Side Toolchain Python Code"
+               menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
       </objectContribution>
    </extension>
 </plugin>
