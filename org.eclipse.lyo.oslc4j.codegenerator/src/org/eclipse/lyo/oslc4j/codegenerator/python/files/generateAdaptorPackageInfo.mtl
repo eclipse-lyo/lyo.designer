@@ -19,7 +19,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 
-[template public generateAdaptorPackageInit(resources : Set(Resource), defaultFilesPath : String, defaultPackageName : String)]
+[template public generateAdaptorPackageInfo(resources : Set(Resource), defaultFilesPath : String, defaultPackageName : String)]
 [if (resources->size() > 0)]
 	[comment This can be any resource because it's only used for constructing correct path /]
     [let aResource : Resource = resources->any(true)]

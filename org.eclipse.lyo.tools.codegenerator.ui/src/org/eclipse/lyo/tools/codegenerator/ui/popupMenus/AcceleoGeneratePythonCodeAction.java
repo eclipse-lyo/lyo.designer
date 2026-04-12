@@ -28,11 +28,11 @@ import org.eclipse.lyo.tools.codegenerator.ui.common.GenerateAllPython;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.actions.ActionDelegate;
 
+import adaptorinterface.AdaptorInterface;
 import adaptorinterface.Specification;
 
 /**
  * Python codegenerator code generation.
- * Only supports Specification models (client-side Python code).
  */
 public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements IActionDelegate {
 	/**
@@ -48,6 +48,22 @@ public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements I
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof IStructuredSelection) {
 			files = ((IStructuredSelection) selection).toList();
+		}
+	}
+
+	public void generateAdaptorInterface(AdaptorInterface adaptorInterface) {
+		File modelProjectFolder = DialogServices.getModellingProjectBaseFolder(adaptorInterface);
+		File generationPath = DialogServices.getGenerationTargetFolder(modelProjectFolder);
+		if(generationPath == null) {
+		    return;
+		}
+		try {
+			GenerateAllPython generator = new GenerateAllPython(adaptorInterface, generationPath, getArguments());
+			generator.doGenerate();
+		} catch (IOException e) {
+		    IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+		    Activator.getDefault().getLog().log(status);
+		    DialogServices.showMessage("Exception!", "an Exception occurred during the generation process. Please see the error log.");
 		}
 	}
 

@@ -27,6 +27,8 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 
 import adaptorinterface.Specification;
 
+import adaptorinterface.AdaptorInterface;
+import org.eclipse.lyo.oslc4j.codegenerator.python.main.Generate;
 import org.eclipse.lyo.oslc4j.codegenerator.python.main.GenerateSpecification;
 import org.eclipse.lyo.tools.codegenerator.ui.Activator;
 import org.eclipse.lyo.tools.codegenerator.ui.popupMenus.DialogServices;
@@ -35,8 +37,6 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * Main entry point of the Python 'Codegenerator' generation module.
- * Only supports Specification models (client-side Python code generation).
- * AdaptorInterface models are not supported for Python generation.
  */
 public class GenerateAllPython {
 
@@ -50,11 +50,8 @@ public class GenerateAllPython {
 	/**
 	 * Constructor for URI-based generation.
 	 * 
-	 * <p>Since Python code generation only supports Specification models,
-	 * this constructor uses the Python GenerateSpecification generator.
-	 * If the model contains an AdaptorInterface instead of a Specification,
-	 * the Acceleo engine will simply not find a matching template entry point
-	 * and no files will be generated.</p>
+	 * <p>Since Python code generation uses the AdaptorInterface as its entrypoint,
+	 * this constructor uses the Python Generate generator to match Java.</p>
 	 * 
 	 * @param modelURI
 	 *            is the URI of the model.
@@ -66,10 +63,10 @@ public class GenerateAllPython {
 	 *             Thrown when the output cannot be saved.
 	 */
 	public GenerateAllPython(URI modelURI, File targetFolder, List<? extends Object> arguments) throws IOException {
-		generator = new GenerateSpecification(modelURI, targetFolder, arguments);
+		generator = new Generate(modelURI, targetFolder, arguments);
 		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
 				"org.eclipse.lyo.oslc4j.codegenerator",
-				"org.eclipse.lyo.oslc4j.codegenerator.python.main.GenerateSpecification",
+				"org.eclipse.lyo.oslc4j.codegenerator.python.main.Generate",
 				modelURI.toString(),
 				targetFolder.toString(),
 				new ArrayList<String>());
@@ -77,18 +74,18 @@ public class GenerateAllPython {
 		this.targetFolder = targetFolder;
 	}
 
-	/**
-	 * Constructor for Specification-based generation.
-	 * 
-	 * @param specification
-	 *            the Specification model element
-	 * @param targetFolder
-	 *            is the output folder
-	 * @param arguments
-	 *            are the other arguments
-	 * @throws IOException
-	 *             Thrown when the output cannot be saved.
-	 */
+	public GenerateAllPython(AdaptorInterface adaptorInterface, File targetFolder, List<? extends Object> arguments) throws IOException {
+		generator = new Generate(adaptorInterface, targetFolder, arguments);
+		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
+				"org.eclipse.lyo.oslc4j.codegenerator",
+				"org.eclipse.lyo.oslc4j.codegenerator.python.main.Generate",
+				adaptorInterface.toString(),
+				targetFolder.toString(),
+				new ArrayList<String>());
+		generator.setGenerationID(generationID);
+		this.targetFolder = targetFolder;
+	}
+
 	public GenerateAllPython(Specification specification, File targetFolder, List<? extends Object> arguments) throws IOException {
 		generator = new GenerateSpecification(specification, targetFolder, arguments);
 		String generationID = AcceleoLaunchingUtil.computeUIProjectID(

@@ -47,7 +47,7 @@ aSpecification.configuration.oclIsUndefined()
     [let uniqueFolderPaths: Set(String) = resources->collect(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName))->asSet()]
     [for (uniqueFolderPath: String | uniqueFolderPaths)]
         [let resourcesOnSameFolderPath: Set(Resource) = resources->select(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName) = uniqueFolderPath)]
-        [generateAdaptorPackageInit(resourcesOnSameFolderPath, defaultFilesPath, defaultPackageName)/]
+        [generateAdaptorPackageInfo(resourcesOnSameFolderPath, defaultFilesPath, defaultPackageName)/]
         [/let]
     [/for]
     [/let]
