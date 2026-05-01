@@ -16,10 +16,14 @@
 /]
 [module generateVocabularyConstants('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
 
 [template public generateVocabularyConstants(aVocabulary : Vocabulary, traceabilityContext : OclAny, defaultFilesPath : String, defaultPackageName : String)]
-[file (aVocabulary.pythonFullFileNameForConstants(null, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
+[let contextAdaptorInterface : AdaptorInterface = if (traceabilityContext.oclIsKindOf(AdaptorInterface)) then traceabilityContext.oclAsType(AdaptorInterface) else null endif]
+[let effectiveFilesPath : String = aVocabulary.filesBasePath(contextAdaptorInterface, defaultFilesPath)]
+[let effectivePackageName : String = aVocabulary.pythonPackageNameForConstants(contextAdaptorInterface, defaultPackageName)]
+[file (aVocabulary.pythonFullFileNameForConstants(null, effectiveFilesPath, effectivePackageName), false, 'UTF-8')]
 import rdflib
 
 # [protected ('imports')]
@@ -30,4 +34,7 @@ import rdflib
 # [protected ('constants')]
 # [/protected]
 [/file]
+[/let]
+[/let]
+[/let]
 [/template]

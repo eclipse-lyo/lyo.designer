@@ -21,6 +21,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourcePropertyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
 
@@ -189,10 +190,13 @@ def [aProperty.pythonAttributeSetterMethodName(aResource)/](self, value: [aPrope
 
 [template public generateResource(aResource : Resource, traceabilityContext : OclAny, defaultFilesPath : String, defaultPackageName : String)]
 [if (aResource.generate())]
-[file (aResource.pythonClassFullFileName(null, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
+[let contextAdaptorInterface : AdaptorInterface = if (traceabilityContext.oclIsKindOf(AdaptorInterface)) then traceabilityContext.oclAsType(AdaptorInterface) else null endif]
+[let effectiveFilesPath : String = aResource.definingDomainSpecification().filesBasePath(contextAdaptorInterface, defaultFilesPath)]
+[let effectivePackageName : String = aResource.pythonClassPackageName(contextAdaptorInterface, defaultPackageName)]
+[file (aResource.pythonClassFullFileName(null, effectiveFilesPath, effectivePackageName), false, 'UTF-8')]
 [generateClassHeader(aResource, null)/]
 
-[generateImports(aResource, defaultPackageName)/]
+[generateImports(aResource, effectivePackageName)/]
 
 [generatePreClassCode(aResource, null)/]
 
@@ -211,5 +215,8 @@ def [aProperty.pythonAttributeSetterMethodName(aResource)/](self, value: [aPrope
     
     [/for]
 [/file]
+[/let]
+[/let]
+[/let]
 [/if]
 [/template]
