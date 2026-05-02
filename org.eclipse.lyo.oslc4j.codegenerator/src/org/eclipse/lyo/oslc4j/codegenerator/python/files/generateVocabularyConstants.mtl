@@ -16,6 +16,8 @@
 /]
 [module generateVocabularyConstants('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::fileServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
 
@@ -23,6 +25,22 @@
 [let contextAdaptorInterface : AdaptorInterface = if (traceabilityContext.oclIsKindOf(AdaptorInterface)) then traceabilityContext.oclAsType(AdaptorInterface) else null endif]
 [let effectiveFilesPath : String = aVocabulary.filesBasePath(contextAdaptorInterface, defaultFilesPath)]
 [let effectivePackageName : String = aVocabulary.pythonPackageNameForConstants(contextAdaptorInterface, defaultPackageName)]
+[let rootInitFileName : String = aVocabulary.pythonFilesBasePath(contextAdaptorInterface, effectiveFilesPath).concatenatePaths('__init__.py')]
+[if (not fileExists(rootInitFileName))]
+[file (rootInitFileName, false, 'UTF-8')]
+# [protected ('imports')]
+# [/protected]
+[/file]
+[/if]
+[/let]
+[let packageInitFileName : String = aVocabulary.pythonFilesBasePath(contextAdaptorInterface, effectiveFilesPath).concatenatePaths(effectivePackageName.substituteAll('.', '/')).concatenatePaths('__init__.py')]
+[if (not fileExists(packageInitFileName))]
+[file (packageInitFileName, false, 'UTF-8')]
+# [protected ('imports')]
+# [/protected]
+[/file]
+[/if]
+[/let]
 [file (aVocabulary.pythonFullFileNameForConstants(null, effectiveFilesPath, effectivePackageName), false, 'UTF-8')]
 import rdflib
 
