@@ -44,7 +44,7 @@
 # [/protected]
 [/template]
 
-[template public generateImports(aResource : Resource, defaultPackageName : String)]
+[template public generateImports(aResource : Resource, contextAdaptorInterface : AdaptorInterface, defaultPackageName : String)]
 [if (hasDateTimeProperty(aResource))]from datetime import datetime[/if]
 [if (hasSetProperty(aResource))]from typing import Set[/if]
 from oslc4py_client.annotation_types.Occurs import Occurs
@@ -54,14 +54,14 @@ from oslc4py_client.OSLCResource import OSLCResource
 [if (hasLinkProperty(aResource))]from oslc4py_client.Link import Link[/if]
 from oslc4py_client.decorators import oslc_description, oslc_name, oslc_namespace, oslc_rdf_collection_type, oslc_occurs, oslc_property_definition, oslc_resource_shape, oslc_value_type, oslc_representation, oslc_range, oslc_read_only, oslc_title, oslc_member_property, oslc_allowed_values
 
-from [aResource.definingDomainSpecification().pythonPackageNameForConstants(null, defaultPackageName)/].[aResource.definingDomainSpecification().pythonNameForConstants()/] import [aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName()/]
-[if (not aResource.directParentResource().oclIsUndefined() and aResource.directParentResource() <> aResource)]from [aResource.directParentResource().pythonClassPackageName(null, defaultPackageName)/].[aResource.directParentResource().pythonClassName()/] import [aResource.directParentResource().pythonClassName()/][/if]
-[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name))]from [aDomainSpecification.pythonPackageNameForConstants(null, defaultPackageName)/].[aDomainSpecification.pythonNameForConstants()/] import [aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/]
+from [aResource.definingDomainSpecification().pythonPackageNameForConstants(contextAdaptorInterface, defaultPackageName)/].[aResource.definingDomainSpecification().pythonNameForConstants()/] import [aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName()/]
+[if (not aResource.directParentResource().oclIsUndefined() and aResource.directParentResource() <> aResource)]from [aResource.directParentResource().pythonClassPackageName(contextAdaptorInterface, defaultPackageName)/].[aResource.directParentResource().pythonClassName()/] import [aResource.directParentResource().pythonClassName()/][/if]
+[for (aDomainSpecification: DomainSpecification | (aResource.resourceProperties->union(aResource.interfaceProperties()->asSet())->collect(p: ResourceProperty | Set{p.definingDomainSpecification()}->union(p.range.definingDomainSpecification()->asSet())))->flatten()->asSet()->sortedBy(name))]from [aDomainSpecification.pythonPackageNameForConstants(contextAdaptorInterface, defaultPackageName)/].[aDomainSpecification.pythonNameForConstants()/] import [aDomainSpecification.domainSpecificationImplicitVocabularyNamespaceConstantName()/]
 [/for]
 [for (aVocabulary: Vocabulary | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))->asSet()
         ->select(p: ResourceProperty | not (p.propertyDefinition.oclIsUndefined()))
         ->collect(p: ResourceProperty | p.propertyDefinition.definingVocabulary())
-        ->flatten()->asSet()->sortedBy(label))]from [aVocabulary.pythonPackageNameForConstants(null, defaultPackageName)/].[aVocabulary.pythonNameForConstants()/] import [aVocabulary.vocabularyNamespaceConstantName()/]
+        ->flatten()->asSet()->sortedBy(label))]from [aVocabulary.pythonPackageNameForConstants(contextAdaptorInterface, defaultPackageName)/].[aVocabulary.pythonNameForConstants()/] import [aVocabulary.vocabularyNamespaceConstantName()/]
 [/for]
 [for (r: Resource | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource)))
     ->select(p: ResourceProperty |
@@ -71,7 +71,7 @@ from [aResource.definingDomainSpecification().pythonPackageNameForConstants(null
     ->collect(p: ResourceProperty | p.range)->flatten()->asSet()
     ->sortedBy(name))]
 [if (r <> aResource)]
-from [r.pythonClassPackageName(null, defaultPackageName)/].[r.pythonClassName()/] import [r.pythonClassName()/]
+from [r.pythonClassPackageName(contextAdaptorInterface, defaultPackageName)/].[r.pythonClassName()/] import [r.pythonClassName()/]
 [/if]
 [/for]
 # [protected ('imports')]
@@ -131,15 +131,15 @@ def add_[pythonAttributeName(aProperty, aResource)/](self, value: [pythonAttribu
 [/for]
 [/template]
 
-[template public generateGetter(aProperty: ResourceProperty, aResource : Resource)]
+[template public generateGetter(aProperty: ResourceProperty, aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
 @property
 # [protected ('getterAnnotation:'.concat(pythonAttributeName(aProperty, aResource)))]
 # [/protected]
 [if (not (nameAnnotation(aProperty) = ''))]
 [nameAnnotation(aProperty)/]
 [/if]
-[if (not (propertyDefinitionAnnotation(aProperty, aResource, null) = ''))]
-[propertyDefinitionAnnotation(aProperty, aResource, null)/]
+[if (not (propertyDefinitionAnnotation(aProperty, aResource, contextAdaptorInterface) = ''))]
+[propertyDefinitionAnnotation(aProperty, aResource, contextAdaptorInterface)/]
 [/if]
 [if (not (descriptionAnnotation(aProperty) = ''))]
 [descriptionAnnotation(aProperty)/]
@@ -156,8 +156,8 @@ def add_[pythonAttributeName(aProperty, aResource)/](self, value: [pythonAttribu
 [if (not (representationAnnotation(aProperty) = ''))]
 [representationAnnotation(aProperty)/]
 [/if]
-[if (not (rangeAnnotation(aProperty, aResource, null)= ''))]
-[rangeAnnotation(aProperty, aResource, null)/]
+[if (not (rangeAnnotation(aProperty, aResource, contextAdaptorInterface)= ''))]
+[rangeAnnotation(aProperty, aResource, contextAdaptorInterface)/]
 [/if]
 [if (not (readOnlyAnnotation(aProperty) = ''))]
 [readOnlyAnnotation(aProperty)/]
@@ -188,15 +188,12 @@ def [aProperty.pythonAttributeSetterMethodName(aResource)/](self, value: [aPrope
 [/template]
 
 
-[template public generateResource(aResource : Resource, traceabilityContext : OclAny, defaultFilesPath : String, defaultPackageName : String)]
+[template public generateResource(aResource : Resource, contextAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String)]
 [if (aResource.generate())]
-[let contextAdaptorInterface : AdaptorInterface = if (traceabilityContext.oclIsKindOf(AdaptorInterface)) then traceabilityContext.oclAsType(AdaptorInterface) else null endif]
-[let effectiveFilesPath : String = aResource.definingDomainSpecification().filesBasePath(contextAdaptorInterface, defaultFilesPath)]
-[let effectivePackageName : String = aResource.pythonClassPackageName(contextAdaptorInterface, defaultPackageName)]
-[file (aResource.pythonClassFullFileName(null, effectiveFilesPath, effectivePackageName), false, 'UTF-8')]
+[file (aResource.pythonClassFullFileName(contextAdaptorInterface, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
 [generateClassHeader(aResource, null)/]
 
-[generateImports(aResource, effectivePackageName)/]
+[generateImports(aResource, contextAdaptorInterface, defaultPackageName)/]
 
 [generatePreClassCode(aResource, null)/]
 
@@ -207,7 +204,7 @@ def [aProperty.pythonAttributeSetterMethodName(aResource)/](self, value: [aPrope
     [generateConstructor(aResource)/]
     [generateAddToAttributeMethods(aResource)/]
     [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
-    [generateGetter(aProperty, aResource)/]
+    [generateGetter(aProperty, aResource, contextAdaptorInterface)/]
     
     [/for]
     [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
@@ -215,8 +212,5 @@ def [aProperty.pythonAttributeSetterMethodName(aResource)/](self, value: [aPrope
     
     [/for]
 [/file]
-[/let]
-[/let]
-[/let]
 [/if]
 [/template]
