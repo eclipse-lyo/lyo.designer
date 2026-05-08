@@ -83,6 +83,10 @@ public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements I
 		}
 	}
 
+	public void generatePythonSpecification(Specification specification) {
+		generateSpecification(specification);
+	}
+
 	/**{@inheritDoc}
 	 *
 	 * @see org.eclipse.ui.actions.ActionDelegate#run(org.eclipse.jface.action.IAction)
