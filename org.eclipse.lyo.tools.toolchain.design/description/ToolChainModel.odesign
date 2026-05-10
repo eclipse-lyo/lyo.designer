@@ -2066,8 +2066,8 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.DialogInputServices"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::DialogInputServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.EmfResourcesLoaderService"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGeneratePythonCodeAction"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorJavaAction"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorPythonAction"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ConfirmDeletionServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ResourcePropertyRangeServices"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::domainSpecificationDiagram"/>

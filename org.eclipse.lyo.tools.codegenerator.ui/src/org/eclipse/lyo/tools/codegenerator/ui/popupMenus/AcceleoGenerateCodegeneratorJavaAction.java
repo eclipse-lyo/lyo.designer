@@ -24,7 +24,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.lyo.tools.codegenerator.ui.Activator;
-import org.eclipse.lyo.tools.codegenerator.ui.common.GenerateAllPython;
+import org.eclipse.lyo.tools.codegenerator.ui.common.GenerateAllJava;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.actions.ActionDelegate;
 
@@ -32,9 +32,9 @@ import adaptorinterface.AdaptorInterface;
 import adaptorinterface.Specification;
 
 /**
- * Python codegenerator code generation.
+ * Codegenerator code generation.
  */
-public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements IActionDelegate {
+public class AcceleoGenerateCodegeneratorJavaAction extends ActionDelegate implements IActionDelegate {
 	/**
 	 * Selected model files.
 	 */
@@ -43,6 +43,7 @@ public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements I
 	/**{@inheritDoc}
 	 *
 	 * @see org.eclipse.ui.actions.ActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
+	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public void selectionChanged(IAction action, ISelection selection) {
@@ -58,7 +59,7 @@ public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements I
 		    return;
 		}
 		try {
-			GenerateAllPython generator = new GenerateAllPython(adaptorInterface, generationPath, getArguments());
+			GenerateAllJava generator = new GenerateAllJava(adaptorInterface, generationPath, getArguments());
 			generator.doGenerate();
 		} catch (IOException e) {
 		    IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
@@ -66,6 +67,7 @@ public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements I
 		    DialogServices.showMessage("Exception!", "an Exception occurred during the generation process. Please see the error log.");
 		}
 	}
+
 
 	public void generateSpecification(Specification specification) {
 		File modelProjectFolder = DialogServices.getModellingProjectBaseFolder(specification);
@@ -74,7 +76,7 @@ public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements I
 		    return;
 		}
 		try {
-			GenerateAllPython generator = new GenerateAllPython(specification, generationPath, getArguments());
+			GenerateAllJava generator = new GenerateAllJava(specification, generationPath, getArguments());
 			generator.doGenerate();
 		} catch (IOException e) {
 		    IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
@@ -83,13 +85,11 @@ public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements I
 		}
 	}
 
-	public void generatePythonSpecification(Specification specification) {
-		generateSpecification(specification);
-	}
-
+	
 	/**{@inheritDoc}
 	 *
 	 * @see org.eclipse.ui.actions.ActionDelegate#run(org.eclipse.jface.action.IAction)
+	 * @generated
 	 */
 	public void run(IAction action) {
 		if (files != null) {
@@ -104,7 +104,7 @@ public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements I
 					return;
 				}
 				try {
-					GenerateAllPython generator = new GenerateAllPython(modelURI, generationPath, getArguments());
+					GenerateAllJava generator = new GenerateAllJava(modelURI, generationPath, getArguments());
 					generator.doGenerate();
 				} catch (IOException e) {
 				    IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
@@ -119,6 +119,7 @@ public class AcceleoGeneratePythonCodeAction extends ActionDelegate implements I
 	 * Computes the arguments of the generator.
 	 * 
 	 * @return the arguments
+	 * @generated
 	 */
 	protected List<? extends Object> getArguments() {
 		return new ArrayList<String>();
