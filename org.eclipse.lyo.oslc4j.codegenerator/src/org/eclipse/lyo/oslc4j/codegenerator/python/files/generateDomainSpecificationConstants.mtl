@@ -16,9 +16,28 @@
 /]
 [module generateDomainSpecificationConstants('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::fileServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 
 [template public generateDomainSpecificationConstants(aDomainSpecification : DomainSpecification, defaultFilesPath : String, defaultPackageName : String)]
+[let rootInitFileName : String = aDomainSpecification.pythonFilesBasePath(null, defaultFilesPath).concatenatePaths('__init__.py')]
+[if (not fileExists(rootInitFileName))]
+[file (rootInitFileName, false, 'UTF-8')]
+# [protected ('imports')]
+# [/protected]
+[/file]
+[/if]
+[/let]
+[let packageInitFileName : String = aDomainSpecification.pythonFullFolderNameForConstants(null, defaultFilesPath, defaultPackageName).concatenatePaths('__init__.py')]
+[if (not fileExists(packageInitFileName))]
+[file (packageInitFileName, false, 'UTF-8')]
+# [protected ('imports')]
+# [/protected]
+[/file]
+[/if]
+[/let]
 [file (aDomainSpecification.pythonFullFileNameForConstants(null, defaultFilesPath, defaultPackageName), false, 'UTF-8')]
 import rdflib
 
@@ -30,4 +49,8 @@ import rdflib
 # [protected ('constants')]
 # [/protected]
 [/file]
+[/template]
+
+[template public generateDomainSpecificationConstants(aDomainSpecification : DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String)]
+[aDomainSpecification.generateDomainSpecificationConstants(aDomainSpecification.filesBasePath(anAdaptorInterface, defaultFilesPath), aDomainSpecification.pythonPackageNameForConstants(anAdaptorInterface, defaultPackageName))/]
 [/template]
