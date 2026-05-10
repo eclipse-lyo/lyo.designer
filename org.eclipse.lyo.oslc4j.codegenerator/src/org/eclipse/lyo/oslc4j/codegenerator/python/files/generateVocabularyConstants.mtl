@@ -18,7 +18,6 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::fileServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
 
 [template public generateVocabularyConstants(aVocabulary : Vocabulary, traceabilityContext : OclAny, defaultFilesPath : String, defaultPackageName : String)]

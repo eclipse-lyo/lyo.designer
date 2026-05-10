@@ -18,7 +18,6 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::fileServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 
 [template public generateDomainSpecificationConstants(aDomainSpecification : DomainSpecification, defaultFilesPath : String, defaultPackageName : String)]

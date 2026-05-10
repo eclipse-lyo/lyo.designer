@@ -19,7 +19,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateLicenseFiles/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateAdaptorPackageInfo/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateDomainSpecificationConstants/]

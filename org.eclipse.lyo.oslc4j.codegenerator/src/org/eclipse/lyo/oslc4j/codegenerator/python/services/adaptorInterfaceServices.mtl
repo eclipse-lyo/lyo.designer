@@ -15,7 +15,35 @@
  */
 /]
 [module adaptorInterfaceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
+
+[query public relevantResources(aSpecification : Specification) : Set(Resource) =
+    (aSpecification.domainSpecifications.resources
+    ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
+/]
+
+[query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
+aSpecification.domainSpecifications->union(
+    relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
+)
+/]
+
+[query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
+aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
+->union(
+    aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
+)->asSet()
+/]
+
+[query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
+relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
+    relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
+/]
+
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 

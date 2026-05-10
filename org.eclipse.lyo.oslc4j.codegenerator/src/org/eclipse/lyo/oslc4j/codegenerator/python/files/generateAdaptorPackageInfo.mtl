@@ -17,7 +17,6 @@
 [module generateAdaptorPackageInfo('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 
 [template public generateAdaptorPackageInfo(resources : Set(Resource), defaultFilesPath : String, defaultPackageName : String)]
