@@ -15,36 +15,142 @@
  */
 /]
 [module adaptorInterfaceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
-
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 
-[comment same/]
-[query public relevantResources(aSpecification : Specification) : Set(Resource) =
-    (aSpecification.domainSpecifications.resources
-    ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
+[query public serviceProviders(anAdaptorInterface : AdaptorInterface) : Sequence(ServiceProvider) =
+(if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined()) then
+    anAdaptorInterface.serviceProviderCatalog.serviceProviders
+else
+    Sequence{}
+endif)
 /]
 
-[comment same/]
-[query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
-aSpecification.domainSpecifications->union(
-    relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
+[query public getAuthenticationConfiguration(anAdaptorInterface : AdaptorInterface) : AuthenticationConfiguration =
+(if (anAdaptorInterface.configuration.oclIsUndefined()) then
+    null
+else
+    (if anAdaptorInterface.configuration.authenticationConfiguration.oclIsUndefined() then
+        null
+    else
+        anAdaptorInterface.configuration.authenticationConfiguration
+    endif)
+endif)
+/]
+
+[query public authenticationEnabled(anAdaptorInterface : AdaptorInterface) : Boolean =
+not anAdaptorInterface.getAuthenticationConfiguration().oclIsUndefined()
+/]
+
+[query public trsServiceEnabled(anAdaptorInterface : AdaptorInterface) : Boolean =
+not anAdaptorInterface.trsService.oclIsUndefined()
+/]
+
+[query public storeEnabled(anAdaptorInterface : AdaptorInterface) : Boolean =
+anAdaptorInterface.stores->size() > 0
+/]
+
+[query public servicedResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider | 
+	servicedResources(aServiceProvider)
+)->flatten()->asSet()
+->union(
+	anAdaptorInterface.webServices->collectNested(aWebService : WebService | 
+		servicedResources(aWebService)
+	)->flatten()->asSet()
 )
 /]
 
-[comment same/]
-[query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
-aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
-->union(
-    aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
-)->asSet()
+[query public servicedResources(aService : Service) : Set(Resource) =
+aService.creationFactories.resourceTypes->asSet()
+    ->union(aService.queryCapabilities.resourceTypes->asSet())
+    ->union(aService.basicCapabilities.resourceTypes->asSet())
+    ->union(aService.creationDialogs.resourceTypes->asSet())
+    ->union(aService.selectionDialogs.resourceTypes->asSet())
 /]
 
-[comment same/]
-[query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
-relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
+[query public relevantResources(aService : Service) : Set(Resource) =
+(servicedResources(aService)
+->union(servicedResources(aService).allRelatedResources()))->flatten()->asSet()
+/]
+
+[query public relevantDomainSpecifications(aService : Service) : Set(DomainSpecification) =
+relevantResources(aService)->collectNested(aResource : Resource |
+    definingDomainSpecification(aResource)
+    ->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
+)->flatten()->asSet()
+->union(Set{aService.domainSpecification})
+/]
+
+[query public servicedResources(aServiceProvider : ServiceProvider) : Set(Resource) =
+aServiceProvider.services->collectNested(aService : Service | servicedResources(aService))->flatten()->asSet()
+/]
+
+[query public relevantResources(aServiceProvider : ServiceProvider) : Set(Resource) =
+aServiceProvider.services->collectNested(aService : Service | relevantResources(aService))->flatten()->asSet()
+/]
+
+[query public relevantDomainSpecifications(aServiceProvider : ServiceProvider) : Set(DomainSpecification) =
+aServiceProvider.services->collectNested(aService : Service | relevantDomainSpecifications(aService))->flatten()->asSet()
+/]
+
+[query private servicedResourcesForGenericRequiredAdaptor(aGenericRequiredAdaptor : GenericRequiredAdaptor) : Set(Resource) =
+aGenericRequiredAdaptor.servicedResources
+/]
+
+[query private servicedResourcesForModelledRequiredAdaptor(aModelledRequiredAdaptor : ModelledRequiredAdaptor) : Set(Resource) =
+servicedResources(aModelledRequiredAdaptor.adaptorInterface)
+/]
+
+[query public servicedResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
+if (aRequiredAdaptor.oclIsTypeOf(GenericRequiredAdaptor)) then
+    servicedResourcesForGenericRequiredAdaptor(aRequiredAdaptor.oclAsType(GenericRequiredAdaptor))
+else
+    servicedResourcesForModelledRequiredAdaptor(aRequiredAdaptor.oclAsType(ModelledRequiredAdaptor))
+endif
+/]
+
+[query public relevantResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
+servicedResources(aRequiredAdaptor)
+->union(servicedResources(aRequiredAdaptor)->collectNested(aResource : Resource | aResource.allRelatedResources())->flatten()->asSet())
+/]
+
+[query public relevantDomainSpecifications(aRequiredAdaptor : RequiredAdaptor) : Set(DomainSpecification) =
+relevantResources(aRequiredAdaptor)->collectNested(aResource : Resource |
+    definingDomainSpecification(aResource)
+    ->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
+)->flatten()->asSet()
+/]
+
+[query public relevantResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider |
+    relevantResources(aServiceProvider)
+)->flatten()->asSet()
+->union(
+    anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor |
+        relevantResources(aRequiredAdaptor)
+    )->flatten()->asSet()
+)
+/]
+
+[query public servicedResources(aWebService: WebService) : Set(Resource) = 
+aWebService.resourceTypes->asSet()
+/]
+
+[query public relevantDomainSpecifications(anAdaptorInterface : AdaptorInterface) : Set(DomainSpecification) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider |
+    relevantDomainSpecifications(aServiceProvider)
+)->flatten()->asSet()
+->union(
+    anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor |
+        relevantDomainSpecifications(aRequiredAdaptor)
+    )->flatten()->asSet()
+)
+/]
+
+[query public relevantVocabularies(anAdaptorInterface : AdaptorInterface) : Set(Vocabulary) =
+anAdaptorInterface.relevantDomainSpecifications()->collectNested(aDomainSpecification : DomainSpecification |
     relevantVocabularies(aDomainSpecification)
 )->flatten()->asSet()
 /]

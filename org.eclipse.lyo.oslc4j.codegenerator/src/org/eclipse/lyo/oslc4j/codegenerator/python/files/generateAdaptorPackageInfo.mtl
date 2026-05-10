@@ -15,11 +15,12 @@
  */
 /]
 [module generateAdaptorPackageInfo('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 
-[template public generateAdaptorPackageInit(resources : Set(Resource), defaultFilesPath : String, defaultPackageName : String)]
+[template public generateAdaptorPackageInfo(resources : Set(Resource), defaultFilesPath : String, defaultPackageName : String)]
 [if (resources->size() > 0)]
 	[comment This can be any resource because it's only used for constructing correct path /]
     [let aResource : Resource = resources->any(true)]
@@ -32,4 +33,8 @@ from .[r.pythonClassName()/] import [r.pythonClassName()/]
         [/file]
     [/let]
 [/if]
+[/template]
+
+[template public generateAdaptorPackageInfo(resourcesOnSameFolderPath: Set(Resource), contextAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String)]
+[generateAdaptorPackageInfo(resourcesOnSameFolderPath, contextAdaptorInterface.filesBasePath(defaultFilesPath), contextAdaptorInterface.pythonBasePackageName(defaultPackageName))/]
 [/template]

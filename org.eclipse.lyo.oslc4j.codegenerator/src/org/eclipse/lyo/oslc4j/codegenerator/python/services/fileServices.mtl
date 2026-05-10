@@ -14,13 +14,12 @@
  * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
  */
 /]
-[module generateConfigFiles('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[module fileServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
 
+[query public setTargetFolder(path : String): Boolean
+    = invoke('org.eclipse.lyo.oslc4j.codegenerator.python.services.FileServices', 'setTargetFolder(java.lang.String)', Sequence{path})
+/]
 
-[comment todo: remove unused parameters /]
-[template public generateConfigFiles(aSpecification : Specification, traceabilityContext : OclAny, defaultFilesPath : String)]
-[file ('requirements.txt', false, 'UTF-8')]
-oslc4py-client
-rdflib
-[/file]
-[/template]
+[query public fileExists(filePath : String): Boolean
+    = invoke('org.eclipse.lyo.oslc4j.codegenerator.python.services.FileServices', 'fileExists(java.lang.String)', Sequence{filePath})
+/]
