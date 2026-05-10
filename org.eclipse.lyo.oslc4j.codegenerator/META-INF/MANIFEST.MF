@@ -24,8 +24,8 @@ Export-Package: org.eclipse.lyo.oslc4j.codegenerator.files,
  org.eclipse.lyo.oslc4j.codegenerator.jsp,
  org.eclipse.lyo.oslc4j.codegenerator.staticFiles,
  org.eclipse.lyo.oslc4j.codegenerator.main,
- org.eclipse.lyo.oslc4j.codegenerator.services
- org.eclipse.lyo.oslc4j.codegenerator.python.main,
+ org.eclipse.lyo.oslc4j.codegenerator.services,
+ org.eclipse.lyo.oslc4j.codegenerator.python.main
 Bundle-ClassPath: bin/,
  .
 
