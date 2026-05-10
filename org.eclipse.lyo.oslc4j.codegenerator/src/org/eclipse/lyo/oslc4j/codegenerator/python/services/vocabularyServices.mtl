@@ -15,6 +15,15 @@
  */
 /]
 [module vocabularyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+
+[query public definingVocabulary(aProperty: Property) : Vocabulary =
+aProperty.eContainer(Vocabulary)
+/]
+
+[query public definingVocabulary(aClass: Class) : Vocabulary =
+aClass.eContainer(Vocabulary)
+/]
+
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 
 

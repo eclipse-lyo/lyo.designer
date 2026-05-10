@@ -15,6 +15,15 @@
  */
 /]
 [module domainSpecificationServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+
+[query public definingDomainSpecification(aProperty: ResourceProperty) : DomainSpecification =
+aProperty.eContainer(DomainSpecification)
+/]
+
+[query public definingDomainSpecification(aResource: Resource) : DomainSpecification =
+aResource.eContainer(DomainSpecification)
+/]
+
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 
 
