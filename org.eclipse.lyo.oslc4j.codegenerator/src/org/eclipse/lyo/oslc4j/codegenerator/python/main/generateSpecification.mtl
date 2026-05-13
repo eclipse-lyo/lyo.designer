@@ -47,16 +47,6 @@ aSpecification.configuration.oclIsUndefined()
 # [/protected]
     [/file]
 
-    [let resources: Set(Resource) = aSpecification.relevantResources()->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject)))]
-    [let uniqueFolderPaths: Set(String) = resources->collect(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName))->asSet()]
-    [for (uniqueFolderPath: String | uniqueFolderPaths)]
-        [let resourcesOnSameFolderPath: Set(Resource) = resources->select(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName) = uniqueFolderPath)]
-        [generateAdaptorPackageInfo(resourcesOnSameFolderPath, defaultFilesPath, defaultPackageName)/]
-        [/let]
-    [/for]
-    [/let]
-    [/let]
-
     [for (aDomainSpecification: DomainSpecification | aSpecification.relevantDomainSpecifications()
         ->select(d: DomainSpecification | aSpecification.generateIfFromImportedModels(d.oclAsType(EObject))))]
         [aDomainSpecification.generateDomainSpecificationConstants(defaultFilesPath, defaultPackageName)/]
@@ -71,6 +61,16 @@ aSpecification.configuration.oclIsUndefined()
         ->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject))))]
         [aResource.generateResource(null, defaultFilesPath, defaultPackageName) /]
     [/for]
+
+    [let resources: Set(Resource) = aSpecification.relevantResources()->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject)))]
+    [let uniqueFolderPaths: Set(String) = resources->collect(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName))->asSet()]
+    [for (uniqueFolderPath: String | uniqueFolderPaths)]
+        [let resourcesOnSameFolderPath: Set(Resource) = resources->select(r: Resource | r.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName) = uniqueFolderPath)]
+        [generateAdaptorPackageInfo(resourcesOnSameFolderPath, defaultFilesPath, defaultPackageName)/]
+        [/let]
+    [/for]
+    [/let]
+    [/let]
 [/let]
 [/let]
 [/if]
