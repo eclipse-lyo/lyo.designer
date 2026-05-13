@@ -18,8 +18,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
-
 [template public generateAdaptorPackageInfo(resources : Set(Resource), defaultFilesPath : String, defaultPackageName : String)]
 [let generatedResources : Set(Resource) = resources->select(r : Resource | r.generate())]
 [if (resources->size() > 0)]
