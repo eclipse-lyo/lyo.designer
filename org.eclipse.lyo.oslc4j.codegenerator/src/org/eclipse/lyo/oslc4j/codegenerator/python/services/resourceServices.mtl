@@ -151,18 +151,6 @@ pythonName(aResource)
     .concat('.py')
 /]
 
-[query public pythonAttributeName(aProperty: ResourceProperty) : String =
-    pythonAttributeNameString(aProperty.name)
-/]
-
-[query private pythonAttributeNameString(aString : String) : String =
-    aString.replaceAll('([a-z])([A-Z]+)', '$1_$2').toLower()
-/]
-
-[query public pythonAttributeName(aProperty: ResourceProperty, aResource : Resource) : String =
-    pythonAttributeName(aProperty)
-/]
-
 [query public pythonNameAnnotation(aResource: Resource) : String =
 '@oslc_name("'
 .concat(if (aResource.describes.oclIsUndefined()) then aResource.name.substituteAll(' ', '') else aResource.describes.name.substituteAll(' ', '') endif)
@@ -183,6 +171,18 @@ pythonName(aResource)
 .concat('"], title="')
 .concat(if (aResource.title.oclIsUndefined()) then aResource.name.concat(' Shape') else aResource.title endif)
 .concat('")')
+/]
+
+[query public pythonAttributeName(aProperty: ResourceProperty) : String =
+    pythonAttributeNameString(aProperty.name)
+/]
+
+[query private pythonAttributeNameString(aString : String) : String =
+    aString.replaceAll('([a-z])([A-Z]+)', '$1_$2').toLower()
+/]
+
+[query public pythonAttributeName(aProperty: ResourceProperty, aResource : Resource) : String =
+    pythonAttributeName(aProperty)
 /]
 
 [query public hasDateTimeProperty(aResource: Resource) : Boolean =

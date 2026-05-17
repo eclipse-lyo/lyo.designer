@@ -20,34 +20,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 
-[query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification: DomainSpecification) : String =
-'NS_'.concat(aDomainSpecification.namespacePrefix.name.toUpperCase())
-/]
-
-[query public relevantResources(aSpecification : Specification) : Set(Resource) =
-    (aSpecification.domainSpecifications.resources
-    ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
-/]
-
-[query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
-aSpecification.domainSpecifications->union(
-    relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
-)
-/]
-
-[query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
-aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
-->union(
-    aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
-)->asSet()
-/]
-
-[query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
-relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
-    relevantVocabularies(aDomainSpecification)
-)->flatten()->asSet()
-/]
-
 [query public serviceProviders(anAdaptorInterface : AdaptorInterface) : Sequence(ServiceProvider) =
 (if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined()) then
     anAdaptorInterface.serviceProviderCatalog.serviceProviders
@@ -65,6 +37,93 @@ anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceP
 		servicedResources(aWebService)
 	)->flatten()->asSet()
 )
+/]
+
+[query public relevantResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider |
+    relevantResources(aServiceProvider)
+)->flatten()->asSet()
+->union(
+    anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor |
+        relevantResources(aRequiredAdaptor)
+    )->flatten()->asSet()
+)
+/]
+
+[query public relevantResources(aSpecification : Specification) : Set(Resource) =
+    (aSpecification.domainSpecifications.resources
+    ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
+/]
+
+[query public servicedResources(aWebService: WebService) : Set(Resource) = 
+aWebService.resourceTypes->asSet()
+/]
+
+[query public relevantDomainSpecifications(anAdaptorInterface : AdaptorInterface) : Set(DomainSpecification) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider |
+    relevantDomainSpecifications(aServiceProvider)
+)->flatten()->asSet()
+->union(
+    anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor |
+        relevantDomainSpecifications(aRequiredAdaptor)
+    )->flatten()->asSet()
+)
+/]
+
+[query public relevantDomainSpecifications(aSpecification : Specification) : Set(DomainSpecification) =
+aSpecification.domainSpecifications->union(
+    relevantResources(aSpecification)->collectNested(aResource : Resource | aResource.definingDomainSpecification())->flatten()->asSet()
+)
+/]
+
+[query public relevantVocabularies(anAdaptorInterface : AdaptorInterface) : Set(Vocabulary) =
+anAdaptorInterface.relevantDomainSpecifications()->collectNested(aDomainSpecification : DomainSpecification |
+    relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
+/]
+[query public relevantVocabularies(aDomainSpecification: DomainSpecification) : Set(Vocabulary) =
+aDomainSpecification.resources->select(not describes.oclIsUndefined())->collect(aResource : Resource | definingVocabulary(aResource.describes))
+->union(
+    aDomainSpecification.resourceProperties->select(not propertyDefinition.oclIsUndefined())->collect(aResourceProperty : ResourceProperty | definingVocabulary(aResourceProperty.propertyDefinition))
+)->asSet()
+/]
+
+[query public relevantVocabularies(aSpecification : Specification) : Set(Vocabulary) =
+relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification : DomainSpecification | 
+    relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
+/]
+
+[query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification: DomainSpecification) : String =
+'NS_'.concat(aDomainSpecification.namespacePrefix.name.toUpperCase())
+/]
+
+[query public servicedResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
+if (aRequiredAdaptor.oclIsTypeOf(GenericRequiredAdaptor)) then
+    servicedResourcesForGenericRequiredAdaptor(aRequiredAdaptor.oclAsType(GenericRequiredAdaptor))
+else
+    servicedResourcesForModelledRequiredAdaptor(aRequiredAdaptor.oclAsType(ModelledRequiredAdaptor))
+endif
+/]
+
+[query private servicedResourcesForGenericRequiredAdaptor(aGenericRequiredAdaptor : GenericRequiredAdaptor) : Set(Resource) =
+aGenericRequiredAdaptor.servicedResources
+/]
+
+[query private servicedResourcesForModelledRequiredAdaptor(aModelledRequiredAdaptor : ModelledRequiredAdaptor) : Set(Resource) =
+servicedResources(aModelledRequiredAdaptor.adaptorInterface)
+/]
+
+[query public relevantResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
+servicedResources(aRequiredAdaptor)
+->union(servicedResources(aRequiredAdaptor)->collectNested(aResource : Resource | aResource.allRelatedResources())->flatten()->asSet())
+/]
+
+[query public relevantDomainSpecifications(aRequiredAdaptor : RequiredAdaptor) : Set(DomainSpecification) =
+relevantResources(aRequiredAdaptor)->collectNested(aResource : Resource |
+    definingDomainSpecification(aResource)
+    ->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
+)->flatten()->asSet()
 /]
 
 [query public servicedResources(aService : Service) : Set(Resource) =
@@ -100,62 +159,3 @@ aServiceProvider.services->collectNested(aService : Service | relevantResources(
 aServiceProvider.services->collectNested(aService : Service | relevantDomainSpecifications(aService))->flatten()->asSet()
 /]
 
-[query private servicedResourcesForGenericRequiredAdaptor(aGenericRequiredAdaptor : GenericRequiredAdaptor) : Set(Resource) =
-aGenericRequiredAdaptor.servicedResources
-/]
-
-[query private servicedResourcesForModelledRequiredAdaptor(aModelledRequiredAdaptor : ModelledRequiredAdaptor) : Set(Resource) =
-servicedResources(aModelledRequiredAdaptor.adaptorInterface)
-/]
-
-[query public servicedResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
-if (aRequiredAdaptor.oclIsTypeOf(GenericRequiredAdaptor)) then
-    servicedResourcesForGenericRequiredAdaptor(aRequiredAdaptor.oclAsType(GenericRequiredAdaptor))
-else
-    servicedResourcesForModelledRequiredAdaptor(aRequiredAdaptor.oclAsType(ModelledRequiredAdaptor))
-endif
-/]
-
-[query public relevantResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
-servicedResources(aRequiredAdaptor)
-->union(servicedResources(aRequiredAdaptor)->collectNested(aResource : Resource | aResource.allRelatedResources())->flatten()->asSet())
-/]
-
-[query public relevantDomainSpecifications(aRequiredAdaptor : RequiredAdaptor) : Set(DomainSpecification) =
-relevantResources(aRequiredAdaptor)->collectNested(aResource : Resource |
-    definingDomainSpecification(aResource)
-    ->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
-)->flatten()->asSet()
-/]
-
-[query public relevantResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
-anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider |
-    relevantResources(aServiceProvider)
-)->flatten()->asSet()
-->union(
-    anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor |
-        relevantResources(aRequiredAdaptor)
-    )->flatten()->asSet()
-)
-/]
-
-[query public servicedResources(aWebService: WebService) : Set(Resource) = 
-aWebService.resourceTypes->asSet()
-/]
-
-[query public relevantDomainSpecifications(anAdaptorInterface : AdaptorInterface) : Set(DomainSpecification) =
-anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider |
-    relevantDomainSpecifications(aServiceProvider)
-)->flatten()->asSet()
-->union(
-    anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor |
-        relevantDomainSpecifications(aRequiredAdaptor)
-    )->flatten()->asSet()
-)
-/]
-
-[query public relevantVocabularies(anAdaptorInterface : AdaptorInterface) : Set(Vocabulary) =
-anAdaptorInterface.relevantDomainSpecifications()->collectNested(aDomainSpecification : DomainSpecification |
-    relevantVocabularies(aDomainSpecification)
-)->flatten()->asSet()
-/]

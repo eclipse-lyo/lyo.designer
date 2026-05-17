@@ -19,15 +19,6 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
-
-[query public resourcePropertyDefinitionLocalName(aResourceProperty: ResourceProperty) : String =
-(if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
-    '"'.concat(aResourceProperty.name).concat('"')
-else
-    '"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
-endif)
-/]
-
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 
 [query public pythonName(aProperty: ResourceProperty, toUpperFirst : Boolean) : String =
@@ -45,6 +36,15 @@ else
     vocabularyNamespaceConstantName(aResourceProperty.propertyDefinition.definingVocabulary())
 endif)
 /]
+
+[query public resourcePropertyDefinitionLocalName(aResourceProperty: ResourceProperty) : String =
+(if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
+    '"'.concat(aResourceProperty.name).concat('"')
+else
+    '"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
+endif)
+/]
+
 
 [query public nameAnnotation(aProperty: ResourceProperty) : String =
 '@oslc_name('
@@ -190,6 +190,14 @@ endif)
     endif)
 /]
 
+[query public pythonAttributeInitialConstruction(aProperty: ResourceProperty) : String =
+    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
+        'set()'
+    else
+        'None'
+    endif)
+/]
+
 [query public pythonAttributeBaseType(aProperty: ResourceProperty) : String =
     (if (aProperty.valueType.toString() = 'String') then
         'str'
@@ -243,14 +251,6 @@ endif)
                 endif
             endif
         endif
-    endif)
-/]
-
-[query public pythonAttributeInitialConstruction(aProperty: ResourceProperty) : String =
-    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
-        'set()'
-    else
-        'None'
     endif)
 /]
 
