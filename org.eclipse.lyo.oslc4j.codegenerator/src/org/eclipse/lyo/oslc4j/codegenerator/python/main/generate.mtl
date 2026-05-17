@@ -54,10 +54,6 @@
 [/for]
 [/template]
 
-[template public generateForRelevantSpecifications(anAdaptorInterface : AdaptorInterface)]
-[generateForRelevantDomainSpecifications(anAdaptorInterface)/]
-[/template]
-
 [template public generateForRelevantVocabularies(anAdaptorInterface : AdaptorInterface)]
 [for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)
     ->select(o: Vocabulary | anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject))))]

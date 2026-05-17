@@ -56,30 +56,6 @@ else
 endif)
 /]
 
-[query public getAuthenticationConfiguration(anAdaptorInterface : AdaptorInterface) : AuthenticationConfiguration =
-(if (anAdaptorInterface.configuration.oclIsUndefined()) then
-    null
-else
-    (if anAdaptorInterface.configuration.authenticationConfiguration.oclIsUndefined() then
-        null
-    else
-        anAdaptorInterface.configuration.authenticationConfiguration
-    endif)
-endif)
-/]
-
-[query public authenticationEnabled(anAdaptorInterface : AdaptorInterface) : Boolean =
-not anAdaptorInterface.getAuthenticationConfiguration().oclIsUndefined()
-/]
-
-[query public trsServiceEnabled(anAdaptorInterface : AdaptorInterface) : Boolean =
-not anAdaptorInterface.trsService.oclIsUndefined()
-/]
-
-[query public storeEnabled(anAdaptorInterface : AdaptorInterface) : Boolean =
-anAdaptorInterface.stores->size() > 0
-/]
-
 [query public servicedResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
 anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider | 
 	servicedResources(aServiceProvider)

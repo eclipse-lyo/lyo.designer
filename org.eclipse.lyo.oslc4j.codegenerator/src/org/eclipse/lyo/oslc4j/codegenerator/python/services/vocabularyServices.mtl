@@ -34,17 +34,13 @@ aVocabulary.preferredNamespacePrefix.toLower().concat('_vocabulary_constants')
 pythonPackageName(aVocabulary, anAdaptorInterface, defaultPackageName)
 /]
 
-[query public vocabularyNamespaceConstantName(aVocabulary : Vocabulary) : String = 
-'NS_'.concat(aVocabulary.preferredNamespacePrefix.toUpperCase()).concat('_VOCABULARY')
-/]
-
-[query public pythonFullNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String =
-pythonPackageNameForConstants(aVocabulary, anAdaptorInterface, defaultPackageName).concat('.').concat(pythonNameForConstants(aVocabulary))
-/]
-
 [query public pythonFullFileNameForConstants(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
     pythonFilesBasePath(aVocabulary, anAdaptorInterface, defaultFilesPath)
     .concatenatePaths(pythonPackageNameForConstants(aVocabulary, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))
     .concatenatePaths(pythonNameForConstants(aVocabulary))
     .concat('.py')
+/]
+
+[query public vocabularyNamespaceConstantName(aVocabulary : Vocabulary) : String = 
+'NS_'.concat(aVocabulary.preferredNamespacePrefix.toUpperCase()).concat('_VOCABULARY')
 /]

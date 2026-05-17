@@ -16,17 +16,6 @@
 /]
 [module services('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
-[comment TODO: we should avoid relying on "eContainer", since objects that come from a composing emf file, will not have the eContainer relationship setup as expected.
-This method should be able to work even for objects that come from a differnet emf file than that containing the AdaptorInterface. 
-You should also question any other use of "eContainer" in this whole project /]
-[query public containingAdaptorInterface(obj : OclAny) : AdaptorInterface =
-(if (not obj.eContainer(AdaptorInterface).oclIsUndefined()) then
-    obj.eContainer(AdaptorInterface).oclAsType(AdaptorInterface)
-else
-    null
-endif)
-/]
-
 [query public isFromImportedModels(anAdaptorInterface : AdaptorInterface, obj : EObject) : Boolean = 
     not (anAdaptorInterface.eResource() = obj.eResource())
 /]
@@ -60,43 +49,6 @@ endif)
     false
 else
     aSpecification.configuration.generalConfiguration.doNotGenerateFromImportedModels
-endif)
-/]
-
-[comment We do not generate if the model does not contain a projectSetting, since we won't know how to. We need all the parameters to produce valid files/]
-[query public doNotGenerateProjectFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
-(if (anAdaptorInterface.configuration.oclIsUndefined()) then 
-    true
-else
-    (if anAdaptorInterface.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
-        false
-    else
-        anAdaptorInterface.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
-    endif)
-endif)
-/]
-
-[query public doNotGenerateProjectFiles(aSpecification : Specification) : Boolean = 
-(if (aSpecification.configuration.oclIsUndefined()) then 
-    true
-else
-    (if aSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
-        false
-    else
-        aSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
-    endif)
-endif)
-/]
-
-[query public doNotGenerateProjectFiles(aDomainSpecification : DomainSpecification) : Boolean = 
-(if (aDomainSpecification.configuration.oclIsUndefined()) then 
-    true
-else
-    (if aDomainSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles.oclIsUndefined() then 
-        false
-    else
-        aDomainSpecification.configuration.projectConfiguration.doNotGenerateProjectConfigurationFiles
-    endif)
 endif)
 /]
 
@@ -168,14 +120,6 @@ else
         stripURISegmentEnd(leftSegment).concat('/').concat(stripURISegmentStart(rightSegment))
     endif)
 endif)
-/]
-
-[query public commaSeparate(commaSeparatedString : String, prependIfNotEmpty : Boolean, appendIfNotEmpty : Boolean) : String =
-(if prependIfNotEmpty._and(commaSeparatedString.size() > 0) then ', ' else ''endif)
-.concat(commaSeparatedString)
-.concat(
-(if appendIfNotEmpty._and(commaSeparatedString.size() > 0) then ' ,' else ''endif)
-)
 /]
 
 [query public concatenate (aStringSequence : Sequence(String), separatorString : String) : String =
@@ -349,18 +293,6 @@ aDomainSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths
 
 [query public pythonFilesBasePath(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
 aVocabulary.filesBasePath(anAdaptorInterface, default).concatenatePaths(pythonFilesRelativePath())
-/]
-
-[query public generateJspFilesForOslcUI(anAdaptorInterface : AdaptorInterface) : Boolean =
-(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generateJspFilesForOslcUI.oclIsUndefined()) then
-    false
-else
-    anAdaptorInterface.configuration.generateJspFilesForOslcUI
-endif)
-/]
-
-[query public pythonSimpleStringFromUri(uriString: String, toUpperFirst : Boolean) : String =
-pythonString(uriString.tokenize('/\\#')->last(), '', toUpperFirst)
 /]
 
 [query public pythonConstantString (aString : String) : String =

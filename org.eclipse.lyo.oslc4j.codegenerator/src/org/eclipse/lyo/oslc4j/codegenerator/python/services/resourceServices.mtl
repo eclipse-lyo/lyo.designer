@@ -18,7 +18,6 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
 
 [query public generate(aResource: Resource) : Boolean = 
     not aResource.definingDomainSpecification().doNotGenerate()
@@ -146,10 +145,6 @@ pythonPackageName(aResource.definingDomainSpecification(), anAdaptorInterface, d
 pythonName(aResource)
 /]
 
-[query public pythonClassFullName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String = 
-pythonClassPackageName(aResource, anAdaptorInterface, defaultPackageName).concat('.').concat(pythonClassName(aResource))
-/]
-
 [query public pythonClassFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
     pythonClassFullFolderName(aResource, anAdaptorInterface, defaultFilesPath, defaultPackageName)
     .concatenatePaths(pythonClassName(aResource))
@@ -158,22 +153,6 @@ pythonClassPackageName(aResource, anAdaptorInterface, defaultPackageName).concat
 
 [query public resourceConstantName(aResource : Resource) : String = 
 pythonConstantString(aResource.name)
-/]
-
-[query public resourcePathConstantName(aResource : Resource) : String = 
-resourceConstantName(aResource).concat('_PATH')
-/]
-
-[query public resourceTypeNamespaceConstantName(aResource : Resource) : String = 
-resourceConstantName(aResource).concat('_NAMESPACE')
-/]
-
-[query public resourceTypeLocalNameConstantName(aResource : Resource) : String = 
-resourceConstantName(aResource).concat('_LOCALNAME')
-/]
-
-[query public resourceTypeConstantName(aResource : Resource) : String = 
-resourceConstantName(aResource).concat('_TYPE')
 /]
 
 [query public pythonAttributeName(aProperty: ResourceProperty) : String =
@@ -188,21 +167,21 @@ resourceConstantName(aResource).concat('_TYPE')
     pythonAttributeName(aProperty)
 /]
 
-[query public pythonNamespaceAnnotation(aResource: Resource) : String =
-'@oslc_namespace('
-.concat(aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName())
-.concat(')')
-/]
-
 [query public pythonNameAnnotation(aResource: Resource) : String =
 '@oslc_name("'
 .concat(if (aResource.describes.oclIsUndefined()) then aResource.name.substituteAll(' ', '') else aResource.describes.name.substituteAll(' ', '') endif)
 .concat('")')
 /]
 
+[query public pythonNamespaceAnnotation(aResource: Resource) : String =
+'@oslc_namespace('
+.concat('NS_'.concat(aResource.definingDomainSpecification().namespacePrefix.name.toUpperCase()))
+.concat(')')
+/]
+
 [query public pythonResourceShapeAnnotation(aResource: Resource) : String =
 '@oslc_resource_shape(describes='
-.concat(aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName())
+.concat('NS_'.concat(aResource.definingDomainSpecification().namespacePrefix.name.toUpperCase()))
 .concat('["')
 .concat(if (aResource.describes.oclIsUndefined()) then aResource.name.substituteAll(' ', '') else aResource.describes.name.substituteAll(' ', '') endif)
 .concat('"], title="')

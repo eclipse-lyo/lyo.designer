@@ -39,10 +39,6 @@ pythonPackageName(aDomainSpecification, anAdaptorInterface, defaultPackageName)
 aDomainSpecification.namespacePrefix.name.toLower().concat('_constants')
 /]
 
-[query public pythonFullNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String =
-pythonPackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultPackageName).concat('.').concat(pythonNameForConstants(aDomainSpecification))
-/]
-
 [query public pythonFullFileNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
     pythonFullFolderNameForConstants(aDomainSpecification, anAdaptorInterface, defaultFilesPath, defaultPackageName)
     .concatenatePaths(pythonNameForConstants(aDomainSpecification))
