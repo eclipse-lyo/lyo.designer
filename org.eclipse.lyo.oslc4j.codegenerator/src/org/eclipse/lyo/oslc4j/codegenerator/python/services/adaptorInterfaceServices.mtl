@@ -20,6 +20,10 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 
+[query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification: DomainSpecification) : String =
+'NS_'.concat(aDomainSpecification.namespacePrefix.name.toUpperCase())
+/]
+
 [query public relevantResources(aSpecification : Specification) : Set(Resource) =
     (aSpecification.domainSpecifications.resources
     ->union(aSpecification.domainSpecifications.resources.allRelatedResources()))->flatten()->asSet()
@@ -44,7 +48,6 @@ relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification
 )->flatten()->asSet()
 /]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 
 [query public serviceProviders(anAdaptorInterface : AdaptorInterface) : Sequence(ServiceProvider) =

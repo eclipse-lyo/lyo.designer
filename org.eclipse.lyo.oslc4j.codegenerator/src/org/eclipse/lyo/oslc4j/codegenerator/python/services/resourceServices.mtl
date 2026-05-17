@@ -18,6 +18,7 @@
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
 
 [query public generate(aResource: Resource) : Boolean = 
     not aResource.definingDomainSpecification().doNotGenerate()
@@ -126,9 +127,6 @@ in
 [query public interfaceProperties(aResource: Resource) : Sequence(ResourceProperty) =
 	aResource.interfaceResources().resourceProperties
 /]
-
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 
 
 [query public pythonName(aResource: Resource) : String = 

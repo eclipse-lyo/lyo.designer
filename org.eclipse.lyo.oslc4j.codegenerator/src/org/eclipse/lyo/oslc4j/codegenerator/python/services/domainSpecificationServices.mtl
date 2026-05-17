@@ -16,6 +16,8 @@
 /]
 [module domainSpecificationServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+
 [query public definingDomainSpecification(aProperty: ResourceProperty) : DomainSpecification =
 aProperty.eContainer(DomainSpecification)
 /]
@@ -23,8 +25,6 @@ aProperty.eContainer(DomainSpecification)
 [query public definingDomainSpecification(aResource: Resource) : DomainSpecification =
 aResource.eContainer(DomainSpecification)
 /]
-
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 
 
 [query public pythonFullFolderNameForConstants(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
@@ -48,9 +48,4 @@ pythonPackageNameForConstants(aDomainSpecification, anAdaptorInterface, defaultP
     pythonFullFolderNameForConstants(aDomainSpecification, anAdaptorInterface, defaultFilesPath, defaultPackageName)
     .concatenatePaths(pythonNameForConstants(aDomainSpecification))
     .concat('.py')
-/]
-
-[comment todo: move to adaptorInterfaceServices /]
-[query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification: DomainSpecification) : String = 
-'NS_'.concat(aDomainSpecification.namespacePrefix.name.toUpperCase())
 /]
