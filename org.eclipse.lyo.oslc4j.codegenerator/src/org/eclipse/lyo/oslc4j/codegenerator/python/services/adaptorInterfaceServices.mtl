@@ -48,8 +48,6 @@ relevantDomainSpecifications(aSpecification)->collectNested(aDomainSpecification
 )->flatten()->asSet()
 /]
 
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
-
 [query public serviceProviders(anAdaptorInterface : AdaptorInterface) : Sequence(ServiceProvider) =
 (if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined()) then
     anAdaptorInterface.serviceProviderCatalog.serviceProviders

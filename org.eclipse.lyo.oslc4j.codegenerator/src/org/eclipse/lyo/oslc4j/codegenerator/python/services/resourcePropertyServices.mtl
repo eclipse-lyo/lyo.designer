@@ -15,6 +15,10 @@
  */
 /]
 [module resourcePropertyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 
 [query public resourcePropertyDefinitionLocalName(aResourceProperty: ResourceProperty) : String =
 (if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
@@ -23,11 +27,6 @@ else
     '"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
 endif)
 /]
-
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 

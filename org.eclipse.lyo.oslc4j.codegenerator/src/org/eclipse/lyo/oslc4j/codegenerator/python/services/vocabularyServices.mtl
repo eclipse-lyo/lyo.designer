@@ -16,6 +16,8 @@
 /]
 [module vocabularyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+
 [query public definingVocabulary(aProperty: Property) : Vocabulary =
 aProperty.eContainer(Vocabulary)
 /]
@@ -23,9 +25,6 @@ aProperty.eContainer(Vocabulary)
 [query public definingVocabulary(aClass: Class) : Vocabulary =
 aClass.eContainer(Vocabulary)
 /]
-
-[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
-
 
 [query public pythonNameForConstants(aVocabulary: Vocabulary) : String =
 aVocabulary.preferredNamespacePrefix.toLower().concat('_vocabulary_constants')
