@@ -151,10 +151,6 @@ pythonName(aResource)
     .concat('.py')
 /]
 
-[query public resourceConstantName(aResource : Resource) : String = 
-pythonConstantString(aResource.name)
-/]
-
 [query public pythonAttributeName(aProperty: ResourceProperty) : String =
     pythonAttributeNameString(aProperty.name)
 /]
