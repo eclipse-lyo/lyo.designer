@@ -31,7 +31,7 @@
 
 [template public generateCommon(anAdaptorInterface : AdaptorInterface)]
 [anAdaptorInterface.generateLicenseFiles() /]
-[anAdaptorInterface.specification.generateConfigFiles(anAdaptorInterface, null) /]
+[anAdaptorInterface.specification.generateConfigFiles() /]
 [/template]
 
 [comment Group the resources that need to be generated into their specific destination folders. For each such folder, generate a packageInfo class that lists their namespaces./]

@@ -41,7 +41,7 @@ aSpecification.configuration.oclIsUndefined()
 [let defaultFilesPath : String = aSpecification.configuration.generalConfiguration.filesBasePath]
 [let defaultPackageName : String = aSpecification.configuration.generalConfiguration.javaBasePackageName]
     [aSpecification.generateLicenseFiles() /] 
-    [aSpecification.generateConfigFiles(null, defaultFilesPath) /]
+    [aSpecification.generateConfigFiles() /]
     [file (aSpecification.pythonFilesBasePath(null, defaultFilesPath).concatenatePaths('__init__.py'), false, 'UTF-8')]
 # [protected ('imports')]
 # [/protected]
