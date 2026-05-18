@@ -165,18 +165,6 @@ aDomainSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths
 aVocabulary.filesBasePath(anAdaptorInterface, default).concatenatePaths(pythonFilesRelativePath())
 /]
 
-[query public generateJspFilesForOslcUI(anAdaptorInterface : AdaptorInterface) : Boolean =
-(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generateJspFilesForOslcUI.oclIsUndefined()) then
-    false
-else
-    anAdaptorInterface.configuration.generateJspFilesForOslcUI
-endif)
-/]
-
-[query public pythonSimpleStringFromUri(uriString: String, toUpperFirst : Boolean) : String =
-pythonString(uriString.tokenize('/\\#')->last(), '', toUpperFirst)
-/]
-
 [query public pythonConstantString (aString : String) : String =
 concatenate(
     aString.replaceAll('\\W+', '_').tokenize('_')->sep('_').oclAsType(String)

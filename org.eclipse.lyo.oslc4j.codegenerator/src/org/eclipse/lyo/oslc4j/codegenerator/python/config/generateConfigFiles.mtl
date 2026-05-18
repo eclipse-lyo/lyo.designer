@@ -17,8 +17,7 @@
 [module generateConfigFiles('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 
-[comment todo: remove unused parameters /]
-[template public generateConfigFiles(aSpecification : Specification, traceabilityContext : OclAny, defaultFilesPath : String)]
+[template public generateConfigFiles(aSpecification : Specification)]
 [file ('requirements.txt', false, 'UTF-8')]
 oslc4py-client
 rdflib

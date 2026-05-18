@@ -19,11 +19,13 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::vocabularyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::adaptorInterfaceServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
 
 [query public pythonName(aProperty: ResourceProperty, toUpperFirst : Boolean) : String =
 pythonString(aProperty.name, aProperty.definingDomainSpecification().namespacePrefix.name, toUpperFirst)
@@ -185,6 +187,14 @@ endif)
     endif)
 /]
 
+[query public pythonAttributeInitialConstruction(aProperty: ResourceProperty) : String =
+    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
+        'set()'
+    else
+        'None'
+    endif)
+/]
+
 [query public pythonAttributeBaseType(aProperty: ResourceProperty) : String =
     (if (aProperty.valueType.toString() = 'String') then
         'str'
@@ -238,14 +248,6 @@ endif)
                 endif
             endif
         endif
-    endif)
-/]
-
-[query public pythonAttributeInitialConstruction(aProperty: ResourceProperty) : String =
-    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
-        'set()'
-    else
-        'None'
     endif)
 /]
 
