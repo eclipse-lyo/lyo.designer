@@ -18,12 +18,14 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::vocabularyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::adaptorInterfaceServices/]
 
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourcePropertyServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
 
 [template public generateClassHeader(aResource : Resource, traceabilityContext : OclAny)]
 # [protected ('Copyright')]
