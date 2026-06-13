@@ -62,7 +62,7 @@ endif)
     <application.contextpath>[mavenServerConfiguration.applicationContextPath/]</application.contextpath>
     <application.filename>[if (not mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim().isNullOrEmpty())][mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim()/][else][mavenProjectConfiguration.artifactId/][/if]</application.filename>
     [/if]
-    [additionalMavenProperties()/]
+    [additionalMavenProperties(mavenProjectConfiguration, swaggerDocumentationEnabled, serverImplementation, mavenServerConfiguration)/]
     <!-- [protected ('properties')]
     -->
     <!-- TODO: Add additional properties here to avoid them be overridden upon future re-generation -->
@@ -74,7 +74,7 @@ endif)
 [template public additionalRepositories(traceabilityContext : OclAny) post (trim())]
 [/template]
 
-[template public additionalMavenProperties(traceabilityContext : OclAny) post (trim())]
+[template public additionalMavenProperties(mavenProjectConfiguration : MavenProjectConfiguration, swaggerDocumentationEnabled : Boolean, serverImplementation : Boolean, mavenServerConfiguration : MavenServerConfiguration) post (trim())]
 [/template]
 
 [template private repositories(traceabilityContext : OclAny)]
@@ -285,6 +285,12 @@ If multiple DSs share the same maven dependency, we group them into 1.
 [template public additionalPlugins(anAdaptorInterface : AdaptorInterface) post (trim())]
 [/template]
 
+[template public additionalJettyPluginConfiguration(anAdaptorInterface : AdaptorInterface) post (trim())]
+[/template]
+
+[template public additionalMavenWarPluginConfiguration(anAdaptorInterface : AdaptorInterface) post (trim())]
+[/template]
+
 [template public generatePomXml(anAdaptorInterface : AdaptorInterface)]
 [if (not anAdaptorInterface.doNotGenerateProjectFiles())]
 [let mavenProjectConfiguration : MavenProjectConfiguration = anAdaptorInterface.configuration.projectConfiguration]
@@ -391,6 +397,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
                     <port>${servlet.port}</port>
                   </httpConnector>
                   <scan>5</scan>
+                  [anAdaptorInterface.additionalJettyPluginConfiguration()/]
                 </configuration>
             </plugin>
             <plugin>
@@ -466,6 +473,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
                             <targetPath>/swagger-ui/dist</targetPath>
                         </resource>
                     </webResources>
+                  [anAdaptorInterface.additionalMavenWarPluginConfiguration()/]
                 </configuration>
             </plugin>
             [/if]
