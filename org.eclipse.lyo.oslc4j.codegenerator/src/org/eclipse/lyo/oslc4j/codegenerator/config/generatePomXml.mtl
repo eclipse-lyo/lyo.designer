@@ -473,7 +473,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
                             <targetPath>/swagger-ui/dist</targetPath>
                         </resource>
                     </webResources>
-                  [anAdaptorInterface.additionalMavenWarPluginConfiguration()/]
+                    [anAdaptorInterface.additionalMavenWarPluginConfiguration()/]
                 </configuration>
             </plugin>
             [/if]
