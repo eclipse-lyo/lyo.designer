@@ -288,6 +288,9 @@ If multiple DSs share the same maven dependency, we group them into 1.
 [template public additionalJettyPluginConfiguration(anAdaptorInterface : AdaptorInterface) post (trim())]
 [/template]
 
+[template public additionalJettyPluginWebAppConfiguration(anAdaptorInterface : AdaptorInterface) post (trim())]
+[/template]
+
 [template public additionalMavenWarPluginConfiguration(anAdaptorInterface : AdaptorInterface) post (trim())]
 [/template]
 
@@ -392,6 +395,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
                     <_initParams>
                         <org.eclipse.jetty.servlet.Default.useFileMappedBuffer>false</org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
                     </_initParams>
+                  [anAdaptorInterface.additionalJettyPluginWebAppConfiguration()/]
                   </webApp>
                   <httpConnector>
                     <port>${servlet.port}</port>
