@@ -55,7 +55,7 @@ endif)
     <maven.compiler.release>[javaVersion(mavenProjectConfiguration.lyoVersion)/]</maven.compiler.release>
     <version.lyo>[mavenProjectConfiguration.lyoVersion/]</version.lyo>
     [if (swaggerDocumentationEnabled)]
-    <swagger-ui.version>5.31.0</swagger-ui.version>
+    <swagger-ui.version>5.32.8</swagger-ui.version>
     [/if]
     [if (serverImplementation)]
     <servlet.port>[mavenServerConfiguration.jettyPort/]</servlet.port>
@@ -378,7 +378,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
-              <version>3.14.1</version>
+              <version>3.15.0</version>
               <configuration>
                 <compilerArgument>
                   -Xlint:fallthrough,unchecked,removal,deprecation,dep-ann,varargs,overloads,serial,try,finally
@@ -442,7 +442,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
                 <!-- Download Swagger UI webjar. -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.9.0</version>
+                <version>3.11.0</version>
                 <executions>
                     <execution>
                         <phase>prepare-package</phase>
