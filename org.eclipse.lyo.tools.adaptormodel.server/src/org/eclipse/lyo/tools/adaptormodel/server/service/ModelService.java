@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -19,7 +20,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import adaptorinterface.AdaptorInterface;
-import adaptorinterface.AdaptorinterfaceFactory;
 import adaptorinterface.AdaptorinterfacePackage;
 
 import com.google.gson.JsonArray;
@@ -44,6 +44,10 @@ import org.eclipse.lyo.tools.adaptormodel.server.session.ModelSessionProvider;
 public final class ModelService {
 
     private final ModelSessionProvider session = ModelSessionProvider.INSTANCE;
+
+    private static final String ADAPTOR_NS = "http://org.eclipse.lyo/oslc4j/adaptorInterface";
+    private static final String TOOLCHAIN_NS = "http://org.eclipse.lyo/oslc4j/toolChain";
+    private static final String VOCABULARY_NS = "http://org.eclipse.lyo/oslc4j/vocabulary";
 
     public JsonObject metamodel() {
         JsonObject result = new JsonObject();
@@ -86,6 +90,30 @@ public final class ModelService {
         });
     }
 
+    /**
+     * Returns the top-level root elements of every resource in the session, with
+     * their type and fragment. This makes it obvious whether the open model is an
+     * {@code AdaptorInterface} (adaptor endpoints) or a {@code Specification}
+     * (domain/vocabulary) model.
+     */
+    public JsonArray roots() {
+        EditingDomain editingDomain = requireSession();
+        return session.read(editingDomain, resourceSet -> {
+            JsonArray array = new JsonArray();
+            for (Resource resource : resourceSet.getResources()) {
+                for (EObject root : resource.getContents()) {
+                    if (!isSemantic(root)) {
+                        continue;
+                    }
+                    JsonObject object = EObjectSerializer.summary(root);
+                    object.addProperty("resourceURI", resource.getURI().toString());
+                    array.add(object);
+                }
+            }
+            return array;
+        });
+    }
+
     public JsonObject create(JsonObject request) {
         final String type = str(request, "type");
         final String containerFragment = optStr(request, "containerFragment");
@@ -104,20 +132,38 @@ public final class ModelService {
                 throw new ModelException("Cannot instantiate abstract/interface type: " + type);
             }
             EObject container = containerFragment != null ? resolve(resourceSet, containerFragment) : null;
-            EObject newObject = AdaptorinterfaceFactory.eINSTANCE.create(eClass);
+            EObject newObject = eClass.getEPackage().getEFactoryInstance().create(eClass);
             setAttributes(newObject, attributes);
             EStructuralFeature cf = resolveContainmentFeature(container, newObject, containmentFeature);
             if (cf != null) {
                 addToContainer(container, newObject, cf);
-            } else if (container == null && "AdaptorInterface".equals(eClass.getName())) {
-                Resource resource = primaryResource(resourceSet);
-                if (resource == null) {
-                    throw new ModelException("No resource available to host the AdaptorInterface root");
+            } else if (container == null) {
+                // No container provided: attach as a root element.
+                EObject rootOwner = null;
+                EStructuralFeature rootFeature = null;
+                if ("AdaptorInterface".equals(eClass.getName())) {
+                    EObject toolchain = findRootOfType(resourceSet, "Toolchain");
+                    if (toolchain != null) {
+                        EStructuralFeature tc = toolchain.eClass().getEStructuralFeature("adaptorInterfaces");
+                        if (tc instanceof EReference && ((EReference) tc).isContainment()) {
+                            rootOwner = toolchain;
+                            rootFeature = tc;
+                        }
+                    }
                 }
-                resource.getContents().add(newObject);
+                if (rootOwner != null && rootFeature != null) {
+                    addToContainer(rootOwner, newObject, rootFeature);
+                } else {
+                    Resource resource = primaryResource(resourceSet);
+                    if (resource == null) {
+                        throw new ModelException("No resource available to host " + type);
+                    }
+                    resource.getContents().add(newObject);
+                }
             } else {
-                throw new ModelException("Could not resolve a containment feature for " + type
-                        + (container != null ? " under " + containerFragment : " (no container provided)"));
+                throw new ModelException("Could not resolve a containment feature for " + type + " under "
+                        + containerFragment
+                        + ". Provide an explicit containmentFeature or choose a container that can hold this type.");
             }
             setReferences(newObject, references, resourceSet);
             outFragment[0] = EObjectSerializer.fragmentOf(newObject);
@@ -176,12 +222,30 @@ public final class ModelService {
     }
 
     private static EClass resolveEClass(String type) {
-        for (EClassifier classifier : AdaptorinterfacePackage.eINSTANCE.getEClassifiers()) {
+        EClass found = findEClass(AdaptorinterfacePackage.eINSTANCE, type);
+        if (found != null) {
+            return found;
+        }
+        for (String ns : new String[] { TOOLCHAIN_NS, VOCABULARY_NS }) {
+            EPackage pkg = EPackage.Registry.INSTANCE.getEPackage(ns);
+            if (pkg != null) {
+                found = findEClass(pkg, type);
+                if (found != null) {
+                    return found;
+                }
+            }
+        }
+        throw new ModelException("Unknown element type: " + type
+                + ". The corresponding metamodel bundle may not be loaded in this runtime.");
+    }
+
+    private static EClass findEClass(EPackage pkg, String type) {
+        for (EClassifier classifier : pkg.getEClassifiers()) {
             if (classifier instanceof EClass && classifier.getName().equals(type)) {
                 return (EClass) classifier;
             }
         }
-        throw new ModelException("Unknown element type: " + type);
+        return null;
     }
 
     private static EObject resolve(ResourceSet resourceSet, String fragment) {
@@ -300,16 +364,35 @@ public final class ModelService {
         List<EObject> result = new ArrayList<>();
         for (Resource resource : resourceSet.getResources()) {
             for (EObject root : resource.getContents()) {
-                if (root.eClass().getEPackage() != AdaptorinterfacePackage.eINSTANCE) {
-                    continue;
-                }
-                result.add(root);
-                for (Iterator<EObject> it = root.eAllContents(); it.hasNext();) {
-                    result.add(it.next());
-                }
+                collectSemantic(root, result);
             }
         }
         return result;
+    }
+
+    private static void collectSemantic(EObject eo, List<EObject> out) {
+        if (isSemantic(eo)) {
+            out.add(eo);
+            for (EObject child : eo.eContents()) {
+                collectSemantic(child, out);
+            }
+        }
+    }
+
+    private static boolean isSemantic(EObject eo) {
+        String ns = eo.eClass().getEPackage().getNsURI();
+        return ADAPTOR_NS.equals(ns) || TOOLCHAIN_NS.equals(ns) || VOCABULARY_NS.equals(ns);
+    }
+
+    private static EObject findRootOfType(ResourceSet resourceSet, String typeName) {
+        for (Resource resource : resourceSet.getResources()) {
+            for (EObject root : resource.getContents()) {
+                if (typeName.equals(root.eClass().getName())) {
+                    return root;
+                }
+            }
+        }
+        return null;
     }
 
     private static boolean matchesText(EObject object, String text) {

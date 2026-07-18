@@ -18,6 +18,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jetty.servlet;bundle-version="[9.2.0,12.0.0)",
  org.eclipse.jetty.util;bundle-version="[9.2.0,12.0.0)",
  com.google.gson,
- org.eclipse.lyo.tools.adaptormodel.model;visibility:=reexport
+ org.eclipse.lyo.tools.adaptormodel.model;visibility:=reexport,
+ org.eclipse.lyo.tools.vocabulary.model,
+ org.eclipse.lyo.tools.toolchain.model
 Import-Package: javax.servlet;version="[4.0.0,5.0.0)",
  javax.servlet.http;version="[4.0.0,5.0.0)"

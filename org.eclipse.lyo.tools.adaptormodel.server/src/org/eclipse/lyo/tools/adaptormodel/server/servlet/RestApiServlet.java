@@ -52,6 +52,8 @@ public class RestApiServlet extends HttpServlet {
                     status.add(e.getKey(), e.getValue());
                 }
                 ok(response, status);
+            } else if (path.equals("/roots") || path.equals("/roots/")) {
+                ok(response, service.roots());
             } else if (path.equals("/elements") || path.equals("/elements/")) {
                 ok(response,
                         service.query(request.getParameter("type"), request.getParameter("fullTextSearch")));
