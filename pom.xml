@@ -161,6 +161,7 @@
                 <module>org.eclipse.lyo.tools.adaptormodel.edit</module>
                 <module>org.eclipse.lyo.tools.adaptormodel.editor</module>
                 <module>org.eclipse.lyo.tools.adaptormodel.model</module>
+                <module>org.eclipse.lyo.tools.adaptormodel.server</module>
 
                 <module>org.eclipse.lyo.tools.toolchain.design</module>
                 <module>org.eclipse.lyo.oslc4j.codegenerator</module>
@@ -197,6 +198,7 @@
                 <module>org.eclipse.lyo.tools.adaptormodel.edit</module>
                 <module>org.eclipse.lyo.tools.adaptormodel.editor</module>
                 <module>org.eclipse.lyo.tools.adaptormodel.model</module>
+                <module>org.eclipse.lyo.tools.adaptormodel.server</module>
 
                 <module>org.eclipse.lyo.tools.codegenerator.feature</module>
 

@@ -3,18 +3,18 @@
 .tycho-consumer-pom.xml
 
 # Maven
-/target/
+target/
 
 # Eclipse
-/.project
-/.classpath
-/.settings/
-/workspace/
+.project
+.classpath
+.settings/
+workspace/
 
 # Intellij
 
-/.idea/
-/*.iml
+.idea/
+*.iml
 
 # OS
 .DS_Store
