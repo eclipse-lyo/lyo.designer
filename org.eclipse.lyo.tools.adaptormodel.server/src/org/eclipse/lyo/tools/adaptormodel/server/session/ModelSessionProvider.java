@@ -1,5 +1,6 @@
 package org.eclipse.lyo.tools.adaptormodel.server.session;
 
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 
@@ -19,6 +20,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 import adaptorinterface.AdaptorInterface;
+
+import com.google.gson.JsonObject;
 
 /**
  * Locates the live {@link EditingDomain} that backs the open Adaptor Interface
@@ -44,37 +47,97 @@ public enum ModelSessionProvider {
     INSTANCE;
 
     public EditingDomain findEditingDomain() {
+        EditingDomain result = null;
+        int sessionsTotal = 0;
+        int sessionsOpen = 0;
+        try {
+            EditingDomain preferred = null;
+            EditingDomain any = null;
+            for (Session session : SessionManager.INSTANCE.getSessions()) {
+                sessionsTotal++;
+                if (!session.isOpen()) {
+                    continue;
+                }
+                sessionsOpen++;
+                TransactionalEditingDomain ed = session.getTransactionalEditingDomain();
+                if (ed == null) {
+                    continue;
+                }
+                // Make sure lazy-loaded semantic resources are parsed so the
+                // AdaptorInterface root is visible in the resource set.
+                ensureLoaded(ed.getResourceSet());
+                if (containsAdaptorInterface(ed.getResourceSet())) {
+                    preferred = ed;
+                    break;
+                }
+                if (any == null && !ed.getResourceSet().getResources().isEmpty()) {
+                    any = ed;
+                }
+            }
+            if (preferred != null) {
+                result = preferred;
+            } else if (any != null) {
+                result = any;
+            }
+            if (result == null && PlatformUI.isWorkbenchRunning()) {
+                AtomicReference<EditingDomain> ref = new AtomicReference<>();
+                Display.getDefault().syncExec(() -> {
+                    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                    if (window != null) {
+                        IEditorPart editor = window.getActivePage().getActiveEditor();
+                        if (editor instanceof IEditingDomainProvider) {
+                            EditingDomain ed = ((IEditingDomainProvider) editor).getEditingDomain();
+                            if (ed != null) {
+                                ensureLoaded(ed.getResourceSet());
+                                if (containsAdaptorInterface(ed.getResourceSet()) || ref.get() == null) {
+                                    ref.set(ed);
+                                }
+                            }
+                        }
+                    }
+                });
+                result = ref.get();
+            }
+        } catch (Throwable t) {
+            log("findEditingDomain failed: " + t);
+        }
+        log("findEditingDomain: sessions(total=" + sessionsTotal + ",open=" + sessionsOpen + ") -> "
+                + (result == null ? "NONE"
+                        : result.getClass().getSimpleName() + (result instanceof TransactionalEditingDomain ? "[tx]" : "")));
+        return result;
+    }
+
+    public JsonObject diagnostics() {
+        JsonObject result = new JsonObject();
+        int total = 0;
+        int open = 0;
         try {
             for (Session session : SessionManager.INSTANCE.getSessions()) {
+                total++;
                 if (session.isOpen()) {
-                    TransactionalEditingDomain ed = session.getTransactionalEditingDomain();
-                    if (ed != null && containsAdaptorInterface(ed.getResourceSet())) {
-                        return ed;
-                    }
+                    open++;
                 }
             }
         } catch (Throwable t) {
-            // Sirius not available / not initialized yet - fall through
+            total = -1;
+            open = -1;
         }
-        if (PlatformUI.isWorkbenchRunning()) {
-            AtomicReference<EditingDomain> ref = new AtomicReference<>();
-            Display.getDefault().syncExec(() -> {
-                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                if (window != null) {
-                    IEditorPart editor = window.getActivePage().getActiveEditor();
-                    if (editor instanceof IEditingDomainProvider) {
-                        EditingDomain ed = ((IEditingDomainProvider) editor).getEditingDomain();
-                        if (ed != null && containsAdaptorInterface(ed.getResourceSet())) {
-                            ref.set(ed);
-                        }
-                    }
-                }
-            });
-            if (ref.get() != null) {
-                return ref.get();
-            }
+        result.addProperty("sessionsTotal", total);
+        result.addProperty("sessionsOpen", open);
+        EditingDomain ed = findEditingDomain();
+        result.addProperty("sessionFound", ed != null);
+        if (ed != null) {
+            result.addProperty("editingDomainClass", ed.getClass().getName());
+            result.addProperty("transactional", ed instanceof TransactionalEditingDomain);
+            ResourceSet rs = ed.getResourceSet();
+            result.addProperty("resourceCount", rs.getResources().size());
+            result.addProperty("adaptorInterfacePresent", containsAdaptorInterface(rs));
         }
-        return null;
+        return result;
+    }
+
+    private static void log(String message) {
+        System.out.println("[AdaptorModelServer] " + message);
     }
 
     public <T> T read(EditingDomain editingDomain, Function<ResourceSet, T> fn) {
@@ -103,6 +166,18 @@ public enum ModelSessionProvider {
                     });
         } else {
             runnable.run();
+        }
+    }
+
+    private static void ensureLoaded(ResourceSet resourceSet) {
+        for (Resource resource : resourceSet.getResources()) {
+            if (!resource.isLoaded()) {
+                try {
+                    resource.load(Collections.emptyMap());
+                } catch (Throwable t) {
+                    // Ignore resources that cannot be loaded right now.
+                }
+            }
         }
     }
 

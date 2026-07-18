@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.io.Reader;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -38,13 +40,17 @@ public class RestApiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String path = strip(request);
+        debug(request.getMethod() + " " + request.getRequestURI());
         try {
             if (path.equals("/metamodel") || path.equals("/metamodel/")) {
                 ok(response, service.metamodel());
             } else if (path.equals("/status") || path.equals("/status/")) {
                 JsonObject status = new JsonObject();
                 status.addProperty("status", "up");
-                status.addProperty("session", ModelSessionProvider.INSTANCE.findEditingDomain() != null);
+                JsonObject diag = service.diagnostics();
+                for (Map.Entry<String, JsonElement> e : diag.entrySet()) {
+                    status.add(e.getKey(), e.getValue());
+                }
                 ok(response, status);
             } else if (path.equals("/elements") || path.equals("/elements/")) {
                 ok(response,
@@ -56,8 +62,10 @@ public class RestApiServlet extends HttpServlet {
                 error(response, HttpServletResponse.SC_NOT_FOUND, "Unknown path: " + path);
             }
         } catch (ModelException e) {
+            debug("GET " + path + " -> 400: " + e.getMessage());
             error(response, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         } catch (Exception e) {
+            debug("GET " + path + " -> 500: " + e);
             error(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.toString());
         }
     }
@@ -65,6 +73,7 @@ public class RestApiServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String path = strip(request);
+        debug(request.getMethod() + " " + request.getRequestURI());
         if (!path.equals("/elements") && !path.equals("/elements/")) {
             error(response, HttpServletResponse.SC_NOT_FOUND, "POST is only supported on /api/elements");
             return;
@@ -72,8 +81,10 @@ public class RestApiServlet extends HttpServlet {
         try {
             ok(response, service.create(parse(request)));
         } catch (ModelException e) {
+            debug("POST " + path + " -> 400: " + e.getMessage());
             error(response, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         } catch (Exception e) {
+            debug("POST " + path + " -> 500: " + e);
             error(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.toString());
         }
     }
@@ -81,6 +92,7 @@ public class RestApiServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String path = strip(request);
+        debug(request.getMethod() + " " + request.getRequestURI());
         if (!path.startsWith("/elements/")) {
             error(response, HttpServletResponse.SC_NOT_FOUND, "PUT is only supported on /api/elements/{fragment}");
             return;
@@ -90,8 +102,10 @@ public class RestApiServlet extends HttpServlet {
             service.update(fragment, parse(request));
             ok(response, new JsonObject());
         } catch (ModelException e) {
+            debug("PUT " + path + " -> 400: " + e.getMessage());
             error(response, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         } catch (Exception e) {
+            debug("PUT " + path + " -> 500: " + e);
             error(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.toString());
         }
     }
@@ -99,6 +113,7 @@ public class RestApiServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String path = strip(request);
+        debug(request.getMethod() + " " + request.getRequestURI());
         if (!path.startsWith("/elements/")) {
             error(response, HttpServletResponse.SC_NOT_FOUND, "DELETE is only supported on /api/elements/{fragment}");
             return;
@@ -108,10 +123,16 @@ public class RestApiServlet extends HttpServlet {
             service.delete(fragment);
             ok(response, new JsonObject());
         } catch (ModelException e) {
+            debug("DELETE " + path + " -> 400: " + e.getMessage());
             error(response, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         } catch (Exception e) {
+            debug("DELETE " + path + " -> 500: " + e);
             error(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.toString());
         }
+    }
+
+    private static void debug(String message) {
+        System.out.println("[AdaptorModelServer][rest] " + message);
     }
 
     private static String strip(HttpServletRequest request) {
