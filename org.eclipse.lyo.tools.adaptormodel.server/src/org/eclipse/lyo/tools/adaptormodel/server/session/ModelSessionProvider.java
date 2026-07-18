@@ -1,6 +1,8 @@
 package org.eclipse.lyo.tools.adaptormodel.server.session;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 
@@ -48,64 +50,100 @@ public enum ModelSessionProvider {
     INSTANCE;
 
     public EditingDomain findEditingDomain() {
-        EditingDomain result = null;
         int sessionsTotal = 0;
         int sessionsOpen = 0;
         try {
-            EditingDomain preferred = null;
-            EditingDomain any = null;
             for (Session session : SessionManager.INSTANCE.getSessions()) {
                 sessionsTotal++;
-                if (!session.isOpen()) {
-                    continue;
+                if (session.isOpen()) {
+                    sessionsOpen++;
                 }
-                sessionsOpen++;
-                TransactionalEditingDomain ed = session.getTransactionalEditingDomain();
-                if (ed == null) {
-                    continue;
-                }
-                // Make sure lazy-loaded semantic resources are parsed so the
-                // AdaptorInterface root is visible in the resource set.
-                ensureLoaded(ed.getResourceSet());
-                if (containsAdaptorInterface(ed.getResourceSet())) {
-                    preferred = ed;
-                    break;
-                }
-                if (any == null && !ed.getResourceSet().getResources().isEmpty()) {
-                    any = ed;
-                }
-            }
-            if (preferred != null) {
-                result = preferred;
-            } else if (any != null) {
-                result = any;
-            }
-            if (result == null && PlatformUI.isWorkbenchRunning()) {
-                AtomicReference<EditingDomain> ref = new AtomicReference<>();
-                Display.getDefault().syncExec(() -> {
-                    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                    if (window != null) {
-                        IEditorPart editor = window.getActivePage().getActiveEditor();
-                        if (editor instanceof IEditingDomainProvider) {
-                            EditingDomain ed = ((IEditingDomainProvider) editor).getEditingDomain();
-                            if (ed != null) {
-                                ensureLoaded(ed.getResourceSet());
-                                if (containsAdaptorInterface(ed.getResourceSet()) || ref.get() == null) {
-                                    ref.set(ed);
-                                }
-                            }
-                        }
-                    }
-                });
-                result = ref.get();
             }
         } catch (Throwable t) {
             log("findEditingDomain failed: " + t);
         }
-        log("findEditingDomain: sessions(total=" + sessionsTotal + ",open=" + sessionsOpen + ") -> "
-                + (result == null ? "NONE"
-                        : result.getClass().getSimpleName() + (result instanceof TransactionalEditingDomain ? "[tx]" : "")));
-        return result;
+
+        // All open sessions whose model actually contains an AdaptorInterface
+        // are candidates. Prefer the one backing the editor the user is
+        // currently focused on, so the MCP tracks the model you are looking at.
+        List<TransactionalEditingDomain> candidates = candidateDomains();
+        TransactionalEditingDomain active = activeEditingDomain();
+
+        TransactionalEditingDomain chosen = null;
+        if (active != null) {
+            for (TransactionalEditingDomain candidate : candidates) {
+                if (candidate.getResourceSet() == active.getResourceSet()) {
+                    chosen = candidate;
+                    break;
+                }
+            }
+        }
+        if (chosen == null && !candidates.isEmpty()) {
+            chosen = candidates.get(0);
+        }
+        if (chosen == null && active != null) {
+            chosen = active;
+        }
+        if (chosen == null) {
+            chosen = anyOpenDomain();
+        }
+
+        log("findEditingDomain: sessions(total=" + sessionsTotal + ",open=" + sessionsOpen + ") candidates="
+                + candidates.size() + " -> "
+                + (chosen == null ? "NONE"
+                        : chosen.getClass().getSimpleName() + (chosen instanceof TransactionalEditingDomain ? "[tx]" : "")));
+        return chosen;
+    }
+
+    private static List<TransactionalEditingDomain> candidateDomains() {
+        List<TransactionalEditingDomain> candidates = new ArrayList<>();
+        for (Session session : SessionManager.INSTANCE.getSessions()) {
+            if (!session.isOpen()) {
+                continue;
+            }
+            TransactionalEditingDomain ed = session.getTransactionalEditingDomain();
+            if (ed == null) {
+                continue;
+            }
+            ensureLoaded(ed.getResourceSet());
+            if (containsAdaptorInterface(ed.getResourceSet())) {
+                candidates.add(ed);
+            }
+        }
+        return candidates;
+    }
+
+    private static TransactionalEditingDomain activeEditingDomain() {
+        if (!PlatformUI.isWorkbenchRunning()) {
+            return null;
+        }
+        AtomicReference<TransactionalEditingDomain> ref = new AtomicReference<>();
+        Display.getDefault().syncExec(() -> {
+            IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+            if (window != null) {
+                IEditorPart editor = window.getActivePage().getActiveEditor();
+                if (editor instanceof IEditingDomainProvider) {
+                    EditingDomain ed = ((IEditingDomainProvider) editor).getEditingDomain();
+                    if (ed instanceof TransactionalEditingDomain) {
+                        ref.set((TransactionalEditingDomain) ed);
+                    }
+                }
+            }
+        });
+        return ref.get();
+    }
+
+    private static TransactionalEditingDomain anyOpenDomain() {
+        for (Session session : SessionManager.INSTANCE.getSessions()) {
+            if (!session.isOpen()) {
+                continue;
+            }
+            TransactionalEditingDomain ed = session.getTransactionalEditingDomain();
+            if (ed != null && !ed.getResourceSet().getResources().isEmpty()) {
+                return ed;
+            }
+        }
+        return null;
     }
 
     public JsonObject diagnostics() {
@@ -133,6 +171,24 @@ public enum ModelSessionProvider {
             ResourceSet rs = ed.getResourceSet();
             result.addProperty("resourceCount", rs.getResources().size());
             result.addProperty("adaptorInterfacePresent", containsAdaptorInterface(rs));
+            List<TransactionalEditingDomain> candidates = candidateDomains();
+            result.addProperty("candidateCount", candidates.size());
+            JsonArray candidatesArr = new JsonArray();
+            for (TransactionalEditingDomain candidate : candidates) {
+                JsonObject co = new JsonObject();
+                ResourceSet crs = candidate.getResourceSet();
+                String modelURI = "<empty>";
+                for (Resource r : crs.getResources()) {
+                    if (!r.getContents().isEmpty()) {
+                        modelURI = r.getURI().toString();
+                        break;
+                    }
+                }
+                co.addProperty("modelURI", modelURI);
+                co.addProperty("adaptorInterfacePresent", containsAdaptorInterface(crs));
+                candidatesArr.add(co);
+            }
+            result.add("candidates", candidatesArr);
             JsonArray roots = new JsonArray();
             for (Resource resource : rs.getResources()) {
                 for (EObject root : resource.getContents()) {

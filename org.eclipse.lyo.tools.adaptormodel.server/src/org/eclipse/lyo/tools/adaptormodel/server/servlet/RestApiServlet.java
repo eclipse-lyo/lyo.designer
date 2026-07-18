@@ -76,8 +76,26 @@ public class RestApiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String path = strip(request);
         debug(request.getMethod() + " " + request.getRequestURI());
-        if (!path.equals("/elements") && !path.equals("/elements/")) {
-            error(response, HttpServletResponse.SC_NOT_FOUND, "POST is only supported on /api/elements");
+        if (!path.equals("/elements") && !path.equals("/elements/")
+                && !path.equals("/generate") && !path.equals("/generate/")) {
+            error(response, HttpServletResponse.SC_NOT_FOUND, "POST is only supported on /api/elements and /api/generate");
+            return;
+        }
+        if (path.equals("/generate") || path.equals("/generate/")) {
+            try {
+                JsonObject body = parse(request);
+                String fragment = body.has("fragment") && !body.get("fragment").isJsonNull()
+                        ? body.get("fragment").getAsString() : null;
+                String targetFolder = body.has("targetFolder") && !body.get("targetFolder").isJsonNull()
+                        ? body.get("targetFolder").getAsString() : null;
+                ok(response, service.generateAdaptorCode(fragment, targetFolder));
+            } catch (ModelException e) {
+                debug("POST " + path + " -> 400: " + e.getMessage());
+                error(response, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+            } catch (Exception e) {
+                debug("POST " + path + " -> 500: " + e);
+                error(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.toString());
+            }
             return;
         }
         try {
