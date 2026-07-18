@@ -135,6 +135,10 @@ public class McpServlet extends HttpServlet {
                 "Report runtime diagnostics: number of open Sirius sessions, whether an AdaptorInterface editing domain was found, resource count, etc.",
                 statusProps));
 
+        tools.add(tool("get_roots",
+                "List the top-level root elements of the open model (type + fragment + resource). Use this to see whether the model is an AdaptorInterface (adaptor endpoints) or a Specification (domain/vocabulary).",
+                objectSchema()));
+
         return tools;
     }
 
@@ -167,6 +171,9 @@ public class McpServlet extends HttpServlet {
                 break;
             case "server_status":
                 result = service.diagnostics();
+                break;
+            case "get_roots":
+                result = service.roots();
                 break;
             default:
                 throw new ModelException("Unknown tool: " + name);

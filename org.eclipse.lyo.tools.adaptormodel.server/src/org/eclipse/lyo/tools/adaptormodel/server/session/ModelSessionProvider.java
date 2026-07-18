@@ -21,6 +21,7 @@ import org.eclipse.ui.PlatformUI;
 
 import adaptorinterface.AdaptorInterface;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 /**
@@ -132,6 +133,17 @@ public enum ModelSessionProvider {
             ResourceSet rs = ed.getResourceSet();
             result.addProperty("resourceCount", rs.getResources().size());
             result.addProperty("adaptorInterfacePresent", containsAdaptorInterface(rs));
+            JsonArray roots = new JsonArray();
+            for (Resource resource : rs.getResources()) {
+                for (EObject root : resource.getContents()) {
+                    JsonObject ro = new JsonObject();
+                    ro.addProperty("type", root.eClass().getName());
+                    ro.addProperty("fragment", resource.getURIFragment(root));
+                    ro.addProperty("resourceURI", resource.getURI().toString());
+                    roots.add(ro);
+                }
+            }
+            result.add("roots", roots);
         }
         return result;
     }
@@ -187,8 +199,30 @@ public enum ModelSessionProvider {
                 if (root instanceof AdaptorInterface) {
                     return true;
                 }
+                if (isSemantic(root) && containsType(root, AdaptorInterface.class)) {
+                    return true;
+                }
             }
         }
         return false;
+    }
+
+    private static boolean containsType(EObject eo, Class<?> type) {
+        if (type.isInstance(eo)) {
+            return true;
+        }
+        for (EObject child : eo.eContents()) {
+            if (containsType(child, type)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isSemantic(EObject eo) {
+        String ns = eo.eClass().getEPackage().getNsURI();
+        return "http://org.eclipse.lyo/oslc4j/adaptorInterface".equals(ns)
+                || "http://org.eclipse.lyo/oslc4j/toolChain".equals(ns)
+                || "http://org.eclipse.lyo/oslc4j/vocabulary".equals(ns);
     }
 }
