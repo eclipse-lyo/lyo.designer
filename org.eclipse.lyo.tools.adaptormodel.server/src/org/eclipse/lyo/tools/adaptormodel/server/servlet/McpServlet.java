@@ -33,6 +33,7 @@ public class McpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        debug("POST " + request.getRequestURI());
         JsonObject body;
         try (Reader reader = request.getReader()) {
             body = JsonParser.parseReader(reader).getAsJsonObject();
@@ -72,10 +73,12 @@ public class McpServlet extends HttpServlet {
                     error.addProperty("message", "Method not found: " + method);
             }
         } catch (ModelException e) {
+            debug("MCP error (ModelException): " + e.getMessage());
             error = new JsonObject();
             error.addProperty("code", -32000);
             error.addProperty("message", e.getMessage());
         } catch (Exception e) {
+            debug("MCP error: " + e);
             error = new JsonObject();
             error.addProperty("code", -32000);
             error.addProperty("message", e.toString());
@@ -127,6 +130,11 @@ public class McpServlet extends HttpServlet {
         deleteProps.add("fragment", stringProperty("Fragment id of the element to delete."));
         tools.add(tool("delete_element", "Delete an element (removes it from its container).", deleteProps));
 
+        JsonObject statusProps = objectSchema();
+        tools.add(tool("server_status",
+                "Report runtime diagnostics: number of open Sirius sessions, whether an AdaptorInterface editing domain was found, resource count, etc.",
+                statusProps));
+
         return tools;
     }
 
@@ -157,6 +165,9 @@ public class McpServlet extends HttpServlet {
                 service.delete(reqStr(args, "fragment"));
                 result = new JsonObject();
                 break;
+            case "server_status":
+                result = service.diagnostics();
+                break;
             default:
                 throw new ModelException("Unknown tool: " + name);
         }
@@ -167,6 +178,10 @@ public class McpServlet extends HttpServlet {
         text.addProperty("text", result.toString());
         content.add(text);
         return content;
+    }
+
+    private static void debug(String message) {
+        System.out.println("[AdaptorModelServer][mcp] " + message);
     }
 
     // ---- schema helpers ----

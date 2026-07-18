@@ -51,6 +51,10 @@ public final class ModelService {
         return result;
     }
 
+    public JsonObject diagnostics() {
+        return session.diagnostics();
+    }
+
     public JsonObject getElement(String fragment) {
         if (fragment == null) {
             throw new ModelException("fragment is required");
