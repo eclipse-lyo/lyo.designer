@@ -19,6 +19,21 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.BasicMonitor;
+import org.eclipse.lyo.oslc4j.codegenerator.main.Generate;
+
 import adaptorinterface.AdaptorInterface;
 import adaptorinterface.AdaptorinterfacePackage;
 
@@ -112,6 +127,122 @@ public final class ModelService {
             }
             return array;
         });
+    }
+
+    public JsonObject generateAdaptorCode(String fragment, String targetFolder) {
+        EditingDomain editingDomain = requireSession();
+        List<AdaptorInterface> interfaces = session.read(editingDomain,
+                resourceSet -> collectAdaptorInterfaces(resourceSet, fragment));
+        if (interfaces.isEmpty()) {
+            throw new ModelException("No AdaptorInterface found"
+                    + (fragment != null ? " at " + fragment : " in the open model"));
+        }
+        JsonArray generated = new JsonArray();
+        boolean anyOk = false;
+        for (AdaptorInterface adaptorInterface : interfaces) {
+            JsonObject result = generateOne(adaptorInterface, targetFolder);
+            generated.add(result);
+            if (result.has("generated") && result.get("generated").getAsBoolean()) {
+                anyOk = true;
+            }
+        }
+        JsonObject out = new JsonObject();
+        out.addProperty("generated", anyOk);
+        out.add("adaptorInterfaces", generated);
+        return out;
+    }
+
+    private static List<AdaptorInterface> collectAdaptorInterfaces(ResourceSet resourceSet, String fragment) {
+        List<AdaptorInterface> result = new ArrayList<>();
+        if (fragment != null) {
+            EObject element = resolve(resourceSet, fragment);
+            if (element instanceof AdaptorInterface) {
+                result.add((AdaptorInterface) element);
+            } else if (element != null) {
+                throw new ModelException("Element " + fragment + " is not an AdaptorInterface");
+            }
+            return result;
+        }
+        for (EObject element : allAdaptorObjects(resourceSet)) {
+            if (element instanceof AdaptorInterface) {
+                result.add((AdaptorInterface) element);
+            }
+        }
+        return result;
+    }
+
+    private static JsonObject generateOne(AdaptorInterface adaptorInterface, String targetFolderArg) {
+        JsonObject result = new JsonObject();
+        result.addProperty("fragment", EObjectSerializer.fragmentOf(adaptorInterface));
+        result.addProperty("name", adaptorInterface.getName());
+        try {
+            File projectFolder = modellingProjectBaseFolder(adaptorInterface);
+            File targetFolder = resolveTargetFolder(projectFolder, targetFolderArg);
+            Generate generator = new Generate(adaptorInterface, targetFolder, new ArrayList<>());
+            generator.doGenerate(new BasicMonitor());
+            refreshProject(adaptorInterface);
+            result.addProperty("targetFolder", targetFolder.getAbsolutePath());
+            result.addProperty("generated", true);
+        } catch (IOException e) {
+            result.addProperty("generated", false);
+            result.addProperty("error", e.getMessage());
+        }
+        return result;
+    }
+
+    private static File modellingProjectBaseFolder(EObject self) {
+        EObject rootContainer = EcoreUtil.getRootContainer(self);
+        org.eclipse.emf.common.util.URI rootUri = EcoreUtil.getURI(rootContainer);
+        org.eclipse.emf.common.util.URI resolved = CommonPlugin.resolve(rootUri);
+        IWorkspace workspace = ResourcesPlugin.getWorkspace();
+        IPath location = Path.fromOSString(resolved.toFileString());
+        IFile ifile = workspace.getRoot().getFileForLocation(location);
+        return ifile.getProject().getLocation().toFile();
+    }
+
+    private static File resolveTargetFolder(File projectFolder, String override) throws ModelException {
+        if (override != null && !override.isEmpty()) {
+            File folder = new File(override);
+            if (!folder.isAbsolute()) {
+                folder = new File(projectFolder, override);
+            }
+            return folder;
+        }
+        File propertiesFile = new File(projectFolder, "generator.properties");
+        if (propertiesFile.isFile()) {
+            Properties properties = new Properties();
+            try (FileInputStream in = new FileInputStream(propertiesFile)) {
+                properties.load(in);
+            } catch (IOException e) {
+                throw new ModelException("Could not read generator.properties: " + e.getMessage());
+            }
+            String generationPath = properties.getProperty("generationPath");
+            if (generationPath != null && !generationPath.isEmpty()) {
+                File folder = new File(generationPath);
+                if (!folder.isAbsolute()) {
+                    folder = new File(projectFolder, generationPath);
+                }
+                return folder;
+            }
+        }
+        throw new ModelException(
+                "No generation target folder. Provide 'targetFolder' or set 'generationPath' in generator.properties.");
+    }
+
+    private static void refreshProject(EObject self) {
+        try {
+            EObject rootContainer = EcoreUtil.getRootContainer(self);
+            org.eclipse.emf.common.util.URI rootUri = EcoreUtil.getURI(rootContainer);
+            org.eclipse.emf.common.util.URI resolved = CommonPlugin.resolve(rootUri);
+            IWorkspace workspace = ResourcesPlugin.getWorkspace();
+            IPath location = Path.fromOSString(resolved.toFileString());
+            IFile ifile = workspace.getRoot().getFileForLocation(location);
+            if (ifile != null && ifile.getProject() != null) {
+                ifile.getProject().refreshLocal(IResource.DEPTH_INFINITE, null);
+            }
+        } catch (Throwable t) {
+            // best-effort refresh; ignore
+        }
     }
 
     public JsonObject create(JsonObject request) {

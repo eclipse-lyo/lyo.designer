@@ -139,6 +139,13 @@ public class McpServlet extends HttpServlet {
                 "List the top-level root elements of the open model (type + fragment + resource). Use this to see whether the model is an AdaptorInterface (adaptor endpoints) or a Specification (domain/vocabulary).",
                 objectSchema()));
 
+        JsonObject genProps = objectSchema();
+        genProps.add("fragment", stringProperty("Optional fragment id of a specific AdaptorInterface to generate. If omitted, all AdaptorInterface roots in the open model are generated."));
+        genProps.add("targetFolder", stringProperty("Optional absolute or project-relative output folder. If omitted, the project's generator.properties 'generationPath' is used."));
+        tools.add(tool("generate_adaptor_code",
+                "Run the Lyo-Designer 'Generate Adaptor Java Code' action on the open Adaptor Interface model(s). Generates the OSLC4J adaptor Java sources into the project's generation folder and refreshes the project.",
+                genProps));
+
         return tools;
     }
 
@@ -174,6 +181,9 @@ public class McpServlet extends HttpServlet {
                 break;
             case "get_roots":
                 result = service.roots();
+                break;
+            case "generate_adaptor_code":
+                result = service.generateAdaptorCode(optStr(args, "fragment"), optStr(args, "targetFolder"));
                 break;
             default:
                 throw new ModelException("Unknown tool: " + name);

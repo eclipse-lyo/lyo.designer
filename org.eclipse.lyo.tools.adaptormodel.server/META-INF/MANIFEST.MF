@@ -20,6 +20,7 @@ Require-Bundle: org.eclipse.ui,
  com.google.gson,
  org.eclipse.lyo.tools.adaptormodel.model;visibility:=reexport,
  org.eclipse.lyo.tools.vocabulary.model,
- org.eclipse.lyo.tools.toolchain.model
+ org.eclipse.lyo.tools.toolchain.model,
+ org.eclipse.lyo.oslc4j.codegenerator
 Import-Package: javax.servlet;version="[4.0.0,5.0.0)",
  javax.servlet.http;version="[4.0.0,5.0.0)"
