@@ -114,6 +114,7 @@ public class [javaInterfaceNameForConstants(aVocabulary) /]
      */
     [/if]
     public static final String [propertyConstantName(aProperty)/] = NS + "[aProperty.name/]";
+
     [/for]
 
     [for (aProperty: Property | aVocabulary.properties->sortedBy(name))]
@@ -129,6 +130,7 @@ public class [javaInterfaceNameForConstants(aVocabulary) /]
      */
     [/if]
     public static QName [aProperty.javaName(false)/]() { return get("[aProperty.name/]"); }
+
     [/for]
 
     private static QName get(String local) {
