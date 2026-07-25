@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension point="org.eclipse.ui.commands">
+      <command
+            id="org.eclipse.lyo.tools.adaptormodel.server.startStop"
+            name="Start/Stop Adaptor Model Server"
+            description="Starts or stops the embedded MCP/REST server that exposes the open Adaptor Interface model.">
+      </command>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+            commandId="org.eclipse.lyo.tools.adaptormodel.server.startStop"
+            class="org.eclipse.lyo.tools.adaptormodel.server.AdaptorModelServerHandler">
+      </handler>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="org.eclipse.lyo.tools.adaptormodel.server.toolbar"
+               label="Lyo Adaptor Model Server">
+            <command
+                  commandId="org.eclipse.lyo.tools.adaptormodel.server.startStop"
+                  label="Adaptor Model Server"
+                  style="push"
+                  tooltip="Start or stop the embedded MCP/REST server for the Adaptor Interface model">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>

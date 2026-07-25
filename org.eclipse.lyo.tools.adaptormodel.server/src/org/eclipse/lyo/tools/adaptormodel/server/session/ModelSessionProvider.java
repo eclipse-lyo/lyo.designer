@@ -1,0 +1,284 @@
+package org.eclipse.lyo.tools.adaptormodel.server.session;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Function;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.lyo.tools.adaptormodel.server.ModelException;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+
+import adaptorinterface.AdaptorInterface;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+/**
+ * Locates the live {@link EditingDomain} that backs the open Adaptor Interface
+ * model and provides thread-safe read/write helpers.
+ *
+ * <p>
+ * The model is normally open inside a Sirius session (the AdaptorInterface
+ * diagram). We therefore first look for an open Sirius {@link Session} whose
+ * semantic resources contain an {@link AdaptorInterface} root. As a fallback we
+ * look at the active editor (the generated EMF editor also implements
+ * {@link IEditingDomainProvider}).
+ * </p>
+ *
+ * <p>
+ * Reads are executed inside the editing domain's read transaction
+ * ({@link TransactionalEditingDomain#runExclusive(Runnable)}); writes are
+ * executed as {@link RecordingCommand}s so that Sirius refreshes and the
+ * adapters stay consistent.
+ * </p>
+ */
+public enum ModelSessionProvider {
+
+    INSTANCE;
+
+    public EditingDomain findEditingDomain() {
+        int sessionsTotal = 0;
+        int sessionsOpen = 0;
+        try {
+            for (Session session : SessionManager.INSTANCE.getSessions()) {
+                sessionsTotal++;
+                if (session.isOpen()) {
+                    sessionsOpen++;
+                }
+            }
+        } catch (Throwable t) {
+            log("findEditingDomain failed: " + t);
+        }
+
+        // All open sessions whose model actually contains an AdaptorInterface
+        // are candidates. Prefer the one backing the editor the user is
+        // currently focused on, so the MCP tracks the model you are looking at.
+        List<TransactionalEditingDomain> candidates = candidateDomains();
+        TransactionalEditingDomain active = activeEditingDomain();
+
+        TransactionalEditingDomain chosen = null;
+        if (active != null) {
+            for (TransactionalEditingDomain candidate : candidates) {
+                if (candidate.getResourceSet() == active.getResourceSet()) {
+                    chosen = candidate;
+                    break;
+                }
+            }
+        }
+        if (chosen == null && !candidates.isEmpty()) {
+            chosen = candidates.get(0);
+        }
+        if (chosen == null && active != null) {
+            chosen = active;
+        }
+        if (chosen == null) {
+            chosen = anyOpenDomain();
+        }
+
+        log("findEditingDomain: sessions(total=" + sessionsTotal + ",open=" + sessionsOpen + ") candidates="
+                + candidates.size() + " -> "
+                + (chosen == null ? "NONE"
+                        : chosen.getClass().getSimpleName() + (chosen instanceof TransactionalEditingDomain ? "[tx]" : "")));
+        return chosen;
+    }
+
+    private static List<TransactionalEditingDomain> candidateDomains() {
+        List<TransactionalEditingDomain> candidates = new ArrayList<>();
+        for (Session session : SessionManager.INSTANCE.getSessions()) {
+            if (!session.isOpen()) {
+                continue;
+            }
+            TransactionalEditingDomain ed = session.getTransactionalEditingDomain();
+            if (ed == null) {
+                continue;
+            }
+            ensureLoaded(ed.getResourceSet());
+            if (containsAdaptorInterface(ed.getResourceSet())) {
+                candidates.add(ed);
+            }
+        }
+        return candidates;
+    }
+
+    private static TransactionalEditingDomain activeEditingDomain() {
+        if (!PlatformUI.isWorkbenchRunning()) {
+            return null;
+        }
+        AtomicReference<TransactionalEditingDomain> ref = new AtomicReference<>();
+        Display.getDefault().syncExec(() -> {
+            IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+            if (window != null) {
+                IEditorPart editor = window.getActivePage().getActiveEditor();
+                if (editor instanceof IEditingDomainProvider) {
+                    EditingDomain ed = ((IEditingDomainProvider) editor).getEditingDomain();
+                    if (ed instanceof TransactionalEditingDomain) {
+                        ref.set((TransactionalEditingDomain) ed);
+                    }
+                }
+            }
+        });
+        return ref.get();
+    }
+
+    private static TransactionalEditingDomain anyOpenDomain() {
+        for (Session session : SessionManager.INSTANCE.getSessions()) {
+            if (!session.isOpen()) {
+                continue;
+            }
+            TransactionalEditingDomain ed = session.getTransactionalEditingDomain();
+            if (ed != null && !ed.getResourceSet().getResources().isEmpty()) {
+                return ed;
+            }
+        }
+        return null;
+    }
+
+    public JsonObject diagnostics() {
+        JsonObject result = new JsonObject();
+        int total = 0;
+        int open = 0;
+        try {
+            for (Session session : SessionManager.INSTANCE.getSessions()) {
+                total++;
+                if (session.isOpen()) {
+                    open++;
+                }
+            }
+        } catch (Throwable t) {
+            total = -1;
+            open = -1;
+        }
+        result.addProperty("sessionsTotal", total);
+        result.addProperty("sessionsOpen", open);
+        EditingDomain ed = findEditingDomain();
+        result.addProperty("sessionFound", ed != null);
+        if (ed != null) {
+            result.addProperty("editingDomainClass", ed.getClass().getName());
+            result.addProperty("transactional", ed instanceof TransactionalEditingDomain);
+            ResourceSet rs = ed.getResourceSet();
+            result.addProperty("resourceCount", rs.getResources().size());
+            result.addProperty("adaptorInterfacePresent", containsAdaptorInterface(rs));
+            List<TransactionalEditingDomain> candidates = candidateDomains();
+            result.addProperty("candidateCount", candidates.size());
+            JsonArray candidatesArr = new JsonArray();
+            for (TransactionalEditingDomain candidate : candidates) {
+                JsonObject co = new JsonObject();
+                ResourceSet crs = candidate.getResourceSet();
+                String modelURI = "<empty>";
+                for (Resource r : crs.getResources()) {
+                    if (!r.getContents().isEmpty()) {
+                        modelURI = r.getURI().toString();
+                        break;
+                    }
+                }
+                co.addProperty("modelURI", modelURI);
+                co.addProperty("adaptorInterfacePresent", containsAdaptorInterface(crs));
+                candidatesArr.add(co);
+            }
+            result.add("candidates", candidatesArr);
+            JsonArray roots = new JsonArray();
+            for (Resource resource : rs.getResources()) {
+                for (EObject root : resource.getContents()) {
+                    JsonObject ro = new JsonObject();
+                    ro.addProperty("type", root.eClass().getName());
+                    ro.addProperty("fragment", resource.getURIFragment(root));
+                    ro.addProperty("resourceURI", resource.getURI().toString());
+                    roots.add(ro);
+                }
+            }
+            result.add("roots", roots);
+        }
+        return result;
+    }
+
+    private static void log(String message) {
+        System.out.println("[AdaptorModelServer] " + message);
+    }
+
+    public <T> T read(EditingDomain editingDomain, Function<ResourceSet, T> fn) {
+        ResourceSet resourceSet = editingDomain.getResourceSet();
+        if (editingDomain instanceof TransactionalEditingDomain) {
+            AtomicReference<T> ref = new AtomicReference<>();
+            try {
+                ((TransactionalEditingDomain) editingDomain).runExclusive(() -> ref.set(fn.apply(resourceSet)));
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new ModelException("Interrupted while reading the model");
+            }
+            return ref.get();
+        }
+        return fn.apply(resourceSet);
+    }
+
+    public void write(EditingDomain editingDomain, Runnable runnable) {
+        if (editingDomain instanceof TransactionalEditingDomain) {
+            ((TransactionalEditingDomain) editingDomain).getCommandStack()
+                    .execute(new RecordingCommand((TransactionalEditingDomain) editingDomain) {
+                        @Override
+                        protected void doExecute() {
+                            runnable.run();
+                        }
+                    });
+        } else {
+            runnable.run();
+        }
+    }
+
+    private static void ensureLoaded(ResourceSet resourceSet) {
+        for (Resource resource : resourceSet.getResources()) {
+            if (!resource.isLoaded()) {
+                try {
+                    resource.load(Collections.emptyMap());
+                } catch (Throwable t) {
+                    // Ignore resources that cannot be loaded right now.
+                }
+            }
+        }
+    }
+
+    private static boolean containsAdaptorInterface(ResourceSet resourceSet) {
+        for (Resource resource : resourceSet.getResources()) {
+            for (EObject root : resource.getContents()) {
+                if (root instanceof AdaptorInterface) {
+                    return true;
+                }
+                if (isSemantic(root) && containsType(root, AdaptorInterface.class)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean containsType(EObject eo, Class<?> type) {
+        if (type.isInstance(eo)) {
+            return true;
+        }
+        for (EObject child : eo.eContents()) {
+            if (containsType(child, type)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isSemantic(EObject eo) {
+        String ns = eo.eClass().getEPackage().getNsURI();
+        return "http://org.eclipse.lyo/oslc4j/adaptorInterface".equals(ns)
+                || "http://org.eclipse.lyo/oslc4j/toolChain".equals(ns)
+                || "http://org.eclipse.lyo/oslc4j/vocabulary".equals(ns);
+    }
+}
