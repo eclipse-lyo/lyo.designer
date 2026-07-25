@@ -66,10 +66,20 @@ javaConstantName(aVocabulary).concat('_NAMSPACE')
 javaConstantName(aVocabulary).concat('_NAMSPACE_PREFIX')
 /]
 
-[query public classConstantName(aClass : Class) : String = 
-aClass.javaName(true).toUpperCase()
+[query public classLocalNameConstantName(aClass : Class) : String = 
+aClass.javaName(true).toUpperCase().concat('_LOCAL_NAME')
 /]
 
-[query public classTypeConstantName(aClass : Class) : String = 
-'TYPE_'.concat(aClass.javaName(true).toUpperCase())
+[query public classConstantName(aClass : Class) : String = 
+aClass.javaName(true).toUpperCase().concat('_CLASS')
 /]
+
+[query public propertyConstantName(aProperty : Property) : String = 
+aProperty.javaName(true).toUpperCase().concat('_PROP')
+/]
+
+[query public propertyNameConstantName(aProperty : Property) : String = 
+aProperty.javaName(true).toUpperCase()
+/]
+
+

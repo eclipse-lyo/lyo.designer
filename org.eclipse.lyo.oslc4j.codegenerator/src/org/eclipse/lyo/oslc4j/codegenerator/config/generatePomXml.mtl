@@ -143,12 +143,17 @@ endif)
 <!-- General dependencies -->
 <dependency>
     <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-simple</artifactId>
-    <scope>runtime</scope>
+    <artifactId>slf4j-api</artifactId>
 </dependency>
 [/template]
 
 [template private servletDependencies(traceabilityContext : OclAny) post (trim())]
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-simple</artifactId>
+    <scope>runtime</scope>
+</dependency>
+
 <!-- Servlet dependencies -->
 <dependency>
     <groupId>jakarta.servlet</groupId>

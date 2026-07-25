@@ -37,7 +37,7 @@ not (Sequence{'URI'}->includes(aProperty.valueType.toString()))
 (if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
     javaInterfaceNameForConstants(aResourceProperty.definingDomainSpecification()).concat('.').concat(domainSpecificationImplicitVocabularyNamespaceConstantName(aResourceProperty.definingDomainSpecification()))
 else
-    javaInterfaceNameForConstants(aResourceProperty.propertyDefinition.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResourceProperty.propertyDefinition.definingVocabulary()))
+    javaInterfaceNameForConstants(aResourceProperty.propertyDefinition.definingVocabulary()).concat('.').concat('NS')
 endif)
 /]
 
@@ -56,11 +56,20 @@ endif)
 /]
 
 [query public propertyDefinitionAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
-'@OslcPropertyDefinition('
-.concat(resourcePropertyDefinitionNamespace(aProperty))
-.concat(' + ')
-.concat(resourcePropertyDefinitionLocalName(aProperty))
-.concat(')')
+(if (aProperty.propertyDefinition.oclIsUndefined()) then
+    '@OslcPropertyDefinition('
+    .concat(resourcePropertyDefinitionNamespace(aProperty))
+    .concat(' + ')
+    .concat(resourcePropertyDefinitionLocalName(aProperty))
+    .concat(')')
+else
+    '@OslcPropertyDefinition('
+    .concat(javaInterfaceNameForConstants(aProperty.propertyDefinition.definingVocabulary()))
+    .concat('.')
+    .concat(propertyConstantName(aProperty.propertyDefinition))
+    .concat(')')
+endif)
+
 /]
 
 [query public descriptionAnnotation(aProperty: ResourceProperty) : String =
@@ -228,7 +237,7 @@ Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())
                     'new URI(' + variable + ')'
                 else
                     if(aProperty.valueType.toString() = 'Boolean') then
-                        'new Boolean(' + variable + ')'
+                        'Boolean.valueOf(' + variable + ')'
                     else
                         if(aProperty.valueType.toString() = 'Double') then
                             'Double.valueOf(' + variable + ')'
