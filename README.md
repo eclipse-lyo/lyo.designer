@@ -12,6 +12,31 @@ Lyo Designer is an Eclipse plugin that allows one to graphically model (1) the o
 
 Lyo Designer includes a integrated code generator that synthesizes the model into almost-complete OSLC4J-compliant running implementation.
 
+### Command-line code generation
+
+After building Lyo Designer with JDK 17, the code generator can be run without
+starting Eclipse:
+
+```powershell
+.\scripts\Invoke-LyoDesignerCodeGenerator.ps1 `
+    -ModelPath C:\src\oslc\refimpl\model\toolchain.xml `
+    -OutputDirectory C:\src\oslc\refimpl\model `
+    -DomainModelsSource C:\src\oslc\lyo\domains\org.eclipse.lyo.tools.domainmodels `
+    -JavaHome C:\Java\jdk-17 `
+    -Build
+```
+
+The script supports Windows PowerShell 5.1 and PowerShell 7. It uses the
+repository build's model classes ahead of the packaged Designer plug-ins.
+Because domain-model references are resolved relative to the input model
+project, the script copies `org.eclipse.lyo.tools.domainmodels` next to that
+project when needed, then invokes
+`org.eclipse.lyo.oslc4j.codegenerator.main.HeadlessGenerator`. On later runs,
+omit `-Build` and `-DomainModelsSource` if the build output and copied domain
+models are already present. The script warns when generation creates `.lost`
+files that may contain user-code blocks requiring manual recovery. Use `Get-Help
+.\scripts\Invoke-LyoDesignerCodeGenerator.ps1 -Full` for all options.
+
 A short [video demonstration of Lyo Designer](https://www.youtube.com/watch?v=tZxPzlSTdeM):
 
 [![](./LyoDesignerVideo.png)](https://www.youtube.com/watch?v=tZxPzlSTdeM)
@@ -39,4 +64,3 @@ You are also welcome to contact the development team via [lyo-dev mailing list](
 ## Contributing
 
 See [contributing](https://github.com/eclipse/lyo#contributing) under the main [Eclipse Lyo](https://github.com/eclipse/lyo) repository.
-
