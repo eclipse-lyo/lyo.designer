@@ -55,14 +55,14 @@ endif)
     <maven.compiler.release>[javaVersion(mavenProjectConfiguration.lyoVersion)/]</maven.compiler.release>
     <version.lyo>[mavenProjectConfiguration.lyoVersion/]</version.lyo>
     [if (swaggerDocumentationEnabled)]
-    <swagger-ui.version>5.27.0</swagger-ui.version>
+    <swagger-ui.version>5.32.8</swagger-ui.version>
     [/if]
     [if (serverImplementation)]
     <servlet.port>[mavenServerConfiguration.jettyPort/]</servlet.port>
     <application.contextpath>[mavenServerConfiguration.applicationContextPath/]</application.contextpath>
     <application.filename>[if (not mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim().isNullOrEmpty())][mavenServerConfiguration.applicationContextPath.substituteAll('/', '').trim()/][else][mavenProjectConfiguration.artifactId/][/if]</application.filename>
     [/if]
-    [additionalMavenProperties()/]
+    [additionalMavenProperties(mavenProjectConfiguration, swaggerDocumentationEnabled, serverImplementation, mavenServerConfiguration)/]
     <!-- [protected ('properties')]
     -->
     <!-- TODO: Add additional properties here to avoid them be overridden upon future re-generation -->
@@ -74,7 +74,7 @@ endif)
 [template public additionalRepositories(traceabilityContext : OclAny) post (trim())]
 [/template]
 
-[template public additionalMavenProperties(traceabilityContext : OclAny) post (trim())]
+[template public additionalMavenProperties(mavenProjectConfiguration : MavenProjectConfiguration, swaggerDocumentationEnabled : Boolean, serverImplementation : Boolean, mavenServerConfiguration : MavenServerConfiguration) post (trim())]
 [/template]
 
 [template private repositories(traceabilityContext : OclAny)]
@@ -290,6 +290,15 @@ If multiple DSs share the same maven dependency, we group them into 1.
 [template public additionalPlugins(anAdaptorInterface : AdaptorInterface) post (trim())]
 [/template]
 
+[template public additionalJettyPluginConfiguration(anAdaptorInterface : AdaptorInterface) post (trim())]
+[/template]
+
+[template public additionalJettyPluginWebAppConfiguration(anAdaptorInterface : AdaptorInterface) post (trim())]
+[/template]
+
+[template public additionalMavenWarPluginConfiguration(anAdaptorInterface : AdaptorInterface) post (trim())]
+[/template]
+
 [template public generatePomXml(anAdaptorInterface : AdaptorInterface)]
 [if (not anAdaptorInterface.doNotGenerateProjectFiles())]
 [let mavenProjectConfiguration : MavenProjectConfiguration = anAdaptorInterface.configuration.projectConfiguration]
@@ -368,9 +377,13 @@ If multiple DSs share the same maven dependency, we group them into 1.
             <!-- [/protected]
             -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+            <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
-              <version>3.14.1</version>
+              <version>3.15.0</version>
               <configuration>
                 <compilerArgument>
                   -Xlint:fallthrough,unchecked,removal,deprecation,dep-ann,varargs,overloads,serial,try,finally
@@ -378,26 +391,28 @@ If multiple DSs share the same maven dependency, we group them into 1.
               </configuration>
             </plugin>
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>11.0.20</version>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-maven-plugin</artifactId>
+                <version>12.0.16</version>
                 <configuration>
                   <webApp>
                     <contextPath>${application.contextpath}</contextPath>
                     <_initParams>
                         <org.eclipse.jetty.servlet.Default.useFileMappedBuffer>false</org.eclipse.jetty.servlet.Default.useFileMappedBuffer>
                     </_initParams>
+                  [anAdaptorInterface.additionalJettyPluginWebAppConfiguration()/]
                   </webApp>
                   <httpConnector>
                     <port>${servlet.port}</port>
                   </httpConnector>
                   <scan>5</scan>
+                  [anAdaptorInterface.additionalJettyPluginConfiguration()/]
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven3-plugin</artifactId>
-                <version>1.10.20</version>
+                <version>1.10.26</version>
                 <configuration>
                     <!--This plugins supports the following containers-->
                     <container>
@@ -432,7 +447,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
                 <!-- Download Swagger UI webjar. -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.11.0</version>
                 <executions>
                     <execution>
                         <phase>prepare-package</phase>
@@ -456,7 +471,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
                 <!-- Add Swagger UI resources to the war file. -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>3.5.1</version>
                 <configuration>
                     <webResources combine.children="append">
                         <resource>
@@ -467,6 +482,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
                             <targetPath>/swagger-ui/dist</targetPath>
                         </resource>
                     </webResources>
+                    [anAdaptorInterface.additionalMavenWarPluginConfiguration()/]
                 </configuration>
             </plugin>
             [/if]
