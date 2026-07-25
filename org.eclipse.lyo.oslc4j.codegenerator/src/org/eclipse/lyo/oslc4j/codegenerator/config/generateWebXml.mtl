@@ -62,10 +62,10 @@
 [if (not anAdaptorInterface.doNotGenerateProjectFiles())]
 [file (anAdaptorInterface.webFilesBasePath().concatenatePaths('/WEB-INF/web.xml'), false, 'UTF-8')]
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-    id="WebApp_ID" version="3.0">
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+      version="6.0">
     <display-name>[anAdaptorInterface.name/]</display-name>
     <context-param>
         <description>Base URI for the adaptor.</description>
@@ -74,6 +74,17 @@
         <!-- [protected ('webxml_baseurl')]
         -->
         <!-- TODO: Add additional configurations here to avoid them be overridden upon future re-generation -->
+        <!-- [/protected]
+        -->
+    </context-param>
+    <context-param>
+        <description>CORS friends</description>
+        <param-name>[javaClassPackageNameForAdaptorServletListener(anAdaptorInterface) /].cors.friends</param-name>
+        <!-- Valid options: '*' (for any origin), a semicolon-separated list of origins (e.g. 'https://rm.example.com;https://cm.example.com') -->
+        <!-- [protected ('cors_friends')]
+        -->
+        <!-- NOTE: Delete the contents of the protected block to re-generate the default value -->
+        <param-value>*</param-value>
         <!-- [/protected]
         -->
     </context-param>

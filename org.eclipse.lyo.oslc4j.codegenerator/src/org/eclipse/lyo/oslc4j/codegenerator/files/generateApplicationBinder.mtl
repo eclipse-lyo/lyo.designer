@@ -47,10 +47,16 @@ import org.slf4j.LoggerFactory;
 import org.glassfish.hk2.api.Factory;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import jakarta.ws.rs.core.UriBuilder;
+import jakarta.servlet.ServletContext;
 
 import [anAdaptorInterface.javaClassFullNameForAdaptorManager()/];
 import [anAdaptorInterface.javaClassFullNameForResourcesFactory()/];
+import static [javaClassFullNameForAdaptorServletListener(anAdaptorInterface)/].getConfigurationProperty;
+import static [javaClassFullNameForAdaptorServletListener(anAdaptorInterface)/].getServletUrlPattern;
+import java.util.Set;
 [if (anAdaptorInterface.storeEnabled())][anAdaptorInterface.storeImportsForBinder()/][/if]
 [if (anAdaptorInterface.trsServiceEnabled())
 ]import java.net.URI;
@@ -73,6 +79,8 @@ protected void configure() {
 
     // [protected ('ConfigureInitialise')]
     // [/protected]
+    bindFactory([javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]Factory.class)
+            .to([javaClassNameForLyoAppConfiguration(anAdaptorInterface)/].class);
     bindAsContract([anAdaptorInterface.javaClassNameForAdaptorManager()/].class).in(Singleton.class);
     bindFactory(ResourcesFactoryFactory.class).to([anAdaptorInterface.javaClassNameForResourcesFactory()/].class).in(Singleton.class);
 
@@ -146,6 +154,38 @@ static class InmemPagedTrsFactory implements Factory<PagedTrs> {
 [/if]
 [/template]
 
+[template public generateLyoAppConfigurationFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
+public static class [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]Factory implements Factory<[javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]> {
+    private static final Logger logger = LoggerFactory.getLogger([javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]Factory.class);
+
+    private final [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/] instance;
+
+    @Inject
+    public [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]Factory(ServletContext context) {
+        String corsFriendsString = getConfigurationProperty("cors.friends", "", context, ServletListener.class);
+        Set<String> corsFriends;
+        if (corsFriendsString == null || corsFriendsString.isEmpty()) {
+            corsFriends = Set.of();
+        } else {
+            corsFriends = java.util.Arrays.stream(corsFriendsString.split(";"))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .collect(java.util.stream.Collectors.toSet());
+        }
+        this.instance = new [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/](OSLC4JUtils.getPublicURI(), OSLC4JUtils.getServletPath(), corsFriends);
+    }
+
+    @Override
+    public [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/] provide() {
+        return instance;
+    }
+
+    @Override
+    public void dispose([javaClassNameForLyoAppConfiguration(anAdaptorInterface)/] instance) {
+        // Noop
+    }
+}
+[/template]
 
 [template public generateStorePoolFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
 [if (anAdaptorInterface.storeEnabled())]
@@ -255,6 +295,7 @@ public class [javaClassNameForApplicationBinder(anAdaptorInterface) /] extends A
 
     [generateConfigureMethod(anAdaptorInterface)/]
     [generateResourcesFactoryFactory(anAdaptorInterface)/]
+    [generateLyoAppConfigurationFactory(anAdaptorInterface)/]
     [generateStorePoolFactory(anAdaptorInterface)/]
     [generateTrsFactory(anAdaptorInterface)/]
 }

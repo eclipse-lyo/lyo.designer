@@ -27,9 +27,12 @@
     </properties>
     <repositories>
         <repository>
-            <id>lyo-snapshots</id>
-            <name>Eclipse Lyo Snapshots</name>
-            <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
+            <name>Central Portal Snapshots</name>
+            <id>central-portal-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -47,6 +50,18 @@
                 <groupId>org.reficio</groupId>
                 <artifactId>p2-maven-plugin</artifactId>
                 <version>2.0.0</version>
+                <dependencies>
+                    <!--
+                        p2-maven-plugin 2.0.0 embeds bnd 5.3.0, which predates
+                        Java 21 and emits an osgi.ee=UNKNOWN requirement when
+                        wrapping the current Lyo artifacts.
+                    -->
+                    <dependency>
+                        <groupId>biz.aQute.bnd</groupId>
+                        <artifactId>biz.aQute.bndlib</artifactId>
+                        <version>7.1.0</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>default-cli</id>

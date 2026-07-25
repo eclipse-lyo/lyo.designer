@@ -149,8 +149,13 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
     }
     static
     {
+        // RDF serialization/deserialization providers
         RESOURCE_CLASSES.addAll(JenaProvidersRegistry.getProviders());
         RESOURCE_CLASSES.addAll(Json4JProvidersRegistry.getProviders());
+
+        // CORS support
+        RESOURCE_CLASSES.add([javaClassFullNameForCorsFilter(anAdaptorInterface)/].class);
+
         [for (aService: Service | anAdaptorInterface.serviceProviders().services)]
         RESOURCE_CLASSES.add([javaClassName(aService)/].class);
         [/for]
