@@ -64,9 +64,9 @@ pythonName(aResource)
 .concat(aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName())
 .concat('["')
 .concat(if (aResource.describes.oclIsUndefined()) then aResource.name.substituteAll(' ', '') else aResource.describes.name.substituteAll(' ', '') endif)
-.concat('"], title="')
-.concat(if (aResource.title.oclIsUndefined()) then aResource.name.concat(' Shape') else aResource.title endif)
-.concat('")')
+.concat('"], title=')
+.concat(pythonStringLiteral(if (aResource.title.oclIsUndefined()) then aResource.name.concat(' Shape') else aResource.title endif))
+.concat(')')
 /]
 
 [query public pythonAttributeName(aProperty: ResourceProperty) : String =
