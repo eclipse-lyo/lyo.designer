@@ -171,6 +171,14 @@ concatenate(
 ).toUpperCase()
 /]
 
+[query public pythonStringLiteral(aString : String) : String =
+if (aString.index('\n') <> -1 or aString.index('\r') <> -1) then
+    '"""'.concat(aString).concat('"""')
+else
+    '"'.concat(aString).concat('"')
+endif
+/]
+
 [query private pythonString (aString : String) : String =
 concatenate(
     aString.replaceAll('\\W+', ' ').tokenize(' ')->collect(s : String  | s.toUpperFirst())
