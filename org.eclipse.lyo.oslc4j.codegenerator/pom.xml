@@ -33,6 +33,11 @@
             <artifactId>org.eclipse.lyo.tools.vocabulary.model</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+		<dependency>
+			<groupId>org.eclipse.lyo.tools</groupId>
+			<artifactId>org.eclipse.lyo.tools.toolchain.model</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
 
 
 		<dependency>
@@ -77,12 +82,14 @@
 						<jars>
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.adaptormodel.model/target/org.eclipse.lyo.tools.adaptormodel.model-${project.parent.version}.jar</jar>
 							<jar>${project.basedir}/../org.eclipse.lyo.tools.vocabulary.model/target/org.eclipse.lyo.tools.vocabulary.model-${project.parent.version}.jar</jar>
+							<jar>${project.basedir}/../org.eclipse.lyo.tools.toolchain.model/target/org.eclipse.lyo.tools.toolchain.model-${project.parent.version}.jar</jar>
 						</jars>
 					</acceleoProject>
 					<packagesToRegister>
 						<!-- For more information, please visit http://wiki.eclipse.org/Acceleo/Maven -->
 						<packageToRegister>adaptorinterface.AdaptorinterfacePackage</packageToRegister>
                         <packageToRegister>vocabulary.VocabularyPackage</packageToRegister>
+						<packageToRegister>toolchain.ToolchainPackage</packageToRegister>
 					</packagesToRegister>
 				</configuration>
 			</plugin>

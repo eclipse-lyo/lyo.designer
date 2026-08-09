@@ -15,7 +15,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.acceleo.model,
  org.eclipse.acceleo.profiler,
  org.eclipse.acceleo.engine,
- com.google.guava
+ com.google.guava,
+ org.eclipse.lyo.tools.toolchain.model,
+ org.eclipse.lyo.tools.adaptormodel.model,
+ org.eclipse.lyo.tools.vocabulary.model
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
@@ -33,4 +36,3 @@ Export-Package: org.eclipse.lyo.oslc4j.codegenerator.java.files,
  org.eclipse.lyo.oslc4j.codegenerator.common.services
 Bundle-ClassPath: bin/,
  .
-

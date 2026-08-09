@@ -32,14 +32,6 @@
             <id>acceleo</id>
             <url>https://repo.eclipse.org/content/repositories/acceleo-releases/</url>
         </repository>
-        <repository>
-            <id>lyo-snapshots</id>
-            <name>Eclipse Lyo Snapshots</name>
-            <url>https://repo.eclipse.org/content/repositories/lyo-snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
