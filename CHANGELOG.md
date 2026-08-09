@@ -4,6 +4,7 @@
 
 ### Added
 
+- Eclipse UI actions for generating Python code from complete toolchains and individual specification diagrams
 - Python code generation for OSLC resource classes, domain and vocabulary constants, package initializers, dependency metadata, and license files
 - Support for Lyo BOM (allows to remove most of the dependency versions needed to run a Jersey-based OSLC Lyo server)
 - Spotless guards around imports to allow applying Maven Spotless on generated code
