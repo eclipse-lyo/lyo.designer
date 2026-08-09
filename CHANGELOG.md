@@ -12,6 +12,7 @@
 
 ### Changed
 
+- Restructured the Java code generator into dedicated `java` subpackages to separate language-specific generator code
 - Generate for JDK 21 when using Lyo SDK 7.0.0.
 - All OPTIONS requests are not exempted from the authentication filter (to let the CORS preflight requests in).
 - CORS support was reworked to work on all adaptor endpoints (not just Delegated UI dialogs), to support authentication correctly, and to allow CORS support be restricted to a few "CORS friend" origins.
