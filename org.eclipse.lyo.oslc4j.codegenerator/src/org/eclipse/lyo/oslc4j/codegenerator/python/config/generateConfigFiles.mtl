@@ -1,7 +1,7 @@
 [comment encoding = UTF-8 /]
 [comment
 /*
- * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -19,7 +19,7 @@
 
 [template public generateConfigFiles(aSpecification : Specification)]
 [file ('requirements.txt', false, 'UTF-8')]
-oslc4py-client
-rdflib
+oslc4py-client==0.1.4
+rdflib==7.6.0
 [/file]
 [/template]
