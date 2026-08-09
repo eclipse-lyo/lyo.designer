@@ -1,0 +1,359 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module services('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
+
+[query private javaKeywords(traceabilityContext : OclAny) : Set(String) =
+Set{'abstract', 'continue', 'for', 'new', 'switch', 'assert', 'default', 'goto', 'package', 'synchronized', 'boolean', 'do',
+'if', 'private', 'this', 'break', 'double', 'implements', 'protected', 'throw', 'byte', 'else', 'import', 'public', 'throws',
+'case', 'enum', 'instanceof', 'return', 'transient', 'catch', 'extends', 'int', 'short', 'try', 'char', 'final', 'interface',
+'static', 'void', 'class', 'finally', 'long', 'strictfp', 'volatile', 'const', 'float', 'native', 'super', 'while'}
+/]
+
+[query private javaLangWords(traceabilityContext : OclAny) : Set(String) =
+Set{'appendable', 'autocloseable', 'charsequence', 'cloneable', 'comparable', 'iterable', 'readable', 'runnable', 'thread',
+'boolean', 'byte', 'character', 'class', 'classloader', 'classvalue', 'compiler', 'double', 'enum', 'float',
+'inheritablethreadlocal', 'integer', 'long', 'math', 'number', 'object', 'package', 'process', 'processbuilder',
+'runtime', 'runtimepermission', 'securitymanager', 'short', 'stacktraceelement', 'strictmath', 'string', 'stringbuffer',
+'stringbuilder', 'system', 'thread', 'threadgroup', 'threadlocal', 'throwable', 'void'}
+/]
+
+[query private isJavaSpecialWord(aString : String) : Boolean =
+((javaKeywords(aString)->union(javaLangWords(aString)))->includes(aString.toLower()))
+/]
+
+[query public javaBasePackageName(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.javaBasePackageName('resources')
+/]
+
+[query public javaBasePackageName(anAdaptorInterface : AdaptorInterface, default : String) : String =
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generalConfiguration.oclIsUndefined()) then 
+    (if anAdaptorInterface.javaClassBaseNamespace.isNullOrEmpty() then 
+        default
+    else
+        anAdaptorInterface.javaClassBaseNamespace
+    endif)
+else
+    anAdaptorInterface.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
+[query public javaPackageName(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.javaBasePackageName(default).concat('.resources')
+    endif)
+else
+    aSpecification.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
+[query public javaPackageName(vocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.javaBasePackageName(default).concat('.resources')
+    endif)
+else
+    vocabularies.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
+[query public javaPackageName(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    aDomainSpecification.eContainer(Specification).javaPackageName(anAdaptorInterface, default)
+else
+    aDomainSpecification.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
+[query public javaPackageName(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    aVocabulary.eContainer(Vocabularies).javaPackageName(anAdaptorInterface, default)
+else
+    aVocabulary.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
+[query public filesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.filesBasePath('.')
+/]
+
+[query public filesBasePath(anAdaptorInterface : AdaptorInterface, default : String) : String =
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generalConfiguration.oclIsUndefined()) then 
+    (if anAdaptorInterface.javaFilesBasePath.isNullOrEmpty() then 
+        default
+    else
+        anAdaptorInterface.javaFilesBasePath.substitute('/src/main/java', '')
+    endif)
+else
+    anAdaptorInterface.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.filesBasePath(default)
+    endif)
+else
+    aSpecification.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(vocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.filesBasePath(default)
+    endif)
+else
+    vocabularies.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    aDomainSpecification.eContainer(Specification).filesBasePath(anAdaptorInterface, default)
+else
+    aDomainSpecification.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    aVocabulary.eContainer(Vocabularies).filesBasePath(anAdaptorInterface, default)
+else
+    aVocabulary.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query private propertyFilesRelativePath(traceabilityContext : OclAny) : String =
+'/src/main/resources'
+/]
+
+[query private javaFilesRelativePath(traceabilityContext : OclAny) : String =
+'/src/main/java'
+/]
+
+[query private webFilesRelativePath(traceabilityContext : OclAny) : String =
+'/src/main/webapp'
+/]
+
+[query public propertyFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.filesBasePath().concatenatePaths(propertyFilesRelativePath())
+/]
+
+[query public javaFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.filesBasePath().concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public javaFilesBasePath(anAdaptorInterface : AdaptorInterface, default : String) : String =
+anAdaptorInterface.filesBasePath(default).concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public javaFilesBasePath(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+aSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public javaFilesBasePath(vocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+vocabularies.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public javaFilesBasePath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+aDomainSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public javaFilesBasePath(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+aVocabulary.filesBasePath(anAdaptorInterface, default).concatenatePaths(javaFilesRelativePath())
+/]
+
+[query public webFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.filesBasePath().concatenatePaths(webFilesRelativePath())
+/]
+
+[query public webFilesWebappPath(anAdaptorInterface : AdaptorInterface) : String =
+'/'.concat(anAdaptorInterface.javaBasePackageName()).substituteAll('.', '/')
+/]
+
+[query public generateJspFilesForOslcUI(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generateJspFilesForOslcUI.oclIsUndefined()) then 
+    false
+else
+    anAdaptorInterface.configuration.generateJspFilesForOslcUI
+endif)
+/]
+
+[query public doNotRegenerateJspFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.doNotRegenerateJspFiles.oclIsUndefined()) then 
+    false
+else
+    anAdaptorInterface.configuration.doNotRegenerateJspFiles
+endif)
+/]
+
+[query public mavenFullyQualifiedArtifactName(mavenProjectConfiguration : MavenProjectConfiguration) : String = 
+mavenProjectConfiguration.groupId.concat(':').concat(mavenProjectConfiguration.artifactId).concat(':').concat(mavenProjectConfiguration.version)
+/]
+
+[template public mavenArtifactAsHeader(mavenProjectConfiguration : MavenProjectConfiguration)]
+<groupId>[mavenProjectConfiguration.groupId/]</groupId>
+<artifactId>[mavenProjectConfiguration.artifactId/]</artifactId>
+<version>[mavenProjectConfiguration.version/]</version>
+[/template]
+
+[template public mavenArtifactAsDependency(mavenProjectConfiguration : MavenProjectConfiguration)]
+<dependency>
+    [mavenProjectConfiguration.mavenArtifactAsHeader()/]
+</dependency>
+[/template]
+
+[comment 
+return "aSpecification.configuration.projectConfiguration" - if it exists. if not, return null
+/]
+[query public getMavenProjectConfiguration(aSpecification: Specification) : MavenProjectConfiguration =
+(if (aSpecification.configuration.oclIsUndefined()) then 
+    null
+else
+    (if aSpecification.configuration.projectConfiguration.oclIsUndefined() then 
+        null
+    else
+        aSpecification.configuration.projectConfiguration
+    endif)
+endif)
+/]
+
+[comment 
+return "aDomainSpecification.configuration.projectConfiguration" - if it exists. if not, return the containing Spec's
+/]
+[query public getMavenProjectConfiguration(aDomainSpecification: DomainSpecification) : MavenProjectConfiguration =
+(if (aDomainSpecification.configuration.oclIsUndefined()) then 
+    aDomainSpecification.eContainer(Specification).getMavenProjectConfiguration()
+else
+    (if aDomainSpecification.configuration.projectConfiguration.oclIsUndefined() then 
+	    aDomainSpecification.eContainer(Specification).getMavenProjectConfiguration()
+    else
+        aDomainSpecification.configuration.projectConfiguration
+    endif)
+endif)
+/]
+
+[query public mavenFullyQualifiedArtifactName(aDomainSpecification: DomainSpecification) : String = 
+(if not aDomainSpecification.getMavenProjectConfiguration().oclIsUndefined() then 
+	aDomainSpecification.getMavenProjectConfiguration().mavenFullyQualifiedArtifactName()
+else
+	''
+endif)
+/]
+[template public mavenArtifactAsHeader(aDomainSpecification: DomainSpecification)]
+[if (not aDomainSpecification.getMavenProjectConfiguration().oclIsUndefined())]
+[aDomainSpecification.getMavenProjectConfiguration().mavenArtifactAsHeader()/]
+[/if]
+[/template]
+[template public mavenArtifactAsDependency(aDomainSpecification: DomainSpecification)]
+[if (not aDomainSpecification.getMavenProjectConfiguration().oclIsUndefined())]
+[aDomainSpecification.getMavenProjectConfiguration().mavenArtifactAsDependency()/]
+[/if]
+[/template]
+
+[query public mavenFullyQualifiedArtifactName(aSpecification: Specification) : String = 
+(if not aSpecification.getMavenProjectConfiguration().oclIsUndefined() then 
+	aSpecification.getMavenProjectConfiguration().mavenFullyQualifiedArtifactName()
+else
+	''
+endif)
+/]
+[template public mavenArtifactAsHeader(aSpecification: Specification)]
+[if (not aSpecification.getMavenProjectConfiguration().oclIsUndefined())]
+[aSpecification.getMavenProjectConfiguration().mavenArtifactAsHeader()/]
+[/if]
+[/template]
+[template public mavenArtifactAsDependency(aSpecification: Specification)]
+[if (not aSpecification.getMavenProjectConfiguration().oclIsUndefined())]
+[aSpecification.getMavenProjectConfiguration().mavenArtifactAsDependency()/]
+[/if]
+[/template]
+
+[query public methodSignature(parameters: Sequence(String), forJAXRSMethod : Boolean) : String = 
+concatenate(
+    parameters->collect(aParameter: String |
+                        (if (forJAXRSMethod) then
+                            '@PathParam("'.concat(aParameter).concat('") final String ').concat(aParameter)
+                        else
+                            'final String '.concat(aParameter)
+                        endif)
+    )->sep(', ').oclAsType(String))
+/]
+
+[query public methodParameterList(parameters: Sequence(String)) : String = 
+concatenate(parameters->sep(', ').oclAsType(String))
+/]
+
+[query public JAXRSPathAnnotation(pathAnnotation : String) : String =
+    (if (isNullOrEmpty(pathAnnotation)) then
+        '@Path("")'
+    else
+        '@Path("'.concat(pathAnnotation).concat('")')
+    endif)
+/]
+
+[query public JAXRSPathParameters(uriSegment : String) : Sequence(String) =
+uriSegment.tokenize('}')
+    ->select(token : String | token.index('{') <> -1)
+    ->collect(token : String | token.substring(token.index('{')+1))
+/]
+
+[query public JAXRSConcatURISegments(leftURISegment : String, rightURISegment : String) : String =
+    concatenatePaths(leftURISegment, rightURISegment)
+/]
+
+[query public javaSimpleStringFromUri(uriString: String, toUpperFirst : Boolean) : String =
+javaString(uriString.tokenize('/\\#')->last(), '', toUpperFirst)
+/]
+
+[query public javaConstantString (aString : String) : String =
+concatenate(
+    aString.replaceAll('\\W+', '_').tokenize('_')->sep('_').oclAsType(String)
+).toUpperCase()
+/]
+
+[query private javaString (aString : String) : String =
+concatenate(
+    aString.replaceAll('\\W+', ' ').tokenize(' ')->collect(s : String  | s.toUpperFirst())
+)
+/]
+
+[query public javaString (aString : String, prefixIfNecessary : String, toUpperFirst : Boolean) : String =
+let base : String = (if (isJavaSpecialWord(aString)) then prefixIfNecessary.concat(javaString(aString).toUpperFirst()) else javaString(aString) endif)
+in 
+if (toUpperFirst) then base.toUpperFirst() else base.toLowerFirst() endif
+/]
+
+[query public annotationConsumesRDF(ai: AdaptorInterface) : String =
+'@Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_JSON_LD, OslcMediaType.TEXT_TURTLE, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON })'
+/]
+
+[query public annotationProducesRDF(ai: AdaptorInterface) : String =
+'@Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_JSON_LD, OslcMediaType.TEXT_TURTLE, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})'
+/]
+

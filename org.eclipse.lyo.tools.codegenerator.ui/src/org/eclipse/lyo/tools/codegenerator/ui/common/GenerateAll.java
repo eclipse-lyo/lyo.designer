@@ -34,8 +34,8 @@ import org.osgi.framework.Bundle;
 import adaptorinterface.AdaptorInterface;
 import adaptorinterface.Specification;
 
-import org.eclipse.lyo.oslc4j.codegenerator.main.Generate;
-import org.eclipse.lyo.oslc4j.codegenerator.main.GenerateSpecification;
+import org.eclipse.lyo.oslc4j.codegenerator.java.main.Generate;
+import org.eclipse.lyo.oslc4j.codegenerator.java.main.GenerateSpecification;
 import org.eclipse.lyo.tools.codegenerator.ui.Activator;
 import org.eclipse.lyo.tools.codegenerator.ui.popupMenus.DialogServices;
 import org.eclipse.ui.PlatformUI;
@@ -70,7 +70,7 @@ public class GenerateAll {
 		generator = new Generate(modelURI, targetFolder, arguments);
 		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
 				"org.eclipse.lyo.oslc4j.codegenerator",
-				"org.eclipse.lyo.oslc4j.codegenerator.main.Generate",
+				"org.eclipse.lyo.oslc4j.codegenerator.java.main.Generate",
 				modelURI.toString(),
 				targetFolder.toString(),
 				new ArrayList<String>());
@@ -82,7 +82,7 @@ public class GenerateAll {
 		generator = new Generate(adaptorInterface, targetFolder, arguments);
 		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
 				"org.eclipse.lyo.oslc4j.codegenerator",
-				"org.eclipse.lyo.oslc4j.codegenerator.main.Generate",
+				"org.eclipse.lyo.oslc4j.codegenerator.java.main.Generate",
 				adaptorInterface.toString(),
 				targetFolder.toString(),
 				new ArrayList<String>());
@@ -94,7 +94,7 @@ public class GenerateAll {
 		generator = new GenerateSpecification(specification, targetFolder, arguments);
 		String generationID = AcceleoLaunchingUtil.computeUIProjectID(
 				"org.eclipse.lyo.oslc4j.codegenerator",
-				"org.eclipse.lyo.oslc4j.codegenerator.main.GenerateSpecification",
+				"org.eclipse.lyo.oslc4j.codegenerator.java.main.GenerateSpecification",
 				specification.toString(),
 				targetFolder.toString(),
 				new ArrayList<String>());

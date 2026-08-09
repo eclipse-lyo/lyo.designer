@@ -1,0 +1,11 @@
+[comment encoding = UTF-8 /]
+[module resourcePropertyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+
+[query public resourcePropertyDefinitionLocalName(aResourceProperty: ResourceProperty) : String =
+(if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
+    '"'.concat(aResourceProperty.name).concat('"')
+else
+    '"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
+endif)
+/]
+

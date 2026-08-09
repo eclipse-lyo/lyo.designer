@@ -1,0 +1,12 @@
+[comment encoding = UTF-8 /]
+[module generateLicenseFiles('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::staticFiles::generateNoticeHTML/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::staticFiles::generateEDLV10HTML/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::staticFiles::generateEPLV10HTML/]
+
+[template public generateLicenseFiles(traceabilityContext : OclAny)]
+[traceabilityContext.generateNoticeHTML() /]
+[traceabilityContext.generateEDLV10HTML() /]
+[traceabilityContext.generateEPLV10HTML() /]
+[/template]
+

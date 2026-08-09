@@ -1,0 +1,82 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module resourceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::adaptorInterfaceServices/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
+
+[query public pythonName(aResource: Resource) : String = 
+pythonString(aResource.name, aResource.definingDomainSpecification().namespacePrefix.name, true)
+/]
+
+[query public pythonClassFullFolderName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
+    pythonFilesBasePath(aResource.definingDomainSpecification(), anAdaptorInterface, defaultFilesPath)
+    .concatenatePaths(pythonClassPackageName(aResource, anAdaptorInterface, defaultPackageName).substituteAll('.', '/'))
+/]
+
+[query public pythonClassPackageName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultPackageName : String) : String = 
+pythonPackageName(aResource.definingDomainSpecification(), anAdaptorInterface, defaultPackageName)
+/]
+
+[query public pythonClassName(aResource: Resource) : String = 
+pythonName(aResource)
+/]
+
+[query public pythonClassFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String) : String =
+    pythonClassFullFolderName(aResource, anAdaptorInterface, defaultFilesPath, defaultPackageName)
+    .concatenatePaths(pythonClassName(aResource))
+    .concat('.py')
+/]
+
+[query public pythonNameAnnotation(aResource: Resource) : String =
+'@oslc_name("'
+.concat(if (aResource.describes.oclIsUndefined()) then aResource.name.substituteAll(' ', '') else aResource.describes.name.substituteAll(' ', '') endif)
+.concat('")')
+/]
+
+[query public pythonNamespaceAnnotation(aResource: Resource) : String =
+'@oslc_namespace('
+.concat(aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName())
+.concat(')')
+/]
+
+[query public pythonResourceShapeAnnotation(aResource: Resource) : String =
+'@oslc_resource_shape(describes='
+.concat(aResource.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName())
+.concat('["')
+.concat(if (aResource.describes.oclIsUndefined()) then aResource.name.substituteAll(' ', '') else aResource.describes.name.substituteAll(' ', '') endif)
+.concat('"], title=')
+.concat(pythonStringLiteral(if (aResource.title.oclIsUndefined()) then aResource.name.concat(' Shape') else aResource.title endif))
+.concat(')')
+/]
+
+[query public hasDateTimeProperty(aResource: Resource) : Boolean =
+    allProperties(aResource)->exists(p | p.valueType.toString() = 'DateTime')
+/]
+
+[query public hasSetProperty(aResource: Resource) : Boolean =
+    allProperties(aResource)->exists(p | Sequence{'zeroOrMany', 'oneOrMany'}->includes(p.occurs.toString()))
+/]
+
+[query public hasLinkProperty(aResource: Resource) : Boolean =
+    allProperties(aResource)->exists(p | Sequence{'Resource', 'LocalResource'}->includes(p.valueType.toString()))
+/]

@@ -1,0 +1,52 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module generateVocabularyConstants('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::fileServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
+
+[template public generateVocabularyConstants(aVocabulary : Vocabulary, anAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String)]
+[let effectiveFilesPath : String = aVocabulary.filesBasePath(anAdaptorInterface, defaultFilesPath)]
+[let effectivePackageName : String = aVocabulary.pythonPackageNameForConstants(anAdaptorInterface, defaultPackageName)]
+[let rootInitFileName : String = aVocabulary.pythonFilesBasePath(anAdaptorInterface, effectiveFilesPath).concatenatePaths('__init__.py')]
+[file (rootInitFileName, false, 'UTF-8')]
+# [protected ('imports')]
+# [/protected]
+[/file]
+[/let]
+[let packageInitFileName : String = aVocabulary.pythonFilesBasePath(anAdaptorInterface, effectiveFilesPath).concatenatePaths(effectivePackageName.substituteAll('.', '/')).concatenatePaths('__init__.py')]
+[file (packageInitFileName, false, 'UTF-8')]
+# [protected ('imports')]
+# [/protected]
+[/file]
+[/let]
+[file (aVocabulary.pythonFullFileNameForConstants(null, effectiveFilesPath, effectivePackageName), false, 'UTF-8')]
+import rdflib
+
+# [protected ('imports')]
+# [/protected]
+
+[aVocabulary.vocabularyNamespaceConstantName()/] = rdflib.Namespace("[aVocabulary.namespaceURI/]")
+
+# [protected ('constants')]
+# [/protected]
+[/file]
+[/let]
+[/let]
+[/template]
