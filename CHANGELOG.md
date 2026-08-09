@@ -12,6 +12,7 @@
 
 ### Changed
 
+- Deduplicated shared Java and Python code generator services and static-file templates into common packages
 - Restructured the Java code generator into dedicated `java` subpackages to separate language-specific generator code
 - Generate for JDK 21 when using Lyo SDK 7.0.0.
 - All OPTIONS requests are not exempted from the authentication filter (to let the CORS preflight requests in).
