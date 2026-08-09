@@ -62,7 +62,7 @@ endif)
 
 [query public descriptionAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.description.oclIsUndefined()) then
-    '@oslc_description("'.concat(aProperty.description).concat('")')
+    '@oslc_description('.concat(pythonStringLiteral(aProperty.description)).concat(')')
 else
     ''
 endif)
@@ -156,7 +156,7 @@ endif)
 
 [query public titleAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.title.oclIsUndefined()) then
-    '@oslc_title("'.concat(aProperty.title).concat('")')
+    '@oslc_title('.concat(pythonStringLiteral(aProperty.title)).concat(')')
 else
     ''
 endif)
