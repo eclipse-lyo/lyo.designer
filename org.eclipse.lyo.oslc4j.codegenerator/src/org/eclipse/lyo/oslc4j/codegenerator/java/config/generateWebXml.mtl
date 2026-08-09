@@ -1,0 +1,115 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module generateWebXml('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::vocabularyServices/]
+
+[template public servlet(anAdaptorInterface : AdaptorInterface)]
+<servlet>
+    <servlet-name>JAX-RS Servlet</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+        <param-name>jakarta.ws.rs.Application</param-name>
+        <param-value>[javaClassFullNameForAdaptorApplication(anAdaptorInterface)/]</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+<!-- [protected ('webxml_servlet')]
+-->
+<!-- TODO: Add additional configurations here to avoid them be overridden upon future re-generation -->
+<!-- [/protected]
+-->
+<servlet-mapping>
+    <servlet-name>JAX-RS Servlet</servlet-name>
+    <url-pattern>[anAdaptorInterface.configuration.servletUrlPattern/]</url-pattern>
+</servlet-mapping>
+[/template]
+
+[template public filter(anAdaptorInterface : AdaptorInterface)]
+[if anAdaptorInterface.authenticationEnabled()]
+<filter>
+    <display-name>CredentialsFilter</display-name>
+    <filter-name>CredentialsFilter</filter-name>
+    <filter-class>[javaClassFullNameForCredentialsFilter(anAdaptorInterface)/]</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CredentialsFilter</filter-name>
+    <url-pattern>[anAdaptorInterface.configuration.servletUrlPattern/]</url-pattern>
+</filter-mapping>
+[/if]
+[/template]
+
+[template public generateWebXml(anAdaptorInterface : AdaptorInterface)]
+[if (not anAdaptorInterface.doNotGenerateProjectFiles())]
+[file (anAdaptorInterface.webFilesBasePath().concatenatePaths('/WEB-INF/web.xml'), false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+      version="6.0">
+    <display-name>[anAdaptorInterface.name/]</display-name>
+    <context-param>
+        <description>Base URI for the adaptor.</description>
+        <param-name>[javaClassPackageNameForAdaptorServletListener(anAdaptorInterface) /].baseurl</param-name>
+        <param-value>[anAdaptorInterface.configuration.rootServerBaseUrl/]</param-value>
+        <!-- [protected ('webxml_baseurl')]
+        -->
+        <!-- TODO: Add additional configurations here to avoid them be overridden upon future re-generation -->
+        <!-- [/protected]
+        -->
+    </context-param>
+    <context-param>
+        <description>CORS friends</description>
+        <param-name>[javaClassPackageNameForAdaptorServletListener(anAdaptorInterface) /].cors.friends</param-name>
+        <!-- Valid options: '*' (for any origin), a semicolon-separated list of origins (e.g. 'https://rm.example.com;https://cm.example.com') -->
+        <!-- [protected ('cors_friends')]
+        -->
+        <!-- NOTE: Delete the contents of the protected block to re-generate the default value -->
+        <param-value>*</param-value>
+        <!-- [/protected]
+        -->
+    </context-param>
+    <!-- [protected ('webxml1')]
+    -->
+    <!-- TODO: Add additional configurations here to avoid them be overridden upon future re-generation -->
+    <!-- [/protected]
+    -->
+    <listener>
+        <description>Listener for ServletContext lifecycle changes</description>
+        <listener-class>[javaClassFullNameForAdaptorServletListener(anAdaptorInterface)/]</listener-class>
+    </listener>
+    <!-- [protected ('webxml2')]
+    -->
+    <!-- TODO: Add additional configurations here to avoid them be overridden upon future re-generation -->
+    <!-- [/protected]
+    -->
+    [servlet(anAdaptorInterface)/]
+    [filter(anAdaptorInterface)/]
+    <!-- [protected ('webxml_final')]
+    -->
+    <!-- TODO: Add additional configurations here to avoid them be overridden upon future re-generation -->
+    <!-- [/protected]
+    -->
+</web-app>
+[/file]
+[/if]
+[/template]

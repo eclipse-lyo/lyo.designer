@@ -1,0 +1,163 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module generateAdaptorResourcesFactory('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::serviceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::webServiceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
+
+[template public generateImports(anAdaptorInterface : AdaptorInterface)]
+// spotless:off
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map;
+import jakarta.ws.rs.core.UriBuilder;
+
+import org.eclipse.lyo.oslc4j.core.model.Link;
+import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+[for (aResource: Resource | relevantResources(anAdaptorInterface)->sortedBy(name))]
+import [javaClassFullName(aResource, anAdaptorInterface, null) /];
+[/for]
+
+// [protected ('imports')]
+// [/protected]
+// spotless:on
+[/template]
+
+[template public generateFactoryMethods(aResource : Resource, anAdaptorInterface : AdaptorInterface)]
+[for (aBasicCapability: BasicCapability | basicCapabilities(anAdaptorInterface, aResource))]
+[let methodSuffix: String = (if (basicCapabilities(anAdaptorInterface, aResource)->size() = 1) then '' else basicCapabilities(anAdaptorInterface, aResource)->indexOf(aBasicCapability).toString() endif)]
+[if (basicCapabilities(anAdaptorInterface, aResource)->indexOf(aBasicCapability) = 1)]
+public [javaClassName(aResource)/] create[javaName(aResource, true)/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/]) {
+    return new [javaClassName(aResource)/](constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aBasicCapability), false, false)/]));
+}
+[/if]
+
+public URI constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/]) {
+    Map<String, Object> pathParameters = new HashMap<String, Object>();
+    [for (instanceCompositeID: String | aResource.instanceCompositeID(aBasicCapability))]
+    pathParameters.put("[instanceCompositeID /]", [instanceCompositeID /]);
+    [/for]
+    String instanceURI = "[aResource.instanceURI(aBasicCapability) /]";
+
+    final UriBuilder builder = UriBuilder.fromUri(this.basePath);
+    return builder.path(instanceURI).buildFromMap(pathParameters);
+}
+
+public Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, true)/] final String label) {
+    return new Link(constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aBasicCapability), false, false)/]), label);
+}
+
+public Link constructLinkFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodSignature(aBasicCapability, false), false, false)/]) {
+    return new Link(constructURIFor[javaName(aResource, true)/][methodSuffix/]([commaSeparate(aResource.instanceMethodParameterList(aBasicCapability), false, false)/]));
+}
+[/let]
+[/for]
+
+[for (aWebService: WebService | webServices(anAdaptorInterface, aResource))]
+[if (webServices(anAdaptorInterface, aResource)->indexOf(aWebService) = 1)]
+public [javaClassName(aResource)/] create[javaName(aResource, true)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/]) {
+    return new [javaClassName(aResource)/]([constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]));
+}
+[/if]
+
+public URI [constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/]) {
+    Map<String, Object> pathParameters = new HashMap<String, Object>();
+    [for (instanceCompositeID: String | aResource.instanceCompositeID(aWebService))]
+    pathParameters.put("[instanceCompositeID /]", [instanceCompositeID /]);
+    [/for]
+    String instanceURI = "[aResource.instanceURI(aWebService) /]";
+
+    final UriBuilder builder = UriBuilder.fromUri(this.basePath);
+    return builder.path(instanceURI).buildFromMap(pathParameters);
+}
+
+public Link [constructLinkMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, true)/] final String label) {
+    return new Link([constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]), label);
+}
+
+public Link [constructLinkMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodSignature(aWebService, false), false, false)/]) {
+    return new Link([constructURIMethodName(aResource, aWebService)/]([commaSeparate(aResource.instanceMethodParameterList(aWebService), false, false)/]));
+}
+[/for]
+[/template]
+
+
+[template public generateAdaptorResourcesFactory(anAdaptorInterface : AdaptorInterface)]
+[file (javaClassFullFileNameForResourcesFactory(anAdaptorInterface), false, 'UTF-8')]
+// [protected ('Copyright')]
+/*
+ * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Distribution License 1.0 which is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: BSD-3-Simple
+ */
+// [/protected]
+
+package [javaClassPackageNameForResourcesFactory(anAdaptorInterface) /];
+
+[if oldJavaClassNameForResourcesFactoryIsUsed(anAdaptorInterface)]
+// [protected ('Notice')]
+//Note: The Lyo code generator is migrating the name of this class from '[oldJavaClassNameForResourcesFactory(anAdaptorInterface)/]' to the new shorter name '[newJavaClassNameForResourcesFactory(anAdaptorInterface)/]'.
+//You are still using the old name. The generator will continue to use this old name until you actively trigger the change.
+//To migrate to the new class name:
+//1. Rename your class to [newJavaClassNameForResourcesFactory(anAdaptorInterface)/] 
+//    * Please rename and do not simply create a copy of the file. The generator needs to detect the file deletion in order to activate the name change.
+//2. Regenerate the code. 
+//    * The generator will generate this class with the new name.
+//    * Besides the class name, the code - including the user clode blocks - remain intact.
+//    * All other class references to the new class name are updated.
+//3. Delete this notice
+// [/protected]
+[/if]
+
+[generateImports(anAdaptorInterface)/]
+
+// [protected ('pre_class_code')]
+// [/protected]
+
+public class [javaClassNameForResourcesFactory(anAdaptorInterface) /] {
+
+    private String basePath;
+
+    // [protected ('class_attributes')]
+    // [/protected]
+
+    public [javaClassNameForResourcesFactory(anAdaptorInterface)/](String basePath) {
+        this.basePath = basePath;
+    }
+
+    // [protected ('class_methods')]
+    // [/protected]
+
+    [for (aResource: Resource | servicedResources(anAdaptorInterface)->sortedBy(name))]
+    //methods for [aResource.javaClassName()/] resource
+    [aResource.generateFactoryMethods(anAdaptorInterface) /]
+
+    [/for]
+}
+[/file]
+[/template]
