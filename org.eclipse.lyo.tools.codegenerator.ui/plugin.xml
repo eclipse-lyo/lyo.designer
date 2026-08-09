@@ -19,11 +19,18 @@
  		     </or>
          </visibility>
          <action
-               class="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"
+               class="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorJavaAction"
                enablesFor="+"
-               id="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"
+               id="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorJavaAction"
                icon="icons/default.gif"
                label="Generate Complete Toolchain Java Code"
+               menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
+         <action
+               class="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorPythonAction"
+               enablesFor="+"
+               id="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorPythonAction"
+               icon="icons/default.gif"
+               label="Generate Client-Side Toolchain Python Code"
                menubarPath="org.eclipse.acceleo.module.menu/acceleo"/>
       </objectContribution>
    </extension>

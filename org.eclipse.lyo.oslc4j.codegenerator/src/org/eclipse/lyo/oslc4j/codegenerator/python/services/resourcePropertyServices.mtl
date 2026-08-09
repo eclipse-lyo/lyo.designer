@@ -1,0 +1,272 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module resourcePropertyServices('http://org.eclipse.lyo/oslc4j/adaptorInterface')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::resourcePropertyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::adaptorInterfaceServices/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::vocabularyServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
+
+[query public pythonName(aProperty: ResourceProperty, toUpperFirst : Boolean) : String =
+pythonString(aProperty.name, aProperty.definingDomainSpecification().namespacePrefix.name, toUpperFirst)
+/]
+
+[query public hasOSLCSupportedValueType(aProperty: ResourceProperty) : Boolean =
+not (Sequence{'URI'}->includes(aProperty.valueType.toString()))
+/]
+
+[query public resourcePropertyDefinitionNamespace(aResourceProperty: ResourceProperty) : String =
+(if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
+    domainSpecificationImplicitVocabularyNamespaceConstantName(aResourceProperty.definingDomainSpecification())
+else
+    vocabularyNamespaceConstantName(aResourceProperty.propertyDefinition.definingVocabulary())
+endif)
+/]
+
+[query public nameAnnotation(aProperty: ResourceProperty) : String =
+'@oslc_name('
+.concat(resourcePropertyDefinitionLocalName(aProperty))
+.concat(')')
+/]
+
+[query public propertyDefinitionAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
+'@oslc_property_definition('
+.concat(resourcePropertyDefinitionNamespace(aProperty))
+.concat('[') 
+.concat(resourcePropertyDefinitionLocalName(aProperty))
+.concat('])')
+/]
+
+[query public descriptionAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.description.oclIsUndefined()) then
+    '@oslc_description('.concat(pythonStringLiteral(aProperty.description)).concat(')')
+else
+    ''
+endif)
+/]
+
+[query public occursAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.occurs.oclIsUndefined()) then
+    if (aProperty.occurs = ResourcePropertyOccurs::exactlyOne) then
+        '@oslc_occurs(Occurs.EXACTLY_ONE)'
+    else
+        if (aProperty.occurs = ResourcePropertyOccurs::zeroOrOne) then
+            '@oslc_occurs(Occurs.ZERO_OR_ONE)'
+        else
+            if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany) then
+                '@oslc_occurs(Occurs.ZERO_OR_MANY)'
+            else
+                if (aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
+                    '@oslc_occurs(Occurs.ONE_OR_MANY)'
+                else
+                    ''
+                endif
+            endif
+        endif
+    endif
+else
+    ''
+endif)
+/]
+
+[query public valueTypeAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.valueType.oclIsUndefined()) then
+    if (hasOSLCSupportedValueType(aProperty)) then
+        '@oslc_value_type(ValueType.'.concat(aProperty.valueType.toString().toUpper()).concat(')')
+    else
+        ''
+    endif
+else
+    ''
+endif)
+/]
+
+[query public representationAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.representation.oclIsUndefined()) then
+    if (not aProperty.representation.toString().equalsIgnoreCase('n_a')) then
+        if (not aProperty.representation.toString().equalsIgnoreCase('either')) then
+            '@oslc_representation(Representation.'.concat(aProperty.representation.toString().toUpper()).concat(')')
+        else
+            ''
+        endif
+    else
+        ''
+    endif
+else
+    ''
+endif)
+/]
+
+[query public rdfCollectionTypeAnnotation(aProperty: ResourceProperty) : String =
+(if ((not aProperty.multiValueRepresentation.oclIsUndefined()) and (not aProperty.occurs.oclIsUndefined())) then
+    if (aProperty.occurs = ResourcePropertyOccurs::zeroOrMany or aProperty.occurs = ResourcePropertyOccurs::oneOrMany) then
+        if (aProperty.multiValueRepresentation = ResourcePropertyMultiValueRepresentation::rdfList) then
+            '@oslc_rdf_collection_type("List", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")'
+        else
+            ''
+        endif
+    else
+        ''
+    endif
+else
+    ''
+endif)
+/]
+
+[query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
+(if (aProperty.range->size() > 0) then
+   	'@oslc_range('
+        .concat(concatenate(aProperty.range->collect(aRange : Resource | aRange.definingDomainSpecification().domainSpecificationImplicitVocabularyNamespaceConstantName().concat('["').concat(if (aRange.describes.oclIsUndefined()) then aRange.name.substituteAll(' ', '') else aRange.describes.name.substituteAll(' ', '') endif).concat('"]')), ', '))
+        .concat(')')
+else
+    ''
+endif)
+/]
+
+[query public readOnlyAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.readOnly.oclIsUndefined()) then
+    '@oslc_read_only('.concat(if aProperty.readOnly then 'True' else 'False' endif).concat(')')
+else
+    ''
+endif)
+/]
+
+[query public titleAnnotation(aProperty: ResourceProperty) : String =
+(if (not aProperty.title.oclIsUndefined()) then
+    '@oslc_title('.concat(pythonStringLiteral(aProperty.title)).concat(')')
+else
+    ''
+endif)
+/]
+
+[query public isMemberPropertyAnnotation(aProperty: ResourceProperty) : String =
+if (aProperty.isMemberProperty.toString().equalsIgnoreCase('true')) then
+    '@oslc_member_property(True)'
+else
+    if (aProperty.isMemberProperty.toString().equalsIgnoreCase('false')) then
+        '@oslc_member_property(False)'
+    else
+        ''
+    endif
+endif
+/]
+
+[query public allowedValuesAnnotation(aProperty: ResourceProperty) : String =
+(if (aProperty.allowedValue->size() > 0) then
+    '@oslc_allowed_values(["'.concat(concatenate((aProperty.allowedValue)->asSequence(), '", "')).concat('"])')
+else
+    ''
+endif)
+/]
+
+[query public pythonAttributeTypeDeclaration(aProperty: ResourceProperty) : String =
+    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
+        'Set['.concat(pythonAttributeBaseType(aProperty)).concat(']')
+    else
+        pythonAttributeBaseType(aProperty)
+    endif)
+/]
+
+[query public pythonAttributeInitialConstruction(aProperty: ResourceProperty) : String =
+    (if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())) then
+        'set()'
+    else
+        'None'
+    endif)
+/]
+
+[query public pythonAttributeBaseType(aProperty: ResourceProperty) : String =
+    (if (aProperty.valueType.toString() = 'String') then
+        'str'
+    else
+        if (aProperty.valueType.toString() = 'XMLLiteral') then
+             'str'
+        else
+            if(aProperty.valueType.toString() = 'DateTime') then
+                'datetime'
+            else
+                if(aProperty.valueType.toString() = 'URI') then
+                    'str'
+                else
+                    if(aProperty.valueType.toString() = 'Boolean') then
+                        'bool'
+                    else
+                        if(aProperty.valueType.toString() = 'Double') then
+                            'float'
+                        else
+                            if(aProperty.valueType.toString() = 'Float') then
+                                'float'
+                            else
+                                if(aProperty.valueType.toString() = 'Integer') then
+                                    'int'
+                                else
+                                    if(aProperty.valueType.toString() = 'Resource') then
+                                            if ((not aProperty.representation.oclIsUndefined()) and (aProperty.representation.toString().equalsIgnoreCase('inline'))) then
+                                                if (aProperty.range->size() = 1) then
+                                                    pythonClassName(aProperty.range->first())
+                                                else
+                                                    'Link'
+                                                endif
+                                            else
+                                                'Link'
+                                            endif
+                                    else
+                                        if(aProperty.valueType.toString() = 'LocalResource') then
+                                            if (aProperty.range->size() = 1) then
+                                                pythonClassName(aProperty.range->first())
+                                            else
+                                                'Link'
+                                            endif
+                                        else
+                                            ''
+                                        endif
+                                    endif
+                                endif
+                            endif
+                        endif
+                    endif
+                endif
+            endif
+        endif
+    endif)
+/]
+
+[query public pythonAttributeName(aProperty: ResourceProperty) : String =
+    pythonAttributeNameString(aProperty.name)
+/]
+
+[query private pythonAttributeNameString(aString : String) : String =
+    aString.replaceAll('([a-z])([A-Z]+)', '$1_$2').toLower()
+/]
+
+[query public pythonAttributeName(aProperty: ResourceProperty, aResource: Resource) : String =
+    pythonAttributeName(aProperty)
+/]
+
+[query public pythonAttributeGetterMethodName(aProperty: ResourceProperty, aResource: Resource) : String =
+    pythonAttributeName(aProperty, aResource)
+/]
+
+[query public pythonAttributeSetterMethodName(aProperty: ResourceProperty, aResource: Resource) : String =
+    pythonAttributeName(aProperty, aResource)
+/]

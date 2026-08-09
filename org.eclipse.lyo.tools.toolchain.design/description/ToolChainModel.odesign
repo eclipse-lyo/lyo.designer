@@ -167,6 +167,30 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.SpecificationMenu.GeneratePythonSpecification" label="Generate Specification Python Code" precondition="[self.oclIsTypeOf(Specification)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool_1:Switch">
+                    <cases conditionExpression="[not self.generationConfigurationComplete()/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.showMessage('Generation Configuration is missing or incomplete', 'The specification generation configuration is missing or incomplete. Create a SpecificationConfiguration element, using the toolbar to the right. Make sure all its properties are set.')"/>
+                    </cases>
+                    <cases conditionExpression="[self.configuration.generalConfiguration.doNotGenerate/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.showMessage('Cannot Generate', 'You have activated the &quot;Do Not Generate&quot; flag on this specification. Nothing will be generated. Disable this flag if you need to generate.')"/>
+                    </cases>
+                    <cases conditionExpression="[self.generationConfigurationNeedsMigration()/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.showMessage('Generation Configuration needs migration', 'The generation configuration of this specification or one of its domains needs migration. See note in red.')"/>
+                    </cases>
+                    <cases conditionExpression="[self.isNullOrEmpty(self.configuration.generalConfiguration.filesBasePath)/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql: self.showMessage('HELLO', 'HELLO')"/>
+                    </cases>
+                    <default>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:generatePythonSpecification()"/>
+                    </default>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Specification.DirectEditName">
             <mask mask="{0}"/>
@@ -1610,6 +1634,21 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Specification.SpecificationMenu.GeneratePythonSpecification" label="Generate Specification Python Code" precondition="[self.oclIsTypeOf(Specification)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool_1:Switch">
+                    <cases conditionExpression="[self.generationSetting.oclIsUndefined() or self.generationSetting.javaFilesPath.oclIsUndefined() or self.generationSetting.javaClassPackageName.oclIsUndefined() or self.generationSetting.javaFilesPath.trim().equalsIgnoreCase('') or self.generationSetting.javaClassPackageName.trim().equalsIgnoreCase('')/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql: self.showMessage('Generation Settings are missing', 'The specification generation settings are missing. Right click and select the &quot;Set Java Generation Settings&quot; command')"/>
+                    </cases>
+                    <default>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:generatePythonSpecification()"/>
+                    </default>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
           </ownedTools>
         </toolSections>
       </defaultLayer>
@@ -2027,7 +2066,8 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.DialogInputServices"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::DialogInputServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.EmfResourcesLoaderService"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorAction"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorJavaAction"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.codegenerator.ui.popupMenus.AcceleoGenerateCodegeneratorPythonAction"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ConfirmDeletionServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.lyo.tools.common.utils.ResourcePropertyRangeServices"/>
     <ownedJavaExtensions qualifiedClassName="org::eclipse::lyo::tools::toolchain::design::domainSpecificationDiagram"/>

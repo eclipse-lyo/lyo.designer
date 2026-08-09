@@ -1,0 +1,192 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module services('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::services/]
+
+[query private pythonKeywords(traceabilityContext : OclAny) : Set(String) =
+Set{'False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'}
+/]
+
+[query private isPythonSpecialWord(aString : String) : Boolean =
+pythonKeywords(aString)->includes(aString)
+/]
+
+[query public pythonBasePackageName(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.pythonBasePackageName('resources')
+/]
+
+[query public pythonBasePackageName(anAdaptorInterface : AdaptorInterface, default : String) : String =
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generalConfiguration.oclIsUndefined()) then 
+    (if anAdaptorInterface.javaClassBaseNamespace.isNullOrEmpty() then 
+        default
+    else
+        anAdaptorInterface.javaClassBaseNamespace
+    endif)
+else
+    anAdaptorInterface.configuration.generalConfiguration.javaBasePackageName
+endif)
+/]
+
+[query public pythonPackageName(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.pythonBasePackageName(default).concat('.resources')
+    endif)
+else
+    aSpecification.configuration.generalConfiguration.javaBasePackageName
+endif).substituteAll('.', '_')
+/]
+
+[query public pythonPackageName(vocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.pythonBasePackageName(default).concat('.resources')
+    endif)
+else
+    vocabularies.configuration.generalConfiguration.javaBasePackageName
+endif).substituteAll('.', '_')
+/]
+
+[query public pythonPackageName(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    aDomainSpecification.eContainer(Specification).pythonPackageName(anAdaptorInterface, default)
+else
+    aDomainSpecification.configuration.generalConfiguration.javaBasePackageName
+endif).substituteAll('.', '_')
+/]
+
+[query public pythonPackageName(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.javaBasePackageName.isNullOrEmpty()) then 
+    aVocabulary.eContainer(Vocabularies).pythonPackageName(anAdaptorInterface, default)
+else
+    aVocabulary.configuration.generalConfiguration.javaBasePackageName
+endif).substituteAll('.', '_')
+/]
+
+[query public filesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.filesBasePath('.')
+/]
+
+[query public filesBasePath(anAdaptorInterface : AdaptorInterface, default : String) : String =
+(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generalConfiguration.oclIsUndefined()) then 
+    (if anAdaptorInterface.javaFilesBasePath.isNullOrEmpty() then 
+        default
+    else
+        anAdaptorInterface.javaFilesBasePath.substitute('/src/main/python', '')
+    endif)
+else
+    anAdaptorInterface.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aSpecification.configuration.oclIsUndefined())._or(aSpecification.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.filesBasePath(default)
+    endif)
+else
+    aSpecification.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(vocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (vocabularies.configuration.oclIsUndefined())._or(vocabularies.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    (if (anAdaptorInterface.oclIsUndefined()) then 
+        default
+    else
+        anAdaptorInterface.filesBasePath(default)
+    endif)
+else
+    vocabularies.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aDomainSpecification.configuration.oclIsUndefined())._or(aDomainSpecification.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    aDomainSpecification.eContainer(Specification).filesBasePath(anAdaptorInterface, default)
+else
+    aDomainSpecification.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query public filesBasePath(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+(if (aVocabulary.configuration.oclIsUndefined())._or(aVocabulary.configuration.generalConfiguration.filesBasePath.isNullOrEmpty()) then 
+    aVocabulary.eContainer(Vocabularies).filesBasePath(anAdaptorInterface, default)
+else
+    aVocabulary.configuration.generalConfiguration.filesBasePath
+endif)
+/]
+
+[query private pythonFilesRelativePath(traceabilityContext : OclAny) : String =
+'/src'
+/]
+
+[query public pythonFilesBasePath(anAdaptorInterface : AdaptorInterface) : String =
+anAdaptorInterface.filesBasePath().concatenatePaths(pythonFilesRelativePath())
+/]
+
+[query public pythonFilesBasePath(anAdaptorInterface : AdaptorInterface, default : String) : String =
+anAdaptorInterface.filesBasePath(default).concatenatePaths(pythonFilesRelativePath())
+/]
+
+[query public pythonFilesBasePath(aSpecification: Specification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+aSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths(pythonFilesRelativePath())
+/]
+
+[query public pythonFilesBasePath(vocabularies: Vocabularies, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+vocabularies.filesBasePath(anAdaptorInterface, default).concatenatePaths(pythonFilesRelativePath())
+/]
+
+[query public pythonFilesBasePath(aDomainSpecification: DomainSpecification, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+aDomainSpecification.filesBasePath(anAdaptorInterface, default).concatenatePaths(pythonFilesRelativePath())
+/]
+
+[query public pythonFilesBasePath(aVocabulary: Vocabulary, anAdaptorInterface : AdaptorInterface, default : String) : String = 
+aVocabulary.filesBasePath(anAdaptorInterface, default).concatenatePaths(pythonFilesRelativePath())
+/]
+
+[query public pythonConstantString (aString : String) : String =
+concatenate(
+    aString.replaceAll('\\W+', '_').tokenize('_')->sep('_').oclAsType(String)
+).toUpperCase()
+/]
+
+[query public pythonStringLiteral(aString : String) : String =
+if (aString.index('\n') <> -1 or aString.index('\r') <> -1) then
+    '"""'.concat(aString).concat('"""')
+else
+    '"'.concat(aString).concat('"')
+endif
+/]
+
+[query private pythonString (aString : String) : String =
+concatenate(
+    aString.replaceAll('\\W+', ' ').tokenize(' ')->collect(s : String  | s.toUpperFirst())
+)
+/]
+
+[query public pythonString (aString : String, prefixIfNecessary : String, toUpperFirst : Boolean) : String =
+let base : String = (if (isPythonSpecialWord(aString)) then prefixIfNecessary.concat(pythonString(aString).toUpperFirst()) else pythonString(aString) endif)
+in 
+if (toUpperFirst) then base.toUpperFirst() else base.toLowerFirst() endif
+/]

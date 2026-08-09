@@ -1,0 +1,106 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module adaptorInterfaceServices('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::domainSpecificationServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::common::services::vocabularyServices/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::serviceProviderServices/]
+
+[query public serviceProviders(anAdaptorInterface : AdaptorInterface) : Sequence(ServiceProvider) =
+(if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined()) then
+    anAdaptorInterface.serviceProviderCatalog.serviceProviders
+else
+    Sequence{}
+endif)
+/]
+
+[query public servicedResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider | 
+	servicedResources(aServiceProvider)
+)->flatten()->asSet()
+->union(
+	anAdaptorInterface.webServices->collectNested(aWebService : WebService | 
+		servicedResources(aWebService)
+	)->flatten()->asSet()
+)
+/]
+
+[query public relevantResources(anAdaptorInterface : AdaptorInterface) : Set(Resource) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider |
+    relevantResources(aServiceProvider)
+)->flatten()->asSet()
+->union(
+    anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor |
+        relevantResources(aRequiredAdaptor)
+    )->flatten()->asSet()
+)
+/]
+
+[query public servicedResources(aWebService: WebService) : Set(Resource) = 
+aWebService.resourceTypes->asSet()
+/]
+
+[query public relevantDomainSpecifications(anAdaptorInterface : AdaptorInterface) : Set(DomainSpecification) =
+anAdaptorInterface.serviceProviders()->collectNested(aServiceProvider : ServiceProvider |
+    relevantDomainSpecifications(aServiceProvider)
+)->flatten()->asSet()
+->union(
+    anAdaptorInterface.requiredAdaptors->collectNested(aRequiredAdaptor : RequiredAdaptor |
+        relevantDomainSpecifications(aRequiredAdaptor)
+    )->flatten()->asSet()
+)
+/]
+
+[query public relevantVocabularies(anAdaptorInterface : AdaptorInterface) : Set(Vocabulary) =
+anAdaptorInterface.relevantDomainSpecifications()->collectNested(aDomainSpecification : DomainSpecification |
+    relevantVocabularies(aDomainSpecification)
+)->flatten()->asSet()
+/]
+
+[query public servicedResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
+if (aRequiredAdaptor.oclIsTypeOf(GenericRequiredAdaptor)) then
+    servicedResourcesForGenericRequiredAdaptor(aRequiredAdaptor.oclAsType(GenericRequiredAdaptor))
+else
+    servicedResourcesForModelledRequiredAdaptor(aRequiredAdaptor.oclAsType(ModelledRequiredAdaptor))
+endif
+/]
+
+[query private servicedResourcesForGenericRequiredAdaptor(aGenericRequiredAdaptor : GenericRequiredAdaptor) : Set(Resource) =
+aGenericRequiredAdaptor.servicedResources
+/]
+
+[query private servicedResourcesForModelledRequiredAdaptor(aModelledRequiredAdaptor : ModelledRequiredAdaptor) : Set(Resource) =
+servicedResources(aModelledRequiredAdaptor.adaptorInterface)
+/]
+
+[query public relevantResources(aRequiredAdaptor : RequiredAdaptor) : Set(Resource) =
+servicedResources(aRequiredAdaptor)
+->union(servicedResources(aRequiredAdaptor)->collectNested(aResource : Resource | aResource.allRelatedResources())->flatten()->asSet())
+/]
+
+[query public relevantDomainSpecifications(aRequiredAdaptor : RequiredAdaptor) : Set(DomainSpecification) =
+relevantResources(aRequiredAdaptor)->collectNested(aResource : Resource |
+    definingDomainSpecification(aResource)
+    ->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
+)->flatten()->asSet()
+/]
+
+[query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification: DomainSpecification) : String =
+'NS_'.concat(aDomainSpecification.namespacePrefix.name.toUpperCase())
+/]

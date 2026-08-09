@@ -1,0 +1,272 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2022 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module generateAuthenticationApplication('http://org.eclipse.lyo/oslc4j/adaptorInterface')]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::java::services::adaptorInterfaceServices/]
+
+[template public generateAuthenticationApplication(anAdaptorInterface : AdaptorInterface)]
+[if (anAdaptorInterface.authenticationEnabled())]
+[file (anAdaptorInterface.javaClassFullFileNameForAuthenticationApplication(), false, 'UTF-8')]
+// [protected ('Copyright')]
+/*
+ * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Distribution License 1.0 which is available at
+ * http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: BSD-3-Simple
+ */
+// [/protected]
+
+package [anAdaptorInterface.javaClassPackageNameForAuthenticationApplication()/];
+
+// spotless:off
+import java.util.Base64;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Optional;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.eclipse.lyo.server.oauth.core.Application;
+import org.eclipse.lyo.server.oauth.core.token.LRUCache;
+import org.eclipse.lyo.server.oauth.core.AuthenticationException;
+
+
+// [protected ('imports')]
+// [/protected]
+// spotless:on
+
+// [protected ('pre_class_code')]
+// [/protected]
+
+public class [anAdaptorInterface.javaClassNameForAuthenticationApplication()/] implements Application {
+
+    public final static String APPLICATION_NAME = "[anAdaptorInterface.authenticationApplicationName()/]";
+    public final static String OAUTH_REALM = "[anAdaptorInterface.authenticationOauthRealm()/]";
+    protected final static String APPLICATION_CONNECTOR_SESSION_ATTRIBUTE = "[anAdaptorInterface.javaClassPackageNameForAuthenticationApplication()/].ApplicationConnector";
+    protected final static String APPLICATION_CONNECTOR_ADMIN_SESSION_ATTRIBUTE = "[anAdaptorInterface.javaClassPackageNameForAuthenticationApplication()/].AdminSession";
+    private final static Logger log = LoggerFactory.getLogger([anAdaptorInterface.javaClassNameForAuthenticationApplication()/].class);
+
+    public final static String AUTHORIZATION_HEADER = "Authorization";
+    public final static String WWW_AUTHENTICATE_HEADER = "WWW-Authenticate";
+    private final static String BASIC_AUTHORIZATION_PREFIX = "Basic ";
+    public final static String BASIC_AUTHENTICATION_CHALLENGE = BASIC_AUTHORIZATION_PREFIX + "realm=\"" + OAUTH_REALM + "\"";
+    private final static String OAUTH_AUTHORIZATION_PREFIX = "OAuth ";
+    public final static String OAUTH_AUTHENTICATION_CHALLENGE = OAUTH_AUTHORIZATION_PREFIX + "realm=\"" + OAUTH_REALM + "\"";
+
+    private static [anAdaptorInterface.javaClassNameForAuthenticationApplication()/] authenticationApplication;
+
+    // [protected ('class_attributes')]
+    // [/protected]
+
+    private String oslcConsumerStoreFilename;
+    // TODO: Cleanup this cache so that entries from old keys/token are removed.
+    // Currently, this list simply grows all the time.
+    private LRUCache<String, String> oauth1TokenToApplicationConnector;
+
+    // [protected ('instance_attributes')]
+    // [/protected]
+
+    // [protected ('class_methods')]
+    // [/protected]
+
+    private [anAdaptorInterface.javaClassNameForAuthenticationApplication()/]() {
+        // [protected ('constructor_init')]
+        // [/protected]
+        oslcConsumerStoreFilename= "./oslcOAuthStore.xml";
+        oauth1TokenToApplicationConnector = new LRUCache<String, String>(2000);
+        // [protected ('constructor_finalize')]
+        // [/protected]
+    }
+
+    // [protected ('instance_methods')]
+    // [/protected]
+
+    public static [anAdaptorInterface.javaClassNameForAuthenticationApplication()/] getApplication() {
+        // [protected ('getApplication_init')]
+        // [/protected]
+        if (null == authenticationApplication) {
+            synchronized ("authenticationApplication") {
+                if (null == authenticationApplication) {
+                    authenticationApplication = new [anAdaptorInterface.javaClassNameForAuthenticationApplication()/]();
+                    // [protected ('getApplication_mid')]
+                    // [/protected]
+                }
+            }
+        }
+        // [protected ('getApplication_final')]
+        // [/protected]
+        return authenticationApplication;
+    }
+
+    public String getOslcConsumerStoreFilename() {
+        return oslcConsumerStoreFilename;
+    }
+
+    @Override
+    public String getName() {
+        // Display name for this application.
+        return APPLICATION_NAME;
+    }
+
+    @Override
+    public String getRealm(HttpServletRequest request) {
+        return OAUTH_REALM;
+    }
+
+    @Override
+    public void login(HttpServletRequest request, String username, String password) throws AuthenticationException {
+        // [protected ('login')]
+        //TODO: replace with code with real logic to login. You should also decide whether the login is admin or not.
+        log.warn("CAUTION! You are using fake login checks, which ought to be changed!");
+        if ((username.equals("user") && password.equals("user")) || (username.equals("admin") && password.equals("admin"))) {
+            bindApplicationConnectorToSession(request, username);
+        }
+        else {
+            throw new AuthenticationException("Login failed!");
+        }
+        if (username.equals("admin") && password.equals("admin")) {
+            request.getSession().setAttribute(APPLICATION_CONNECTOR_ADMIN_SESSION_ATTRIBUTE, true);
+        }
+        else {
+            request.getSession().setAttribute(APPLICATION_CONNECTOR_ADMIN_SESSION_ATTRIBUTE, false);
+        }
+        // [/protected]
+        return;
+    }
+
+    /**
+     * Get & Login based on the credentials in the <code>Authorization</code> request header
+     * if successful, bind the credentials to the request session.
+     *
+     * @throws AuthenticationException on problems reading the credentials from the <code>Authorization</code> request header
+     */
+    public Optional<SimpleEntry> getBasicAuthenticationFromRequest(HttpServletRequest request) throws AuthenticationException {
+        String authorizationHeader = request.getHeader(AUTHORIZATION_HEADER);
+        if (authorizationHeader != null && authorizationHeader.startsWith(BASIC_AUTHORIZATION_PREFIX)) {
+            String encodedString = authorizationHeader.substring(BASIC_AUTHORIZATION_PREFIX.length());
+            String unencodedString = new String(Base64.getDecoder().decode(encodedString), StandardCharsets.UTF_8);
+            int seperator = unencodedString.indexOf(':');
+            if (seperator == -1) {
+                throw new AuthenticationException("Invalid Authorization header value.");
+            }
+            String username = unencodedString.substring(0, seperator);
+            String password = unencodedString.substring(seperator + 1);
+            login(request, username, password);
+
+            bindApplicationConnectorToSession(request, unencodedString);
+            return Optional.of(new SimpleEntry<>(username, password));
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean isAuthenticated(HttpServletRequest request) {
+        boolean auth = (null != getApplicationConnectorFromSession(request));
+        // [protected ('isAuthenticated')]
+        // [/protected]
+        return auth;
+    }
+
+    @Override
+    public boolean isAdminSession(HttpServletRequest request) {
+        boolean admin = Boolean.TRUE.equals(request.getSession().getAttribute(APPLICATION_CONNECTOR_ADMIN_SESSION_ATTRIBUTE));
+        // [protected ('isAdminSession')]
+        // [/protected]
+        return admin;
+    }
+
+    // TODO: instead of saving to a session, consider saving to a cookie, so that
+    // the login survives longer than a single web session.
+    public void bindApplicationConnectorToSession(HttpServletRequest request, String applicationConnector) {
+        // [protected ('bindApplicationConnectorToSession')]
+        // [/protected]
+        request.getSession().setAttribute(APPLICATION_CONNECTOR_SESSION_ATTRIBUTE, applicationConnector);
+    }
+
+    public String getApplicationConnectorFromSession(HttpServletRequest request) {
+        // [protected ('getApplicationConnectorFromSession')]
+        // [/protected]
+        return (String) request.getSession().getAttribute(APPLICATION_CONNECTOR_SESSION_ATTRIBUTE);
+    }
+
+    public void removeApplicationConnectorFromSession(HttpServletRequest request) {
+        // [protected ('removeApplicationConnectorFromSession')]
+        // [/protected]
+        request.getSession().removeAttribute(APPLICATION_CONNECTOR_SESSION_ATTRIBUTE);
+    }
+
+    public String getApplicationConnector(String oauth1Token) {
+        // [protected ('getApplicationConnector')]
+        // [/protected]
+        return oauth1TokenToApplicationConnector.get(oauth1Token);
+    }
+
+    public void putApplicationConnector(String oauth1Token, String applicationConnector) {
+        // [protected ('putApplicationConnector')]
+        // [/protected]
+        oauth1TokenToApplicationConnector.put(oauth1Token, applicationConnector);
+    }
+
+    public void moveApplicationConnector(String oldOauth1Token, String newOauth1Token) {
+        // [protected ('moveApplicationConnector')]
+        // [/protected]
+        String applicationConnector = oauth1TokenToApplicationConnector.remove(oldOauth1Token);
+        oauth1TokenToApplicationConnector.put(newOauth1Token, applicationConnector);
+    }
+
+    public void removeForOauth1Token(String oauth1Token) {
+        // [protected ('removeForOauth1Token')]
+        // [/protected]
+        oauth1TokenToApplicationConnector.remove(oauth1Token);
+    }
+
+    /**
+     * Send error response when the request was not authorized
+     *
+     * @param response an error response
+     * @param e        Exception with error message
+     * @throws IOException
+     * @throws ServletException
+     */
+    public void sendUnauthorizedResponse(HttpServletRequest request, HttpServletResponse response, Exception e) throws IOException, ServletException {
+        // [protected ('sendUnauthorizedResponse_init')]
+        // [/protected]
+        // Accept basic access or OAuth authentication.
+        response.addHeader(WWW_AUTHENTICATE_HEADER, OAUTH_AUTHENTICATION_CHALLENGE);
+        response.addHeader(WWW_AUTHENTICATE_HEADER, BASIC_AUTHENTICATION_CHALLENGE);
+        // [protected ('sendUnauthorizedResponse_mid')]
+        // [/protected]
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+        // [protected ('sendUnauthorizedResponse_final')]
+        // [/protected]
+    }
+}
+[/file]
+[/if]
+[/template]
