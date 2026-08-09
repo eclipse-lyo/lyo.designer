@@ -19,7 +19,7 @@
 
 [template public generateConfigFiles(aSpecification : Specification)]
 [file ('requirements.txt', false, 'UTF-8')]
-oslc4py-client
-rdflib
+oslc4py-client==0.1.4
+rdflib==7.6.0
 [/file]
 [/template]
