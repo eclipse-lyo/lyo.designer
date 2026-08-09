@@ -512,7 +512,7 @@ endif)
 (if (aResource.describes.oclIsUndefined()) then
     javaInterfaceNameForConstants(aResource.definingDomainSpecification()).concat('.').concat(domainSpecificationImplicitVocabularyNamespaceConstantName(aResource.definingDomainSpecification()))
 else
-    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(vocabularyNamespaceConstantName(aResource.describes.definingVocabulary()))
+    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat('NS')
 endif)
 /]
 
@@ -528,7 +528,7 @@ endif)
 (if (aResource.describes.oclIsUndefined()) then
     '"'.concat(aResource.name).concat('"')
 else
-    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(classConstantName(aResource.describes))
+    javaInterfaceNameForConstants(aResource.describes.definingVocabulary()).concat('.').concat(classLocalNameConstantName(aResource.describes))
 endif)
 /]
 

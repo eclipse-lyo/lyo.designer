@@ -19,7 +19,25 @@ import org.osgi.framework.Version;
 public class OsgiServices {
 
 	public String getOSGiBundleVersion() {
-		Version version = FrameworkUtil.getBundle(getClass()).getVersion();
-		return version.toString();
+		var bundle = FrameworkUtil.getBundle(getClass());
+		if (bundle != null) {
+			Version version = bundle.getVersion();
+			return version.toString();
+		}
+
+		String configuredVersion = System.getProperty("lyod.codegen.version");
+		if (configuredVersion == null || configuredVersion.isBlank()) {
+			configuredVersion = System.getenv("LYOD_CODEGEN_VERSION");
+		}
+		if (configuredVersion != null && !configuredVersion.isBlank()) {
+			return configuredVersion;
+		}
+
+		String implementationVersion = getClass().getPackage().getImplementationVersion();
+		if (implementationVersion != null && !implementationVersion.isBlank()) {
+			return implementationVersion;
+		}
+
+		return "7.0.0";
 	}
 }

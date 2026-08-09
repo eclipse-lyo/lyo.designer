@@ -251,6 +251,14 @@ endif)
     endif)
 /]
 
+[query public pythonAttributeName(aProperty: ResourceProperty) : String =
+    pythonAttributeNameString(aProperty.name)
+/]
+
+[query private pythonAttributeNameString(aString : String) : String =
+    aString.replaceAll('([a-z])([A-Z]+)', '$1_$2').toLower()
+/]
+
 [query public pythonAttributeName(aProperty: ResourceProperty, aResource: Resource) : String =
     pythonAttributeName(aProperty)
 /]

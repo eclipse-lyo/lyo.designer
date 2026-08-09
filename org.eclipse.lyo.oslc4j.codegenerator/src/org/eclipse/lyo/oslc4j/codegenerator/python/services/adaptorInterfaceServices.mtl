@@ -20,6 +20,8 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::resourceServices/]
 [import org::eclipse::lyo::oslc4j::codegenerator::common::services::vocabularyServices/]
 
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::serviceProviderServices/]
+
 [query public serviceProviders(anAdaptorInterface : AdaptorInterface) : Sequence(ServiceProvider) =
 (if (not anAdaptorInterface.serviceProviderCatalog.oclIsUndefined()) then
     anAdaptorInterface.serviceProviderCatalog.serviceProviders
@@ -97,39 +99,6 @@ relevantResources(aRequiredAdaptor)->collectNested(aResource : Resource |
     definingDomainSpecification(aResource)
     ->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
 )->flatten()->asSet()
-/]
-
-[query public servicedResources(aService : Service) : Set(Resource) =
-aService.creationFactories.resourceTypes->asSet()
-    ->union(aService.queryCapabilities.resourceTypes->asSet())
-    ->union(aService.basicCapabilities.resourceTypes->asSet())
-    ->union(aService.creationDialogs.resourceTypes->asSet())
-    ->union(aService.selectionDialogs.resourceTypes->asSet())
-/]
-
-[query public relevantResources(aService : Service) : Set(Resource) =
-(servicedResources(aService)
-->union(servicedResources(aService).allRelatedResources()))->flatten()->asSet()
-/]
-
-[query public relevantDomainSpecifications(aService : Service) : Set(DomainSpecification) =
-relevantResources(aService)->collectNested(aResource : Resource |
-    definingDomainSpecification(aResource)
-    ->union(aResource.allProperties()->asSet()->collectNested(aResourceProperty : ResourceProperty | aResourceProperty.definingDomainSpecification()))
-)->flatten()->asSet()
-->union(Set{aService.domainSpecification})
-/]
-
-[query public servicedResources(aServiceProvider : ServiceProvider) : Set(Resource) =
-aServiceProvider.services->collectNested(aService : Service | servicedResources(aService))->flatten()->asSet()
-/]
-
-[query public relevantResources(aServiceProvider : ServiceProvider) : Set(Resource) =
-aServiceProvider.services->collectNested(aService : Service | relevantResources(aService))->flatten()->asSet()
-/]
-
-[query public relevantDomainSpecifications(aServiceProvider : ServiceProvider) : Set(DomainSpecification) =
-aServiceProvider.services->collectNested(aService : Service | relevantDomainSpecifications(aService))->flatten()->asSet()
 /]
 
 [query public domainSpecificationImplicitVocabularyNamespaceConstantName(aDomainSpecification: DomainSpecification) : String =
