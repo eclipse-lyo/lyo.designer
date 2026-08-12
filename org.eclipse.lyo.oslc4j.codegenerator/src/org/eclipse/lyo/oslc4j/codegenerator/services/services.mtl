@@ -508,6 +508,14 @@ in
 if (toUpperFirst) then base.toUpperFirst() else base.toLowerFirst() endif
 /]
 
+[query public escapeForJavaString (aString : String) : String =
+aString
+    .replaceAll('\\\\', '\\\\\\\\')
+    .replaceAll('"', '\\\\"')
+    .replaceAll('\n', '\\\\n')
+    .replaceAll('\r', '\\\\r')
+    .replaceAll('\t', '\\\\t')
+/]
 [query public concatenate (aStringSequence : Sequence(String)) : String =
 (if (aStringSequence->size() = 0) then
     ''
