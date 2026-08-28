@@ -53,8 +53,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -375,16 +373,12 @@ public class [javaClassName(aService) /]
             return Response.noContent().build();
 
         } else {
-            [if (anAdaptorInterface.generateJspFilesForOslcUI())]
             httpServletRequest.setAttribute("resourceTypeLabel", "[for (r: Resource | aSelectionDialog.resourceTypes) separator(', ')][r.name/][/for]");
             httpServletRequest.setAttribute("fieldsToList", "['[\\"Label\\"]'/]");
             // [protected (dialogMethodName(aSelectionDialog, true).concat('_setAttribute_fieldsToList'))]
             //TODO: set the attribute "fieldsToList" to form the list of properties you want displayed in the search result
             // [/protected]
-            RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorForOslcUIJspRelativeFileName(anAdaptorInterface) /]");
-            [else]
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("[resourceSelectorJspRelativeFileName(aSelectionDialog) /]");
-            [/if]
             rd.forward(httpServletRequest, httpServletResponse);
             return null;
         }

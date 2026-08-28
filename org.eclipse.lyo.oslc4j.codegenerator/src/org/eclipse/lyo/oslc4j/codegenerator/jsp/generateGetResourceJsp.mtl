@@ -28,7 +28,6 @@
 
 [template public generateGetResourceJsp(aResource : Resource, contextAdaptorInterface : AdaptorInterface, managingAdaptorInterface: AdaptorInterface, defaultJavaClassPackageName : String)]
 [if (contextAdaptorInterface.generateJspFile(getResourceJspFullFileName(aResource, contextAdaptorInterface)))]
-[if (not contextAdaptorInterface.generateJspFilesForOslcUI())]
 [file (getResourceJspFullFileName(aResource, contextAdaptorInterface), false, 'UTF-8')]
 <%--To avoid the overriding of any manual code changes upon subsequent code generations, disable "Generate JSP Files" option in the Adaptor model.--%>
 <!DOCTYPE html>
@@ -176,6 +175,5 @@
 </body>
 </html>
 [/file]
-[/if]
 [/if]
 [/template]
