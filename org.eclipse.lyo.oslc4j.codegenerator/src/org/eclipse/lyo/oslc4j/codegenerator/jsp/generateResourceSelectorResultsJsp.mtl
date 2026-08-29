@@ -42,14 +42,24 @@
 
 <aside>
   <nav>
-    <ul>
-      <c:forEach var="resource" items="${resources}">
-        <li>
-          <a href="${resource.about}"
-            onclick="sendOslcSelectionPostMessage(this, event)">${resource}</a>
-        </li>
-      </c:forEach>
-    </ul>
+    <c:choose>
+      <c:when test="${not empty selectorError}">
+        <p>${selectorError}</p>
+      </c:when>
+      <c:when test="${empty resources}">
+        <p>No OSLC resources found.</p>
+      </c:when>
+      <c:otherwise>
+        <ul>
+          <c:forEach var="resource" items="${resources}">
+            <li>
+              <a href="${resource.about}"
+                onclick="sendOslcSelectionPostMessage(this, event)">${resource}</a>
+            </li>
+          </c:forEach>
+        </ul>
+      </c:otherwise>
+    </c:choose>
   </nav>
 </aside>
 [/file]
