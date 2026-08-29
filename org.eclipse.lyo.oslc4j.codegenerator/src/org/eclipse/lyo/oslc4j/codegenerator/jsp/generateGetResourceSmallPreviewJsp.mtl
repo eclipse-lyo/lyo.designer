@@ -94,7 +94,7 @@
     [for (aProperty: ResourceProperty | propertiesCollection)]
     <dl class="dl-horizontal">
         <% method = [javaClassName(aResource)/].class.getMethod("[javaAttributeGetterMethodName(aProperty, aResource)/]"); %>
-        <dt><a href="<%=method.getAnnotation(OslcPropertyDefinition.class).value() %>"><%=method.getAnnotation(OslcName.class).value()%></a></dt>
+        <dt><a href="<%=method.getAnnotation(OslcPropertyDefinition.class).value() %>" style="text-decoration-style: dashed;" target="_blank" rel="noopener noreferrer" title="[if (not aProperty.description.oclIsUndefined())][aProperty.description/][elseif (not aProperty.propertyDefinition.oclIsUndefined())][aProperty.propertyDefinition.comment/][else][aProperty.name/][/if]"><%=method.getAnnotation(OslcName.class).value()%></a></dt>
         <dd>
         [propertyToHtml(aProperty, aResource, 'a'.concat(javaName(aResource, true)), contextAdaptorInterface) /]
         </dd>
@@ -114,7 +114,7 @@ if (!extendedProperties.isEmpty()) {
         Object value = entry.getValue();
     %>
     <dl class="row">
-        <dt  class="col-sm-2 text-end"><a href="<%=key.getNamespaceURI() + key.getLocalPart() %>"><%=key.getLocalPart()%></a></dt>
+        <dt  class="col-sm-2 text-end"><a href="<%=key.getNamespaceURI() + key.getLocalPart() %>" style="text-decoration-style: dashed;" target="_blank" rel="noopener noreferrer" title="<%=key.getLocalPart()%>"><%=key.getLocalPart()%></a></dt>
         <dd class="col-sm-9"><%= value.toString()%></dd>
     </dl>
     <%
