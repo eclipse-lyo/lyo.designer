@@ -351,13 +351,6 @@ If multiple DSs share the same maven dependency, we group them into 1.
             <artifactId>swagger-jaxrs2-servlet-initializer-v2-jakarta</artifactId>
         </dependency>
         [/if]
-        [if (anAdaptorInterface.generateJspFilesForOslcUI())]
-        <!-- OSLC-UI dependencies -->
-        <dependency>
-            <groupId>org.eclipse.lyo.server</groupId>
-            <artifactId>oslc-ui-model</artifactId>
-        </dependency>
-        [/if]
         <!-- [protected ('dependencies_final')]
         -->
         <!-- TODO: Add additional dependencies here to avoid them be overridden upon future re-generation -->

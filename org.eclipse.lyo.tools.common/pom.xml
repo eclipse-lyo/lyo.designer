@@ -63,6 +63,7 @@
 					<packagesToRegister>
 						<!-- For more information, please visit http://wiki.eclipse.org/Acceleo/Maven -->
 						<packageToRegister>org.eclipse.emf.ecore.EcorePackage</packageToRegister>
+						<packageToRegister>org.eclipse.emf.ecore.xml.type.XMLTypePackage</packageToRegister>
 						<packageToRegister>adaptorinterface.AdaptorinterfacePackage</packageToRegister>
 						<packageToRegister>toolchain.ToolchainPackage</packageToRegister>
 						<packageToRegister>vocabulary.VocabularyPackage</packageToRegister>
