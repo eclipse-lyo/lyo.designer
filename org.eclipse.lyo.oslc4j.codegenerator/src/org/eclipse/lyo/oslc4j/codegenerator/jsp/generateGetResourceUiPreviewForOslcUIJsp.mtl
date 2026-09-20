@@ -58,12 +58,12 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <title><%= resourceTitle %></title>
+    <title><c:out value="<%= resourceTitle %>"/></title>
     <link rel="stylesheet" href="<c:url value="/static/dist/oslc-ui/styles.css"/>">
 </head>
 
 <body>
-    <oslc-preview input-data='<%=resourcePreviewDataSet%>'></oslc-preview>
+    <oslc-preview input-data='<c:out value="<%=resourcePreviewDataSet%>"/>'></oslc-preview>
 
     <script src="<c:url value="/static/dist/oslc-ui/runtime-es2015.js"/>" type="module"></script> 
     <script src="<c:url value="/static/dist/oslc-ui/runtime-es5.js"/>" nomodule defer></script> 

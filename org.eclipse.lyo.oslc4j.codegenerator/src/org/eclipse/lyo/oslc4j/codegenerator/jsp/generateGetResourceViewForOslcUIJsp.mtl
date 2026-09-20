@@ -76,11 +76,25 @@
   URI shapeUri = (URI) request.getAttribute("shapeUri");
   String catalogUrl = UriBuilder.fromUri(OSLC4JUtils.getServletURI()).path("/catalog/singleton").build().toString();
 %>
+<%!
+  private boolean isSafeHref(Object value) {
+    if (value == null) {
+      return false;
+    }
+    try {
+      URI uri = value instanceof URI ? (URI) value : URI.create(value.toString());
+      String scheme = uri.getScheme();
+      return "http".equalsIgnoreCase(scheme) || "https".equalsIgnoreCase(scheme);
+    } catch (IllegalArgumentException e) {
+      return false;
+    }
+  }
+%>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title><%= aResource.toString() %></title>
+  <title><c:out value="<%= aResource.toString() %>"/></title>
 
   [generateBootstrapTags()/]
   <link href="<c:url value="/static/css/adaptor.css"/>" rel="stylesheet">
@@ -99,10 +113,10 @@
     </div>
   </nav>
 <!-- Begin page content -->
-<div class="container">
+<div class="container" id="resourceView" data-resource-uri="<c:out value="<%=aResource.getAbout()%>"/>">
         <h2>
-            <%= aResource.toString() %>
-            <small class="text-muted"><%= resourceTypeName %></small>
+            <c:out value="<%= aResource.toString() %>"/>
+            <small class="text-muted"><c:out value="<%= resourceTypeName %>"/></small>
         </h2>
         
         <div class="row mt-3">
@@ -115,7 +129,11 @@
                 <p class="fw-bold">Resource URI</p>
             </div>
             <div class="col">
-                <a href="<%=aResource.getAbout() %>" class="text-monospace"><%=aResource.getAbout()%></a>
+                <% if (isSafeHref(aResource.getAbout())) { %>
+                <a href="<c:out value="<%=aResource.getAbout()%>"/>" class="text-monospace"><c:out value="<%=aResource.getAbout()%>"/></a>
+                <% } else { %>
+                <c:out value="<%=aResource.getAbout()%>"/>
+                <% } %>
             </div>
         </div>
         <div class="row">
@@ -124,7 +142,7 @@
             </div>
             <div class="col">
                 <p class="text-monospace">
-                    <a href="<%=shapeUri%>"><%=shapeUri%></a>
+                    <a href="<c:out value="<%=shapeUri%>"/>"><c:out value="<%=shapeUri%>"/></a>
                 </p>
             </div>
         </div>
@@ -139,7 +157,7 @@
 
                     <%}%>
                     <%for (URI type : aResource.getTypes()) {%>
-                    <li><span class="text-monospace"><%=type%></span></li>
+                    <li><span class="text-monospace"><c:out value="<%=type%>"/></span></li>
                     <%}%>
                 </ul>
             </div>
@@ -176,10 +194,15 @@
             {
                 QName key = entry.getKey();
                 Object value = entry.getValue();
+                String extendedPropertyUri = key.getNamespaceURI() + key.getLocalPart();
             %>
             <dl class="row">
-                <dt  class="col-sm-2 text-end"><a href="<%=key.getNamespaceURI() + key.getLocalPart() %>"><%=key.getLocalPart()%></a></dt>
-                <dd class="col-sm-9"><%= value.toString()%></dd>
+                <% if (isSafeHref(extendedPropertyUri)) { %>
+                <dt  class="col-sm-2 text-end"><a href="<c:out value="<%=extendedPropertyUri%>"/>"><c:out value="<%=key.getLocalPart()%>"/></a></dt>
+                <% } else { %>
+                <dt  class="col-sm-2 text-end"><c:out value="<%=key.getLocalPart()%>"/></dt>
+                <% } %>
+                <dd class="col-sm-9"><c:out value="<%= value %>"/></dd>
             </dl>
             <%
             }
@@ -199,7 +222,8 @@
 
   <script type="text/javascript">
     var largeUiPreview = document.getElementById("largeUiPreview");
-    getUiPreviewIframes("<%= aResource.getAbout() %>", attachIframe, largeUiPreview);
+    var resourceUri = document.getElementById("resourceView").dataset.resourceUri;
+    getUiPreviewIframes(resourceUri, attachIframe, largeUiPreview);
     
     function attachIframe(compactStructure, largeUiPreview ) {
         var smallUiPreview = document.getElementById("smallUiPreview");
