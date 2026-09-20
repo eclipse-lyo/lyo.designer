@@ -1,0 +1,40 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module generateAdaptorPackageInfo('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary')/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+
+[template public generateAdaptorPackageInfo(resources : Set(Resource), defaultFilesPath : String, defaultPackageName : String)]
+[let generatedResources : Set(Resource) = resources->select(r : Resource | r.generate())]
+[if (resources->size() > 0)]
+	[comment This can be any resource because it's only used for constructing correct path /]
+    [let aResource : Resource = resources->any(true)]
+        [file (aResource.pythonClassFullFolderName(null, defaultFilesPath, defaultPackageName).concatenatePaths('__init__.py'), false, 'UTF-8')]
+            [for (r : Resource | generatedResources->sortedBy(name))]
+from .[r.pythonClassName()/] import [r.pythonClassName()/]
+            [/for]
+# [protected ('imports')]
+# [/protected]
+        [/file]
+    [/let]
+[/if]
+[/let]
+[/template]
+
+[template public generateAdaptorPackageInfo(resourcesOnSameFolderPath: Set(Resource), contextAdaptorInterface : AdaptorInterface, defaultFilesPath : String, defaultPackageName : String)]
+[generateAdaptorPackageInfo(resourcesOnSameFolderPath, contextAdaptorInterface.filesBasePath(defaultFilesPath), contextAdaptorInterface.pythonBasePackageName(defaultPackageName))/]
+[/template]
