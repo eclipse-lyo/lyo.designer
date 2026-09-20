@@ -242,14 +242,6 @@ else
 endif)
 /]
 
-[query public generateJspFilesForOslcUI(anAdaptorInterface : AdaptorInterface) : Boolean = 
-(if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.generateJspFilesForOslcUI.oclIsUndefined()) then 
-    false
-else
-    anAdaptorInterface.configuration.generateJspFilesForOslcUI
-endif)
-/]
-
 [query public doNotRegenerateJspFiles(anAdaptorInterface : AdaptorInterface) : Boolean = 
 (if anAdaptorInterface.configuration.oclIsUndefined()._or(anAdaptorInterface.configuration.doNotRegenerateJspFiles.oclIsUndefined()) then 
     false
@@ -539,4 +531,3 @@ endif)
 [query public annotationProducesRDF(ai: AdaptorInterface) : String =
 '@Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_JSON_LD, OslcMediaType.TEXT_TURTLE, OslcMediaType.APPLICATION_XML, OslcMediaType.APPLICATION_JSON})'
 /]
-
