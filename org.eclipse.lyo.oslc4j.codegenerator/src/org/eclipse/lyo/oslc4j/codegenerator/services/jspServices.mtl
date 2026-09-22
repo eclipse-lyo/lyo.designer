@@ -54,25 +54,11 @@ webFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)
 webFilesBasePath(anAdaptorInterface).concatenatePaths(resourceToHtmlJspRelativeFileName(aResource, anAdaptorInterface))
 /]
 
-[query public getResourceViewForOslcUIJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
-webFilesWebappPath(anAdaptorInterface).concatenatePaths('viewResource.jsp').toLower()
-/]
-[query public getResourceViewForOslcUIJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
-webFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceViewForOslcUIJspRelativeFileName(anAdaptorInterface))
-/]
-
 [query public getResourceJspRelativeFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
 webFilesWebappPath(anAdaptorInterface).concatenatePaths(aResource.javaName(true)).concat('.jsp').toLower()
 /]
 [query public getResourceJspFullFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
 webFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceJspRelativeFileName(aResource, anAdaptorInterface))
-/]
-
-[query public getResourceUiPreviewForOslcUIJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
-webFilesWebappPath(anAdaptorInterface).concatenatePaths('uipreview.jsp').toLower()
-/]
-[query public getResourceUiPreviewForOslcUIJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
-webFilesBasePath(anAdaptorInterface).concatenatePaths(getResourceUiPreviewForOslcUIJspRelativeFileName(anAdaptorInterface))
 /]
 
 [query public getResourceSmallPreviewJspRelativeFileName(aResource: Resource, anAdaptorInterface : AdaptorInterface) : String =
@@ -104,16 +90,6 @@ webFilesWebappPath(containingAdaptorInterface(aCreationDialog)).concatenatePaths
 webFilesBasePath(containingAdaptorInterface(aCreationDialog)).concatenatePaths(resourceCreatorJspRelativeFileName(aCreationDialog))
 /]
 
-[query private resourceSelectorForOslcUIJspSimpleFileName(anAdaptorInterface : AdaptorInterface) : String =
-'selectiondialog.jsp'
-/]
-[query public resourceSelectorForOslcUIJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
-webFilesWebappPath(anAdaptorInterface).concatenatePaths(resourceSelectorForOslcUIJspSimpleFileName(anAdaptorInterface)).toLower()
-/]
-[query public resourceSelectorForOslcUIJspFullFileName(anAdaptorInterface : AdaptorInterface) : String =
-webFilesBasePath(anAdaptorInterface).concatenatePaths(resourceSelectorForOslcUIJspRelativeFileName(anAdaptorInterface))
-/]
-
 [query private resourceSelectorJspSimpleFileName(aSelectionDialog: Dialog) : String =
 (if (aSelectionDialog.usages->size() = 0) then
     concatenate(aSelectionDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String)).toLower()
@@ -127,6 +103,21 @@ webFilesWebappPath(containingAdaptorInterface(aSelectionDialog)).concatenatePath
 /]
 [query public resourceSelectorJspFullFileName(aSelectionDialog: Dialog) : String =
 webFilesBasePath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorJspRelativeFileName(aSelectionDialog))
+/]
+
+[query private resourceSelectorResultsJspSimpleFileName(aSelectionDialog: Dialog) : String =
+(if (aSelectionDialog.usages->size() = 0) then
+    concatenate(aSelectionDialog.resourceTypes.javaName(true)->sep('', 'And', '').oclAsType(String)).toLower()
+else
+    javaSimpleStringFromUri(aSelectionDialog.usages->first(), true)
+endif)
+.concat('selector-results').concat('.jsp')
+/]
+[query public resourceSelectorResultsJspRelativeFileName(aSelectionDialog: Dialog) : String =
+webFilesWebappPath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorResultsJspSimpleFileName(aSelectionDialog)).toLower()
+/]
+[query public resourceSelectorResultsJspFullFileName(aSelectionDialog: Dialog) : String =
+webFilesBasePath(containingAdaptorInterface(aSelectionDialog)).concatenatePaths(resourceSelectorResultsJspRelativeFileName(aSelectionDialog))
 /]
 
 [query public resourceSelectorClientJspRelativeFileName(anAdaptorInterface : AdaptorInterface) : String =
