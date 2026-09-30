@@ -1,0 +1,79 @@
+[comment encoding = UTF-8 /]
+[comment
+/*
+ * Copyright (c) 2020 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0, or the Eclipse Distribution License 1.0
+ * which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR BSD-3-Simple
+ */
+/]
+[module generate('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::resourceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::services/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::adaptorInterfaceServices/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::staticFiles::generateLicenseFiles/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::services::fileServices/]
+
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateAdaptorPackageInfo/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateDomainSpecificationConstants/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateVocabularyConstants/]
+[import org::eclipse::lyo::oslc4j::codegenerator::python::files::generateResource/]
+
+[import org::eclipse::lyo::oslc4j::codegenerator::python::config::generateConfigFiles/]
+
+[template public generateCommon(anAdaptorInterface : AdaptorInterface)]
+[anAdaptorInterface.generateLicenseFiles() /]
+[anAdaptorInterface.specification.generateConfigFiles() /]
+[/template]
+
+[comment Group the resources that need to be generated into their specific destination folders. For each such folder, generate a packageInfo class that lists their namespaces./]
+[template public generateForPackageInfo(anAdaptorInterface : AdaptorInterface)]
+[let resources: Set(Resource) = relevantResources(anAdaptorInterface)->select(r: Resource | anAdaptorInterface.generateIfFromImportedModels(r.oclAsType(EObject)))]
+[let uniqueFolderPaths: Set(String) = resources->collect(r: Resource | r.pythonClassFullFolderName(anAdaptorInterface, null, null))->asSet()]
+[for (uniqueFolderPath: String | uniqueFolderPaths)]
+    [let resourcesOnSameFolderPath: Set(Resource) = resources->select(r: Resource | r.pythonClassFullFolderName(anAdaptorInterface, null, null) = uniqueFolderPath)]
+    [generateAdaptorPackageInfo(resourcesOnSameFolderPath, anAdaptorInterface, null, null)/]
+    [/let]
+[/for]
+[/let]
+[/let]
+[/template]
+
+[template public generateForRelevantDomainSpecifications(anAdaptorInterface : AdaptorInterface)]
+[for (aDomainSpecification: DomainSpecification | relevantDomainSpecifications(anAdaptorInterface)
+    ->select(o: DomainSpecification | anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject))))]
+    [aDomainSpecification.generateDomainSpecificationConstants(anAdaptorInterface, null, null)/]
+[/for]
+[/template]
+
+[template public generateForRelevantVocabularies(anAdaptorInterface : AdaptorInterface)]
+[for (aVocabulary: Vocabulary | relevantVocabularies(anAdaptorInterface)
+    ->select(o: Vocabulary | anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject))))]
+    [aVocabulary.generateVocabularyConstants(anAdaptorInterface, null, null)/]
+[/for]
+[/template]
+
+[template public generateForRelevantResources(anAdaptorInterface : AdaptorInterface)]
+[for (aResource: Resource | relevantResources(anAdaptorInterface)
+    ->select(o: Resource | anAdaptorInterface.generateIfFromImportedModels(o.oclAsType(EObject))))]
+    [aResource.generateResource(anAdaptorInterface, null, null) /]
+[/for]
+[/template]
+
+[template public generate(anAdaptorInterface : AdaptorInterface, targetFolder : String)]
+[comment @main/]
+[setTargetFolder(targetFolder)/]
+[generateCommon(anAdaptorInterface)/]
+[generateForPackageInfo(anAdaptorInterface)/]
+[generateForRelevantDomainSpecifications(anAdaptorInterface)/]
+[generateForRelevantVocabularies(anAdaptorInterface)/]
+[generateForRelevantResources(anAdaptorInterface)/]
+[/template]
