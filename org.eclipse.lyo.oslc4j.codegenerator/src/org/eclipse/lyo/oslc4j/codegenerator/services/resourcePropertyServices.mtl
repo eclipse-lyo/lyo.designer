@@ -43,9 +43,9 @@ endif)
 
 [query public resourcePropertyDefinitionLocalName(aResourceProperty: ResourceProperty) : String =
 (if (aResourceProperty.propertyDefinition.oclIsUndefined()) then
-    '"'.concat(aResourceProperty.name).concat('"')
+    '"'.concat(javaStringLiteralContent(aResourceProperty.name)).concat('"')
 else
-    '"'.concat(aResourceProperty.propertyDefinition.name).concat('"')
+    '"'.concat(javaStringLiteralContent(aResourceProperty.propertyDefinition.name)).concat('"')
 endif)
 /]
 
@@ -74,7 +74,7 @@ endif)
 
 [query public descriptionAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.description.oclIsUndefined()) then
-    '@OslcDescription("'.concat(aProperty.description).concat('")')
+    '@OslcDescription("'.concat(javaStringLiteralContent(aProperty.description)).concat('")')
 else
     ''
 endif)
@@ -171,7 +171,7 @@ endif)
 
 [query public titleAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.title.oclIsUndefined()) then
-    '@OslcTitle("'.concat(aProperty.title).concat('")')
+    '@OslcTitle("'.concat(javaStringLiteralContent(aProperty.title)).concat('")')
 else
     ''
 endif)
@@ -192,7 +192,7 @@ endif
 
 [query public allowedValueAnnotation(aProperty: ResourceProperty) : String =
 (if (aProperty.allowedValue->size() > 0) then
-    '@OslcAllowedValue({"'.concat(concatenate((aProperty.allowedValue)->asSequence(), '", "')).concat('"})')
+    '@OslcAllowedValue({"'.concat(concatenate(aProperty.allowedValue->collect(value : String | javaStringLiteralContent(value))->asSequence(), '", "')).concat('"})')
 else
     ''
 endif)

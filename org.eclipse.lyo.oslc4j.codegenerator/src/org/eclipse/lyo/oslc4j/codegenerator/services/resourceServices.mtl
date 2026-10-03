@@ -40,11 +40,13 @@
 /]
 
 [query public allExtendingResources(aResource: Resource) : OrderedSet(Resource) =
-	aResource.extends
-	->union(
-			aResource.extends->collectNested(r:Resource | allExtendingResources(r))->flatten()->asOrderedSet()
-			)
-	->asOrderedSet()
+    allExtendingResources(aResource, Set{aResource})
+/]
+
+[query private allExtendingResources(aResource: Resource, visited: Set(Resource)) : OrderedSet(Resource) =
+    let parents : OrderedSet(Resource) = aResource.extends->reject(r : Resource | visited->includes(r))->asOrderedSet() in
+    parents->union(parents->collectNested(r : Resource |
+        allExtendingResources(r, visited->including(r)))->flatten()->asOrderedSet())->asOrderedSet()
 /]
 
 [comment The interfaceResources of resource A, are its directInterfaceResources; plus for each such directInterfaceResource DIR, ALL the extendingResources of DIR.
@@ -56,8 +58,18 @@ It is a problem if a resource X is defined to be both an interface of A, as well
 			directInterfaceResources(aResource)->collectNested(r:Resource | allExtendingResources(r))->flatten()->asOrderedSet()
 			)
 	->asOrderedSet())
-	- parentResources(aResource))
+	- implementedParentResources(aResource))
 	->asOrderedSet()
+/]
+
+[comment A Java superclass supplies its own properties and every RDF ancestor,
+including ancestors supplied through its secondary interfaces. /]
+[query private implementedParentResources(aResource: Resource) : Set(Resource) =
+    if aResource.directParentResource().oclIsUndefined() then
+        Set{}
+    else
+        Set{aResource.directParentResource()}->union(allExtendingResources(aResource.directParentResource())->asSet())
+    endif
 /]
 
 [query private directInterfaceResources(aResource: Resource) : OrderedSet(Resource) =
@@ -112,23 +124,46 @@ in
 ((aResource.resourceProperties->asSequence())
 	->union(inheritedProperties(aResource))
 	->union(interfaceProperties(aResource))
-)
+)->asOrderedSet()->asSequence()
 /]
 
 [query public inheritedProperties(aResource: Resource) : Sequence(ResourceProperty) = 
     (if (not aResource.directParentResource().oclIsUndefined()) then 
-        (aResource.directParentResource().resourceProperties->asSequence())->union(inheritedProperties(aResource.directParentResource()))
+        allProperties(aResource.directParentResource())
     else
         Sequence{}
     endif)
 /]
 
 [query public interfaceProperties(aResource: Resource) : Sequence(ResourceProperty) =
-	aResource.interfaceResources().resourceProperties
+	aResource.interfaceResources().resourceProperties->asOrderedSet()->asSequence()
+/]
+
+[comment Properties whose fields and accessors must be emitted in this Java class.
+Combine locally listed properties with those required by secondary RDF parents.
+An OrderedSet removes repeated references to the same ResourceProperty while
+preserving emission order; distinct property objects are not merged by name.
+Exclude properties already supplied by the selected Java superclass, including
+its secondary RDF ancestors. This also covers an inherited property explicitly
+listed locally, so diamond inheritance reuses existing storage and accessors. /]
+[query public implementationProperties(aResource: Resource) : Sequence(ResourceProperty) =
+    aResource.resourceProperties->asSequence()->union(interfaceProperties(aResource))
+        ->asOrderedSet()->reject(p : ResourceProperty | inheritedProperties(aResource)->includes(p))->asSequence()
 /]
 
 [query public javaName(aResource: Resource, toUpperFirst : Boolean) : String = 
-javaString(aResource.name, aResource.definingDomainSpecification().namespacePrefix.name, toUpperFirst)
+let domain : DomainSpecification = aResource.definingDomainSpecification(),
+    candidates : Set(Resource) = domain.eContainer(Specification).domainSpecifications.resources->asSet(),
+    baseName : String = javaString(aResource.name, domain.namespacePrefix.name, true),
+    packageName : String = javaPackageName(domain, null, null)
+in
+if candidates->exists(r : Resource | r <> aResource
+    and javaString(r.name, r.definingDomainSpecification().namespacePrefix.name, true) = baseName
+    and javaPackageName(r.definingDomainSpecification(), null, null) = packageName) then
+    javaString(domain.namespacePrefix.name.concat(' ').concat(aResource.name), 'oslc', toUpperFirst)
+else
+    javaString(aResource.name, domain.namespacePrefix.name, toUpperFirst)
+endif
 /]
 
 [query public javaInstanceName(aResource: Resource) : String = 
@@ -214,8 +249,8 @@ resourceConstantName(aResource).concat('_TYPE')
 
 [query public resourceShapeAnnotation(aResource : Resource) : String = 
 '@OslcResourceShape('
-.concat('title = "').concat((if (aResource.title.oclIsUndefined()) then (aResource.name.concat(' Shape')) else (aResource.title) endif)).concat('"')
-.concat((if (not aResource.description.oclIsUndefined()) then (', description = "'.concat(aResource.description).concat('"')) else ('') endif))
+.concat('title = "').concat(javaStringLiteralContent(if (aResource.title.oclIsUndefined()) then (aResource.name.concat(' Shape')) else (aResource.title) endif)).concat('"')
+.concat((if (not aResource.description.oclIsUndefined()) then (', description = "'.concat(javaStringLiteralContent(aResource.description)).concat('"')) else ('') endif))
 .concat(', describes = ').concat(javaInterfaceNameForConstants(aResource.definingDomainSpecification())).concat('.').concat(resourceTypeConstantName(aResource))
 .concat(')')
 /]

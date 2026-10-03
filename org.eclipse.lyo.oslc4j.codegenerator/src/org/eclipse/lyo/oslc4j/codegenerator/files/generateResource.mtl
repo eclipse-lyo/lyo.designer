@@ -135,7 +135,7 @@ public class [javaClassName(aResource) /]
 [/template]
 
 [template public generateInstanceAttributes(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
-[for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+[for (aProperty: ResourceProperty | implementationProperties(aResource))]
 // [protected ('attributeAnnotation:'.concat(javaAttributeName(aProperty, aResource)))]
 // [/protected]
 private [javaAttributeTypeDeclaration(aProperty) /] [javaAttributeName(aProperty, aResource)/][javaAttributeInitialConstruction(aProperty)/];
@@ -213,7 +213,7 @@ public String toString(boolean asLocalResource)
 [/template]
 
 [template public generateAddToAttributeMethods(aResource : Resource, contextAdaptorInterface : AdaptorInterface)]
-[for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+[for (aProperty: ResourceProperty | implementationProperties(aResource))]
     [if (Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString()))]
 public void add[javaAttributeName(aProperty, aResource).toUpperFirst()/](final [javaAttributeBaseType(aProperty) /] [javaName(aProperty, false)/])
 {
@@ -313,11 +313,11 @@ public void [javaAttributeSetterMethodName(aProperty, aResource)/](final [javaAt
     [generateResourceShapeMethods(aResource, contextAdaptorInterface)/]
     [generateToStringMethods(aResource, contextAdaptorInterface)/]
     [generateAddToAttributeMethods(aResource, contextAdaptorInterface)/]
-    [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+    [for (aProperty: ResourceProperty | implementationProperties(aResource))]
     [generateGetter(aProperty, aResource, contextAdaptorInterface)/]
 
     [/for]
-    [for (aProperty: ResourceProperty | ((aResource.resourceProperties->asSequence())->union(interfaceProperties(aResource))))]
+    [for (aProperty: ResourceProperty | implementationProperties(aResource))]
     [generateSetter(aProperty, aResource)/]
 
     [/for]

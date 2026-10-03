@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ai:Specification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ai="http://org.eclipse.lyo/oslc4j/adaptorInterface">
+  <domainSpecifications name="First" namespaceURI="https://example.org/first#" namespacePrefix="//@domainPrefixes.0">
+    <resources id="root" name="Root" resourceProperties="rootValue"/>
+    <resources id="left" name="Left" extends="root"/>
+    <resources id="right" name="Right" extends="root" resourceProperties="rightValue"/>
+    <resources id="diamond" name="Diamond" extends="left right" resourceProperties="localValue rightValue"/>
+    <resources id="child" name="Child" extends="diamond right" resourceProperties="rootValue"/>
+    <resources id="firstFeature" name="Feature" resourceProperties="firstValue"/>
+    <resourceProperties id="rootValue" name="rootValue" valueType="String"/>
+    <resourceProperties id="rightValue" name="rightValue" valueType="String"/>
+    <resourceProperties id="localValue" name="localValue" valueType="String" description="line one&#xA;line &quot;two&quot; \path&#xD;&#x9;tail" title="a &quot;title&quot;"/>
+    <resourceProperties id="firstValue" name="firstValue" valueType="String"/>
+  </domainSpecifications>
+  <domainSpecifications name="Second" namespaceURI="https://example.org/second#" namespacePrefix="//@domainPrefixes.1">
+    <resources id="secondFeature" name="Feature" title="A &quot;resource&quot;" description="first&#xA;second \path" resourceProperties="secondValue">
+      <describes href="vocabulary.xml#//@vocabularies.0/@classes.0"/>
+    </resources>
+    <resourceProperties id="secondValue" name="secondValue" valueType="String"/>
+  </domainSpecifications>
+  <domainPrefixes name="first"/>
+  <domainPrefixes name="second"/>
+  <configuration xsi:type="ai:MavenSpecificationConfiguration">
+    <generalConfiguration filesBasePath="../generated" javaBasePackageName="example.generated"/>
+    <projectConfiguration xsi:type="ai:MavenProjectConfiguration" lyoVersion="7.0.0-SNAPSHOT" groupId="example" artifactId="inheritance-fixture" version="1.0-SNAPSHOT"/>
+  </configuration>
+</ai:Specification>

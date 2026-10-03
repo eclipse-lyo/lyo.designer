@@ -510,6 +510,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
     [repositories()/]
     <!-- [protected ('pre_dependencies')]
     -->
+    [lyoDependencyManagement()/]
     <!-- [/protected]
     -->
     <dependencies>
@@ -545,6 +546,7 @@ If multiple DSs share the same maven dependency, we group them into 1.
     [repositories()/]
     <!-- [protected ('pre_dependencies')]
     -->
+    [lyoDependencyManagement()/]
     <!-- [/protected]
     -->
     <dependencies>
@@ -564,4 +566,20 @@ If multiple DSs share the same maven dependency, we group them into 1.
 [/file]
 [/let]
 [/if]
+[/template]
+
+[comment Keep standalone dependency management in its existing customization
+block so previously supplied BOM imports remain intact during regeneration. /]
+[template private lyoDependencyManagement()]
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.lyo</groupId>
+            <artifactId>lyo-bom</artifactId>
+            <version>${version.lyo}</version>
+            <scope>import</scope>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
 [/template]
