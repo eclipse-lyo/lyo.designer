@@ -1,5 +1,40 @@
 # Lyo Designer SysML generator investigation and fixes
 
+## Completed RDF migration and runtime verification — 3 October 2026
+
+**The actual SysML/KerML model has now been synchronized, regenerated and verified with a running Jetty server.** This section supersedes the earlier audit below, whose statements about unchanged models, uncommitted synchronizer changes and unresolved startup describe the earlier state.
+
+The synchronizer from Lyo PR #866 now has an explicit `sync-domain` migration command. It replaces the selected vocabulary/domain sections from the current RDF, reconstructs all local `rdfs:subClassOf` edges, preserves unrelated configuration and surviving resource identities, and supports imported parent resources. The checked-in Turtle snapshots are pinned to upstream `829005202d921a90cf2ed8607f2c97917f66e018`; the old RDF/XML files are retained as historical 2023 inputs. The current vocabulary namespaces are `https://www.omg.org/spec/sysml/vocabulary#` and `https://www.omg.org/spec/kerml/vocabulary#`; shapes use `https://www.omg.org/spec/SysML/20250201/shapes/` and `https://www.omg.org/spec/kerml/20250201/shapes#`.
+
+Using the tool exposed two additional bugs. Imported AM Resource metadata must be recognized by full RDF predicate URI, otherwise generated getters duplicate inherited metadata annotations. Property IDs must also use full predicate identity: IDs based on local names confused `dcterms:type` with `sysml:type`, making a language property resolve to the metadata property. Both are fixed and regression-tested. The original duplicate title arose from the old model mapping `elementName` to `dcterms:title` while inheriting `getTitle()`. The current model has a separate language `name` predicate and inherits the metadata title.
+
+| Verification | Result |
+| --- | --- |
+| Synchronizer regression suite | 38 tests pass |
+| Repeat actual model synchronization | Model files byte-identical |
+| Domain clean install | 540 Java sources; success |
+| Server package | Success |
+| Runtime ResourceShape construction | 266 classes; zero failures |
+| Jetty | Java 21 / Jetty 12.1.11 running on port 8085 |
+| Authenticated OSLC requests | Seven HTTP 200 responses |
+| Unauthenticated catalog | HTTP 401; authentication remains enabled |
+
+The API checks cover the service provider catalog, Element and Multiplicity resource shapes and reads, and both unfiltered and filtered OSLC queries. Response parsing checks the current language predicate/type IRIs and confirms that filtering excludes the other seeded resource. The server is available at `http://localhost:8085/sysml_oslc_server`, using the existing demo login `user:user`. Its isolated Fuseki container is `codex-sysml-rdf-20261003`, dataset `/ds` on localhost:3030, with no host volumes. The pre-existing Promcode container was left untouched. Both services remain running for review.
+
+The domain was generated in an isolated CLI output directory, then 540 local Java files were refreshed atomically while preserving protected regions. An earlier in-place generation attempt encountered Windows file-write errors and is not the successful generation evidence. No substantive custom domain code was lost; 58 obsolete generated sources are backed up outside the compilation tree. The actual model's imported-model generation flag remains unchanged. The server was regenerated directly with the same rebuilt CLI.
+
+Evidence is retained at `C:/src/oslc/temp_gen/sysml-rdf-migration-20261003`: `fresh-domain-generation.log`, `domain-build.log`, `server-generation.log`, `server-build.log`, `all-shapes.log`, `final-repeat-sync.log`, `jetty.log`, and `api/results.json` with response bodies. Rerun instructions are in [scripts/README.md](C:/src/oslc/misc/sysml-oslc-server/scripts/README.md); RDF provenance and synchronization commands are in the model's `source/RDF-SOURCES.md` and `source/Sync-Models.ps1`.
+
+Limitations: shared Java properties use a cardinality envelope across subclass restrictions, so generated Java shapes do not reproduce every RDF constraint. The RDF remains authoritative. Three incomplete primitive declarations use explicit Boolean overrides (`isConstant`, `isVariable`, `mayTimeVary`); other unambiguous existing model types can provide fallbacks. The API sample does not establish complete SysML conformance or exercise the external backend/population workflow. An initially empty dataset query returned 500 because Lyo Store requires the configured graph to exist; the test fixture seeds that graph, and this library behavior was not changed. Existing server `.lost` preview customizations remain available for review; UI equivalence was not tested.
+
+All changes are committed locally, with no pushes:
+
+| Repository / branch | Commits |
+| --- | --- |
+| Designer / `codex/sysml-generator-fixes` | `7fa3c62` generator inheritance and CLI fixes; this report receives a separate documentation commit |
+| Lyo PR worktree / `codex/sysml-model-sync-audit` | `fd12dc6f`, `7578f21c`, `98b4388e`, `ec0d232d`: synchronizer fixes and authoritative migration |
+| SysML / `b-new-new-model-update` | `25127d7` baseline regeneration; `f6b39e6` RDF/model migration; `36cd26d` regenerated domain; `5c13a67` metadata/predicate identity fixes; `5764cc8` server and API verification; `7c1d515` rerun documentation |
+
 ## Current RDF and model-sync PR audit — 3 October 2026
 
 Compared the working Designer vocabulary/domain XML with the four current Turtle documents in `oslc-op/oslc-specs/specs/sysml`: SysML and KerML vocabularies and OSLC shapes. Downloaded sources are retained under `C:\src\oslc\temp_gen\sysml-rdf-audit-20261003`; upstream master was `829005202d921a90cf2ed8607f2c97917f66e018`. Parsed all four with RDFlib and compared explicit RDF classes, properties and described resource classes with the XML. This uses explicit triples, without RDFS/OWL inference. `model-comparison.json` lists every name difference; a name absent from the current RDF is not assumed to be a one-to-one rename.
