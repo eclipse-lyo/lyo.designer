@@ -442,3 +442,23 @@ The supplied report also describes a generated POM missing closing `</dependenci
 5. Regenerate and compile the complete SysML domain, checking annotations and preservation of user code.
 
 Restoring missing getters directly in generated SysML classes can unblock a build, but the durable fix belongs in the generator and its regression fixtures.
+
+## Request-specific named graphs (2026-10-03)
+
+Generated Lyo Store operations previously always used the StorePool default graph,
+even when their request parameters identified a project and commit. In SysML,
+population writes to a graph whose URI is the commit's ServiceProvider URI. This
+mismatch exposed default-graph smoke fixtures through real commit query URLs.
+
+The store templates now declare `namedGraphUri` before each existing `_storeInit`
+protected block and use it in the subsequent store operation. Its default remains
+the StorePool default graph; adapters can override it inside the protected block.
+This applies to reads, queries, selection dialogs, creates, updates and deletes.
+SysML overrides query/dialog graphs from the request's project and commit, and
+commit-less element reads from the explicitly selected commit.
+
+Validation: generator reactor verify succeeded; fresh headless SysML generation
+emitted 15 graph hooks with all store operations using them. Runtime checks
+against the imported commit returned zero Subsettings and five Elements, matching
+SPARQL counts in that exact graph, without default-graph fixture links. A real
+Element HTML page returned 200, and an unimported commit returned 404.
