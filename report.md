@@ -1,5 +1,17 @@
 # Lyo Designer SysML generator investigation and fixes
 
+## Published oslc-domains update — 3 October 2026
+
+Merged Lyo main `0428059da2d24ee8b0152c9348c67c0f7fad9402` into the local PR #866 branch (`e652b1e0`), then synchronized the published model from the pinned OSLC RDF revision used below. The final model update was reapplied to main's clean XML after discovering that the original synchronizer attached every top-level property declaration to every shape in a file. It now follows explicit shape-property links, supports separate RDF-shapes and Designer-domain namespaces, emits valid Designer enum values, repairs vocabulary references and deduplicates full predicate identities across local/inherited contracts. The synchronizer suite now has 49 passing tests.
+
+Additional Designer fixes are committed as `55cd6ba` (import concrete range types), `fa68331` (omit package metadata for excluded resources) and `5ffb90f` (use explicit RDF class IRIs when excluded domains do not export generated range constants). Each generator change was rebuilt successfully under Java 21.
+
+Both published model roots and every existing domain/vocabulary general configuration are generation-disabled. The regeneration wrapper enables the required configurations temporarily, retains the permanent hand-maintained Core exclusion and restores exact original bytes in `finally`. A downstream smoke specification deliberately enables imported-model generation but produces only its four local Java files, with no artifact Java or package metadata.
+
+The final clean artifact build compiles 147 Java sources; all 55 resource shapes validate with zero failures. The POM and Maven coordinates remain unchanged. Full workflow, verification evidence and compatibility limits are recorded in [PUBLISHED-DOMAINS.md](C:/src/oslc/temp_gen/lyo-pr866-audit/domains/model-sync/PUBLISHED-DOMAINS.md). The update changes public contracts; examples include AM `getInstanceShape()` becoming a single Link and `getType()` becoming `Set<Link>`. The declaration diff is a review aid, not a count of binary breaks, because inherited methods can remain available. This package run does not replace the dependency used by the running SysML server; its authenticated catalog was checked again and still returns HTTP 200.
+
+Created and validated [lyo-published-model-sync](C:/Users/Andrew/.codex/skills/lyo-published-model-sync/SKILL.md), with a committed copy in the Lyo worktree's `.agents/skills`. All changes remain local; nothing was pushed or published.
+
 ## Completed RDF migration and runtime verification — 3 October 2026
 
 **The actual SysML/KerML model has now been synchronized, regenerated and verified with a running Jetty server.** This section supersedes the earlier audit below, whose statements about unchanged models, uncommitted synchronizer changes and unresolved startup describe the earlier state.
