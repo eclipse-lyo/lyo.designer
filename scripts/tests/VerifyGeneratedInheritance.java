@@ -1,6 +1,7 @@
 package example;
 
 import example.generated.Child;
+import example.generated.Collision;
 import example.generated.Diamond;
 import example.generated.FirstFeature;
 import example.generated.Root;
@@ -11,6 +12,10 @@ import org.eclipse.lyo.oslc4j.core.annotation.OslcTitle;
 
 public class VerifyGeneratedInheritance {
     public static void main(String[] args) throws Exception {
+        check(Collision.class.getMethod("getRootValue").getDeclaringClass() == Root.class,
+                "a subclass name collision must not rename its inherited accessor");
+        check(Collision.class.getDeclaredMethod("getSecondRootValue") != null,
+                "the new predicate must retain its own disambiguated accessor");
         check(Child.class.getMethod("getRightValue").getDeclaringClass() == Diamond.class,
                 "secondary-parent property must be inherited from the superclass");
         check(Diamond.class.getMethod("getRootValue").getDeclaringClass() == Root.class,

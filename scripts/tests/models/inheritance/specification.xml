@@ -7,6 +7,7 @@
     <resources id="diamond" name="Diamond" extends="left right" resourceProperties="localValue rightValue"/>
     <resources id="child" name="Child" extends="diamond right" resourceProperties="rootValue"/>
     <resources id="firstFeature" name="Feature" resourceProperties="firstValue"/>
+    <resources id="collision" name="Collision" extends="root" resourceProperties="collisionValue"/>
     <resourceProperties id="rootValue" name="rootValue" valueType="String"/>
     <resourceProperties id="rightValue" name="rightValue" valueType="String"/>
     <resourceProperties id="localValue" name="localValue" valueType="String" description="line one&#xA;line &quot;two&quot; \path&#xD;&#x9;tail" title="a &quot;title&quot;"/>
@@ -17,6 +18,7 @@
       <describes href="vocabulary.xml#//@vocabularies.0/@classes.0"/>
     </resources>
     <resourceProperties id="secondValue" name="secondValue" valueType="String"/>
+    <resourceProperties id="collisionValue" name="rootValue" valueType="String"/>
   </domainSpecifications>
   <domainPrefixes name="first"/>
   <domainPrefixes name="second"/>

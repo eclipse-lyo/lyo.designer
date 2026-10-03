@@ -369,12 +369,17 @@ Sequence{'zeroOrMany', 'oneOrMany'}->includes(aProperty.occurs.toString())
     endif)
 /]
 
+[comment Inherited accessors keep the names chosen by their declaring Java class.
+A subclass may introduce a same-name RDF property, but it cannot rename an
+accessor supplied by its superclass (including an imported Maven domain). /]
 [query public javaAttributeName(aProperty: ResourceProperty, aResource: Resource) : String =
-    (if (allProperties(aResource)->collect(p : ResourceProperty | javaName(p, false))->count(javaName(aProperty, false)) = 1) then
+    (if (inheritedProperties(aResource)->includes(aProperty)) then
+        javaAttributeName(aProperty, aResource.directParentResource())
+    else if (allProperties(aResource)->collect(p : ResourceProperty | javaName(p, false))->count(javaName(aProperty, false)) = 1) then
         javaName(aProperty, false)
     else
         aProperty.definingDomainSpecification().namespacePrefix.name.concat(javaName(aProperty, true))
-    endif)
+    endif endif)
 /]
 
 [query public javaAttributeGetterMethodName(aProperty: ResourceProperty, aResource: Resource) : String =
