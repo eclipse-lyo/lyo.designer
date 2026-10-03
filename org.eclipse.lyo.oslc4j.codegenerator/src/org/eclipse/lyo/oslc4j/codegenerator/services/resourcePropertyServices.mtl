@@ -154,7 +154,12 @@ endif)
 [query public rangeAnnotation(aProperty: ResourceProperty, aResource: Resource, anAdaptorInterface: AdaptorInterface) : String =
 (if (aProperty.range->size() > 0) then
     '@OslcRange({'
-        .concat(concatenate(aProperty.range->collect(aRange : Resource | javaInterfaceNameForConstants(aRange.definingDomainSpecification()).concat('.').concat(resourceTypeConstantName(aRange))), ', '))
+        .concat(concatenate(aProperty.range->collect(aRange : Resource |
+            if aRange.definingDomainSpecification().doNotGenerate() and not aRange.describes.oclIsUndefined() then
+                '"'.concat(javaStringLiteralContent(aRange.describes.definingVocabulary().namespaceURI.concat(aRange.describes.name))).concat('"')
+            else
+                javaInterfaceNameForConstants(aRange.definingDomainSpecification()).concat('.').concat(resourceTypeConstantName(aRange))
+            endif), ', '))
         .concat('})')
 else
     ''
