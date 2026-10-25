@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<v:Vocabularies xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:v="http://org.eclipse.lyo/oslc4j/vocabulary">
+  <vocabularies namespaceURI="https://example.org/vocabulary#" label="Fixture" preferredNamespacePrefix="fixture">
+    <classes name="Class"/>
+  </vocabularies>
+</v:Vocabularies>

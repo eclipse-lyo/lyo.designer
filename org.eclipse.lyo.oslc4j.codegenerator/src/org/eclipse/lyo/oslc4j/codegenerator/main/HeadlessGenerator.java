@@ -33,10 +33,23 @@ import vocabulary.VocabularyPackage;
  * Standalone entry point for running the Lyo Designer code generator without an
  * Eclipse workspace.
  */
-public class HeadlessGenerator extends Generate {
+public class HeadlessGenerator extends GenerateSpecification {
 
     public HeadlessGenerator(URI modelURI, File targetFolder, List<?> arguments) throws IOException {
-        super(modelURI, targetFolder, arguments);
+        super(modelURI, targetFolder, Boolean.getBoolean("lyod.codegen.specification")
+                ? arguments : java.util.Collections.singletonList(targetFolder.getAbsolutePath()));
+    }
+
+    @Override
+    public String getModuleName() {
+        return Boolean.getBoolean("lyod.codegen.specification")
+                ? GenerateSpecification.MODULE_FILE_NAME : Generate.MODULE_FILE_NAME;
+    }
+
+    @Override
+    public String[] getTemplateNames() {
+        return Boolean.getBoolean("lyod.codegen.specification")
+                ? GenerateSpecification.TEMPLATE_NAMES : Generate.TEMPLATE_NAMES;
     }
 
     @Override

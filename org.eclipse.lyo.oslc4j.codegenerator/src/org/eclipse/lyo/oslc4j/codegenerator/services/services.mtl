@@ -16,6 +16,10 @@
 /]
 [module services('http://org.eclipse.lyo/oslc4j/adaptorInterface', 'http://org.eclipse.lyo/oslc4j/vocabulary', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
+[query public javaStringLiteralContent(value : String) : String =
+    invoke('org.eclipse.lyo.oslc4j.codegenerator.services.StringServices', 'escapeJavaString(java.lang.String)', Sequence{value})
+/]
+
 [query private javaKeywords(traceabilityContext : OclAny) : Set(String) =
 Set{'abstract', 'continue', 'for', 'new', 'switch', 'assert', 'default', 'goto', 'package', 'synchronized', 'boolean', 'do',
 'if', 'private', 'this', 'break', 'double', 'implements', 'protected', 'throw', 'byte', 'else', 'import', 'public', 'throws',

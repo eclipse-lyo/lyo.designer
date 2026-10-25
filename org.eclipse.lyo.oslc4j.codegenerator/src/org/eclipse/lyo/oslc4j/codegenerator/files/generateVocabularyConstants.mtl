@@ -23,7 +23,7 @@
 [import org::eclipse::lyo::oslc4j::codegenerator::services::vocabularyServices/]
 
 [template public generateClassConstants(aClass : Class)]
-public static final String [classLocalNameConstantName(aClass)/] = "[aClass.javaName(true)/]";
+public static final String [classLocalNameConstantName(aClass)/] = "[javaStringLiteralContent(aClass.name)/]";
 [if (aClass.comment = 'archaic')]
 /**
  * @deprecated RDF model attribute is marked 'archaic'
@@ -81,16 +81,16 @@ public class [javaInterfaceNameForConstants(aVocabulary) /]
      * @deprecated Use {@link #NS} instead.
      */
     @Deprecated
-    public static final String [vocabularyNamespaceConstantName(aVocabulary)/] = "[aVocabulary.namespaceURI/]";
+    public static final String [vocabularyNamespaceConstantName(aVocabulary)/] = "[javaStringLiteralContent(aVocabulary.namespaceURI)/]";
 
     /**
      * @deprecated Use {@link #PREFIX} instead.
      */
     @Deprecated
-    public static final String [vocabularyPreferredNamespacePrefixConstantName(aVocabulary)/] = "[aVocabulary.preferredNamespacePrefix/]";
+    public static final String [vocabularyPreferredNamespacePrefixConstantName(aVocabulary)/] = "[javaStringLiteralContent(aVocabulary.preferredNamespacePrefix)/]";
 
-    public static final String NS = "[aVocabulary.namespaceURI/]";
-    public static final String PREFIX = "[aVocabulary.preferredNamespacePrefix/]";
+    public static final String NS = "[javaStringLiteralContent(aVocabulary.namespaceURI)/]";
+    public static final String PREFIX = "[javaStringLiteralContent(aVocabulary.preferredNamespacePrefix)/]";
 
     // static class
     private [javaInterfaceNameForConstants(aVocabulary) /]() {}
@@ -113,7 +113,7 @@ public class [javaInterfaceNameForConstants(aVocabulary) /]
      * [aProperty.comment/]
      */
     [/if]
-    public static final String [propertyConstantName(aProperty)/] = NS + "[aProperty.name/]";
+    public static final String [propertyConstantName(aProperty)/] = NS + "[javaStringLiteralContent(aProperty.name)/]";
 
     [/for]
 
@@ -129,7 +129,7 @@ public class [javaInterfaceNameForConstants(aVocabulary) /]
      * [aProperty.comment/]
      */
     [/if]
-    public static QName [aProperty.javaName(false)/]() { return get("[aProperty.name/]"); }
+    public static QName [aProperty.javaName(false)/]() { return get("[javaStringLiteralContent(aProperty.name)/]"); }
 
     [/for]
 

@@ -46,7 +46,7 @@ aSpecification.configuration.oclIsUndefined()
     [aSpecification.generateLicenseFiles() /] 
     [aSpecification.generateConfigFiles(null, defaultJavaFilesPath) /]
 
-    [let resources: Set(Resource) = aSpecification.relevantResources()->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject)))]
+    [let resources: Set(Resource) = aSpecification.relevantResources()->select(r: Resource | aSpecification.generateIfFromImportedModels(r.oclAsType(EObject)) and r.generate())]
     [let uniqueFolderPaths: Set(String) = resources->collect(r: Resource | r.javaClassFullFolderName(null, defaultJavaFilesPath, defaultJavaClassPackageName))->asSet()]
     [for (uniqueFolderPath: String | uniqueFolderPaths)]
         [let resourcesOnSameFolderPath: Set(Resource) = resources->select(r: Resource | r.javaClassFullFolderName(null, defaultJavaFilesPath, defaultJavaClassPackageName) = uniqueFolderPath)]

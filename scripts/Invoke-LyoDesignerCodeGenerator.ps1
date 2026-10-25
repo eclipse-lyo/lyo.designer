@@ -7,13 +7,15 @@ Builds Lyo Designer when -Build is supplied, copies the domainmodels project
 next to the input model project as required for relative-reference resolution,
 assembles the standalone classpath, and invokes HeadlessGenerator. Compatible
 with Windows PowerShell 5.1 and PowerShell 7.
+Use -Specification for a standalone domain specification model instead of a
+server/toolchain model.
 
 .EXAMPLE
 .\scripts\Invoke-LyoDesignerCodeGenerator.ps1 `
     -ModelPath C:\src\oslc\refimpl\model\toolchain.xml `
     -OutputDirectory C:\src\oslc\refimpl\model `
     -DomainModelsSource C:\src\oslc\lyo\domains\org.eclipse.lyo.tools.domainmodels `
-    -JavaHome C:\Java\jdk-17 `
+    -JavaHome C:\Java\jdk-21 `
     -Build
 #>
 [CmdletBinding()]
@@ -38,6 +40,9 @@ param(
 
     [Parameter(Mandatory = $false)]
     [string[]] $PropertiesFile,
+
+    [Parameter(Mandatory = $false)]
+    [switch] $Specification,
 
     [Parameter(Mandatory = $false)]
     [switch] $Build
@@ -66,8 +71,8 @@ if (!(Test-Path -LiteralPath $JavaExecutable)) {
 }
 
 $JavaVersionOutput = (& $JavaExecutable -version 2>&1 | Out-String)
-if ($LASTEXITCODE -ne 0 -or $JavaVersionOutput -notmatch 'version "17(?:\.|")') {
-    throw "Lyo Designer CLI generation requires JDK 17. Selected Java reported: $JavaVersionOutput"
+if ($LASTEXITCODE -ne 0 -or $JavaVersionOutput -notmatch 'version "(\d+)(?:\.|")' -or [int]$Matches[1] -lt 21) {
+    throw "Lyo Designer CLI generation requires JDK 21 or newer. Selected Java reported: $JavaVersionOutput"
 }
 
 if ($Build) {
@@ -77,11 +82,24 @@ if ($Build) {
         if (!$JavaHome) {
             $JavaHome = Split-Path -Parent (Split-Path -Parent $JavaExecutable)
         }
-        $env:JAVA_HOME = $JavaHome
-        $env:PATH = "$(Join-Path $JavaHome 'bin');$env:PATH"
-
         Push-Location $LyoDesignerRoot
         try {
+            # Directory hooks (for example mise) may change JAVA_HOME on entry.
+            $env:JAVA_HOME = $JavaHome
+            $env:PATH = "$(Join-Path $JavaHome 'bin');$env:PATH"
+            # Acceleo can otherwise resolve new queries against stale compiled
+            # signatures when switching branches or editing service modules.
+            $TemplateClassesRoot = Join-Path $LyoDesignerRoot 'org.eclipse.lyo.oslc4j.codegenerator\target\classes'
+            if (Test-Path -LiteralPath $TemplateClassesRoot) {
+                $TemplateClassesRoot = (Resolve-Path -LiteralPath $TemplateClassesRoot).Path
+                Get-ChildItem -LiteralPath $TemplateClassesRoot -Recurse -Filter '*.emtl' -File |
+                    ForEach-Object {
+                        if (!$_.FullName.StartsWith($TemplateClassesRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
+                            throw "Compiled template is outside the expected build directory: $($_.FullName)"
+                        }
+                        Remove-Item -LiteralPath $_.FullName
+                    }
+            }
             & (Join-Path $LyoDesignerRoot 'mvnw.cmd') -DskipTests package
             if ($LASTEXITCODE -ne 0) {
                 throw "The Lyo Designer build failed with exit code $LASTEXITCODE."
@@ -155,6 +173,7 @@ $ClasspathEntries += Join-Path $DesignerInstallRoot 'plugins\*'
 $Classpath = $ClasspathEntries -join [System.IO.Path]::PathSeparator
 $GeneratorArguments = @(
     "-Dlyod.codegen.version=$CodegenVersion",
+    "-Dlyod.codegen.specification=$($Specification.IsPresent.ToString().ToLowerInvariant())",
     '-cp',
     $Classpath,
     'org.eclipse.lyo.oslc4j.codegenerator.main.HeadlessGenerator',

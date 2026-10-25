@@ -122,7 +122,7 @@
 
 [comment Group the resources that need to be generated into their specific destination folders. For each such folder, generate a packageInfo class that lists their namespaces./]
 [template public generateForPackageInfo(anAdaptorInterface : AdaptorInterface)]
-[let resources: Set(Resource) = relevantResources(anAdaptorInterface)->select(r: Resource | anAdaptorInterface.generateIfFromImportedModels(r.oclAsType(EObject)))]
+[let resources: Set(Resource) = relevantResources(anAdaptorInterface)->select(r: Resource | anAdaptorInterface.generateIfFromImportedModels(r.oclAsType(EObject)) and r.generate())]
 [let uniqueFolderPaths: Set(String) = resources->collect(r: Resource | r.javaClassFullFolderName(anAdaptorInterface, null, null))->asSet()]
 [for (uniqueFolderPath: String | uniqueFolderPaths)]
     [let resourcesOnSameFolderPath: Set(Resource) = resources->select(r: Resource | r.javaClassFullFolderName(anAdaptorInterface, null, null) = uniqueFolderPath)]

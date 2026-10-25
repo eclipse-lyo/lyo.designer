@@ -104,6 +104,7 @@ import jakarta.ws.rs.core.Response.Status;
 
 [template public getResourceFromStore(aWebService: WebService, aResource: Resource)]
 [if (aWebService.persisted() and aWebService.persistence.read)]
+URI namedGraphUri = storePool.getDefaultNamedGraphUri();
 // [protected (aResource.getResourceMethodName(true).concat('_storeInit'))]
 // [/protected]
 URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
@@ -111,7 +112,7 @@ URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([co
 // [/protected]
 Store store = storePool.getStore();
 try {
-    aResource = store.getResource(storePool.getDefaultNamedGraphUri(), uri, [getResourceMethodResourceType(aResource)/].class);
+    aResource = store.getResource(namedGraphUri, uri, [getResourceMethodResourceType(aResource)/].class);
 } catch (NoSuchElementException e) {
     log.error("Resource: '" + uri + "' not found");
     throw new WebApplicationException("Failed to get resource: '" + uri + "'", e, Status.NOT_FOUND);
@@ -128,19 +129,20 @@ try {
 
 [template public updateResourceFromStore(aWebService: WebService, aResource: Resource)]
 [if (aWebService.persisted() and aWebService.persistence.update)]
+URI namedGraphUri = storePool.getDefaultNamedGraphUri();
 // [protected (aResource.updateResourceMethodName().concat('_storeInit'))]
 // [/protected]
 URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
 // [protected (aResource.updateResourceMethodName().concat('_storeSetUri'))]
 // [/protected]
 Store store = storePool.getStore();
-if (!store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
+if (!store.resourceExists(namedGraphUri, uri)) {
     log.error("Cannot update a resource that does not already exists: '" + uri + "'");
     throw new WebApplicationException("Cannot update a resource that does not already exists: '" + uri + "'", Status.NOT_FOUND);
 }
 aResource.setAbout(uri);
 try {
-    store.updateResources(storePool.getDefaultNamedGraphUri(), aResource);
+    store.updateResources(namedGraphUri, aResource);
 } catch (StoreAccessException e) {
     log.error("Failed to update resource: '" + uri + "'", e);
     throw new WebApplicationException("Failed to update resource: '" + uri + "'", e);
@@ -155,17 +157,18 @@ updatedResource = aResource;
 
 [template public deleteResourceFromStore(aWebService: WebService, aResource: Resource)]
 [if (aWebService.persisted() and aWebService.persistence.delete)]
+URI namedGraphUri = storePool.getDefaultNamedGraphUri();
 // [protected (aResource.deleteResourceMethodName().concat('_storeInit'))]
 // [/protected]
 URI uri = resourcesFactory.[constructURIMethodName(aResource, aWebService)/]([commaSeparate(instanceMethodParameterList(aResource, aWebService), false, false)/]);
 // [protected (aResource.deleteResourceMethodName().concat('_storeSetUri'))]
 // [/protected]
 Store store = storePool.getStore();
-if (!store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
+if (!store.resourceExists(namedGraphUri, uri)) {
     log.error("Cannot delete a resource that does not already exists: '" + uri + "'");
     throw new WebApplicationException("Cannot delete a resource that does not already exists: '" + uri + "'", Status.NOT_FOUND);
 }
-store.deleteResources(storePool.getDefaultNamedGraphUri(), uri);
+store.deleteResources(namedGraphUri, uri);
 storePool.releaseStore(store);
 deleted = true;
 // [protected (aResource.deleteResourceMethodName().concat('_storeFinalize'))]
@@ -175,11 +178,12 @@ deleted = true;
 
 [template public queryResourcesFromStore(aQueryCapability: QueryCapability)]
 [if (aQueryCapability.containingService().persisted() and aQueryCapability.containingService().persistence.queryCapability)]
+URI namedGraphUri = storePool.getDefaultNamedGraphUri();
 // [protected (aQueryCapability.queryMethodName(true).concat('_storeInit'))]
 // [/protected]
 Store store = storePool.getStore();
 try {
-    resources = new ArrayList<[queryMethodResourceType(aQueryCapability)/]>(store.getResources(storePool.getDefaultNamedGraphUri(), [queryMethodResourceType(aQueryCapability)/].class, prefix, where, "", (OSLC4JUtils.hasLyoStorePagingPreciseLimit() ? limit : limit+1), page*limit));
+    resources = new ArrayList<[queryMethodResourceType(aQueryCapability)/]>(store.getResources(namedGraphUri, [queryMethodResourceType(aQueryCapability)/].class, prefix, where, "", (OSLC4JUtils.hasLyoStorePagingPreciseLimit() ? limit : limit+1), page*limit));
 } catch (StoreAccessException | ModelUnmarshallingException e) {
     log.error("Failed to query resources, with where-string '" + where + "'", e);
     throw new WebApplicationException("Failed to query resources, with where-string '" + where + "'", e, Status.INTERNAL_SERVER_ERROR);
@@ -193,11 +197,12 @@ try {
 
 [template public searchResourcesFromStore(aSelectionDialog: Dialog)]
 [if (aSelectionDialog.containingService().persisted() and aSelectionDialog.containingService().persistence.selectionDialog)]
+URI namedGraphUri = storePool.getDefaultNamedGraphUri();
 // [protected (aSelectionDialog.dialogMethodName(true).concat('_storeInit'))]
 // [/protected]
 Store store = storePool.getStore();
 try {
-    resources = new ArrayList<[dialogMethodResourceType(aSelectionDialog)/]>(store.getResources(storePool.getDefaultNamedGraphUri(), [dialogMethodResourceType(aSelectionDialog)/].class, "", "", terms, 20, -1));
+    resources = new ArrayList<[dialogMethodResourceType(aSelectionDialog)/]>(store.getResources(namedGraphUri, [dialogMethodResourceType(aSelectionDialog)/].class, "", "", terms, 20, -1));
 } catch (StoreAccessException | ModelUnmarshallingException e) {
     log.error("Failed to search resources, with search-term '" + terms + "'", e);
     throw new WebApplicationException("Failed to search resources, with search-term '" + terms + "'", e, Status.INTERNAL_SERVER_ERROR);
@@ -210,6 +215,7 @@ try {
 [/template]
 
 [template private _createResourceFromStore(obj : OclAny, callingMethodName : String)]
+URI namedGraphUri = storePool.getDefaultNamedGraphUri();
 // [protected (callingMethodName.concat('_storeInit'))]
 // [/protected]
 Store store = storePool.getStore();
@@ -221,13 +227,13 @@ try {
         throw new UnsupportedOperationException("Set the uri of the resource to be created, before it can be added to the store. You can then remove this UnsupportedOperationException");
     }
     // [/protected]
-    if (store.resourceExists(storePool.getDefaultNamedGraphUri(), uri)) {
+    if (store.resourceExists(namedGraphUri, uri)) {
         log.error("Cannot create a resource that already exists: '" + uri + "'");
         throw new WebApplicationException("Cannot create a resource that already exists: '" + uri + "'", Status.SEE_OTHER);
     }
     aResource.setAbout(uri);
     try {
-        store.appendResource(storePool.getDefaultNamedGraphUri(), aResource);
+        store.appendResource(namedGraphUri, aResource);
     } catch (StoreAccessException e) {
         log.error("Failed to create resource: '" + aResource.getAbout() + "'", e);            
         throw new WebApplicationException("Failed to create resource: '" + aResource.getAbout() + "'", e, Status.INTERNAL_SERVER_ERROR);

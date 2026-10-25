@@ -93,7 +93,7 @@ import [javaInterfaceFullNameForConstants(aResource.definingDomainSpecification(
 [for (r: Resource | allProperties(aResource)
     ->select(p: ResourceProperty | Sequence{'Resource', 'LocalResource'}->includes(p.valueType.toString()))
     ->collect(p: ResourceProperty | p.range)->flatten()->asSet()
-    ->sortedBy(name))]import [javaInterfaceFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];
+    ->sortedBy(name))]import [javaClassFullName(r, contextAdaptorInterface, defaultJavaClassPackageName) /];
 [/for]
 // [protected ('imports')]
 // [/protected]
