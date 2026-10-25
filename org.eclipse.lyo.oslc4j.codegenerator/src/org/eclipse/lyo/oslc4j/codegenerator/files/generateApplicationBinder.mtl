@@ -67,6 +67,7 @@ import org.eclipse.lyo.oslc4j.trs.server.PagedTrsFactory;
 import org.eclipse.lyo.oslc4j.trs.server.TrsEventHandler;
 [/if]
 import org.eclipse.lyo.oslc4j.core.OSLC4JUtils;
+import org.eclipse.lyo.server.common.LyoAppConfiguration;
 // [protected ('imports')]
 // [/protected]
 // spotless:on
@@ -79,8 +80,8 @@ protected void configure() {
 
     // [protected ('ConfigureInitialise')]
     // [/protected]
-    bindFactory([javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]Factory.class)
-            .to([javaClassNameForLyoAppConfiguration(anAdaptorInterface)/].class);
+    bindFactory(LyoAppConfigurationFactory.class)
+            .to(LyoAppConfiguration.class);
     bindAsContract([anAdaptorInterface.javaClassNameForAdaptorManager()/].class).in(Singleton.class);
     bindFactory(ResourcesFactoryFactory.class).to([anAdaptorInterface.javaClassNameForResourcesFactory()/].class).in(Singleton.class);
 
@@ -155,13 +156,13 @@ static class InmemPagedTrsFactory implements Factory<PagedTrs> {
 [/template]
 
 [template public generateLyoAppConfigurationFactory(anAdaptorInterface : AdaptorInterface) post (trim())]
-public static class [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]Factory implements Factory<[javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]> {
-    private static final Logger logger = LoggerFactory.getLogger([javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]Factory.class);
+public static class LyoAppConfigurationFactory implements Factory<LyoAppConfiguration> {
+    private static final Logger logger = LoggerFactory.getLogger(LyoAppConfigurationFactory.class);
 
-    private final [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/] instance;
+    private final LyoAppConfiguration instance;
 
     @Inject
-    public [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]Factory(ServletContext context) {
+    public LyoAppConfigurationFactory(ServletContext context) {
         String corsFriendsString = getConfigurationProperty("cors.friends", "", context, ServletListener.class);
         Set<String> corsFriends;
         if (corsFriendsString == null || corsFriendsString.isEmpty()) {
@@ -172,16 +173,16 @@ public static class [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/]Fa
                 .filter(s -> !s.isEmpty())
                 .collect(java.util.stream.Collectors.toSet());
         }
-        this.instance = new [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/](OSLC4JUtils.getPublicURI(), OSLC4JUtils.getServletPath(), corsFriends);
+        this.instance = new LyoAppConfiguration(OSLC4JUtils.getPublicURI(), OSLC4JUtils.getServletPath(), corsFriends);
     }
 
     @Override
-    public [javaClassNameForLyoAppConfiguration(anAdaptorInterface)/] provide() {
+    public LyoAppConfiguration provide() {
         return instance;
     }
 
     @Override
-    public void dispose([javaClassNameForLyoAppConfiguration(anAdaptorInterface)/] instance) {
+    public void dispose(LyoAppConfiguration instance) {
         // Noop
     }
 }

@@ -60,6 +60,7 @@ import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
 import org.eclipse.lyo.oslc4j.provider.jena.JenaProvidersRegistry;
 import org.eclipse.lyo.oslc4j.provider.json4j.Json4JProvidersRegistry;
+import org.eclipse.lyo.server.common.LyoCorsFilter;
 
 [if (anAdaptorInterface.swaggerDocumentationEnabled())]
 import io.swagger.v3.jaxrs2.integration.resources.AcceptHeaderOpenApiResource;
@@ -154,7 +155,7 @@ public class [javaClassNameForAdaptorApplication(anAdaptorInterface) /] extends 
         RESOURCE_CLASSES.addAll(Json4JProvidersRegistry.getProviders());
 
         // CORS support
-        RESOURCE_CLASSES.add([javaClassFullNameForCorsFilter(anAdaptorInterface)/].class);
+        RESOURCE_CLASSES.add(LyoCorsFilter.class);
 
         [for (aService: Service | anAdaptorInterface.serviceProviders().services)]
         RESOURCE_CLASSES.add([javaClassName(aService)/].class);
