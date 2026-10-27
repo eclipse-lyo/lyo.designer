@@ -74,7 +74,7 @@ endif)
 
 [query public descriptionAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.description.oclIsUndefined()) then
-    '@OslcDescription("'.concat(aProperty.description).concat('")')
+    '@OslcDescription("'.concat(aProperty.description.trim().escapeForJavaString()).concat('")')
 else
     ''
 endif)
@@ -171,7 +171,7 @@ endif)
 
 [query public titleAnnotation(aProperty: ResourceProperty) : String =
 (if (not aProperty.title.oclIsUndefined()) then
-    '@OslcTitle("'.concat(aProperty.title).concat('")')
+    '@OslcTitle("'.concat(aProperty.title.escapeForJavaString()).concat('")')
 else
     ''
 endif)
